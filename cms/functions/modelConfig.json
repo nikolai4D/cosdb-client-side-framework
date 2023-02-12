@@ -1,0 +1,40 @@
+{
+    "components": [
+        {
+            "component": "view",
+            "id": "1",
+            "parentIds": []
+        },
+        {
+            "component": "viewTemplate",
+            "id": "2",
+            "parentIds": [
+                1
+            ]
+        },
+        {
+            "component": "organism",
+            "id": "3",
+            "parentIds": [
+                3,
+                2
+            ]
+        },
+        {
+            "component": "molecule",
+            "id": "4",
+            "parentIds": [
+                4,
+                3
+            ]
+        },
+        {
+            "component": "atom",
+            "id": "5",
+            "parentIds": [
+                4,
+                3
+            ]
+        }
+    ]
+}
