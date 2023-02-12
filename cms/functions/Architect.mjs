@@ -1,6 +1,6 @@
 import {constructorMap} from "./constructorMap.mjs";
 import {buildArchitectPanel, buildElementPanelFromSchema} from "./PanelBuilder.mjs";
-import {buildSchemaFromComponent} from "../core/helpers.mjs";
+import {buildSchemaFromComponent} from "../../core/helpers.mjs";
 
 export function Architect(controller = null) {
 
