@@ -6,7 +6,7 @@ import { t_Split } from "../../components/templates/t_Split.mjs";
 
 export async function Cms_Controller() {
 
-    View.class(this)
+    View.call(this)
 
     this.title = "CMS"
     const view = "cms"
