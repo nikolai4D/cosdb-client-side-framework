@@ -3,6 +3,8 @@ import {fetchModel} from "../functions/fetchModel.mjs";
 import {Architect} from "../functions/Architect.mjs";
 import { View } from "../../core/View.mjs";
 import { t_Split } from "../../components/templates/t_Split.mjs";
+import { addButton } from "../functions/addButton.mjs";
+import { dataContent } from "../functions/dataContent.mjs";
 
 export function Cms_Controller() {
 
@@ -13,6 +15,21 @@ export function Cms_Controller() {
 
     let schema = fetchModel()
     console.log(schema)
+
+
+  const keys = Object.keys(data);
+
+  const body = document.querySelector("body");
+
+  const buttonsContainer = document.createElement("div");
+  body.appendChild(buttonsContainer);
+
+  const contentContainer = document.createElement("div");
+  body.appendChild(contentContainer);
+
+  addButton(contentContainer, buttonsContainer, keys);
+  dataContent(contentContainer, data);
+
 
     this.template = new t_Split(view);
     // Controller.call(this)
