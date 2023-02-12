@@ -16,6 +16,7 @@ export function Cms_Controller() {
     const view = "cms"
 
     const schema = async () => await fetchModel()
+    console.log("schema: ", schema)
 
     const keys = Object.keys(schema);
 
