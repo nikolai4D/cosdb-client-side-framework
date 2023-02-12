@@ -1,18 +1,26 @@
-// import {View} from "nd_frontend/core/View.mjs";
-// import {Template_Start_View} from "nd_frontend/generics/components/templates/Template_Start_View.mjs";
-// import {Start_Model} from "../models/Start_Model.mjs";
+import {Controller} from "../core/Controller.mjs";
+import {s_Default} from "../generics/models/s_Default.mjs";
+import {Architect} from "../cms/Architect.mjs";
 
-// export function Cms_Controller(){
 
-//     View.call(this)
+console.log('Hello World');
 
-//     this.title = "Start"
-//     const view = "start"
+let Schema = s_Default
 
-//     // model
-//     Start_Model(view)
+export function v_Start() {
+    Controller.call(this)
 
-//     // view
-//     this.template = new Template_Start_View(view)
+    this.title = "Start"
+    this.schema = Schema
 
-// }
+}
+
+let controller = new v_Start()
+
+
+controller.setView()
+
+let archi = new Architect(controller)
+document.body.insertAdjacentElement("afterbegin", archi.getPanel(controller))
+
+console.log("schema: ", Schema)
