@@ -15,22 +15,20 @@ export function Cms_Controller() {
     this.title = "CMS"
     const view = "cms"
 
-    let schema = fetchModel()
-    console.log(schema)
+    const schema = async () => await fetchModel()
 
+    const keys = Object.keys(schema);
 
-  const keys = Object.keys(schema);
+    const body = document.querySelector("body");
 
-  const body = document.querySelector("body");
+    const buttonsContainer = document.createElement("div");
+    body.appendChild(buttonsContainer);
 
-  const buttonsContainer = document.createElement("div");
-  body.appendChild(buttonsContainer);
+    const contentContainer = document.createElement("div");
+    body.appendChild(contentContainer);
 
-  const contentContainer = document.createElement("div");
-  body.appendChild(contentContainer);
-
-  addButton(contentContainer, buttonsContainer, keys);
-  dataContent(contentContainer, schema);
+    addButton(contentContainer, buttonsContainer, keys);
+    dataContent(contentContainer, schema);
 
 
     this.template = new t_Split(view);
