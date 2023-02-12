@@ -6,9 +6,11 @@ import { t_Split } from "../../components/templates/t_Split.mjs";
 import { addButton } from "../functions/addButton.mjs";
 import { dataContent } from "../functions/dataContent.mjs";
 
+
 export function Cms_Controller() {
 
     View.call(this)
+
 
     this.title = "CMS"
     const view = "cms"
@@ -17,7 +19,7 @@ export function Cms_Controller() {
     console.log(schema)
 
 
-  const keys = Object.keys(data);
+  const keys = Object.keys(schema);
 
   const body = document.querySelector("body");
 
@@ -28,7 +30,7 @@ export function Cms_Controller() {
   body.appendChild(contentContainer);
 
   addButton(contentContainer, buttonsContainer, keys);
-  dataContent(contentContainer, data);
+  dataContent(contentContainer, schema);
 
 
     this.template = new t_Split(view);
