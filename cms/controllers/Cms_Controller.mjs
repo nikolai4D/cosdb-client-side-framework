@@ -4,14 +4,14 @@ import {Architect} from "../functions/Architect.mjs";
 import { View } from "../../core/View.mjs";
 import { t_Split } from "../../components/templates/t_Split.mjs";
 
-export async function Cms_Controller() {
+export function Cms_Controller() {
 
     View.call(this)
 
     this.title = "CMS"
     const view = "cms"
 
-    let schema = await fetchModel()
+    let schema = fetchModel()
     console.log(schema)
 
     this.template = new t_Split(view);
@@ -25,3 +25,5 @@ export async function Cms_Controller() {
 
 
 // console.log("schema: ", Schema)
+
+
