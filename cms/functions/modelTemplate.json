@@ -1,0 +1,29 @@
+{
+    "views": [
+        {
+            "view": "",
+            "viewTemplate": "",
+            "subComponents": [
+                {
+                    "organism": "",
+                    "options": {
+                        "function": ""
+                    },
+                    "subComponents": [
+                        {
+                            "molecule": "",
+                            "subComponents": [
+                                {
+                                    "atom": "",
+                                    "options": {
+                                        "input": ""
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

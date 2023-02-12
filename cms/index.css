@@ -1,0 +1,15 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+  }
+  
+  button {
+    margin-top: 20px;
+  }
+  
+  label, input {
+    margin-top: 10px;
+  }
+  
