@@ -1,26 +1,12 @@
-import {Controller} from "../core/Controller.mjs";
-import {s_Default} from "../generics/models/s_Default.mjs";
-import {Architect} from "../cms/Architect.mjs";
+import {Controller} from "../../core/Controller.mjs";
+import {fetchModel} from "../functions/fetchModel.mjs";
+import {Architect} from "../functions/Architect.mjs";
+
+let schema = fetchModel()
+console.log(schema)
 
 
-console.log('Hello World');
+// let archi = new Architect(controller)
+// document.body.insertAdjacentElement("afterbegin", archi.getPanel(controller))
 
-let Schema = s_Default
-
-export function v_Start() {
-    Controller.call(this)
-
-    this.title = "Start"
-    this.schema = Schema
-
-}
-
-let controller = new v_Start()
-
-
-controller.setView()
-
-let archi = new Architect(controller)
-document.body.insertAdjacentElement("afterbegin", archi.getPanel(controller))
-
-console.log("schema: ", Schema)
+// console.log("schema: ", Schema)

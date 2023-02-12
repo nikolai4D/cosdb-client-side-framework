@@ -1,4 +1,4 @@
-import {constructorMap} from "../cms/constructorMap.mjs";
+import {constructorMap} from "../cms/functions/constructorMap.mjs";
 
 /**
  * Take a string and make it into an HTML element.
