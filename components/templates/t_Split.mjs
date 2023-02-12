@@ -1,4 +1,4 @@
-import {Component} from "../../../core/Component.mjs";
+import {Component} from "../../core/Component.mjs";
 
 export function t_Split() {
     Component.call(this)
