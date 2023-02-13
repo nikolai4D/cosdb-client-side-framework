@@ -17,7 +17,29 @@ export async function views() {
     const { view } = v;
     const viewDiv = document.createElement("div");
     viewDiv.id = view;
-    viewDiv.innerHTML = accordian("view", view, View(accordian("viewTemp", "viewTemp", ViewTemplate(accordian("org", "org", Organism(accordian("mol", "mol", Molecule(accordian("atom", "atom", Atom("ATOM!"))))))))))));
+    viewDiv.innerHTML = accordian(
+      "view",
+      view,
+      View(
+        accordian(
+          "viewTemp",
+          "viewTemp",
+          ViewTemplate(
+            accordian(
+              "org",
+              "org",
+              Organism(
+                accordian(
+                  "mol",
+                  "mol",
+                  Molecule(accordian("atom", "atom", Atom("ATOM!")))
+                )
+              )
+            )
+          )
+        )
+      )
+    );
     document.body.appendChild(viewDiv);
   }
 
