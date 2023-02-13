@@ -10,7 +10,7 @@ export function View(view) {
   const key = "view";
   const value = view.view;
   const body = `viewTemplate: ${dropdown(viewTemplates, view.viewTemplate)} <br>
-  slots: ${Slots(view.slots)}`;
+  ${Slots(view.slots)}`;
 
   return `   
       <div class="view">
