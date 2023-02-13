@@ -5,6 +5,7 @@ import { ViewTemplate } from "./ViewTemplate.mjs";
 import { Organism } from "./Organism.mjs";
 import { Molecule } from "./Molecule.mjs";
 import { Atom } from "./Atom.mjs";
+import { Slot } from "./Slot.mjs";
 
 export async function views() {
   const data = await readModel();
@@ -15,32 +16,10 @@ export async function views() {
 
   for (const v of views) {
     const { view } = v;
-    const viewDiv = document.createElement("div");
-    viewDiv.id = view;
-    viewDiv.innerHTML = accordian(
-      "view",
-      view,
-      View(
-        accordian(
-          "viewTemp",
-          "viewTemp",
-          ViewTemplate(
-            accordian(
-              "org",
-              "org",
-              Organism(
-                accordian(
-                  "mol",
-                  "mol",
-                  Molecule(accordian("atom", "atom", Atom("ATOM!")))
-                )
-              )
-            )
-          )
-        )
-      )
-    );
-    document.body.appendChild(viewDiv);
+    const div = document.createElement("div");
+    div.id = view;
+    div.innerHTML = View(view);
+    document.body.appendChild(div);
   }
 
   const accordionHeaders = document.querySelectorAll(".accordion-header");
