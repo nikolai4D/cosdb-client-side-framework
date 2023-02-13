@@ -1,7 +1,13 @@
+import { accordian } from "./types/accordian.mjs";
+
 export function View(view) {
-  console.log(view, "view");
+  const body = {
+    viewTemplate: view.viewTemplate,
+    slots: view.slots,
+  };
+
   return `   
       <div class="view">
-          ${view}
+          ${accordian("view", view, body)}
       </div>`;
 }
