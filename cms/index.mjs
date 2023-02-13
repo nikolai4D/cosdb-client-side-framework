@@ -1,5 +1,5 @@
-import { handleLoad } from "./functions/handleLoad.mjs";
-window.onload = handleLoad;
+import { appendView } from "./functions/appendView.mjs";
+window.onload = appendView;
 // import {Cms_Controller} from "./controllers/Cms_Controller.mjs";
 // import { Router, route } from "../core/Router.mjs";
 
