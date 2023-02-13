@@ -1,9 +1,9 @@
 import { handleSave } from "./handleSave.mjs";
 
-export async function addButton(contentContainer, buttonsContainer, keys) {
-  const addButton = document.createElement("button");
-  addButton.textContent = "Add";
-  addButton.addEventListener("click", () => {
+export async function createNew(contentContainer, buttonsContainer, keys) {
+  const createNew = document.createElement("button");
+  createNew.textContent = "Add";
+  createNew.addEventListener("click", () => {
     const keyInput = document.createElement("input");
     keyInput.setAttribute("placeholder", "Key");
     keyInput.setAttribute("id", "newKeyInput");
@@ -40,7 +40,7 @@ export async function addButton(contentContainer, buttonsContainer, keys) {
           input.remove();
           deleteButton.remove();
           handleSave();
-          console.log("deleted from addButton");
+          console.log("deleted from createNew");
         }
       });
       contentContainer.appendChild(deleteButton);
@@ -53,5 +53,5 @@ export async function addButton(contentContainer, buttonsContainer, keys) {
     });
     contentContainer.appendChild(addKeyButton);
   });
-  buttonsContainer.appendChild(addButton);
+  buttonsContainer.appendChild(createNew);
 }
