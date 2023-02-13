@@ -49,8 +49,7 @@ export async function views() {
     header.addEventListener("click", () => {
       const accordion = header.parentElement;
       const accordionBody = accordion.querySelector(".accordion-body");
-      accordionBody.style.display =
-        accordionBody.style.display === "none" ? "block" : "none";
+      accordionBody.classList.toggle("open");
     });
   });
 }
