@@ -25,35 +25,10 @@ export async function createNew(
         );
         return;
       }
-      //   const label = document.createElement("label");
-      //   label.textContent = key;
-      //   existingContentContainer.appendChild(label);
-
-      //   const input = document.createElement("input");
-      //   input.setAttribute("id", key);
-      //   input.setAttribute("value", "");
-      //   input.addEventListener("change", writeModel);
-      //   existingContentContainer.appendChild(input);
 
       inputField(key, "", existingContentContainer);
 
-      //   const deleteButton = document.createElement("button");
-      //   deleteButton.textContent = "x";
-      //   deleteButton.addEventListener("click", () => {
-      //     const confirmDelete = window.confirm(
-      //       "Are you sure you want to delete?"
-      //     );
-      //     if (confirmDelete) {
-      //       label.remove();
-      //       input.remove();
-      //       deleteButton.remove();
-      //       writeModel();
-      //       console.log("deleted from createNew");
-      //     }
-      //   });
-      //   existingContentContainer.appendChild(deleteButton);
-
-      deleteButton(existingContentContainer);
+      deleteButton(key, existingContentContainer);
 
       const br = document.createElement("br");
       existingContentContainer.appendChild(br);
