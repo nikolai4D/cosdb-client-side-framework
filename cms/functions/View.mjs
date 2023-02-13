@@ -6,6 +6,8 @@ export function View(view) {
     slots: view.slots,
   };
 
+  console.log("body: ", body);
+
   return `   
       <div class="view">
           ${accordian("view", view, body)}
