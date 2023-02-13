@@ -19,8 +19,7 @@ export function Molecules(molecules) {
   let moleculesHtml = "";
 
   for (const mol of molecules) {
-    const body = `molecule: ${dropdown(mols, mol.molecule)}<br>
-    ${Functions(mol.functions)}<br>
+    const body = `${Functions(mol.functions)}<br>
     atoms: ATOMS`;
     moleculesHtml += `${accordian("molecule", mol.molecule, body, true)} <br>`;
   }
