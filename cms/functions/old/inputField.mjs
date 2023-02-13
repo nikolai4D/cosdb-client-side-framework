@@ -1,4 +1,4 @@
-import { writeModel } from "./writeModel.mjs";
+import { writeModel } from "./requests/writeModel.mjs";
 import { deleteButton } from "./deleteButton.mjs";
 
 export function inputField(key, value, existingContentContainer) {

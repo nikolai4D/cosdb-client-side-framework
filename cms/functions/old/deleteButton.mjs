@@ -1,4 +1,4 @@
-import { writeModel } from "./writeModel.mjs";
+import { writeModel } from "./requests/writeModel.mjs";
 
 export function deleteButton(viewDiv, input, label) {
   const deleteButton = document.createElement("button");

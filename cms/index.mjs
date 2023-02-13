@@ -1,5 +1,5 @@
-import { appendViews } from "./functions/appendViews.mjs";
-window.onload = appendViews;
+import { views } from "./functions/views.mjs";
+window.onload = views;
 // import {Cms_Controller} from "./controllers/Cms_Controller.mjs";
 // import { Router, route } from "../core/Router.mjs";
 
