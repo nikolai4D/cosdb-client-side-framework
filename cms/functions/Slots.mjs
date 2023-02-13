@@ -8,7 +8,7 @@ export function Slots(slots) {
 
   for (const slot of slots) {
     const organism = `organism: ${dropdown(organisms, slot.organism)}`;
-    slotsHtml += `${accordian("slot", slot.slot, organism, "disabled")} <br>`;
+    slotsHtml += `${accordian("slot", slot.slot, organism, "true")} <br>`;
   }
 
   return `   
