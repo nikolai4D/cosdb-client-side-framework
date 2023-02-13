@@ -1,29 +1,18 @@
 {
     "views": [
         {
-            "view": "",
-            "viewTemplate": "",
-            "subComponents": [
-                {
-                    "organism": "",
-                    "options": {
-                        "function": ""
+            "view": "view1",
+            "viewTemplate": {
+                "viewTemplate": "viewTemplate1",
+                "slots": [
+                    {
+                        "slot": "slot1"
                     },
-                    "subComponents": [
-                        {
-                            "molecule": "",
-                            "subComponents": [
-                                {
-                                    "atom": "",
-                                    "options": {
-                                        "input": ""
-                                    }
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+                    {
+                        "slot": "slot2"
+                    }
+                ]
+            }
         }
     ]
 }
