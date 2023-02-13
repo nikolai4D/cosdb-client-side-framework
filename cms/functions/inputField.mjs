@@ -16,7 +16,9 @@ export function inputField(key, value, existingContentContainer) {
   input.addEventListener("change", writeModel);
   viewDiv.appendChild(input);
 
-  viewDiv.appendChild(deleteButton(input, label));
+  const deleteButton = deleteButton(input, label);
+
+  viewDiv.appendChild(deleteButton);
 
   existingContentContainer.appendChild(viewDiv);
 }
