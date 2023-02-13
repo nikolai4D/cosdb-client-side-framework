@@ -1,0 +1,13 @@
+import { writeModel } from "./writeModel.js";
+
+export function inputField(key, value, existingContentContainer) {
+  const label = document.createElement("label");
+  label.textContent = key;
+  existingContentContainer.appendChild(label);
+
+  const input = document.createElement("input");
+  input.setAttribute("id", key);
+  input.setAttribute("value", value);
+  input.addEventListener("change", writeModel);
+  existingContentContainer.appendChild(input);
+}

@@ -1,4 +1,4 @@
-export async function fetchModel() {
+export async function readModel() {
   try {
     const response = await fetch("/read");
     const data = await response.json();
