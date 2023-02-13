@@ -1,4 +1,4 @@
-import { writeModel } from "./writeModel.js";
+import { writeModel } from "./writeModel.mjs";
 
 export function inputField(key, value, existingContentContainer) {
   const label = document.createElement("label");
