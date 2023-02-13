@@ -1,6 +1,6 @@
 import { writeModel } from "./writeModel.mjs";
 
-export function deleteButton(input, label) {
+export function deleteButton(viewDiv, input, label) {
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "x";
   deleteButton.addEventListener("click", async () => {
