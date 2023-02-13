@@ -17,11 +17,14 @@ const funcs = [
 export function Functions(functions) {
   let functionsHtml = "";
 
-  for (const [key, value] of Object.entries(functions)) {
-    console.log(key, value);
-    const body = `${key} = ${dropdown(funcs, value)}<br>`;
-    functionsHtml += `${body} <br>`;
+  for (const func of functions) {
+    for (const [key, value] of Object.entries(func)) {
+      console.log(key, value);
+      const body = `${key} = ${dropdown(funcs, value)}<br>`;
+      functionsHtml += `${body} <br>`;
+    }
   }
+
   return `   
     <div class="functions">
       ${functionsHtml}
