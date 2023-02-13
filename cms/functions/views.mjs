@@ -14,10 +14,9 @@ export async function views() {
 
   console.log("views: ", views);
 
-  for (const v of views) {
-    const { view } = v;
+  for (const view of views) {
     const div = document.createElement("div");
-    div.id = view;
+    div.id = view.view;
     div.innerHTML = View(view);
     document.body.appendChild(div);
   }
