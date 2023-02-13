@@ -1,5 +1,6 @@
 import { accordian } from "./types/accordian.mjs";
 import { dropdown } from "./types/dropdown.mjs";
+import { Slots } from "./slots.mjs";
 
 const viewTemplates = ["viewTemplate1", "viewTemplate2", "viewTemplate3"];
 
@@ -8,7 +9,8 @@ export function View(view) {
 
   const key = "view";
   const value = view.view;
-  const body = `viewTemplate: ${dropdown(viewTemplates, view.viewTemplate)}`;
+  const body = `viewTemplate: ${dropdown(viewTemplates, view.viewTemplate)} <br>
+  slots: ${Slots(view.slots)}`;
 
   return `   
       <div class="view">
