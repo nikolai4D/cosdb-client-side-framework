@@ -13,7 +13,7 @@ export async function views() {
     const viewDiv = document.createElement("div");
     viewDiv.id = id;
     viewDiv.className = "view";
-    viewDiv.innerHTML = accordian();
+    viewDiv.innerHTML = accordian(view, accordian("sub", "subBody"));
     document.body.appendChild(viewDiv);
   }
 
