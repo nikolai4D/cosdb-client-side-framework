@@ -11,7 +11,7 @@ export function Slots(slots) {
   for (const slot of slots) {
     const body = `organism: ${dropdown(organisms, slot.organism)}<br>
     ${Functions(slot.functions)}<br>
-    ${Molecules(slot.molecules)}
+    ${Molecules(slot.molecules)}`;
     slotsHtml += `${accordian("slot", slot.slot, body, true)} <br>`;
   }
 
