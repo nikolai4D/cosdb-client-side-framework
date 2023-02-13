@@ -31,7 +31,7 @@ export async function existingContent(existingContentContainer, data) {
     // });
     // existingContentContainer.appendChild(deleteButton);
 
-    deleteButton(existingContentContainer);
+    deleteButton(key, existingContentContainer);
 
     const br = document.createElement("br");
     existingContentContainer.appendChild(br);
