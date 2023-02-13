@@ -4,7 +4,7 @@ import { addBreak } from "./addBreak.mjs";
 
 export function createNewViewName(keys, keyInput, existingContentContainer) {
   const createNewViewName = document.createElement("button");
-  createNewViewName.textContent = "Create New View Name";
+  createNewViewName.textContent = "New View Name";
   createNewViewName.addEventListener("click", () => {
     const key = keyInput.value;
     if (keys.includes(key)) {
