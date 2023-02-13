@@ -1,6 +1,6 @@
-import { writeModel } from "./writeModel.mjs";
 import { inputField } from "./inputField.mjs";
 import { deleteButton } from "./deleteButton.mjs";
+import { addBreak } from "./addBreak.mjs";
 
 export async function createNew(
   existingContentContainer,
@@ -27,11 +27,8 @@ export async function createNew(
       }
 
       inputField(key, "", existingContentContainer);
-
       deleteButton(key, existingContentContainer);
-
-      const br = document.createElement("br");
-      existingContentContainer.appendChild(br);
+      addBreak(existingContentContainer);
 
       keyInput.remove();
       addKeyButton.remove();
