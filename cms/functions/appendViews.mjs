@@ -37,7 +37,8 @@ export async function appendViews() {
   }
 
   // Call the createDivs function with the top-level object in the data
-  const contentContainer = document.querySelector("#content-container");
+  const contentContainer = document.createElement("div");
+  body.appendChild(contentContainer);
   const topLevelObject = data.views[0];
   const topLevelDiv = createDivs(topLevelObject);
   contentContainer.appendChild(topLevelDiv);
