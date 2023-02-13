@@ -8,7 +8,7 @@ export async function views() {
   console.log("views: ", views);
 
   for (const view of views) {
-    console.
+    console.log("view: ", view);
     const { view, id } = view;
     const viewDiv = document.createElement("div");
     viewDiv.id = id;
