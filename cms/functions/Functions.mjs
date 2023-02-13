@@ -1,19 +1,14 @@
+import { accordian } from "./types/accordian.mjs";
 import { dropdown } from "./types/dropdown.mjs";
 
-const functions = [
-  "function1",
-  "function2",
-  "function3",
-  "function4",
-  "function5",
-];
+const funcs = ["function1", "function2", "function3", "function4", "function5"];
 
 export function Functions(functions) {
   let functionsHtml = "";
 
   for (const func of functions) {
-    const body = `function: ${dropdown(functions, func.function)}<br>`;
-    functionsHtml += `${body} <br>`;
+    const body = `function: ${dropdown(funcs, func.function)}<br>`;
+    functionsHtml += `${accordian("function", func.function, body, true)} <br>`;
   }
 
   return `   
