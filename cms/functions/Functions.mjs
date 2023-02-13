@@ -20,7 +20,7 @@ export function Functions(functions) {
   for (const func of functions) {
     console.log(func, "func");
     const body = `function: ${dropdown(funcs, func.function)}<br>`;
-    functionsHtml += `${accordian("function", func.function, body, true)} <br>`;
+    functionsHtml += `${body} <br>`;
   }
 
   return `   
