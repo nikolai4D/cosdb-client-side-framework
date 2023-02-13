@@ -16,4 +16,15 @@ export async function views() {
     viewDiv.innerHTML = accordian();
     document.body.appendChild(viewDiv);
   }
+
+  const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+  accordionHeaders.forEach((header) => {
+    header.addEventListener("click", () => {
+      const accordion = header.parentElement;
+      const accordionBody = accordion.querySelector(".accordion-body");
+      accordionBody.style.display =
+        accordionBody.style.display === "none" ? "block" : "none";
+    });
+  });
 }
