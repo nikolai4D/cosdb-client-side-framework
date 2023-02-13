@@ -2,7 +2,7 @@ import { accordian } from "./types/accordian.mjs";
 import { dropdown } from "./types/dropdown.mjs";
 import { Functions } from "./Functions.mjs";
 
-const molecules = [
+const mols = [
   "molecule1",
   "molecule2",
   "molecule3",
@@ -19,7 +19,7 @@ export function Molecules(molecules) {
   let moleculesHtml = "";
 
   for (const mol of molecules) {
-    const body = `molecule: ${dropdown(molecules, mol.molecule)}<br>
+    const body = `molecule: ${dropdown(mols, mol.molecule)}<br>
     ${Functions(mol.functions)}<br>
     atoms: ATOMS`;
     moleculesHtml += `${accordian("molecule", mol.molecule, body, true)} <br>`;
