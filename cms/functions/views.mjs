@@ -1,4 +1,5 @@
 import { readModel } from "./requests/readModel.mjs";
+import { accordian } from "./types/accordian.mjs";
 
 export async function views() {
   const data = await readModel();
@@ -12,7 +13,7 @@ export async function views() {
     const viewDiv = document.createElement("div");
     viewDiv.id = id;
     viewDiv.className = "view";
-    viewDiv.innerHTML = `<h2>${view}</h2>`;
+    viewDiv.innerHTML = accordian();
     document.body.appendChild(viewDiv);
   }
 }
