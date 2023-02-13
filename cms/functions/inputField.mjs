@@ -1,4 +1,5 @@
 import { writeModel } from "./writeModel.mjs";
+import { deleteButton } from "./deleteButton.mjs";
 
 export function inputField(key, value, existingContentContainer) {
   const viewDiv = document.createElement("div");
@@ -14,6 +15,8 @@ export function inputField(key, value, existingContentContainer) {
   input.setAttribute("value", value);
   input.addEventListener("change", writeModel);
   viewDiv.appendChild(input);
+
+  viewDiv.appendChild(deleteButton(input, label));
 
   existingContentContainer.appendChild(viewDiv);
 }
