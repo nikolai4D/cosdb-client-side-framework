@@ -1,14 +1,13 @@
 export function dropdown(values, selectedValue) {
-  const dropdown = document.createElement("select");
+  let dropdown = "<select>";
 
   for (const value of values) {
-    const option = document.createElement("option");
-    option.value = value;
-    option.text = value;
-    dropdown.add(option);
+    dropdown += `<option value="${value}"${
+      value === selectedValue ? " selected" : ""
+    }>${value}</option>`;
   }
 
-  dropdown.value = selectedValue;
+  dropdown += "</select>";
 
   return dropdown;
 }
