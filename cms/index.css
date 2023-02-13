@@ -16,18 +16,18 @@
 
    .accordion {
     border: 1px solid #ccc;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   
   .accordion-header {
     background-color: #eee;
-    padding: 20px;
+    padding: 10px;
     cursor: pointer;
   }
   
   .accordion-body {
     display: none;
-    padding: 20px;
+    padding: 10px;
   }
   
   .open {
