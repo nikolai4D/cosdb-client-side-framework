@@ -7,6 +7,7 @@ export function deleteButton(viewDiv, input, label) {
     if (confirm("Are you sure you want to delete?")) {
       label.remove();
       input.remove();
+      viewDiv.remove();
       deleteButton.remove();
       await writeModel();
       console.log("deleted");
