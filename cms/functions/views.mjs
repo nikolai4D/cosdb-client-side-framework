@@ -1,5 +1,10 @@
 import { readModel } from "./requests/readModel.mjs";
 import { accordian } from "./types/accordian.mjs";
+import { View } from "./View.mjs";
+import { ViewTemplate } from "./ViewTemplate.mjs";
+import { Organism } from "./Organism.mjs";
+import { Molecule } from "./Molecule.mjs";
+import { Atom } from "./Atom.mjs";
 
 export async function views() {
   const data = await readModel();
@@ -9,15 +14,10 @@ export async function views() {
   console.log("views: ", views);
 
   for (const v of views) {
-    const { view, id } = v;
+    const { view } = v;
     const viewDiv = document.createElement("div");
-    viewDiv.id = id;
-    viewDiv.className = "view";
-    viewDiv.innerHTML = accordian(
-      "view",
-      view,
-      accordian("sub", "sub", "subBody")
-    );
+    viewDiv.id = view;
+    viewDiv.innerHTML = accordian("view", view, View("cool"));
     document.body.appendChild(viewDiv);
   }
 
