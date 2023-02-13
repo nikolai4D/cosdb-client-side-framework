@@ -20,7 +20,7 @@ export function Functions(functions) {
   for (const func of functions) {
     for (const [key, value] of Object.entries(func)) {
       console.log(key, value);
-      const body = `${key} = ${dropdown(funcs, value)}<br>`;
+      const body = `${key} = ${dropdown(funcs, value)}`;
       functionsHtml += `${body} <br>`;
     }
   }
