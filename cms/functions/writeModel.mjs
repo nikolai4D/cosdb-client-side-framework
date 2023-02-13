@@ -1,4 +1,4 @@
-export async function handleSave() {
+export async function writeModel() {
   const data = {};
   const inputs = document.querySelectorAll("input");
   inputs.forEach((input) => {

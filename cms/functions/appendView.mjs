@@ -1,9 +1,9 @@
-import { fetchModel } from "./fetchModel.mjs";
+import { readModel } from "./readModel.mjs";
 import { createNew } from "./createNew.mjs";
-import { dataContent } from "./dataContent.mjs";
+import { existingContent } from "./existingContent.mjs";
 
 export async function appendView() {
-  const data = await fetchModel();
+  const data = await readModel();
 
   const keys = Object.keys(data);
 
@@ -12,9 +12,9 @@ export async function appendView() {
   const createNewContainer = document.createElement("div");
   body.appendChild(createNewContainer);
 
-  const contentContainer = document.createElement("div");
-  body.appendChild(contentContainer);
+  const existingContentContainer = document.createElement("div");
+  body.appendChild(existingContentContainer);
 
-  createNew(contentContainer, createNewContainer, keys);
-  dataContent(contentContainer, data);
+  createNew(existingContentContainer, createNewContainer, keys);
+  existingContent(existingContentContainer, data);
 }
