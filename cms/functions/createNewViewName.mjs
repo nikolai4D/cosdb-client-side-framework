@@ -15,7 +15,6 @@ export function createNewViewName(keys, keyInput, existingContentContainer) {
     }
 
     inputField(key, "", existingContentContainer);
-    deleteButton(key, existingContentContainer);
     addBreak(existingContentContainer);
 
     keyInput.remove();
