@@ -12,4 +12,5 @@ export function deleteButton(input, label) {
       console.log("deleted");
     }
   });
+  return deleteButton;
 }
