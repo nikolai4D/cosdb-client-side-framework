@@ -8,11 +8,12 @@ export async function views() {
   console.log("views: ", views);
 
   for (const view of views) {
-    const { name, id } = view;
+    console.
+    const { view, id } = view;
     const viewDiv = document.createElement("div");
     viewDiv.id = id;
     viewDiv.className = "view";
-    viewDiv.innerHTML = `<h2>${name}</h2>`;
+    viewDiv.innerHTML = `<h2>${view}</h2>`;
     document.body.appendChild(viewDiv);
   }
 }
