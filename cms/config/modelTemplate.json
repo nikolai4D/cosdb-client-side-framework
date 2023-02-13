@@ -2,17 +2,93 @@
     "views": [
         {
             "view": "view1",
-            "viewTemplate": {
-                "viewTemplate": "viewTemplate1",
-                "slots": [
-                    {
-                        "slot": "slot1"
-                    },
-                    {
-                        "slot": "slot2"
-                    }
-                ]
-            }
+            "viewTemplate": "viewTemplate1",
+            "slots": [
+                {
+                    "slot": "slot1",
+                    "organism": "organism1",
+                    "functions": [
+                        {
+                            "function": "function1"
+                        },
+                        {
+                            "function": "function2"
+                        }
+                    ],
+                    "molecules": [
+                        {
+                            "molecule": "molecule1",
+                            "functions": [
+                                {
+                                    "function": "function3"
+                                },
+                                {
+                                    "function": "function4"
+                                }
+                            ],
+                            "atoms": [
+                                {
+                                    "atom": "atom1",
+                                    "options": [
+                                        {
+                                            "option": "option1"
+                                        },
+                                        {
+                                            "option": "option2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "atom": "atom2",
+                                    "options": [
+                                        {
+                                            "option": "option3"
+                                        },
+                                        {
+                                            "option": "option4"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "molecule": "molecule2",
+                            "functions": [
+                                {
+                                    "function": "function5"
+                                },
+                                {
+                                    "function": "function6"
+                                }
+                            ],
+                            "atoms": [
+                                {
+                                    "atom": "atom3",
+                                    "options": [
+                                        {
+                                            "option": "option5"
+                                        },
+                                        {
+                                            "option": "option6"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "atom": "atom4",
+                                    "options": [
+                                        {
+                                            "option": "option7"
+                                        },
+                                        {
+                                            "option": "option8"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
