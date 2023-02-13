@@ -13,7 +13,7 @@ export async function writeModel() {
       body: JSON.stringify(data),
     });
     const result = await response.json();
-    console.log(result);
+    //console.log(result);
   } catch (error) {
     console.error("An error occurred while saving the file:", error);
   }
