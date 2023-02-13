@@ -14,6 +14,6 @@ export function View(view) {
 
   return `   
       <div class="view">
-          ${accordian(key, value, body, "false")}
+          ${accordian(key, value, body)}
       </div>`;
 }
