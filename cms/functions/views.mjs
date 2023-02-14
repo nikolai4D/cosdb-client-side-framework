@@ -22,6 +22,7 @@ export async function views() {
     const view = { view: "New View", viewTemplate: "", slots: [] };
     div.innerHTML = View(view);
     document.body.insertBefore(div, document.body.children[1]);
+    accordian();
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
