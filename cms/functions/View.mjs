@@ -9,8 +9,8 @@ export function View(view) {
   const value = view.view;
   const id = view.viewId;
 
-  const viewTemplateDiv = ViewTemplate(view);
   const bodyDiv = document.createElement("div");
+  const viewTemplateDiv = ViewTemplate(view);
   bodyDiv.appendChild(viewTemplateDiv);
 
   const viewAccordian = accordian(key, value, bodyDiv, false, id);

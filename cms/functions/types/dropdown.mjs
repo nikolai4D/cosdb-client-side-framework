@@ -1,5 +1,6 @@
-export function dropdown(values, selectedValue) {
+export function dropdown(values, selectedValue, id) {
   const selectEl = document.createElement("select");
+  selectEl.id = id;
 
   for (const value of values) {
     const optionEl = document.createElement("option");
