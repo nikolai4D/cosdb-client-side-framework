@@ -28,15 +28,13 @@ export async function views() {
 
   accordian();
 }
-
 function accordian() {
-  const accordionHeaders = document.querySelectorAll(".accordion-header");
-
-  accordionHeaders.forEach((header) => {
-    header.addEventListener("click", () => {
+  document.addEventListener("click", function (event) {
+    const header = event.target.closest(".accordion-header");
+    if (header) {
       const accordion = header.parentElement;
       const accordionBody = accordion.querySelector(".accordion-body");
       accordionBody.classList.toggle("open");
-    });
+    }
   });
 }
