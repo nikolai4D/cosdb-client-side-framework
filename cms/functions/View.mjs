@@ -9,8 +9,9 @@ export function View(view) {
   const key = "view";
   const value = view.view;
   const body = `${ViewTemplate(view)}`;
+  const id = view.viewId;
 
-  viewHtml = accordian(key, value, body);
+  viewHtml = accordian(key, value, body, false, id);
 
   return `   
       <div class="view">
