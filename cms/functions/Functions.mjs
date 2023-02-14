@@ -19,13 +19,15 @@ export function Functions(functions) {
 
   for (const func of functions) {
     for (const [key, value] of Object.entries(func)) {
-      const funcBody = document.createElement("div");
-      const label = document.createElement("label");
-      label.textContent = key + ": ";
-      const select = dropdown(funcs, value);
-      funcBody.appendChild(label);
-      funcBody.appendChild(select);
-      functionsDiv.appendChild(funcBody);
+      if (key !== "functionId") {
+        const funcBody = document.createElement("div");
+        const label = document.createElement("label");
+        label.textContent = key + ": ";
+        const select = dropdown(funcs, value);
+        funcBody.appendChild(label);
+        funcBody.appendChild(select);
+        functionsDiv.appendChild(funcBody);
+      }
     }
   }
 
