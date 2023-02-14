@@ -27,22 +27,22 @@ export async function views() {
     const viewContent = View(view);
     viewDiv.appendChild(viewContent);
     document.body.insertBefore(viewDiv, document.body.children[1]);
-    const accordionBody = viewDiv.querySelector(".accordion-body");
-    accordionBody.classList.toggle("closed");
+    // const accordionBody = viewDiv.querySelector(".accordion-body");
+    // accordionBody.classList.toggle("closed");
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
   // apply accordion functionality
-  accordianFunction();
+  //   accordianFunction();
 }
 
-function accordianFunction() {
-  document.body.addEventListener("click", function (event) {
-    const header = event.target.closest(".accordion-header");
-    if (header) {
-      const accordion = header.parentElement;
-      const accordionBody = accordion.querySelector(".accordion-body");
-      accordionBody.classList.toggle("open");
-    }
-  });
-}
+// function accordianFunction() {
+//   document.body.addEventListener("click", function (event) {
+//     const header = event.target.closest(".accordion-header");
+//     if (header) {
+//       const accordion = header.parentElement;
+//       const accordionBody = accordion.querySelector(".accordion-body");
+//       accordionBody.classList.toggle("open");
+//     }
+//   });
+// }
