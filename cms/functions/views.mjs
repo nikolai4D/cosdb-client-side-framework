@@ -25,9 +25,8 @@ export async function views() {
     const div = document.createElement("div");
     div.innerHTML = View(view);
     document.body.appendChild(div);
+    accordian();
   }
-
-  accordian();
 
   //   const accordionHeaders = document.querySelectorAll(".accordion-header");
 
