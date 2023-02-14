@@ -3,7 +3,7 @@ import { Functions } from "./Functions.mjs";
 import { Slots } from "./slots.mjs";
 import { dropdown } from "./types/dropdown.mjs";
 
-const viewTemps = ["viewTemplate1", "viewTemplate2", "viewTemplate3"];
+const viewTemps = ["", "viewTemplate1", "viewTemplate2", "viewTemplate3"];
 
 export function ViewTemplate(view) {
   let viewTemplateHtml = "";
