@@ -23,7 +23,8 @@ export async function views() {
     const view = { view: "New View", viewTemplate: "", slots: [] };
     div.innerHTML = View(view);
     document.body.insertBefore(div, document.body.children[1]);
-    window.location.reload();
+    const accordionBody = div.querySelector(".accordion-body");
+    accordionBody.classList.toggle("open");
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
