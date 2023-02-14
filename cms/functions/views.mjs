@@ -16,7 +16,7 @@ export async function views() {
     const view = { view: "New View", viewTemplate: "", slots: [] };
     div.innerHTML = View(view);
     document.body.insertBefore(div, document.body.children[1]);
-    accordian();
+    //accordian();
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
@@ -25,18 +25,9 @@ export async function views() {
     const div = document.createElement("div");
     div.innerHTML = View(view);
     document.body.appendChild(div);
-    accordian();
   }
 
-  //   const accordionHeaders = document.querySelectorAll(".accordion-header");
-
-  //   accordionHeaders.forEach((header) => {
-  //     header.addEventListener("click", () => {
-  //       const accordion = header.parentElement;
-  //       const accordionBody = accordion.querySelector(".accordion-body");
-  //       accordionBody.classList.toggle("open");
-  //     });
-  //   });
+  accordian();
 }
 
 function accordian() {
