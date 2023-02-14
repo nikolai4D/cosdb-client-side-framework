@@ -7,17 +7,13 @@ export function accordian(key, value, body, keyDisabled, id) {
   const header = document.createElement("div");
   header.classList.add("accordion-header");
   header.appendChild(input(key, value, keyDisabled, id));
-
   header.addEventListener("click", () => {
-    const bodyEl = accordion.querySelector(".accordion-body");
     bodyEl.classList.toggle("open");
   });
 
   const bodyEl = document.createElement("div");
   bodyEl.classList.add("accordion-body");
-
-  const bodyContent = document.createTextNode(body);
-  bodyEl.appendChild(bodyContent);
+  bodyEl.appendChild(body);
 
   accordion.appendChild(header);
   accordion.appendChild(bodyEl);
