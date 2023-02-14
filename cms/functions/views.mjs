@@ -1,13 +1,13 @@
 import { readModel } from "./requests/readModel.mjs";
-import { View } from "./View.mjs";
-import { viewDiv } from "./types/viewDiv.mjs";
+// import { View } from "./View.mjs";
+import { ViewDiv } from "./types/ViewDiv.mjs";
 
 export async function views() {
   // render existing views
   const data = await readModel();
   const views = data.views;
   for (const view of views) {
-    const viewDiv = viewDiv(view);
+    const viewDiv = ViewDiv(view);
     // const viewDiv = document.createElement("div");
     // viewDiv.classList.add("view");
     // const viewContent = View(view);
@@ -23,7 +23,7 @@ export async function views() {
     console.log("add button clicked");
 
     const view = { view: "New View", viewTemplate: "", slots: [] };
-    const viewDiv = viewDiv(view);
+    const viewDiv = ViewDiv(view);
 
     // const viewDiv = document.createElement("div");
     // viewDiv.classList.add("view");
