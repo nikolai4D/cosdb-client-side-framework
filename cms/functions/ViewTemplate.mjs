@@ -6,18 +6,18 @@ import { dropdown } from "./types/dropdown.mjs";
 const viewTemps = ["", "viewTemplate1", "viewTemplate2", "viewTemplate3"];
 
 export function ViewTemplate(view) {
-  let viewTemplateHtml = "";
-
   const key = "viewTemplate";
   const value = view.viewTemplate;
-  const body = `viewTemplate: ${dropdown(viewTemps, view.viewTemplate)}<br>
-    ${Slots(view.slots)}`;
+  const body = document.createElement("div");
+  body.appendChild(document.createTextNode(`viewTemplate: `));
+  body.appendChild(dropdown(viewTemps, view.viewTemplate));
+  body.appendChild(document.createElement("br"));
+  body.appendChild(Slots(view.slots));
 
-  viewTemplateHtml += `${accordian(key, value, body, true)} <br>`;
+  const accordianDiv = accordian(key, value, body, true);
+  const viewTemplateDiv = document.createElement("div");
+  viewTemplateDiv.classList.add("viewTemplate");
+  viewTemplateDiv.appendChild(accordianDiv);
 
-  return `   
-    <div class="viewTemplate">
-      ${viewTemplateHtml}
-    </div>
-  `;
+  return viewTemplateDiv;
 }

@@ -6,19 +6,25 @@ import { dropdown } from "./types/dropdown.mjs";
 const orgs = ["organism1", "organism2", "organism3"];
 
 export function Organisms(slot) {
-  let organismsHtml = "";
+  const organismsDiv = document.createElement("div");
+  organismsDiv.classList.add("organisms");
 
   const key = "organism";
   const value = slot.organism;
-  const body = `organism: ${dropdown(orgs, value)}<br>
-    ${Functions(slot.functions)}<br>
-    ${Molecules(slot.molecules)}`;
+  const bodyDiv = document.createElement("div");
+  const dropdownEl = dropdown(orgs, value);
+  const functionsEl = Functions(slot.functions);
+  const moleculesEl = Molecules(slot.molecules);
 
-  organismsHtml += `${accordian(key, value, body, true)} <br>`;
+  bodyDiv.appendChild(document.createTextNode("organism: "));
+  bodyDiv.appendChild(dropdownEl);
+  bodyDiv.appendChild(document.createElement("br"));
+  bodyDiv.appendChild(functionsEl);
+  bodyDiv.appendChild(document.createElement("br"));
+  bodyDiv.appendChild(moleculesEl);
 
-  return `   
-    <div class="organisms">
-      ${organismsHtml}
-    </div>
-  `;
+  organismsDiv.appendChild(accordian(key, value, bodyDiv, true));
+  organismsDiv.appendChild(document.createElement("br"));
+
+  return organismsDiv;
 }

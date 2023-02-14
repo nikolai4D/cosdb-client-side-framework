@@ -1,21 +1,18 @@
 import { accordian } from "./types/accordian.mjs";
-import { dropdown } from "./types/dropdown.mjs";
 import { Organisms } from "./Organisms.mjs";
 
 export function Slots(slots) {
-  let slotsHtml = "";
+  const slotDiv = document.createElement("div");
+  slotDiv.classList.add("slots");
 
   for (const slot of slots) {
     const key = "slot";
     const value = slot.slot;
-    const body = `${Organisms(slot)}`;
+    const body = Organisms(slot);
 
-    slotsHtml += `${accordian(key, value, body, true)} <br>`;
+    const accordionDiv = accordian(key, value, body, true);
+    slotDiv.appendChild(accordionDiv);
   }
 
-  return `   
-      <div class="slots">
-        ${slotsHtml}
-      </div>
-    `;
+  return slotDiv;
 }

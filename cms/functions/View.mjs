@@ -2,19 +2,19 @@ import { accordian } from "./types/accordian.mjs";
 import { ViewTemplate } from "./ViewTemplate.mjs";
 
 export function View(view) {
-  console.log(view, "view!!!!!!");
-
-  let viewHtml = "";
+  const viewDiv = document.createElement("div");
+  viewDiv.classList.add("view");
 
   const key = "view";
   const value = view.view;
-  const body = `${ViewTemplate(view)}`;
+
+  const viewTemplateDiv = ViewTemplate(view);
+  const bodyDiv = document.createElement("div");
+  bodyDiv.appendChild(viewTemplateDiv);
+
   const id = view.viewId;
+  const viewAccordian = accordian(key, value, bodyDiv, false, id);
+  viewDiv.appendChild(viewAccordian);
 
-  viewHtml = accordian(key, value, body, false, id);
-
-  return `   
-      <div class="view">
-          ${viewHtml}
-      </div>`;
+  return viewDiv;
 }
