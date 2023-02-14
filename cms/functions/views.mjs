@@ -6,6 +6,12 @@ export async function views() {
 
   const views = data.views;
 
+  // render existing views
+  for (const view of views) {
+    const div = document.createElement("div");
+    div.innerHTML = View(view);
+    document.body.appendChild(div);
+  }
   // create "Add View" button and add event listener to open form
   const createViewButton = document.createElement("button");
   createViewButton.textContent = "Create View";
@@ -16,28 +22,20 @@ export async function views() {
     const view = { view: "New View", viewTemplate: "", slots: [] };
     div.innerHTML = View(view);
     document.body.insertBefore(div, document.body.children[1]);
-    // accordian();
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
-  // render existing views
-  for (const view of views) {
-    const div = document.createElement("div");
-    div.innerHTML = View(view);
-    document.body.appendChild(div);
-  }
-
-  //   accordian();
+  accordian();
 }
 
-// function accordian() {
-//   const accordionHeaders = document.querySelectorAll(".accordion-header");
+function accordian() {
+  const accordionHeaders = document.querySelectorAll(".accordion-header");
 
-//   accordionHeaders.forEach((header) => {
-//     header.addEventListener("click", () => {
-//       const accordion = header.parentElement;
-//       const accordionBody = accordion.querySelector(".accordion-body");
-//       accordionBody.classList.toggle("open");
-//     });
-//   });
-// }
+  accordionHeaders.forEach((header) => {
+    header.addEventListener("click", () => {
+      const accordion = header.parentElement;
+      const accordionBody = accordion.querySelector(".accordion-body");
+      accordionBody.classList.toggle("open");
+    });
+  });
+}
