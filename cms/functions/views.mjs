@@ -12,6 +12,7 @@ export async function views() {
     div.innerHTML = View(view);
     document.body.appendChild(div);
   }
+
   // create "Add View" button and add event listener to open form
   const createViewButton = document.createElement("button");
   createViewButton.textContent = "Create View";
@@ -21,16 +22,16 @@ export async function views() {
     const div = document.createElement("div");
     const view = { view: "New View", viewTemplate: "", slots: [] };
     div.innerHTML = View(view);
-    document.body
-      .insertBefore(div, document.body.children[1])
-      .then(accordian());
+    document.body.insertBefore(div, document.body.children[1]);
+    accordian();
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
+  // apply accordion functionality
   accordian();
 }
 function accordian() {
-  document.addEventListener("click", function (event) {
+  document.body.addEventListener("click", function (event) {
     const header = event.target.closest(".accordion-header");
     if (header) {
       const accordion = header.parentElement;
