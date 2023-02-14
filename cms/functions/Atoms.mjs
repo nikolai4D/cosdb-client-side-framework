@@ -7,7 +7,8 @@ export function Atoms(atoms) {
   for (const atom of atoms) {
     const key = atom.atom;
     const value = atom.option;
-    atomsDiv.appendChild(input(key, value));
+    const id = atom.atomId;
+    atomsDiv.appendChild(input(key, value, false, id));
     atomsDiv.appendChild(document.createElement("br"));
   }
 

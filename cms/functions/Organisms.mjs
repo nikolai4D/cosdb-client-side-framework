@@ -11,6 +11,8 @@ export function Organisms(slot) {
 
   const key = "organism";
   const value = slot.organism;
+  const id = slot.organismId;
+
   const bodyDiv = document.createElement("div");
   const dropdownEl = dropdown(orgs, value);
   const functionsEl = Functions(slot.functions);
@@ -23,7 +25,7 @@ export function Organisms(slot) {
   bodyDiv.appendChild(document.createElement("br"));
   bodyDiv.appendChild(moleculesEl);
 
-  organismsDiv.appendChild(accordian(key, value, bodyDiv, true));
+  organismsDiv.appendChild(accordian(key, value, bodyDiv, true, id));
   organismsDiv.appendChild(document.createElement("br"));
 
   return organismsDiv;
