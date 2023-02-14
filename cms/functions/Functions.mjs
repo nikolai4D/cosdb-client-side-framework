@@ -20,10 +20,11 @@ export function Functions(functions) {
   for (const func of functions) {
     for (const [key, value] of Object.entries(func)) {
       if (key !== "functionId") {
+        const id = func.functionId;
         const funcBody = document.createElement("div");
         const label = document.createElement("label");
         label.textContent = key + ": ";
-        const select = dropdown(funcs, value);
+        const select = dropdown(funcs, value, id);
         funcBody.appendChild(label);
         funcBody.appendChild(select);
         functionsDiv.appendChild(funcBody);
