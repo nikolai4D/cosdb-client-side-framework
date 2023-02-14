@@ -22,7 +22,14 @@ export async function views() {
     const div = document.createElement("div");
     const view = { view: "New View", viewTemplate: "", slots: [] };
     div.innerHTML = View(view);
-    accordian();
+    div.innerHTML.addEventListener("click", function (event) {
+      const header = event.target.closest(".accordion-header");
+      if (header) {
+        const accordion = header.parentElement;
+        const accordionBody = accordion.querySelector(".accordion-body");
+        accordionBody.classList.toggle("open");
+      }
+    });
     document.body.insertBefore(div, document.body.children[1]);
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
