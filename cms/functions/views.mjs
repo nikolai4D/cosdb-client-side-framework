@@ -12,6 +12,10 @@ export async function views() {
   createViewButton.classList.add("createViewButton");
   createViewButton.addEventListener("click", () => {
     console.log("add button clicked");
+    const div = document.createElement("div");
+    const view = { view: "New View", viewTemplate: "", slots: [] };
+    div.innerHTML = View(view);
+    document.body.insertBefore(div, document.body.firstChild);
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
