@@ -8,9 +8,11 @@ export function Slots(slots) {
   for (const slot of slots) {
     const key = "slot";
     const value = slot.slot;
+    const id = slot.slotId;
+
     const body = Organisms(slot);
 
-    const accordionDiv = accordian(key, value, body, true);
+    const accordionDiv = accordian(key, value, body, true, id);
     slotDiv.appendChild(accordionDiv);
   }
 

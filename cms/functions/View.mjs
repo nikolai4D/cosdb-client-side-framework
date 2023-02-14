@@ -7,12 +7,12 @@ export function View(view) {
 
   const key = "view";
   const value = view.view;
+  const id = view.viewId;
 
   const viewTemplateDiv = ViewTemplate(view);
   const bodyDiv = document.createElement("div");
   bodyDiv.appendChild(viewTemplateDiv);
 
-  const id = view.viewId;
   const viewAccordian = accordian(key, value, bodyDiv, false, id);
   viewDiv.appendChild(viewAccordian);
 

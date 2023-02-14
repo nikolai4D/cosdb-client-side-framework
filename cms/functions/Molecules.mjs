@@ -9,13 +9,15 @@ export function Molecules(molecules) {
   for (const mol of molecules) {
     const key = "molecule";
     const value = mol.molecule;
+    const id = mol.moleculeId;
+
     const body = document.createElement("div");
 
     body.appendChild(Functions(mol.functions));
     body.appendChild(document.createElement("br"));
     body.appendChild(Atoms(mol.atoms));
 
-    const accordionDiv = accordian(key, value, body, true);
+    const accordionDiv = accordian(key, value, body, true, id);
     moleculesDiv.appendChild(accordionDiv);
   }
 
