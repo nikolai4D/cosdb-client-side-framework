@@ -7,15 +7,13 @@ export async function views() {
   const views = data.views;
 
   // create "Add View" button and add event listener to open form
-  const addButton = document.createElement("button");
-  addButton.textContent = "Create View";
-  addButton.addEventListener("click", () => {
+  const createViewButton = document.createElement("button");
+  createViewButton.textContent = "Create View";
+  createViewButton.classList.add("createViewButton");
+  createViewButton.addEventListener("click", () => {
     console.log("add button clicked");
-
-    // append form to document body
-    document.body.appendChild(form);
   });
-  document.body.insertBefore(addButton, document.body.firstChild);
+  document.body.insertBefore(createViewButton, document.body.firstChild);
 
   // render existing views
   for (const view of views) {
