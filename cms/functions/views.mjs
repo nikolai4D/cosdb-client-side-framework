@@ -29,9 +29,9 @@ export async function views() {
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
   // apply accordion functionality
-  accordian();
+  accordianFunction();
 }
-function accordian() {
+function accordianFunction() {
   document.body.addEventListener("click", function (event) {
     const header = event.target.closest(".accordion-header");
     if (header) {

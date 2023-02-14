@@ -8,14 +8,19 @@ const orgs = ["organism1", "organism2", "organism3"];
 export function Organisms(slot) {
   let organismsHtml = "";
 
-  const body = `organism: ${dropdown(orgs, slot.organism)}<br>
+  const key ="organism";
+  const value = slot.organism;
+  const body = `organism: ${dropdown(orgs, value)}<br>
     ${Functions(slot.functions)}<br>
     ${Molecules(slot.molecules)}`;
-  organismsHtml += `${accordian("organism", slot.organism, body, true)} <br>`;
+
+  organismsHtml += `${accordian(key, value, body, true)} <br>`;
+
 
   return `   
     <div class="organisms">
       ${organismsHtml}
     </div>
   `;
-}
+
+

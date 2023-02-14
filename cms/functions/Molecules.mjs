@@ -6,9 +6,11 @@ export function Molecules(molecules) {
   let moleculesHtml = "";
 
   for (const mol of molecules) {
+    const key = "molecule";
+    const value = mol.molecule;
     const body = `${Functions(mol.functions)}<br>
     ${Atoms(mol.atoms)}`;
-    moleculesHtml += `${accordian("molecule", mol.molecule, body, true)} <br>`;
+    moleculesHtml += `${accordian(key, value, body, true)} <br>`;
   }
 
   return `   
