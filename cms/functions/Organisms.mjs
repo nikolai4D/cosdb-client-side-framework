@@ -11,7 +11,7 @@ export function Organisms(slot) {
   const body = `organism: ${dropdown(orgs, slot.organism)}<br>
     ${Functions(slot.functions)}<br>
     ${Molecules(slot.molecules)}`;
-  organismsHtml += `${accordian("organism", slot.organism, body)} <br>`;
+  organismsHtml += `${accordian("organism", slot.organism, body, true)} <br>`;
 
   return `   
     <div class="organisms">
