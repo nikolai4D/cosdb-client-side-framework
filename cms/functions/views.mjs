@@ -8,9 +8,11 @@ export async function views() {
 
   // render existing views
   for (const view of views) {
-    const div = document.createElement("div");
-    div.innerHTML = View(view);
-    document.body.appendChild(div);
+    const viewDiv = document.createElement("div");
+    viewDiv.classList.add("view");
+    const viewContent = View(view);
+    viewDiv.appendChild(viewContent);
+    document.body.appendChild(viewDiv);
   }
 
   // create "Add View" button and add event listener to open form
@@ -19,11 +21,13 @@ export async function views() {
   createViewButton.classList.add("createViewButton");
   createViewButton.addEventListener("click", async () => {
     console.log("add button clicked");
-    const div = document.createElement("div");
+    const viewDiv = document.createElement("div");
+    viewDiv.classList.add("view");
     const view = { view: "New View", viewTemplate: "", slots: [] };
-    div.innerHTML = View(view);
-    document.body.insertBefore(div, document.body.children[1]);
-    const accordionBody = div.querySelector(".accordion-body");
+    const viewContent = View(view);
+    viewDiv.appendChild(viewContent);
+    document.body.insertBefore(viewDiv, document.body.children[1]);
+    const accordionBody = viewDiv.querySelector(".accordion-body");
     accordionBody.classList.toggle("closed");
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
@@ -31,6 +35,7 @@ export async function views() {
   // apply accordion functionality
   accordianFunction();
 }
+
 function accordianFunction() {
   document.body.addEventListener("click", function (event) {
     const header = event.target.closest(".accordion-header");

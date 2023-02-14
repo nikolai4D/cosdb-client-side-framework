@@ -1,4 +1,3 @@
-import { accordian } from "./types/accordian.mjs";
 import { dropdown } from "./types/dropdown.mjs";
 
 const funcs = [
@@ -15,19 +14,20 @@ const funcs = [
 ];
 
 export function Functions(functions) {
-  let functionsHtml = "";
+  const functionsDiv = document.createElement("div");
+  functionsDiv.classList.add("functions");
 
   for (const func of functions) {
     for (const [key, value] of Object.entries(func)) {
-      //console.log(key, value);
-      const body = `${key} = ${dropdown(funcs, value)}`;
-      functionsHtml += `${body} <br>`;
+      const funcBody = document.createElement("div");
+      const label = document.createElement("label");
+      label.textContent = key + ": ";
+      const select = dropdown(funcs, value);
+      funcBody.appendChild(label);
+      funcBody.appendChild(select);
+      functionsDiv.appendChild(funcBody);
     }
   }
 
-  return `   
-    <div class="functions">
-      ${functionsHtml}
-    </div>
-  `;
+  return functionsDiv;
 }

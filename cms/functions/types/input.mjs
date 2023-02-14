@@ -1,16 +1,15 @@
-// import { writeModel } from "./requests/writeModel.mjs";
-
 export function input(key, value, keyDisabled, id) {
-  let disabled = "";
+  const labelEl = document.createElement("label");
+  labelEl.textContent = key + ":";
 
-  if (keyDisabled) {
-    disabled = `disabled = "true"`;
-  }
+  const inputEl = document.createElement("input");
+  inputEl.value = value;
+  inputEl.disabled = keyDisabled;
+  inputEl.id = id;
 
-  const input = `
-      <label>${key}:</label>
-      <input value="${value}" ${disabled} id=${id}>
-    `;
+  const container = document.createElement("div");
+  container.appendChild(labelEl);
+  container.appendChild(inputEl);
 
-  return input;
+  return container;
 }

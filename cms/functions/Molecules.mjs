@@ -3,19 +3,21 @@ import { Functions } from "./Functions.mjs";
 import { Atoms } from "./Atoms.mjs";
 
 export function Molecules(molecules) {
-  let moleculesHtml = "";
+  const moleculesDiv = document.createElement("div");
+  moleculesDiv.classList.add("molecules");
 
   for (const mol of molecules) {
     const key = "molecule";
     const value = mol.molecule;
-    const body = `${Functions(mol.functions)}<br>
-    ${Atoms(mol.atoms)}`;
-    moleculesHtml += `${accordian(key, value, body, true)} <br>`;
+    const body = document.createElement("div");
+
+    body.appendChild(Functions(mol.functions));
+    body.appendChild(document.createElement("br"));
+    body.appendChild(Atoms(mol.atoms));
+
+    const accordionDiv = accordian(key, value, body, true);
+    moleculesDiv.appendChild(accordionDiv);
   }
 
-  return `   
-    <div class="molecules">
-      ${moleculesHtml}
-    </div>
-  `;
+  return moleculesDiv;
 }
