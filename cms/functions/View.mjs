@@ -1,6 +1,5 @@
 import { accordian } from "./types/accordian.mjs";
-import { dropdown } from "./types/dropdown.mjs";
-import { ViewTemplate } from "./slots.mjs";
+import { ViewTemplate } from "./ViewTemplate.mjs";
 
 const viewTemplates = ["viewTemplate1", "viewTemplate2", "viewTemplate3"];
 
