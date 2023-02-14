@@ -5,15 +5,13 @@ import { dropdown } from "./types/dropdown.mjs";
 
 const orgs = ["organism1", "organism2", "organism3"];
 
-export function Organisms(organisms) {
+export function Organisms(slot) {
   let organismsHtml = "";
 
-  for (const org of organisms) {
-    const body = `organism: ${dropdown(orgs, org.organism)}<br>
-    ${Functions(org.functions)}<br>
-    ${Molecules(org.molecules)}`;
-    organismsHtml += `${accordian("organism", org.organism, body, true)} <br>`;
-  }
+  const body = `organism: ${dropdown(orgs, slot.organism)}<br>
+    ${Functions(slot.functions)}<br>
+    ${Molecules(slot.molecules)}`;
+  organismsHtml += `${accordian("organism", slot.organism, body)} <br>`;
 
   return `   
     <div class="organisms">

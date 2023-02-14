@@ -6,7 +6,7 @@ export function Slots(slots) {
   let slotsHtml = "";
 
   for (const slot of slots) {
-    const body = `${Organisms(slot.organism)}`;
+    const body = `${Organisms(slot)}`;
 
     slotsHtml += `${accordian("slot", slot.slot, body, true)} <br>`;
   }
