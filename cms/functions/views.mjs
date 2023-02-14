@@ -24,7 +24,7 @@ export async function views() {
     div.innerHTML = View(view);
     document.body.insertBefore(div, document.body.children[1]);
     const accordionBody = div.querySelector(".accordion-body");
-    accordionBody.classList.toggle("open");
+    accordionBody.classList.toggle("closed");
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
