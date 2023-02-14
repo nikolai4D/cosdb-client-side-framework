@@ -6,9 +6,11 @@ export function Slots(slots) {
   let slotsHtml = "";
 
   for (const slot of slots) {
+    const key = "slot";
+    const value = slot.slot;
     const body = `${Organisms(slot)}`;
 
-    slotsHtml += `${accordian("slot", slot.slot, body, true)} <br>`;
+    slotsHtml += `${accordian(key, value, body, true)} <br>`;
   }
 
   return `   
