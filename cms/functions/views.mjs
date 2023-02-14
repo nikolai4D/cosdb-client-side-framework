@@ -17,13 +17,13 @@ export async function views() {
   const createViewButton = document.createElement("button");
   createViewButton.textContent = "Create View";
   createViewButton.classList.add("createViewButton");
-  createViewButton.addEventListener("click", async () => {
+  createViewButton.addEventListener("click", () => {
     console.log("add button clicked");
     const div = document.createElement("div");
     const view = { view: "New View", viewTemplate: "", slots: [] };
     div.innerHTML = View(view);
-    await document.body.insertBefore(div, document.body.children[1]);
     accordian();
+    document.body.insertBefore(div, document.body.children[1]);
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
