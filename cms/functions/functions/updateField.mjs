@@ -1,4 +1,4 @@
-export function updateObjectById(json, id, newValue) {
+export function updateField(json, id, newValue) {
   const stack = [json];
   while (stack.length > 0) {
     const obj = stack.pop();
