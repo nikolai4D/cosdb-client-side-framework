@@ -25,7 +25,8 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
 async function change(id, key) {
   console.log("changed " + key + ": " + id);
   if (key === "viewTemplate") {
-    const accordianBody = document.body.querySelector("accordian-body-" + id);
+    const accordianBodyId = "accordian-body-" + id;
+    const accordianBody = document.document.getElementById(accordianBodyId);
     console.log(accordianBody);
     if (accordianBody) {
       accordianBody.innerHTML = "";
