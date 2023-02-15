@@ -7,7 +7,8 @@ export function accordion(header, body, id) {
   const headerAccordion = document.createElement("div");
   headerAccordion.classList.add("accordion-header");
   headerAccordion.appendChild(header);
-  headerAccordion.addEventListener("click", () => {
+  headerAccordion.addEventListener("click", (event) => {
+    console.log(event);
     bodyEl.classList.toggle("open");
   });
 
