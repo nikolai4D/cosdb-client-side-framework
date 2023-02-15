@@ -14,7 +14,7 @@ export function ViewTemplate(view) {
   const id = view.viewTemplateId;
 
   const bodyDiv = document.createElement("div");
-  body.appendChild(Slots(view.slots));
+  bodyDiv.appendChild(Slots(view.slots));
 
   const accordianDiv = accordianDropdown(
     bodyDiv,
