@@ -5,6 +5,7 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   const selectEl = document.createElement("select");
   selectEl.id = id;
   selectEl.disabled = keyDisabled;
+  selectEl.addEventListener("change", change(id));
 
   for (const value of values) {
     const optionEl = document.createElement("option");
@@ -19,4 +20,8 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   container.appendChild(selectEl);
 
   return container;
+}
+
+function change(id) {
+  console.log("changed id: " + id);
 }
