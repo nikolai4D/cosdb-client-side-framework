@@ -3,6 +3,7 @@ export function accordian(header, body) {
   accordion.classList.add("accordion");
 
   const id = header.id;
+  const bodyId = "accordion-body#" + id;
 
   const headerAccordian = document.createElement("div");
   headerAccordian.classList.add("accordion-header");
@@ -13,7 +14,7 @@ export function accordian(header, body) {
 
   const bodyEl = document.createElement("div");
   bodyEl.classList.add("accordion-body");
-  bodyEl.id = "accordion-body#" + id;
+  bodyEl.id = bodyId;
   bodyEl.appendChild(body);
 
   accordion.appendChild(headerAccordian);
