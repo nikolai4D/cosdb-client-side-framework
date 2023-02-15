@@ -9,7 +9,7 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   const selectEl = document.createElement("select");
   selectEl.id = id;
   selectEl.disabled = keyDisabled;
-  selectEl.addEventListener("change", () => change(id, key));
+  //   selectEl.addEventListener("change", () => change(id, key));
 
   for (const value of values) {
     const optionEl = document.createElement("option");
