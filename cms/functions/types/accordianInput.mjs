@@ -5,7 +5,7 @@ export function accordianInput(body, key, value, id, keyDisabled) {
   const headerContent = input(key, value, id, keyDisabled);
   const bodyContent = body;
 
-  const accordianInput = accordian(headerContent, bodyContent);
+  const accordianInput = accordian(headerContent, bodyContent, id);
 
   return accordianInput;
 }
