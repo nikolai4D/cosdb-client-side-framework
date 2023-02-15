@@ -6,11 +6,6 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   selectEl.id = id;
   selectEl.disabled = keyDisabled;
   selectEl.addEventListener("change", () => change(id, key));
-  selectEl.addEventListener("change", (event) => {
-    // Disable the dropdown to trigger accordian
-    event.stopPropagation();
-    console.log("event.stopPropagation() called");
-  });
 
   for (const value of values) {
     const optionEl = document.createElement("option");
@@ -32,15 +27,7 @@ async function change(id, key) {
   if (key === "viewTemplate") {
     console.log("viewTemplate changed");
 
-    const accordionBody = document.getElementById("my-accordion-body");
-    if (accordionBody) {
-      try {
-        const response = await fetch("");
-        const data = await response.text();
-        accordionBody.innerHTML = data;
-      } catch (error) {
-        console.error(error);
-      }
-    }
+    const accordionBody = document.body.querySelector("my-accordion-body");
+    accordionBody.innerHTML = "";
   }
 }
