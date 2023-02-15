@@ -8,7 +8,7 @@ export function accordion(header, body, id) {
   headerAccordion.classList.add("accordion-header");
   headerAccordion.appendChild(header);
   headerAccordion.addEventListener("click", (event) => {
-    if (!event.target.tagName("option")) {
+    console.log(event.target);
       bodyEl.classList.toggle("open");
     }
   });
@@ -22,4 +22,6 @@ export function accordion(header, body, id) {
   accordion.appendChild(bodyEl);
 
   return accordion;
+  
 }
+

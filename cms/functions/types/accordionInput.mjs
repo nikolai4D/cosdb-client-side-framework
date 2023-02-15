@@ -1,5 +1,5 @@
 import { input } from "./input.mjs";
-import { accordion } from "./accordion.mjs";
+import { accordion } from "../../config/accordion.mjs";
 
 export function accordionInput(body, key, value, id, keyDisabled) {
   const headerContent = input(key, value, id, keyDisabled);
