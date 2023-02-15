@@ -22,14 +22,20 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   return container;
 }
 
-function change(id, key) {
+async function change(id, key) {
   console.log("changed " + key + ": " + id);
   if (key === "viewTemplate") {
     console.log("viewTemplate changed");
 
-    const accordionBody = document.getElementById(".accordion-body#" + id);
+    const accordionBody = document.getElementById("my-accordion-body");
     if (accordionBody) {
-      accordionBody.innerHTML = "";
+      try {
+        const response = await fetch("");
+        const data = await response.text();
+        accordionBody.innerHTML = data;
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 }
