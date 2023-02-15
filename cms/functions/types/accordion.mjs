@@ -9,6 +9,7 @@ export function accordion(header, body, id) {
   headerAccordion.appendChild(header);
   headerAccordion.addEventListener("click", (event) => {
     if (!event.target.matches("select")) {
+      consloe.log("event.target", event.target);
       bodyEl.classList.toggle("open");
     }
   });
