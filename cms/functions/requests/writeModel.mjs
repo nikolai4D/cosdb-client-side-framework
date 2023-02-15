@@ -1,16 +1,11 @@
-export async function writeModel() {
-  const data = {};
-  const inputs = document.querySelectorAll("input");
-  inputs.forEach((input) => {
-    data[input.id] = input.value;
-  });
+export async function writeModel(json) {
   try {
     const response = await fetch("/update", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(json),
     });
     const result = await response.json();
     //console.log(result);

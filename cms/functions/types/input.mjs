@@ -1,3 +1,7 @@
+import { readModel } from "../requests/readModel.mjs";
+import { updateField } from "../functions/updateField.mjs";
+import { writeModel } from "../requests/writeModel.mjs";
+
 export function input(key, value, id, keyDisabled = false) {
   const labelEl = document.createElement("label");
   labelEl.textContent = key + ":";
@@ -6,7 +10,7 @@ export function input(key, value, id, keyDisabled = false) {
   inputEl.value = value;
   inputEl.disabled = keyDisabled;
   inputEl.id = id;
-  inputEl.addEventListener("change", () => change(id));
+  inputEl.addEventListener("change", () => change(id, inputEl.value));
 
   const container = document.createElement("div");
   container.appendChild(labelEl);
@@ -15,6 +19,9 @@ export function input(key, value, id, keyDisabled = false) {
   return container;
 }
 
-function change(id) {
-  console.log("changed id: " + id);
+async function change(id, value) {
+  console.log("changed id: " + id + "with value: " + value);
+  const modelJson = await readModel();
+  const updatedModelJson = await updateField(modelJson, id, value);
+  await writeModel(updatedModelJson);
 }
