@@ -26,5 +26,12 @@ function change(id) {
   console.log("changed " + key + ": " + id);
   if (key === "viewTemplate") {
     console.log("viewTemplate changed");
+
+    const accordionBody = document.querySelector(".accordion-body#" + id);
+    if (accordionBody) {
+      while (accordionBody.firstChild) {
+        accordionBody.removeChild(accordionBody.firstChild);
+      }
+    }
   }
 }
