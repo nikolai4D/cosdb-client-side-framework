@@ -13,7 +13,7 @@
     margin-top: 10px;
   }
    */
-
+/* 
    .accordion {
     border: 1px solid #ccc;
     margin-bottom: 10px;
@@ -38,4 +38,29 @@
     padding: 10px;
     margin-bottom: 10px;
   }
-  
+
+   */
+.accordion {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.accordion > .accordion-header {
+  background-color: #eee;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.accordion > .accordion-body {
+  display: none;
+  padding: 10px;
+}
+
+.accordion > .open {
+  display: block;
+}
+
+.createViewButton {
+  padding: 10px;
+  margin-bottom: 10px;
+}
