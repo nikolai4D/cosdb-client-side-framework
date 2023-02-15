@@ -13,6 +13,12 @@ export function updateField(json, id, newValue) {
       } else if (updateKey === "function" && json.hasOwnProperty("option")) {
         // If this is a function object, update the option value
         json["option"] = newValue;
+      } else if (prop === "option") {
+        // If this is the option property, update the value
+        json[prop] = newValue;
+      } else {
+        // Update the specified value for any other property
+        json[updateKey] = newValue;
       }
     }
   }
