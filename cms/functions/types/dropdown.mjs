@@ -26,7 +26,7 @@ async function change(id, key) {
   console.log("changed " + key + ": " + id);
   if (key === "viewTemplate") {
     const accordianBodyId = "accordian-body-" + id;
-    const accordianBody = document.document.getElementById(accordianBodyId);
+    const accordianBody = document.getElementById(accordianBodyId);
     console.log(accordianBody);
     if (accordianBody) {
       accordianBody.innerHTML = "";
