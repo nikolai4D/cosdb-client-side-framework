@@ -26,15 +26,6 @@ export function ViewTemplate(view) {
   );
 
   viewTemplateDiv.appendChild(accordianDiv);
-  viewTemplateDiv.addEventListener("change", () => deleteChildNodes(id));
 
   return viewTemplateDiv;
-}
-
-function deleteChildNodes(id) {
-  const node = document.getElementById(id);
-  const parent = node;
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
 }
