@@ -5,10 +5,7 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   const selectEl = document.createElement("select");
   selectEl.id = id;
   selectEl.disabled = keyDisabled;
-  selectEl.addEventListener("change", (event) => {
-    change(id, key);
-    event.stopPropagation();
-  });
+  selectEl.addEventListener("change", (event) => change(id, key, event));
 
   for (const value of values) {
     const optionEl = document.createElement("option");
@@ -25,7 +22,8 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   return container;
 }
 
-async function change(id, key) {
+async function change(id, key, event) {
+  event.stopPropagation();
   console.log("changed " + key + ": " + id);
   if (key === "viewTemplate") {
     const accordionBodyId = "accordion-body-" + id;
