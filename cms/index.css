@@ -14,18 +14,18 @@
   }
    */
 /* 
-   .accordion {
+   .accordian {
     border: 1px solid #ccc;
     margin-bottom: 10px;
   }
   
-  .accordion-header {
+  .accordian-header {
     background-color: #eee;
     padding: 10px;
     cursor: pointer;
   }
   
-  .accordion-body {
+  .accordian-body {
     display: none;
     padding: 10px;
   }
@@ -40,23 +40,23 @@
   }
 
    */
-.accordion {
+.accordian {
   border: 1px solid #ccc;
   margin-bottom: 10px;
 }
 
-.accordion > .accordion-header {
+.accordian > .accordian-header {
   background-color: #eee;
   padding: 10px;
   cursor: pointer;
 }
 
-.accordion > .accordion-body {
+.accordian > .accordian-body {
   display: none;
   padding: 10px;
 }
 
-.accordion > .open {
+.accordian > .open {
   display: block;
 }
 
