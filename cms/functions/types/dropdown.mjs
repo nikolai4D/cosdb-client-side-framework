@@ -29,9 +29,7 @@ function change(id, key) {
 
     const accordionBody = document.getElementById(".accordion-body#" + id);
     if (accordionBody) {
-      while (accordionBody.firstChild) {
-        accordionBody.removeChild(accordionBody.firstChild);
-      }
+      accordionBody.innerHTML = "";
     }
   }
 }
