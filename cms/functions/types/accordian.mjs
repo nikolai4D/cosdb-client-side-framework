@@ -14,7 +14,7 @@ export function accordian(header, body) {
   bodyEl.appendChild(body);
 
   accordion.appendChild(headerAccordian);
-  accordion.appendChild(bodyEl);
+  headerAccordian.appendChild(bodyEl);
 
   return accordion;
 }
