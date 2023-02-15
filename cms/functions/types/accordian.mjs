@@ -12,9 +12,8 @@ export function accordian(header, body) {
   });
 
   const bodyEl = document.createElement("div");
-  bodyEl.classList.add("accordion-body");
+  bodyEl.classList.add("accordion-body#" + id);
   bodyEl.appendChild(body);
-  bodyEl.setAttribute("id", id);
 
   accordion.appendChild(headerAccordian);
   accordion.appendChild(bodyEl);
