@@ -9,8 +9,7 @@ export function accordion(header, body, id) {
   headerAccordion.appendChild(header);
   headerAccordion.addEventListener("click", (event) => {
     console.log(event.target);
-      bodyEl.classList.toggle("open");
-    }
+    bodyEl.classList.toggle("open");
   });
 
   const bodyEl = document.createElement("div");
@@ -22,6 +21,4 @@ export function accordion(header, body, id) {
   accordion.appendChild(bodyEl);
 
   return accordion;
-  
 }
-
