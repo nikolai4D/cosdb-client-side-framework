@@ -5,7 +5,7 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   const selectEl = document.createElement("select");
   selectEl.id = id;
   selectEl.disabled = keyDisabled;
-  selectEl.addEventListener("change", () => change(id));
+  selectEl.addEventListener("change", () => change(id, key));
 
   for (const value of values) {
     const optionEl = document.createElement("option");
@@ -23,5 +23,8 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
 }
 
 function change(id) {
-  console.log("changed id: " + id);
+  console.log("changed " + key + ": " + id);
+  if (key === "viewTemplate") {
+    console.log("viewTemplate changed");
+  }
 }
