@@ -25,12 +25,13 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
 async function change(id, key) {
   console.log("changed " + key + ": " + id);
   if (key === "viewTemplate") {
-    const accordianBodyId = "accordian-body-" + id;
-    const accordianBody = document.getElementById(accordianBodyId);
-    console.log(accordianBody);
-    if (accordianBody) {
-      accordianBody.innerHTML = "";
-      console.log("accordian-body-" + id + " deleted");
+    const accordionBodyId = "accordion-body-" + id;
+    const accordionBody = document.getElementById(accordionBodyId);
+    if (accordionBody) {
+      while (accordionBody.firstChild) {
+        accordionBody.removeChild(accordionBody.firstChild);
+      }
+      console.log("accordion-body-" + id + " deleted");
     }
   }
 }

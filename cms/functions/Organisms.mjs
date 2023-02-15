@@ -1,4 +1,4 @@
-import { accordianDropdown } from "./types/accordianDropdown.mjs";
+import { accordionDropdown } from "./types/accordionDropdown.mjs";
 import { Functions } from "./Functions.mjs";
 import { Molecules } from "./Molecules.mjs";
 
@@ -20,7 +20,7 @@ export function Organisms(slot) {
   bodyDiv.appendChild(moleculesEl);
 
   organismsDiv.appendChild(
-    accordianDropdown(bodyDiv, key, orgs, value, organismId, false)
+    accordionDropdown(bodyDiv, key, orgs, value, organismId, false)
   );
 
   return organismsDiv;

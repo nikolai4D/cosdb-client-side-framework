@@ -1,4 +1,4 @@
-import { accordianInput } from "./types/accordianInput.mjs";
+import { accordianInput } from "./types/accordionInput.mjs";
 import { Organisms } from "./Organisms.mjs";
 
 export function Slots(slots) {
