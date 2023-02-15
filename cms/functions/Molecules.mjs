@@ -11,13 +11,13 @@ export function Molecules(molecules) {
     const value = mol.molecule;
     const id = mol.moleculeId;
 
-    const body = document.createElement("div");
+    const bodyDiv = document.createElement("div");
 
-    body.appendChild(Functions(mol.functions));
-    body.appendChild(document.createElement("br"));
-    body.appendChild(Atoms(mol.atoms));
+    bodyDiv.appendChild(Functions(mol.functions));
+    bodyDiv.appendChild(document.createElement("br"));
+    bodyDiv.appendChild(Atoms(mol.atoms));
 
-    const accordionDiv = accordianInput(body, key, value, id, true);
+    const accordionDiv = accordianInput(bodyDiv, key, value, id, true);
     moleculesDiv.appendChild(accordionDiv);
   }
 
