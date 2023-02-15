@@ -13,8 +13,7 @@ export function Slots(slots) {
     const body = Organisms(slot);
 
     const accordionDiv = accordianInput(body, key, value, id, true);
-    slotDiv.(accordionDiv);
+    slotDiv.appendChild(accordionDiv);
   }
-
   return slotDiv;
 }
