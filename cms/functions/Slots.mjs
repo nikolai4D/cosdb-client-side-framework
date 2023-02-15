@@ -10,9 +10,11 @@ export function Slots(slots) {
     const value = slot.slot;
     const id = slot.slotId;
 
-    const body = Organisms(slot);
+    // const body = Organisms(slot);
+    const bodyDiv = document.createElement("div");
+    body.appendChild(Organisms(slot));
 
-    const accordionDiv = accordianInput(body, key, value, id, true);
+    const accordionDiv = accordianInput(bodyDiv, key, value, id, true);
     slotDiv.appendChild(accordionDiv);
   }
   return slotDiv;
