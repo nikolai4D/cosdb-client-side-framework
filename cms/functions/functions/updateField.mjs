@@ -11,9 +11,9 @@ export function updateField(json, id, newValue) {
       }
     } else if (
       prop.startsWith("function") &&
-      prop !== "function" &&
       !prop.endsWith("Id") &&
-      typeof json[prop] === "string"
+      typeof json[prop] === "string" &&
+      prop !== "function"
     ) {
       // If this is a function object, and not a functionId, update the specified value
       json[prop] = newValue;
@@ -23,8 +23,9 @@ export function updateField(json, id, newValue) {
       json[updateKey] = newValue;
     } else if (
       prop.startsWith("function") &&
-      prop !== "function" &&
-      typeof json[prop] === "object"
+      !prop.endsWith("Id") &&
+      typeof json[prop] === "object" &&
+      prop !== "function"
     ) {
       // If this is a function object, recursively call the function on it
       updateField(json[prop], id, newValue);
