@@ -6,7 +6,7 @@ export function input(key, value, id, keyDisabled = false) {
   inputEl.value = value;
   inputEl.disabled = keyDisabled;
   inputEl.id = id;
-  inputEl.addEventListener("change", change(id));
+  inputEl.addEventListener("change", () => change(id));
 
   const container = document.createElement("div");
   container.appendChild(labelEl);
