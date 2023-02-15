@@ -3,7 +3,7 @@ export function accordian(header, body) {
   accordion.classList.add("accordion");
 
   const id = header.id;
-
+  console.log("id: " + id);
   const bodyId = "accordion-body#" + id;
   console.log("bodyId: " + bodyId);
 
