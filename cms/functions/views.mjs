@@ -1,5 +1,4 @@
 import { readModel } from "./requests/readModel.mjs";
-// import { View } from "./View.mjs";
 import { ViewDiv } from "./types/ViewDiv.mjs";
 
 export async function views() {
