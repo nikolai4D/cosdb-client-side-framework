@@ -8,6 +8,10 @@ export function accordion(header, body, id) {
   headerAccordion.classList.add("accordion-header");
   headerAccordion.appendChild(header);
   headerAccordion.addEventListener("click", (event) => {
+    if (event.target.tagName === "OPTION") {
+      event.stopPropagation();
+      return;
+    }
     console.log(event.target);
     bodyEl.classList.toggle("open");
   });
