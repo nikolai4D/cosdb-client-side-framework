@@ -1,7 +1,7 @@
 import { dropdown } from "./dropdown.mjs";
-import { accordian } from "./accordian.mjs";
+import { accordion } from "./accordion.mjs";
 
-export function accordianDropdown(
+export function accordionDropdown(
   body,
   key,
   values,
@@ -12,7 +12,7 @@ export function accordianDropdown(
   const headerContent = dropdown(key, values, selectedValue, id, keyDisabled);
   const bodyContent = body;
 
-  const accordianDropdown = accordian(headerContent, bodyContent, id);
+  const accordionDropdown = accordion(headerContent, bodyContent, id);
 
-  return accordianDropdown;
+  return accordionDropdown;
 }

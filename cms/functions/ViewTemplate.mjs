@@ -1,4 +1,4 @@
-import { accordianDropdown } from "./types/accordianDropdown.mjs";
+import { accordionDropdown } from "./types/accordionDropdown.mjs";
 import { Functions } from "./Functions.mjs";
 import { Slots } from "./slots.mjs";
 
@@ -16,7 +16,7 @@ export function ViewTemplate(view) {
   const bodyDiv = document.createElement("div");
   bodyDiv.appendChild(Slots(view.slots));
 
-  const accordianDiv = accordianDropdown(
+  const accordionDiv = accordionDropdown(
     bodyDiv,
     key,
     values,
@@ -25,7 +25,7 @@ export function ViewTemplate(view) {
     false
   );
 
-  viewTemplateDiv.appendChild(accordianDiv);
+  viewTemplateDiv.appendChild(accordionDiv);
 
   return viewTemplateDiv;
 }
