@@ -1,5 +1,5 @@
 import { dropdown } from "./dropdown.mjs";
-import { accordion } from "../../config/accordion.mjs";
+import { accordion } from "./accordion.mjs";
 
 export function accordionDropdown(
   body,
