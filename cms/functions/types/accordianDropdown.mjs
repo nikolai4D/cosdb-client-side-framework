@@ -9,10 +9,10 @@ export function accordianDropdown(
   id,
   keyDisabled
 ) {
-  const header = dropdown(key, values, selectedValue, id, keyDisabled);
+  const headerContent = dropdown(key, values, selectedValue, id, keyDisabled);
   const bodyContent = body;
 
-  const accordianDropdown = accordian(header, bodyContent);
+  const accordianDropdown = accordian(headerContent, bodyContent);
 
   //   const accordianDropdown = document.createElement("div");
   //   accordianDropdown.classList.add("accordianDropdown");

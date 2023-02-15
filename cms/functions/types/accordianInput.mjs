@@ -2,10 +2,10 @@ import { input } from "./input.mjs";
 import { accordian } from "./accordian.mjs";
 
 export function accordianInput(body, key, value, id, keyDisabled) {
-  const header = input(key, value, id, keyDisabled);
+  const headerContent = input(key, value, id, keyDisabled);
   const bodyContent = body;
 
-  const accordianInput = accordian(header, bodyContent);
+  const accordianInput = accordian(headerContent, bodyContent);
 
   //   const accordianInput = document.createElement("div");
   //   accordianInput.classList.add("accordianInput");
