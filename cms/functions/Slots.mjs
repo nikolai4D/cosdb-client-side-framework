@@ -1,4 +1,4 @@
-import { accordian } from "./types/accordian.mjs";
+import { accordianInput } from "./types/accordianInput.mjs";
 import { Organisms } from "./Organisms.mjs";
 
 export function Slots(slots) {
@@ -12,8 +12,8 @@ export function Slots(slots) {
 
     const body = Organisms(slot);
 
-    const accordionDiv = accordian(key, value, body, true, id);
-    slotDiv.appendChild(accordionDiv);
+    const accordionDiv = accordianInput(body, key, value, id, true);
+    slotDiv.(accordionDiv);
   }
 
   return slotDiv;

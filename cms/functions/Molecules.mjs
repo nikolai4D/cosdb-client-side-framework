@@ -1,4 +1,4 @@
-import { accordian } from "./types/accordian.mjs";
+import { accordianInput } from "./types/accordianInput.mjs";
 import { Functions } from "./Functions.mjs";
 import { Atoms } from "./Atoms.mjs";
 
@@ -17,7 +17,7 @@ export function Molecules(molecules) {
     body.appendChild(document.createElement("br"));
     body.appendChild(Atoms(mol.atoms));
 
-    const accordionDiv = accordian(key, value, body, true, id);
+    const accordionDiv = accordianInput(body, key, value, id, true);
     moleculesDiv.appendChild(accordionDiv);
   }
 

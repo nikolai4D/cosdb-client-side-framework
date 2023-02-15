@@ -1,4 +1,4 @@
-export function input(key, value, keyDisabled, id) {
+export function input(key, value, id, keyDisabled = false) {
   const labelEl = document.createElement("label");
   labelEl.textContent = key + ":";
 
