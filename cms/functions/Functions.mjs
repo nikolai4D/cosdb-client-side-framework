@@ -22,10 +22,7 @@ export function Functions(functions) {
       if (key !== "functionId") {
         const id = func.functionId;
         const funcBody = document.createElement("div");
-        const label = document.createElement("label");
-        label.textContent = key + ": ";
-        const select = dropdown(funcs, value, id);
-        funcBody.appendChild(label);
+        const select = dropdown(key, funcs, value, id, false);
         funcBody.appendChild(select);
         functionsDiv.appendChild(funcBody);
       }

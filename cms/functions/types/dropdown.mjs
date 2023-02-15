@@ -1,6 +1,10 @@
-export function dropdown(values, selectedValue, id) {
+export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
+  const labelEl = document.createElement("label");
+  labelEl.textContent = key + ":";
+
   const selectEl = document.createElement("select");
   selectEl.id = id;
+  selectEl.disabled = keyDisabled;
 
   for (const value of values) {
     const optionEl = document.createElement("option");
@@ -10,5 +14,9 @@ export function dropdown(values, selectedValue, id) {
     selectEl.appendChild(optionEl);
   }
 
-  return selectEl;
+  const container = document.createElement("div");
+  container.appendChild(labelEl);
+  container.appendChild(selectEl);
+
+  return container;
 }

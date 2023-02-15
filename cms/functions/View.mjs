@@ -1,4 +1,4 @@
-import { accordian } from "./types/accordian.mjs";
+import { accordianInput } from "./types/accordianInput.mjs";
 import { ViewTemplate } from "./ViewTemplate.mjs";
 
 export function View(view) {
@@ -13,8 +13,8 @@ export function View(view) {
   const viewTemplateDiv = ViewTemplate(view);
   bodyDiv.appendChild(viewTemplateDiv);
 
-  const viewAccordian = accordian(key, value, bodyDiv, false, id);
-  viewDiv.appendChild(viewAccordian);
+  const viewAccordianInput = accordianInput(bodyDiv, key, value, id, false);
+  viewDiv.appendChild(viewAccordianInput);
 
   return viewDiv;
 }

@@ -8,10 +8,6 @@ export async function views() {
   const views = data.views;
   for (const view of views) {
     const viewDiv = ViewDiv(view);
-    // const viewDiv = document.createElement("div");
-    // viewDiv.classList.add("view");
-    // const viewContent = View(view);
-    // viewDiv.appendChild(viewContent);
     document.body.appendChild(viewDiv);
   }
 
@@ -24,12 +20,6 @@ export async function views() {
 
     const view = { view: "New View", viewTemplate: "", slots: [] };
     const viewDiv = ViewDiv(view);
-
-    // const viewDiv = document.createElement("div");
-    // viewDiv.classList.add("view");
-    // const view = { view: "New View", viewTemplate: "", slots: [] };
-    // const viewContent = View(view);
-    // viewDiv.appendChild(viewContent);
     document.body.insertBefore(viewDiv, document.body.children[1]);
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
