@@ -7,12 +7,12 @@ export function updateField(json, id, newValue) {
     } else if (prop.endsWith("Id") && json[prop] === id) {
       // If this is the object we want to update, update the specified value
       const updateKey = prop.replace("Id", "");
-      json[updateKey] = newValue;
-      if (updateKey === "atom" || updateKey === "function") {
-        // If this is an atom or function object, update the option value
-        if (json.hasOwnProperty("option")) {
-          json["option"] = newValue;
-        }
+      if (updateKey === "atom" && json.hasOwnProperty("option")) {
+        // If this is an atom object, update the option value
+        json["option"] = newValue;
+      } else if (updateKey === "function" && json.hasOwnProperty("option")) {
+        // If this is a function object, update the option value
+        json["option"] = newValue;
       }
     }
   }
