@@ -5,7 +5,14 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   const selectEl = document.createElement("select");
   selectEl.id = id;
   selectEl.disabled = keyDisabled;
-  selectEl.addEventListener("change", (event) => change(id, key, event));
+  //   selectEl.addEventListener("change", (event) => change(id, key, event));
+  selectEl.addEventListener("change", (event) => {
+    if (event.target.closest(".accordion-header > select") !== null) {
+      event.preventDefault();
+    } else {
+      change(id, key);
+    }
+  });
 
   for (const value of values) {
     const optionEl = document.createElement("option");
@@ -22,8 +29,7 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   return container;
 }
 
-async function change(id, key, event) {
-  event.stopPropagation();
+async function change(id, key) {
   console.log("changed " + key + ": " + id);
   if (key === "viewTemplate") {
     const accordionBodyId = "accordion-body-" + id;
