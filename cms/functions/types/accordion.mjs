@@ -12,7 +12,6 @@ export function accordion(header, body, id) {
       event.stopPropagation();
       return;
     }
-    console.log(event.target);
     bodyEl.classList.toggle("open");
   });
 
