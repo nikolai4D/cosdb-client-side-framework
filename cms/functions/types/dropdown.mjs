@@ -27,7 +27,7 @@ function change(id, key) {
   if (key === "viewTemplate") {
     console.log("viewTemplate changed");
 
-    const accordionBody = document.querySelector(".accordion-body#" + id);
+    const accordionBody = document.getElementById(".accordion-body#" + id);
     if (accordionBody) {
       while (accordionBody.firstChild) {
         accordionBody.removeChild(accordionBody.firstChild);
