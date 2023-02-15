@@ -41,7 +41,7 @@ async function change(id, key) {
   const selectedValue = select.value;
 
   const modelJson = await readModel();
-  const updatedModelJson = await updateField(modelJson, id, value);
+  const updatedModelJson = await updateField(modelJson, id, selectedValue);
   await writeModel(updatedModelJson);
   console.log("changed " + key + ": " + id + "with value: " + selectedValue);
 }
