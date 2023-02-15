@@ -14,22 +14,5 @@ export function accordianDropdown(
 
   const accordianDropdown = accordian(headerContent, bodyContent);
 
-  //   const accordianDropdown = document.createElement("div");
-  //   accordianDropdown.classList.add("accordianDropdown");
-
-  //   const header = document.createElement("div");
-  //   header.classList.add("accordianDropdown-header");
-  //   header.appendChild(dropdown(values, selectedValue, id));
-  //   header.addEventListener("click", () => {
-  //     bodyEl.classList.toggle("open");
-  //   });
-
-  //   const bodyEl = document.createElement("div");
-  //   bodyEl.classList.add("accordianDropdown-body");
-  //   bodyEl.appendChild(body);
-
-  //   accordianDropdown.appendChild(header);
-  //   accordianDropdown.appendChild(bodyEl);
-
   return accordianDropdown;
 }

@@ -9,7 +9,6 @@ export function Atoms(atoms) {
     const value = atom.option;
     const id = atom.atomId;
     atomsDiv.appendChild(input(key, value, id, false));
-    atomsDiv.appendChild(document.createElement("br"));
   }
 
   return atomsDiv;
