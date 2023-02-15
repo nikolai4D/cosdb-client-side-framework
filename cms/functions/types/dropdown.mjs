@@ -26,10 +26,9 @@ async function change(id, key) {
   console.log("changed " + key + ": " + id);
   if (key === "viewTemplate") {
     console.log("viewTemplate changed");
-
-    const getAccordionBody = document.getElementById("accordion-body#" + id);
-
-    const accordionBody = await document.body.querySelector(getAccordionBody);
-    accordionBody.innerHTML = "";
+    const accordionBody = document.body.querySelector("#accordion-body" + id);
+    if (accordionBody) {
+      accordionBody.innerHTML = "";
+    }
   }
 }
