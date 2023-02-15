@@ -22,7 +22,7 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   return container;
 }
 
-function change(id) {
+function change(id, key) {
   console.log("changed " + key + ": " + id);
   if (key === "viewTemplate") {
     console.log("viewTemplate changed");
