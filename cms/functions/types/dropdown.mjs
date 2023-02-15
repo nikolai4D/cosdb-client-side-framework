@@ -25,11 +25,11 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
 async function change(id, key) {
   console.log("changed " + key + ": " + id);
   if (key === "viewTemplate") {
-    const accordionBody = document.body.querySelector("accordion-body-" + id);
-    console.log(accordionBody);
-    if (accordionBody) {
-      accordionBody.innerHTML = "";
-      console.log("accordion-body-" + id + " deleted");
+    const accordianBody = document.body.querySelector("accordian-body-" + id);
+    console.log(accordianBody);
+    if (accordianBody) {
+      accordianBody.innerHTML = "";
+      console.log("accordian-body-" + id + " deleted");
     }
   }
 }

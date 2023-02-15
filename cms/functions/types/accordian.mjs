@@ -1,23 +1,23 @@
 export function accordian(header, body, id) {
-  const accordion = document.createElement("div");
-  accordion.classList.add("accordion");
+  const accordian = document.createElement("div");
+  accordian.classList.add("accordian");
 
-  const bodyId = "accordion-body-" + id;
+  const bodyId = "accordian-body-" + id;
 
   const headerAccordian = document.createElement("div");
-  headerAccordian.classList.add("accordion-header");
+  headerAccordian.classList.add("accordian-header");
   headerAccordian.appendChild(header);
   headerAccordian.addEventListener("click", () => {
     bodyEl.classList.toggle("open");
   });
 
   const bodyEl = document.createElement("div");
-  bodyEl.classList.add("accordion-body");
+  bodyEl.classList.add("accordian-body");
   bodyEl.id = bodyId;
   bodyEl.appendChild(body);
 
-  accordion.appendChild(headerAccordian);
-  accordion.appendChild(bodyEl);
+  accordian.appendChild(headerAccordian);
+  accordian.appendChild(bodyEl);
 
-  return accordion;
+  return accordian;
 }
