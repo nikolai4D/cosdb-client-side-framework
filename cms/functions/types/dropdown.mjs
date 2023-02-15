@@ -26,6 +26,7 @@ async function change(id, key) {
   console.log("changed " + key + ": " + id);
   if (key === "viewTemplate") {
     const accordionBody = document.body.querySelector("accordion-body-" + id);
+    console.log(accordionBody);
     if (accordionBody) {
       accordionBody.innerHTML = "";
       console.log("accordion-body-" + id + " deleted");
