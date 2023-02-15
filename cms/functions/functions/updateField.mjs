@@ -1,4 +1,6 @@
 export function updateField(json, id, newValue) {
+  const functionKeys = [];
+
   // Loop over all the objects in the JSON
   for (const prop in json) {
     if (typeof json[prop] === "object") {
@@ -11,25 +13,33 @@ export function updateField(json, id, newValue) {
       }
     } else if (
       prop.startsWith("function") &&
+      prop !== "function" &&
       !prop.endsWith("Id") &&
-      typeof json[prop] === "string" &&
-      prop !== "function"
+      typeof json[prop] === "string"
     ) {
-      // If this is a function object, and not a functionId, update the specified value
-      json[prop] = newValue;
+      // If this is a function object, and not a functionId, store the key if it matches the id
+      const idIndex = prop.indexOf(id);
+      if (idIndex > -1 && prop.slice(idIndex, idIndex + id.length) === id) {
+        functionKeys.push(prop);
+      }
     } else if (prop.endsWith("Id") && json[prop] === id) {
       // If this is the object we want to update, update the specified value
       const updateKey = prop.replace("Id", "");
       json[updateKey] = newValue;
     } else if (
       prop.startsWith("function") &&
-      !prop.endsWith("Id") &&
-      typeof json[prop] === "object" &&
-      prop !== "function"
+      prop !== "function" &&
+      typeof json[prop] === "object"
     ) {
       // If this is a function object, recursively call the function on it
       updateField(json[prop], id, newValue);
     }
   }
+
+  // Update each functionX key that matches the input id
+  functionKeys.forEach((key) => {
+    json[key] = newValue;
+  });
+
   return json;
 }
