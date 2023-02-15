@@ -20,7 +20,11 @@ export function updateField(json, id, newValue) {
       // If this is the object we want to update, update the specified value
       const updateKey = prop.replace("Id", "");
       json[updateKey] = newValue;
-    } else if (prop.startsWith("function") && typeof json[prop] === "object") {
+    } else if (
+      prop.startsWith("function") &&
+      prop !== "function" &&
+      typeof json[prop] === "object"
+    ) {
       // If this is a function object, recursively call the function on it
       updateField(json[prop], id, newValue);
     }
