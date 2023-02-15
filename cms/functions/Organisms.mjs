@@ -17,7 +17,6 @@ export function Organisms(slot) {
   const moleculesEl = Molecules(slot.molecules);
 
   bodyDiv.appendChild(functionsEl);
-  bodyDiv.appendChild(document.createElement("br"));
   bodyDiv.appendChild(moleculesEl);
 
   organismsDiv.appendChild(
