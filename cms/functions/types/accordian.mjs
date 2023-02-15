@@ -2,10 +2,10 @@ export function accordian(header, body) {
   const accordion = document.createElement("div");
   accordion.classList.add("accordion");
 
-  const header = document.createElement("div");
-  header.classList.add("accordion-header");
-  header.appendChild(header);
-  header.addEventListener("click", () => {
+  const headerAccordian = document.createElement("div");
+  headerAccordian.classList.add("accordion-header");
+  headerAccordian.appendChild(header);
+  headerAccordian.addEventListener("click", () => {
     bodyEl.classList.toggle("open");
   });
 
@@ -13,7 +13,7 @@ export function accordian(header, body) {
   bodyEl.classList.add("accordion-body");
   bodyEl.appendChild(body);
 
-  accordion.appendChild(header);
+  accordion.appendChild(headerAccordian);
   accordion.appendChild(bodyEl);
 
   return accordion;
