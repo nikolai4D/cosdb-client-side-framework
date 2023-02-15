@@ -6,6 +6,10 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   selectEl.id = id;
   selectEl.disabled = keyDisabled;
   selectEl.addEventListener("change", () => change(id, key));
+  selectEl.addEventListener("change", (event) => {
+    // Disable the dropdown to trigger accordian
+    event.stopPropagation();
+  });
 
   for (const value of values) {
     const optionEl = document.createElement("option");
