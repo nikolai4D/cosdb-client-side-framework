@@ -1,7 +1,7 @@
 import { readModel } from "./requests/readModel.mjs";
 import { ViewDiv } from "./components/ViewDiv.mjs";
 
-export async function views() {
+export async function cms_app() {
   // render existing views
   const data = await readModel();
   const views = data.views;
