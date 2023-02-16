@@ -27,7 +27,19 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
 }
 
 async function change(id, key) {
+  const modelJson = await readModel();
+  const select = document.getElementById(id);
+  const selectedValue = select.value;
+
   if (key === "viewTemplate") {
+    const updatedModelJson = await updateViewTemplate(
+      modelJson,
+      id,
+      selectedValue
+    );
+    await writeModel(updatedModelJson);
+    console.log("changed " + key + ": " + id + "with value: " + selectedValue);
+
     const accordionBodyId = "accordion-body-" + id;
     const accordionBody = document.getElementById(accordionBodyId);
     if (accordionBody) {
@@ -36,12 +48,25 @@ async function change(id, key) {
       }
       console.log("accordion-body-" + id + " deleted");
     }
-  }
-  const select = document.getElementById(id);
-  const selectedValue = select.value;
+  } else {
+    // const select = document.getElementById(id);
+    // const selectedValue = select.value;
 
-  const modelJson = await readModel();
-  const updatedModelJson = await updateField(modelJson, id, selectedValue);
-  await writeModel(updatedModelJson);
-  console.log("changed " + key + ": " + id + "with value: " + selectedValue);
+    // const modelJson = await readModel();
+    const updatedModelJson = await updateField(modelJson, id, selectedValue);
+    await writeModel(updatedModelJson);
+    console.log("changed " + key + ": " + id + "with value: " + selectedValue);
+  }
+}
+
+async function updateViewTemplate(json, id, newValue) {
+  const parsedJson = JSON.parse(json);
+  for (const view of parsedJson.views) {
+    if (view.viewTemplateId === id) {
+      view.viewTemplate = newValue;
+      view.slots = [];
+      break;
+    }
+  }
+  return JSON.stringify(parsedJson);
 }
