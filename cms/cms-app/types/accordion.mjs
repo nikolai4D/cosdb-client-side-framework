@@ -12,7 +12,7 @@ export function accordion(header, body, id, key) {
   headerAccordion.appendChild(header);
 
   if (key === "view") {
-    deleteButton(id, headerAccordion);
+    deleteButton(id, accordion, headerAccordion);
 
     // const deleteButton = document.createElement("button");
     // deleteButton.classList.add("delete-view-button");
@@ -55,7 +55,7 @@ async function deleteView(id) {
   await writeModel(json);
 }
 
-function deleteButton(id, headerAccordion) {
+function deleteButton(id, accordion, headerAccordion) {
   const deleteButton = document.createElement("button");
   deleteButton.classList.add("delete-view-button");
   deleteButton.textContent = "x";
