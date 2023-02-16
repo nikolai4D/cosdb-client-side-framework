@@ -12,7 +12,7 @@ export function accordionDropdown(
   const headerContent = dropdown(key, values, selectedValue, id, keyDisabled);
   const bodyContent = body;
 
-  const accordionDropdown = accordion(headerContent, bodyContent, id);
+  const accordionDropdown = accordion(headerContent, bodyContent, id, key);
 
   return accordionDropdown;
 }

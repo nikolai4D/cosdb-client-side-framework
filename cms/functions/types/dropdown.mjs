@@ -69,5 +69,6 @@ async function updateViewTemplate(json, id, newValue) {
       break;
     }
   }
+  console.log();
   return json;
 }
