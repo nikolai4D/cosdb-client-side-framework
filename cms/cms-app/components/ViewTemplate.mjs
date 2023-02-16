@@ -1,5 +1,5 @@
-import { accordionDropdown } from "./types/accordionDropdown.mjs";
-import { Slots } from "./slots.mjs";
+import { accordionDropdown } from "../types/accordionDropdown.mjs";
+import { Slots } from "./Slots.mjs";
 
 const viewTemps = ["", "viewTemplate1", "viewTemplate2", "viewTemplate3"];
 
