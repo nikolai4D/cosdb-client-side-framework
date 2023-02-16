@@ -10,6 +10,7 @@ export function accordion(header, body, id, key) {
 
   if (key === "view") {
     const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-view-button");
     deleteButton.textContent = "x";
     deleteButton.id = id;
     deleteButton.addEventListener("click", () => {
