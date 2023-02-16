@@ -1,3 +1,6 @@
+import { readModel } from "../requests/readModel.mjs";
+import { writeModel } from "../requests/writeModel.mjs";
+
 export function accordion(header, body, id, key) {
   const accordion = document.createElement("div");
   accordion.classList.add("accordion");
@@ -15,8 +18,9 @@ export function accordion(header, body, id, key) {
     deleteButton.id = id;
     deleteButton.addEventListener("click", () => {
       if (confirm("Are you sure you want to delete this view?")) {
-        console.log("delete " + id);
+        deleteView(id);
         accordion.remove();
+        console.log("delete " + id);
       }
     });
     headerAccordion.appendChild(deleteButton);
@@ -39,4 +43,12 @@ export function accordion(header, body, id, key) {
   accordion.appendChild(bodyEl);
 
   return accordion;
+}
+
+async function deleteView(id) {
+  const json = await readModel();
+  const filteredViews = json.views.filter((view) => view.viewId !== id);
+  json.views = filteredViews;
+
+  await writeModel(json);
 }
