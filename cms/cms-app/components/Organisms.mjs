@@ -1,4 +1,4 @@
-import { accordionDropdown } from "./types/accordionDropdown.mjs";
+import { accordionDropdown } from "../types/accordionDropdown.mjs";
 import { Functions } from "./Functions.mjs";
 import { Molecules } from "./Molecules.mjs";
 

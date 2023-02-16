@@ -1,4 +1,4 @@
-import { accordionInput } from "./types/accordionInput.mjs";
+import { accordionInput } from "../types/accordionInput.mjs";
 import { ViewTemplate } from "./ViewTemplate.mjs";
 
 export function View(view) {

@@ -1,4 +1,4 @@
-import { accordionInput } from "./types/accordionInput.mjs";
+import { accordionInput } from "../types/accordionInput.mjs";
 import { Functions } from "./Functions.mjs";
 import { Atoms } from "./Atoms.mjs";
 
