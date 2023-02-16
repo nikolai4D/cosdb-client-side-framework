@@ -28,6 +28,7 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
 
 async function change(id, key) {
   const modelJson = await readModel();
+  console.log(modelJson);
   const select = document.getElementById(id);
   const selectedValue = select.value;
 
@@ -60,8 +61,8 @@ async function change(id, key) {
 }
 
 async function updateViewTemplate(json, id, newValue) {
-  const parsedJson = JSON.parse(json);
-  for (const view of parsedJson.views) {
+  //   const parsedJson = JSON.parse(json);
+  for (const view of json.views) {
     if (view.viewTemplateId === id) {
       view.viewTemplate = newValue;
       view.slots = [];
