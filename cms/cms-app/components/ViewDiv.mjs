@@ -1,4 +1,4 @@
-import { View } from "../View.mjs";
+import { View } from "./View.mjs";
 
 export function ViewDiv(view) {
   const viewDiv = document.createElement("div");

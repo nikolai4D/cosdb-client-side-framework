@@ -1,2 +1,2 @@
-import { views } from "./functions/views.mjs";
+import { cms-app } from "./cms-app/cms-app.mjs";
 window.onload = views;

@@ -1,4 +1,4 @@
-import { input } from "./types/input.mjs";
+import { input } from "../types/input.mjs";
 
 export function Atoms(atoms) {
   const atomsDiv = document.createElement("div");

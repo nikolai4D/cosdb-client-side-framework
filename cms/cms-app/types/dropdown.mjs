@@ -50,10 +50,6 @@ async function change(id, key) {
       console.log("accordion-body-" + id + " deleted");
     }
   } else {
-    // const select = document.getElementById(id);
-    // const selectedValue = select.value;
-
-    // const modelJson = await readModel();
     const updatedModelJson = await updateField(modelJson, id, selectedValue);
     await writeModel(updatedModelJson);
     console.log("changed " + key + ": " + id + "with value: " + selectedValue);

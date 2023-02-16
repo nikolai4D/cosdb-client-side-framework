@@ -1,4 +1,4 @@
-import { dropdown } from "./types/dropdown.mjs";
+import { dropdown } from "../types/dropdown.mjs";
 
 const funcs = [
   "function1",

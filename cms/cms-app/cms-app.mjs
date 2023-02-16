@@ -1,5 +1,5 @@
 import { readModel } from "./requests/readModel.mjs";
-import { ViewDiv } from "./types/ViewDiv.mjs";
+import { ViewDiv } from "./components/ViewDiv.mjs";
 
 export async function views() {
   // render existing views
