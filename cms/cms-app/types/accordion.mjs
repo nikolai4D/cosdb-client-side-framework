@@ -12,18 +12,20 @@ export function accordion(header, body, id, key) {
   headerAccordion.appendChild(header);
 
   if (key === "view") {
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("delete-view-button");
-    deleteButton.textContent = "x";
-    deleteButton.id = id;
-    deleteButton.addEventListener("click", () => {
-      if (confirm("Are you sure you want to delete this view?")) {
-        deleteView(id);
-        accordion.remove();
-        console.log("delete " + id);
-      }
-    });
-    headerAccordion.appendChild(deleteButton);
+    deleteButton(id, headerAccordion);
+
+    // const deleteButton = document.createElement("button");
+    // deleteButton.classList.add("delete-view-button");
+    // deleteButton.textContent = "x";
+    // deleteButton.id = id;
+    // deleteButton.addEventListener("click", () => {
+    //   if (confirm("Are you sure you want to delete this view?")) {
+    //     deleteView(id);
+    //     accordion.remove();
+    //     console.log("delete " + id);
+    //   }
+    // });
+    // headerAccordion.appendChild(deleteButton);
   }
 
   headerAccordion.addEventListener("click", (event) => {
@@ -51,4 +53,19 @@ async function deleteView(id) {
   json.views = filteredViews;
 
   await writeModel(json);
+}
+
+function deleteButton(id, headerAccordion) {
+  const deleteButton = document.createElement("button");
+  deleteButton.classList.add("delete-view-button");
+  deleteButton.textContent = "x";
+  deleteButton.id = id;
+  deleteButton.addEventListener("click", () => {
+    if (confirm("Are you sure you want to delete this view?")) {
+      deleteView(id);
+      accordion.remove();
+      console.log("delete " + id);
+    }
+  });
+  headerAccordion.appendChild(deleteButton);
 }
