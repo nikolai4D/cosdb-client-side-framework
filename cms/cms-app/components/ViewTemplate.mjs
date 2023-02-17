@@ -2,13 +2,13 @@ import { accordionDropdown } from "../types/accordionDropdown.mjs";
 import { Slots } from "./Slots.mjs";
 import { readComponents } from "../requests/readComponents.mjs";
 
-const type = "organisms"
+const type = "viewTemplates"
 
 export async function ViewTemplate(view) {
 
   const components = (await readComponents(type)).map(component => component.name)
   console.log(components)
-  
+
   const viewTemplateDiv = document.createElement("div");
   viewTemplateDiv.classList.add("viewTemplate");
 
