@@ -1,10 +1,10 @@
 import { View } from "./View.mjs";
 
-export function ViewDiv(view) {
+export async function ViewDiv(view) {
   const viewDiv = document.createElement("div");
   viewDiv.classList.add("view");
 
-  const viewContent = View(view);
+  const viewContent = await View(view);
   viewDiv.appendChild(viewContent);
 
   return viewDiv;
