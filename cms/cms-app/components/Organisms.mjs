@@ -1,6 +1,7 @@
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
 import { Functions } from "./Functions.mjs";
 import { Molecules } from "./Molecules.mjs";
+import { readComponents } from "../requests/readComponents.mjs";
 
 const type = "organisms"
 
