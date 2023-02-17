@@ -18,7 +18,7 @@ export async function cms_app() {
     console.log("add button clicked");
 
     const view = { view: "New View", viewTemplate: "", slots: [] };
-    const viewDiv = ViewDiv(view);
+    const viewDiv = await ViewDiv(view);
     document.body.insertBefore(viewDiv, document.body.children[1]);
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
