@@ -1,14 +1,16 @@
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
 import { Slots } from "./Slots.mjs";
+import { readComponents } from "../requests/readComponents.mjs";
 
-const viewTemps = ["", "viewTemplate1", "viewTemplate2", "viewTemplate3"];
+const type = "organisms"
+const components = readComponents(type)
 
 export function ViewTemplate(view) {
   const viewTemplateDiv = document.createElement("div");
   viewTemplateDiv.classList.add("viewTemplate");
 
   const selectedValue = view.viewTemplate;
-  const values = viewTemps;
+  const values = components;
   const key = "viewTemplate";
   const id = view.viewTemplateId;
 

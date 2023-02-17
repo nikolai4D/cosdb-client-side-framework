@@ -2,9 +2,13 @@ import { accordionDropdown } from "../types/accordionDropdown.mjs";
 import { Functions } from "./Functions.mjs";
 import { Molecules } from "./Molecules.mjs";
 
-const orgs = ["organism1", "organism2", "organism3"];
+const type = "organisms"
 
-export function Organisms(slot) {
+export async function Organisms(slot) {
+
+  const components = (await readComponents(type).map(component => component.name))
+  console.log(components)
+
   const organismsDiv = document.createElement("div");
   organismsDiv.classList.add("organisms");
 
@@ -21,7 +25,7 @@ export function Organisms(slot) {
   bodyDiv.appendChild(moleculesEl);
 
   organismsDiv.appendChild(
-    accordionDropdown(bodyDiv, key, orgs, value, organismId, false)
+    accordionDropdown(bodyDiv, key, components, value, organismId, false)
   );
 
   return organismsDiv;

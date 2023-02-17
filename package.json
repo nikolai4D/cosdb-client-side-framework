@@ -1,20 +1,21 @@
 {
-    "name": "cosdb-client-side-framework",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "cdev": "git add . && git commit -m \"auto commit to dev\" && git push origin dev"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/nikolai4D/cosdb-client-side-framework.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/nikolai4D/cosdb-client-side-framework/issues"
-    },
-    "homepage": "https://github.com/nikolai4D/cosdb-client-side-framework#readme"
+  "name": "cosdb-client-side-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cdev": "git add . && git commit -m \"auto commit to dev\" && git push origin dev"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikolai4D/cosdb-client-side-framework.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nikolai4D/cosdb-client-side-framework/issues"
+  },
+  "homepage": "https://github.com/nikolai4D/cosdb-client-side-framework#readme"
 }
