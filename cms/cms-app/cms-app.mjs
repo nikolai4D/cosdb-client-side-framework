@@ -6,7 +6,7 @@ export async function cms_app() {
   const data = await readModel();
   const views = data.views;
   for (const view of views) {
-    const viewDiv = ViewDiv(view);
+    const viewDiv = await ViewDiv(view);
     document.body.appendChild(viewDiv);
   }
 
