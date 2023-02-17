@@ -3,7 +3,7 @@ import { Organisms } from "./Organisms.mjs";
 // import { Molecules } from "./Molecules.mjs";
 // import { Atoms } from "./Atoms.mjs";
 
-export function Slots(slots) {
+export async function Slots(slots) {
   const slotDiv = document.createElement("div");
   slotDiv.classList.add("slots");
 
@@ -15,7 +15,7 @@ export function Slots(slots) {
     const id = slot.slotId;
 
     const bodyDiv = document.createElement("div");
-    bodyDiv.appendChild(Organisms(slot));
+    bodyDiv.appendChild(await Organisms(slot));
 
     const accordionDiv = accordionInput(bodyDiv, key, value, id, true);
     slotDiv.appendChild(accordionDiv);
