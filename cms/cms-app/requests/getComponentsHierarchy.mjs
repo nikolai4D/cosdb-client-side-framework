@@ -1,6 +1,6 @@
 export async function getComponentsHierarchy() {
   try {
-    const response = await fetch("componentsdir");
+    const response = await fetch("/componentsdir");
     const data = await response.json();
     //console.log(data);
     return data;
