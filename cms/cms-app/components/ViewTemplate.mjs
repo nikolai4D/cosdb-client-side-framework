@@ -7,7 +7,8 @@ const type = "organisms"
 export async function ViewTemplate(view) {
 
   const components = (await readComponents(type)).map(component => component.name)
-
+  console.log(components)
+  
   const viewTemplateDiv = document.createElement("div");
   viewTemplateDiv.classList.add("viewTemplate");
 
