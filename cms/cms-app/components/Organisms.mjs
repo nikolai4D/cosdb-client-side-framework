@@ -7,7 +7,7 @@ const type = "organisms"
 
 export async function Organisms(slot) {
 
-  const components = (await readComponents(type).map(component => component.name))
+  const components = (await readComponents(type)).map(component => component.name)
   console.log(components)
 
   const organismsDiv = document.createElement("div");

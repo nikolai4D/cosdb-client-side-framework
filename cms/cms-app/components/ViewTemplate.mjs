@@ -3,9 +3,11 @@ import { Slots } from "./Slots.mjs";
 import { readComponents } from "../requests/readComponents.mjs";
 
 const type = "organisms"
-const components = readComponents(type)
 
-export function ViewTemplate(view) {
+export async function ViewTemplate(view) {
+
+  const components = (await readComponents(type)).map(component => component.name)
+
   const viewTemplateDiv = document.createElement("div");
   viewTemplateDiv.classList.add("viewTemplate");
 
