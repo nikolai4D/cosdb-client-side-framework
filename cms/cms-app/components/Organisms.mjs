@@ -8,6 +8,7 @@ export function Organisms(slot) {
   const organismsDiv = document.createElement("div");
   organismsDiv.classList.add("organisms");
 
+  //add if statement to check if slot is slot or organism
   const key = "organism";
   const value = slot.organism;
   const organismId = slot.organismId;
