@@ -7,7 +7,7 @@ export async function Slots(slots) {
   const slotDiv = document.createElement("div");
   slotDiv.classList.add("slots");
 
-  for (const slot of slots) {
+  for await (const slot of slots) {
     // Add if statement to check if slot is an organism, molecule, or atom
 
     const key = "slot";
