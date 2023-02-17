@@ -1,11 +1,15 @@
 import { accordionInput } from "../types/accordionInput.mjs";
 import { Organisms } from "./Organisms.mjs";
+// import { Molecules } from "./Molecules.mjs";
+// import { Atoms } from "./Atoms.mjs";
 
 export function Slots(slots) {
   const slotDiv = document.createElement("div");
   slotDiv.classList.add("slots");
 
   for (const slot of slots) {
+    // Add if statement to check if slot is an organism, molecule, or atom
+
     const key = "slot";
     const value = slot.slot;
     const id = slot.slotId;

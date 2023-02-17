@@ -13,19 +13,6 @@ export function accordion(header, body, id, key) {
 
   if (key === "view") {
     deleteButton(id, accordion, headerAccordion);
-
-    // const deleteButton = document.createElement("button");
-    // deleteButton.classList.add("delete-view-button");
-    // deleteButton.textContent = "x";
-    // deleteButton.id = id;
-    // deleteButton.addEventListener("click", () => {
-    //   if (confirm("Are you sure you want to delete this view?")) {
-    //     deleteView(id);
-    //     accordion.remove();
-    //     console.log("delete " + id);
-    //   }
-    // });
-    // headerAccordion.appendChild(deleteButton);
   }
 
   headerAccordion.addEventListener("click", (event) => {

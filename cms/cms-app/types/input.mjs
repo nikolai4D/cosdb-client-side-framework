@@ -1,6 +1,3 @@
-// import { readModel } from "../requests/readModel.mjs";
-// import { updateField } from "../functions/updateField.mjs";
-// import { writeModel } from "../requests/writeModel.mjs";
 import { eventChangeInput } from "../functions/eventChangeInput.mjs";
 
 export function input(key, value, id, keyDisabled = false) {
@@ -19,10 +16,3 @@ export function input(key, value, id, keyDisabled = false) {
 
   return container;
 }
-
-// async function eventChangeInput(id, value) {
-//   console.log("changed id: " + id + "with value: " + value);
-//   const modelJson = await readModel();
-//   const updatedModelJson = await updateField(modelJson, id, value);
-//   await writeModel(updatedModelJson);
-// }
