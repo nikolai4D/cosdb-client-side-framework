@@ -9,7 +9,7 @@ export async function createViewTemplateData(viewId) {
   viewTemplateData.slots = [];
 
   const existingModel = await readModel();
-  console.log(existingModel, "existingModel");
+  console.log(existingModel.views, "existingModel.views");
   const newModel = existingModel.views.find((view) => view.id === viewId);
   console.log(newModel, "newModel");
 
