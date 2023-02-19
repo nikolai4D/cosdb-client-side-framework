@@ -11,6 +11,8 @@ export async function createViewData() {
   const existingModel = await readModel();
   const newModel = existingModel.views.push(viewData);
 
+  console.log(newModel, "newModel");
+
   await writeModel(newModel);
 
   return viewData;
