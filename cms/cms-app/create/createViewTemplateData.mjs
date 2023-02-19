@@ -10,10 +10,12 @@ export async function createViewTemplateData(viewId) {
 
   const existingModel = await readModel();
   console.log(existingModel, "existingModel.views");
-  const newModel = existingModel.views.find((view) => view.id === viewId);
-  console.log(newModel, "newModel");
+  const existingView = existingModel.views.find((view) => view.id === viewId);
+  console.log(existingView, "existingView");
 
-  newModel.viewTemplate = viewTemplateData;
+  existingView.viewTemplate = viewTemplateData;
+
+  const newModel = existingModel;
 
   await writeModel(newModel);
 
