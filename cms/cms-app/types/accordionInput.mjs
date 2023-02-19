@@ -1,11 +1,11 @@
 import { input } from "./input.mjs";
 import { accordion } from "./accordion.mjs";
 
-export function accordionInput(body, key, value, id, keyDisabled) {
+export async function accordionInput(body, key, value, id, keyDisabled) {
   const headerContent = input(key, value, id, keyDisabled);
-  const bodyContent = body;
+  const bodyContent = await body;
 
-  const accordionInput = accordion(headerContent, bodyContent, id, key);
+  const accordionInput = await accordion(headerContent, bodyContent, id, key);
 
   return accordionInput;
 }
