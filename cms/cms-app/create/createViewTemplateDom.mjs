@@ -1,5 +1,5 @@
 export async function createViewTemplateDom() {
   console.log("reached createViewTemplateDom()");
 
-  return "createViewTemplateDom";
+  return "<p>createViewTemplateDom</p>";
 }
