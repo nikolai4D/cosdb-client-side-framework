@@ -1,7 +1,7 @@
 import { readModel } from "../requests/readModel.mjs";
 import { writeModel } from "../requests/writeModel.mjs";
 
-export function accordion(header, body, id, key) {
+export async function accordion(header, body, id, key) {
   const accordion = document.createElement("div");
   accordion.classList.add("accordion");
 
@@ -26,7 +26,10 @@ export function accordion(header, body, id, key) {
   const bodyEl = document.createElement("div");
   bodyEl.classList.add("accordion-body");
   bodyEl.id = bodyId;
-  bodyEl.appendChild(body);
+
+  bodyEl.appendChild(await body);
+
+  console.log(body);
 
   accordion.appendChild(headerAccordion);
   accordion.appendChild(bodyEl);
