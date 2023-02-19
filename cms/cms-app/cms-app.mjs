@@ -3,12 +3,12 @@ import { ViewDiv } from "./components/ViewDiv.mjs";
 
 export async function cms_app() {
   // render existing views
-  const data = await readModel();
-  const views = data.views;
-  for (const view of views) {
-    const viewDiv = await ViewDiv(view);
-    document.body.appendChild(viewDiv);
-  }
+  //   const data = await readModel();
+  //   const views = data.views;
+  //   for (const view of views) {
+  //     const viewDiv = await ViewDiv(view);
+  //     document.body.appendChild(viewDiv);
+  //   }
 
   // create "Add View" button and add event listener to open form
   const createViewButton = document.createElement("button");
