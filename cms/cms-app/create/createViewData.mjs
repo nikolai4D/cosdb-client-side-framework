@@ -7,8 +7,11 @@ export async function createViewData() {
   viewData.id = await getUuid();
   viewData.view = "New View";
   viewData.viewTemplate = {};
+  console.log(viewData, "viewData");
 
   const existingModel = await readModel();
+  console.log(existingModel, "existingModel");
+
   const newModel = existingModel.views.push(viewData);
 
   console.log(newModel, "newModel");
