@@ -26,10 +26,9 @@ export async function accordion(header, body, id, key) {
   const bodyEl = document.createElement("div");
   bodyEl.classList.add("accordion-body");
   bodyEl.id = bodyId;
+  console.log(await body);
 
   bodyEl.appendChild(await body);
-
-  console.log(body);
 
   accordion.appendChild(headerAccordion);
   accordion.appendChild(bodyEl);
