@@ -1,29 +1,11 @@
-// import { readModel } from "./requests/readModel.mjs";
-// import { ViewDiv } from "./components/ViewDiv.mjs";
-import { create } from "./create.mjs";
+import { create } from "./_1_create/create.mjs";
+// import { read } from "./_2_read/read.mjs";
+// import { update } from "./_3_update/update.mjs";
+// import { delete } from "./_4_delete/delete.mjs";
 
 export async function cms_app() {
-  // render existing views
-  //   const data = await readModel();
-  //   const views = data.views;
-  //   for (const view of views) {
-  //     const viewDiv = await ViewDiv(view);
-  //     document.body.appendChild(viewDiv);
-  //   }
-
-  // create "Add View" button and add event listener to open form
-  //   const createViewButton = document.createElement("button");
-  //   createViewButton.textContent = "Create View";
-  //   createViewButton.classList.add("createViewButton");
-  //   createViewButton.addEventListener("click", async () => {
-  //     // console.log("add button clicked");
-
-  //     // const view = { view: "New View", viewTemplate: "", slots: [] };
-  //     // const viewDiv = await ViewDiv(view);
-  //     // document.body.insertBefore(viewDiv, document.body.children[1]);
-
-  //   });
-  //   document.body.insertBefore(createViewButton, document.body.firstChild);
-
   await create();
+  // await read();
+  // await update();
+  // await delete();
 }
