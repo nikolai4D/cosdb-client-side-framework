@@ -7,7 +7,7 @@
 // }
 
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
-import { Slots } from "./Slots.mjs";
+// import { Slots } from "./Slots.mjs";
 import { readComponents } from "../requests/readComponents.mjs";
 
 const type = "viewTemplates";
