@@ -1,6 +1,5 @@
 import { accordionInput } from "../types/accordionInput.mjs";
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
-import { resolveDynamicComponents } from "../requests/resolveDynamicComponents.mjs";
 
 // import { Organisms } from "./Organisms.mjs";
 // import { Molecules } from "./Molecules.mjs";
