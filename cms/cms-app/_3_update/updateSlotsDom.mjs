@@ -23,7 +23,7 @@ export async function updateSlotsDom(slots, components) {
 
   //   bodyDiv.appendChild(pElement);
 
-  const selectedValue = viewTemplateData.option;
+  const selectedValue = components[0]
   const values = components;
 
 
