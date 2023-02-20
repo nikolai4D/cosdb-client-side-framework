@@ -1,9 +1,11 @@
 export function ViewTemplate_dummy1() {
   this.slots = [
     {
-      slot1: null,
+      slot: "slot1",
     },
-    { slot2: null },
+    {
+      slot: "slot2",
+    },
   ];
 
   return `

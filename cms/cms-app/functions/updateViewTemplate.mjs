@@ -1,8 +1,14 @@
+import { getUuid } from "../requests/getUuid.mjs";
+
 export async function updateViewTemplate(json, id, newValue) {
   const filename = `${newValue}.mjs`;
   const module = await importModuleFromFile(filename, newValue);
   const slots = module.slots;
-  console.log(module, module.slots);
+  for (const slot of slots) {
+    slot.id = await getUuid();
+    slot.component = {};
+  }
+  console.log(slots);
   for (const view of json.views) {
     if (view.viewTemplate.id === id) {
       view.viewTemplate.option = newValue;
