@@ -14,6 +14,6 @@ export async function updateViewTemplate(json, id, newValue) {
 }
 
 async function importModuleFromFile(filename) {
-  const module = await import(`../../components/viewTemplates/${filename}`);
+  const module = await import(`../../../components/viewTemplates/${filename}`);
   return module;
 }
