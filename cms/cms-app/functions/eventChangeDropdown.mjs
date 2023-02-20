@@ -13,7 +13,9 @@ export async function eventChangeDropdown(id, key) {
 
     await writeUpdatedModel(updatedModel, key, id, selectedValue);
 
-    deleteViewTemplateAccordionBody(id);
+    //await deleteViewTemplateAccordionBody(id);
+
+    // get slots from viewTemplate and add to viewTemplateDom
   } else {
     const updatedModel = await updateField(model, id, selectedValue);
     await writeUpdatedModel(updatedModel, key, id, selectedValue);
