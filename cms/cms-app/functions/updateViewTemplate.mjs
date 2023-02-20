@@ -6,7 +6,7 @@ export async function updateViewTemplate(json, id, newValue) {
   for (const view of json.views) {
     if (view.viewTemplate.id === id) {
       view.viewTemplate.option = newValue;
-      view.slots = slots;
+      view.viewTemplate.slots = slots;
       break;
     }
   }
