@@ -1,4 +1,4 @@
-function updateViewTemplateDom(viewTemplateData) {
+export function updateViewTemplateDom(viewTemplateData) {
   const accordionBodyId = "accordion-body-" + id;
   const accordionBody = document.getElementById(accordionBodyId);
   if (accordionBody) {
