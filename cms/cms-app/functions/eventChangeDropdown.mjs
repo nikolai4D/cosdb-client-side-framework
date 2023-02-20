@@ -13,9 +13,10 @@ export async function eventChangeDropdown(id, key) {
       selectedValue
     );
 
+    console.log(updatedViewTemplateData, "updatedViewTemplateData");
     //update viewTemplateDom
 
-    console.log(updatedViewTemplateData, "updatedViewTemplateData");
+    return await updateViewTemplateDom(updatedViewTemplateData);
 
     // const updatedViewTemplateDom = await updateViewTemplateDom(
     //   updatedViewTemplateData
