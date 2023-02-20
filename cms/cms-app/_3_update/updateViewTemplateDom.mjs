@@ -10,6 +10,7 @@ export async function updateViewTemplateDom(viewTemplateData) {
     console.log("accordion-body-" + viewTemplateData.id + " deleted");
   }
   const slots = viewTemplateData.slots;
+  const slotsDom = await Slots(slots);
 
-  return await Slots(slots);
+  return accordionBody.appendChild(slotsDom);
 }
