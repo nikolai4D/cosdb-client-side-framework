@@ -2,7 +2,7 @@ import { readModel } from "../requests/readModel.mjs";
 import { writeModel } from "../requests/writeModel.mjs";
 import { getSlots } from "../functions/getSlots.mjs";
 
-export async function updateViewTemplateData(viewTemplateId, newValue) {
+export async function updateViewTemplateData(viewTemplateId, newValue = "") {
   console.log(viewTemplateId, newValue, "viewTemplateId, newValue");
 
   const existingModel = await readModel();
@@ -17,7 +17,11 @@ export async function updateViewTemplateData(viewTemplateId, newValue) {
 
   console.log(viewTemplateData, "viewTemplateData");
   viewTemplateData.option = newValue;
-  viewTemplateData.slots = await getSlots(newValue);
+  if (newValue !== "") {
+    viewTemplateData.slots = await getSlots(newValue);
+  } else {
+    viewTemplateData.slots = [];
+  }
 
   existingViewTemplate.viewTemplate = viewTemplateData;
 
