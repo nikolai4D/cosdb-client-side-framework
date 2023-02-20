@@ -5,9 +5,9 @@ export function create() {
   createViewButton.textContent = "Create View";
   createViewButton.classList.add("createViewButton");
   createViewButton.addEventListener("click", async () => {
-    const createViewAndViewTemplate = await createViewAndViewTemplate();
+    const createdViewAndViewTemplate = await createViewAndViewTemplate();
     document.body.insertBefore(
-      createViewAndViewTemplate,
+      createdViewAndViewTemplate,
       document.body.children[1]
     );
   });
