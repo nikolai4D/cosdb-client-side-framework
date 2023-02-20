@@ -17,7 +17,7 @@ export async function Slots(slots) {
     const bodyDiv = document.createElement("div");
     // bodyDiv.appendChild(await Organisms(slot));
 
-    const accordionDiv = accordionInput(bodyDiv, key, value, id, true);
+    const accordionDiv = await accordionInput(bodyDiv, key, value, id, true);
     console.log(accordionDiv, "accordionDiv");
     slotDiv.appendChild(accordionDiv);
   }
