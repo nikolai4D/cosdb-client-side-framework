@@ -3,12 +3,19 @@ import { writeModel } from "../requests/writeModel.mjs";
 import { getSlots } from "../functions/getSlots.mjs";
 
 export async function updateViewTemplateData(viewTemplateId, newValue) {
+  console.log(viewTemplateId, newValue, "viewTemplateId, newValue");
+
   const existingModel = await readModel();
+
+  console.log(existingModel, "existingModel");
   const existingViewTemplate = existingModel.views.find(
     (view) => view.viewTemplate.id === viewTemplateId
   );
+  console.log(existingViewTemplate, "existingViewTemplate");
 
   const viewTemplateData = existingViewTemplate.view.viewTemplate;
+
+  console.log(viewTemplateData, "viewTemplateData");
   viewTemplateData.option = newValue;
   viewTemplateData.slots = await getSlots(newValue);
 
