@@ -10,8 +10,8 @@ export function ViewTemplate_dummy1() {
 
   return `
   <div>
-        <div>${this.slots.slot1}</div>
-        <div>${this.slots.slot2}</div>
+        <div>${this.slots[0].slot}</div>
+        <div>${this.slots[1].slot}</div>
   </div>
 `;
 }

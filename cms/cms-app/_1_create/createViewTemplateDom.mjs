@@ -1,13 +1,4 @@
-// export async function createViewTemplateDom(viewTemplateData) {
-//   console.log(viewTemplateData, "viewTemplateData");
-//   const pElement = document.createElement("p");
-//   pElement.textContent = "createViewTemplateDom";
-
-//   return pElement;
-// }
-
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
-// import { Slots } from "./Slots.mjs";
 import { readComponents } from "../requests/readComponents.mjs";
 
 const type = "viewTemplates";
@@ -27,11 +18,10 @@ export async function createViewTemplateDom(viewTemplateData) {
   const key = "viewTemplate";
   const id = viewTemplateData.id;
 
-  const pElement = document.createElement("p");
-  pElement.textContent = "Slots for viewTemplate";
+  //   const pElement = document.createElement("p");
 
   const bodyDiv = document.createElement("div");
-  bodyDiv.appendChild(pElement);
+  //   bodyDiv.appendChild(pElement);
 
   const accordionDiv = await accordionDropdown(
     bodyDiv,

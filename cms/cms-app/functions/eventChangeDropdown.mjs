@@ -9,22 +9,22 @@ export async function eventChangeDropdown(id, key) {
   const selectedValue = select.value;
 
   if (key === "viewTemplate") {
+    // update viewTemplateData
+    //update viewTemplateDom
+
     const updatedModel = await updateViewTemplate(model, id, selectedValue);
 
-    await writeUpdatedModel(updatedModel, key, id, selectedValue);
+    await writeModel(updatedModel);
+    console.log("changed " + key + ": " + id + "with value: " + selectedValue);
 
     //await deleteViewTemplateAccordionBody(id);
 
     // get slots from viewTemplate and add to viewTemplateDom
   } else {
     const updatedModel = await updateField(model, id, selectedValue);
-    await writeUpdatedModel(updatedModel, key, id, selectedValue);
+    await writeModel(updatedModel);
+    console.log("changed " + key + ": " + id + "with value: " + selectedValue);
   }
-}
-
-async function writeUpdatedModel(updatedModel, key, id, selectedValue) {
-  await writeModel(updatedModel);
-  console.log("changed " + key + ": " + id + "with value: " + selectedValue);
 }
 
 function deleteViewTemplateAccordionBody(id) {
