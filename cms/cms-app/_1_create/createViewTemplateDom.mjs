@@ -1,14 +1,10 @@
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
-import { readComponents } from "../requests/readComponents.mjs";
+import { getComponents } from "../functions/getComponents.mjs";
 
 const type = "viewTemplates";
 
 export async function createViewTemplateDom(viewTemplateData) {
-  let components = (await readComponents(type)).map(
-    (component) => component.name
-  );
-
-  components = ["", ...components];
+  let components = await getComponents(type);
 
   const viewTemplateDiv = document.createElement("div");
   viewTemplateDiv.classList.add("viewTemplate");

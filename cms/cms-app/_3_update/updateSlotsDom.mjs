@@ -19,12 +19,6 @@ export async function updateSlotsDom(slots, components) {
     const bodyDiv = document.createElement("div");
 
 
-
-  const existingViewTemplate = existingModel.views.find(
-    (view) => view.viewTemplate.id === viewTemplateId
-  );
-
-
   //   const pElement = document.createElement("p");
 
   //   bodyDiv.appendChild(pElement);
