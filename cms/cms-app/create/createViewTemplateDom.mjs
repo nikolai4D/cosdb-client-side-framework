@@ -33,7 +33,7 @@ export async function createViewTemplateDom(viewTemplateData) {
   const bodyDiv = document.createElement("div");
   bodyDiv.appendChild(pElement);
 
-  const accordionDiv = accordionDropdown(
+  const accordionDiv = await accordionDropdown(
     bodyDiv,
     key,
     values,
@@ -42,7 +42,7 @@ export async function createViewTemplateDom(viewTemplateData) {
     false
   );
 
-  viewTemplateDiv.appendChild(accordionDiv);
+  viewTemplateDiv.appendChild(await accordionDiv);
 
   return viewTemplateDiv;
 }
