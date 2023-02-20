@@ -1,4 +1,4 @@
-import { createView } from "./create/createView.mjs";
+import { createViewAndViewTemplate } from "./create/createViewAndViewTemplate.mjs";
 
 export function create() {
   const createViewButton = document.createElement("button");
@@ -9,7 +9,10 @@ export function create() {
     // const view = { id: id, view: "New View", viewTemplate: {}, slots: [] };
     // const viewDiv = await ViewDiv(view);
 
-    document.body.insertBefore(await createView(), document.body.children[1]);
+    document.body.insertBefore(
+      await createViewAndViewTemplate(),
+      document.body.children[1]
+    );
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 }
