@@ -12,8 +12,8 @@ export async function updateSlotsDom(slots, components) {
   for await (const slot of slots) {
     // Add if statement to check if slot is an organism, molecule, or atom
 
-    const key = "slot";
-    const value = slot.slot;
+    const key = slot.slot;
+    // const value = slot.slot;
     const id = slot.id;
 
     const bodyDiv = document.createElement("div");
