@@ -7,7 +7,7 @@ export async function createViewTemplateDom(viewTemplateData) {
   let components = (await readComponents(type)).map(
     (component) => component.name
   );
-  console.log(components);
+
   components = ["", ...components];
 
   const viewTemplateDiv = document.createElement("div");
