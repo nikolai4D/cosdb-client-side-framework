@@ -10,7 +10,7 @@ export async function updateViewTemplate(json, id, newValue) {
       break;
     }
   }
-  console.log();
+  console.log(json, "json");
   return json;
 }
 
