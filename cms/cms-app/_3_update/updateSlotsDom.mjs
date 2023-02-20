@@ -3,7 +3,7 @@ import { accordionInput } from "../types/accordionInput.mjs";
 // import { Molecules } from "./Molecules.mjs";
 // import { Atoms } from "./Atoms.mjs";
 
-export async function Slots(slots) {
+export async function updateSlotsDom(slots) {
   const slotDiv = document.createElement("div");
   slotDiv.classList.add("slots");
 
