@@ -5,7 +5,7 @@ import { accordionDropdown } from "../types/accordionDropdown.mjs";
 // import { Molecules } from "./Molecules.mjs";
 // import { Atoms } from "./Atoms.mjs";
 
-export async function updateSlotsDom({slots, components}) {
+export async function updateSlotsDom(slots, components) {
   const slotDiv = document.createElement("div");
   slotDiv.classList.add("slots");
 
