@@ -18,6 +18,7 @@ export async function eventChangeDropdown(id, key) {
 
     console.log("changed " + key + ": " + id + "with value: " + selectedValue);
   } else {
+    console.log("else");
     // const updatedModel = await updateField(model, id, selectedValue);
     // await writeModel(updatedModel);
     // console.log("changed " + key + ": " + id + "with value: " + selectedValue);
