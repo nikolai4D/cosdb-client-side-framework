@@ -1,5 +1,5 @@
-export async function createViewTemplateDom() {
-  console.log("reached createViewTemplateDom()");
+export async function createViewTemplateDom(viewTemplateData) {
+  console.log(viewTemplateData, "viewTemplateData");
   const pElement = document.createElement("p");
   pElement.textContent = "createViewTemplateDom";
 
