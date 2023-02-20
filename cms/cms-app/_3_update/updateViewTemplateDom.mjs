@@ -1,5 +1,5 @@
 import { updateSlotsDom } from "./updateSlotsDom.mjs";
-
+import { getComponents } from "../functions/getComponents.mjs"
 
 export async function updateViewTemplateDom(viewTemplateData) {
 
