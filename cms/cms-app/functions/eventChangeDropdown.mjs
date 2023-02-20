@@ -1,11 +1,6 @@
-import { readModel } from "../requests/readModel.mjs";
-// import { updateField } from "../functions/updateField.mjs";
-// import { writeModel } from "../requests/writeModel.mjs";
-// import { updateViewTemplate } from "../functions/updateViewTemplate.mjs";
 import { updateViewTemplateData } from "../_3_update/updateViewTemplateData.mjs";
 
 export async function eventChangeDropdown(id, key) {
-  const model = await readModel();
   const select = document.getElementById(id);
   const selectedValue = select.value;
 
@@ -22,10 +17,6 @@ export async function eventChangeDropdown(id, key) {
     //update viewTemplateDom
 
     console.log("changed " + key + ": " + id + "with value: " + selectedValue);
-
-    //await updateViewTemplateAccordionBody(id);
-
-    // get slots from viewTemplate and add to viewTemplateDom
   } else {
     // const updatedModel = await updateField(model, id, selectedValue);
     // await writeModel(updatedModel);
