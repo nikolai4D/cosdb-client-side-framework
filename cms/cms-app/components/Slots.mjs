@@ -1,5 +1,5 @@
 import { accordionInput } from "../types/accordionInput.mjs";
-import { Organisms } from "./Organisms.mjs";
+// import { Organisms } from "./Organisms.mjs";
 // import { Molecules } from "./Molecules.mjs";
 // import { Atoms } from "./Atoms.mjs";
 
@@ -12,10 +12,10 @@ export async function Slots(slots) {
 
     const key = "slot";
     const value = slot.slot;
-    const id = slot.slotId;
+    const id = slot.id;
 
     const bodyDiv = document.createElement("div");
-    bodyDiv.appendChild(await Organisms(slot));
+    // bodyDiv.appendChild(await Organisms(slot));
 
     const accordionDiv = accordionInput(bodyDiv, key, value, id, true);
     slotDiv.appendChild(accordionDiv);
