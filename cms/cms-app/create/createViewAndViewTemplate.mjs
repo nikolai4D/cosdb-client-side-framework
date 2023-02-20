@@ -1,7 +1,7 @@
 import { createViewData } from "./createViewData.mjs";
-import { createViewDom } from "./createViewDom.mjs";
 import { createViewTemplateData } from "./createViewTemplateData.mjs";
 import { createViewTemplateDom } from "./createViewTemplateDom.mjs";
+import { createViewDom } from "./createViewDom.mjs";
 
 export async function createViewAndViewTemplate() {
   //create ViewData
@@ -13,8 +13,8 @@ export async function createViewAndViewTemplate() {
 
   //create viewTemplateDom
 
-  const body = await createViewTemplateDom(viewTemplateData);
+  const viewTemplateDom = await createViewTemplateDom(viewTemplateData);
 
   //create ViewDom
-  return await createViewDom(viewData, body);
+  return await createViewDom(viewData, viewTemplateDom);
 }
