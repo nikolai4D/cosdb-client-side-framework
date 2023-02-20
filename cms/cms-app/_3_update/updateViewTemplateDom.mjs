@@ -1,4 +1,4 @@
-import { Slots } from "../components/Slots.mjs";
+import { updateSlotsDom } from "./updateSlotsDom.mjs";
 
 export async function updateViewTemplateDom(viewTemplateData) {
   const accordionBodyId = "accordion-body-" + viewTemplateData.id;
@@ -9,8 +9,8 @@ export async function updateViewTemplateDom(viewTemplateData) {
     }
     console.log("accordion-body-" + viewTemplateData.id + " deleted");
   }
-  const slots = viewTemplateData.slots;
-  const slotsDom = await Slots(slots);
+  const updatedSlots = viewTemplateData.slots;
+  const updatedSlotsDom = await updateSlotsDom(updatedSlots);
 
-  return accordionBody.appendChild(slotsDom);
+  return accordionBody.appendChild(updatedSlotsDom);
 }
