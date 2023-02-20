@@ -13,13 +13,13 @@ export async function updateViewTemplateData(viewTemplateId, newValue) {
   );
   console.log(existingViewTemplate, "existingViewTemplate");
 
-  const viewTemplateData = existingViewTemplate.view.viewTemplate;
+  const viewTemplateData = existingViewTemplate.viewTemplate;
 
   console.log(viewTemplateData, "viewTemplateData");
   viewTemplateData.option = newValue;
   viewTemplateData.slots = await getSlots(newValue);
 
-  existingViewTemplate.view.viewTemplate = viewTemplateData;
+  existingViewTemplate.viewTemplate = viewTemplateData;
 
   const newModel = existingModel;
 
