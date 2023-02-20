@@ -2,7 +2,7 @@ import { readModel } from "../requests/readModel.mjs";
 import { writeModel } from "../requests/writeModel.mjs";
 import { getSlots } from "../functions/getSlots.mjs";
 
-export async function updateViewTemplatData(viewTemplateId, newValue) {
+export async function updateViewTemplateData(viewTemplateId, newValue) {
   const existingModel = await readModel();
   const existingViewTemplate = existingModel.views.find(
     (view) => view.viewTemplate.id === viewTemplateId
