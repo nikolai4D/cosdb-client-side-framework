@@ -1,7 +1,7 @@
 export async function updateViewTemplate(json, id, newValue) {
   const filename = `${newValue}.mjs`;
   const module = await importModuleFromFile(filename);
-  console.log(module(), module().slots);
+  console.log(module, module.slots);
   for (const view of json.views) {
     if (view.viewTemplate.id === id) {
       view.viewTemplate.option = newValue;
