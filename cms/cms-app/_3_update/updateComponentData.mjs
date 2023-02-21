@@ -9,32 +9,11 @@ import { getUuid } from "../requests/getUuid.mjs";
 export async function updateComponentData(slotId, newValue = "") {
 
   const functions = await getFunctions();
-
   const existingModel = await readModel();
-
-  let existingSlot = {}
-  
-  existingModel.views.forEach(
-    (view) =>  {view.viewTemplate.slots.forEach((slot) => 
-      {if (slot.id === slotId) {
-        existingSlot = slot
-        return
-      }})}
-  );
-
-  console.log(existingSlot)
+  let existingSlot = getExistingSlot(existingModel, slotId);
 
   const componentData = existingSlot.component;
   componentData.id =   await getUuid();
-
-
-
-  // const existingComponent = existingSlot.find(
-  //   (view) => view.Component.id === componentId
-  // );
- 
-  // const slotData = existingSlot.viewTemplate;
-
   componentData.option = newValue;
 
   if (newValue !== "") {
@@ -43,6 +22,9 @@ export async function updateComponentData(slotId, newValue = "") {
 
     for (let subComponent of componentData.subComponents) {
       updateSubcomponentData(slotId, subComponent)
+      subComponent.functions = await getConstructors(newValue, "functions",newValue.split("_")[0].toLowerCase()+"s");
+      subComponent.subComponents = await getConstructors(newValue, "subComponents",newValue.split("_")[0].toLowerCase()
+      +"s");
     }
 
   } else {
@@ -57,4 +39,20 @@ export async function updateComponentData(slotId, newValue = "") {
 
   return {componentData, functions, parentComponentId:slotId};
 
+}
+
+function getExistingSlot(existingModel, slotId) {
+  let existingSlot = {};
+
+  existingModel.views.forEach(
+    (view) => {
+      view.viewTemplate.slots.forEach((slot) => {
+        if (slot.id === slotId) {
+          existingSlot = slot;
+          return;
+        }
+      });
+    }
+  );
+  return existingSlot;
 }
