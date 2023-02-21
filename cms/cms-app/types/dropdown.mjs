@@ -1,12 +1,14 @@
 import { eventChangeDropdown } from "../functions/eventChangeDropdown.mjs";
 
-export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
+export function dropdown(key, values, selectedValue, id, keyDisabled = false, keyType) {
+  console.log({keyType})
   const labelEl = document.createElement("label");
   labelEl.textContent = key + ":";
 
   const selectEl = document.createElement("select");
   selectEl.id = id;
   selectEl.disabled = keyDisabled;
+  selectEl.dataset.keyType = keyType 
   selectEl.addEventListener("change", () => eventChangeDropdown(id, key));
 
 
