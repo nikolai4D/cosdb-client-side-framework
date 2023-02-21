@@ -47,6 +47,6 @@ export async function updateComponentData(slotId, newValue = "") {
 
   await writeModel(newModel);
 
-  return {componentData, components, functions};
+  return {componentData, functions};
 
 }
