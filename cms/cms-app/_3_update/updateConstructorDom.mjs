@@ -24,7 +24,7 @@ export async function updateConstructorDom(functions, components) {
   const values = components;
 
 
-  const dropdownDom = dropdown(key, values, selectedValue, id, keyDisabled);
+  const dropdownDom = dropdown(key, values, selectedValue, id);
 
 
   
