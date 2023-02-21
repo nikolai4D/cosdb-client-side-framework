@@ -2,7 +2,7 @@ import { readModel } from "../requests/readModel.mjs";
 import { writeModel } from "../requests/writeModel.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 import { getFunctions } from "../functions/getFunctions.mjs";
-import { updateSubcomponentData } from "./updateSubcomponentData.mjs";
+
 
 export async function updateComponentData(slotId, newValue = "") {
 
