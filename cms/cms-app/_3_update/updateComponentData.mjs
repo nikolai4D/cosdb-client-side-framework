@@ -4,6 +4,9 @@ import { getConstructors } from "../functions/getConstructors.mjs";
 
 export async function updateComponentData(slotId, newValue = "") {
 
+  const allFunctions = await getFunctions();
+  console.log(allFunctions, "allFunctions");
+
   const existingModel = await readModel();
 
   let existingSlot = {}
@@ -28,36 +31,21 @@ export async function updateComponentData(slotId, newValue = "") {
   // const slotData = existingSlot.viewTemplate;
 
   componentData.option = newValue;
-  console.log({ componentData})
 
   if (newValue !== "") {
     componentData.functions = await getConstructors(newValue, "functions","organisms");
+    componentData.subComponents = await getConstructors(newValue, "subComponents","organisms");
+
   } else {
     componentData.functions = [];
-  }
-
-  if (newValue !== "") {
-    componentData.subComponents = await getConstructors(newValue, "subComponents","organisms");
-  } else {
     componentData.subComponents = [];
   }
 
-  console.log(existingModel, "existing model")
-  // existingModel.views.forEach(
-  //   (view) =>  {view.viewTemplate.slots.forEach((slot) => 
-  //     {if (slot.id === slotId) {
-  //       existingSlot = slot
-  //       return
-  //     }})}
-  // );
 
+  const newModel = existingModel;
 
-  // existingSlot.viewTemplate = slotData;
+  await writeModel(newModel);
 
-  // const newModel = existingModel;
-
-  // await writeModel(newModel);
-
-  // return slotData;
+  return {componentData, allFunctions};
 
 }
