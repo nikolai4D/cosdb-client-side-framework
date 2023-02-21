@@ -34,8 +34,7 @@ export async function updateComponentData(slotId, newValue = "") {
     componentData.functions = [];
   }
 
-
-  componentData.option = newValue;
+  console.log({ componentData})
   if (newValue !== "") {
     componentData.subComponents = await getConstructors(newValue, "subComponents","organisms");
   } else {
