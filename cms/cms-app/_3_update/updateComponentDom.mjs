@@ -1,5 +1,5 @@
 import { updateSlotsDom } from "./updateSlotsDom.mjs";
-import { updateConstructorDom } from "./updateConstructorDom.mjs";
+import { updateConstructorDom } from "./updateFunctionDom.mjs";
 
 
 export async function updateComponentDom( { componentData, functions }

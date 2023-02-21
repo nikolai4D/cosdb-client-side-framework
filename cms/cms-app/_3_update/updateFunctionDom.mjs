@@ -1,12 +1,12 @@
 import { accordionInput } from "../types/accordionInput.mjs";
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
-import { dropdown } from "./../types/dropdown.mjs";
+import { dropdown } from "../types/dropdown.mjs";
 
 // import { Organisms } from "./Organisms.mjs";
 // import { Molecules } from "./Molecules.mjs";
 // import { Atoms } from "./Atoms.mjs";
 
-export async function updateConstructorDom(functions, components) {
+export async function updateFunctionDom(functions, components) {
   const functionDiv = document.createElement("div");
   functionDiv.classList.add("functions");
 
