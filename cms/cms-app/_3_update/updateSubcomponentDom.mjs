@@ -16,7 +16,7 @@ export async function updateSubcomponentDom(subComponents, components) {
 
   const subComponentDiv = document.createElement("div");
   subComponentDiv.classList.add("subComponents");
-  const existingModel = await readModel();
+//   const existingModel = await readModel();
 
   const functions = await getFunctions();
 
@@ -27,17 +27,17 @@ export async function updateSubcomponentDom(subComponents, components) {
 
     let value = subComponent.subComponent;
     let keyDisabled = true;
-    let updatedFunctions = await getConstructors(value, "functions",value.split("_")[0].toLowerCase()+"s");
-    let updatedFunctionsDom = await updateFunctionsDom(updatedFunctions, functions);
+    // let updatedFunctions = await getConstructors(value, "functions",value.split("_")[0].toLowerCase()+"s");
+    let updatedFunctionsDom = await updateFunctionsDom(subComponent.functions, functions);
     let bodyDiv = updatedFunctionsDom
     const accordionDiv =  await accordionInput(bodyDiv, key, value, id, keyDisabled) 
     subComponentDiv.appendChild(accordionDiv);
   }
 
 
-  const newModel = existingModel;
+//   const newModel = existingModel;
 
-  await writeModel(newModel);
+//   await writeModel(newModel);
 
   return subComponentDiv;
 }
