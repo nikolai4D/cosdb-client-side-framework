@@ -26,7 +26,7 @@ export async function Organisms(slot) {
   bodyDiv.appendChild(moleculesEl);
 
   organismsDiv.appendChild(
-    accordionDropdown(bodyDiv, key, components, value, organismId, false)
+    accordionDropdown(bodyDiv, key, components, value, organismId, false, "organism")
   );
 
   return organismsDiv;

@@ -28,7 +28,8 @@ export async function ViewTemplate(view) {
     values,
     selectedValue,
     id,
-    false
+    false,
+    "viewTemplate"
   );
 
   viewTemplateDiv.appendChild(accordionDiv);

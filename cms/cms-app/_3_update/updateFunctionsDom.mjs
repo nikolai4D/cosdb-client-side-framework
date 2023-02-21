@@ -22,7 +22,7 @@ export async function updateFunctionsDom(functions, components) {
   const values = components;
 
 
-  const dropdownDom = dropdown(key, values, selectedValue, id);
+  const dropdownDom = dropdown(key, values, selectedValue, id, false, "function");
   
 
     functionDiv.appendChild(dropdownDom);

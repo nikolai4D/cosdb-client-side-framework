@@ -34,7 +34,7 @@ export function Functions(functions) {
     const value = func.option;
     const id = func.functionId;
     const funcBody = document.createElement("div");
-    const select = dropdown(key, funcs, value, id, false);
+    const select = dropdown(key, funcs, value, id, false, "function");
     funcBody.appendChild(select);
     functionsDiv.appendChild(funcBody);
   }
