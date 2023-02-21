@@ -20,12 +20,14 @@ export async function updateComponentData(slotId, newValue = "") {
     componentData.functions = await getConstructors(newValue, "functions",newValue.split("_")[0].toLowerCase()+"s");
     componentData.subComponents = await getConstructors(newValue, "subComponents",newValue.split("_")[0].toLowerCase()+"s");
 
+    if (componentData.subComponents){
     for (let subComponent of componentData.subComponents) {
       updateSubcomponentData(slotId, subComponent)
-      subComponent.functions = await getConstructors(subcomponent.subComponent, "functions",subcomponent.subComponent.split("_")[0].toLowerCase()+"s");
-      subComponent.subComponents = await getConstructors(newVasubcomponent.subComponentlue, "subComponents",subcomponent.subComponent.split("_")[0].toLowerCase()
+      subComponent.functions = await getConstructors(subcomponent.subcomponent, "functions",subcomponent.subComponent.split("_")[0].toLowerCase()+"s");
+      subComponent.subComponents = await getConstructors(newVasubcomponent.subcomponent, "subComponents",subcomponent.subComponent.split("_")[0].toLowerCase()
       +"s");
     }
+  }
 
   } else {
     componentData.functions = [];
