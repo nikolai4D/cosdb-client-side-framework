@@ -37,7 +37,7 @@ export async function updateComponentData(slotId, newValue = "") {
     componentData.functions = await getConstructors(newValue, "functions","organisms");
     componentData.subComponents = await getConstructors(newValue, "subComponents","organisms");
 
-    for (let subComponent of subComponents) {
+    for (let subComponent of componentData.subComponents) {
       updateComponentData(slotId, subComponent.subComponent)
     }
 
