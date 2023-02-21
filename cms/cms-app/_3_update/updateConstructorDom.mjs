@@ -6,14 +6,14 @@ import { accordionDropdown } from "../types/accordionDropdown.mjs";
 // import { Atoms } from "./Atoms.mjs";
 
 export async function updateConstructorDom(functions, components) {
-  const slotDiv = document.createElement("div");
-  slotDiv.classList.add("functions");
+  const functionDiv = document.createElement("div");
+  functionDiv.classList.add("functions");
 
   for await (const funcs of functions) {
-    // Add if statement to check if slot is an organism, molecule, or atom
+    // Add if statement to check if function is an organism, molecule, or atom
 
     const key = funcs.function;
-    // const value = slot.slot;
+    // const value = function.function;
     const id = funcs.id;
 
     const bodyDiv = document.createElement("div");
@@ -33,10 +33,10 @@ export async function updateConstructorDom(functions, components) {
 
 
   
-    // bodyDiv.appendChild(await Organisms(slot));
+    // bodyDiv.appendChild(await Organisms(function));
 
     // const accordionDiv = await accordionInput(bodyDiv, key, value, id, true);
-    slotDiv.appendChild(accordionDiv);
+    functionDiv.appendChild(accordionDiv);
   }
-  return slotDiv;
+  return functionDiv;
 }
