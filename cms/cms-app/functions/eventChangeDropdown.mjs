@@ -22,7 +22,7 @@ export async function eventChangeDropdown(id, key) {
   else if(keytype === "function") {
     console.log("function!")
   }
-  else if (keytype === "organism" || keytype === "molecule" || keytype === "atom") {
+  else if (keytype === "slot" || keytype === "molecule" || keytype === "atom") {
 
     const updatedComponentData = await updateComponentData(
       id,
