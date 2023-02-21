@@ -14,7 +14,6 @@ export async function updateFunctionsDom(functions, components) {
     // Add if statement to check if function is an organism, molecule, or atom
 
     const key = funcs.function;
-    console.log(funcs, "functs")
     // const value = function.function;
     const id = funcs.id;
 

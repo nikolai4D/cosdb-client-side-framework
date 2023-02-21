@@ -7,8 +7,7 @@ export async function updateComponentDom( { componentData, functions, parentComp
 ) {
 
   const accordionBodyId = "accordion-body-" + parentComponentId;
-  console.log(accordionBodyId, "accordionBodyId")
-  console.log(componentData, "componentData")
+
   const accordionBody = document.getElementById(accordionBodyId);
   if (accordionBody) {
     while (accordionBody.firstChild) {
@@ -28,10 +27,6 @@ export async function updateComponentDom( { componentData, functions, parentComp
 
     let updatedFunctionsDom = await updateFunctionsDom(updatedFunctions, functions);
     let updatedSubcomponentDom = await updateSubcomponentDom(updatedSubcomponents, functions);
-
-    console.log(updatedFunctionsDom);
-    console.log(updatedSubcomponentDom);
-
 
   // }
 
