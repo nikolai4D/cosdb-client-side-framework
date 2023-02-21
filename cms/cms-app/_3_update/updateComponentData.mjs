@@ -21,7 +21,11 @@ export async function updateComponentData(slotId, newValue = "") {
     componentData.subComponents = await getConstructors(newValue, "subComponents",newValue.split("_")[0].toLowerCase()+"s");
 
     if (componentData.subComponents){
+      console.log(componentData.subComponents)
+
     for (let subComponent of componentData.subComponents) {
+      console.log(subComponents)
+
       updateSubcomponentData(slotId, subComponent)
       subComponent.functions = await getConstructors(subcomponent.subcomponent, "functions",subcomponent.subComponent.split("_")[0].toLowerCase()+"s");
       subComponent.subComponents = await getConstructors(newVasubcomponent.subcomponent, "subComponents",subcomponent.subComponent.split("_")[0].toLowerCase()
