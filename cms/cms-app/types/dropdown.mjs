@@ -8,7 +8,7 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false, ke
   const selectEl = document.createElement("select");
   selectEl.id = id;
   selectEl.disabled = keyDisabled;
-  selectEl.dataset.keyType = keyType 
+  selectEl.dataset.keytype = keyType 
   selectEl.addEventListener("change", () => eventChangeDropdown(id, key));
 
 

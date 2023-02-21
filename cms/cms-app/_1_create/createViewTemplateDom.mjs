@@ -26,7 +26,8 @@ export async function createViewTemplateDom(viewTemplateData) {
     values,
     selectedValue,
     id,
-    false
+    false,
+    "viewTemplate"
   );
 
   viewTemplateDiv.appendChild(await accordionDiv);
