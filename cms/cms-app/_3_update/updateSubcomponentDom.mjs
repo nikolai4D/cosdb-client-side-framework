@@ -11,6 +11,7 @@ import { getFunctions } from "../functions/getFunctions.mjs";
 
 export async function updateSubcomponentDom(subComponents, components) {
     console.log("updateSubcomponentDom", subComponents);
+
   const subComponentDiv = document.createElement("div");
   subComponentDiv.classList.add("subComponents");
   const existingModel = await readModel();
@@ -24,7 +25,7 @@ export async function updateSubcomponentDom(subComponents, components) {
 
     let value = subComponent.subComponent;
     let keyDisabled = true;
-    // let updatedFunctions = await getConstructors(value, "functions",value.split("_")[0].toLowerCase()+"s");
+    let updatedFunctions = await getConstructors(value, "functions",value.split("_")[0].toLowerCase()+"s");
     let updatedFunctionsDom = await updateFunctionsDom(updatedFunctions, functions);
     let bodyDiv = updatedFunctionsDom
     const accordionDiv =  await accordionInput(bodyDiv, key, value, id, keyDisabled) 
