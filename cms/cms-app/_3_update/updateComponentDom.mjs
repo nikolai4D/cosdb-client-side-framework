@@ -1,5 +1,6 @@
 import { updateSlotsDom } from "./updateSlotsDom.mjs";
 import { updateFunctionsDom } from "./updateFunctionsDom.mjs";
+import { updateSubcomponentDom } from "./updateSubcomponentDom.mjs";
 
 
 export async function updateComponentDom( { componentData, functions, parentComponentId}
@@ -22,17 +23,19 @@ export async function updateComponentDom( { componentData, functions, parentComp
   // }
   // else {
     const updatedFunctions = componentData.functions;
+    const updatedSubcomponents = componentData.subComponents;
+
 
     let updatedFunctionsDom = await updateFunctionsDom(updatedFunctions, functions);
-    let updatedSubcomponentsDom = await updateSubcomponentsDom(updatedFunctions, functions);
+    let updatedSubcomponentDom = await updateSubcomponentDom(updatedSubcomponents, functions);
 
     console.log(updatedDom);
-    console.log(updatedSubcomponentsDom);
+    console.log(updatedSubcomponentDom);
 
 
   // }
 
  accordionBody.appendChild(updatedFunctionsDom);
- return accordionBody.appendChild(updatedSubcomponentsDom);
+ return accordionBody.appendChild(updatedSubcomponentDom);
 
 }
