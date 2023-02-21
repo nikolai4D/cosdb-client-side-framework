@@ -1,7 +1,7 @@
 import { Atom_dummy1 } from "../atoms/atom_dummy1.mjs";
 import { Atom_dummy2 } from "../atoms/atom_dummy2.mjs";
 
-export function Molecule_dummy2() {
+export function Molecule_dummy4() {
   this.subComponents = [
     {
       subComponent: "Atom_dummy3"
