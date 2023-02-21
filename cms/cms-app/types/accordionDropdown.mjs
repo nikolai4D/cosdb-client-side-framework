@@ -7,9 +7,10 @@ export function accordionDropdown(
   values,
   selectedValue,
   id,
-  keyDisabled
+  keyDisabled,
+  keyType
 ) {
-  const headerContent = dropdown(key, values, selectedValue, id, keyDisabled);
+  const headerContent = dropdown(key, values, selectedValue, id, keyDisabled, keyType);
   const bodyContent = body;
 
   const accordionDropdown = accordion(headerContent, bodyContent, id, key);

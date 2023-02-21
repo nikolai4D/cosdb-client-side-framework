@@ -28,7 +28,8 @@ export async function updateSlotsDom(slots, components) {
     values,
     selectedValue,
     id,
-    false
+    false,
+    "slot"
   );
 
 
