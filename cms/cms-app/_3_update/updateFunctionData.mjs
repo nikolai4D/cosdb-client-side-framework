@@ -11,6 +11,8 @@ export async function updateFunctionData(functionId, newValue="") {
   const existingModel = await readModel();
   let existingFunction = getExistingFunction(existingModel, functionId);
   console.log(existingFunction, functionId);
+  const functionData = existingFunction;
+    functionData.option = newValue;
 
 //   const componentData = existingSlot.component;
 //   componentData.id =   await getUuid();
@@ -30,9 +32,10 @@ export async function updateFunctionData(functionId, newValue="") {
 //   }
 
 
-//   const newModel = existingModel;
+  const newModel = existingModel;
 
-//   await writeModel(newModel);
+  await writeModel(newModel);
+  return 
 
 //   return {componentData, functions, parentComponentId:slotId};
 
