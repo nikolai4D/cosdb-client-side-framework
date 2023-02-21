@@ -1,9 +1,10 @@
 import { readComponents } from "../requests/readComponents.mjs";
 
 export async function getComponents(types) {
+    console.log(types, "types")
     let allComponents = {}
 
-    for await (const type of types) {
+    for (const type of types) {
     
         let components = await readComponents(type)
 

@@ -4,7 +4,7 @@ import { getComponents } from "../functions/getComponents.mjs";
 const type = "viewTemplates";
 
 export async function createViewTemplateDom(viewTemplateData) {
-  let components = await getComponents(type);
+  let components = await getComponents([type]);
 
   const viewTemplateDiv = document.createElement("div");
   viewTemplateDiv.classList.add("viewTemplate");
