@@ -18,12 +18,7 @@ export async function updateSlotsDom(slots, components) {
 
     const bodyDiv = document.createElement("div");
 
-
-  //   const pElement = document.createElement("p");
-
-  //   bodyDiv.appendChild(pElement);
-
-  const selectedValue = components[0]
+  const selectedValue = null;
   const values = components;
 
 
