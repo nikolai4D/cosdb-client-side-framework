@@ -2,6 +2,7 @@ import { accordionInput } from "../types/accordionInput.mjs";
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
 import { updateSubcomponentData } from "./updateSubcomponentData.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
+import { updateFunctionsDom } from "./updateFunctionsDom.mjs";
 
 // import { Organisms } from "./Organisms.mjs";
 // import { Molecules } from "./Molecules.mjs";
@@ -11,6 +12,7 @@ export async function updateSubcomponentDom(subComponents, components) {
   const subComponentDiv = document.createElement("div");
   subComponentDiv.classList.add("subComponents");
 
+  const functions = await getFunctions();
 
 //   updateSubcomponentData()
   for await (const subComponent of subComponents) {
@@ -35,8 +37,11 @@ export async function updateSubcomponentDom(subComponents, components) {
     let value = subComponent.subComponent;
     let keyDisabled = true;
 
-    let functions = await getConstructors(value, "functions",value.split("_")[0].toLowerCase()+"s");
+    let updatedFunctions = await getConstructors(value, "functions",value.split("_")[0].toLowerCase()+"s");
     console.log("functions", functions)
+
+    let updatedFunctionsDom = await updateFunctionsDom(updatedFunctions, functions);
+
     const accordionDiv =  await accordionInput(bodyDiv, key, value, id, keyDisabled) 
 
     subComponentDiv.appendChild(accordionDiv);
