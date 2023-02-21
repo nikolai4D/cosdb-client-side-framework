@@ -12,31 +12,33 @@ export async function updateSubcomponentDom(subComponents, components) {
   for await (const subComponent of subComponents) {
     // Add if statement to check if subComponent is an organism, molecule, or atom
 
-    const key = subComponent.subComponent;
+    const key = "Subcomponent:";
     // const value = subComponent.subComponent;
     const id = subComponent.id;
 
     const bodyDiv = document.createElement("div");
-
-  const selectedValue = null;
-  const values = components;
+;
 
 
-  const accordionDiv = await accordionDropdown(
-    bodyDiv,
-    key,
-    values,
-    selectedValue,
-    id,
-    false
-  );
+//   const accordionDiv = await accordionDropdown(
+//     bodyDiv,
+//     key,
+//     values,
+//     selectedValue,
+//     id,
+//     false
+//   );
+    let value = subcomponent.subComponent;
 
+    const accordionDiv =  await accordionInput(bodyDiv, key, value, id, keyDisabled) 
+
+    subComponentDiv.appendChild(accordionDiv);
+    
 
   
     // bodyDiv.appendChild(await Organisms(subComponent));
 
     // const accordionDiv = await accordionInput(bodyDiv, key, value, id, true);
-    subComponentDiv.appendChild(accordionDiv);
   }
   return subComponentDiv;
 }
