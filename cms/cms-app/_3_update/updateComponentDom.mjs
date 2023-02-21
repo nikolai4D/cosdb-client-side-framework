@@ -12,8 +12,8 @@ export async function updateComponentDom(componentData) {
   }  
   let updatedDom = null
   const updatedSlots = componentData.slots;
-  
-  if (updatedSlots.length !== 0) {
+
+  if (updatedSlots) {
     updatedDom = await updateSlotsDom(updatedSlots, components);
   }
 
