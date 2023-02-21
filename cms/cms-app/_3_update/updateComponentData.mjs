@@ -2,7 +2,7 @@ import { readModel } from "../requests/readModel.mjs";
 import { writeModel } from "../requests/writeModel.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 import { getFunctions } from "../functions/getFunctions.mjs";
-
+import { updateSubcomponentData } from "./updateSubcomponentData.mjs";
 import { getUuid } from "../requests/getUuid.mjs";
 
 
@@ -41,9 +41,9 @@ export async function updateComponentData(slotId, newValue = "") {
     componentData.functions = await getConstructors(newValue, "functions",newValue.split("_")[0].toLowerCase()+"s");
     componentData.subComponents = await getConstructors(newValue, "subComponents",newValue.split("_")[0].toLowerCase()+"s");
 
-    // for (let subComponent of componentData.subComponents) {
-    //   updateComponentData(slotId, subComponent.subComponent)
-    // }
+    for (let subComponent of componentData.subComponents) {
+      updateSubcomponentData(slotId, subComponent)
+    }
 
   } else {
     componentData.functions = [];
