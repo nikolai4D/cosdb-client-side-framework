@@ -1,5 +1,5 @@
 import { updateSlotsDom } from "./updateSlotsDom.mjs";
-import { updateConstructorDom } from "./updateFunctionDom.mjs";
+import { updateFunctionsDom } from "./updateFunctionsDom.mjs";
 
 
 export async function updateComponentDom( { componentData, functions }
@@ -23,7 +23,7 @@ export async function updateComponentDom( { componentData, functions }
   // else {
     const updatedFunctions = componentData.functions;
 
-    let updatedDom = await updateConstructorDom(updatedFunctions, functions);
+    let updatedDom = await updateFunctionsDom(updatedFunctions, functions);
     console.log(updatedDom);
 
   // }
