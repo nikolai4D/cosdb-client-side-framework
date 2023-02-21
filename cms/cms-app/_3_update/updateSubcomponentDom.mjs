@@ -35,7 +35,7 @@ export async function updateSubcomponentDom(subComponents, components) {
     let value = subComponent.subComponent;
     let keyDisabled = true;
 
-    let functions = await getConstructors(value, "functions",newValue.split("_")[0].toLowerCase()+"s");
+    let functions = await getConstructors(value, "functions",value.split("_")[0].toLowerCase()+"s");
     console.log("functions", functions)
     const accordionDiv =  await accordionInput(bodyDiv, key, value, id, keyDisabled) 
 
