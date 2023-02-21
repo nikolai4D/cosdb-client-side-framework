@@ -5,6 +5,7 @@ import { getConstructors } from "../functions/getConstructors.mjs";
 import { updateFunctionsDom } from "./updateFunctionsDom.mjs";
 import { getFunctions } from "../functions/getFunctions.mjs";
 import { readModel } from "../requests/readModel.mjs";
+import { writeModel } from "../requests/readModel.mjs";
 
 // import { Organisms } from "./Organisms.mjs";
 // import { Molecules } from "./Molecules.mjs";
