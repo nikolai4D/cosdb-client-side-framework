@@ -9,12 +9,20 @@ export function dropdown(key, values, selectedValue, id, keyDisabled = false) {
   selectEl.disabled = keyDisabled;
   selectEl.addEventListener("change", () => eventChangeDropdown(id, key));
 
+
+  // empty readonly option
+  const optionEl = document.createElement("option");
+  optionEl.value = "";
+  optionEl.selected = true;
+  selectEl.appendChild(optionEl);
+
+
   for (const value of values) {
-    const optionEl = document.createElement("option");
-    optionEl.value = value;
-    optionEl.selected = value === selectedValue;
-    optionEl.textContent = value;
-    selectEl.appendChild(optionEl);
+    const optionElValue = document.createElement("option");
+    optionElValue.value = value;
+    optionElValue.selected = value === selectedValue;
+    optionElValue.textContent = value;
+    selectEl.appendChild(optionElValue);
   }
 
   const container = document.createElement("div");
