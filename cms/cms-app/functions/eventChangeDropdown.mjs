@@ -21,6 +21,7 @@ export async function eventChangeDropdown(id, key) {
     return await updateViewTemplateDom(updatedViewTemplateData);
   }
   else if(keytype === "function") {
+    console.log(id, selectedValue, "function");
     updateFunctionData(id, selectedValue)
   }
   else if (keytype === "slot" || keytype === "molecule" || keytype === "atom") {
