@@ -2,17 +2,17 @@ import { readModel } from "../requests/readModel.mjs";
 import { writeModel } from "../requests/writeModel.mjs";
 import { getSlots } from "../functions/getSlots.mjs";
 
-export async function updateComponentData(viewTemplateId, componentId, newValue = "") {
+export async function updateComponentData(slotId, newValue = "") {
 
   const existingModel = await readModel();
 
   const existingViewTemplate = existingModel.views.find(
-    (view) => view.viewTemplate.id === viewTemplateId
+    (view) =>  view.viewTemplate.slots.find((slot) => slot.id === slotId)
   );
 
-  const existingComponent = existingViewTemplate.find(
-    (view) => view.Component.id === componentId
-  );
+  // const existingComponent = existingViewTemplate.find(
+  //   (view) => view.Component.id === componentId
+  // );
 
   const viewTemplateData = existingViewTemplate.viewTemplate;
 
