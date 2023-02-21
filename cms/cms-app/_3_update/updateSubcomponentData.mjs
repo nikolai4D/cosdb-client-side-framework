@@ -29,7 +29,7 @@ export async function updateSubcomponentData(bodyId, newValue = "", functions, e
 //   componentData.option = newValue;
 
 //   if (newValue !== "") {
-    componentData.functions = await getConstructors(newValue, "functions",newValue.split("_")[0].toLowerCase()+"s");
+    // componentData.functions = await getConstructors(newValue, "functions",newValue.split("_")[0].toLowerCase()+"s");
 //     componentData.subComponents = await getConstructors(newValue, "subComponents","organisms");
 
 //   } else {
