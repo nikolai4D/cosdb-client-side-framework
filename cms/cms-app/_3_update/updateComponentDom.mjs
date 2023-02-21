@@ -23,10 +23,16 @@ export async function updateComponentDom( { componentData, functions, parentComp
   // else {
     const updatedFunctions = componentData.functions;
 
-    let updatedDom = await updateFunctionsDom(updatedFunctions, functions);
+    let updatedFunctionsDom = await updateFunctionsDom(updatedFunctions, functions);
+    let updatedSubcomponentsDom = await updateSubcomponentsDom(updatedFunctions, functions);
+
     console.log(updatedDom);
+    console.log(updatedSubcomponentsDom);
+
 
   // }
 
-  return accordionBody.appendChild(updatedDom);
+ accordionBody.appendChild(updatedFunctionsDom);
+ return accordionBody.appendChild(updatedSubcomponentsDom);
+
 }
