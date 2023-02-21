@@ -1,7 +1,16 @@
 import { readComponents } from "../requests/readComponents.mjs";
 
-export async function getComponents(type) {
-    return (await readComponents(type)).map(
-        (component) => component.name
-    );
+export async function getComponents(types) {
+    let allComponents = {}
+
+    for (const type of types) {
+    
+        let components = await readComponents(type)
+    
+            for (const component of components) {
+                allComponents[type] = component;
+        }
+    }
+
+    return allComponents;
 }
