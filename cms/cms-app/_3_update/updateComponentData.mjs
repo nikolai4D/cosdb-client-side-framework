@@ -6,29 +6,31 @@ export async function updateComponentData(slotId, newValue = "") {
 
   const existingModel = await readModel();
 
-  const existingViewTemplate = existingModel.views.find(
+  const existingSlot = existingModel.views.find(
     (view) =>  view.viewTemplate.slots.find((slot) => slot.id === slotId)
   );
 
-  // const existingComponent = existingViewTemplate.find(
+  console.log(existingSlot)
+
+  // const existingComponent = existingSlot.find(
   //   (view) => view.Component.id === componentId
   // );
 
-  const viewTemplateData = existingViewTemplate.viewTemplate;
+  // const slotData = existingSlot.viewTemplate;
 
-  viewTemplateData.option = newValue;
-  if (newValue !== "") {
-    viewTemplateData.slots = await getSlots(newValue);
-  } else {
-    viewTemplateData.slots = [];
-  }
+  // slotData.option = newValue;
+  // if (newValue !== "") {
+  //   slotData.slots = await getSlots(newValue);
+  // } else {
+  //   slotData.slots = [];
+  // }
 
-  existingViewTemplate.viewTemplate = viewTemplateData;
+  // existingSlot.viewTemplate = slotData;
 
-  const newModel = existingModel;
+  // const newModel = existingModel;
 
-  await writeModel(newModel);
+  // await writeModel(newModel);
 
-  return viewTemplateData;
+  // return slotData;
 
 }

@@ -3,7 +3,7 @@ import { getUuid } from "../requests/getUuid.mjs";
 
 export async function getSlots(filename) {
   const file = `${filename}.mjs`;
-  const module = await importModuleFromFile(file, filename);
+  const module = await importModuleFromFile(file, filename, "viewTemplates");
   const slots = module.slots;
   for (const slot of slots) {
     slot.id = await getUuid();

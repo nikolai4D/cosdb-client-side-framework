@@ -1,4 +1,4 @@
-export async function importModuleFromFile(file, filename) {
-  const module = await import(`../../../components/viewTemplates/${file}`);
+export async function importModuleFromFile(file, filename, type) {
+  const module = await import(`../../../components/${type}/${file}`);
   return new module[filename]();
 }
