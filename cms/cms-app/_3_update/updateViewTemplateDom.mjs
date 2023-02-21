@@ -1,9 +1,7 @@
 import { updateSlotsDom } from "./updateSlotsDom.mjs";
-import { getComponents } from "../functions/getComponents.mjs"
 
-export async function updateViewTemplateDom(viewTemplateData) {
+export async function updateViewTemplateDom({viewTemplateData, components}) {
 
-  let components = await getComponents("organisms");
   const accordionBodyId = "accordion-body-" + viewTemplateData.id;
   const accordionBody = document.getElementById(accordionBodyId);
   if (accordionBody) {
