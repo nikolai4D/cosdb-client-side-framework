@@ -1,9 +1,7 @@
 import { updateSlotsDom } from "./updateSlotsDom.mjs";
-import { getComponents } from "../functions/getComponents.mjs"
 
 export async function updateComponentDom(componentData) {
 
-  // let components = await getComponents("organisms");
   const accordionBodyId = "accordion-body-" + componentData.id;
   const accordionBody = document.getElementById(accordionBodyId);
   if (accordionBody) {
@@ -11,9 +9,13 @@ export async function updateComponentDom(componentData) {
       accordionBody.removeChild(accordionBody.firstChild);
     }
     console.log("accordion-body-" + componentData.id + " deleted");
-  }
+  }  
+  let updatedDom = null
   const updatedSlots = componentData.slots;
-  const updatedSlotsDom = await updateSlotsDom(updatedSlots, components);
+  
+  if (updatedSlots.length !== 0) {
+    updatedDom = await updateSlotsDom(updatedSlots, components);
+  }
 
-  return accordionBody.appendChild(updatedSlotsDom);
+  return accordionBody.appendChild(updatedDom);
 }
