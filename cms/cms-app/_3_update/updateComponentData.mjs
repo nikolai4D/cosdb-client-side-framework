@@ -46,6 +46,7 @@ export async function updateComponentData(slotId, newValue = "") {
   const newModel = existingModel;
 
   await writeModel(newModel);
+  componentData.id = slotId
 
   return {componentData, functions};
 
