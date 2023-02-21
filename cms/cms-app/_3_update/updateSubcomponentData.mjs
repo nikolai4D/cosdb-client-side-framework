@@ -4,16 +4,16 @@ import { writeModel } from "../requests/writeModel.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 import { getFunctions } from "../functions/getFunctions.mjs";
 
-export async function updateSubcomponentData(slotId, newValue = "") {
+export async function updateSubcomponentData(bodyId, newValue = "", functions, existingModel) {
 
-    console.log({slotId, newValue})
+    
 
 //   const functions = await getFunctions();
 //   console.log(functions, "functions");
 
 //   const existingModel = await readModel();
 
-//   let existingSlot = getExistingPart(existingModel, slotId);
+//   let existingSubcomponent = getExistingPart(existingModel, bodyId);
 
 //   console.log(existingSlot)
 
@@ -29,7 +29,7 @@ export async function updateSubcomponentData(slotId, newValue = "") {
 //   componentData.option = newValue;
 
 //   if (newValue !== "") {
-//     componentData.functions = await getConstructors(newValue, "functions","organisms");
+    componentData.functions = await getConstructors(newValue, "functions",newValue.split("_")[0].toLowerCase()+"s");
 //     componentData.subComponents = await getConstructors(newValue, "subComponents","organisms");
 
 //   } else {
@@ -53,10 +53,18 @@ function getExistingPart(existingModel, slotId) {
     existingModel.views.forEach(
         (view) => {
             view.viewTemplate.slots.forEach((slot) => {
+
                 if (slot.id === slotId) {
                     existingSlot = slot;
                     return;
                 }
+
+                // slot.component.subComponents.forEach((subComponent) => {
+                //     if (subComponent.id === slotId) {
+                //         existingSlot = subComponent;
+                //         return;
+                //     }
+                // }
             });
         }
     );
