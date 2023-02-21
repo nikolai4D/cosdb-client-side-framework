@@ -6,6 +6,8 @@ export async function updateComponentDom( { componentData, functions }
 ) {
 
   const accordionBodyId = "accordion-body-" + componentData.id;
+  console.log(accordionBodyId, "accordionBodyId")
+  console.log(componentData, "componentData")
   const accordionBody = document.getElementById(accordionBodyId);
   if (accordionBody) {
     while (accordionBody.firstChild) {
