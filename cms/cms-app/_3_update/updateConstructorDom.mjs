@@ -1,5 +1,6 @@
 import { accordionInput } from "../types/accordionInput.mjs";
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
+import { dropdown } from "./../types/dropdown.mjs";
 
 // import { Organisms } from "./Organisms.mjs";
 // import { Molecules } from "./Molecules.mjs";
@@ -23,21 +24,14 @@ export async function updateConstructorDom(functions, components) {
   const values = components;
 
 
-  const accordionDiv = await accordionDropdown(
-    bodyDiv,
-    key,
-    values,
-    selectedValue,
-    id,
-    false
-  );
+  const dropdownDom = dropdown(key, values, selectedValue, id, keyDisabled);
 
 
   
     // bodyDiv.appendChild(await Organisms(function));
 
     // const accordionDiv = await accordionInput(bodyDiv, key, value, id, true);
-    functionDiv.appendChild(accordionDiv);
+    functionDiv.appendChild(dropdownDom);
   }
   return functionDiv;
 }
