@@ -10,7 +10,7 @@ export async function updateFunctionData(functionId, newValue="") {
 
   const existingModel = await readModel();
   let existingFunction = getExistingFunction(existingModel, functionId);
-  console.log(existingFunction);
+  console.log(existingFunction, functionId);
 
 //   const componentData = existingSlot.component;
 //   componentData.id =   await getUuid();
