@@ -7,7 +7,7 @@ export function Molecule_dummy1() {
       subComponent: "Atom_dummy1"
     },
     {
-      subComponent: "Atom_dummy1"
+      subComponent: "Atom_dummy2"
     }
   ]
 

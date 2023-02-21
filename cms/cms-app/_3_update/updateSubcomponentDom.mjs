@@ -12,7 +12,7 @@ export async function updateSubcomponentDom(subComponents, components) {
   for await (const subComponent of subComponents) {
     // Add if statement to check if subComponent is an organism, molecule, or atom
 
-    const key = "Subcomponent:";
+    const key = "Subcomponent";
     // const value = subComponent.subComponent;
     const id = subComponent.id;
 
