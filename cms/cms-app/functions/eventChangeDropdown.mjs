@@ -6,8 +6,9 @@ import { updateComponentDom } from "../_3_update/updateComponentDom.mjs";
 export async function eventChangeDropdown(id, key) {
   const select = document.getElementById(id);
   const selectedValue = select.value;
+  const { keytype } = select.dataset;
 
-  if (key === "viewTemplate") {
+  if (keytype === "viewTemplate") {
     // update viewTemplateData
 
     const updatedViewTemplateData = await updateViewTemplateData(
@@ -16,11 +17,12 @@ export async function eventChangeDropdown(id, key) {
     );
 
     //update viewTemplateDom
-
     return await updateViewTemplateDom(updatedViewTemplateData);
-
   }
-  else {
+  else if(keytype === "function") {
+    console.log("function!")
+  }
+  else if (keytype === "organism" || keytype === "molecule" || keytype === "atom") {
 
     const updatedComponentData = await updateComponentData(
       id,
