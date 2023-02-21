@@ -12,32 +12,15 @@ export async function updateFunctionData(functionId, newValue="") {
   let existingFunction = getExistingFunction(existingModel, functionId);
   console.log(existingFunction, functionId);
   const functionData = existingFunction;
-    functionData.option = newValue;
+    functionData.option = newValue
+    console.log(newValue);
 
-//   const componentData = existingSlot.component;
-//   componentData.id =   await getUuid();
-//   componentData.option = newValue;
-
-//   if (newValue !== "") {
-//     componentData.functions = await getConstructors(newValue, "functions",newValue.split("_")[0].toLowerCase()+"s");
-//     componentData.subComponents = await getConstructors(newValue, "subComponents",newValue.split("_")[0].toLowerCase()+"s");
-
-//     for (let subComponent of componentData.subComponents) {
-//       updateSubcomponentData(slotId, subComponent)
-//     }
-
-//   } else {
-//     componentData.functions = [];
-//     componentData.subComponents = [];
-//   }
-
+    console.log(existingModel);
 
   const newModel = existingModel;
 
   await writeModel(newModel);
   return 
-
-//   return {componentData, functions, parentComponentId:slotId};
 
 }
 
