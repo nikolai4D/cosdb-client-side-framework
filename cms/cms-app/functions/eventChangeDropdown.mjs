@@ -1,5 +1,7 @@
 import { updateViewTemplateData } from "../_3_update/updateViewTemplateData.mjs";
 import { updateViewTemplateDom } from "../_3_update/updateViewTemplateDom.mjs";
+import { updateComponentData } from "../_3_update/updateComponentData.mjs";
+import { updateComponentDom } from "../_3_update/updateComponentDom.mjs";
 
 export async function eventChangeDropdown(id, key) {
   const select = document.getElementById(id);
@@ -13,15 +15,22 @@ export async function eventChangeDropdown(id, key) {
       selectedValue
     );
 
-    console.log(updatedViewTemplateData, "updatedViewTemplateData");
     //update viewTemplateDom
 
     return await updateViewTemplateDom(updatedViewTemplateData);
 
-    // const updatedViewTemplateDom = await updateViewTemplateDom(
-    //   updatedViewTemplateData
-    // );
-  } else {
+  }
+  else {
+
+    console.log(selectedValue);
+    const updatedComponentData = await updateComponentData(
+      id,
+      selectedValue
+    );
+
+    return await updateComponentDom(updatedComponentData);
+
+
     console.log("else");
   }
 }
