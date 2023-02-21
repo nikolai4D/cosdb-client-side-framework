@@ -2,10 +2,10 @@ import { updateSlotsDom } from "./updateSlotsDom.mjs";
 import { updateFunctionsDom } from "./updateFunctionsDom.mjs";
 
 
-export async function updateComponentDom( { componentData, functions }
+export async function updateComponentDom( { componentData, functions, parentComponentId}
 ) {
 
-  const accordionBodyId = "accordion-body-" + componentData.id;
+  const accordionBodyId = "accordion-body-" + parentComponentId;
   console.log(accordionBodyId, "accordionBodyId")
   console.log(componentData, "componentData")
   const accordionBody = document.getElementById(accordionBodyId);
@@ -13,7 +13,7 @@ export async function updateComponentDom( { componentData, functions }
     while (accordionBody.firstChild) {
       accordionBody.removeChild(accordionBody.firstChild);
     }
-    console.log("accordion-body-" + componentData.id + " deleted");
+    console.log("accordion-body-" + parentComponentId + " deleted");
   }  
   // const updatedSlots = componentData.slots;
 
