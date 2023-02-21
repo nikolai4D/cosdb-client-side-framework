@@ -23,6 +23,8 @@ export async function updateComponentData(slotId, newValue = "") {
   console.log(existingSlot)
 
   const componentData = existingSlot.component;
+  componentData.id =   await getUuid();
+
 
 
   // const existingComponent = existingSlot.find(
@@ -50,7 +52,6 @@ export async function updateComponentData(slotId, newValue = "") {
   const newModel = existingModel;
 
   await writeModel(newModel);
-  componentData.id = slotId
 
   return {componentData, functions};
 
