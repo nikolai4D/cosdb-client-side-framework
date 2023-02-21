@@ -13,7 +13,6 @@ export async function updateComponentDom( { componentData, functions }
     }
     console.log("accordion-body-" + componentData.id + " deleted");
   }  
-  let updatedDom = null
   // const updatedSlots = componentData.slots;
 
   // if (updatedSlots) {
@@ -22,7 +21,7 @@ export async function updateComponentDom( { componentData, functions }
   // else {
     const updatedFunctions = componentData.functions;
 
-    updatedDom = await updateConstructorDom(updatedFunctions, functions);
+    let updatedDom = await updateConstructorDom(updatedFunctions, functions);
     console.log(updatedDom);
 
   // }
