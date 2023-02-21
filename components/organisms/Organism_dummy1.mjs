@@ -8,10 +8,15 @@ export function Organism_dummy1() {
     }
   ]
 
-  this.functions = {
-    function1: null,
-    function2: null,
-  };
+  this.functions = [
+    {
+      function1: null,
+    },
+    {
+      function2: null,
+    }
+  ]
+
 
   return `
   <div>
