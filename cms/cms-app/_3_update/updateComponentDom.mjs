@@ -3,7 +3,7 @@ import { getComponents } from "../functions/getComponents.mjs"
 
 export async function updateComponentDom(componentData) {
 
-  let components = await getComponents("organisms");
+  // let components = await getComponents("organisms");
   const accordionBodyId = "accordion-body-" + componentData.id;
   const accordionBody = document.getElementById(accordionBodyId);
   if (accordionBody) {
