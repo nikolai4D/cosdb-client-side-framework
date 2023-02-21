@@ -5,8 +5,8 @@ import { getFunctions } from "../functions/getFunctions.mjs";
 
 export async function updateComponentData(slotId, newValue = "") {
 
-  const allFunctions = await getFunctions();
-  console.log(allFunctions, "allFunctions");
+  const functions = await getFunctions();
+  console.log(functions, "functions");
 
   const existingModel = await readModel();
 
@@ -47,6 +47,6 @@ export async function updateComponentData(slotId, newValue = "") {
 
   await writeModel(newModel);
 
-  return {componentData, allFunctions};
+  return {componentData, components, functions};
 
 }
