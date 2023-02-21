@@ -6,7 +6,7 @@ import { dropdown } from "../types/dropdown.mjs";
 // import { Molecules } from "./Molecules.mjs";
 // import { Atoms } from "./Atoms.mjs";
 
-export async function updateFunctionDom(functions, components) {
+export async function updateFunctionsDom(functions, components) {
   const functionDiv = document.createElement("div");
   functionDiv.classList.add("functions");
 
@@ -18,19 +18,13 @@ export async function updateFunctionDom(functions, components) {
     // const value = function.function;
     const id = funcs.id;
 
-    const bodyDiv = document.createElement("div");
-
   const selectedValue = null;
   const values = components;
 
 
   const dropdownDom = dropdown(key, values, selectedValue, id);
-
-
   
-    // bodyDiv.appendChild(await Organisms(function));
 
-    // const accordionDiv = await accordionInput(bodyDiv, key, value, id, true);
     functionDiv.appendChild(dropdownDom);
   }
   return functionDiv;
