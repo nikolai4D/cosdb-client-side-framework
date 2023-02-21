@@ -53,8 +53,19 @@ function getExistingFunction(existingModel, functionId) {
                 existingFunction = func;
                 return;
             }
+            if (slot.component.subComponents){
+                slot.component.subComponents.forEach((subComponent) => {
+                    if (subComponent.functions){
+                    subComponent.functions.forEach((func) => {
+                        if (func.id === functionId) {
+                            existingFunction = func;
+                            return;
+                            }
+                        })
+                    }
+                })
             }
-          )
+            })
         }
     });
     }
