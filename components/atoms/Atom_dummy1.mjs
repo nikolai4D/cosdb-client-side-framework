@@ -1,9 +1,12 @@
 export function Atom_dummy1() {
-  this.option = "";
-
+  this.options = [
+    {
+      option: "option1",
+    }
+  ]
   return (
-    <div>
+  `  <div>
       <h1>${this.option}</h1>
     </div>
-  );
+  `);
 }
