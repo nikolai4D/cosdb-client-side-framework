@@ -28,13 +28,14 @@ export async function updateComponentData(slotId, newValue = "") {
   // const slotData = existingSlot.viewTemplate;
 
   componentData.option = newValue;
+  console.log({ componentData})
+
   if (newValue !== "") {
     componentData.functions = await getConstructors(newValue, "functions","organisms");
   } else {
     componentData.functions = [];
   }
 
-  console.log({ componentData})
   if (newValue !== "") {
     componentData.subComponents = await getConstructors(newValue, "subComponents","organisms");
   } else {
