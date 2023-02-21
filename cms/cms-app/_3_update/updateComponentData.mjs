@@ -3,7 +3,7 @@ import { writeModel } from "../requests/writeModel.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 import { getFunctions } from "../functions/getFunctions.mjs";
 
-import { getUuid } from "../functions/getUuid.mjs";
+import { getUuid } from "../requests/getUuid.mjs";
 
 
 export async function updateComponentData(slotId, newValue = "") {
