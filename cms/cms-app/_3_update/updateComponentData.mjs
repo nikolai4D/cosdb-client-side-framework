@@ -32,7 +32,7 @@ export async function updateComponentData(slotId, newValue = "") {
   // const existingComponent = existingSlot.find(
   //   (view) => view.Component.id === componentId
   // );
-
+ 
   // const slotData = existingSlot.viewTemplate;
 
   componentData.option = newValue;
@@ -55,6 +55,6 @@ export async function updateComponentData(slotId, newValue = "") {
 
   await writeModel(newModel);
 
-  return {componentData, functions};
+  return {componentData, functions, parentComponentId:slotId};
 
 }
