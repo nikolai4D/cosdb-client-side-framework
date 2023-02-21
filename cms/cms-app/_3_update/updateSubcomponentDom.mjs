@@ -10,50 +10,63 @@ import { getFunctions } from "../functions/getFunctions.mjs";
 // import { Atoms } from "./Atoms.mjs";
 
 export async function updateSubcomponentDom(subComponents, components) {
+    console.log("updateSubcomponentDom", subComponents);
   const subComponentDiv = document.createElement("div");
   subComponentDiv.classList.add("subComponents");
+  const existingModel = await readModel();
 
   const functions = await getFunctions();
 
-//   updateSubcomponentData()
   for await (const subComponent of subComponents) {
-    // Add if statement to check if subComponent is an organism, molecule, or atom
 
     const key = "Subcomponent";
-    // const value = subComponent.subComponent;
     const id = subComponent.id;
 
-    // const bodyDiv = document.createElement("div");
-;
-
-
-//   const accordionDiv = await accordionDropdown(
-//     bodyDiv,
-//     key,
-//     values,
-//     selectedValue,
-//     id,
-//     false
-//   );
     let value = subComponent.subComponent;
     let keyDisabled = true;
-
-    let updatedFunctions = await getConstructors(value, "functions",value.split("_")[0].toLowerCase()+"s");
-    console.log("functions", functions)
-
+    // let updatedFunctions = await getConstructors(value, "functions",value.split("_")[0].toLowerCase()+"s");
     let updatedFunctionsDom = await updateFunctionsDom(updatedFunctions, functions);
-
     let bodyDiv = updatedFunctionsDom
-
     const accordionDiv =  await accordionInput(bodyDiv, key, value, id, keyDisabled) 
-
     subComponentDiv.appendChild(accordionDiv);
-    
-
-  
-    // bodyDiv.appendChild(await Organisms(subComponent));
-
-    // const accordionDiv = await accordionInput(bodyDiv, key, value, id, true);
   }
+
+
+  const newModel = existingModel;
+
+  await writeModel(newModel);
+
   return subComponentDiv;
 }
+function getExistingSubcomponent(existingModel, functionId) {
+    let existingFunction = {};
+  
+    existingModel.views.forEach(
+      (view) => {
+        view.viewTemplate.slots.forEach((slot) => {
+          if (slot.component.functions){
+            slot.component.functions.forEach((func) => {
+              if (func.id === functionId) {
+                  existingFunction = func;
+                  return;
+              }
+              if (slot.component.subComponents){
+                  slot.component.subComponents.forEach((subComponent) => {
+                      if (subComponent.functions){
+                      subComponent.functions.forEach((func) => {
+                          if (func.id === functionId) {
+                              existingFunction = func;
+                              return;
+                              }
+                          })
+                      }
+                  })
+              }
+              })
+          }
+      });
+      }
+    );
+    return existingFunction;
+  }
+  
