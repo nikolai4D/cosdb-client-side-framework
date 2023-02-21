@@ -28,7 +28,7 @@ export async function updateSubcomponentDom(subComponents, components) {
 //     id,
 //     false
 //   );
-    let value = subcomponent.subComponent;
+    let value = subComponent.subComponent;
 
     const accordionDiv =  await accordionInput(bodyDiv, key, value, id, keyDisabled) 
 
