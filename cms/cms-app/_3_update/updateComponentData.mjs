@@ -6,8 +6,14 @@ export async function updateComponentData(slotId, newValue = "") {
 
   const existingModel = await readModel();
 
-  const existingSlot = existingModel.views.find(
-    (view) =>  view.viewTemplate.slots.find((slot) => slot.id === slotId)
+  let existingSlot = {}
+  
+  existingModel.views.forEach(
+    (view) =>  {view.viewTemplate.slots.forEach((slot) => 
+      {if (slot.id === slotId) {
+        existingSlot = slot
+        return
+      }})}
   );
 
   console.log(existingSlot)
