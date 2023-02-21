@@ -5,12 +5,11 @@ import { getComponents } from "../functions/getComponents.mjs"
 
 export async function updateViewTemplateData(viewTemplateId, newValue = "") {
 
-  let components = await getComponents("organisms");
-  // let componentsOrganisms = await getComponents("organisms");
-  // let componentsMolecules = await getComponents("molecules");
-  // let componentsAtoms = await getComponents("atoms");
-  
+  const componentsOrganism = await getComponents("organisms");
+  const componentsMolecules = await getComponents("molecules");
+  const componentsAtoms = await getComponents("atoms");
 
+  const components = [...componentsOrganism, ...componentsMolecules, ...componentsAtoms]
 
   const existingModel = await readModel();
 
