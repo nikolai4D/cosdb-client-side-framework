@@ -1,10 +1,10 @@
 export function Organism_dummy2() {
   this.subComponents = [
     {
-      subComponent: "Molecule_dummy1"
+      subComponent: "Molecule_dummy3"
     },
     {
-      subComponent: "Molecule_dummy2"
+      subComponent: "Molecule_dummy4"
     }
   ]
 
