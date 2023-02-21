@@ -21,16 +21,15 @@ export async function updateComponentData(slotId, newValue = "") {
     componentData.subComponents = await getConstructors(newValue, "subComponents",newValue.split("_")[0].toLowerCase()+"s");
 
     if (componentData.subComponents){
-      console.log(componentData.subComponents)
 
-    for (let subComponent of componentData.subComponents) {
-      console.log(subComponent)
+      for (let subComponent of componentData.subComponents) {
+        console.log(subComponent)
 
-      updateSubcomponentData(slotId, subComponent)
-      subComponent.functions = await getConstructors(subComponent.subComponent, "functions",subComponent.subComponent.split("_")[0].toLowerCase()+"s");
-      subComponent.subComponents = await getConstructors(subComponent.subComponent, "subComponents",subComponent.subComponent.split("_")[0].toLowerCase()
-      +"s");
-    }
+        // updateSubcomponentData(slotId, subComponent)
+        subComponent.functions = await getConstructors(subComponent.subComponent, "functions", subComponent.subComponent.split("_")[0].toLowerCase()+"s");
+        subComponent.subComponents = await getConstructors(subComponent.subComponent, "subComponents", subComponent.subComponent.split("_")[0].toLowerCase()
+        +"s");
+      }
   }
 
   } else {
@@ -38,8 +37,8 @@ export async function updateComponentData(slotId, newValue = "") {
     componentData.subComponents = [];
   }
 
-
   const newModel = existingModel;
+  console.log({newModel})
 
   await writeModel(newModel);
 
