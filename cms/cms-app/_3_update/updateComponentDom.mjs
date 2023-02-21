@@ -23,6 +23,7 @@ export async function updateComponentDom( { componentData, functions }
     const updatedFunctions = componentData.functions;
 
     updatedDom = await updateConstructorDom(updatedFunctions, functions);
+    console.log(updatedDom);
 
   // }
 
