@@ -29,7 +29,7 @@ export async function updateComponentDom( { componentData, functions, parentComp
     let updatedFunctionsDom = await updateFunctionsDom(updatedFunctions, functions);
     let updatedSubcomponentDom = await updateSubcomponentDom(updatedSubcomponents, functions);
 
-    console.log(updatedDom);
+    console.log(updatedFunctionsDom);
     console.log(updatedSubcomponentDom);
 
 
