@@ -1,6 +1,9 @@
 import { updateSlotsDom } from "./updateSlotsDom.mjs";
+import { updateConstructorDom } from "./updateConstructorDom.mjs";
 
-export async function updateComponentDom(componentData) {
+
+export async function updateComponentDom( { componentData, components, functions }
+) {
 
   const accordionBodyId = "accordion-body-" + componentData.id;
   const accordionBody = document.getElementById(accordionBodyId);
@@ -15,6 +18,12 @@ export async function updateComponentDom(componentData) {
 
   if (updatedSlots) {
     updatedDom = await updateSlotsDom(updatedSlots, components);
+  }
+  else {
+    const updatedFunctions = componentData.functions;
+
+    updatedDom = await updateConstructorDom(updatedFunctions, functions);
+
   }
 
   return accordionBody.appendChild(updatedDom);
