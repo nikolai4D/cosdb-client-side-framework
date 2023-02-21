@@ -1,21 +1,25 @@
 import { readModel } from "../requests/readModel.mjs";
 import { writeModel } from "../requests/writeModel.mjs";
 import { getSlots } from "../functions/getSlots.mjs";
+import { getComponents } from "../functions/getComponents.mjs"
 
 export async function updateViewTemplateData(viewTemplateId, newValue = "") {
-  console.log(viewTemplateId, newValue, "viewTemplateId, newValue");
+
+  let components = await getComponents("organisms");
+  // let componentsOrganisms = await getComponents("organisms");
+  // let componentsMolecules = await getComponents("molecules");
+  // let componentsAtoms = await getComponents("atoms");
+  
+
 
   const existingModel = await readModel();
 
-  console.log(existingModel, "existingModel");
   const existingViewTemplate = existingModel.views.find(
     (view) => view.viewTemplate.id === viewTemplateId
   );
-  console.log(existingViewTemplate, "existingViewTemplate");
 
   const viewTemplateData = existingViewTemplate.viewTemplate;
 
-  console.log(viewTemplateData, "viewTemplateData");
   viewTemplateData.option = newValue;
   if (newValue !== "") {
     viewTemplateData.slots = await getSlots(newValue);
@@ -29,8 +33,7 @@ export async function updateViewTemplateData(viewTemplateId, newValue = "") {
 
   await writeModel(newModel);
 
-  return viewTemplateData;
-
+  return {viewTemplateData, components}
   //   const file = `${filename}.mjs`;
   //   const module = await importModuleFromFile(file, filename);
   //   const slots = module.slots;
