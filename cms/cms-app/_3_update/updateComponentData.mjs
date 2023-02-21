@@ -29,7 +29,7 @@ export async function updateComponentData(slotId, newValue = "") {
 
   componentData.option = newValue;
   if (newValue !== "") {
-    componentData.functions = await getConstructors(newValue, "functions");
+    componentData.functions = await getConstructors(newValue, "functions","organisms");
   } else {
     componentData.functions = [];
   }
@@ -37,7 +37,7 @@ export async function updateComponentData(slotId, newValue = "") {
 
   componentData.option = newValue;
   if (newValue !== "") {
-    componentData.subComponents = await getConstructors(newValue, "subComponents");
+    componentData.subComponents = await getConstructors(newValue, "subComponents","organisms");
   } else {
     componentData.subComponents = [];
   }
