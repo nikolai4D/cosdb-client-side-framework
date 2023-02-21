@@ -2,11 +2,11 @@ import { readModel } from "../requests/readModel.mjs";
 import { writeModel } from "../requests/writeModel.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 import { getFunctions } from "../functions/getFunctions.mjs";
+import { updateSubcomponentData } from "./updateSubcomponentData.mjs";
 
 export async function updateComponentData(slotId, newValue = "") {
 
   const functions = await getFunctions();
-  console.log(functions, "functions");
 
   const existingModel = await readModel();
 
@@ -36,6 +36,10 @@ export async function updateComponentData(slotId, newValue = "") {
   if (newValue !== "") {
     componentData.functions = await getConstructors(newValue, "functions","organisms");
     componentData.subComponents = await getConstructors(newValue, "subComponents","organisms");
+
+    for (let subComponent of subComponents) {
+      updateComponentData(slotId, subComponent.subComponent)
+    }
 
   } else {
     componentData.functions = [];

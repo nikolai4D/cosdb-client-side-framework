@@ -22,7 +22,6 @@ export async function eventChangeDropdown(id, key) {
   }
   else {
 
-    console.log(selectedValue);
     const updatedComponentData = await updateComponentData(
       id,
       selectedValue
@@ -30,7 +29,5 @@ export async function eventChangeDropdown(id, key) {
 
     return await updateComponentDom(updatedComponentData);
 
-
-    console.log("else");
   }
 }
