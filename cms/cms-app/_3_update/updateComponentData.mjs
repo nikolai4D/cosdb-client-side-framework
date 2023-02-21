@@ -31,3 +31,4 @@ export async function updateComponentData(viewTemplateId, componentId, newValue 
 
   return viewTemplateData;
 
+}
