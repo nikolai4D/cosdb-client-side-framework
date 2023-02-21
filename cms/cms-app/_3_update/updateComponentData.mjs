@@ -1,6 +1,6 @@
 import { readModel } from "../requests/readModel.mjs";
 import { writeModel } from "../requests/writeModel.mjs";
-import { getSlots } from "../functions/getSlots.mjs";
+import { getConstructors } from "../functions/getConstructors.mjs";
 
 export async function updateComponentData(slotId, newValue = "") {
 
@@ -18,18 +18,39 @@ export async function updateComponentData(slotId, newValue = "") {
 
   console.log(existingSlot)
 
+  const componentData = existingSlot.component;
+
+
   // const existingComponent = existingSlot.find(
   //   (view) => view.Component.id === componentId
   // );
 
   // const slotData = existingSlot.viewTemplate;
 
-  // slotData.option = newValue;
-  // if (newValue !== "") {
-  //   slotData.slots = await getSlots(newValue);
-  // } else {
-  //   slotData.slots = [];
-  // }
+  componentData.option = newValue;
+  if (newValue !== "") {
+    componentData.functions = await getConstructors(newValue, "functions");
+  } else {
+    componentData.functions = [];
+  }
+
+
+  componentData.option = newValue;
+  if (newValue !== "") {
+    componentData.subComponents = await getConstructors(newValue, "subComponents");
+  } else {
+    componentData.subComponents = [];
+  }
+
+  console.log(existingModel, "existing model")
+  // existingModel.views.forEach(
+  //   (view) =>  {view.viewTemplate.slots.forEach((slot) => 
+  //     {if (slot.id === slotId) {
+  //       existingSlot = slot
+  //       return
+  //     }})}
+  // );
+
 
   // existingSlot.viewTemplate = slotData;
 
