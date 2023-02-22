@@ -1,7 +1,7 @@
 import { Organism } from "./Organism.mjs";
 import { newOrganism } from "./newOrganism.mjs";
 import { Function } from "../_7_function/Function.mjs";
-import { newFunction } from ".../_7_function/newFunction.mjs";
+import { newFunction } from "../_7_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
 export async function createOrganism(componentBody, id, selectedValue) {
