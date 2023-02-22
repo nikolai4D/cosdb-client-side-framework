@@ -12,7 +12,7 @@ export async function newViewTemplate(parentId) {
   components = ["", ...components];
 
   viewTemplate.customType = "viewTemplate";
-  viewTemplate.key = customType;
+  viewTemplate.key = viewTemplate.customType;
   viewTemplate.values = components;
   viewTemplate.selectedValue = "";
   viewTemplate.id = await getUuid();
