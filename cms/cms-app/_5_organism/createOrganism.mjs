@@ -76,12 +76,12 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
 function addSubcomponentsToBody(subs, body) {
   console.log(subs, body)
+  body.append(...subs)
+  // subs.forEach((sub) => { 
+  //   console.log(sub, body)
 
-  subs.forEach((sub) => { 
-    console.log(sub, body)
-
-    body.appendChild(sub);
-  });
+  //   body.appendChild(sub);
+  // });
 }
 
 function createSubcomponentsEl(subComps, id, compBody) {
