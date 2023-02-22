@@ -16,13 +16,42 @@ export async function createOrganism(componentBody, id, selectedValue) {
     constructorTypeOrganisms,
     type
   );
-  console.log(componentOrganisms);
+  
   if (componentOrganisms){
-  componentOrganisms.forEach(async (organism) => {
-    const [[key, value]] = Object.entries(organism);
-    console.log({ key, value });
+    componentOrganisms.forEach(async (organism) => {
+      const [[key, value]] = Object.entries(organism);
+      console.log({ key, value });
 
-    // const subOrganism = await Organism(componentBody, id, selectedValue);
+      // const subOrganism = await Organism(componentBody, id, selectedValue);
+
+      const organismKey = key;
+      const organismValue = value;
+      const organismParentId = id;
+    
+      const childSlot = await Organism(
+        await newOrganism(organismKey, organismValue, organismParentId),
+        organismBody
+      );
+    
+      componentBody.appendChild(childSlot);
+    });
+
+}
+
+  //--------------------------------
+
+  // //get Molecules
+  const constructorTypeMolecules = "molecules";
+  const componentMolecules = await getConstructors(
+    filename,
+    constructorTypeMolecules,
+    type
+  );
+  if (componentMolecules){
+
+  componentMolecules.forEach(async (molecule) => {
+    const [[key, value]] = Object.entries(molecule);
+    console.log({ key, value });
 
     const organismKey = key;
     const organismValue = value;
@@ -34,24 +63,9 @@ export async function createOrganism(componentBody, id, selectedValue) {
     );
   
     componentBody.appendChild(childSlot);
+    
   });
-
-}
-
-  //--------------------------------
-
-  // //get Molecules
-  // const constructorTypeMolecules = "molecules";
-  // const componentMolecules = await getConstructors(
-  //   filename,
-  //   constructorTypeMolecules,
-  //   type
-  // );
-  // componentMolecules.forEach(async (molecule) => {
-  //   const [[key, value]] = Object.entries(molecule);
-  //   console.log({ key, value });
-  // });
-
+  }
   // //--------------------------------
 
   // //get Functions
