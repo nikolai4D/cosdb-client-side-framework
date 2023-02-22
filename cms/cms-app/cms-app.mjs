@@ -1,4 +1,4 @@
-import { create } from "./_1_create/create.mjs";
+import { create } from "./functions/create.mjs";
 // import { read } from "./_2_read/read.mjs";
 // import { update } from "./_3_update/update.mjs";
 // import { delete } from "./_4_delete/delete.mjs";
