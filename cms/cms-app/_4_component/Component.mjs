@@ -30,7 +30,5 @@ export async function Component(component) {
 
   ComponentDiv.appendChild(ComponentAccordionDropdown);
 
-  // bara första nivån kommer ha dropdown
-
   return ComponentDiv;
 }
