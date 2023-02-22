@@ -63,6 +63,8 @@ export async function createOrganism(componentBody, id, selectedValue) {
     type
   );
 
+  console.log(constructorFunctions)
+
   if (componentFunctions) {
     await componentFunctions(
       componentMolecules,
