@@ -12,11 +12,11 @@ export async function createSlots(viewTemplateBody, id, selectedValue) {
     type
   );
 
-  console.log({ viewTemplateSlots })
+  console.log({ viewTemplateSlots });
 
   viewTemplateSlots.forEach(async (slot) => {
     const [[key, value]] = Object.entries(slot);
-    console.log({ key, value }})
+    console.log({ key, value });
 
     const slotKey = key;
     const slotValues = [];
