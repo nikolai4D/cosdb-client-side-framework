@@ -5,9 +5,8 @@
 import { createOrganism } from "../_5_organism/createOrganism.mjs";
 import { createSlots } from "../_3_slot/createSlots.mjs";
 
-export async function eventChangeDropdown(event) {
-  const select = event.target
-  const id = select.id
+export async function eventChangeDropdown(id) {
+  const select = document.getElementById(id);
   const selectedValue = select.value;
   const customType = select.getAttribute("customType");
   const parentId = select.getAttribute("parentId");
