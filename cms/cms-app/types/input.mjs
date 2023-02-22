@@ -17,7 +17,7 @@ export async function input(
   inputEl.id = id;
   inputEl.setAttribute("parentId", parentId);
   inputEl.setAttribute("customType", customType);
-  inputEl.addEventListener("change", () => eventChangeInput(id, inputEl.value));
+  inputEl.addEventListener("change", () => eventChangeInput(id));
 
   const container = document.createElement("div");
   container.appendChild(labelEl);
