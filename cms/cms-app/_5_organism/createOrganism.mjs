@@ -66,7 +66,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
   console.log(componentFunctions)
 
   if (componentFunctions) {
-    await componentFunctions(
+    await createFunctionsEl(
       componentMolecules,
       id,
       organismBody,
@@ -112,7 +112,7 @@ function createSubcomponentsEl(subComps, id, compBody, parentBody) {
   });
 }
 
-function createFunctionEl(subComps, id, compBody, parentBody) {
+function createFunctionsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
     console.log({ key, value });
