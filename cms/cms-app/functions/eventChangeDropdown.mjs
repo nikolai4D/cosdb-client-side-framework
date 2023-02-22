@@ -3,9 +3,9 @@
 // import { writeModel } from "../requests/writeModel.mjs";
 import { createSlots } from "../_3_slot/createSlots.mjs";
 
-export async function eventChangeDropdown(e, id) {
-  console.log(e, "e")
-  const select = document.getElementById(id);
+export async function eventChangeDropdown(event) {
+  const select = event.target
+  const id = select.id
   const selectedValue = select.value;
   const customType = select.getAttribute("customType");
   const parentId = select.getAttribute("parentId");
