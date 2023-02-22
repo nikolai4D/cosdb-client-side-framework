@@ -22,7 +22,7 @@ export async function newComponent(parentId) {
 
   const components = ["", ...organisms, ...molecules, ...atoms];
 
-  Component.customType = "Component";
+  Component.customType = "component";
   Component.key = Component.customType;
   Component.values = components;
   Component.selectedValue = "";
