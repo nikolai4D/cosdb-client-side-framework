@@ -2,11 +2,15 @@
 // import { updateField } from "../functions/updateField.mjs";
 // import { writeModel } from "../requests/writeModel.mjs";
 
-export async function eventChangeDropdown(customType, key, id, parentId) {
+export async function eventChangeDropdown(id) {
   const select = document.getElementById(id);
   const selectedValue = select.value;
   const customType = select.getAttribute("customType");
   const parentId = select.getAttribute("parentId");
 
-  console.log("update: ", customType, ": ", { id, parentId, selectedValue });
+  console.log("update: ", customType, ": ", {
+    id,
+    parentId,
+    selectedValue,
+  });
 }
