@@ -6,7 +6,7 @@ import { newComponent } from "../_4_component/newComponent.mjs";
 export async function Slot(slot) {
   console.log("Slot");
   const SlotDiv = document.createElement("div");
-  SlotDiv.classList.add(Slot.customType);
+  SlotDiv.classList.add(slot.customType);
 
   const customType = slot.customType;
   const key = slot.key;
