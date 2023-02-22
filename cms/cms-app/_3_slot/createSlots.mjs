@@ -19,12 +19,11 @@ export async function createSlots(viewTemplateBody, id, selectedValue) {
     console.log({ key, value });
 
     const slotKey = key;
-    const slotValues = [];
     const slotValue = value;
     const slotParentId = id;
 
     const childSlot = await Slot(
-      await newSlot(slotKey, slotValues, slotValue, slotParentId)
+      await newSlot(slotKey, slotValue, slotParentId)
     );
 
     viewTemplateBody.appendChild(childSlot);
