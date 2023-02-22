@@ -19,7 +19,7 @@ export async function newComponent(parentId) {
     (component) => component.name
   );
 
-  components = ["", ...organisms, ...molecules, ...atoms];
+  const components = ["", ...organisms, ...molecules, ...atoms];
 
   Component.customType = "Component";
   Component.key = Component.customType;
