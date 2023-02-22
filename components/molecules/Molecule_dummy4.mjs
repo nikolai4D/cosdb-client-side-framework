@@ -23,8 +23,8 @@ export function Molecule_dummy4() {
 
   return `
   <div>
-    <div>${this.subComponents[0].subComponent}</div>
-    <div>${this.subComponents[1].subComponent}</div>
+    <div>${this.molecules[0].molecule}</div>
+    <div>${this.molecules[1].molecule}</div>
   </div>
 `;
 }
