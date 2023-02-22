@@ -18,7 +18,9 @@ export function dropdown(
   selectEl.disabled = valueDisabled;
   selectEl.setAttribute("parentId", parentId);
   selectEl.setAttribute("customType", customType);
-  selectEl.addEventListener("change", () => eventChangeDropdown(id, key));
+  selectEl.addEventListener("change", () =>
+    eventChangeDropdown(customType, key, id, parentId)
+  );
 
   // empty readonly option
   const optionEl = document.createElement("option");
