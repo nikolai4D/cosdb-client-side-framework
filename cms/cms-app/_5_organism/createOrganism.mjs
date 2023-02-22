@@ -22,6 +22,17 @@ export async function createOrganism(componentBody, id, selectedValue) {
     console.log({ key, value });
 
     // const subOrganism = await Organism(componentBody, id, selectedValue);
+
+    const organismKey = key;
+    const organismValue = value;
+    const organismParentId = id;
+  
+    const childSlot = await Organism(
+      await newOrganism(organismKey, organismValue, organismParentId),
+      organismBody
+    );
+  
+    componentBody.appendChild(childSlot);
   });
 
   //--------------------------------
