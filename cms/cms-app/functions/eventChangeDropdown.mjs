@@ -17,6 +17,9 @@ export async function eventChangeDropdown(id) {
 
   if (customType === "viewTemplate") {
     const viewTemplateBody = document.getElementById("accordion-body-" + id);
+    while (viewTemplateBody.firstChild) {
+      viewTemplateBody.removeChild(viewTemplateBody.firstChild);
+    }
     await createSlots(viewTemplateBody, id, selectedValue);
   }
 }
