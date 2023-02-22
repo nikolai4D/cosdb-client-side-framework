@@ -10,6 +10,7 @@ export async function accordion(
   id,
   parentId
 ) {
+  console.log(headerContent, bodyContent, customType, key, value, id, parentId);
   const accordion = document.createElement("div");
   accordion.classList.add("accordion");
 
