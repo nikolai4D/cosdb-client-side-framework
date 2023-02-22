@@ -18,7 +18,7 @@ export async function accordion(
 
   const headerAccordion = document.createElement("div");
   headerAccordion.classList.add("accordion-header");
-  headerAccordion.appendChild(headerContent);
+  headerAccordion.appendChild(await headerContent);
 
   headerAccordion.addEventListener("click", (event) => {
     if (event.target.tagName === "OPTION") {

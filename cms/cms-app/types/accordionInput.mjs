@@ -10,7 +10,7 @@ export async function accordionInput(
   parentId,
   valueDisabled
 ) {
-  const headerContent = input(
+  const headerContent = await input(
     customType,
     key,
     value,
