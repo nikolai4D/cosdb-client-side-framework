@@ -2,18 +2,35 @@ import { dropdown } from "./dropdown.mjs";
 import { accordion } from "./accordion.mjs";
 
 export function accordionDropdown(
-  body,
+  bodyDiv,
+  customType,
   key,
   values,
   selectedValue,
   id,
-  keyDisabled,
-  keyType
+  parentId,
+  valueDisabled
 ) {
-  const headerContent = dropdown(key, values, selectedValue, id, keyDisabled, keyType);
-  const bodyContent = body;
+  const headerContent = dropdown(
+    customType,
+    key,
+    values,
+    selectedValue,
+    id,
+    parentId,
+    valueDisabled
+  );
+  const bodyContent = bodyDiv;
 
-  const accordionDropdown = accordion(headerContent, bodyContent, id, key);
+  const accordionDropdown = accordion(
+    headerContent,
+    bodyContent,
+    customType,
+    key,
+    selectedValue,
+    id,
+    parentId
+  );
 
   return accordionDropdown;
 }

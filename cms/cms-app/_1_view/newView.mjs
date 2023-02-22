@@ -4,7 +4,7 @@ export async function newView() {
   const view = {};
 
   view.customType = "view";
-  view.key = "view";
+  view.key = customType;
   view.value = "New View";
   view.id = await getUuid();
   view.parentId = view.id;
