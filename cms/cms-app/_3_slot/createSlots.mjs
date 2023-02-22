@@ -1,4 +1,5 @@
 import { Slot } from "./Slot.mjs";
+import { newSlot } from "./newSlot.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
 export async function createSlots(viewTemplateBody, id, selectedValue) {
@@ -19,10 +20,10 @@ export async function createSlots(viewTemplateBody, id, selectedValue) {
     const slotValue = value;
     const slotParentId = id;
 
-    const newSlot = await Slot(
+    const childSlot = await Slot(
       await newSlot(slotKey, slotValues, slotValue, slotParentId)
     );
 
-    viewTemplateBody.appendChild(newSlot);
+    viewTemplateBody.appendChild(childSlot);
   });
 }
