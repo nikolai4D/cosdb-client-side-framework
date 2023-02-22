@@ -16,7 +16,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
     constructorTypeOrganisms,
     type
   );
-  console.log();
+  console.log(componentOrganisms);
   componentOrganisms.forEach(async (organism) => {
     const [[key, value]] = Object.entries(organism);
     console.log({ key, value });
