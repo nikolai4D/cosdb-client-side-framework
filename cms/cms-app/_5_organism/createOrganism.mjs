@@ -26,33 +26,33 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   //--------------------------------
 
-  //get Molecules
-  const constructorTypeMolecules = "molecules";
-  const componentMolecules = await getConstructors(
-    filename,
-    constructorTypeMolecules,
-    type
-  );
-  componentMolecules.forEach(async (molecule) => {
-    const [[key, value]] = Object.entries(molecule);
-    console.log({ key, value });
-  });
+  // //get Molecules
+  // const constructorTypeMolecules = "molecules";
+  // const componentMolecules = await getConstructors(
+  //   filename,
+  //   constructorTypeMolecules,
+  //   type
+  // );
+  // componentMolecules.forEach(async (molecule) => {
+  //   const [[key, value]] = Object.entries(molecule);
+  //   console.log({ key, value });
+  // });
 
-  //--------------------------------
+  // //--------------------------------
 
-  //get Functions
-  const constructorTypeFunctions = "functions";
-  const componentFunctions = await getConstructors(
-    filename,
-    constructorTypeFunctions,
-    type
-  );
-  componentFunctions.forEach(async (fn) => {
-    const [[key, value]] = Object.entries(fn);
-    console.log({ key, value });
-  });
+  // //get Functions
+  // const constructorTypeFunctions = "functions";
+  // const componentFunctions = await getConstructors(
+  //   filename,
+  //   constructorTypeFunctions,
+  //   type
+  // );
+  // componentFunctions.forEach(async (fn) => {
+  //   const [[key, value]] = Object.entries(fn);
+  //   console.log({ key, value });
+  // });
 
-  //--------------------------------
+  // //--------------------------------
 
   const organismKey = key;
   const organismValue = value;
