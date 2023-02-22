@@ -20,12 +20,6 @@ export function dropdown(
   selectEl.setAttribute("customType", customType);
   selectEl.addEventListener("change", () => eventChangeDropdown(id));
 
-  // empty readonly option
-  const optionEl = document.createElement("option");
-  optionEl.value = "";
-  optionEl.selected = true;
-  selectEl.appendChild(optionEl);
-
   for (const value of values) {
     const optionElValue = document.createElement("option");
     optionElValue.value = value;
