@@ -13,7 +13,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
   const subOrganisms = await getSubcomponents(filename, type);
   
   if (subOrganisms){
-    let subOrganismsEl = await createSubcomponentsEl(subOrganisms, id, organismBody);
+    let subOrganismsEl = await createSubcomponentsEl(subOrganisms, id, organismBody, componentBody);
     addSubcomponentsToBody(subOrganismsEl, componentBody);
 }
 
@@ -91,8 +91,8 @@ function addSubcomponentsToBody(subs, body) {
   // });
 }
 
-function createSubcomponentsEl(subComps, id, compBody) {
-  let childSlots = [];
+function createSubcomponentsEl(subComps, id, compBody, parentBody) {
+  // let childSlots = [];
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
     console.log({ key, value });
@@ -101,13 +101,17 @@ function createSubcomponentsEl(subComps, id, compBody) {
     const organismValue = value;
     const organismParentId = id;
 
-    childSlots.push(await Organism(
+    let childSlot = await Organism(
       await newOrganism(organismKey, organismValue, organismParentId),
       compBody
-    ))
+    )
+
+    parentBody.appendChild(childSlot);
 
   });
-  return childSlots;
+  // return childSlots;
+
+
 }
 
 async function getSubcomponents(filename, type) {
