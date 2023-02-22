@@ -15,7 +15,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
   if (subOrganisms){
     let subOrganismsEl = createSubcomponentsEl(subOrganisms, id, organismBody);
     console.log(subOrganismsEl)
-    addSubcomponentsToBody(subOrganismsEl, organismBody);
+    addSubcomponentsToBody(subOrganismsEl, componentBody);
 }
 
   //--------------------------------
