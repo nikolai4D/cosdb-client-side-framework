@@ -14,6 +14,7 @@ export async function createSlots(viewTemplateBody, id, selectedValue) {
 
   viewTemplateSlots.forEach(async (slot) => {
     const [[key, value]] = Object.entries(slot);
+    console.log({ key, value }})
 
     const slotKey = key;
     const slotValues = [];
