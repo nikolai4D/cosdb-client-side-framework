@@ -17,6 +17,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
     type
   );
   console.log(componentOrganisms);
+  if (componentOrganisms){
   componentOrganisms.forEach(async (organism) => {
     const [[key, value]] = Object.entries(organism);
     console.log({ key, value });
@@ -34,6 +35,8 @@ export async function createOrganism(componentBody, id, selectedValue) {
   
     componentBody.appendChild(childSlot);
   });
+
+}
 
   //--------------------------------
 
