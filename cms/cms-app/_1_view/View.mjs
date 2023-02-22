@@ -13,7 +13,7 @@ export async function View(view) {
   const valueDisabled = view.valueDisabled;
 
   const bodyDiv = document.createElement("div");
-  const viewTemplateDiv = ""; //await ViewTemplate(view);
+  const viewTemplateDiv = {}; //await ViewTemplate(view);
   bodyDiv.appendChild(viewTemplateDiv);
 
   const viewAccordionInput = accordionInput(
