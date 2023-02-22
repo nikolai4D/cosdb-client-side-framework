@@ -20,6 +20,9 @@ export async function eventChangeDropdown(id) {
     while (viewTemplateBody.firstChild) {
       viewTemplateBody.removeChild(viewTemplateBody.firstChild);
     }
-    await createSlots(viewTemplateBody, id, selectedValue);
+
+    if (selectedValue !== "") {
+      await createSlots(viewTemplateBody, id, selectedValue);
+    }
   }
 }
