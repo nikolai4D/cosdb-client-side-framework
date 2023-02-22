@@ -1,7 +1,7 @@
 export function Organism_dummy2() {
   this.organisms = [
     {
-      organism: "Organism_dummy1"
+      organism: "Organism_dummy4"
     }
   ]
 
