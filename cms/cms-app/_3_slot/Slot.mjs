@@ -7,8 +7,7 @@ export async function Slot(slot) {
 
   const customType = slot.customType;
   const key = slot.key;
-  const values = slot.values;
-  const selectedValue = slot.selectedValue;
+  const value = slot.value;
   const id = slot.id;
   const parentId = slot.parentId;
   const valueDisabled = slot.valueDisabled;
@@ -17,12 +16,11 @@ export async function Slot(slot) {
   const componentDiv = document.createElement("div"); //await Component(id);
   bodyDiv.appendChild(componentDiv);
 
-  const SlotAccordionDropdown = await accordionDropdown(
+  const SlotAccordionDropdown = await accordionInput(
     bodyDiv,
     customType,
     key,
-    values,
-    selectedValue,
+    value,
     id,
     parentId,
     valueDisabled
