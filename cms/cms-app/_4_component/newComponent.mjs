@@ -3,7 +3,7 @@ import { readComponents } from "../requests/readComponents.mjs";
 
 export async function newComponent(parentId) {
   console.log("newComponent");
-  const Component = {};
+  const component = {};
 
   const organismsDir = "Organisms";
   const moleculesDir = "Molecules";
@@ -22,13 +22,13 @@ export async function newComponent(parentId) {
 
   const components = ["", ...organisms, ...molecules, ...atoms];
 
-  Component.customType = "component";
-  Component.key = Component.customType;
-  Component.values = components;
-  Component.selectedValue = "";
-  Component.id = await getUuid();
-  Component.parentId = parentId;
-  Component.valueDisabled = false;
+  component.customType = "component";
+  component.key = component.customType;
+  component.values = components;
+  component.selectedValue = "";
+  component.id = await getUuid();
+  component.parentId = parentId;
+  component.valueDisabled = false;
 
-  return Component;
+  return component;
 }

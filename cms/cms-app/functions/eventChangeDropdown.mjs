@@ -25,4 +25,15 @@ export async function eventChangeDropdown(id) {
       await createSlots(viewTemplateBody, id, selectedValue);
     }
   }
+  if (customType === "component") {
+    if (selectedValue.startsWith("Organism")) {
+      console.log("Organism");
+    }
+    if (selectedValue.startsWith("Molecule")) {
+      console.log("Molecule");
+    }
+    if (selectedValue.startsWith("Atom")) {
+      console.log("Atom");
+    }
+  }
 }
