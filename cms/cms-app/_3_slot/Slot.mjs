@@ -4,6 +4,7 @@ import { newComponent } from "../_4_component/newComponent.mjs";
 // import { Slot } from "./Slot.mjs";
 
 export async function Slot(slot) {
+  console.log("Slot");
   const SlotDiv = document.createElement("div");
   SlotDiv.classList.add(Slot.customType);
 
@@ -15,7 +16,7 @@ export async function Slot(slot) {
   const valueDisabled = slot.valueDisabled;
 
   const bodyDiv = document.createElement("div");
-  const componentDiv = document.createElement("div"); //await Component(id);
+  const componentDiv = await Component(await newComponent(parentId));
   bodyDiv.appendChild(componentDiv);
 
   const SlotAccordionInput = await accordionInput(

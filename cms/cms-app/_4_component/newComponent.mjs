@@ -2,6 +2,7 @@ import { getUuid } from "../requests/getUuid.mjs";
 import { readComponents } from "../requests/readComponents.mjs";
 
 export async function newComponent(parentId) {
+  console.log("newComponent");
   const Component = {};
 
   const organismsDir = "Organisms";
