@@ -7,47 +7,29 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   //--------------------------------
   const type = "organisms";
+  const constructorTypeOrganisms = "organisms";
   const organismBody = document.createElement("div");
 
   //get subOrganisms
-  const subOrganisms = await getSubcomponents(filename, type);
-  
-  if (subOrganisms){
-    let subOrganismsEl = await createSubcomponentsEl(subOrganisms, id, organismBody, componentBody);
-    addSubcomponentsToBody(subOrganismsEl, componentBody);
-}
+
+  const subOrganisms = await getConstructors(filename, constructorTypeOrganisms, type);
+  if (subOrganisms) {
+    await createSubcomponentsEl(subOrganisms, id, organismBody, componentBody);
+  }
 
   //--------------------------------
 
   //get Molecules
+
   const constructorTypeMolecules = "molecules";
-  const componentMolecules = await getConstructors(
-    filename,
-    constructorTypeMolecules,
-    type
-  );
-  if (componentMolecules){
-
-  componentMolecules.forEach(async (molecule) => {
-    const [[key, value]] = Object.entries(molecule);
-    console.log({ key, value });
-
-    const organismKey = key;
-    const organismValue = value;
-    const organismParentId = id;
-  
-    const childSlot = await Organism(
-      await newOrganism(organismKey, organismValue, organismParentId),
-      organismBody
-    );
-  
-    componentBody.appendChild(childSlot);
-
-  });
+  const componentMolecules = await getConstructors(filename,constructorTypeMolecules,type);
+  if (componentMolecules) {
+    await createSubcomponentsEl(componentMolecules, id, organismBody, componentBody);
   }
-  // //--------------------------------
 
-  // //get Functions
+  //--------------------------------
+
+  //get Functions
   // const constructorTypeFunctions = "functions";
   // const componentFunctions = await getConstructors(
   //   filename,
@@ -59,7 +41,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
   //   console.log({ key, value });
   // });
 
-  // //--------------------------------
+  //--------------------------------
 
   // const organismKey = key;
   // const organismValue = value;
@@ -73,26 +55,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
   // componentBody.appendChild(childSlot);
 }
 
-function addSubcomponentsToBody(subs, body) {
-  console.log(subs, body)
-
-  subs.forEach((sub) => {
-    body.appendChild(sub);
-  });
-
-  // body.append(...subs),
-  // body.appendChild(subs)
-
-  // console.log(body)
-  // subs.forEach((sub) => { 
-  //   console.log(sub, body)
-
-  //   body.appendChild(sub);
-  // });
-}
-
 function createSubcomponentsEl(subComps, id, compBody, parentBody) {
-  // let childSlots = [];
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
     console.log({ key, value });
@@ -105,22 +68,10 @@ function createSubcomponentsEl(subComps, id, compBody, parentBody) {
       await newOrganism(organismKey, organismValue, organismParentId),
       compBody
     )
-
+    
     parentBody.appendChild(childSlot);
 
   });
-  // return childSlots;
-
-
 }
 
-async function getSubcomponents(filename, type) {
-  const constructorTypeOrganisms = "organisms";
-  const componentOrganisms = await getConstructors(
-    filename,
-    constructorTypeOrganisms,
-    type
-  );
-  return componentOrganisms;
-}
 
