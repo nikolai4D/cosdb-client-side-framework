@@ -65,14 +65,14 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   // //--------------------------------
 
-  const organismKey = key;
-  const organismValue = value;
-  const organismParentId = id;
+  // const organismKey = key;
+  // const organismValue = value;
+  // const organismParentId = id;
 
-  const childSlot = await Organism(
-    await newOrganism(organismKey, organismValue, organismParentId),
-    organismBody
-  );
+  // const childSlot = await Organism(
+  //   await newOrganism(organismKey, organismValue, organismParentId),
+  //   organismBody
+  // );
 
-  componentBody.appendChild(childSlot);
+  // componentBody.appendChild(childSlot);
 }
