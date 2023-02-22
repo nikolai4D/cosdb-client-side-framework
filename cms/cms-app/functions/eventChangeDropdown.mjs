@@ -13,4 +13,8 @@ export async function eventChangeDropdown(id) {
     parentId,
     selectedValue,
   });
+
+  if (customType === "viewTemplate") {
+    console.log("get slots and append to viewTemplate");
+  }
 }
