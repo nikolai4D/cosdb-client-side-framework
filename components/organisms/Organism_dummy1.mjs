@@ -1,4 +1,4 @@
-export function Organism_dummy2() {
+export function Organism_dummy1() {
   this.organisms = [
     {
       organism: "Molecule_dummy3"
