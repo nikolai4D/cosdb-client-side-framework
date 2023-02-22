@@ -2,6 +2,7 @@ import { accordionDropdown } from "../types/accordionDropdown.mjs";
 // import { ViewTemplate } from "./ViewTemplate.mjs";
 
 export async function ViewTemplate(viewTemplate) {
+  console.log("ViewTemplate" + viewTemplate);
   const viewTemplateDiv = document.createElement("div");
   viewTemplateDiv.classList.add(viewTemplate.customType);
 
