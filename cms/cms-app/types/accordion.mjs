@@ -1,5 +1,5 @@
-import { readModel } from "../requests/readModel.mjs";
-import { writeModel } from "../requests/writeModel.mjs";
+// import { readModel } from "../requests/readModel.mjs";
+// import { writeModel } from "../requests/writeModel.mjs";
 
 export async function accordion(
   headerContent,
