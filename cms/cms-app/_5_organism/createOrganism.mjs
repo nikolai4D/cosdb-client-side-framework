@@ -76,10 +76,15 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
 function addSubcomponentsToBody(subs, body) {
   console.log(subs, body)
-  body.append(...subs)
+
+  subs.forEach((sub) => {
+    body.appendChild(sub);
+  });
+
+  // body.append(...subs),
   // body.appendChild(subs)
 
-  console.log(body)
+  // console.log(body)
   // subs.forEach((sub) => { 
   //   console.log(sub, body)
 
