@@ -3,7 +3,7 @@ export function createViewButton() {
   createViewButton.textContent = "Create View";
   createViewButton.classList.add("createViewButton");
   createViewButton.addEventListener("click", async () => {
-    conslog.log("createViewButton clicked");
+    console.log("createViewButton clicked");
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 }
