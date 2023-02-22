@@ -1,6 +1,7 @@
 // import { readModel } from "../requests/readModel.mjs";
 // import { updateField } from "../functions/updateField.mjs";
 // import { writeModel } from "../requests/writeModel.mjs";
+import { createSlots } from "../_3_slot/createSlots.mjs";
 
 export async function eventChangeDropdown(id) {
   const select = document.getElementById(id);
@@ -15,6 +16,7 @@ export async function eventChangeDropdown(id) {
   });
 
   if (customType === "viewTemplate") {
-    console.log("get slots and append to viewTemplate");
+    const viewTemplateBody = getElementById("accordion-body-" + id);
+    await createSlots(viewTemplateBody, id, selectedValue);
   }
 }
