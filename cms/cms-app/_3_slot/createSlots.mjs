@@ -1,4 +1,3 @@
-import { createSlot } from "./createSlot.mjs";
 import { Slot } from "./Slot.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
