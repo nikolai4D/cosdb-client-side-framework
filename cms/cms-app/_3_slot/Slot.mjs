@@ -1,4 +1,4 @@
-import { accordionDropdown } from "../types/accordionDropdown.mjs";
+import { accordionInput } from "../types/accordionInput.mjs";
 // import { Slot } from "./Slot.mjs";
 
 export async function Slot(slot) {
@@ -16,7 +16,7 @@ export async function Slot(slot) {
   const componentDiv = document.createElement("div"); //await Component(id);
   bodyDiv.appendChild(componentDiv);
 
-  const SlotAccordionDropdown = await accordionInput(
+  const SlotAccordionInput = await accordionInput(
     bodyDiv,
     customType,
     key,
@@ -26,7 +26,7 @@ export async function Slot(slot) {
     valueDisabled
   );
 
-  SlotDiv.appendChild(SlotAccordionDropdown);
+  SlotDiv.appendChild(SlotAccordionInput);
 
   return SlotDiv;
 }
