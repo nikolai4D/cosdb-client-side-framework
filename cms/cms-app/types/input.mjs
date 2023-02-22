@@ -13,7 +13,7 @@ export function input(
 
   const inputEl = document.createElement("input");
   inputEl.value = value;
-  inputEl.disabled = keyDisabled;
+  inputEl.disabled = valueDisabled;
   inputEl.id = id;
   inputEl.setAttribute("parentId", parentId);
   inputEl.setAttribute("customType", customType);
