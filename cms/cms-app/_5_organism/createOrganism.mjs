@@ -13,8 +13,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
   const subOrganisms = await getSubcomponents(filename, type);
   
   if (subOrganisms){
-    let subOrganismsEl = createSubcomponentsEl(subOrganisms, id, organismBody);
-    console.log(subOrganismsEl)
+    let subOrganismsEl = await createSubcomponentsEl(subOrganisms, id, organismBody);
     addSubcomponentsToBody(subOrganismsEl, componentBody);
 }
 
