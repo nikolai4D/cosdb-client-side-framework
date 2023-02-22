@@ -13,7 +13,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
   const subOrganisms = await getSubcomponents(filename, type);
   
   if (subOrganisms){
-    let subOrganismsEl = createSubcomponentsEl(subOrganisms, id, organismBody);
+    let subOrganismsEl = await createSubcomponentsEl(subOrganisms, id, organismBody);
     console.log(subOrganismsEl)
     addSubcomponentsToBody(subOrganismsEl, organismBody);
 }
@@ -90,7 +90,7 @@ function createSubcomponentsEl(subComps, id, compBody) {
     const organismValue = value;
     const organismParentId = id;
 
-    childSlots.push(Organism(
+    childSlots.push(await Organism(
       await newOrganism(organismKey, organismValue, organismParentId),
       compBody
     ))
