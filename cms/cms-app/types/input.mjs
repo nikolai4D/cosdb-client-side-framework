@@ -1,6 +1,6 @@
 import { eventChangeInput } from "../functions/eventChangeInput.mjs";
 
-export function input(
+export async function input(
   customType,
   key,
   value,

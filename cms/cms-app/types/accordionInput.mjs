@@ -2,7 +2,7 @@ import { input } from "./input.mjs";
 import { accordion } from "./accordion.mjs";
 
 export async function accordionInput(
-  body,
+  bodyDiv,
   customType,
   key,
   value,
@@ -18,7 +18,7 @@ export async function accordionInput(
     parentId,
     valueDisabled
   );
-  const bodyContent = await body;
+  const bodyContent = await bodyDiv;
 
   const accordionInput = await accordion(
     headerContent,

@@ -1,9 +1,10 @@
 import { accordionInput } from "../types/accordionInput.mjs";
-// import { ViewTemplate } from "./ViewTemplate.mjs";
+import { newViewTemplate } from "../_2_viewTemplate/newViewTemplate.mjs";
+import { ViewTemplate } from "../_2_viewTemplate/ViewTemplate.mjs";
 
 export async function View(view) {
   const viewDiv = document.createElement("div");
-  viewDiv.classList.add("view");
+  viewDiv.classList.add(view.customType);
 
   const customType = view.customType;
   const key = view.key;
@@ -13,7 +14,7 @@ export async function View(view) {
   const valueDisabled = view.valueDisabled;
 
   const bodyDiv = document.createElement("div");
-  const viewTemplateDiv = document.createElement("div"); //await ViewTemplate(view);
+  const viewTemplateDiv = await ViewTemplate(await newViewTemplate(id));
   bodyDiv.appendChild(viewTemplateDiv);
 
   const viewAccordionInput = await accordionInput(
