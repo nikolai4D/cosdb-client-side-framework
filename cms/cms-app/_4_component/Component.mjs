@@ -3,7 +3,7 @@ import { accordionDropdown } from "../types/accordionDropdown.mjs";
 export async function Component(component) {
   console.log("Component");
   const ComponentDiv = document.createElement("div");
-  ComponentDiv.classList.add(Component.customType);
+  ComponentDiv.classList.add(component.customType);
 
   const customType = component.customType;
   const key = component.key;
