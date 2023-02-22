@@ -16,7 +16,7 @@ export async function View(view) {
   const viewTemplateDiv = document.createElement("div"); //await ViewTemplate(view);
   bodyDiv.appendChild(viewTemplateDiv);
 
-  const viewAccordionInput = accordionInput(
+  const viewAccordionInput = await accordionInput(
     bodyDiv,
     customType,
     key,
