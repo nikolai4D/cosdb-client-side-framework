@@ -1,10 +1,10 @@
 export function Organism_dummy1() {
   this.organisms = [
     {
-      organism: "Molecule_dummy3"
+      organism: "Organism_dummy2"
     },
     {
-      organism: "Molecule_dummy4"
+      organism: "Organism_dummy3"
     }
   ]
 

@@ -1,10 +1,7 @@
 export function Organism_dummy2() {
   this.organisms = [
     {
-      organism: "Molecule_dummy3"
-    },
-    {
-      organism: "Molecule_dummy4"
+      organism: "Organism_dummy1"
     }
   ]
 
@@ -20,7 +17,6 @@ export function Organism_dummy2() {
   return `
   <div>
     <div>${this.organisms[0].organism}</div>
-    <div>${this.organisms[1].organism}</div>
   </div>
 `;
 }
