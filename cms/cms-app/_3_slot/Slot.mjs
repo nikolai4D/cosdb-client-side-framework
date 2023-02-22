@@ -1,4 +1,6 @@
 import { accordionInput } from "../types/accordionInput.mjs";
+import { Component } from "../_4_component/Component.mjs";
+import { newComponent } from "../_4_component/newComponent.mjs";
 // import { Slot } from "./Slot.mjs";
 
 export async function Slot(slot) {
