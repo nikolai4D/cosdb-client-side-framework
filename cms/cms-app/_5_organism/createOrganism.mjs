@@ -7,6 +7,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
   const type = "organisms";
 
   const organismBody = document.createElement("div");
+  //--------------------------------
 
   //get subOrganisms
   const constructorTypeOrganisms = "organisms";
@@ -15,10 +16,15 @@ export async function createOrganism(componentBody, id, selectedValue) {
     constructorTypeOrganisms,
     type
   );
-  componentOrganisms.forEach(async (slot) => {
-    const [[key, value]] = Object.entries(slot);
+  console.log();
+  componentOrganisms.forEach(async (organism) => {
+    const [[key, value]] = Object.entries(organism);
     console.log({ key, value });
+
+    // const subOrganism = await Organism(componentBody, id, selectedValue);
   });
+
+  //--------------------------------
 
   //get Molecules
   const constructorTypeMolecules = "molecules";
@@ -27,10 +33,12 @@ export async function createOrganism(componentBody, id, selectedValue) {
     constructorTypeMolecules,
     type
   );
-  componentMolecules.forEach(async (slot) => {
-    const [[key, value]] = Object.entries(slot);
+  componentMolecules.forEach(async (molecule) => {
+    const [[key, value]] = Object.entries(molecule);
     console.log({ key, value });
   });
+
+  //--------------------------------
 
   //get Functions
   const constructorTypeFunctions = "functions";
@@ -39,10 +47,12 @@ export async function createOrganism(componentBody, id, selectedValue) {
     constructorTypeFunctions,
     type
   );
-  componentFunctions.forEach(async (slot) => {
-    const [[key, value]] = Object.entries(slot);
+  componentFunctions.forEach(async (fn) => {
+    const [[key, value]] = Object.entries(fn);
     console.log({ key, value });
   });
+
+  //--------------------------------
 
   const organismKey = key;
   const organismValue = value;
