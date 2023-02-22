@@ -85,7 +85,6 @@ function createSubcomponentsEl(subComps, id, compBody) {
     const [[key, value]] = Object.entries(comp);
     console.log({ key, value });
 
-    // const subOrganism = await Organism(componentBody, id, selectedValue);
     const organismKey = key;
     const organismValue = value;
     const organismParentId = id;
@@ -96,6 +95,7 @@ function createSubcomponentsEl(subComps, id, compBody) {
     ))
 
   });
+  return childSlots;
 }
 
 async function getSubcomponents(filename, type) {
