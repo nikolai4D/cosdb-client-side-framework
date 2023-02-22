@@ -5,13 +5,13 @@ export async function Component(component) {
   const ComponentDiv = document.createElement("div");
   ComponentDiv.classList.add(Component.customType);
 
-  const customType = Component.customType;
-  const key = Component.key;
-  const values = Component.values;
-  const selectedValue = Component.selectedValue;
-  const id = Component.id;
-  const parentId = Component.parentId;
-  const valueDisabled = Component.valueDisabled;
+  const customType = component.customType;
+  const key = component.key;
+  const values = component.values;
+  const selectedValue = component.selectedValue;
+  const id = component.id;
+  const parentId = component.parentId;
+  const valueDisabled = component.valueDisabled;
 
   const bodyDiv = document.createElement("div");
   const contentDiv = document.createElement("div"); //await ?;
