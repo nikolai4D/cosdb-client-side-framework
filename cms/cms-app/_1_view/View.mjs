@@ -48,8 +48,8 @@ export async function View(view) {
       parentId: ""
     });
   }
-
-  await writeModel(json);
+  let newModel = existingModel;
+  await writeModel(newModel);
 
   return viewDiv;
 }
