@@ -51,22 +51,23 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   if (componentMolecules) {
 
-    console.log(componentMolecules)
+    // console.log(componentMolecules)
     
-    for (const comp of componentMolecules) {
-      console.log(comp)
-
-    await createMolecule(componentBody, id, comp.molecule) 
-    }
+    // for (const comp of componentMolecules) {
+      // console.log(comp)
+      // createSubMoleculesEl(comp, id, organismBody, componentBody)
+    // await createMolecule(componentBody, id, comp.molecule)     
+    await createSubMoleculesEl(
+      componentMolecules,
+      id,
+      organismBody,
+      componentBody
+    );
+    // }
 
   }
-  //   await createSubMoleculesEl(
-  //     componentMolecules,
-  //     id,
-  //     organismBody,
-  //     componentBody
-  //   );
-  // }
+
+  
 
   //--------------------------------
 
@@ -136,6 +137,7 @@ function createSubMoleculesEl(subComps, id, compBody, parentBody) {
     let newId = slotEls[0].id
     let nextLevelBody = document.getElementById("accordion-body-"+newId)
 
+    await createMolecule(nextLevelBody, newId, organismValue) 
 
     
     // await createAtom(nextLevelBody, id, organismValue)
