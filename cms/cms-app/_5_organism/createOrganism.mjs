@@ -1,7 +1,7 @@
 import { Organism } from "./Organism.mjs";
 import { newOrganism } from "./newOrganism.mjs";
-import { Molecule } from "../_6_Molecule.mjs";
-import { newMolecule } from "../_6_newMolecule.mjs";
+import { Molecule } from "../_6_molecule/Molecule.mjs";
+import { newMolecule } from "../_6_molecule/newMolecule.mjs";
 import { Function } from "../_7_function/Function.mjs";
 import { newFunction } from "../_7_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
