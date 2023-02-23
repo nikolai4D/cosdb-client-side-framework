@@ -24,13 +24,29 @@ export async function createOrganism(componentBody, id, selectedValue) {
     );
 
   if (subOrganisms) {
-    await createSubOrganismsEl(
-      subOrganisms,
-      id,
-      organismBody,
-      componentBody
-    );
-    createOrganism(organismBody,id, selectedValue)
+    // await createSubOrganismsEl(
+    //   subOrganisms,
+    //   id,
+    //   organismBody,
+    //   componentBody
+    // );
+    subOrganisms.forEach(async (comp) => {
+      const [[key, value]] = Object.entries(comp);
+      console.log({ key, value });
+  
+      const organismKey = key;
+      const organismValue = value;
+      const organismParentId = id;
+  
+      let childSlot = await Organism(
+        await newOrganism(organismKey, organismValue, organismParentId),
+        compBody
+      )
+  
+      parentBody.appendChild(childSlot);
+      console.log(childSlot,"childSlot", parentBody, "parentBody");
+      })
+    // createOrganism(organismBody, id, selectedValue)
   }
 
   
