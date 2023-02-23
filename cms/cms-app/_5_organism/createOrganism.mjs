@@ -46,11 +46,15 @@ export async function createOrganism(componentBody, id, selectedValue) {
   
       componentBody.appendChild(childSlot);
 
-      let slotEl = childSlot.getElementsByTagName("input")
-      console.log(slotEl, "slotEl")
+      let slotEls = childSlot.getElementsByTagName("input")
+      let nextLevelBody = document.getElementById("accordion-body-"+slotEls[0].id)
 
-      // let nextLevelBody = document.getElementById("accordion-body-"+childSlot.id)
-      // console.log(nextLevelBody, comp, "comp", childSlot,"childSlot", componentBody, "parentBody");
+      console.log(slotEl, "slotEl")
+      console.log(nextLevelBody, "nextLevelBody")
+
+
+      // let nextLevelBody = document.getElementBåyId("accordion-body-"+childSlot.id)
+      console.log(nextLevelBody, comp, "comp", childSlot,"childSlot", componentBody, "parentBody");
       
       // await createOrganism(nextLevelBody, id, organismValue)
       })
