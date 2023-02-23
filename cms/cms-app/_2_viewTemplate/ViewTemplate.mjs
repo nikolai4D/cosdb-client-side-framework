@@ -1,5 +1,6 @@
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
-// import { ViewTemplate } from "./ViewTemplate.mjs";
+import { readModel } from "../requests/readModel.mjs";
+import { writeModel } from "../requests/writeModel.mjs";
 
 export async function ViewTemplate(viewTemplate) {
   const viewTemplateDiv = document.createElement("div");
@@ -30,5 +31,23 @@ export async function ViewTemplate(viewTemplate) {
 
   viewTemplateDiv.appendChild(viewTemplateAccordionDropdown);
 
+  await updateViewTemplateInModel(id, value, parentId);
+
   return viewTemplateDiv;
 }
+
+
+
+
+async function updateViewTemplateInModel(id, value, parentId) {
+  let existingModel = await readModel();
+
+    existingModel.viewTemplates.push({
+      id,
+      value,
+      parentId
+    });
+  let newModel = existingModel;
+  await writeModel(newModel);
+}
+
