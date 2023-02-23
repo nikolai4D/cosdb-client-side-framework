@@ -1,6 +1,7 @@
 
 import { Molecule } from "./Molecule.mjs";
 import { newMolecule } from "./newMolecule.mjs";
+import { createAtom } from "../_7_atom/createAtom.mjs";
 import { Atom } from "../_7_atom/Atom.mjs";
 import { newAtom } from "../_7_atom/newAtom.mjs";
 import { Function } from "../_8_function/Function.mjs";
@@ -17,23 +18,23 @@ export async function createMolecule(componentBody, id, selectedValue) {
 
   //get Molecules
 
-  const constructorTypeMolecules = "molecules";
+//   const constructorTypeMolecules = "molecules";
 
-  const componentMolecules = await getConstructors(
-    filename,
-    constructorTypeMolecules,
-    type
-    );
+//   const componentMolecules = await getConstructors(
+//     filename,
+//     constructorTypeMolecules,
+//     type
+//     );
 
-  if (componentMolecules) {
-    console.log("HELLOOOO")
-    await createSubMoleculesEl(
-      componentMolecules,
-      id,
-      organismBody,
-      componentBody
-    );
-  }
+//   if (componentMolecules) {
+//     console.log("HELLOOOO")
+//     await createSubMoleculesEl(
+//       componentMolecules,
+//       id,
+//       organismBody,
+//       componentBody
+//     );
+//   }
 
   //--------------------------------
 
@@ -79,24 +80,6 @@ export async function createMolecule(componentBody, id, selectedValue) {
   }
 }
 
-function createSubMoleculesEl(subComps, id, compBody, parentBody) {
-  subComps.forEach(async (comp) => {
-    const [[key, value]] = Object.entries(comp);
-
-    const organismKey = key;
-    const organismValue = value;
-    const organismParentId = id;
-
-    let childSlot = await Molecule(
-      await newMolecule(organismKey, organismValue, organismParentId),
-      compBody
-    )
-
-    parentBody.appendChild(childSlot);
-
-  });
-}
-
 function createSubAtomsEl(subComps, id, compBody, parentBody) {
     subComps.forEach(async (comp) => {
       const [[key, value]] = Object.entries(comp);
@@ -111,6 +94,12 @@ function createSubAtomsEl(subComps, id, compBody, parentBody) {
       )
   
       parentBody.appendChild(childSlot);
+
+      let slotEls = childSlot.getElementsByTagName("input")
+      let newId = slotEls[0].id
+      let nextLevelBody = document.getElementById("accordion-body-"+newId)
+  
+      await createAtom(nextLevelBody, newId, organismValue) 
   
     });
   }
