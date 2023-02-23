@@ -31,8 +31,25 @@ export async function View(view) {
   );
   viewDiv.appendChild(viewAccordionInput);
 
-  let json= {}
 
-  console.log(await readModel())
+  let model = await readModel())
+
+  // get view with same id 
+  // replace the name with the new name
+  // if there is none with that id, add it to views
+  const existingView = model.views.find((view) => view.viewId === id);
+  if (existingView) {
+    existingView.name = value;
+  }
+  else {
+    model.views.push({
+      id: id,
+      name: value,
+      parentId: ""
+    });
+  }
+
+  await writeModel(json);
+
   return viewDiv;
 }
