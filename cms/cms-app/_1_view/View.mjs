@@ -32,7 +32,7 @@ export async function View(view) {
   viewDiv.appendChild(viewAccordionInput);
 
 
-  let model = await readModel())
+  let model = await readModel()
 
   // get view with same id 
   // replace the name with the new name
