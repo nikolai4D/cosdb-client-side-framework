@@ -4,6 +4,7 @@
 
 import { createOrganism } from "../_5_organism/createOrganism.mjs";
 import { createMolecule } from "../_6_molecule/createMolecule.mjs";
+import { createAtom } from "../_6_molecule/createAtom.mjs";
 
 import { createSlots } from "../_3_slot/createSlots.mjs";
 
