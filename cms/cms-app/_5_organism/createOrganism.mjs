@@ -11,28 +11,6 @@ export async function createOrganism(componentBody, id, selectedValue) {
   const type = "organisms";
   const organismBody = document.createElement("div");
 
- //--------------------------------
-
-  // get Functions
-
-  const constructorTypeFunctions = "functions";
-
-  const componentFunctions = await getConstructors(
-    filename,
-    constructorTypeFunctions,
-    type
-  );
-
-  if (componentFunctions) {
-    await createFunctionsEl(
-      componentFunctions,
-      id,
-      organismBody,
-      componentBody
-    );
-  }
-
-
   //--------------------------------
 
   //get subOrganisms
@@ -75,23 +53,26 @@ export async function createOrganism(componentBody, id, selectedValue) {
     );
   }
 
- function createFunctionsEl(subComps, id, compBody, parentBody) {
-  subComps.forEach(async (comp) => {
-    const [[key, value]] = Object.entries(comp);
-    console.log({ key, value });
+  //--------------------------------
 
-    const organismKey = key;
-    const organismValue = value;
-    const organismParentId = id;
+  // get Functions
 
-    let childSlot = await Function(
-      await newFunction(organismKey, organismValue, organismParentId),
-      compBody
-    )
+  const constructorTypeFunctions = "functions";
 
-    parentBody.appendChild(childSlot);
+  const componentFunctions = await getConstructors(
+    filename,
+    constructorTypeFunctions,
+    type
+  );
 
-  });
+  if (componentFunctions) {
+    await createFunctionsEl(
+      componentFunctions,
+      id,
+      organismBody,
+      componentBody
+    );
+  }
 }
 
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
@@ -111,7 +92,6 @@ function createSubOrganismsEl(subComps, id, compBody, parentBody) {
     parentBody.appendChild(childSlot);
 
   });
-}
 }
 
 function createSubMoleculesEl(subComps, id, compBody, parentBody) {
@@ -133,5 +113,23 @@ function createSubMoleculesEl(subComps, id, compBody, parentBody) {
   });
 }
 
+function createFunctionsEl(subComps, id, compBody, parentBody) {
+  subComps.forEach(async (comp) => {
+    const [[key, value]] = Object.entries(comp);
+    console.log({ key, value });
+
+    const organismKey = key;
+    const organismValue = value;
+    const organismParentId = id;
+
+    let childSlot = await Function(
+      await newFunction(organismKey, organismValue, organismParentId),
+      compBody
+    )
+
+    parentBody.appendChild(childSlot);
+
+  });
+}
 
 
