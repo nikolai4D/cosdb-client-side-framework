@@ -56,7 +56,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
     for (const comp of componentMolecules) {
       console.log(comp)
 
-    await createMolecule(componentBody, id, comp) 
+    await createMolecule(componentBody, id, comp.molecule) 
     }
 
   }
