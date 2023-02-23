@@ -33,7 +33,7 @@ export async function Slot(slot) {
   );
 
   SlotDiv.appendChild(SlotAccordionInput);
-  await updateModel(id, value, parentId, "slots");
+  // await updateModel(id, value, parentId, "slots");
 
   return SlotDiv;
 }
