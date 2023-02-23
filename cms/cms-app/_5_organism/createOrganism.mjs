@@ -44,7 +44,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
       )
   
       componentBody.appendChild(childSlot);
-      console.log(childSlot,"childSlot", parentBody, "parentBody");
+      console.log(childSlot,"childSlot", componentBody, "parentBody");
       })
     // createOrganism(organismBody, id, selectedValue)
   }
