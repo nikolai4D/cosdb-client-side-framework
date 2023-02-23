@@ -33,7 +33,7 @@ export async function Molecule(molecule, moleculeBody) {
 
   moleculeDiv.appendChild(moleculeAccordionInput);
 
-  await updateModel(id, value, parentId, "molecules");
+//   await updateModel(id, value, parentId, "molecules");
 
   return moleculeDiv;
 }
