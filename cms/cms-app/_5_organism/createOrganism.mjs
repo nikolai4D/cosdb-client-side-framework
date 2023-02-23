@@ -17,38 +17,25 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   const constructorTypeOrganisms = "organisms";
 
-  let subOrganisms = await getConstructors(
-    filename,
-    constructorTypeOrganisms,
-    type
-    );
+   await gettingSubOrganisms(filename, constructorTypeOrganisms, type, id, organismBody, componentBody);
 
-  if (subOrganisms) {
-    await createSubOrganismsEl(
-      subOrganisms,
-      id,
-      organismBody,
-      componentBody
-    );
-  }
+  // while(subOrganisms.length > 0) {
 
-  while(subOrganisms.length > 0) {
-
-    subOrganisms = await getConstructors(
-      filename,
-      constructorTypeOrganisms,
-      type
-      );
+  //   subOrganisms = await getConstructors(
+  //     filename,
+  //     constructorTypeOrganisms,
+  //     type
+  //     );
   
-    if (subOrganisms) {
-      await createSubOrganismsEl(
-        subOrganisms,
-        id,
-        organismBody,
-        componentBody
-      );
-    }
-  }
+  //   if (subOrganisms) {
+  //     await createSubOrganismsEl(
+  //       subOrganisms,
+  //       id,
+  //       organismBody,
+  //       componentBody
+  //     );
+  //   }
+  // }
 
   //--------------------------------
 
@@ -93,7 +80,29 @@ export async function createOrganism(componentBody, id, selectedValue) {
   }
 }
 
+async function gettingSubOrganisms(filename, constructorTypeOrganisms, type, id, organismBody, componentBody) {
+  let subOrganisms = await getConstructors(
+    filename,
+    constructorTypeOrganisms,
+    type
+  );
+
+  if (subOrganisms) {
+    let allSlots = await createSubOrganismsEl(
+      subOrganisms,
+      id,
+      organismBody,
+      componentBody
+    );
+    for await (let slot of allSlots){
+      await gettingSubOrganisms(filename, constructorTypeOrganisms, slot.type, slot.id, organismBody, componentBody)
+    }
+  }
+  return subOrganisms;
+}
+
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
+  let childSlots = []; child
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
     console.log({ key, value });
@@ -106,10 +115,11 @@ function createSubOrganismsEl(subComps, id, compBody, parentBody) {
       await newOrganism(organismKey, organismValue, organismParentId),
       compBody
     )
-
+    childSlots.push(childSlot);
     parentBody.appendChild(childSlot);
 
   });
+  return childSlots
 }
 
 function createSubMoleculesEl(subComps, id, compBody, parentBody) {
