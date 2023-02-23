@@ -40,10 +40,10 @@ export async function createOrganism(componentBody, id, selectedValue) {
   
       let childSlot = await Organism(
         await newOrganism(organismKey, organismValue, organismParentId),
-        compBody
+        organismBody
       )
   
-      parentBody.appendChild(childSlot);
+      componentBody.appendChild(childSlot);
       console.log(childSlot,"childSlot", parentBody, "parentBody");
       })
     // createOrganism(organismBody, id, selectedValue)
