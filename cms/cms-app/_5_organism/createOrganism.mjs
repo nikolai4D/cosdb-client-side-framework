@@ -2,6 +2,7 @@ import { Organism } from "./Organism.mjs";
 import { newOrganism } from "./newOrganism.mjs";
 import { Molecule } from "../_6_molecule/Molecule.mjs";
 import { newMolecule } from "../_6_molecule/newMolecule.mjs";
+import { createMolecule } from "../_6_molecule/createMolecule.mjs";
 
 import { Function } from "../_8_function/Function.mjs";
 import { newFunction } from "../_8_function/newFunction.mjs";
