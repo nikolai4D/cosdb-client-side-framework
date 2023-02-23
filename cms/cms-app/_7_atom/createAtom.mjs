@@ -21,14 +21,14 @@ export async function createAtom(componentBody, id, selectedValue) {
     constructorTypeAtoms,
     type
     );
-
+console.log(componentAtoms)
   if (componentAtoms) {
-    await createSubAtomsEl(
-      componentAtoms,
-      id,
-      organismBody,
-      componentBody
-    );
+    // await createSubAtomsEl(
+    //   componentAtoms,
+    //   id,
+    //   organismBody,
+    //   componentBody
+    // );
   }
 
 
@@ -36,22 +36,22 @@ export async function createAtom(componentBody, id, selectedValue) {
 
   // get Functions
 
-  const constructorTypeFunctions = "functions";
+//   const constructorTypeFunctions = "functions";
 
-  const componentFunctions = await getConstructors(
-    filename,
-    constructorTypeFunctions,
-    type
-  );
+//   const componentFunctions = await getConstructors(
+//     filename,
+//     constructorTypeFunctions,
+//     type
+//   );
 
-  if (componentFunctions) {
-    await createFunctionsEl(
-      componentFunctions,
-      id,
-      organismBody,
-      componentBody
-    );
-  }
+//   if (componentFunctions) {
+//     await createFunctionsEl(
+//       componentFunctions,
+//       id,
+//       organismBody,
+//       componentBody
+//     );
+//   }
 }
 
 
