@@ -1,8 +1,8 @@
 
 import { Molecule } from "./Molecule.mjs";
 import { newMolecule } from "./newMolecule.mjs";
-import { Atom } from "../_8_atom/Atom.mjs";
-import { newAtom } from "../_8_atom/newAtom.mjs";
+import { Atom } from "../_7_atom/Atom.mjs";
+import { newAtom } from "../_7_atom/newAtom.mjs";
 import { Function } from "../_8_function/Function.mjs";
 import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
