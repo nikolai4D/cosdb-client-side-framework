@@ -1,7 +1,7 @@
 export function Atom_dummy2() {
   this.options = [
     {
-      option: "option1",
+      option: "option2",
     }
   ]
   return (
