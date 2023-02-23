@@ -2,6 +2,7 @@ import { Organism } from "./Organism.mjs";
 import { newOrganism } from "./newOrganism.mjs";
 import { Molecule } from "../_6_molecule/Molecule.mjs";
 import { newMolecule } from "../_6_molecule/newMolecule.mjs";
+
 import { Function } from "../_8_function/Function.mjs";
 import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
@@ -31,29 +32,6 @@ export async function createOrganism(componentBody, id, selectedValue) {
       organismBody,
       componentBody
     );
-    // subOrganisms.forEach(async (comp) => {
-    //   const [[key, value]] = Object.entries(comp);
-    //   console.log({ key, value });
-  
-    //   const organismKey = key;
-    //   const organismValue = value;
-    //   const organismParentId = id;
-  
-    //   let childSlot = await Organism(
-    //     await newOrganism(organismKey, organismValue, organismParentId),
-    //     organismBody
-    //   )
-  
-    //   componentBody.appendChild(childSlot);
-
-    //   let slotEls = childSlot.getElementsByTagName("input")
-    //   let newId = slotEls[0].id
-    //   let nextLevelBody = document.getElementById("accordion-body-"+newId)
-      
-    //   await createOrganism(nextLevelBody, id, organismValue)
-    //   })
-
-    // createOrganism(organismBody, id, selectedValue)
   }
 
   
@@ -71,13 +49,17 @@ export async function createOrganism(componentBody, id, selectedValue) {
     );
 
   if (componentMolecules) {
-    await createSubMoleculesEl(
-      componentMolecules,
-      id,
-      organismBody,
-      componentBody
-    );
+
+    await createMolecule(componentBody, id, selectedValue) 
+
   }
+  //   await createSubMoleculesEl(
+  //     componentMolecules,
+  //     id,
+  //     organismBody,
+  //     componentBody
+  //   );
+  // }
 
   //--------------------------------
 
@@ -146,8 +128,10 @@ function createSubMoleculesEl(subComps, id, compBody, parentBody) {
     let slotEls = childSlot.getElementsByTagName("input")
     let newId = slotEls[0].id
     let nextLevelBody = document.getElementById("accordion-body-"+newId)
+
+
     
-    await createAtom(nextLevelBody, id, organismValue)
+    // await createAtom(nextLevelBody, id, organismValue)
 
   });
 }
