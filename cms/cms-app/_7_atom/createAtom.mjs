@@ -70,7 +70,7 @@ function createSubAtomsEl(subComps, id, compBody, parentBody) {
     subComps.forEach(async (comp) => {
       const [[key, value]] = Object.entries(comp);
   
-      customType = "valueOptions"
+      const customType = "valueOptions"
       const organismKey = key;
       const organismValue = value;
       const organismParentId = id;
@@ -81,7 +81,7 @@ function createSubAtomsEl(subComps, id, compBody, parentBody) {
         value,
         id,
         organismParentId,
-        valueDisabled=false,
+        false,
       );
 
     //   let childSlot = await Atom(
