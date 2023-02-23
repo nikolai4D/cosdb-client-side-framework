@@ -24,12 +24,15 @@ export async function Molecule(molecule, moleculeBody) {
     customType,
     key,
     value,
+    
     id,
     parentId,
     valueDisabled
   );
 
   moleculeDiv.appendChild(moleculeAccordionInput);
+  
+  await updateModel(id, value, parentId, "molecules");
 
   return moleculeDiv;
 }

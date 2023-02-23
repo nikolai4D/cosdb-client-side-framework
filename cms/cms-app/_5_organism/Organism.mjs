@@ -2,6 +2,8 @@ import { accordionInput } from "../types/accordionInput.mjs";
 // import { Component } from "../_4_component/Component.mjs";
 // import { newComponent } from "../_4_component/newComponent.mjs";
 // import { Slot } from "./Slot.mjs";
+import { readModel } from "../requests/readModel.mjs";
+import { writeModel } from "../requests/writeModel.mjs";
 
 export async function Organism(organism, organismBody) {
   console.log("Organism");
@@ -30,24 +32,8 @@ export async function Organism(organism, organismBody) {
   );
 
   organismDiv.appendChild(organismAccordionInput);
-  
-  updateOrganismInModel(id, value, parentId)
+
+  await updateModel(id, value, parentId, "orgamisms");
 
   return organismDiv;
 }
-
-async function updateOrganismInModel(id, value, parentId) {
-  let existingModel = await readModel();
-
-  console.log(existingModel);
-
-    existingModel.organisms.push({
-      id,
-      value,
-      parentId
-    });
-  let newModel = existingModel;
-  await writeModel(newModel);
-}
-
-
