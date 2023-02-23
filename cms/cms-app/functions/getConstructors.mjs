@@ -9,7 +9,7 @@ export async function getConstructors(filename, constructorType, type) {
   if (constructors){
     for (const constructor of constructors) {
       constructor.id = await getUuid();
-      constructor.option ?? "";
+      constructor.option = "";
     }
   }
 
