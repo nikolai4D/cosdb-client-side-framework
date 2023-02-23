@@ -102,7 +102,7 @@ async function gettingSubOrganisms(filename, constructorTypeOrganisms, type, id,
 }
 
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
-  let childSlots = []; child
+  let childSlots = []; 
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
     console.log({ key, value });
