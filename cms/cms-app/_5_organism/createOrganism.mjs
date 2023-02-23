@@ -67,7 +67,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   if (componentFunctions) {
     await createFunctionsEl(
-      componentMolecules,
+      componentFunctions,
       id,
       organismBody,
       componentBody
