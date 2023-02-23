@@ -58,7 +58,6 @@ export async function createAtom(componentBody, id, selectedValue) {
 function createSubAtomsEl(subComps, id, compBody, parentBody) {
     subComps.forEach(async (comp) => {
       const [[key, value]] = Object.entries(comp);
-      console.log({ key, value });
   
       const organismKey = key;
       const organismValue = value;
@@ -77,7 +76,6 @@ function createSubAtomsEl(subComps, id, compBody, parentBody) {
 function createFunctionsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
-    console.log({ key, value });
 
     const organismKey = key;
     const organismValue = value;
