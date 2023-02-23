@@ -34,6 +34,7 @@ export async function createMolecule(componentBody, id, selectedValue) {
     );
   }
 
+  console.log({selectedValue, filename, type, componentMolecules})
 
   //--------------------------------
 
