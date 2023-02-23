@@ -91,7 +91,7 @@ function createFunctionsEl(subComps, id, compBody, parentBody) {
       compBody
     )
 
-    parentBody.appendChild(childSlot);
+    parentBody.insertBefore(childSlot, parentBody.firstChild);
 
   });
 }
