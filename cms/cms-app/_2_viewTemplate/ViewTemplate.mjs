@@ -31,7 +31,7 @@ export async function ViewTemplate(viewTemplate) {
 
   viewTemplateDiv.appendChild(viewTemplateAccordionDropdown);
 
-  await updateViewTemplateInModel(id, value, parentId);
+  await updateViewTemplateInModel(id, null, parentId);
 
   return viewTemplateDiv;
 }
