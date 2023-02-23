@@ -51,7 +51,9 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   if (componentMolecules) {
 
-    await createMolecule(componentBody, id, selectedValue) 
+    for (const comp of componentMolecules) {
+    await createMolecule(componentBody, id, comp.value) 
+    }
 
   }
   //   await createSubMoleculesEl(
