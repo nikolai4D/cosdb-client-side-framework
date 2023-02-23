@@ -40,7 +40,7 @@ export async function eventChangeDropdown(id) {
       }
       if (selectedValue.startsWith("Atom")) {
         console.log("Atom");
-        //await createAtom(componentBody, id, selectedValue);
+        await createAtom(componentBody, id, selectedValue);
       }
     }
   }
