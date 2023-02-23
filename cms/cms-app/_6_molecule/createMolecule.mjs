@@ -88,6 +88,7 @@ function createSubAtomsEl(subComps, id, compBody, parentBody) {
       const organismValue = value;
       const organismParentId = id;
   
+      console.log(compBody, "compBody")
       let childSlot = await Atom(
         await newAtom(organismKey, organismValue, organismParentId),
         compBody
