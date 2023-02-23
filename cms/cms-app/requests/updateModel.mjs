@@ -16,5 +16,8 @@ export async function updateModel(id, value, parentId="", type) {
     let newModel = existingModel;
     await writeModel(newModel);
   }
+  catch {
+    console.log("error in updateModel");
+  }
 }
     
