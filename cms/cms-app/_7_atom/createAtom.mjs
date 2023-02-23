@@ -3,6 +3,7 @@ import { newAtom } from "../_7_atom/newAtom.mjs";
 import { Function } from "../_8_function/Function.mjs";
 import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
+import { input } from "../types/input.mjs";
 
 export async function createAtom(componentBody, id, selectedValue) {
   const filename = selectedValue;
@@ -21,15 +22,25 @@ export async function createAtom(componentBody, id, selectedValue) {
     constructorTypeAtoms,
     type
     );
-console.log(componentAtoms, "HELLO")
-//   if (componentAtoms) {
-    // await createSubAtomsEl(
-    //   componentAtoms,
-    //   id,
-    //   organismBody,
-    //   componentBody
-    // );
-//   }
+// console.log(componentAtoms, "HELLO")
+  if (componentAtoms) {
+
+    //  await input(
+    //     customType,
+    //     key,
+    //     value,
+    //     id,
+    //     parentId,
+    //     valueDisabled=false,
+    //   );
+
+    await createSubAtomsEl(
+      componentAtoms,
+      id,
+      organismBody,
+      componentBody
+    );
+  }
 
 
   //--------------------------------
@@ -59,16 +70,30 @@ function createSubAtomsEl(subComps, id, compBody, parentBody) {
     subComps.forEach(async (comp) => {
       const [[key, value]] = Object.entries(comp);
   
+      customType = "valueOptions"
       const organismKey = key;
       const organismValue = value;
       const organismParentId = id;
   
-      let childSlot = await Atom(
-        await newAtom(organismKey, organismValue, organismParentId),
-        compBody
-      )
+         let childSlot = await input(
+        customType,
+        key,
+        value,
+        id,
+        organismParentId,
+        valueDisabled=false,
+      );
+
+    //   let childSlot = await Atom(
+    //     await newAtom(organismKey, organismValue, organismParentId),
+    //     compBody
+    //   )
+
   
       parentBody.appendChild(childSlot);
+    //   let slotEls = childSlot.getElementsByTagName("input")
+    //   let newId = slotEls[0].id
+    //   let nextLevelBody = document.getElementById("accordion-body-"+newId)
   
     });
   }
