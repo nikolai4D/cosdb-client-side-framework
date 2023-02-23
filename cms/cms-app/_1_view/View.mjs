@@ -1,6 +1,9 @@
 import { accordionInput } from "../types/accordionInput.mjs";
 import { newViewTemplate } from "../_2_viewTemplate/newViewTemplate.mjs";
 import { ViewTemplate } from "../_2_viewTemplate/ViewTemplate.mjs";
+import { readModel } from "../requests/readModel.mjs";
+import { writeModel } from "../requests/writeModel.mjs";
+
 
 export async function View(view) {
   const viewDiv = document.createElement("div");
@@ -28,5 +31,8 @@ export async function View(view) {
   );
   viewDiv.appendChild(viewAccordionInput);
 
+  let json= {}
+
+  console.log(await readModel())
   return viewDiv;
 }
