@@ -109,6 +109,7 @@ function createSubOrganismsEl(subComps, id, compBody, parentBody) {
 function createSubMoleculesEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
+    const parentId = id;
 
     let childSlot = await Molecule(
       await newMolecule(key, value, parentId),
@@ -130,7 +131,6 @@ function createSubMoleculesEl(subComps, id, compBody, parentBody) {
 function createFunctionsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
-
     const parentId = id;
 
     let childSlot = await Function(
