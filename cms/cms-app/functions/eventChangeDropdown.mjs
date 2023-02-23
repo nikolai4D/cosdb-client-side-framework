@@ -3,6 +3,8 @@
 // import { writeModel } from "../requests/writeModel.mjs";
 
 import { createOrganism } from "../_5_organism/createOrganism.mjs";
+import { createMolecule } from "../_6_molecule/createMolecule.mjs";
+
 import { createSlots } from "../_3_slot/createSlots.mjs";
 
 export async function eventChangeDropdown(id) {
@@ -34,7 +36,7 @@ export async function eventChangeDropdown(id) {
       }
       if (selectedValue.startsWith("Molecule")) {
         console.log("Molecule");
-        //await createMolecule(componentBody, id, selectedValue);
+        await createMolecule(componentBody, id, selectedValue);
       }
       if (selectedValue.startsWith("Atom")) {
         console.log("Atom");
