@@ -1,13 +1,10 @@
-import { Atom_dummy1 } from "../atoms/atom_dummy1.mjs";
-import { Atom_dummy2 } from "../atoms/atom_dummy2.mjs";
-
 export function Molecule_dummy2() {
-  this.subComponents = [
+  this.atoms = [
     {
-      subComponent: "Atom_dummy3"
+      atom: "Atom_dummy3"
     },
     {
-      subComponent: "Atom_dummy4"
+      atom: "Atom_dummy4"
     }
   ]
 
@@ -23,8 +20,8 @@ export function Molecule_dummy2() {
 
   return `
   <div>
-    <div>${this.molecules[0].molecule}</div>
-    <div>${this.molecules[1].molecule}</div>
+    <div>${this.atoms[0].atom}</div>
+    <div>${this.atoms[1].atom}</div>
   </div>
 `;
 }
