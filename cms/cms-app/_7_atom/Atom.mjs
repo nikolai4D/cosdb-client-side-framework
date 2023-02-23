@@ -22,6 +22,7 @@ export async function Atom(atom, atomBody) {
   const atomAccordionInput = await accordionInput(
     bodyDiv,
     customType,
+    
     key,
     value,
     id,
