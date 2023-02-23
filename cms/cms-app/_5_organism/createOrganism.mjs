@@ -25,40 +25,33 @@ export async function createOrganism(componentBody, id, selectedValue) {
     );
 
   if (subOrganisms) {
-    // await createSubOrganismsEl(
-    //   subOrganisms,
-    //   id,
-    //   organismBody,
-    //   componentBody
-    // );
-    subOrganisms.forEach(async (comp) => {
-      const [[key, value]] = Object.entries(comp);
-      console.log({ key, value });
+    await createSubOrganismsEl(
+      subOrganisms,
+      id,
+      organismBody,
+      componentBody
+    );
+    // subOrganisms.forEach(async (comp) => {
+    //   const [[key, value]] = Object.entries(comp);
+    //   console.log({ key, value });
   
-      const organismKey = key;
-      const organismValue = value;
-      const organismParentId = id;
+    //   const organismKey = key;
+    //   const organismValue = value;
+    //   const organismParentId = id;
   
-      let childSlot = await Organism(
-        await newOrganism(organismKey, organismValue, organismParentId),
-        organismBody
-      )
+    //   let childSlot = await Organism(
+    //     await newOrganism(organismKey, organismValue, organismParentId),
+    //     organismBody
+    //   )
   
-      componentBody.appendChild(childSlot);
+    //   componentBody.appendChild(childSlot);
 
-      let slotEls = childSlot.getElementsByTagName("input")
-      let newId = slotEls[0].id
-      let nextLevelBody = document.getElementById("accordion-body-"+newId)
-
-      console.log(slotEls, "slotEls")
-      console.log(nextLevelBody, "nextLevelBody")
-
-
-      // let nextLevelBody = document.getElementBåyId("accordion-body-"+childSlot.id)
-      console.log(nextLevelBody, comp, "comp", childSlot,"childSlot", componentBody, "parentBody");
+    //   let slotEls = childSlot.getElementsByTagName("input")
+    //   let newId = slotEls[0].id
+    //   let nextLevelBody = document.getElementById("accordion-body-"+newId)
       
-      await createOrganism(nextLevelBody, id, organismValue)
-      })
+    //   await createOrganism(nextLevelBody, id, organismValue)
+    //   })
 
     // createOrganism(organismBody, id, selectedValue)
   }
@@ -123,6 +116,12 @@ function createSubOrganismsEl(subComps, id, compBody, parentBody) {
     )
 
     parentBody.appendChild(childSlot);
+
+    let slotEls = childSlot.getElementsByTagName("input")
+    let newId = slotEls[0].id
+    let nextLevelBody = document.getElementById("accordion-body-"+newId)
+    
+    await createOrganism(nextLevelBody, id, organismValue)
 
   });
 }
