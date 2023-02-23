@@ -2,6 +2,8 @@ import { accordionInput } from "../types/accordionInput.mjs";
 // import { Component } from "../_4_component/Component.mjs";
 // import { newComponent } from "../_4_component/newComponent.mjs";
 // import { Slot } from "./Slot.mjs";
+import { updateModel } from "../requests/updateModel.mjs";
+
 
 export async function Atom(atom, atomBody) {
   console.log("atom");
@@ -22,7 +24,6 @@ export async function Atom(atom, atomBody) {
   const atomAccordionInput = await accordionInput(
     bodyDiv,
     customType,
-    
     key,
     value,
     id,
@@ -31,6 +32,8 @@ export async function Atom(atom, atomBody) {
   );
 
   atomDiv.appendChild(atomAccordionInput);
+
+  await updateModel(id, value, parentId, "atoms");
 
   return atomDiv;
 }
