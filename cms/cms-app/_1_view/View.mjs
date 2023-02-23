@@ -46,12 +46,12 @@ async function updateModel(id, value) {
   // get view with same id 
   // replace the name with the new name
   // if there is none with that id, add it to views
-  const existingView = model.views.find((view) => view.viewId === id);
+  const existingView = existingModel.views.find((view) => view.viewId === id);
   if (existingView) {
     existingView.name = value;
   }
   else {
-    model.views.push({
+    existingModel.views.push({
       id: id,
       name: value,
       parentId: ""
