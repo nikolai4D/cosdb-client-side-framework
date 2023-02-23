@@ -14,7 +14,7 @@ export async function createAtom(componentBody, id, selectedValue) {
 
     //get Atoms
 
-  const constructorTypeAtoms = "options";
+  const constructorTypeAtoms = "valueOptions";
 
   const componentAtoms = await getConstructors(
     filename,
