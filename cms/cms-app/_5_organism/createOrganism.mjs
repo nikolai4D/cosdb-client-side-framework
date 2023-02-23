@@ -94,7 +94,6 @@ export async function createOrganism(componentBody, id, selectedValue) {
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
-    console.log({ key, value });
 
     const organismKey = key;
     const organismValue = value;
@@ -119,7 +118,6 @@ function createSubOrganismsEl(subComps, id, compBody, parentBody) {
 function createSubMoleculesEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
-    console.log({ key, value });
 
     const organismKey = key;
     const organismValue = value;
@@ -148,7 +146,6 @@ function createSubMoleculesEl(subComps, id, compBody, parentBody) {
 function createFunctionsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
-    console.log({ key, value });
 
     const organismKey = key;
     const organismValue = value;

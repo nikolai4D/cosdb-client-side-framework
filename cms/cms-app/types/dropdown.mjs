@@ -9,7 +9,6 @@ export function dropdown(
   parentId,
   valueDisabled
 ) {
-  console.log({ customType });
   const labelEl = document.createElement("label");
   labelEl.textContent = key + ": ";
 

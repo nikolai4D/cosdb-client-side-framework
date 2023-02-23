@@ -34,8 +34,6 @@ export async function createMolecule(componentBody, id, selectedValue) {
     );
   }
 
-  console.log({selectedValue, filename, type, componentMolecules})
-
   //--------------------------------
 
   //get Molecules
@@ -83,7 +81,6 @@ export async function createMolecule(componentBody, id, selectedValue) {
 function createSubMoleculesEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
-    console.log({ key, value });
 
     const organismKey = key;
     const organismValue = value;
@@ -102,8 +99,7 @@ function createSubMoleculesEl(subComps, id, compBody, parentBody) {
 function createSubAtomsEl(subComps, id, compBody, parentBody) {
     subComps.forEach(async (comp) => {
       const [[key, value]] = Object.entries(comp);
-      console.log({ key, value });
-  
+    
       const organismKey = key;
       const organismValue = value;
       const organismParentId = id;
@@ -121,7 +117,6 @@ function createSubAtomsEl(subComps, id, compBody, parentBody) {
 function createFunctionsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
-    console.log({ key, value });
 
     const organismKey = key;
     const organismValue = value;
