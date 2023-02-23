@@ -142,6 +142,13 @@ function createSubMoleculesEl(subComps, id, compBody, parentBody) {
 
     parentBody.appendChild(childSlot);
 
+
+    let slotEls = childSlot.getElementsByTagName("input")
+    let newId = slotEls[0].id
+    let nextLevelBody = document.getElementById("accordion-body-"+newId)
+    
+    await createAtom(nextLevelBody, id, organismValue)
+
   });
 }
 
