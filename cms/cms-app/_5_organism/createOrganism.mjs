@@ -13,7 +13,27 @@ export async function createOrganism(componentBody, id, selectedValue) {
   const filename = selectedValue;
   const type = "organisms";
   const organismBody = document.createElement("div");
+  //--------------------------------
 
+  // get Functions
+
+  const constructorTypeFunctions = "functions";
+
+  const componentFunctions = await getConstructors(
+    filename,
+    constructorTypeFunctions,
+    type
+  );
+
+  if (componentFunctions) {
+    await createFunctionsEl(
+      componentFunctions,
+      id,
+      organismBody,
+      componentBody
+    );
+  }
+}
   //--------------------------------
 
   //get subOrganisms
@@ -58,27 +78,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   }
 
-  //--------------------------------
 
-  // get Functions
-
-  const constructorTypeFunctions = "functions";
-
-  const componentFunctions = await getConstructors(
-    filename,
-    constructorTypeFunctions,
-    type
-  );
-
-  if (componentFunctions) {
-    await createFunctionsEl(
-      componentFunctions,
-      id,
-      organismBody,
-      componentBody
-    );
-  }
-}
 
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
