@@ -123,7 +123,7 @@ function createSubMoleculesEl(subComps, id, compBody, parentBody) {
     let newId = slotEls[0].id
     let nextLevelBody = document.getElementById("accordion-body-"+newId)
 
-    await createMolecule(nextLevelBody, newId, organismValue) 
+    await createMolecule(nextLevelBody, newId, value) 
 
   });
 }
