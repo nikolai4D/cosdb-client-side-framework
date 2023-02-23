@@ -1,12 +1,10 @@
 import { getUuid } from "../requests/getUuid.mjs";
-import { readComponents } from "../requests/readComponents.mjs";
+import { readFunctions } from "../requests/readFunctions.mjs";
 
 export async function newFunction(parentId) {
   const func = {};
 
-  const componentsDir = "functions";
-
-  let components = (await readComponents(componentsDir)).map(
+  let components = (await readFunctions()).map(
     (component) => component.name
   );
   components = ["", ...components];
