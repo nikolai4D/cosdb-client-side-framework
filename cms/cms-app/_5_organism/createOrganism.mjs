@@ -13,26 +13,6 @@ export async function createOrganism(componentBody, id, selectedValue) {
   const filename = selectedValue;
   const type = "organisms";
   const organismBody = document.createElement("div");
-  //--------------------------------
-
-  // get Functions
-
-  const constructorTypeFunctions = "functions";
-
-  const componentFunctions = await getConstructors(
-    filename,
-    constructorTypeFunctions,
-    type
-  );
-
-  if (componentFunctions) {
-    await createFunctionsEl(
-      componentFunctions,
-      id,
-      organismBody,
-      componentBody
-    );
-  }
 
   //--------------------------------
 
@@ -78,8 +58,28 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   }
 
+  //--------------------------------
 
+  // get Functions
+
+  const constructorTypeFunctions = "functions";
+
+  const componentFunctions = await getConstructors(
+    filename,
+    constructorTypeFunctions,
+    type
+  );
+
+  if (componentFunctions) {
+    await createFunctionsEl(
+      componentFunctions,
+      id,
+      organismBody,
+      componentBody
+    );
+  }
 }
+
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
@@ -95,7 +95,7 @@ function createSubOrganismsEl(subComps, id, compBody, parentBody) {
 
     parentBody.appendChild(childSlot);
 
-    // get the id of the new Organism, to then get the body of the Organism
+    // get the id of the new organism, to then get the body of the organism
 
     let slotEls = childSlot.getElementsByTagName("input")
     let newId = slotEls[0].id
@@ -138,7 +138,7 @@ function createFunctionsEl(subComps, id, compBody, parentBody) {
       compBody
     )
 
-    parentBody.appendChild(childSlot);
+    parentBody.insertBefore(childSlot, parentBody.firstChild);
 
   });
 }
