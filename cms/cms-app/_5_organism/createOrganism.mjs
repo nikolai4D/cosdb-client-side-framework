@@ -33,7 +33,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
       componentBody
     );
   }
-}
+
   //--------------------------------
 
   //get subOrganisms
@@ -79,7 +79,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
   }
 
 
-
+}
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
