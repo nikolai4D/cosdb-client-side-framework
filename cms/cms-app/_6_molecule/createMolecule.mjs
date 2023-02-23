@@ -26,6 +26,7 @@ export async function createMolecule(componentBody, id, selectedValue) {
     );
 
   if (componentMolecules) {
+    console.log("HELLOOOO")
     await createSubMoleculesEl(
       componentMolecules,
       id,
