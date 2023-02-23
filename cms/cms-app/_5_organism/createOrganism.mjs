@@ -48,7 +48,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
       let nextLevelBody = document.getElementById("accordion-body-"+childSlot.id)
       console.log(nextLevelBody, comp, "comp", childSlot,"childSlot", componentBody, "parentBody");
       
-      await createOrganism(nextLevelBody, id, organismValue)
+      // await createOrganism(nextLevelBody, id, organismValue)
       })
 
     // createOrganism(organismBody, id, selectedValue)
