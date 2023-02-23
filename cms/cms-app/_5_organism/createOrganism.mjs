@@ -7,6 +7,7 @@ import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
 export async function createOrganism(componentBody, id, selectedValue) {
+
   const filename = selectedValue;
   const type = "organisms";
   const organismBody = document.createElement("div");
@@ -45,8 +46,11 @@ export async function createOrganism(componentBody, id, selectedValue) {
   
       componentBody.appendChild(childSlot);
 
-      let nextLevelBody = document.getElementById("accordion-body-"+childSlot.id)
-      console.log(nextLevelBody, comp, "comp", childSlot,"childSlot", componentBody, "parentBody");
+      let slotEl = childSlot.getElementsByTagName("input")
+      console.log(slotEl, "slotEl")
+
+      // let nextLevelBody = document.getElementById("accordion-body-"+childSlot.id)
+      // console.log(nextLevelBody, comp, "comp", childSlot,"childSlot", componentBody, "parentBody");
       
       // await createOrganism(nextLevelBody, id, organismValue)
       })
