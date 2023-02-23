@@ -30,6 +30,24 @@ export async function Organism(organism, organismBody) {
   );
 
   organismDiv.appendChild(organismAccordionInput);
+  
+  updateOrganismInModel(id, value, parentId)
 
   return organismDiv;
 }
+
+async function updateOrganismInModel(id, value, parentId) {
+  let existingModel = await readModel();
+
+  console.log(existingModel);
+
+    existingModel.organisms.push({
+      id,
+      value,
+      parentId
+    });
+  let newModel = existingModel;
+  await writeModel(newModel);
+}
+
+
