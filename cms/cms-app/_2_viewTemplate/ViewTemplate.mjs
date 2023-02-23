@@ -42,6 +42,8 @@ export async function ViewTemplate(viewTemplate) {
 async function updateViewTemplateInModel(id, value, parentId) {
   let existingModel = await readModel();
 
+  console.log(ecistingModel);
+
     existingModel.viewTemplates.push({
       id,
       value,
