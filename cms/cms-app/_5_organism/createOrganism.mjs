@@ -17,7 +17,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   const constructorTypeOrganisms = "organisms";
 
-  const subOrganisms = await getConstructors(
+  let subOrganisms = await getConstructors(
     filename,
     constructorTypeOrganisms,
     type
@@ -34,7 +34,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   while(subOrganisms.length > 0) {
 
-    const subOrganisms = await getConstructors(
+    subOrganisms = await getConstructors(
       filename,
       constructorTypeOrganisms,
       type
