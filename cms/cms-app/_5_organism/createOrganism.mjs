@@ -1,5 +1,7 @@
 import { Organism } from "./Organism.mjs";
 import { newOrganism } from "./newOrganism.mjs";
+import { Molecule } from "./Molecule.mjs";
+import { newMolecule } from "./newMolecule.mjs";
 import { Function } from "../_7_function/Function.mjs";
 import { newFunction } from "../_7_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
@@ -22,7 +24,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
     );
 
   if (subOrganisms) {
-    await createSubcomponentsEl(
+    await createSubOrganismsEl(
       subOrganisms,
       id,
       organismBody,
@@ -43,7 +45,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
     );
 
   if (componentMolecules) {
-    await createSubcomponentsEl(
+    await createSubMoleculesEl(
       componentMolecules,
       id,
       organismBody,
@@ -90,8 +92,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   // componentBody.appendChild(childSlot);
 }
-
-function createSubcomponentsEl(subComps, id, compBody, parentBody) {
+function createSubOrganismsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
     console.log({ key, value });
@@ -102,6 +103,25 @@ function createSubcomponentsEl(subComps, id, compBody, parentBody) {
 
     let childSlot = await Organism(
       await newOrganism(organismKey, organismValue, organismParentId),
+      compBody
+    )
+
+    parentBody.appendChild(childSlot);
+
+  });
+}
+
+function createSubMoleculesEl(subComps, id, compBody, parentBody) {
+  subComps.forEach(async (comp) => {
+    const [[key, value]] = Object.entries(comp);
+    console.log({ key, value });
+
+    const organismKey = key;
+    const organismValue = value;
+    const organismParentId = id;
+
+    let childSlot = await Molecule(
+      await newMolecule(organismKey, organismValue, organismParentId),
       compBody
     )
 

@@ -1,12 +1,12 @@
 import { accordionInput } from "../types/accordionInput.mjs";
-import { Component } from "../_4_component/Component.mjs";
-import { newComponent } from "../_4_component/newComponent.mjs";
+// import { Component } from "../_4_component/Component.mjs";
+// import { newComponent } from "../_4_component/newComponent.mjs";
 // import { Slot } from "./Slot.mjs";
 
 export async function Organism(organism, organismBody) {
   console.log("Organism");
-  const OrganismDiv = document.createElement("div");
-  OrganismDiv.classList.add(organism.customType);
+  const organismDiv = document.createElement("div");
+  organismDiv.classList.add(organism.customType);
 
   const customType = organism.customType;
   const key = organism.key;
@@ -19,7 +19,7 @@ export async function Organism(organism, organismBody) {
   const contenDiv = await organismBody;
   bodyDiv.appendChild(contenDiv);
 
-  const OrganismAccordionInput = await accordionInput(
+  const organismAccordionInput = await accordionInput(
     bodyDiv,
     customType,
     key,
@@ -29,7 +29,7 @@ export async function Organism(organism, organismBody) {
     valueDisabled
   );
 
-  OrganismDiv.appendChild(OrganismAccordionInput);
+  organismDiv.appendChild(organismAccordionInput);
 
-  return OrganismDiv;
+  return organismDiv;
 }
