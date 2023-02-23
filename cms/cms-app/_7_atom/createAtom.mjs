@@ -14,22 +14,22 @@ export async function createAtom(componentBody, id, selectedValue) {
 
   const constructorTypeAtoms = "valueOptions";
 
-  const componentAtoms = await getConstructors(
+  const componentValueOptions = await getConstructors(
     filename,
     constructorTypeAtoms,
     type
     );
 
-    if (componentAtoms) {
-    await createValueOptions(
-      componentAtoms,
+    if (componentValueOptions) {
+    await createValueOptionEls(
+      componentValueOptions,
       id,
       organismBody,
       componentBody
     );
   }
 
-function createValueOptions(subComps, id, compBody, parentBody) {
+function createValueOptionEls(subComps, id, compBody, parentBody) {
     subComps.forEach(async (comp) => {
       const [[key, value]] = Object.entries(comp);
   

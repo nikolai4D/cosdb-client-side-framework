@@ -16,29 +16,7 @@ export async function createMolecule(componentBody, id, selectedValue) {
 
   //--------------------------------
 
-  //get Molecules
-
-//   const constructorTypeMolecules = "molecules";
-
-//   const componentMolecules = await getConstructors(
-//     filename,
-//     constructorTypeMolecules,
-//     type
-//     );
-
-//   if (componentMolecules) {
-//     console.log("HELLOOOO")
-//     await createSubMoleculesEl(
-//       componentMolecules,
-//       id,
-//       organismBody,
-//       componentBody
-//     );
-//   }
-
-  //--------------------------------
-
-  //get Molecules
+    // get atoms
 
   const constructorTypeAtoms = "atoms";
 
@@ -83,18 +61,16 @@ export async function createMolecule(componentBody, id, selectedValue) {
 function createSubAtomsEl(subComps, id, compBody, parentBody) {
     subComps.forEach(async (comp) => {
       const [[key, value]] = Object.entries(comp);
-    
-      const organismKey = key;
-      const organismValue = value;
-      const organismParentId = id;
+      const parentId = id;
   
-      console.log(compBody, "compBody")
       let childSlot = await Atom(
-        await newAtom(organismKey, organismValue, organismParentId),
+        await newAtom(organismKey, organismValue, parentId),
         compBody
       )
   
       parentBody.appendChild(childSlot);
+
+      // get the id of the new atom, and use it to get the body of the atom
 
       let slotEls = childSlot.getElementsByTagName("input")
       let newId = slotEls[0].id

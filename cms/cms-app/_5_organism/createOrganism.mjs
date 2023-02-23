@@ -35,8 +35,6 @@ export async function createOrganism(componentBody, id, selectedValue) {
     );
   }
 
-  
-
   //--------------------------------
 
   //get Molecules
@@ -51,23 +49,14 @@ export async function createOrganism(componentBody, id, selectedValue) {
 
   if (componentMolecules) {
 
-    // console.log(componentMolecules)
-    
-    // for (const comp of componentMolecules) {
-      // console.log(comp)
-      // createSubMoleculesEl(comp, id, organismBody, componentBody)
-    // await createMolecule(componentBody, id, comp.molecule)     
     await createSubMoleculesEl(
       componentMolecules,
       id,
       organismBody,
       componentBody
     );
-    // }
 
   }
-
-  
 
   //--------------------------------
 
@@ -106,6 +95,8 @@ function createSubOrganismsEl(subComps, id, compBody, parentBody) {
 
     parentBody.appendChild(childSlot);
 
+    // get the id of the new Organism, to then get the body of the Organism
+
     let slotEls = childSlot.getElementsByTagName("input")
     let newId = slotEls[0].id
     let nextLevelBody = document.getElementById("accordion-body-"+newId)
@@ -119,26 +110,19 @@ function createSubMoleculesEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
 
-    const organismKey = key;
-    const organismValue = value;
-    const organismParentId = id;
-
     let childSlot = await Molecule(
-      await newMolecule(organismKey, organismValue, organismParentId),
+      await newMolecule(key, value, parentId),
       compBody
     )
-
     parentBody.appendChild(childSlot);
 
+    // get the id of the new Molecule, to then get the body of the Molecule
 
     let slotEls = childSlot.getElementsByTagName("input")
     let newId = slotEls[0].id
     let nextLevelBody = document.getElementById("accordion-body-"+newId)
 
     await createMolecule(nextLevelBody, newId, organismValue) 
-
-    
-    // await createAtom(nextLevelBody, id, organismValue)
 
   });
 }
@@ -147,12 +131,10 @@ function createFunctionsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
 
-    const organismKey = key;
-    const organismValue = value;
-    const organismParentId = id;
+    const parentId = id;
 
     let childSlot = await Function(
-      await newFunction(organismKey, organismValue, organismParentId),
+      await newFunction(key, value, parentId),
       compBody
     )
 
