@@ -10,6 +10,28 @@ export async function createOrganism(componentBody, id, selectedValue) {
   const filename = selectedValue;
   const type = "organisms";
   const organismBody = document.createElement("div");
+  
+ //--------------------------------
+
+  // get Functions
+
+  const constructorTypeFunctions = "functions";
+
+  const componentFunctions = await getConstructors(
+    filename,
+    constructorTypeFunctions,
+    type
+  );
+
+  if (componentFunctions) {
+    await createFunctionsEl(
+      componentFunctions,
+      id,
+      organismBody,
+      componentBody
+    );
+  }
+}
 
   //--------------------------------
 
@@ -53,45 +75,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
     );
   }
 
-  //--------------------------------
-
-  // get Functions
-
-  const constructorTypeFunctions = "functions";
-
-  const componentFunctions = await getConstructors(
-    filename,
-    constructorTypeFunctions,
-    type
-  );
-
-  if (componentFunctions) {
-    await createFunctionsEl(
-      componentFunctions,
-      id,
-      organismBody,
-      componentBody
-    );
-  }
-
-  // componentFunctions.forEach(async (fn) => {
-  //   const [[key, value]] = Object.entries(fn);
-  //   console.log({ key, value });
-  // });
-
-  //--------------------------------
-
-  // const organismKey = key;
-  // const organismValue = value;
-  // const organismParentId = id;
-
-  // const childSlot = await Organism(
-  //   await newOrganism(organismKey, organismValue, organismParentId),
-  //   organismBody
-  // );
-
-  // componentBody.appendChild(childSlot);
-}
+ 
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
