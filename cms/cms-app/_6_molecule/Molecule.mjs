@@ -2,6 +2,7 @@ import { accordionInput } from "../types/accordionInput.mjs";
 // import { Component } from "../_4_component/Component.mjs";
 // import { newComponent } from "../_4_component/newComponent.mjs";
 // import { Slot } from "./Slot.mjs";
+import { updateModel } from "../requests/updateModel.mjs";
 
 export async function Molecule(molecule, moleculeBody) {
   console.log("Molecule");
@@ -31,7 +32,7 @@ export async function Molecule(molecule, moleculeBody) {
   );
 
   moleculeDiv.appendChild(moleculeAccordionInput);
-  
+
   await updateModel(id, value, parentId, "molecules");
 
   return moleculeDiv;

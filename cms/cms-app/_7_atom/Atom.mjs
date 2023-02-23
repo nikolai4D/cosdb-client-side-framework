@@ -4,7 +4,6 @@ import { accordionInput } from "../types/accordionInput.mjs";
 // import { Slot } from "./Slot.mjs";
 import { updateModel } from "../requests/updateModel.mjs";
 
-
 export async function Atom(atom, atomBody) {
   console.log("atom");
   const atomDiv = document.createElement("div");
