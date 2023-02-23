@@ -49,7 +49,7 @@ export async function createOrganism(componentBody, id, selectedValue) {
       let slotEls = childSlot.getElementsByTagName("input")
       let nextLevelBody = document.getElementById("accordion-body-"+slotEls[0].id)
 
-      console.log(slotEl, "slotEl")
+      console.log(slotEls, "slotEls")
       console.log(nextLevelBody, "nextLevelBody")
 
 
