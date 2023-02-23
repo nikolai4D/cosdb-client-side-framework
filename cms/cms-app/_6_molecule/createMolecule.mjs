@@ -64,7 +64,7 @@ function createSubAtomsEl(subComps, id, compBody, parentBody) {
       const parentId = id;
   
       let childSlot = await Atom(
-        await newAtom(organismKey, organismValue, parentId),
+        await newAtom(key, value, parentId),
         compBody
       )
   
@@ -76,7 +76,7 @@ function createSubAtomsEl(subComps, id, compBody, parentBody) {
       let newId = slotEls[0].id
       let nextLevelBody = document.getElementById("accordion-body-"+newId)
   
-      await createAtom(nextLevelBody, newId, organismValue) 
+      await createAtom(nextLevelBody, newId, value) 
   
     });
   }
@@ -84,13 +84,10 @@ function createSubAtomsEl(subComps, id, compBody, parentBody) {
 function createFunctionsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
     const [[key, value]] = Object.entries(comp);
-
-    const organismKey = key;
-    const organismValue = value;
-    const organismParentId = id;
+    const parentId = id;
 
     let childSlot = await Function(
-      await newFunction(organismKey, organismValue, organismParentId),
+      await newFunction(key, value, parentId),
       compBody
     )
 
