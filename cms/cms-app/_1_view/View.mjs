@@ -32,32 +32,43 @@ export async function View(view) {
   viewDiv.appendChild(viewAccordionInput);
 
 
-  await updateModel(id, value);
+  await updateViewInModel(id, value);
 
   return viewDiv;
 }
 
-
-
-
-async function updateModel(id, value) {
+async function updateViewInModel(id, value) {
   let existingModel = await readModel();
 
-  // get view with same id 
-  // replace the name with the new name
-  // if there is none with that id, add it to views
-  const existingView = existingModel.views.find((view) => view.viewId === id);
-  if (existingView) {
-    existingView.name = value;
-  }
-  else {
     existingModel.views.push({
-      id: id,
-      name: value,
+      id,
+      value,
       parentId: ""
     });
-  }
   let newModel = existingModel;
   await writeModel(newModel);
 }
+
+
+
+// async function updateViewInModel(id, value) {
+//   let existingModel = await readModel();
+
+//   // get view with same id 
+//   // replace the name with the new name
+//   // if there is none with that id, add it to views
+//   const existingView = existingModel.views.find((view) => view.id === id);
+//   if (existingView) {
+//     existingView.name = value;
+//   }
+//   else {
+//     existingModel.views.push({
+//       id: id,
+//       name: value,
+//       parentId: ""
+//     });
+//   }
+//   let newModel = existingModel;
+//   await writeModel(newModel);
+// }
 
