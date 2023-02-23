@@ -1,9 +1,6 @@
-import { Atom } from "../_7_atom/Atom.mjs";
-import { newAtom } from "../_7_atom/newAtom.mjs";
-import { Function } from "../_8_function/Function.mjs";
-import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 import { input } from "../types/input.mjs";
+import { getUuid } from "../requests/getUuid.mjs";
 
 export async function createAtom(componentBody, id, selectedValue) {
   const filename = selectedValue;
@@ -13,7 +10,7 @@ export async function createAtom(componentBody, id, selectedValue) {
 
   //--------------------------------
 
-    //get Atoms
+    //get valueOptions for atom
 
   const constructorTypeAtoms = "valueOptions";
 
@@ -22,19 +19,9 @@ export async function createAtom(componentBody, id, selectedValue) {
     constructorTypeAtoms,
     type
     );
-// console.log(componentAtoms, "HELLO")
-  if (componentAtoms) {
 
-    //  await input(
-    //     customType,
-    //     key,
-    //     value,
-    //     id,
-    //     parentId,
-    //     valueDisabled=false,
-    //   );
-
-    await createSubAtomsEl(
+    if (componentAtoms) {
+    await createValueOptions(
       componentAtoms,
       id,
       organismBody,
@@ -42,78 +29,26 @@ export async function createAtom(componentBody, id, selectedValue) {
     );
   }
 
-
-  //--------------------------------
-
-  // get Functions
-
-//   const constructorTypeFunctions = "functions";
-
-//   const componentFunctions = await getConstructors(
-//     filename,
-//     constructorTypeFunctions,
-//     type
-//   );
-
-//   if (componentFunctions) {
-//     await createFunctionsEl(
-//       componentFunctions,
-//       id,
-//       organismBody,
-//       componentBody
-//     );
-//   }
-}
-
-
-function createSubAtomsEl(subComps, id, compBody, parentBody) {
+function createValueOptions(subComps, id, compBody, parentBody) {
     subComps.forEach(async (comp) => {
       const [[key, value]] = Object.entries(comp);
   
       const customType = "valueOptions"
-      const organismKey = key;
-      const organismValue = value;
-      const organismParentId = id;
+      const id = await getUuid()
+      const parentId = id;
+      const valueDisabled = false;
   
-         let childSlot = await input(
+    let childSlot = await input(
         customType,
         key,
         value,
         id,
-        organismParentId,
-        false,
-      );
+        parentId,
+        valueDisabled
+    );
+    parentBody.appendChild(childSlot);
 
-    //   let childSlot = await Atom(
-    //     await newAtom(organismKey, organismValue, organismParentId),
-    //     compBody
-    //   )
-
-  
-      parentBody.appendChild(childSlot);
-    //   let slotEls = childSlot.getElementsByTagName("input")
-    //   let newId = slotEls[0].id
-    //   let nextLevelBody = document.getElementById("accordion-body-"+newId)
-  
     });
   }
 
-function createFunctionsEl(subComps, id, compBody, parentBody) {
-  subComps.forEach(async (comp) => {
-    const [[key, value]] = Object.entries(comp);
-
-    const organismKey = key;
-    const organismValue = value;
-    const organismParentId = id;
-
-    let childSlot = await Function(
-      await newFunction(organismKey, organismValue, organismParentId),
-      compBody
-    )
-
-    parentBody.appendChild(childSlot);
-
-  });
 }
-
-
