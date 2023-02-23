@@ -32,7 +32,7 @@ export async function Atom(atom, atomBody) {
 
   atomDiv.appendChild(atomAccordionInput);
 
-  await updateModel(id, value, parentId, "atoms");
+//   await updateModel(id, value, parentId, "atoms");
 
   return atomDiv;
 }
