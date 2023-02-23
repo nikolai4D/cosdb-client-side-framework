@@ -32,6 +32,24 @@ export async function createOrganism(componentBody, id, selectedValue) {
     );
   }
 
+  while(subOrganisms.length > 0) {
+
+    const subOrganisms = await getConstructors(
+      filename,
+      constructorTypeOrganisms,
+      type
+      );
+  
+    if (subOrganisms) {
+      await createSubOrganismsEl(
+        subOrganisms,
+        id,
+        organismBody,
+        componentBody
+      );
+    }
+  }
+
   //--------------------------------
 
   //get Molecules
