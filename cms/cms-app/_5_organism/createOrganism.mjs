@@ -50,8 +50,12 @@ export async function createOrganism(componentBody, id, selectedValue) {
     );
 
   if (componentMolecules) {
+
+    console.log(componentMolecules)
     
     for (const comp of componentMolecules) {
+      console.log(comp)
+
     await createMolecule(componentBody, id, comp) 
     }
 
