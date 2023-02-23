@@ -21,15 +21,15 @@ export async function createAtom(componentBody, id, selectedValue) {
     constructorTypeAtoms,
     type
     );
-console.log(componentAtoms)
-  if (componentAtoms) {
+console.log(componentAtoms, "HELLO")
+//   if (componentAtoms) {
     // await createSubAtomsEl(
     //   componentAtoms,
     //   id,
     //   organismBody,
     //   componentBody
     // );
-  }
+//   }
 
 
   //--------------------------------
