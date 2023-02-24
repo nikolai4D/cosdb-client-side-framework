@@ -33,7 +33,7 @@ export async function Organism(organism, organismBody) {
 
   organismDiv.appendChild(organismAccordionInput);
 
-  // await updateModel(id, value, parentId, "organisms");
+  await updateModel(id, value, parentId, "organisms");
 
   return organismDiv;
 }

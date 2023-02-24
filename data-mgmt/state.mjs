@@ -1,1 +1,1 @@
-const state = {};
+const State = {};
