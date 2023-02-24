@@ -2,7 +2,7 @@ import { accordionInput } from "../types/accordionInput.mjs";
 // import { Component } from "../_4_component/Component.mjs";
 // import { newComponent } from "../_4_component/newComponent.mjs";
 // import { Slot } from "./Slot.mjs";
-import { updateModel } from "../requests/updateModel.mjs";
+import { action } from "../State.mjs";
 
 
 export async function Organism(organism, organismBody) {
@@ -33,7 +33,7 @@ export async function Organism(organism, organismBody) {
 
   organismDiv.appendChild(organismAccordionInput);
 
-  await updateModel(id, value, parentId, "organisms");
+  await action.create(id, value, parentId, "organisms");
 
   return organismDiv;
 }
