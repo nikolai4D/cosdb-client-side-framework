@@ -11,11 +11,11 @@ export async function createViewButton() {
       await View(await newView()),
       document.body.children[1]
     );
+    action.updateModel(State)
+
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
-  
-
 console.log({State})
-setTimeout(action.updateModel(State), 1000);
+
 }
