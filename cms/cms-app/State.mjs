@@ -1,14 +1,14 @@
 import { writeModel } from "./requests/writeModel.mjs"
 
 export const State = {
-    model: {
+
         "views": [],
         "viewTemplates": [],
         "slots": [],
         "organisms": [],
         "molecules": [],
         "atoms": []
-    }
+
 }
 
 
@@ -20,14 +20,14 @@ export const mutation = {
 export const action = {
     create: async (type, id, value, parentId) => {
         try {
-            let existingModel = State.model
+            let existingModel = State
             existingModel[type].push({
                 id,
                 value,
                 parentId
             });
             let newModel = existingModel;
-            State.model = newModel;
+            State = newModel;
         }
         catch(error) {
             console.log("error in updateModel", error);
