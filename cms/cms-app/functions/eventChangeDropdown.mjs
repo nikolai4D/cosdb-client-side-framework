@@ -7,7 +7,7 @@ import { createMolecule } from "../_6_molecule/createMolecule.mjs";
 import { createAtom } from "../_7_atom/createAtom.mjs";
 
 import { createSlots } from "../_3_slot/createSlots.mjs";
-import { State } from "../State.mjs";
+import { State, action } from "../State.mjs";
 
 export async function eventChangeDropdown(id) {
   const select = document.getElementById(id);
@@ -47,6 +47,8 @@ export async function eventChangeDropdown(id) {
     }
   }
   console.log({State})
+  action.updateModel(State)
+
 
 }
 
