@@ -30,7 +30,7 @@ export async function View(view) {
   );
   viewDiv.appendChild(viewAccordionInput);
 
-  action.create(id, value, parentId, "views")
+  action.create(id, value, "", "views")
   // await updateModel(id, value, parentId, "views");
 
   return viewDiv;
