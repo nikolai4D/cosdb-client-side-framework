@@ -19,7 +19,7 @@ export const mutation = {
 
 
 export const action = {
-    create: async (type, id, value, parentId) => {
+    create: async (id, value, parentId, type) => {
         console.log({State})
         console.log({type})
         try {
