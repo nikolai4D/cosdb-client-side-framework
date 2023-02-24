@@ -13,6 +13,8 @@ export async function createViewButton() {
     );
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
+
+action.updateModel(State.model)
 console.log({State})
 
 }

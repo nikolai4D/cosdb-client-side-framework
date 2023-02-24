@@ -1,3 +1,5 @@
+import { writeModel } from "./requests/writeModel.mjs"
+
 export const State = {
     model: {
         "views": [],
@@ -31,16 +33,9 @@ export const action = {
             console.log("error in updateModel");
         }
     },
-    updateModel: async (type, id, value, parentId) => {
+    updateModel: async (data) => {
             try {
-                let existingModel = await readModel();
-                existingModel[type].push({
-                    id,
-                    value,
-                    parentId
-                });
-                let newModel = existingModel;
-                await writeModel(newModel);
+                await writeModel(data);
             }
             catch {
                 console.log("error in updateModel");
