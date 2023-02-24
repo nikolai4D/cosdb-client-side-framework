@@ -1,6 +1,7 @@
 import { writeModel } from "./requests/writeModel.mjs"
 
-export const State = {
+export let State = {
+        
 
         "views": [],
         "viewTemplates": [],
@@ -21,6 +22,7 @@ export const action = {
     create: async (type, id, value, parentId) => {
         try {
             let existingModel = State
+            console.log({existingModel})
             existingModel[type].push({
                 id,
                 value,
