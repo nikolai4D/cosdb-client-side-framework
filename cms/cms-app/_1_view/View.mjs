@@ -2,7 +2,7 @@ import { accordionInput } from "../types/accordionInput.mjs";
 import { newViewTemplate } from "../_2_viewTemplate/newViewTemplate.mjs";
 import { ViewTemplate } from "../_2_viewTemplate/ViewTemplate.mjs";
 import { updateModel } from "../requests/updateModel.mjs";
-
+import { action } from "../State.mjs"
 
 export async function View(view) {
   const viewDiv = document.createElement("div");
@@ -30,8 +30,8 @@ export async function View(view) {
   );
   viewDiv.appendChild(viewAccordionInput);
 
-
-  await updateModel(id, value, parentId, "views");
+  action.create(id, value, parentId, "views")
+  // await updateModel(id, value, parentId, "views");
 
   return viewDiv;
 }
