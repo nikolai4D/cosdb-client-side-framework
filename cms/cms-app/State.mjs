@@ -5,6 +5,7 @@ export let State = {
 
         views: [],
         viewTemplates: [],
+        components: [],
         slots: [],
         organisms: [],
         molecules: [],
