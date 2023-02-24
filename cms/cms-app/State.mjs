@@ -29,8 +29,8 @@ export const action = {
             let newModel = existingModel;
             State.model = newModel;
         }
-        catch {
-            console.log("error in updateModel");
+        catch(error) {
+            console.log("error in updateModel", error);
         }
     },
     updateModel: async (data) => {
