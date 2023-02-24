@@ -30,7 +30,7 @@ export async function Component(component) {
   );
 
   ComponentDiv.appendChild(ComponentAccordionDropdown);
-
+    console.log(id, null, parentId, `${customType}s`)
   await action.create(id, null, parentId, `${customType}s`);
   return ComponentDiv;
 }
