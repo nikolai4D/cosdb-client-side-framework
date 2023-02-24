@@ -21,15 +21,11 @@ export const mutation = {
 export const action = {
     create: async (type, id, value, parentId) => {
         try {
-            let existingModel = State
-            console.log({existingModel})
-            existingModel[type].push({
+            State[type].push({
                 id,
                 value,
                 parentId
             });
-            let newModel = existingModel;
-            State = newModel;
         }
         catch(error) {
             console.log("error in updateModel", error);
