@@ -1,5 +1,6 @@
 import { newView } from "../_1_view/newView.mjs";
 import { View } from "../_1_view/View.mjs";
+import { State } from "../State.mjs";
 
 export async function createViewButton() {
   const createViewButton = document.createElement("button");
@@ -12,4 +13,5 @@ export async function createViewButton() {
     );
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
+console.log(State)
 }

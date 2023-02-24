@@ -1,6 +1,7 @@
 // import { readModel } from "../requests/readModel.mjs";
 // import { updateField } from "../functions/updateField.mjs";
 // import { writeModel } from "../requests/writeModel.mjs";
+import { State } from "../State.mjs";
 
 export async function eventChangeInput(id) {
   const input = document.getElementById(id);
@@ -9,4 +10,5 @@ export async function eventChangeInput(id) {
   const parentId = select.getAttribute("parentId");
 
   console.log("update: ", customType, ": ", { id, parentId, value });
+  console.log({State})
 }
