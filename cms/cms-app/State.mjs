@@ -3,12 +3,12 @@ import { writeModel } from "./requests/writeModel.mjs"
 export let State = {
         
 
-        "views": [],
-        "viewTemplates": [],
-        "slots": [],
-        "organisms": [],
-        "molecules": [],
-        "atoms": []
+        views: [],
+        viewTemplates: [],
+        slots: [],
+        organisms: [],
+        molecules: [],
+        atoms: []
 
 }
 
