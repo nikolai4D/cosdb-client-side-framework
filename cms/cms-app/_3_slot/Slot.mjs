@@ -5,9 +5,9 @@ import { newComponent } from "../_4_component/newComponent.mjs";
 import { readModel } from "../requests/readModel.mjs";
 import { writeModel } from "../requests/writeModel.mjs";
 import { updateModel } from "../requests/updateModel.mjs";
+import { action } from "../State.mjs"
 
 export async function Slot(slot) {
-  console.log("Slot");
   const SlotDiv = document.createElement("div");
   SlotDiv.classList.add(slot.customType);
 
@@ -33,6 +33,8 @@ export async function Slot(slot) {
   );
 
   SlotDiv.appendChild(SlotAccordionInput);
+  action.create(id, value, parentId, "slots")
+
   // await updateModel(id, value, parentId, "slots");
 
   return SlotDiv;
