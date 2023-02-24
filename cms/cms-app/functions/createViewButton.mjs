@@ -14,7 +14,8 @@ export async function createViewButton() {
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
-action.updateModel(State)
-console.log({State})
+  
 
+console.log({State})
+setTimeout(action.updateModel(State), 1000);
 }
