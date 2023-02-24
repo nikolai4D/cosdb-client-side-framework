@@ -20,12 +20,13 @@ export async function eventChangeDropdown(id) {
     parentId,
     selectedValue,
   });
-
+ 
   if (customType === "viewTemplate") {
     const viewTemplateBody = await getAccordionBody(id);
 
     if (selectedValue !== "") {
       await createSlots(viewTemplateBody, id, selectedValue);
+      await action.create(id, value, parentId, "viewTemplates");
     }
   }
   if (customType === "component") {
@@ -48,8 +49,6 @@ export async function eventChangeDropdown(id) {
   }
   console.log({State})
   action.updateModel(State)
-
-
 }
 
 function getAccordionBody(id) {
