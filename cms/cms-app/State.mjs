@@ -1,1 +1,1 @@
-const State = {}
+export const State = {}
