@@ -43,18 +43,16 @@ export async function eventChangeDropdown(id) {
         console.log("Molecule");
         await createMolecule(componentBody, id, selectedValue);
         await action.create(id, selectedValue, parentId, "molecules");
-
       }
       if (selectedValue.startsWith("Atom")) {
         console.log("Atom");
         await createAtom(componentBody, id, selectedValue);
         await action.create(id, selectedValue, parentId, "atoms");
-
       }
     }
   }
   console.log({State})
-  action.updateModel(State)
+  await action.updateModel(await State)
 }
 
 function getAccordionBody(id) {
