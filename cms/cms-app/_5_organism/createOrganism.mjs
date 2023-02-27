@@ -9,7 +9,7 @@ import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
 export const createOrganism = async (componentBody, id, selectedValue) => {
-  action.create(id, selectedValue, parentId, "organisms");
+  // action.create(id, selectedValue, parentId, "organisms");
 
   const filename = selectedValue;
   const type = "organisms";
