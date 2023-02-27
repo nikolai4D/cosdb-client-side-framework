@@ -26,8 +26,8 @@ export async function eventChangeDropdown(id) {
 }
   const getDomAndData = async (customType, id, selectedValue, parentId) => {
      await getByCustomType(customType, id, selectedValue, parentId);
-     console.log({State})
-     action.updateModel(await State)
+     console.log({State},"HELLO")
+     action.updateModel(State)
     // do something else here after firstFunction completes
   }
 
