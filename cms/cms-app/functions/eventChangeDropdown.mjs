@@ -26,8 +26,11 @@ export async function eventChangeDropdown(id) {
 }
   const getDomAndData = async (customType, id, selectedValue, parentId) => {
      await getByCustomType(customType, id, selectedValue, parentId);
-     await action.updateModel(State)
+     setTimeout( await action.updateModel(State), 1000); // or whatever delay you want to use
+
+    
   }
+
 
 async function getByCustomType(customType, id, selectedValue, parentId) {
   if (customType === "viewTemplate") {
@@ -45,7 +48,7 @@ async function getByCustomType(customType, id, selectedValue, parentId) {
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
         await createOrganism(componentBody, id, selectedValue);
-        await action.create(id, selectedValue, parentId, "organisms");
+        // await action.create(id, selectedValue, parentId, "organisms");
 
       }
       if (selectedValue.startsWith("Molecule")) {
