@@ -20,7 +20,7 @@ export const mutation = {
 
 
 export const action = {
-    create: async (id, value, parentId, type) => {
+    create: async function (id, value, parentId, type) {
         console.log({State})
         console.log({type})
         try {
@@ -34,7 +34,7 @@ export const action = {
             console.log("error in updateModel", error);
         }
     },
-    updateModel: async (data) => {
+    updateModel: async function (data) {
             try {
                 await writeModel(data);
             }
