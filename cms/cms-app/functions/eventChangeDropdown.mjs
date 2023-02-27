@@ -26,7 +26,7 @@ export async function eventChangeDropdown(id) {
 
     if (selectedValue !== "") {
       await createSlots(viewTemplateBody, id, selectedValue);
-      await action.create(id, value, parentId, "viewTemplates");
+      await action.create(id, selectedValue, parentId, "viewTemplates");
     }
   }
   if (customType === "component") {
