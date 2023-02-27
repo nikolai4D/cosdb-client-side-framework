@@ -52,7 +52,7 @@ export async function eventChangeDropdown(id) {
     }
   }
   console.log({State})
-  await action.updateModel(await State)
+  // await action.updateModel(await State)
 }
 
 function getAccordionBody(id) {
