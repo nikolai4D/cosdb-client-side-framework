@@ -26,7 +26,7 @@ export async function eventChangeDropdown(id) {
 }
   const getDomAndData = async (customType, id, selectedValue, parentId) => {
      await getByCustomType(customType, id, selectedValue, parentId);
-     await action.updateModel(State)
+    action.updateModel(State)
     //  setTimeout( await action.updateModel(State), 10000); // or whatever delay you want to use
 
     
@@ -39,7 +39,7 @@ async function getByCustomType(customType, id, selectedValue, parentId) {
 
     if (selectedValue !== "") {
       await createSlots(viewTemplateBody, id, selectedValue);
-      await action.create(id, selectedValue, parentId, "viewTemplates");
+      action.create(id, selectedValue, parentId, "viewTemplates");
     }
   }
   if (customType === "component") {
@@ -49,18 +49,18 @@ async function getByCustomType(customType, id, selectedValue, parentId) {
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
         await createOrganism(componentBody, id, selectedValue);
-        await action.create(id, selectedValue, parentId, "organisms");
+        action.create(id, selectedValue, parentId, "organisms");
 
       }
       if (selectedValue.startsWith("Molecule")) {
         console.log("Molecule");
         await createMolecule(componentBody, id, selectedValue);
-        await action.create(id, selectedValue, parentId, "molecules");
+        action.create(id, selectedValue, parentId, "molecules");
       }
       if (selectedValue.startsWith("Atom")) {
         console.log("Atom");
         await createAtom(componentBody, id, selectedValue);
-        await action.create(id, selectedValue, parentId, "atoms");
+        action.create(id, selectedValue, parentId, "atoms");
       }
     }
   }
