@@ -5,8 +5,8 @@ import { createSaveButton } from "./functions/createSaveButton.mjs";
 // import { delete } from "./_4_delete/delete.mjs";
 
 export async function cms_app() {
-  await createViewButton();
   await createSaveButton();
+  await createViewButton();
 
   // await read();
   // await update();
