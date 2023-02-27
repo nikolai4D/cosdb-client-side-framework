@@ -20,25 +20,13 @@ export async function eventChangeDropdown(id) {
     parentId,
     selectedValue,
   });
-  
-  getDomAndData(customType, id, selectedValue, parentId)
-
-}
-  const getDomAndData = async (customType, id, selectedValue, parentId) => {
-     await getByCustomType(customType, id, selectedValue, parentId);
-     console.log("DONE", State)
-    await action.updateModel(State)
-    //  setTimeout( await action.updateModel(State), 10000); // or whatever delay you want to use
-  }
-
-
-async function getByCustomType(customType, id, selectedValue, parentId) {
+ 
   if (customType === "viewTemplate") {
     const viewTemplateBody = await getAccordionBody(id);
 
     if (selectedValue !== "") {
       await createSlots(viewTemplateBody, id, selectedValue);
-      action.create(id, selectedValue, parentId, "viewTemplates");
+      await action.create(id, selectedValue, parentId, "viewTemplates");
     }
   }
   if (customType === "component") {
@@ -48,21 +36,23 @@ async function getByCustomType(customType, id, selectedValue, parentId) {
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
         await createOrganism(componentBody, id, selectedValue);
-        action.create(id, selectedValue, parentId, "organisms");
+        await action.create(id, selectedValue, parentId, "organisms");
 
       }
       if (selectedValue.startsWith("Molecule")) {
         console.log("Molecule");
         await createMolecule(componentBody, id, selectedValue);
-        action.create(id, selectedValue, parentId, "molecules");
+        await action.create(id, selectedValue, parentId, "molecules");
       }
       if (selectedValue.startsWith("Atom")) {
         console.log("Atom");
         await createAtom(componentBody, id, selectedValue);
-        action.create(id, selectedValue, parentId, "atoms");
+        await action.create(id, selectedValue, parentId, "atoms");
       }
     }
   }
+  console.log({State})
+  action.updateModel(await State)
 }
 
 function getAccordionBody(id) {
