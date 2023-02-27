@@ -8,7 +8,8 @@ import { Function } from "../_8_function/Function.mjs";
 import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
-export async function createOrganism(componentBody, id, selectedValue) {
+export const createOrganism = async (componentBody, id, selectedValue) => {
+  action.create(id, selectedValue, parentId, "organisms");
 
   const filename = selectedValue;
   const type = "organisms";
