@@ -34,7 +34,7 @@ export async function Molecule(molecule, moleculeBody) {
   moleculeDiv.appendChild(moleculeAccordionInput);
 
   console.log(id, value, parentId, "molecules")
-  await action.create(id, value, parentId, "molecules");
+  action.create(id, value, parentId, "molecules");
 
   return moleculeDiv;
 }
