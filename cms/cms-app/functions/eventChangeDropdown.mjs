@@ -26,7 +26,7 @@ export async function eventChangeDropdown(id) {
 }
   const getDomAndData = async (customType, id, selectedValue, parentId) => {
      await getByCustomType(customType, id, selectedValue, parentId);
-     setTimeout( await action.updateModel(State), 5000); // or whatever delay you want to use
+     setTimeout( await action.updateModel(State), 10000); // or whatever delay you want to use
 
     
   }
