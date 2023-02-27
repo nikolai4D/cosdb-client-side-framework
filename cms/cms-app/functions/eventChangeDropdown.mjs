@@ -20,7 +20,18 @@ export async function eventChangeDropdown(id) {
     parentId,
     selectedValue,
   });
- 
+  
+  getDomAndData(customType, id, selectedValue, parentId)
+
+}
+  const getDomAndData = async (customType, id, selectedValue, parentId) => {
+     await getByCustomType(customType, id, selectedValue, parentId);
+     console.log({State})
+     action.updateModel(await State)
+    // do something else here after firstFunction completes
+  }
+
+async function getByCustomType(customType, id, selectedValue, parentId) {
   if (customType === "viewTemplate") {
     const viewTemplateBody = await getAccordionBody(id);
 
@@ -51,8 +62,6 @@ export async function eventChangeDropdown(id) {
       }
     }
   }
-  console.log({State})
-  // await action.updateModel(await State)
 }
 
 function getAccordionBody(id) {
