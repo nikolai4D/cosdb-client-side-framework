@@ -14,7 +14,7 @@ export async function createViewButton() {
     action.updateModel(State)
 
   });
-  document.body.insertBefore(createViewButton, document.body.firstChild);
+  document.body.insertBefore(createViewButton, document.body.secondChild);
 
 console.log({State})
 
