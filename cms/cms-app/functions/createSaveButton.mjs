@@ -9,7 +9,7 @@ export async function createSaveButton() {
     action.updateModel(State)
 
   });
-  document.body.insertBefore(createSaveButton, document.body.firstChild);
+  document.body.appendChild(createSaveButton)
 
 console.log({State})
 
