@@ -49,7 +49,7 @@ async function getByCustomType(customType, id, selectedValue, parentId) {
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
         await createOrganism(componentBody, id, selectedValue);
-        // await action.create(id, selectedValue, parentId, "organisms");
+        await action.create(id, selectedValue, parentId, "organisms");
 
       }
       if (selectedValue.startsWith("Molecule")) {
