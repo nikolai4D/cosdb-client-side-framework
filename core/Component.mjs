@@ -115,7 +115,9 @@ export function Component(options = {}){
             try{
                 key = slot.getAttribute("data-slot")
                 if(this.subComponents[key]){
-                    slot.replaceWith(this.subComponents[key].getElement())
+                    // slot.replaceWith(this.subComponents[key].getElement())
+                    // const slotName = slot.attributes["data-slot"].value
+                    this.fillSlot(key, this.subComponents[key].getElement());
                 }
                 else {
                     console.warn("No subComponent found for slot: " + key)
