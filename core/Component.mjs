@@ -107,26 +107,26 @@ export function Component(options = {}){
         }
     }
 
-    // this.bindSlots = function(){
-    //     let slots = Array.from(this.element.querySelectorAll("[data-slot]"))
+    this.bindSlots = function(){
+        let slots = Array.from(this.element.querySelectorAll("[data-slot]"))
 
-    //     slots.forEach(slot => {
-    //         let key
-    //         try{
-    //             key = slot.getAttribute("data-slot")
-    //             if(this.subComponents[key]){
-    //                 slot.replaceWith(this.subComponents[key].getElement())
-    //             }
-    //             else {
-    //                 console.warn("No subComponent found for slot: " + key)
-    //             }
-    //         } catch (e) {
-    //             console.error("Error while binding slot: ", key, slot,
-    //                 "subComponents keys: ", Object.keys(this.subComponents),
-    //                 e)
-    //         }
-    //     })
-    // }
+        slots.forEach(slot => {
+            let key
+            try{
+                key = slot.getAttribute("data-slot")
+                if(this.subComponents[key]){
+                    slot.replaceWith(this.subComponents[key].getElement())
+                }
+                else {
+                    console.warn("No subComponent found for slot: " + key)
+                }
+            } catch (e) {
+                console.error("Error while binding slot: ", key, slot,
+                    "subComponents keys: ", Object.keys(this.subComponents),
+                    e)
+            }
+        })
+    }
 
          /**
      * Create child components
@@ -139,18 +139,18 @@ export function Component(options = {}){
             }
         }
     
-        this.bindSlots= function() {
-            if(!this.element) throw new Error("Cannot fill slot before the element is defined.")
+        // this.bindSlots= function() {
+        //     if(!this.element) throw new Error("Cannot fill slot before the element is defined.")
     
-            const slots = this.element.querySelectorAll(`[data-slot"]`)
+        //     const slots = this.element.querySelectorAll(`[data-slot"]`)
     
-            slots.forEach(element => {
-                const slotName = element.attributes["data-slot"].value
-                this.fillSlot(slotName, this.subComponents[slotName].getElement());
-            });
-            //this.fillSlot("organism_startInfo", organism_startInfo.getElement());
-            //this.fillSlot("organismLoginOrSignup", organism_loginOrSignup.getElement());
-        };
+        //     slots.forEach(element => {
+        //         const slotName = element.attributes["data-slot"].value
+        //         this.fillSlot(slotName, this.subComponents[slotName].getElement());
+        //     });
+        //     //this.fillSlot("organism_startInfo", organism_startInfo.getElement());
+        //     //this.fillSlot("organismLoginOrSignup", organism_loginOrSignup.getElement());
+        // };
     
     
 
