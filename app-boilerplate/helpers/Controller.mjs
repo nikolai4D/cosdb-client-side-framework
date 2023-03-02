@@ -14,8 +14,8 @@
 //   this.template.slots = slots
 // }
 
-import { View } from "cosdb-client-framework/core/View.mjs";
-import { ViewTemplate_dummy1 } from "cosdb-client-framework/components/viewTemplates/ViewTemplate_dummy1.mjs";
+import { View } from "../../core/View.mjs";
+import { ViewTemplate_dummy1 } from "../../components/viewTemplates/ViewTemplate_dummy1.mjs";
 
 
 export function Controller() {
