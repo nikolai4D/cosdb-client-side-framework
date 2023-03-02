@@ -21,7 +21,7 @@ import { ViewTemplate_dummy1 } from "../../components/viewTemplates/ViewTemplate
 export function Controller() {
   View.call(this);
 
-  this.title = title;
+  this.title = "view1";
 //   const view = view;
 
   //model
