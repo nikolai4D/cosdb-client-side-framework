@@ -14,71 +14,12 @@ export function stringToHTMLElement(string) {
   return frame.firstElementChild;
 }
 
-export function buildComponentFromSchema(
-  componentSchema,
-  parentSchema = null,
-  name = "root"
+
+export async function importModuleFromFile(
+  path,
+  filename
 ) {
-  try {
-    let constructor = constructorMap.get(componentSchema.constructorKey);
-
-    if (!constructor) {
-      console.warn(
-        `Component type ${componentSchema.constructorKey} not found in componentsMap`
-      );
-      return null;
-    }
-
-    let component = new constructor(componentSchema.options);
-    component.options = componentSchema.options;
-    component.id = name;
-    componentSchema.id = name;
-    for (let subComponent in componentSchema.subComponents) {
-      if (componentSchema.subComponents[subComponent]) {
-        component.subComponents[subComponent] = buildComponentFromSchema(
-          componentSchema.subComponents[subComponent],
-          componentSchema,
-          name + "__" + subComponent
-        );
-      }
-    }
-
-    return component;
-  } catch (e) {
-    let key = !parentSchema
-      ? "template"
-      : Object.keys(parentSchema.subComponents).find(
-          (key) => parentSchema.subComponents[key] === componentSchema
-        );
-
-    console.error(`Error while creating component ${key}: ${e}`);
-  }
+  const module = await import(`${path}`);
+  return module[filename]();
 }
 
-export function buildSchemaFromComponent(component) {
-  let subComponentsSchema = {};
-  for (let key in component.subComponents) {
-    if (!component.subComponents[key]) {
-      console.warn(
-        `No subComponent found for key ${key} in component ${component.id}`
-      );
-      subComponentsSchema[key] = {
-        constructorKey: null,
-        options: {},
-        subComponents: {},
-        id: component.id + "__" + key,
-      };
-    } else {
-      subComponentsSchema[key] = buildSchemaFromComponent(
-        component.subComponents[key]
-      );
-    }
-  }
-
-  return {
-    options: component.options,
-    constructorKey: component.constructorKey,
-    subComponents: subComponentsSchema,
-    id: component.id,
-  };
-}
