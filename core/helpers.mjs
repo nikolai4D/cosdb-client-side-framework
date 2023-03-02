@@ -1,5 +1,3 @@
-import { constructorMap } from "../cms/functions/fromFrontendFramework/constructorMap.mjs";
-
 /**
  * Take a string and make it into an HTML element.
  * !!! Do not work with sub table tags (tr, td, thead, tbody) !!!
