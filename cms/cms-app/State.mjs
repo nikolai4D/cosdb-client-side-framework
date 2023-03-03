@@ -29,9 +29,9 @@ export const action = {
             }
 
             let existingElement = State[type].find(el => el.id === id)
-            existingElement ? existingElement = newElement : State[type].push(newElement);
+            existingElement ? existingElement.value = value : State[type].push(newElement);
         }
-        
+
         catch(error) {
             console.log("error in updateModel", error);
         }
