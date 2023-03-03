@@ -35,6 +35,7 @@ export const action = {
         }
     },
     updateModel: async function (data) {
+        console.log({State})
             try {
                 await writeModel(data);
             }
