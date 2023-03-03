@@ -1,7 +1,6 @@
 import {Router, route} from "../core/Router.mjs";
 import {Controller} from "./helpers/Controller.mjs";
 
-console.log("HELLO")
 export const router = new Router([
     route("", Controller)
 ])
