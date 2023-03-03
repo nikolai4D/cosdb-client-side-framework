@@ -1,37 +1,64 @@
-import { updateViewTemplateData } from "../_3_update/updateViewTemplateData.mjs";
-import { updateViewTemplateDom } from "../_3_update/updateViewTemplateDom.mjs";
-import { updateComponentData } from "../_3_update/updateComponentData.mjs";
-import { updateComponentDom } from "../_3_update/updateComponentDom.mjs";
-import { updateFunctionData } from "../_3_update/updateFunctionData.mjs";
+// import { readModel } from "../requests/readModel.mjs";
+// import { updateField } from "../functions/updateField.mjs";
+// import { writeModel } from "../requests/writeModel.mjs";
 
-export async function eventChangeDropdown(id, key) {
+import { createOrganism } from "../_5_organism/createOrganism.mjs";
+import { createMolecule } from "../_6_molecule/createMolecule.mjs";
+import { createAtom } from "../_7_atom/createAtom.mjs";
+
+import { createSlots } from "../_3_slot/createSlots.mjs";
+import { State, action } from "../State.mjs";
+
+export async function eventChangeDropdown(id) {
   const select = document.getElementById(id);
   const selectedValue = select.value;
-  const { keytype } = select.dataset;
+  const customType = select.getAttribute("customType");
+  const parentId = select.getAttribute("parentId");
 
-  if (keytype === "viewTemplate") {
-    // update viewTemplateData
+  console.log("update: ", customType, ": ", {
+    id,
+    parentId,
+    selectedValue,
+  });
+ 
+  if (customType === "viewTemplate") {
+    const viewTemplateBody = await getAccordionBody(id);
 
-    const updatedViewTemplateData = await updateViewTemplateData(
-      id,
-      selectedValue
-    );
-
-    //update viewTemplateDom
-    return await updateViewTemplateDom(updatedViewTemplateData);
+    if (selectedValue !== "") {
+      await createSlots(viewTemplateBody, id, selectedValue);
+      await action.create(id, selectedValue, parentId, "viewTemplates");
+    }
   }
-  else if(keytype === "function") {
-    console.log(id, selectedValue, "function");
-    updateFunctionData(id, selectedValue)
+  if (customType === "component") {
+    const componentBody = await getAccordionBody(id);
+
+    if (selectedValue !== "") {
+      if (selectedValue.startsWith("Organism")) {
+        console.log("Organism");
+        await createOrganism(componentBody, id, selectedValue);
+        await action.create(id, selectedValue, parentId, "organisms");
+
+      }
+      if (selectedValue.startsWith("Molecule")) {
+        console.log("Molecule");
+        await createMolecule(componentBody, id, selectedValue);
+        await action.create(id, selectedValue, parentId, "molecules");
+      }
+      if (selectedValue.startsWith("Atom")) {
+        console.log("Atom");
+        await createAtom(componentBody, id, selectedValue);
+        await action.create(id, selectedValue, parentId, "atoms");
+      }
+    }
   }
-  else if (keytype === "slot" || keytype === "molecule" || keytype === "atom") {
+  console.log({State})
+  action.updateModel(await State)
+}
 
-    const updatedComponentData = await updateComponentData(
-      id,
-      selectedValue
-    );
-
-    return await updateComponentDom(updatedComponentData);
-
+function getAccordionBody(id) {
+  const accordionBody = document.getElementById("accordion-body-" + id);
+  while (accordionBody.firstChild) {
+    accordionBody.removeChild(accordionBody.firstChild);
   }
+  return accordionBody;
 }

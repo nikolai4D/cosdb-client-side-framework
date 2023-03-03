@@ -92,6 +92,7 @@ export function Component(options = {}){
         return `<div data-slot="${key}" class="slot"></div>`
     }
 
+    
     this.setComponentsToString = function() {
         if(!Object.values(this.subComponents).every(v => v === null)) return;
         for(const [key, value] of Object.entries(this.subComponents)){
@@ -114,7 +115,9 @@ export function Component(options = {}){
             try{
                 key = slot.getAttribute("data-slot")
                 if(this.subComponents[key]){
-                    slot.replaceWith(this.subComponents[key].getElement())
+                    // slot.replaceWith(this.subComponents[key].getElement())
+                    // const slotName = slot.attributes["data-slot"].value
+                    this.fillSlot(key, this.subComponents[key].getElement());
                 }
                 else {
                     console.warn("No subComponent found for slot: " + key)
@@ -126,6 +129,34 @@ export function Component(options = {}){
             }
         })
     }
+
+         /**
+     * Create child components
+     * @returns <void>
+     */
+         this.treeCreateComponents= function() {
+            for(const [key, value] of Object.entries(this.model)){
+                const newSubCompInstance = new value.component(value)
+                this.subComponents[key] = newSubCompInstance
+            }
+        }
+    
+        // this.bindSlots= function() {
+        //     if(!this.element) throw new Error("Cannot fill slot before the element is defined.")
+    
+        //     const slots = this.element.querySelectorAll(`[data-slot"]`)
+    
+        //     slots.forEach(element => {
+        //         const slotName = element.attributes["data-slot"].value
+        //         this.fillSlot(slotName, this.subComponents[slotName].getElement());
+        //     });
+        //     //this.fillSlot("organism_startInfo", organism_startInfo.getElement());
+        //     //this.fillSlot("organismLoginOrSignup", organism_loginOrSignup.getElement());
+        // };
+    
+    
+
+        
 
     /**
      *

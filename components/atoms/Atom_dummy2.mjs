@@ -1,12 +1,12 @@
 export function Atom_dummy2() {
-  this.options = [
+  this.valueOptions = [
     {
-      option: "option1",
+      valueOption: "valueOption2",
     }
   ]
   return (
   `  <div>
-      <h1>${this.option}</h1>
+      <h1>${this.valueOption}</h1>
     </div>
   `);
 }
