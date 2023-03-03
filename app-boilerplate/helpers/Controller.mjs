@@ -13,10 +13,27 @@ export function Controller() {
 
   //view
   this.template = new ViewTemplate_dummy1();
-  console.log(this.template.slots)
-  console.log(model, "model")
+   console.log(readModel())
+  // console.log(this.template.slots)
+  // console.log(model, "model")
   // this.template.slots = slots
 }
+
+export async function readModel() {
+  try {
+    const response = await fetch("/read");
+    // console.log(response);
+
+    const data = await response.json();
+    // console.log(data);
+    return data;
+  } catch (error) {
+    console.error("An error occurred while fetching the data:", error);
+  }
+}
+
+
+
 
 // import { View } from "cosdb-client-framework/core/View.mjs";
 
