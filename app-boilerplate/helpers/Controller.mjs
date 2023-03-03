@@ -1,6 +1,5 @@
 import { View } from "../../core/View.mjs";
 import { ViewTemplate_dummy1 } from "../../components/viewTemplates/ViewTemplate_dummy1.mjs";
-import { model } from "./model.json";
 
 export function Controller() {
   View.call(this);
