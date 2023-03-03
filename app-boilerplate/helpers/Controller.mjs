@@ -29,5 +29,6 @@ export function Controller() {
 
   //view
   this.template = new ViewTemplate_dummy1();
+  console.log(this.template.slots)
   // this.template.slots = slots
 }
