@@ -32,7 +32,7 @@ export async function Atom(atom, atomBody) {
 
   atomDiv.appendChild(atomAccordionInput);
 
-  action.create(id, value, parentId, "atoms");
+  //action.create(id, value, parentId, "atoms");
 
   return atomDiv;
 }
