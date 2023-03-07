@@ -17,21 +17,21 @@ export function Controller() {
 
   this.template = async function() {
 
-    const path = window.location.pathname.slice(1)
+  //   const path = window.location.pathname.slice(1)
 
-  console.log(path, "path")
-  console.log("Statess!: ", State)
+  // console.log(path, "path")
+  // console.log("Statess!: ", State)
 
-  const view = await State.model.views.find(view => view.value === path)
-  console.log(view, "view")
+  // const view = await State.model.views.find(view => view.value === path)
+  // console.log(view, "view")
 
-  const viewTemplate = State.model.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
+  // const viewTemplate = State.model.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
 
-  const file = viewTemplate.value;
-  const pathToComponent = `../../components/viewTemplates/${file}.mjs`
-  const viewTemplateComponent = importModuleFromFile(pathToComponent, file)
+  // const file = viewTemplate.value;
+  // const pathToComponent = `../../components/viewTemplates/${file}.mjs`
+  // const viewTemplateComponent = importModuleFromFile(pathToComponent, file)
 
-  console.log(viewTemplateComponent, "viewTemplateComponent")
+  // console.log(viewTemplateComponent, "viewTemplateComponent")
   return new ViewTemplate_dummy1();
   }
 
