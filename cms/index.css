@@ -21,7 +21,12 @@
     display: block;
   }
   
-  .createViewButton .createSaveButton {
+  .createViewButton {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .createSaveButton {
     padding: 10px;
     margin-bottom: 10px;
   }
