@@ -4,7 +4,10 @@ import { State } from "../State.mjs";
 import { importModuleFromFile } from "../../core/helpers.mjs";
 
 
-export function test() {
+export async function test() {
+    const view = await State.model.views.find(view => view.value === path)
+  console.log(view, "view")
+
   return new ViewTemplate_dummy1();
 }
 
