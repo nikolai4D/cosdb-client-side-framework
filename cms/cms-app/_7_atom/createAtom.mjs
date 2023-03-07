@@ -7,29 +7,31 @@ export async function createAtom(componentBody, id, selectedValue) {
   const type = "atoms";
   const atomBody = document.createElement("div");
 
+  const parentId = id;
+
   //--------------------------------
 
   //get valueOptions for atom
 
-  const constructorTypeAtoms = "value";
+  const constructorTypeAtomValue = "value";
 
   const atomValues = await getConstructors(
     filename,
-    constructorTypeAtoms,
+    constructorTypeAtomValue,
     type
   );
 
   if (atomValues) {
-    await createValueOptionEls(atomValues, id, atomBody, componentBody);
+    await createValueEls(atomValues, parentId, atomBody, componentBody);
   }
 
-  function createValueOptionEls(subComps, id, compBody, parentBody) {
+  function createValueEls(subComps, prntId, compBody, parentBody) {
     subComps.forEach(async (comp) => {
       const [[key, value]] = Object.entries(comp);
 
       const customType = "valueOptions";
       const id = await getUuid();
-      const parentId = id;
+      const parentId = prntId;
       const valueDisabled = false;
 
       let childSlot = await input(
