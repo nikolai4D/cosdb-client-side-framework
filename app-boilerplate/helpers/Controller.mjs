@@ -23,7 +23,7 @@ export function Controller() {
   //view
 
 // this.template = new ViewTemplate_dummy1();
-  this.template = async function () {
+  this.template = function () {
   //   const view = await State.model.views.find(view => view.value === path)
   // console.log(view, "view")
 
