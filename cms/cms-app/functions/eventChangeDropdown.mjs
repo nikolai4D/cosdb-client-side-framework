@@ -20,13 +20,13 @@ export async function eventChangeDropdown(id) {
     parentId,
     selectedValue,
   });
- 
+
   if (customType === "viewTemplate") {
     const viewTemplateBody = await getAccordionBody(id);
 
     if (selectedValue !== "") {
       await createSlots(viewTemplateBody, id, selectedValue);
-      await action.create(id, selectedValue, parentId, "viewTemplates");
+      //await action.create(id, selectedValue, parentId, "viewTemplates");
     }
   }
   if (customType === "component") {
@@ -36,23 +36,22 @@ export async function eventChangeDropdown(id) {
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
         await createOrganism(componentBody, id, selectedValue);
-        await action.create(id, selectedValue, parentId, "organisms");
-
+        //await action.create(id, selectedValue, parentId, "organisms");
       }
       if (selectedValue.startsWith("Molecule")) {
         console.log("Molecule");
         await createMolecule(componentBody, id, selectedValue);
-        await action.create(id, selectedValue, parentId, "molecules");
+        //await action.create(id, selectedValue, parentId, "molecules");
       }
       if (selectedValue.startsWith("Atom")) {
         console.log("Atom");
         await createAtom(componentBody, id, selectedValue);
-        await action.create(id, selectedValue, parentId, "atoms");
+        //await action.create(id, selectedValue, parentId, "atoms");
       }
     }
   }
-  console.log({State})
-  action.updateModel(await State)
+  console.log({ State });
+  //action.updateModel(await State);
 }
 
 function getAccordionBody(id) {
