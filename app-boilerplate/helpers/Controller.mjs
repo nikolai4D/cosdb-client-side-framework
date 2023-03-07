@@ -11,7 +11,7 @@ export async function test() {
   return new ViewTemplate_dummy1();
 }
 
-export async function Controller() {
+export function Controller() {
   View.call(this);
 
   this.title = "view1";
@@ -23,7 +23,12 @@ export async function Controller() {
   //view
 
 // this.template = new ViewTemplate_dummy1();
-  this.template = await test()
+  this.template = async function () {
+  //   const view = await State.model.views.find(view => view.value === path)
+  // console.log(view, "view")
+
+  this.template = new ViewTemplate_dummy1();
+}
 
   //   const path = window.location.pathname.slice(1)
 
