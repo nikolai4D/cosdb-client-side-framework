@@ -14,8 +14,8 @@ export function Controller() {
 
   //view
 
-
-  this.template = async function() {
+this.template = new ViewTemplate_dummy1();
+  // this.template = async function() {
 
   //   const path = window.location.pathname.slice(1)
 
@@ -32,8 +32,8 @@ export function Controller() {
   // const viewTemplateComponent = importModuleFromFile(pathToComponent, file)
 
   // console.log(viewTemplateComponent, "viewTemplateComponent")
-  return new ViewTemplate_dummy1();
-  }
+  // return new ViewTemplate_dummy1();
+  // }
 
     //     return `
 
