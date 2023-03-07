@@ -3,6 +3,11 @@ import { ViewTemplate_dummy1 } from "../../components/viewTemplates/ViewTemplate
 import { State } from "../State.mjs";
 import { importModuleFromFile } from "../../core/helpers.mjs";
 
+
+export function test() {
+  return new ViewTemplate_dummy1();
+}
+
 export function Controller() {
   View.call(this);
 
@@ -15,7 +20,7 @@ export function Controller() {
   //view
 
 // this.template = new ViewTemplate_dummy1();
-  this.template = async function() {
+  this.template = test()
 
   //   const path = window.location.pathname.slice(1)
 
@@ -32,8 +37,7 @@ export function Controller() {
   // const viewTemplateComponent = importModuleFromFile(pathToComponent, file)
 
   // console.log(viewTemplateComponent, "viewTemplateComponent")
-  return new ViewTemplate_dummy1();
-  }
+  // }
 
     //     return `
 
