@@ -1,12 +1,14 @@
 export function Atom_dummy1() {
-  this.valueOptions = [
+  this.values = [
     {
-      valueOption: "valueOption1",
-    }
-  ]
-  return (
-  `  <div>
-      <h1>${this.valueOption}</h1>
+      value: "value1",
+    },
+    {
+      value: "value2",
+    },
+  ];
+  return `<div>
+      <h1>${this.values[0].value}</h1>
     </div>
-  `);
+  `;
 }
