@@ -12,24 +12,49 @@ export function Controller() {
 
   //view
   this.template = new ViewTemplate_dummy1();
-   console.log(readModel())
+  //  console.log(readModel())
   // console.log(this.template.slots)
   // console.log(model, "model")
   // this.template.slots = slots
 }
 
-export async function readModel() {
-  try {
-    const response = await fetch("/read");
-    // console.log(response);
+// export async function readModel() {
+//   try {
+//     const response = await fetch("/read");
+//     // console.log(response);
 
-    const data = await response.json();
-    // console.log(data);
-    return data;
-  } catch (error) {
-    console.error("An error occurred while fetching the data:", error);
-  }
-}
+//     const data = await response.json();
+//     // console.log(data);
+//     return data;
+//   } catch (error) {
+//     console.error("An error occurred while fetching the data:", error);
+//   }
+// }
+
+// TODO: 
+
+// step 1
+
+// get model with views
+// get path of view via url
+// route to that view (path is a variable, view is dynamic)
+// get viewTemplate from model.json with view as parentId
+// this.template = new viewTemplate();
+
+
+// step 2
+
+// get subcomponents from model.json with viewTemplate as parentId
+// for each subcomponent, get the component from model.json with subcomponent as parentId
+// render that component somehow...
+
+
+
+
+
+// for each view, create a route with controller
+// in that controller, get the viewTemplate from model.json with view as parentId
+// 
 
 
 
