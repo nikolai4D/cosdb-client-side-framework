@@ -1,14 +1,8 @@
 export function Atom_dummy3() {
-  this.values = [
-    {
-      value: "value5",
-    },
-    {
-      value: "value6",
-    },
-  ];
+  this.value = "value3";
+
   return `<div>
-          <h1>${this.values[0].value}</h1>
+          <h1>${this.value}</h1>
         </div>
       `;
 }
