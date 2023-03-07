@@ -5,6 +5,7 @@ import { importModuleFromFile } from "../../core/helpers.mjs";
 
 
 export async function test() {
+  console.log(await State, "State")
     const view = await State.model.views.find(view => view.value === path)
   console.log(view, "view")
 
