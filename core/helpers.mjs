@@ -18,6 +18,6 @@ export async function importModuleFromFile(
   filename
 ) {
   const module = await import(`${path}`);
-  return module[filename]();
+  return module;
 }
 

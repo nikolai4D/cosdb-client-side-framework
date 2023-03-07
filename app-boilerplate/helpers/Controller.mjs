@@ -1,6 +1,7 @@
 import { View } from "../../core/View.mjs";
 import { ViewTemplate_dummy1 } from "../../components/viewTemplates/ViewTemplate_dummy1.mjs";
 import { State } from "../State.mjs";
+import { importModuleFromFile } from "../../core/helpers.mjs";
 
 export function Controller() {
   View.call(this);
@@ -12,10 +13,19 @@ export function Controller() {
 //   ListAllInformation_Model(view);
 
   //view
-  this.template = new ViewTemplate_dummy1();
+  const path = window.location.pathname.slice(1)
+
+  console.log(path, "path")
   console.log("Statess!: ", State)
 
-  //  console.log(readModel())
+  const view = State.model.views.find(view => view.value === path)
+  console.log(view, "view")
+
+  const viewTemplate = State.model.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
+
+  this.template = new ViewTemplate_dummy1();
+
+  //  console.log(  readModel())
   // console.log(this.template.slots)
   // console.log(model, "model")
   // this.template.slots = slots
