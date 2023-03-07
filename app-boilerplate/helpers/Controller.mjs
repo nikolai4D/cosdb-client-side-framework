@@ -13,7 +13,7 @@ export function Controller() {
 
   //view
   this.template = new ViewTemplate_dummy1();
-  console.log("State!: ", State)
+  console.log("Statess!: ", State)
 
   //  console.log(readModel())
   // console.log(this.template.slots)
