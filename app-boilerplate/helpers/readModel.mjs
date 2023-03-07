@@ -1,3 +1,4 @@
+import { State } from "../State.mjs";
 export async function readModel() {
     try {
       const response = await fetch("/read");
@@ -5,6 +6,8 @@ export async function readModel() {
   
       const data = await response.json();
       // console.log(data);
+
+      State.model = data;
       return data;
     } catch (error) {
       console.error("An error occurred while fetching the data:", error);
