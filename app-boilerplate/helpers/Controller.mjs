@@ -26,9 +26,11 @@ export function Controller() {
   // this.template = function () {
   //   const view = await State.model.views.find(view => view.value === path)
   // console.log(view, "view")
-console.log("test", test());
 
   this.template = new ViewTemplate_dummy1();
+
+  console.log("test", test());
+
 // }
 
   //   const path = window.location.pathname.slice(1)
