@@ -19,7 +19,7 @@ export async function Slot(slot) {
   const valueDisabled = slot.valueDisabled;
 
   const bodyDiv = document.createElement("div");
-  const componentDiv = await Component(await newComponent(parentId));
+  const componentDiv = await Component(await newComponent(id));
   bodyDiv.appendChild(componentDiv);
 
   const SlotAccordionInput = await accordionInput(
