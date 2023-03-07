@@ -1,5 +1,6 @@
 import { View } from "../../core/View.mjs";
 import { ViewTemplate_dummy1 } from "../../components/viewTemplates/ViewTemplate_dummy1.mjs";
+import { State } from "../State.mjs";
 
 export function Controller() {
   View.call(this);
@@ -12,6 +13,8 @@ export function Controller() {
 
   //view
   this.template = new ViewTemplate_dummy1();
+  console.log("State!: ", State)
+
   //  console.log(readModel())
   // console.log(this.template.slots)
   // console.log(model, "model")
