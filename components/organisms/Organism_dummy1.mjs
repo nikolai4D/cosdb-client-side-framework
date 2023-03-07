@@ -29,8 +29,6 @@
 // }
 
 export function Organism_dummy1() {
-  Component.call(this);
-
   this.organisms = [
     {
       organism: "Organism_dummy2",
@@ -49,11 +47,9 @@ export function Organism_dummy1() {
     },
   ];
 
-  this.getHtml = function () {
-    return `<div>
+  return `<div>
     <div>${this.organisms[0].organism}</div>
     <div>${this.organisms[1].organism}</div>
   </div>
   `;
-  };
 }
