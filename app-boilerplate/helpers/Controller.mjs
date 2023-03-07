@@ -13,12 +13,16 @@ export function Controller() {
 //   ListAllInformation_Model(view);
 
   //view
-  const path = window.location.pathname.slice(1)
+
+
+  this.template = async function() {
+
+    const path = window.location.pathname.slice(1)
 
   console.log(path, "path")
   console.log("Statess!: ", State)
 
-  const view = State.model.views.find(view => view.value === path)
+  const view = await State.model.views.find(view => view.value === path)
   console.log(view, "view")
 
   const viewTemplate = State.model.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
@@ -28,7 +32,13 @@ export function Controller() {
   const viewTemplateComponent = importModuleFromFile(pathToComponent, file)
 
   console.log(viewTemplateComponent, "viewTemplateComponent")
-  this.template = new ViewTemplate_dummy1();
+  return new ViewTemplate_dummy1();
+  }
+
+    //     return `
+
+// ${this.template}
+
   // this.template = new viewTemplateComponent();
 
   //  console.log(  readModel())
@@ -36,6 +46,8 @@ export function Controller() {
   // console.log(model, "model")
   // this.template.slots = slots
 }
+
+// export
 
 // export async function readModel() {
 //   try {
