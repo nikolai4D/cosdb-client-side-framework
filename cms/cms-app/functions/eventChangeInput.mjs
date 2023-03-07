@@ -10,7 +10,6 @@ export async function eventChangeInput(id) {
   const parentId = select.getAttribute("parentId");
 
   console.log("update: ", customType, ": ", { id, parentId, value });
-  console.log({State})
-  action.updateModel(State)
-
+  console.log({ State });
+  //action.updateModel(State)
 }
