@@ -5,7 +5,6 @@
 import { dropdown } from "../types/dropdown.mjs";
 
 export async function Function(func, functionBody) {
-
   const functionDiv = document.createElement("div");
   functionDiv.classList.add(func.customType);
 
@@ -21,8 +20,7 @@ export async function Function(func, functionBody) {
   const contenDiv = await functionBody;
   bodyDiv.appendChild(contenDiv);
 
-  
-const functionDropdown = dropdown(
+  const functionDropdown = dropdown(
     customType,
     key,
     values,
@@ -32,7 +30,7 @@ const functionDropdown = dropdown(
     valueDisabled
   );
 
-//   const functionDropdown = dropdown(key, values, selectedValue, id, false, "function");
+  //   const functionDropdown = dropdown(key, values, selectedValue, id, false, "function");
 
   functionDiv.appendChild(functionDropdown);
 

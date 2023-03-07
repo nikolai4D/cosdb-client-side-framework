@@ -1,5 +1,5 @@
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
-import { action } from "../State.mjs"
+import { action } from "../State.mjs";
 
 export async function Component(component) {
   console.log("Component");
@@ -30,7 +30,7 @@ export async function Component(component) {
   );
 
   ComponentDiv.appendChild(ComponentAccordionDropdown);
-    console.log(id, null, parentId, `${customType}s`)
-  action.create(id, null, parentId, `${customType}s`);
+  console.log(id, null, parentId, `${customType}s`);
+  //action.create(id, null, parentId, `${customType}s`);
   return ComponentDiv;
 }
