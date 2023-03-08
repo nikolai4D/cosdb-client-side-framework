@@ -92,7 +92,7 @@ function createSubOrganismsEl(subComps, id, compBody, parentBody) {
     let newId = slotEls[0].id;
     let nextLevelBody = document.getElementById("accordion-body-" + newId);
 
-    await createOrganism(nextLevelBody, id, organismValue);
+    await createOrganism(nextLevelBody, id, value);
   });
 }
 
