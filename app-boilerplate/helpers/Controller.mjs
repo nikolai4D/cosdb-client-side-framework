@@ -28,9 +28,9 @@ export function Controller(test) {
   //   const view = await State.model.views.find(view => view.value === path)
   // console.log(view, "view")
 
-  this.template = new ViewTemplate_dummy1();
+  // this.template = new ViewTemplate_dummy1();
 
-  console.log("test",test);
+  // console.log("test",test);
 
 // }
 
@@ -62,6 +62,8 @@ export function Controller(test) {
   // console.log(model, "model")
   // this.template.slots = slots
 }
+
+Controller.prototype.template=new ViewTemplate_dummy1();
 
 // export
 
