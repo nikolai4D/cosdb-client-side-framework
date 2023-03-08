@@ -20,9 +20,10 @@ export function Controller() {
 
     // this.template = new ViewTemplate_dummy2();
 
-  this.template = async function() {
+  this.template.getElement = async function() {
+    return new ViewTemplate_dummy1()
     // this.template = new ViewTemplate_dummy1();
-    this.getElement = new ViewTemplate_dummy1().getElement();
+    // this.getElement = new ViewTemplate_dummy1().getElement();
   }
 }
 
