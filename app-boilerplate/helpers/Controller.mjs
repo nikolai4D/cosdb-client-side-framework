@@ -4,15 +4,15 @@ import { State } from "../State.mjs";
 import { importModuleFromFile } from "../../core/helpers.mjs";
 
 
-export async function test() {
-  console.log(await State, "State")
-    const view = (await State).model.views.find(view => view.value === path)
-  console.log(view, "view")
+// export async function test() {
+//   console.log(await State, "State")
+//     const view = (await State).model.views.find(view => view.value === path)
+//   console.log(view, "view")
 
-  return new ViewTemplate_dummy1();
-}
+//   return new ViewTemplate_dummy1();
+// }
 
-export function Controller() {
+export function Controller(test) {
   View.call(this);
 
   this.title = "view1";
@@ -30,7 +30,7 @@ export function Controller() {
 
   this.template = new ViewTemplate_dummy1();
 
-  console.log("test", test());
+  console.log("test",test);
 
 // }
 
