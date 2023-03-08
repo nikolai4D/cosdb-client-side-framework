@@ -2,7 +2,7 @@ import { accordionInput } from "../types/accordionInput.mjs";
 import { newViewTemplate } from "../_2_viewTemplate/newViewTemplate.mjs";
 import { ViewTemplate } from "../_2_viewTemplate/ViewTemplate.mjs";
 import { updateModel } from "../requests/updateModel.mjs";
-import { action } from "../data-mgmt/State.mjs";
+// import { action } from "../data-mgmt/State.mjs";
 
 export async function View(view) {
   const viewDiv = document.createElement("div");
