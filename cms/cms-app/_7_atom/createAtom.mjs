@@ -29,7 +29,7 @@ export async function createAtom(componentBody, id, selectedValue) {
     subComps.forEach(async (comp) => {
       const [[key, value]] = Object.entries(comp);
 
-      const customType = "valueOptions";
+      const customType = "atomValue";
       const id = await getUuid();
       const parentId = prntId;
       const valueDisabled = false;

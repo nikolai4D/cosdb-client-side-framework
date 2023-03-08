@@ -1,5 +1,5 @@
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
-import { action } from "../State.mjs";
+import { action } from "../data-mgmt/State.mjs";
 
 export async function Component(component) {
   console.log("Component");

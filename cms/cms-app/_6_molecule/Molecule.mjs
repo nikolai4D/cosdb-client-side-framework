@@ -2,7 +2,7 @@ import { accordionInput } from "../types/accordionInput.mjs";
 // import { Component } from "../_4_component/Component.mjs";
 // import { newComponent } from "../_4_component/newComponent.mjs";
 // import { Slot } from "./Slot.mjs";
-import { action } from "../State.mjs";
+import { action } from "../data-mgmt/State.mjs";
 
 export async function Molecule(molecule, moleculeBody) {
   console.log("Molecule");

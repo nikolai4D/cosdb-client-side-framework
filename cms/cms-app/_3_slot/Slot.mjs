@@ -5,7 +5,7 @@ import { newComponent } from "../_4_component/newComponent.mjs";
 import { readModel } from "../requests/readModel.mjs";
 import { writeModel } from "../requests/writeModel.mjs";
 import { updateModel } from "../requests/updateModel.mjs";
-import { action } from "../State.mjs";
+import { action } from "../data-mgmt/State.mjs";
 
 export async function Slot(slot) {
   const SlotDiv = document.createElement("div");
