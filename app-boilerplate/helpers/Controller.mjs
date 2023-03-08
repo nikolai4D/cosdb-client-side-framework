@@ -65,7 +65,7 @@ export function Controller() {
   // this.template.slots = slots
 }
 
-// Controller.prototype.template=new ViewTemplate_dummy1();
+Controller.prototype.template=new ViewTemplate_dummy1();
 
 // export
 
