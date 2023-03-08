@@ -19,7 +19,7 @@ export function Controller() {
   this.title = "view1";
 
   this.template = async function() {
-    return new ViewTemplate_dummy1();
+    return await new ViewTemplate_dummy1();
   }
 }
 
