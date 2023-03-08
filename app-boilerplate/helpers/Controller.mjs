@@ -17,7 +17,7 @@ export function Controller() {
   View.call(this);
 
   this.title = "view1";
-  this.template= null
+  this.template= new ViewTemplate_dummy2();
 //   const view = view;
 
   //model
