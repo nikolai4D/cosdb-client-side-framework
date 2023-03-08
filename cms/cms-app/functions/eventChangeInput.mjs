@@ -1,7 +1,7 @@
 // import { readModel } from "../requests/readModel.mjs";
 // import { updateField } from "../functions/updateField.mjs";
 // import { writeModel } from "../requests/writeModel.mjs";
-import { State, action } from "../data-mgmt/State.mjs";
+import { State } from "../data-mgmt/State.mjs";
 
 export async function eventChangeInput(id) {
   const input = document.getElementById(id);
