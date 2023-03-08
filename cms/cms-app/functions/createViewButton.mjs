@@ -1,6 +1,6 @@
 import { newView } from "../_1_view/newView.mjs";
 import { View } from "../_1_view/View.mjs";
-import { State, action } from "../data-mgmt/State.mjs";
+import { State } from "../data-mgmt/State.mjs";
 
 export async function createViewButton() {
   const createViewButton = document.createElement("button");
