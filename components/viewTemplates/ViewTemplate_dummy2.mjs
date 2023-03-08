@@ -1,3 +1,5 @@
+import { Component } from "../../core/Component.mjs";
+
 export function ViewTemplate_dummy2() {
   this.slots = [
     {
