@@ -1,5 +1,6 @@
 import { View } from "../../core/View.mjs";
 import { ViewTemplate_dummy1 } from "../../components/viewTemplates/ViewTemplate_dummy1.mjs";
+import { ViewTemplate_dummy2 } from "../../components/viewTemplates/ViewTemplate_dummy2.mjs";
 import { State } from "../State.mjs";
 import { importModuleFromFile } from "../../core/helpers.mjs";
 
