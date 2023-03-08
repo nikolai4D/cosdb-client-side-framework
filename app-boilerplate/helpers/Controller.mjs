@@ -17,6 +17,13 @@ export function Controller() {
   View.call(this);
 
   this.title = "view1";
+
+  this.template = async function() {
+    return new ViewTemplate_dummy1();
+  }
+}
+
+
   // this.template= new ViewTemplate_dummy2();
 //   const view = view;
 
@@ -63,9 +70,8 @@ export function Controller() {
   // console.log(this.template.slots)
   // console.log(model, "model")
   // this.template.slots = slots
-}
 
-Controller.prototype.template=new ViewTemplate_dummy1();
+
 
 // export
 
