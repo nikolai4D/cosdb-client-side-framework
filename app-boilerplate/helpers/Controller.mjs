@@ -18,13 +18,14 @@ export function Controller() {
 
   this.title = "view1";
 
-  this.template = async function() {
-    return await new ViewTemplate_dummy1();
-  }
+    this.template= new ViewTemplate_dummy2();
+
+  // this.template = async function() {
+  //   return new ViewTemplate_dummy1();
+  // }
 }
 
 
-  // this.template= new ViewTemplate_dummy2();
 //   const view = view;
 
   //model
