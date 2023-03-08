@@ -21,7 +21,8 @@ export function Controller() {
     // this.template = new ViewTemplate_dummy2();
 
   this.template = async function() {
-    this.template = new ViewTemplate_dummy1();
+    // this.template = new ViewTemplate_dummy1();
+    this.getElement = new ViewTemplate_dummy1().getElement();
   }
 }
 
