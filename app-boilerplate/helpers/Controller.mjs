@@ -12,10 +12,11 @@ import { importModuleFromFile } from "../../core/helpers.mjs";
 //   return new ViewTemplate_dummy1();
 // }
 
-export function Controller(test) {
+export function Controller() {
   View.call(this);
 
   this.title = "view1";
+  this.template= null
 //   const view = view;
 
   //model
