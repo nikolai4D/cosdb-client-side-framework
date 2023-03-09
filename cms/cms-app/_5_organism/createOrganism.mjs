@@ -13,19 +13,16 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
 
   const parentId = id;
 
-  const organismSlot = await Organism(
-    await newOrganism("Organism", selectedValue, parentId),
-    organismBody
-  );
-
-  componentBody.appendChild(organismSlot);
-
-  //   const organismDiv = document.createElement("div");
-  const organismDiv = organismSlot;
+  const organismDiv = document.createElement("div");
 
   const filename = selectedValue;
   const type = "organisms";
   const organismBody = document.createElement("div");
+
+  const organismSlot = await Organism(
+    await newOrganism("Organism", selectedValue, parentId),
+    organismBody
+  );
 
   //--------------------------------
 
@@ -40,7 +37,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (subOrganisms) {
-    await createSubOrganismsEl(subOrganisms, id, organismBody, organismDiv);
+    await createSubOrganismsEl(subOrganisms, id, organismBody, organismSlot);
   }
 
   //--------------------------------
@@ -60,7 +57,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
       componentMolecules,
       id,
       organismBody,
-      organismDiv
+      organismSlot
     );
   }
 
@@ -77,15 +74,10 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (componentFunctions) {
-    await createFunctionsEl(componentFunctions, id, organismBody, organismDiv);
+    await createFunctionsEl(componentFunctions, id, organismBody, organismSlot);
   }
 
-  //   const organismSlot = await Organism(
-  //     await newOrganism("Organism", selectedValue, parentId),
-  //     organismBody
-  //   );
-
-  //   componentBody.appendChild(organismSlot);
+  componentBody.appendChild(organismSlot);
 };
 
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
