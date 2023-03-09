@@ -10,10 +10,8 @@ import { getConstructors } from "../functions/getConstructors.mjs";
 
 //import { getAccordionBody } from "../functions/getAccordionBody.mjs";
 
-export const createOrganism = async (componentBody2, id, selectedValue) => {
+export const createOrganism = async (componentBody, id, selectedValue) => {
   // action.create(id, selectedValue, parentId, "organisms");
-
-  const componentBody = document.getElementById("accordion-body-" + id);
 
   const filename = selectedValue;
   const type = "organisms";
