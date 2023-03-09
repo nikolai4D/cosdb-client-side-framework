@@ -1,12 +1,3 @@
-// import { readModel } from "../requests/readModel.mjs";
-// import { updateField } from "../functions/updateField.mjs";
-// import { writeModel } from "../requests/writeModel.mjs";
-import { Organism } from "../_5_organism/Organism.mjs";
-import { newOrganism } from "../_5_organism/newOrganism.mjs";
-import { Molecule } from "../_6_molecule/Molecule.mjs";
-import { newMolecule } from "../_6_molecule/newMolecule.mjs";
-import { Atom } from "../_7_atom/Atom.mjs";
-import { newAtom } from "../_7_atom/newAtom.mjs";
 import { createOrganism } from "../_5_organism/createOrganism.mjs";
 import { createMolecule } from "../_6_molecule/createMolecule.mjs";
 import { createAtom } from "../_7_atom/createAtom.mjs";
@@ -36,14 +27,12 @@ export async function eventChangeDropdown(id) {
   }
   if (customType === "component") {
     const componentBody = await getAccordionBody(id);
-      
 
     if (selectedValue !== "") {
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
 
-
-         await createOrganism(componentBody, id, selectedValue);
+        await createOrganism(componentBody, id, selectedValue);
         //await action.create(id, selectedValue, parentId, "organisms");
       }
       if (selectedValue.startsWith("Molecule")) {
@@ -56,10 +45,10 @@ export async function eventChangeDropdown(id) {
         await createAtom(componentBody, id, selectedValue);
         //await action.create(id, selectedValue, parentId, "atoms");
       }
-
+    }
+    console.log({ State });
+    //action.updateModel(await State);
   }
-  console.log({ State });
-  //action.updateModel(await State);
 }
 
 function getAccordionBody(id) {
