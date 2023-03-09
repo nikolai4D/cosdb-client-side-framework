@@ -32,16 +32,14 @@ export async function eventChangeDropdown(id) {
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
 
-        const orgBody = document.createElement("div");
+        // const orgBody = document.createElement("div");
+        // const organismSlot = await Organism(
+        //   await newOrganism("organism", selectedValue, id),
+        //   orgBody
+        // );
+        // componentBody.appendChild(organismSlot);
 
-        const organismSlot = await Organism(
-          await newOrganism("organism", selectedValue, id),
-          orgBody
-        );
-
-        //await createOrganism("orgBody", id, selectedValue);
-
-        componentBody.appendChild(organismSlot);
+        await createOrganism(componentBody, id, selectedValue);
       }
       if (selectedValue.startsWith("Molecule")) {
         console.log("Molecule");
