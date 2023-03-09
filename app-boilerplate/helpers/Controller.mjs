@@ -38,7 +38,22 @@ export function Controller() {
 
     let theSlotInModel = slots.find(slotModel => slotModel.value === slot.slot)
     console.log(theSlotInModel,"theSlotInModel")
-    if (theSlotInModel) { slot.slot = "HELLO"}
+    if (theSlotInModel) { 
+      const organismModel = data.organisms.find(organism => organism.parentId === theSlotInModel.id)
+      if (organismModel) {
+        slot.slot = organismModel.value;
+        // const file = organismModel.value;
+        // const pathToComponent = `../../components/organisms/${file}.mjs`
+        // const organismComponent = await importModuleFromFile(pathToComponent, file)
+        // let organism = new organismComponent[file]();
+        // slot.appendChild(organism)
+      }
+      // const file = organismModel.value;
+      // const pathToComponent = `../../components/organisms/${file}.mjs`
+      // const organismComponent = await importModuleFromFile(pathToComponent, file)
+      // let organism = new organismComponent[file]();
+      // slot.appendChild(organism)
+    }
     // if (slot.slot === )
     // const organismModel = data.organisms.find(organism => organism.parentId === slot.id)
     // const file = organismModel.value;
