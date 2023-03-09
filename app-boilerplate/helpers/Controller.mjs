@@ -34,7 +34,7 @@ export function Controller() {
 
   component.slots.map(slot => {
     console.log(slot, "slot")
-    let theSlotInModel = slots.find(slotModel => slotModel.value === slot)
+    let theSlotInModel = slots.find(slotModel => slotModel.value === slot.slot)
     console.log(theSlotInModel,"theSlotInModel")
     if (theSlotInModel) { slot.slot = "HELLO"}
     // if (slot.slot === )
