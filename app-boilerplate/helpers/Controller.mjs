@@ -45,10 +45,12 @@ export function Controller() {
 
       if (organismModel) {
         slot.slot = organismModel.value;
+        
         // const file = organismModel.value;
-        // const pathToComponent = `../../components/organisms/${file}.mjs`
-        // const organismComponent = await importModuleFromFile(pathToComponent, file)
-        // let organism = new organismComponent[file]();
+        const pathToComponent = `../../components/organisms/${file}.mjs`
+        const organismComponent = await importModuleFromFile(pathToComponent, file)
+        let organism = new organismComponent[file]();
+        slot.component = organism
         // slot.appendChild(organism)
       }
       // const file = organismModel.value;

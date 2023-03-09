@@ -22,4 +22,11 @@ export function ViewTemplate_dummy1() {
         </div>
       `;
     }
+
+    this.bindScript= function() {
+
+      this.slots.forEach(el => {
+        this.fillSlot(el.slot, el.component.getElement())
+      })
+    }
 }
