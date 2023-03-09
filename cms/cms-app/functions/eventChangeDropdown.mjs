@@ -1,6 +1,5 @@
 import { createMolecule } from "../_6_molecule/createMolecule.mjs";
-import { newOrganism } from "../_5_organism/newOrganism.mjs";
-import { Organism } from "../_5_organism/Organism.mjs";
+import { createOrganism } from "../_5_organism/createOrganism.mjs";
 import { createAtom } from "../_7_atom/createAtom.mjs";
 import { getAccordionBody } from "../functions/getAccordionBody.mjs";
 import { createSlots } from "../_3_slot/createSlots.mjs";
@@ -31,14 +30,6 @@ export async function eventChangeDropdown(id) {
     if (selectedValue !== "") {
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
-
-        // const orgBody = document.createElement("div");
-        // const organismSlot = await Organism(
-        //   await newOrganism("organism", selectedValue, id),
-        //   orgBody
-        // );
-        // componentBody.appendChild(organismSlot);
-
         await createOrganism(componentBody, id, selectedValue);
       }
       if (selectedValue.startsWith("Molecule")) {
