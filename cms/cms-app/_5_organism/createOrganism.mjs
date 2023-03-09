@@ -8,8 +8,12 @@ import { Function } from "../_8_function/Function.mjs";
 import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
+import { getAccordionBody } from "../functions/getAccordionBody.mjs";
+
 export const createOrganism = async (componentBody, id, selectedValue) => {
   // action.create(id, selectedValue, parentId, "organisms");
+
+  const parentOrganismBody = await getAccordionBody(id);
 
   const filename = selectedValue;
   const type = "organisms";
@@ -28,7 +32,12 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (subOrganisms) {
-    await createSubOrganismsEl(subOrganisms, id, organismBody, componentBody);
+    await createSubOrganismsEl(
+      subOrganisms,
+      id,
+      organismBody,
+      parentOrganismBody
+    );
   }
 
   //--------------------------------
@@ -48,7 +57,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
       componentMolecules,
       id,
       organismBody,
-      componentBody
+      parentOrganismBody
     );
   }
 
@@ -69,7 +78,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
       componentFunctions,
       id,
       organismBody,
-      componentBody
+      parentOrganismBody
     );
   }
 };
