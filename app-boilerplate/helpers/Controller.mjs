@@ -10,8 +10,9 @@ export function Controller() {
 
   this.title = "view1";
 
-  this.template = new ViewTemplate_dummy2();
-  
+  this.template = function(){
+    return new ViewTemplate_dummy2();
+  }
 
 
 
