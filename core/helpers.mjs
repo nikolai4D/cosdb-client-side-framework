@@ -21,3 +21,4 @@ export async function importModuleFromFile(
   return module;
 }
 
+export const slot =(name)=> `<div data-slot="${name}" class="slot"></div>`
