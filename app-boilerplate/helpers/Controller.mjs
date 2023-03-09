@@ -29,7 +29,7 @@ export function Controller() {
   // console.log(viewTemplateComponent, "viewTemplateComponent")
 
 
-    return await new ViewTemplate_dummy2();
+    return new ViewTemplate_dummy2();
   }
 
 
