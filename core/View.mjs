@@ -15,7 +15,9 @@ export function View() {
         console.log(this.template(), "this.template")
 
         if(!this.template) throw new Error("View template is not set")
-        document.body.append(this.template.getElement())
+        if (this.template.getElement())         document.body.append(this.template().getElement())
+
+        else document.body.append(this.template.getElement())
 
         document.title = this.title
     }
