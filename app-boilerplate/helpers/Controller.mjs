@@ -10,14 +10,14 @@ export function Controller() {
 
   this.title = "view1";
 
-  this.template = function(){
+  this.template = async function(){
     const path = window.location.pathname.slice(1)
 
-    console.log(State)
+    // console.log(State)
     console.log(path)
 
 
-  const view =  State.model.views.find(view => view.value === path)
+  const view =  await State.model.views.find(view => view.value === path)
   console.log(view, "view")
 
   const viewTemplate = State.model.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
