@@ -18,10 +18,10 @@ export function Controller() {
     const path = window.location.pathname.slice(1)
 
   const view = data.views.find(view => view.value === path)
-  console.log(view, "view")
      
   const viewTemplate = data.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
 
+  console.log(data, viewTemplate)
   // const file = viewTemplate.value;
   // const pathToComponent = `../../components/viewTemplates/${file}.mjs`
   // const viewTemplateComponent = importModuleFromFile(pathToComponent, file)
