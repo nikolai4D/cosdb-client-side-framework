@@ -12,7 +12,7 @@ export function View() {
      */
     this.setView= async function() {
 
-        console.log(this.template(), "this.template")
+        console.log(await this.template(), "this.template")
 
         if(!this.template) throw new Error("View template is not set")
         if (!this.template.getElement) document.body.append(this.template().getElement())
