@@ -8,12 +8,12 @@ import { Function } from "../_8_function/Function.mjs";
 import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
-import { getAccordionBody } from "../functions/getAccordionBody.mjs";
+//import { getAccordionBody } from "../functions/getAccordionBody.mjs";
 
 export const createOrganism = async (componentBody2, id, selectedValue) => {
   // action.create(id, selectedValue, parentId, "organisms");
 
-  const componentBody = await getAccordionBody(id);
+  const componentBody = document.getElementById("accordion-body-" + id);
 
   const filename = selectedValue;
   const type = "organisms";
