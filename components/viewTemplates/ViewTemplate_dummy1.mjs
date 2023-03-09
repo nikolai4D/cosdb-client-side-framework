@@ -26,7 +26,7 @@ export function ViewTemplate_dummy1() {
     this.bindScript= function() {
 
       this.slots.forEach(async el => {
-        console.log(await el, "el")
+        console.log(Object.values(await el), "el")
         this.fillSlot(el.slot, el.component.getElement())
       })
     }
