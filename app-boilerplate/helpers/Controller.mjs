@@ -14,9 +14,7 @@ export function Controller() {
    return new ViewTemplate_dummy2();
   }
 
-  this.getElement = function() {
-    return this.template().getElement();
-  };
+
 
 }
 
