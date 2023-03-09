@@ -14,6 +14,8 @@ export async function createOrganism(componentBody, id, selectedValue) {
     await newOrganism("organism", selectedValue, id),
     subComponentBody
   );
+
+  console.log(organismSlot, "organismSlot!!!!!!!!!!!!!!");
   componentBody.appendChild(organismSlot);
 
   await createSubOrganism(subComponentBody, id, selectedValue);
