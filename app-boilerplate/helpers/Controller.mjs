@@ -15,6 +15,7 @@ export function Controller() {
 
     console.log(State)
     console.log(await State.model)
+    console.log(Object.values(State))
 
     console.log(path)
 
