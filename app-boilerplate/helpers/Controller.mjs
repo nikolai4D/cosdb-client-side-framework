@@ -13,6 +13,8 @@ export function Controller() {
 
   this.childComponent = null;
 
+  this.slotsFromModel = null;
+
   this.model = null;
 
   this.getComponent = async function() { 
@@ -31,6 +33,8 @@ export function Controller() {
     // importing the viewTemplate prototype
     const viewTemplateComponent = await importModuleFromFile(pathToComponent, file)
 
+    this.slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id)
+
 
     let component = new viewTemplateComponent[file]();
     
@@ -42,11 +46,13 @@ export function Controller() {
   this.getSlots = async function() {
     let component = this.childComponent
     console.log(this.model)
-    const slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id)
+
+
+
 
       component.slots.forEach(async slot => {
 
-        let specificSlot = slotsFromModel.find(slotModel => slotModel.value === slot.slot)
+        let specificSlot = this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
 
         if (specificSlot) { 
           const organismModel = this.model.organisms.find(organism => organism.parentId === specificSlot.id)
