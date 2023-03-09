@@ -20,7 +20,7 @@ export async function eventChangeDropdown(id) {
     parentId,
     selectedValue,
   });
- 
+
   if (customType === "viewTemplate") {
     const viewTemplateBody = await getAccordionBody(id);
 

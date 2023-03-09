@@ -1,4 +1,3 @@
 export const State = {
     model: {}
-
 }
