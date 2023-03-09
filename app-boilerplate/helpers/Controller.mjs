@@ -72,7 +72,7 @@ export function Controller() {
 
   component.bindScript=  function() {
 
-    let awaitedSlots =  await this.slots
+    let awaitedSlots =   this.slots
 
     awaitedSlots.forEach(async el => {
       console.log(Object.keys(await el), "el")
