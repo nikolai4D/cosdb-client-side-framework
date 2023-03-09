@@ -1,12 +1,14 @@
+import { Component } from "../../core/Component.mjs";
+
 export function Organism_dummy1() {
   Component.call(this);
 
-  this.subComponents = [
-    { type: "organism",
-      title: "Organism_dummy2"
+  this.organinsms = [
+    { 
+      organism: "Organism_dummy2"
     },
-    { type: "organism",
-      title: "Organism_dummy3"
+    { 
+      organism: "Organism_dummy3"
     }
   ]
 
@@ -22,8 +24,8 @@ export function Organism_dummy1() {
 
   this.getHtml = function(){
     return `<div>
-    <div>${this.subComponents[0].title}</div>
-    <div>${this.subComponents[1].title}</div>
+    <div>${this.organinsms[0].organism}</div>
+    <div>${this.organinsms[1].organism}</div>
   </div>
   `;
   }
