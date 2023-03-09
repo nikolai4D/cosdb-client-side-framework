@@ -11,7 +11,11 @@ export function Controller() {
   this.title = "view1";
 
   this.template = function(){
+    const path = window.location.pathname.slice(1)
+
     console.log(State)
+    console.log(path)
+
     return new ViewTemplate_dummy2();
   }
 
