@@ -34,11 +34,11 @@ export async function eventChangeDropdown(id) {
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
 
-        //const orgBody = document.createElement("div");
+        const orgBody = document.createElement("div");
 
         const organismSlot = await Organism(
           await newOrganism("organism", selectedValue, id),
-          await createOrganism("orgBody", id, selectedValue)
+          orgBody
         );
 
         //await createOrganism(componentBody, id, selectedValue);
