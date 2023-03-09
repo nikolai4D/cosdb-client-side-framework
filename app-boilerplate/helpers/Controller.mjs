@@ -118,7 +118,7 @@ export function Controller() {
 
   this.childComponent = await this.getComponent();
   await this.getSlots();
-  await this.bindNewScripts();
+   this.bindNewScripts();
 
 
   // component.slots.forEach(async slot => {
