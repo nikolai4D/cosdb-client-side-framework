@@ -41,27 +41,28 @@ export function Controller() {
 
   component.slots.forEach(async slot => {
 
-    let specificSlot = slotsFromModel.find(slotModel => slotModel.value === slot.slot)
+    console.log(slot, "slot")
+    // let specificSlot = slotsFromModel.find(slotModel => slotModel.value === slot.slot)
 
 
-    if (specificSlot) { 
-      const organismModel = data.organisms.find(organism => organism.parentId === specificSlot.id)
+    // if (specificSlot) { 
+    //   const organismModel = data.organisms.find(organism => organism.parentId === specificSlot.id)
 
 
-      if (organismModel) {
-        slot.slot = organismModel.value;
-        console.log(slot.slot, "helli")
-        slot.component = "hej"
+    //   if (organismModel) {
+    //     slot.slot = organismModel.value;
+    //     console.log(slot.slot, "helli")
+    //     slot.component = "hej"
 
-        const fileOrganism = organismModel.value;
-        const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
-        const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
-        console.log(organismComponent, "organism component")
-        let organism = await new organismComponent[fileOrganism]();
+    //     const fileOrganism = organismModel.value;
+    //     const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
+    //     const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
+    //     console.log(organismComponent, "organism component")
+    //     let organism = await new organismComponent[fileOrganism]();
 
-        slot.component = organism
-      }
-    }
+    //     slot.component = organism
+    //   }
+    // }
   }
   )
 
