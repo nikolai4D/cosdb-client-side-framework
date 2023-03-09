@@ -42,15 +42,15 @@ export function Controller() {
   component.slots.forEach(async slot => {
 
     console.log(slot, "slot")
-    // let specificSlot = slotsFromModel.find(slotModel => slotModel.value === slot.slot)
+    let specificSlot = slotsFromModel.find(slotModel => slotModel.value === slot.slot)
 
 
-    // if (specificSlot) { 
-    //   const organismModel = data.organisms.find(organism => organism.parentId === specificSlot.id)
+    if (specificSlot) { 
+      const organismModel = data.organisms.find(organism => organism.parentId === specificSlot.id)
 
 
-    //   if (organismModel) {
-    //     slot.slot = organismModel.value;
+      if (organismModel) {
+        slot.slot = organismModel.value;
     //     console.log(slot.slot, "helli")
     //     slot.component = "hej"
 
@@ -61,8 +61,8 @@ export function Controller() {
     //     let organism = await new organismComponent[fileOrganism]();
 
     //     slot.component = organism
-    //   }
-    // }
+      }
+    }
   }
   )
 
