@@ -18,7 +18,7 @@ export async function createMolecule(componentBody, id, selectedValue) {
   await createSubMolecule(subComponentBody, newMol.id, selectedValue);
 }
 
-async function createSubMolecule(subComponentBody, id, selectedValue) {
+export async function createSubMolecule(subComponentBody, id, selectedValue) {
   ///--------------------------------
 
   const filename = selectedValue;

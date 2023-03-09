@@ -2,7 +2,7 @@ import { Organism } from "./Organism.mjs";
 import { newOrganism } from "./newOrganism.mjs";
 import { Molecule } from "../_6_molecule/Molecule.mjs";
 import { newMolecule } from "../_6_molecule/newMolecule.mjs";
-import { createMolecule } from "../_6_molecule/createMolecule.mjs";
+import { createSubMolecule } from "../_6_molecule/createMolecule.mjs";
 
 import { Function } from "../_8_function/Function.mjs";
 import { newFunction } from "../_8_function/newFunction.mjs";
@@ -129,7 +129,7 @@ function createSubMoleculesEl(subComps, id, compBody, parentBody) {
     let newId = slotEls[0].id;
     let nextLevelBody = document.getElementById("accordion-body-" + newId);
 
-    await createMolecule(nextLevelBody, newId, value);
+    await createSubMolecule(nextLevelBody, newId, value);
   });
 }
 
