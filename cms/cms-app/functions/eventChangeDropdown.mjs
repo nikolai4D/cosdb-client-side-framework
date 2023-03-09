@@ -1,7 +1,7 @@
 import { createOrganism } from "../_5_organism/createOrganism.mjs";
 import { createMolecule } from "../_6_molecule/createMolecule.mjs";
 import { createAtom } from "../_7_atom/createAtom.mjs";
-
+import { getAccordionBody } from "../functions/getAccordionBody.mjs";
 import { createSlots } from "../_3_slot/createSlots.mjs";
 import { State } from "../data-mgmt/State.mjs";
 
@@ -32,7 +32,17 @@ export async function eventChangeDropdown(id) {
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
 
-        await createOrganism(componentBody, id, selectedValue);
+        const orgBody = await createOrganism(componentBody, id, selectedValue);
+
+        const organismSlot = await Organism(
+          await newOrganism("organism", selectedValue, parentId),
+          orgBody
+        );
+
+        //await createOrganism(componentBody, id, selectedValue);
+
+        componentBody.appendChild(organismSlot);
+
         //await action.create(id, selectedValue, parentId, "organisms");
       }
       if (selectedValue.startsWith("Molecule")) {
@@ -51,10 +61,10 @@ export async function eventChangeDropdown(id) {
   }
 }
 
-function getAccordionBody(id) {
-  const accordionBody = document.getElementById("accordion-body-" + id);
-  while (accordionBody.firstChild) {
-    accordionBody.removeChild(accordionBody.firstChild);
-  }
-  return accordionBody;
-}
+// function getAccordionBody(id) {
+//   const accordionBody = document.getElementById("accordion-body-" + id);
+//   while (accordionBody.firstChild) {
+//     accordionBody.removeChild(accordionBody.firstChild);
+//   }
+//   return accordionBody;
+// }
