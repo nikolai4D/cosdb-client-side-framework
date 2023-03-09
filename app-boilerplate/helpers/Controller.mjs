@@ -73,7 +73,7 @@ export function Controller() {
         component.bindScript= function() {
 
           component.slots.forEach(async slot => {
-            console.log(slot, "slot")
+            console.log(await slot, "slot")
           })
 
         }
