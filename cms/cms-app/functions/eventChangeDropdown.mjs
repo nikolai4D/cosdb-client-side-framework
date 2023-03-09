@@ -1,5 +1,7 @@
 import { createOrganism } from "../_5_organism/createOrganism.mjs";
 import { createMolecule } from "../_6_molecule/createMolecule.mjs";
+import { newOrganism } from "../_5_organism/newOrganism.mjs";
+import { Organism } from "../_5_organism/Organism.mjs";
 import { createAtom } from "../_7_atom/createAtom.mjs";
 import { getAccordionBody } from "../functions/getAccordionBody.mjs";
 import { createSlots } from "../_3_slot/createSlots.mjs";
