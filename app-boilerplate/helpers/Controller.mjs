@@ -40,6 +40,10 @@ export function Controller() {
 
   console.log("component", component)
 
+  component.bindScript= function() {
+    console.log("hello")
+  }
+
   return component;
 
   }
