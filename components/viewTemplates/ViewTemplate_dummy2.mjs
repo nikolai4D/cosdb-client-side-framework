@@ -2,6 +2,7 @@ import { Component } from "../../core/Component.mjs";
 
 export function ViewTemplate_dummy2() {
   Component.call(this);
+  
   this.slots = [
     {
       slot: "slot3",
