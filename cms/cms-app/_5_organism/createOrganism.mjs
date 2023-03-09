@@ -10,10 +10,10 @@ import { getConstructors } from "../functions/getConstructors.mjs";
 
 import { getAccordionBody } from "../functions/getAccordionBody.mjs";
 
-export const createOrganism = async (componentBody, id, selectedValue) => {
+export const createOrganism = async (componentBody2, id, selectedValue) => {
   // action.create(id, selectedValue, parentId, "organisms");
 
-  console.log(componentBody, "componentBody!!!!!!!");
+  const componentBody = await getAccordionBody(id);
 
   const filename = selectedValue;
   const type = "organisms";
