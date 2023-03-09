@@ -93,11 +93,6 @@ export function Controller() {
 
   }
 
-  this.childComponent =  this.getComponent();
-  this.getSlots();
-  this.bindNewScripts();
- this.title = "view1";
-
 }
 
 
