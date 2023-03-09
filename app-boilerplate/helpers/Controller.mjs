@@ -34,6 +34,7 @@ export function Controller() {
 
   component.slots.map(slot => {
     let theSlotInModel = slots.find(slotModel => slotModel.value === slot)
+    console.log(theSlotInModel,"theSlotInModel")
     if (theSlotInModel) { slot.slot = "HELLO"}
     // if (slot.slot === )
     // const organismModel = data.organisms.find(organism => organism.parentId === slot.id)
