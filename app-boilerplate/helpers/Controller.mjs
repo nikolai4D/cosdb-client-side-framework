@@ -15,24 +15,11 @@ export function Controller() {
 
     const data = await readModel();
 
-    console.log(data, "data")
 
-    const path = window.location.pathname.slice(1)
-
-    console.log(State)
-    console.log(Object.values(await State))
-
-    console.log(await State.model)
-
-    console.log(path)
-
-    const model = (await State).model;
-    console.log(model)
-
-  const view = model.views.find(view => view.value === path)
+  const view = data.views.find(view => view.value === path)
   console.log(view, "view")
      
-  const viewTemplate = model.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
+  const viewTemplate = data.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
 
   const file = viewTemplate.value;
   const pathToComponent = `../../components/viewTemplates/${file}.mjs`
