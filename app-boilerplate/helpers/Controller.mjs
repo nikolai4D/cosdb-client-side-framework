@@ -29,7 +29,6 @@ export function Controller() {
     // importing the viewTemplate prototype
     const viewTemplateComponent = await importModuleFromFile(pathToComponent, file)
 
-    const slotsFromModel = data.slots.filter(slot => slot.parentId === viewTemplate.id)
 
     let component = new viewTemplateComponent[file]();
     
@@ -40,6 +39,7 @@ export function Controller() {
 
   this.getSlots = async function() {
     let component = this.childComponent
+    const slotsFromModel = data.slots.filter(slot => slot.parentId === viewTemplate.id)
 
       component.slots.forEach(async slot => {
 
