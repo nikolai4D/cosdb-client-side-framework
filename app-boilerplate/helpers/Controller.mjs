@@ -67,13 +67,13 @@ export function Controller() {
       })
   };
 
-  this.bindNewScripts = async function() {
+  this.bindNewScripts =  function() {
     let component = this.childComponent;
 
         component.bindScript= function() {
 
-          component.slots.forEach(async slot => {
-            console.log(await slot, "slot")
+          component.slots.forEach( slot => {
+            console.log( slot, "slot")
           })
 
         }
