@@ -38,7 +38,7 @@ export function Controller() {
 
   this.template = async function(){
 
-  let component =await getComponent()
+  let component =await this.getComponent()
 
 
   // component.slots.forEach(async slot => {
