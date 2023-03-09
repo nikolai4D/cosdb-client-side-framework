@@ -68,8 +68,8 @@ export function Controller() {
       })
   };
 
-  this.bindNewScripts = () => {
-    let component = this.childComponent;
+  this.bindNewScripts = async () => {
+    let component = await this.childComponent;
 
         component.bindScript= function() {
 
@@ -95,70 +95,6 @@ export function Controller() {
   }
 
 }
-
-
-  // component.slots.forEach(async slot => {
-
-  //   let theSlotInModel = slots.find(slotModel => slotModel.value === slot.slot)
-
-
-  //   if (theSlotInModel) { 
-  //     const organismModel = this.model.organisms.find(organism => organism.parentId === theSlotInModel.id)
-
-
-  //     if (organismModel) {
-  //       slot.slot = organismModel.value;
-  //       console.log(slot.slot, "helli")
-  //       slot.component = "hej"
-
-  //       const fileOrganism = organismModel.value;
-  //       const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
-  //       const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
-  //       console.log(organismComponent, "organism component")
-  //       let organism = await new organismComponent[fileOrganism]();
-
-  //       slot.component = organism
-
-
-
-  //       // slot.appendChild(organism)
-  //     }
-  //     // const file = organismModel.value;
-  //     // const pathToComponent = `../../components/organisms/${file}.mjs`
-  //     // const organismComponent = await importModuleFromFile(pathToComponent, file)
-  //     // let organism = new organismComponent[file]();
-  //     // slot.appendChild(organism)
-  //   }
-  //   // if (slot.slot === )
-  //   // const organismModel = this.model.organisms.find(organism => organism.parentId === slot.id)
-  //   // const file = organismModel.value;
-  //   // const pathToComponent = `../../components/organisms/${file}.mjs`
-  //   // const organismComponent = await importModuleFromFile(pathToComponent, file)
-  //   // let organism = new organismComponent[file]();
-  //   // slot.appendChild(organism)
-  // })
-
-
-  //   let awaitedSlots =  await this.slots
-
-  //   awaitedSlots.forEach(async el => {
-  //     console.log(Object.keys(await el), "el")
-  //     console.log(Object.values(await el), "el")
-
-  //   //   this.fillSlot(el.slot, el.component.getElement())
-  //   })
-  // }
-
-
-  // getting the subcomponents from the model with the viewTemplate id as parentId
-
-  // getting the components from the model with the subcomponent id as parentId
-
-  // slots.forEach(slot => {
-  //   const organism = this.model.organisms.find(organism => organism.parentId === slot.id)
-    
-  //   }
-  // )
 
 
 // TODO: 
