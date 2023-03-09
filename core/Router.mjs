@@ -62,7 +62,7 @@ Router.prototype.goTo = async function (
 
     if (pushState)
       history.pushState({ path: routeBase }, null, "../" + fullRoute); //History only store the route of the view
-    await currentView.set View();
+    await currentView.setView();
   }
 
   this.currentView = await createView(route.view, params);
