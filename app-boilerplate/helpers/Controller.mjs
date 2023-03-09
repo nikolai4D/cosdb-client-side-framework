@@ -33,15 +33,13 @@ export function Controller() {
   let component = new viewTemplateComponent[file]();
 
   component.slots.forEach(async slot => {
-    console.log(slot, "slot")
-    console.log(slots, "slots")
 
     let theSlotInModel = slots.find(slotModel => slotModel.value === slot.slot)
-    console.log(theSlotInModel,"theSlotInModel")
+
+
     if (theSlotInModel) { 
       const organismModel = data.organisms.find(organism => organism.parentId === theSlotInModel.id)
-      console.log(organismModel, "organismModel")
-      console.log( data.organisms, " data.organisms")
+
 
       if (organismModel) {
         slot.slot = organismModel.value;
@@ -50,6 +48,7 @@ export function Controller() {
         const pathToComponent = `../../components/organisms/${file}.mjs`
         const organismComponent = await importModuleFromFile(pathToComponent, file)
         let organism = new organismComponent[file]();
+        console.log(organism, "organisms");
         slot.component = organism
         // slot.appendChild(organism)
       }
