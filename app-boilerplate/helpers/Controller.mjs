@@ -22,11 +22,11 @@ export function Controller() {
   const viewTemplate = data.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id)
 
   console.log(data, viewTemplate)
-  // const file = viewTemplate.value;
-  // const pathToComponent = `../../components/viewTemplates/${file}.mjs`
-  // const viewTemplateComponent = importModuleFromFile(pathToComponent, file)
+  const file = viewTemplate.value;
+  const pathToComponent = `../../components/viewTemplates/${file}.mjs`
+  const viewTemplateComponent = importModuleFromFile(pathToComponent, file)
 
-  // console.log(viewTemplateComponent, "viewTemplateComponent")
+  console.log(viewTemplateComponent, "viewTemplateComponent")
 
 
     return new ViewTemplate_dummy2();
