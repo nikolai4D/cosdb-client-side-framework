@@ -41,6 +41,8 @@ export function Controller() {
     if (theSlotInModel) { 
       const organismModel = data.organisms.find(organism => organism.parentId === theSlotInModel.id)
       console.log(organismModel, "organismModel")
+      console.log( data.organisms, " data.organisms")
+
       if (organismModel) {
         slot.slot = organismModel.value;
         // const file = organismModel.value;
