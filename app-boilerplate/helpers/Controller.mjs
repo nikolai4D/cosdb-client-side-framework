@@ -54,12 +54,14 @@ export function Controller() {
 
         slot.bindScript= async function() {
 
-          // this.slots.forEach(async el => {
-          //   console.log(Object.keys(await el), "el")
-          //   console.log(Object.values(await el), "el")
+          let awaitedSlots = await this.slots
+
+          awaitedSlots.forEach(async el => {
+            console.log(Object.keys(await el), "el")
+            console.log(Object.values(await el), "el")
     
           //   this.fillSlot(el.slot, el.component.getElement())
-          // })
+          })
         }
         // slot.appendChild(organism)
       }
