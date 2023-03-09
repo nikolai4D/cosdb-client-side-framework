@@ -52,17 +52,7 @@ export function Controller() {
         slot.component = organism
 
 
-        slot.bindScript= async function() {
 
-          let awaitedSlots =  this.slots
-
-          awaitedSlots.forEach(async el => {
-            console.log(Object.keys(await el), "el")
-            console.log(Object.values(await el), "el")
-    
-          //   this.fillSlot(el.slot, el.component.getElement())
-          })
-        }
         // slot.appendChild(organism)
       }
       // const file = organismModel.value;
@@ -79,6 +69,18 @@ export function Controller() {
     // let organism = new organismComponent[file]();
     // slot.appendChild(organism)
   })
+
+  component.bindScript= async function() {
+
+    let awaitedSlots =  this.slots
+
+    awaitedSlots.forEach(async el => {
+      console.log(Object.keys(await el), "el")
+      console.log(Object.values(await el), "el")
+
+    //   this.fillSlot(el.slot, el.component.getElement())
+    })
+  }
 
 
   // getting the subcomponents from the model with the viewTemplate id as parentId
