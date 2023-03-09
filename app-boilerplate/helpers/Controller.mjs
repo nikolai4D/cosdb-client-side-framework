@@ -18,7 +18,7 @@ export function Controller() {
 
   this.model = null;
 
-  this.getComponent = async function() { 
+  this.getComponent = async () => { 
 
     this.model = await readModel();
     // getting the view title from the url to get the view from model
@@ -43,7 +43,7 @@ export function Controller() {
 
   }
 
-  this.getSlots = async function() {
+  this.getSlots = async () => {
     let component = this.childComponent
 
       component.slots.forEach(async slot => {
@@ -82,7 +82,7 @@ export function Controller() {
       };
 
 
-  this.template = async function(){
+  this.template = async () => {
     this.childComponent = await this.getComponent();
     await this.getSlots();
     this.bindNewScripts();
