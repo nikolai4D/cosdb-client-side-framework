@@ -19,8 +19,9 @@ export function Controller() {
 
   const view =  await State.model.views.find(view => view.value === path)
   console.log(view, "view")
-
-  const viewTemplate = State.model.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
+     
+  const model = (await State).model;
+  const viewTemplate = model.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
 
   const file = viewTemplate.value;
   const pathToComponent = `../../components/viewTemplates/${file}.mjs`
