@@ -38,7 +38,7 @@ export async function eventChangeDropdown(id) {
 
         const organismSlot = await Organism(
           await newOrganism("organism", selectedValue, id),
-          orgBody
+          await createOrganism(orgBody, id, selectedValue)
         );
 
         //await createOrganism(componentBody, id, selectedValue);
