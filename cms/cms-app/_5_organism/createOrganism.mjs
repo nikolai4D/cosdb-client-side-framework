@@ -16,10 +16,10 @@ export async function createOrganism(componentBody, id, selectedValue) {
   );
   componentBody.appendChild(organismSlot);
 
-  await createSubOrganism(componentBody, id, selectedValue);
+  await createSubOrganism(subComponentBody, id, selectedValue);
 }
 
-async function createSubOrganism(componentBody, id, selectedValue) {
+async function createSubOrganism(subComponentBody, id, selectedValue) {
   ///--------------------------------
 
   const filename = selectedValue;
