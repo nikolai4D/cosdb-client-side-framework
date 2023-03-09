@@ -13,15 +13,17 @@ export function Controller() {
 
   this.childComponent = null;
 
+  this.model = null;
+
   this.getComponent = async function() { 
 
-    const data = await readModel();
+    this.model = await readModel();
     // getting the view title from the url to get the view from model
     const path = window.location.pathname.slice(1)
     // getting the view from the model to get the id
-    const view = data.views.find(view => view.value === path)
+    const view = this.model.views.find(view => view.value === path)
     // getting the viewTemplate from the model with the view id as parentId
-    const viewTemplate = data.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id)
+    const viewTemplate = this.model.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id)
     // getting the name of the viewTemplate
     const file = viewTemplate.value;
     // getting the path to the viewTemplate prototype
@@ -39,14 +41,14 @@ export function Controller() {
 
   this.getSlots = async function() {
     let component = this.childComponent
-    const slotsFromModel = data.slots.filter(slot => slot.parentId === viewTemplate.id)
+    const slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id)
 
       component.slots.forEach(async slot => {
 
         let specificSlot = slotsFromModel.find(slotModel => slotModel.value === slot.slot)
 
         if (specificSlot) { 
-          const organismModel = data.organisms.find(organism => organism.parentId === specificSlot.id)
+          const organismModel = this.model.organisms.find(organism => organism.parentId === specificSlot.id)
 
 
           if (organismModel) {
@@ -77,7 +79,7 @@ export function Controller() {
 
 
   //   if (specificSlot) { 
-  //     const organismModel = data.organisms.find(organism => organism.parentId === specificSlot.id)
+  //     const organismModel = this.model.organisms.find(organism => organism.parentId === specificSlot.id)
 
 
   //     if (organismModel) {
@@ -121,7 +123,7 @@ export function Controller() {
 
 
   //   if (theSlotInModel) { 
-  //     const organismModel = data.organisms.find(organism => organism.parentId === theSlotInModel.id)
+  //     const organismModel = this.model.organisms.find(organism => organism.parentId === theSlotInModel.id)
 
 
   //     if (organismModel) {
@@ -148,7 +150,7 @@ export function Controller() {
   //     // slot.appendChild(organism)
   //   }
   //   // if (slot.slot === )
-  //   // const organismModel = data.organisms.find(organism => organism.parentId === slot.id)
+  //   // const organismModel = this.model.organisms.find(organism => organism.parentId === slot.id)
   //   // const file = organismModel.value;
   //   // const pathToComponent = `../../components/organisms/${file}.mjs`
   //   // const organismComponent = await importModuleFromFile(pathToComponent, file)
@@ -173,7 +175,7 @@ export function Controller() {
   // getting the components from the model with the subcomponent id as parentId
 
   // slots.forEach(slot => {
-  //   const organism = data.organisms.find(organism => organism.parentId === slot.id)
+  //   const organism = this.model.organisms.find(organism => organism.parentId === slot.id)
     
   //   }
   // )
