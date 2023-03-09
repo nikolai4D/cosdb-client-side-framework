@@ -27,6 +27,8 @@ export function ViewTemplate_dummy1() {
 
       this.slots.forEach(async el => {
         console.log(Object.keys(await el), "el")
+        console.log(Object.values(await el), "el")
+
         this.fillSlot(el.slot, el.component.getElement())
       })
     }
