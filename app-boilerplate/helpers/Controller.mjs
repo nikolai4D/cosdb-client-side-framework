@@ -44,7 +44,7 @@ export function Controller() {
       console.log( data.organisms, " data.organisms")
 
       if (organismModel) {
-        slot.slot = organismModel.getHtml();
+        slot.slot = organismModel.value;
         // const file = organismModel.value;
         // const pathToComponent = `../../components/organisms/${file}.mjs`
         // const organismComponent = await importModuleFromFile(pathToComponent, file)
