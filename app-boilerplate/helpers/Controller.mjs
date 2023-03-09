@@ -11,69 +11,71 @@ export function Controller() {
 
   this.title = "view1";
 
-  this.test = function () {
+  this.getComponent = async function() { 
 
+    const data = await readModel();
+    // getting the view title from the url to get the view from model
+    const path = window.location.pathname.slice(1)
+    // getting the view from the model to get the id
+    const view = data.views.find(view => view.value === path)
+    // getting the viewTemplate from the model with the view id as parentId
+    const viewTemplate = data.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id)
+    // getting the name of the viewTemplate
+    const file = viewTemplate.value;
+    // getting the path to the viewTemplate prototype
+    const pathToComponent = `../../components/viewTemplates/${file}.mjs`
+    // importing the viewTemplate prototype
+    const viewTemplateComponent = await importModuleFromFile(pathToComponent, file)
+
+    const slotsFromModel = data.slots.filter(slot => slot.parentId === viewTemplate.id)
+
+    let component = new viewTemplateComponent[file]();
+
+    return component
 
   }
 
 
   this.template = async function(){
 
-  // getting the model to later retrieve the view and viewTemplate
-  const data = await readModel();
-  // getting the view title from the url to get the view from model
-  const path = window.location.pathname.slice(1)
-  // getting the view from the model to get the id
-  const view = data.views.find(view => view.value === path)
-  // getting the viewTemplate from the model with the view id as parentId
-  const viewTemplate = data.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id)
-  // getting the name of the viewTemplate
-  const file = viewTemplate.value;
-  // getting the path to the viewTemplate prototype
-  const pathToComponent = `../../components/viewTemplates/${file}.mjs`
-  // importing the viewTemplate prototype
-  const viewTemplateComponent = await importModuleFromFile(pathToComponent, file)
-
-  const slotsFromModel = data.slots.filter(slot => slot.parentId === viewTemplate.id)
-
-  let component = new viewTemplateComponent[file]();
+  let component =await getComponent()
 
 
-  component.slots.forEach(async slot => {
+  // component.slots.forEach(async slot => {
 
-    console.log(slot, "slot")
-    let specificSlot = slotsFromModel.find(slotModel => slotModel.value === slot.slot)
-
-
-    if (specificSlot) { 
-      const organismModel = data.organisms.find(organism => organism.parentId === specificSlot.id)
+  //   console.log(slot, "slot")
+  //   let specificSlot = slotsFromModel.find(slotModel => slotModel.value === slot.slot)
 
 
-      if (organismModel) {
-        slot.slot = organismModel.value;
-    //     console.log(slot.slot, "helli")
-    //     slot.component = "hej"
-
-        const fileOrganism = organismModel.value;
-        const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
-        const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
-    //     console.log(organismComponent, "organism component")
-        let organism = await new organismComponent[fileOrganism]();
-
-        slot.component = organism
-      }
-    }
-  }
-  )
+  //   if (specificSlot) { 
+  //     const organismModel = data.organisms.find(organism => organism.parentId === specificSlot.id)
 
 
-  console.log("thelement")
+  //     if (organismModel) {
+  //       slot.slot = organismModel.value;
+  //   //     console.log(slot.slot, "helli")
+  //   //     slot.component = "hej"
 
-  component.bindScript= function() {
-    console.log("hello")
-    console.log("component", component)
+  //       const fileOrganism = organismModel.value;
+  //       const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
+  //       const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
+  //   //     console.log(organismComponent, "organism component")
+  //       let organism = await new organismComponent[fileOrganism]();
 
-  }
+  //       slot.component = organism
+  //     }
+  //   }
+  // }
+  // )
+
+
+  // console.log("thelement")
+
+  // component.bindScript= function() {
+  //   console.log("hello")
+  //   console.log("component", component)
+
+  // }
 
   return component;
 
