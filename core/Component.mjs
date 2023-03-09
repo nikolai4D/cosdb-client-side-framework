@@ -48,7 +48,7 @@ export function Component(options = {}){
             this.element = stringToHTMLElement(this.getHtml())
             this.deSetComponentsFromString()
             this.bindSlots()
-            await this.bindScript()
+            this.bindScript()
             this.applyStyle()
 
             if(this.id) this.element.id = this.id
