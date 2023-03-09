@@ -13,7 +13,7 @@ import { getAccordionBody } from "../functions/getAccordionBody.mjs";
 export const createOrganism = async (componentBody, id, selectedValue) => {
   // action.create(id, selectedValue, parentId, "organisms");
 
-  const parentOrganismBody = await getAccordionBody(id);
+  console.log(componentBody, "componentBody!!!!!!!");
 
   const filename = selectedValue;
   const type = "organisms";
@@ -32,12 +32,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (subOrganisms) {
-    await createSubOrganismsEl(
-      subOrganisms,
-      id,
-      organismBody,
-      parentOrganismBody
-    );
+    await createSubOrganismsEl(subOrganisms, id, organismBody, componentBody);
   }
 
   //--------------------------------
@@ -57,7 +52,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
       componentMolecules,
       id,
       organismBody,
-      parentOrganismBody
+      componentBody
     );
   }
 
@@ -78,7 +73,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
       componentFunctions,
       id,
       organismBody,
-      parentOrganismBody
+      componentBody
     );
   }
 };
