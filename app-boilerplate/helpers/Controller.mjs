@@ -49,7 +49,7 @@ export function Controller() {
         const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
         console.log(organismComponent, "organism component")
         let organism = new organismComponent[fileOrganism]();
-        slot.component = null
+        slot.component = "hej"
 
         slot.component = organism
 
