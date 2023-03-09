@@ -50,7 +50,7 @@ export function Controller() {
         let organism = new organismComponent[fileOrganism]();
         slot.component = null
 
-        slot.component = organism
+        // slot.component = organism
 
 
 
