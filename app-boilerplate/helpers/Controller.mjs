@@ -35,7 +35,6 @@ export function Controller() {
 
     this.slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id)
 
-
     let component = new viewTemplateComponent[file]();
     
 
@@ -45,10 +44,6 @@ export function Controller() {
 
   this.getSlots = async function() {
     let component = this.childComponent
-    console.log(this.model)
-
-
-
 
       component.slots.forEach(async slot => {
 
@@ -72,11 +67,23 @@ export function Controller() {
       })
   };
 
+  this.bindNewScripts = async function() {
+    let component = this.childComponent;
+
+    component.bindScript= function() {
+      console.log("hello")
+      console.log("component", component)
+
+    }
+  };
+
+
 
   this.template = async function(){
 
-  this.childComponent = await this.getComponent()
-  await this.getSlots()
+  this.childComponent = await this.getComponent();
+  await this.getSlots();
+  await this.bindNewScripts();
 
 
   // component.slots.forEach(async slot => {
