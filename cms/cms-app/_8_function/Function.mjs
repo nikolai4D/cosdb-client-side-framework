@@ -21,7 +21,6 @@ export async function Function(func, functionBody) {
   const contenDiv = await functionBody;
   bodyDiv.appendChild(contenDiv);
 
-xw
 const functionDropdown = dropdown(
     customType,
     key,
