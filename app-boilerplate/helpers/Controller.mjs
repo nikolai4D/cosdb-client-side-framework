@@ -19,7 +19,7 @@ export function Controller() {
 
   const view = data.views.find(view => view.value === path)
      
-  const viewTemplate = data.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
+  const viewTemplate = data.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id)
 
   console.log(data, viewTemplate)
   // const file = viewTemplate.value;
