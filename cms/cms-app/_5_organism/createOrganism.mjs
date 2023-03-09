@@ -10,12 +10,10 @@ import { getConstructors } from "../functions/getConstructors.mjs";
 
 export async function createOrganism(componentBody, id, selectedValue) {
   const subComponentBody = document.createElement("div");
-  const organismSlot = await Organism(
-    await newOrganism("organism", selectedValue, id),
-    subComponentBody
-  );
+  const newOrg = await newOrganism("organism", selectedValue, id);
+  const organismSlot = await Organism(newOrg, subComponentBody);
 
-  console.log(organismSlot, "organismSlot!!!!!!!!!!!!!!");
+  console.log(newOrg, "newOrg!!!!!!!!!!!!!!");
   componentBody.appendChild(organismSlot);
 
   await createSubOrganism(subComponentBody, id, selectedValue);
