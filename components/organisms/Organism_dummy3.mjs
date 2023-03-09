@@ -1,10 +1,18 @@
+import { Component } from "../../core/Component.mjs";
+import { slot } from  "../../core/helpers.mjs";
+import { Organism_dummy4 } from "./Organism_dummy4.mjs";
+
 export function Organism_dummy3() {
+  Component.call(this);
+
   this.organisms = [
     {
-      organism: "Organism_dummy4"
+      organism: "Organism_dummy4",
+      component: new Organism_dummy4()
     },
     {
-      organism: "Organism_dummy4"
+      organism: "Organism_dummy4",
+      component: new Organism_dummy4()
     }
   ]
 
@@ -27,10 +35,12 @@ export function Organism_dummy3() {
   ];
 
 
+  this.getHtml = function(){
   return `
   <div>
     <div>${this.organisms[0].organism}</div>
     <div>${this.organisms[1].organism}</div>
   </div>
 `;
+}
 }
