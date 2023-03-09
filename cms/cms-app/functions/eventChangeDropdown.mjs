@@ -33,19 +33,16 @@ export async function eventChangeDropdown(id) {
   }
   if (customType === "component") {
     const componentBody = await getAccordionBody(id);
-      
 
     if (selectedValue !== "") {
-
-
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
 
         await Organism(
-            await newOrganism("Organism", selectedValue, parentId),
-            await createOrganism(componentBody, id, selectedValue)
-          );
-      
+          await newOrganism("Organism", selectedValue, parentId),
+          await createOrganism(componentBody, id, selectedValue)
+        );
+
         //await createOrganism(componentBody, id, selectedValue);
         //await action.create(id, selectedValue, parentId, "organisms");
       }
@@ -53,9 +50,9 @@ export async function eventChangeDropdown(id) {
         console.log("Molecule");
 
         await Molecule(
-            await newMolecule("Molecule", selectedValue, parentId),
-            await createMolecule(componentBody, id, selectedValue)
-          );
+          await newMolecule("Molecule", selectedValue, parentId),
+          await createMolecule(componentBody, id, selectedValue)
+        );
 
         //await createMolecule(componentBody, id, selectedValue);
         //await action.create(id, selectedValue, parentId, "molecules");
@@ -63,19 +60,18 @@ export async function eventChangeDropdown(id) {
       if (selectedValue.startsWith("Atom")) {
         console.log("Atom");
 
-
         await Atom(
-            await newAtom("Atom", selectedValue, parentId),
-            await createAtom(componentBody, id, selectedValue)
-          );
+          await newAtom("Atom", selectedValue, parentId),
+          await createAtom(componentBody, id, selectedValue)
+        );
 
         //await createAtom(componentBody, id, selectedValue);
         //await action.create(id, selectedValue, parentId, "atoms");
       }
-
+    }
+    console.log({ State });
+    //action.updateModel(await State);
   }
-  console.log({ State });
-  //action.updateModel(await State);
 }
 
 function getAccordionBody(id) {
