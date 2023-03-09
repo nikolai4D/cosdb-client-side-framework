@@ -37,7 +37,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (subOrganisms) {
-    await createSubOrganismsEl(subOrganisms, id, organismBody, organismSlot);
+    await createSubOrganismsEl(subOrganisms, id, organismBody, organismBody);
   }
 
   //--------------------------------
@@ -57,7 +57,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
       componentMolecules,
       id,
       organismBody,
-      organismSlot
+      organismBody
     );
   }
 
@@ -74,7 +74,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (componentFunctions) {
-    await createFunctionsEl(componentFunctions, id, organismBody, organismSlot);
+    await createFunctionsEl(componentFunctions, id, organismBody, organismBody);
   }
 
   componentBody.appendChild(organismSlot);
