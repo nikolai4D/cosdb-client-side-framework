@@ -27,10 +27,10 @@ export function Controller() {
   const viewTemplateComponent = await importModuleFromFile(pathToComponent, file)
 
   console.log(viewTemplateComponent, "viewTemplateComponent")
-  console.log(new viewTemplateComponent[`${file}.mjs`](), "viewTemplateComponent")
+  console.log(new viewTemplateComponent[file](), "viewTemplateComponent")
 
 
-    return new viewTemplateComponent[`${file}.mjs`]();
+    return new viewTemplateComponent[file]();
   }
 
 
