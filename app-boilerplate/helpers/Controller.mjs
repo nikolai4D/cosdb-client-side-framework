@@ -6,6 +6,7 @@ import { importModuleFromFile } from "../../core/helpers.mjs";
 import { readModel } from "./readModel.mjs";
 
 
+
 export function Controller() {
   View.call(this);
 
@@ -75,6 +76,9 @@ export function Controller() {
           component.slots.forEach( slot => {
             console.log( slot, "slot")
           })
+
+            this.fillSlot(slot.slot, slot.component.getElement())
+
 
         }
       };
