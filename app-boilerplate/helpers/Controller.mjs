@@ -88,9 +88,9 @@ export function Controller() {
     await this.bindNewScripts();
 
 
-    console.log(this.childComponent)
+    console.log(await this.childComponent)
 
-    return this.childComponent ;
+    return await this.childComponent ;
 
   }
 
