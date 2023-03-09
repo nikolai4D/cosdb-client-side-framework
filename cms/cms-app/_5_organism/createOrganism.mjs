@@ -18,6 +18,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   const filename = selectedValue;
   const type = "organisms";
   const organismBody = document.createElement("div");
+  const subBody = document.createElement("div");
 
   const organismSlot = await Organism(
     await newOrganism("Organism", selectedValue, parentId),
@@ -37,7 +38,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (subOrganisms) {
-    await createSubOrganismsEl(subOrganisms, id, organismBody, organismBody);
+    await createSubOrganismsEl(subOrganisms, id, subBody, organismBody);
   }
 
   //--------------------------------
@@ -53,12 +54,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (componentMolecules) {
-    await createSubMoleculesEl(
-      componentMolecules,
-      id,
-      organismBody,
-      organismBody
-    );
+    await createSubMoleculesEl(componentMolecules, id, subBody, organismBody);
   }
 
   //--------------------------------
@@ -74,7 +70,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (componentFunctions) {
-    await createFunctionsEl(componentFunctions, id, organismBody, organismBody);
+    await createFunctionsEl(componentFunctions, id, subBody, organismBody);
   }
 
   componentBody.appendChild(organismSlot);
