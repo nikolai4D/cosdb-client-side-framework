@@ -41,6 +41,7 @@ export function Controller() {
 
   this.getSlots = async function() {
     let component = this.childComponent
+    console.log(this.model)
     const slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id)
 
       component.slots.forEach(async slot => {
