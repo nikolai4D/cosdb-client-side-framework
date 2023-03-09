@@ -9,7 +9,9 @@ import { readModel } from "./readModel.mjs";
 
 export function Controller() {
   View.call(this);
-
+  this.childComponent =  this.getComponent();
+   this.getSlots();
+   this.bindNewScripts();
   this.title = "view1";
 
   this.childComponent = null;
@@ -48,7 +50,7 @@ export function Controller() {
 
       component.slots.forEach(async slot => {
 
-        let specificSlot = await this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
+        let specificSlot =  this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
 
         if (specificSlot) { 
           const organismModel = this.model.organisms.find(organism => organism.parentId === specificSlot.id)
@@ -62,7 +64,7 @@ export function Controller() {
             const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
             let organism = await new organismComponent[fileOrganism]();
 
-            slot.component = organism
+            slot.component = await organism
           }
         }
       })
