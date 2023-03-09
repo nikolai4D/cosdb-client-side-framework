@@ -12,7 +12,16 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   // action.create(id, selectedValue, parentId, "organisms");
 
   const parentId = id;
-  const organismDiv = document.createElement("div");
+
+  const organismSlot = await Organism(
+    await newOrganism("Organism", selectedValue, parentId),
+    organismBody
+  );
+
+  componentBody.appendChild(organismSlot);
+
+  //   const organismDiv = document.createElement("div");
+  const organismDiv = organismSlot;
 
   const filename = selectedValue;
   const type = "organisms";
@@ -71,12 +80,12 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
     await createFunctionsEl(componentFunctions, id, organismBody, organismDiv);
   }
 
-  const organismSlot = await Organism(
-    await newOrganism("Organism", selectedValue, parentId),
-    organismBody
-  );
+  //   const organismSlot = await Organism(
+  //     await newOrganism("Organism", selectedValue, parentId),
+  //     organismBody
+  //   );
 
-  componentBody.appendChild(organismSlot);
+  //   componentBody.appendChild(organismSlot);
 };
 
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
