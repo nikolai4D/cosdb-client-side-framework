@@ -14,7 +14,7 @@ export function Controller() {
     const path = window.location.pathname.slice(1)
 
     console.log(State)
-    console.log(State.model)
+    console.log(await State.model)
 
     console.log(path)
 
