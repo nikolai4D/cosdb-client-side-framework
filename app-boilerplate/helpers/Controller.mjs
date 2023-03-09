@@ -15,6 +15,7 @@ export function Controller() {
 
     const data = await readModel();
 
+    const path = window.location.pathname.slice(1)
 
   const view = data.views.find(view => view.value === path)
   console.log(view, "view")
