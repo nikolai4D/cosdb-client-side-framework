@@ -13,7 +13,7 @@ export function View() {
     this.setView= async function() {
 
         console.log(await this.template(), "this.template")
-        console.log(Promise.all((await this.template()).getElement()), "this.template.getEelkent")
+        console.log(Promise.resolve((await this.template()).getElement()), "this.template.getEelkent")
 
 
         if(!this.template) throw new Error("View template is not set")
