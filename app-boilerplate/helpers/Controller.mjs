@@ -11,6 +11,8 @@ export function Controller() {
 
   this.title = "view1";
 
+  this.childComponent = null;
+
   this.getComponent = async function() { 
 
     const data = await readModel();
@@ -30,15 +32,41 @@ export function Controller() {
     const slotsFromModel = data.slots.filter(slot => slot.parentId === viewTemplate.id)
 
     let component = new viewTemplateComponent[file]();
+    
 
     return component
 
   }
 
+  this.getSlots = async function() {
+    let component = this.childComponent
+
+      component.slots.forEach(async slot => {
+
+        let specificSlot = slotsFromModel.find(slotModel => slotModel.value === slot.slot)
+
+        if (specificSlot) { 
+          const organismModel = data.organisms.find(organism => organism.parentId === specificSlot.id)
+
+
+          if (organismModel) {
+            slot.slot = organismModel.value;
+
+            const fileOrganism = organismModel.value;
+            const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
+            const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
+            let organism = await new organismComponent[fileOrganism]();
+
+            slot.component = organism
+          }
+        }
+      })
+  };
+
 
   this.template = async function(){
 
-  let component =await this.getComponent()
+  this.childComponent = await this.getComponent()
 
 
   // component.slots.forEach(async slot => {
@@ -77,7 +105,9 @@ export function Controller() {
 
   // }
 
-  return component;
+  console.log(this.childComponent)
+
+  return this.childComponent ;
 
   }
 
