@@ -1,14 +1,18 @@
 import { Component } from "../../core/Component.mjs";
+import { Organism_dummy2 } from "./Organism_dummy2.mjs";
+import { Organism_dummy3 } from "./Organism_dummy3.mjs";
 
 export function Organism_dummy1() {
   Component.call(this);
 
   this.organisms = [
     { 
-      organism: "Organism_dummy2"
+      organism: "Organism_dummy2",
+      component: new Organism_dummy2()
     },
     { 
-      organism: "Organism_dummy3"
+      organism: "Organism_dummy3",
+      component: new Organism_dummy3()
     }
   ]
 
