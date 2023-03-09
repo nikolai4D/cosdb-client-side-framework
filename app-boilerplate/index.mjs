@@ -8,11 +8,17 @@ console.log("path: " , path)
 
 readModel();
 
-Controller.prototype.template= new ViewTemplate_dummy1();
-
 export const router = new Router([
     route(path, Controller)
 ])
 
 
 router.goTo(path)
+
+
+
+// get viewPath if in model
+
+
+
+// Controller.prototype.template= new ViewTemplate_dummy1();

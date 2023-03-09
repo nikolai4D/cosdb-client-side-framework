@@ -5,6 +5,20 @@ import { State } from "../State.mjs";
 import { importModuleFromFile } from "../../core/helpers.mjs";
 
 
+export function Controller() {
+  View.call(this);
+
+  this.title = "view1";
+
+  this.template = function(){
+   return new ViewTemplate_dummy2();
+  }
+
+}
+
+
+
+
 // export async function test() {
 //   console.log(await State, "State")
 //     const view = (await State).model.views.find(view => view.value === path)
@@ -13,19 +27,7 @@ import { importModuleFromFile } from "../../core/helpers.mjs";
 //   return new ViewTemplate_dummy1();
 // }
 
-export function Controller() {
-  View.call(this);
 
-  this.title = "view1";
-
-    // this.template = new ViewTemplate_dummy2();
-
-  this.template.getElement = async function() {
-    return new ViewTemplate_dummy1()
-    // this.template = new ViewTemplate_dummy1();
-    // this.getElement = new ViewTemplate_dummy1().getElement();
-  }
-}
 
 
 //   const view = view;
