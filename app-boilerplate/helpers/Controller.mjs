@@ -13,106 +13,58 @@ export function Controller() {
 
   this.template = async function(){
 
-    const data = await readModel();
-
-    const path = window.location.pathname.slice(1)
-
+  // getting the model to later retrieve the view and viewTemplate
+  const data = await readModel();
+  // getting the view title from the url to get the view from model
+  const path = window.location.pathname.slice(1)
+  // getting the view from the model to get the id
   const view = data.views.find(view => view.value === path)
-     
+  // getting the viewTemplate from the model with the view id as parentId
   const viewTemplate = data.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id)
-
-  console.log(data, viewTemplate)
+  // getting the name of the viewTemplate
   const file = viewTemplate.value;
+  // getting the path to the viewTemplate prototype
   const pathToComponent = `../../components/viewTemplates/${file}.mjs`
+  // importing the viewTemplate prototype
   const viewTemplateComponent = await importModuleFromFile(pathToComponent, file)
 
-  console.log(viewTemplateComponent, "viewTemplateComponent")
-  console.log(new viewTemplateComponent[file](), "viewTemplateComponent")
+  let component = new viewTemplateComponent[file]();
+
+  this.slots.map(slot => {
+    let theSlotInModel = slots.find(slotModel => slotModel.value === slot)
+    if (theSlotInModel) { slot.slot = "HELLO"}
+    // if (slot.slot === )
+    // const organismModel = data.organisms.find(organism => organism.parentId === slot.id)
+    // const file = organismModel.value;
+    // const pathToComponent = `../../components/organisms/${file}.mjs`
+    // const organismComponent = await importModuleFromFile(pathToComponent, file)
+    // let organism = new organismComponent[file]();
+    // slot.appendChild(organism)
+  })
 
 
-    return new viewTemplateComponent[file]();
+  // getting the subcomponents from the model with the viewTemplate id as parentId
+  // const slots = data.slots.filter(slot => slot.parentId === viewTemplate.id)
+
+  // getting the components from the model with the subcomponent id as parentId
+
+  // slots.forEach(slot => {
+  //   const organism = data.organisms.find(organism => organism.parentId === slot.id)
+    
+  //   }
+  // )
+
+
+  // const subcomponents = data.subcomponents.filter(subcomponent => subcomponent.parentId === viewTemplate.id)
+
+  return component;
+
   }
 
 
 
 }
 
-
-
-
-// export async function test() {
-//   console.log(await State, "State")
-//     const view = (await State).model.views.find(view => view.value === path)
-//   console.log(view, "view")
-
-//   return new ViewTemplate_dummy1();
-// }
-
-
-
-
-//   const view = view;
-
-  //model
-//   ListAllInformation_Model(view);
-
-  //view
-
-// this.template = new ViewTemplate_dummy1();
-  // this.template = function () {
-  //   const view = await State.model.views.find(view => view.value === path)
-  // console.log(view, "view")
-
-  // this.template = new ViewTemplate_dummy1();
-
-  // console.log("test",test);
-
-// }
-
-  //   const path = window.location.pathname.slice(1)
-
-  // console.log(path, "path")
-  // console.log("Statess!: ", State)
-
-  // const view = await State.model.views.find(view => view.value === path)
-  // console.log(view, "view")
-
-  // const viewTemplate = State.model.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
-
-  // const file = viewTemplate.value;
-  // const pathToComponent = `../../components/viewTemplates/${file}.mjs`
-  // const viewTemplateComponent = importModuleFromFile(pathToComponent, file)
-
-  // console.log(viewTemplateComponent, "viewTemplateComponent")
-  // }
-
-    //     return `
-
-// ${this.template}
-
-  // this.template = new viewTemplateComponent();
-
-  //  console.log(  readModel())
-  // console.log(this.template.slots)
-  // console.log(model, "model")
-  // this.template.slots = slots
-
-
-
-// export
-
-// export async function readModel() {
-//   try {
-//     const response = await fetch("/read");
-//     // console.log(response);
-
-//     const data = await response.json();
-//     // console.log(data);
-//     return data;
-//   } catch (error) {
-//     console.error("An error occurred while fetching the data:", error);
-//   }
-// }
 
 // TODO: 
 
