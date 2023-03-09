@@ -1,3 +1,6 @@
+// import { readModel } from "../requests/readModel.mjs";
+// import { updateField } from "../functions/updateField.mjs";
+// import { writeModel } from "../requests/writeModel.mjs";
 import { Organism } from "../_5_organism/Organism.mjs";
 import { newOrganism } from "../_5_organism/newOrganism.mjs";
 import { Molecule } from "../_6_molecule/Molecule.mjs";
@@ -33,45 +36,30 @@ export async function eventChangeDropdown(id) {
   }
   if (customType === "component") {
     const componentBody = await getAccordionBody(id);
+      
 
     if (selectedValue !== "") {
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
 
-        await Organism(
-          await newOrganism("Organism", selectedValue, parentId),
-          await createOrganism(componentBody, id, selectedValue)
-        );
 
-        //await createOrganism(componentBody, id, selectedValue);
+         await createOrganism(componentBody, id, selectedValue);
         //await action.create(id, selectedValue, parentId, "organisms");
       }
       if (selectedValue.startsWith("Molecule")) {
         console.log("Molecule");
-
-        await Molecule(
-          await newMolecule("Molecule", selectedValue, parentId),
-          await createMolecule(componentBody, id, selectedValue)
-        );
-
-        //await createMolecule(componentBody, id, selectedValue);
+        await createMolecule(componentBody, id, selectedValue);
         //await action.create(id, selectedValue, parentId, "molecules");
       }
       if (selectedValue.startsWith("Atom")) {
         console.log("Atom");
-
-        await Atom(
-          await newAtom("Atom", selectedValue, parentId),
-          await createAtom(componentBody, id, selectedValue)
-        );
-
-        //await createAtom(componentBody, id, selectedValue);
+        await createAtom(componentBody, id, selectedValue);
         //await action.create(id, selectedValue, parentId, "atoms");
       }
-    }
-    console.log({ State });
-    //action.updateModel(await State);
+
   }
+  console.log({ State });
+  //action.updateModel(await State);
 }
 
 function getAccordionBody(id) {
