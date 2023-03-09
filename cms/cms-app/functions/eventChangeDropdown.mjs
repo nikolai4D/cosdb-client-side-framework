@@ -1,4 +1,3 @@
-import { createOrganism } from "../_5_organism/createOrganism.mjs";
 import { createMolecule } from "../_6_molecule/createMolecule.mjs";
 import { newOrganism } from "../_5_organism/newOrganism.mjs";
 import { Organism } from "../_5_organism/Organism.mjs";
@@ -24,7 +23,6 @@ export async function eventChangeDropdown(id) {
 
     if (selectedValue !== "") {
       await createSlots(viewTemplateBody, id, selectedValue);
-      //await action.create(id, selectedValue, parentId, "viewTemplates");
     }
   }
   if (customType === "component") {
@@ -38,28 +36,22 @@ export async function eventChangeDropdown(id) {
 
         const organismSlot = await Organism(
           await newOrganism("organism", selectedValue, id),
-          await createOrganism(orgBody, id, selectedValue)
+          orgBody
         );
 
-        //await createOrganism(componentBody, id, selectedValue);
         //await createOrganism("orgBody", id, selectedValue);
 
         componentBody.appendChild(organismSlot);
-
-        //await action.create(id, selectedValue, parentId, "organisms");
       }
       if (selectedValue.startsWith("Molecule")) {
         console.log("Molecule");
         await createMolecule(componentBody, id, selectedValue);
-        //await action.create(id, selectedValue, parentId, "molecules");
       }
       if (selectedValue.startsWith("Atom")) {
         console.log("Atom");
         await createAtom(componentBody, id, selectedValue);
-        //await action.create(id, selectedValue, parentId, "atoms");
       }
     }
     console.log({ State });
-    //action.updateModel(await State);
   }
 }
