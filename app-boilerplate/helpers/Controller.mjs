@@ -42,7 +42,7 @@ export function Controller() {
 
 
       if (organismModel) {
-        slot.slot = organismModel.value;
+        // slot.slot = organismModel.value;
         console.log(slot.slot, "helli")
         const fileOrganism = organismModel.value;
         const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
