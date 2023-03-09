@@ -11,6 +11,9 @@ import { getConstructors } from "../functions/getConstructors.mjs";
 export const createOrganism = async (componentBody, id, selectedValue) => {
   // action.create(id, selectedValue, parentId, "organisms");
 
+  const parentId = id;
+  const organismDiv = document.createElement("div");
+
   const filename = selectedValue;
   const type = "organisms";
   const organismBody = document.createElement("div");
@@ -28,7 +31,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (subOrganisms) {
-    await createSubOrganismsEl(subOrganisms, id, organismBody, componentBody);
+    await createSubOrganismsEl(subOrganisms, id, organismBody, organismDiv);
   }
 
   //--------------------------------
@@ -48,7 +51,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
       componentMolecules,
       id,
       organismBody,
-      componentBody
+      organismDiv
     );
   }
 
@@ -65,13 +68,15 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (componentFunctions) {
-    await createFunctionsEl(
-      componentFunctions,
-      id,
-      organismBody,
-      componentBody
-    );
+    await createFunctionsEl(componentFunctions, id, organismBody, organismDiv);
   }
+
+  const organismSlot = await Organism(
+    await newOrganism("Organism", selectedValue, parentId),
+    organismBody
+  );
+
+  componentBody.appendChild(organismSlot);
 };
 
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
