@@ -49,7 +49,18 @@ export function Controller() {
         const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
         let organism = new organismComponent[fileOrganism]();
 
-        slot.component = await organism
+        slot.component = organism
+
+
+        slot.bindScript= async function() {
+
+          this.slots.forEach(async el => {
+            console.log(Object.keys(await el), "el")
+            console.log(Object.values(await el), "el")
+    
+            this.fillSlot(el.slot, el.component.getElement())
+          })
+        }
         // slot.appendChild(organism)
       }
       // const file = organismModel.value;
