@@ -54,13 +54,13 @@ export function Controller() {
     //     console.log(slot.slot, "helli")
     //     slot.component = "hej"
 
-    //     const fileOrganism = organismModel.value;
-    //     const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
-    //     const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
+        const fileOrganism = organismModel.value;
+        const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
+        const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
     //     console.log(organismComponent, "organism component")
-    //     let organism = await new organismComponent[fileOrganism]();
+        let organism = await new organismComponent[fileOrganism]();
 
-    //     slot.component = organism
+        slot.component = organism
       }
     }
   }
