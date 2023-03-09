@@ -11,19 +11,9 @@ import { getConstructors } from "../functions/getConstructors.mjs";
 export const createOrganism = async (componentBody, id, selectedValue) => {
   // action.create(id, selectedValue, parentId, "organisms");
 
-  const parentId = id;
-
-  const organismDiv = document.createElement("div");
-
   const filename = selectedValue;
   const type = "organisms";
   const organismBody = document.createElement("div");
-  const subBody = document.createElement("div");
-
-  const organismSlot = await Organism(
-    await newOrganism("Organism", selectedValue, parentId),
-    organismBody
-  );
 
   //--------------------------------
 
@@ -38,7 +28,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (subOrganisms) {
-    await createSubOrganismsEl(subOrganisms, id, subBody, organismBody);
+    await createSubOrganismsEl(subOrganisms, id, organismBody, componentBody);
   }
 
   //--------------------------------
@@ -54,7 +44,12 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (componentMolecules) {
-    await createSubMoleculesEl(componentMolecules, id, subBody, organismBody);
+    await createSubMoleculesEl(
+      componentMolecules,
+      id,
+      organismBody,
+      componentBody
+    );
   }
 
   //--------------------------------
@@ -70,10 +65,13 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
 
   if (componentFunctions) {
-    await createFunctionsEl(componentFunctions, id, subBody, organismBody);
+    await createFunctionsEl(
+      componentFunctions,
+      id,
+      organismBody,
+      componentBody
+    );
   }
-
-  componentBody.appendChild(organismSlot);
 };
 
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
@@ -124,7 +122,10 @@ function createFunctionsEl(subComps, id, compBody, parentBody) {
     const [[key, value]] = Object.entries(comp);
     const parentId = id;
 
-    let childSlot = await Function(await newFunction(parentId), compBody);
+    let childSlot = await Function(
+      await newFunction(key, value, parentId),
+      compBody
+    );
 
     parentBody.insertBefore(childSlot, parentBody.firstChild);
   });
