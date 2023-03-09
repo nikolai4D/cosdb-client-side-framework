@@ -16,6 +16,19 @@ export function Controller() {
     console.log(State)
     console.log(path)
 
+
+  const view =  State.model.views.find(view => view.value === path)
+  console.log(view, "view")
+
+  const viewTemplate = State.model.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
+
+  const file = viewTemplate.value;
+  const pathToComponent = `../../components/viewTemplates/${file}.mjs`
+  const viewTemplateComponent = importModuleFromFile(pathToComponent, file)
+
+  console.log(viewTemplateComponent, "viewTemplateComponent")
+
+
     return new ViewTemplate_dummy2();
   }
 
