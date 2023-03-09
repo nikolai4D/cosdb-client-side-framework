@@ -27,4 +27,20 @@ export function ViewTemplate_dummy1() {
     }
 
 
+
+    // component.bindScript=  async function() {
+
+    
+
+    //   let awaitedSlots =  await this.slots
+  
+    //   awaitedSlots.forEach(async el => {
+    //     console.log(Object.keys(await el), "el")
+    //     console.log(Object.values(await el), "el")
+  
+    //   //   this.fillSlot(el.slot, el.component.getElement())
+    //   })
+    // }
+
+
 }
