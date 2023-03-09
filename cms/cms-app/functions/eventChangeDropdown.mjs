@@ -63,11 +63,3 @@ export async function eventChangeDropdown(id) {
     //action.updateModel(await State);
   }
 }
-
-// function getAccordionBody(id) {
-//   const accordionBody = document.getElementById("accordion-body-" + id);
-//   while (accordionBody.firstChild) {
-//     accordionBody.removeChild(accordionBody.firstChild);
-//   }
-//   return accordionBody;
-// }
