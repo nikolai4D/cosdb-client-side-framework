@@ -13,7 +13,7 @@ export async function createAtom(componentBody, id, selectedValue) {
   console.log(newAtm, "newAtm!!!!!!!!!!!!!!");
   componentBody.appendChild(atomSlot);
 
-  await createSubAtom(subComponentBody, newAtom.id, selectedValue);
+  await createSubAtom(subComponentBody, newAtm.id, selectedValue);
 }
 
 export async function createSubAtom(subComponentBody, id, selectedValue) {
