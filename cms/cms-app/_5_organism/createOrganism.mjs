@@ -8,7 +8,7 @@ import { Function } from "../_8_function/Function.mjs";
 import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
-export const createOrganism = async (componentBody, id, selectedValue) => {
+export async function createOrganism(componentBody, id, selectedValue) {
   const subComponentBody = document.createElement("div");
   const organismSlot = await Organism(
     await newOrganism("organism", selectedValue, id),
@@ -16,6 +16,10 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
   );
   componentBody.appendChild(organismSlot);
 
+  await createSubOrganism(componentBody, id, selectedValue);
+}
+
+async function createSubOrganism(componentBody, id, selectedValue) {
   ///--------------------------------
 
   const filename = selectedValue;
@@ -84,7 +88,7 @@ export const createOrganism = async (componentBody, id, selectedValue) => {
       subComponentBody
     );
   }
-};
+}
 
 function createSubOrganismsEl(subComps, id, compBody, parentBody) {
   subComps.forEach(async (comp) => {
@@ -104,7 +108,7 @@ function createSubOrganismsEl(subComps, id, compBody, parentBody) {
     let newId = slotEls[0].id;
     let nextLevelBody = document.getElementById("accordion-body-" + newId);
 
-    await createOrganism(nextLevelBody, newId, value);
+    await createSubOrganism(nextLevelBody, newId, value);
   });
 }
 
