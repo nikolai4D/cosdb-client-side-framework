@@ -14,8 +14,8 @@ export async function Organism(organism, organismBody) {
   const valueDisabled = organism.valueDisabled;
 
   const bodyDiv = document.createElement("div");
-  const contenDiv = await organismBody;
-  bodyDiv.appendChild(contenDiv);
+  const contentDiv = await organismBody;
+  bodyDiv.appendChild(contentDiv);
 
   const organismAccordionInput = await accordionInput(
     bodyDiv,
