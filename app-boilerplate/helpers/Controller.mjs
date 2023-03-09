@@ -72,9 +72,9 @@ export function Controller() {
     // slot.appendChild(organism)
   })
 
-  component.bindScript=  function() {
+  component.bindScript=  async function() {
 
-    let awaitedSlots =   this.slots
+    let awaitedSlots =  await this.slots
 
     awaitedSlots.forEach(async el => {
       console.log(Object.keys(await el), "el")
