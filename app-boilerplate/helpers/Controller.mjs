@@ -11,6 +11,7 @@ export function Controller() {
   this.title = "view1";
 
   this.template = function(){
+    console.log(State)
     return new ViewTemplate_dummy2();
   }
 
