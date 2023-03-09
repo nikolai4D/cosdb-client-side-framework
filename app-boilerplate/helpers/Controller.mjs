@@ -33,6 +33,7 @@ export function Controller() {
   let component = new viewTemplateComponent[file]();
 
   component.slots.map(slot => {
+    console.log(slot, "slot")
     let theSlotInModel = slots.find(slotModel => slotModel.value === slot)
     console.log(theSlotInModel,"theSlotInModel")
     if (theSlotInModel) { slot.slot = "HELLO"}
