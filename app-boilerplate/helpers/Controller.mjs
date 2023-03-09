@@ -32,7 +32,7 @@ export function Controller() {
 
   let component = new viewTemplateComponent[file]();
 
-  component.slots.map(slot => {
+  component.slots.map(async slot => {
     console.log(slot, "slot")
     console.log(slots, "slots")
 
