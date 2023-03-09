@@ -49,7 +49,7 @@ export function Controller() {
         const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
         let organism = new organismComponent[fileOrganism]();
 
-        slot.component = organism
+        slot.component = await organism
         // slot.appendChild(organism)
       }
       // const file = organismModel.value;
