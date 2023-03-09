@@ -75,10 +75,10 @@ export function Controller() {
 
           component.slots.forEach( slot => {
             console.log( slot, "slot")
-          })
+       
 
             this.fillSlot(slot.slot, slot.component.getElement())
-
+          })
 
         }
       };
