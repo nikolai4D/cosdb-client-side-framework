@@ -31,7 +31,6 @@ export function Organism_dummy3() {
   <div>
     <div>${this.organisms[0].organism}</div>
     <div>${this.organisms[1].organism}</div>
-≈
   </div>
 `;
 }
