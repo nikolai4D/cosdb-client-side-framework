@@ -3,6 +3,7 @@ import { ViewTemplate_dummy1 } from "../../components/viewTemplates/ViewTemplate
 import { ViewTemplate_dummy2 } from "../../components/viewTemplates/ViewTemplate_dummy2.mjs";
 import { State } from "../State.mjs";
 import { importModuleFromFile } from "../../core/helpers.mjs";
+import { readModel } from "./readModel.mjs";
 
 
 export function Controller() {
@@ -11,11 +12,17 @@ export function Controller() {
   this.title = "view1";
 
   this.template = async function(){
+
+    const data = await readModel();
+
+    console.log(data, "data")
+
     const path = window.location.pathname.slice(1)
 
     console.log(State)
-    console.log(await State.model)
     console.log(Object.values(await State))
+
+    console.log(await State.model)
 
     console.log(path)
 
