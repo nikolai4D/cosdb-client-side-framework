@@ -9,10 +9,7 @@ import { readModel } from "./readModel.mjs";
 
 export function Controller() {
   View.call(this);
-  this.childComponent =  this.getComponent();
-   this.getSlots();
-   this.bindNewScripts();
-  this.title = "view1";
+
 
   this.childComponent = null;
 
@@ -95,6 +92,11 @@ export function Controller() {
     return await this.childComponent ;
 
   }
+
+  this.childComponent =  this.getComponent();
+  this.getSlots();
+  this.bindNewScripts();
+ this.title = "view1";
 
 }
 
