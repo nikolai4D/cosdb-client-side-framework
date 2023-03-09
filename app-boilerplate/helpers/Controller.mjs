@@ -73,9 +73,9 @@ export function Controller() {
 
         component.bindScript= async function() {
 
-          await component.slots.forEach( slot => {
+          await component.slots.forEach( async slot => {
             console.log( slot, "slot")
-            this.fillSlot(slot.slot, slot.component.getElement())
+            this.fillSlot(slot.slot, await (await slot.component).getElement())
           })
 
         }
