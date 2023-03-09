@@ -54,7 +54,7 @@ export function Controller() {
 
         slot.bindScript= async function() {
 
-          let awaitedSlots = await this.slots
+          let awaitedSlots =  this.slots
 
           awaitedSlots.forEach(async el => {
             console.log(Object.keys(await el), "el")
