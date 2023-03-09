@@ -70,12 +70,47 @@ export function Controller() {
   this.bindNewScripts = async function() {
     let component = this.childComponent;
 
-    component.bindScript= function() {
-      console.log("hello")
-      console.log("component", component)
+        component.bindScript= function() {
 
-    }
-  };
+          component.slots.forEach(async slot => {
+            console.log(slot, "slot")
+          })
+
+        }
+      };
+
+
+  //   component.bindScript= function() {
+  //     console.log("hello")
+  //     console.log("component", component)
+
+
+
+
+  //         //   this.fillSlot(el.slot, el.component.getElement())
+
+
+  // //   let awaitedSlots =  await this.slots
+
+  // //   awaitedSlots.forEach(async el => {
+  // //     console.log(Object.keys(await el), "el")
+  // //     console.log(Object.values(await el), "el")
+
+  // //   //   this.fillSlot(el.slot, el.component.getElement())
+  // //   })
+  // // }
+
+
+  // // getting the subcomponents from the model with the viewTemplate id as parentId
+
+  // // getting the components from the model with the subcomponent id as parentId
+
+  // // slots.forEach(slot => {
+  // //   const organism = this.model.organisms.find(organism => organism.parentId === slot.id)
+    
+  // //   }
+  // // )
+
 
 
 
