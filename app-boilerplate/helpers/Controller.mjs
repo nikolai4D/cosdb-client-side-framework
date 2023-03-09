@@ -48,7 +48,7 @@ export function Controller() {
 
       component.slots.forEach(async slot => {
 
-        let specificSlot = this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
+        let specificSlot = await this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
 
         if (specificSlot) { 
           const organismModel = this.model.organisms.find(organism => organism.parentId === specificSlot.id)
@@ -71,7 +71,7 @@ export function Controller() {
   this.bindNewScripts = async () => {
     let component = await this.childComponent;
 
-        await component.bindScript= async function() {
+         component.bindScript= async function() {
 
           await component.slots.forEach( async slot => {
             console.log( slot, "slot")
