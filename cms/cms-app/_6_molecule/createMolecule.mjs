@@ -1,6 +1,6 @@
 import { Molecule } from "./Molecule.mjs";
 import { newMolecule } from "./newMolecule.mjs";
-import { createAtom } from "../_7_atom/createAtom.mjs";
+import { createSubAtom } from "../_7_atom/createAtom.mjs";
 import { Atom } from "../_7_atom/Atom.mjs";
 import { newAtom } from "../_7_atom/newAtom.mjs";
 import { Function } from "../_8_function/Function.mjs";
@@ -78,7 +78,7 @@ function createSubAtomsEl(subComps, id, compBody, parentBody) {
     let newId = slotEls[0].id;
     let nextLevelBody = document.getElementById("accordion-body-" + newId);
 
-    await createAtom(nextLevelBody, newId, value);
+    await createSubAtom(nextLevelBody, newId, value);
   });
 }
 
