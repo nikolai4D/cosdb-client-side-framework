@@ -8,6 +8,19 @@ import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
 export async function createMolecule(componentBody, id, selectedValue) {
+  const subComponentBody = document.createElement("div");
+  const newMol = await newMolecule("molecule", selectedValue, id);
+  const moleculeSlot = await Molecule(newMol, subComponentBody);
+
+  console.log(newMol, "newMol!!!!!!!!!!!!!!");
+  componentBody.appendChild(moleculeSlot);
+
+  await createSubMolecule(subComponentBody, newMol.id, selectedValue);
+}
+
+async function createSubMolecule(subComponentBody, id, selectedValue) {
+  ///--------------------------------
+
   const filename = selectedValue;
   const type = "molecules";
   const organismBody = document.createElement("div");
@@ -25,7 +38,7 @@ export async function createMolecule(componentBody, id, selectedValue) {
   );
 
   if (componentAtoms) {
-    await createSubAtomsEl(componentAtoms, id, organismBody, componentBody);
+    await createSubAtomsEl(componentAtoms, id, organismBody, subComponentBody);
   }
 
   //--------------------------------
@@ -45,7 +58,7 @@ export async function createMolecule(componentBody, id, selectedValue) {
       componentFunctions,
       id,
       organismBody,
-      componentBody
+      subComponentBody
     );
   }
 }
