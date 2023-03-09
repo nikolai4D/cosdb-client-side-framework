@@ -16,11 +16,11 @@ export function Controller() {
     // console.log(State)
     console.log(path)
 
+    const model = (await State).model;
 
-  const view =  await State.model.views.find(view => view.value === path)
+  const view = model.find(view => view.value === path)
   console.log(view, "view")
      
-  const model = (await State).model;
   const viewTemplate = model.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
 
   const file = viewTemplate.value;
