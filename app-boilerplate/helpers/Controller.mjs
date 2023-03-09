@@ -28,6 +28,8 @@ export function Controller() {
   // importing the viewTemplate prototype
   const viewTemplateComponent = await importModuleFromFile(pathToComponent, file)
 
+    const slots = data.slots.filter(slot => slot.parentId === viewTemplate.id)
+
   let component = new viewTemplateComponent[file]();
 
   component.slots.map(slot => {
@@ -44,7 +46,6 @@ export function Controller() {
 
 
   // getting the subcomponents from the model with the viewTemplate id as parentId
-  // const slots = data.slots.filter(slot => slot.parentId === viewTemplate.id)
 
   // getting the components from the model with the subcomponent id as parentId
 
