@@ -34,14 +34,44 @@ export function Controller() {
   // importing the viewTemplate prototype
   const viewTemplateComponent = await importModuleFromFile(pathToComponent, file)
 
-  const slots = data.slots.filter(slot => slot.parentId === viewTemplate.id)
+  const slotsFromModel = data.slots.filter(slot => slot.parentId === viewTemplate.id)
 
   let component = new viewTemplateComponent[file]();
 
-  console.log("component", component)
+
+  component.slots.forEach(async slot => {
+
+    let specificSlot = slotsFromModel.find(slotModel => slotModel.value === slot.slot)
+
+
+    if (specificSlot) { 
+      const organismModel = data.organisms.find(organism => organism.parentId === specificSlot.id)
+
+
+      if (organismModel) {
+        slot.slot = organismModel.value;
+        console.log(slot.slot, "helli")
+        slot.component = "hej"
+
+        const fileOrganism = organismModel.value;
+        const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
+        const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
+        console.log(organismComponent, "organism component")
+        let organism = await new organismComponent[fileOrganism]();
+
+        slot.component = organism
+      }
+    }
+  }
+  )
+
+
+  console.log("thelement")
 
   component.bindScript= function() {
     console.log("hello")
+    console.log("component", component)
+
   }
 
   return component;
