@@ -18,7 +18,7 @@ export function Controller() {
 
     const model = (await State).model;
 
-  const view = model.find(view => view.value === path)
+  const view = model.views.find(view => view.value === path)
   console.log(view, "view")
      
   const viewTemplate = model.viewTemplates.find(viewTemplate => viewTemplate.parent === view.parentId)
