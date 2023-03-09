@@ -17,6 +17,7 @@ export function Controller() {
     console.log(path)
 
     const model = (await State).model;
+    console.log(model)
 
   const view = model.views.find(view => view.value === path)
   console.log(view, "view")
