@@ -45,7 +45,8 @@ export function Controller() {
   this.getSlots = async () => {
     let component = this.childComponent
 
-      component.slots.forEach(async slot => {
+    for (let slot of component.slots) {
+      // component.slots.forEach(async slot => {
 
         let specificSlot =  this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
 
@@ -59,7 +60,6 @@ export function Controller() {
             const fileOrganism = organismModel.value;
             const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
             let organism = "HELLO"
-            slot.component =  organism
 
             const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
             // let organism =   organismComponent;
@@ -67,9 +67,10 @@ export function Controller() {
             // let organism =  new organismComponent[fileOrganism]();
             console.log(organism, "organism")
 
+            slot.component =  organism
           }
         }
-      })
+      }
   };
 
   this.bindNewScripts = async () => {
