@@ -72,19 +72,19 @@ export function Controller() {
       }
   };
 
-  // this.bindNewScripts = async () => {
-  //   let component = await this.childComponent;
+  this.bindNewScripts = async () => {
+    let component = await this.childComponent;
 
-  //        component.bindScript= async function() {
+         component.bindScript= async function() {
 
-  //         for (let slot of component.slots) {
-  //           console.log( slot, "slot")
-  //           component.fillSlot(slot.slot, await (await slot.component).getElement())
-  //         // await component.slots.forEach( async slot => {
+          for (let slot of component.slots) {
+            console.log( slot, "slot")
+            component.fillSlot(slot.slot, await (await slot.component).getElement())
+          // await component.slots.forEach( async slot => {
 
-  //       }
-  //     }
-  //   };
+        }
+      }
+    };
 
 
   this.template = async () => {
