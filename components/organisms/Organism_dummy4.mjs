@@ -19,11 +19,12 @@ export function Organism_dummy4() {
     }
   ]
 
-
+  this.getHtml = function(){
   return `
   <div>
     <div>${this.molecules[0].molecule}</div>
     <div>${this.molecules[1].molecule}</div>
   </div>
 `;
+}
 }
