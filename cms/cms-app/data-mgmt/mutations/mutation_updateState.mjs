@@ -11,4 +11,6 @@ export function mutation_updateState(customType, data) {
   }
 
   State[customType] = customTypeData;
+
+  console.log("State, mutation from customType: ", customType, { State });
 }

@@ -1,6 +1,5 @@
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
-import { updateModel } from "../requests/updateModel.mjs";
-// import { action } from "../data-mgmt/State.mjs";
+import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
 export async function ViewTemplate(viewTemplate) {
   const viewTemplateDiv = document.createElement("div");
@@ -31,8 +30,7 @@ export async function ViewTemplate(viewTemplate) {
 
   viewTemplateDiv.appendChild(viewTemplateAccordionDropdown);
 
-  // await updateModel();
-  //action.create(id, null, parentId, "viewTemplates")
+  await mutation_updateState("viewTemplates", viewTemplate);
 
   return viewTemplateDiv;
 }
