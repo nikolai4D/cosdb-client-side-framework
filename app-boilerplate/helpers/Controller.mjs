@@ -59,12 +59,12 @@ export function Controller() {
 
             const fileOrganism = organismModel.value;
             const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
-            let organism = "HELLO"
+            // let organism = "HELLO"
 
             const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
             // let organism =   organismComponent;
 
-            // let organism =  new organismComponent[fileOrganism]();
+            let organism =  new organismComponent[fileOrganism]();
             console.log(organism, "organism")
 
             slot.component =  organism
