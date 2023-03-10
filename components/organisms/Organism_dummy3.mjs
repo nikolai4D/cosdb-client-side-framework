@@ -9,11 +9,11 @@ export function Organism_dummy3() {
 
   this.organisms = [
     {
-      organism: "Organism_dummy4",
+      organism: "Organism_dummy41",
       component: new Organism_dummy4()
     },
     {
-      organism: "Organism_dummy4",
+      organism: "Organism_dummy42",
       component: new Organism_dummy4()
     }
   ]
