@@ -1,8 +1,5 @@
-// import { accordionInput } from "../types/accordionInput.mjs";
-// import { Component } from "../_4_component/Component.mjs";
-// import { newComponent } from "../_4_component/newComponent.mjs";
-// import { Slot } from "./Slot.mjs";
 import { dropdown } from "../types/dropdown.mjs";
+import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
 export async function Function(func, functionBody) {
   const functionDiv = document.createElement("div");
@@ -30,9 +27,9 @@ export async function Function(func, functionBody) {
     valueDisabled
   );
 
-  //   const functionDropdown = dropdown(key, values, selectedValue, id, false, "function");
-
   functionDiv.appendChild(functionDropdown);
+
+  await mutation_updateState("functions", func);
 
   return functionDiv;
 }
