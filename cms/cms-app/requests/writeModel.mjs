@@ -1,4 +1,5 @@
 export async function writeModel(json) {
+  console.log("writeModel: ", json);
   try {
     const response = await fetch("/update", {
       method: "PUT",
