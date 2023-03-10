@@ -1,5 +1,5 @@
 import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
-import { State } from "../data-mgmt/State.mjs";
+import { action_writeModel } from "../data-mgmt/actions/action_writeModel.mjs";
 
 export async function eventChangeInput(id) {
   const input = document.getElementById(id);
@@ -18,4 +18,6 @@ export async function eventChangeInput(id) {
   await mutation_updateState(customTypeArray, data);
 
   console.log("updated input");
+
+  await action_writeModel();
 }
