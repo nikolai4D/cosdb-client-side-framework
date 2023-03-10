@@ -61,7 +61,7 @@ export function Controller() {
             const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
             let organism =  new organismComponent[fileOrganism]();
 
-            slot.component = await organism
+            slot.component =  organism
           }
         }
       })
