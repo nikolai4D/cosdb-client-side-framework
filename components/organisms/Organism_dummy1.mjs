@@ -35,7 +35,7 @@ export function Organism_dummy1() {
   `;
   }
 
-  this.bindScript= function() {
+  // this.bindScript= function() {
 
     // this.organisms.forEach(org => {
     //   this.fillSlot(org.organism, org.component.getElement())
@@ -50,7 +50,7 @@ export function Organism_dummy1() {
     // this.fillSlot("paragraph", paragraphComp.getElement())
 
 // }
-}
+// }
 
 // export function Organism_dummy1() {
 //   Component.call(this);
