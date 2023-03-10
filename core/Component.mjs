@@ -48,7 +48,7 @@ export function Component(options = {}){
             this.element = stringToHTMLElement(this.getHtml())
             this.deSetComponentsFromString()
             this.bindSlots()
-            await this.bindScript()
+            this.bindScript()
             this.applyStyle()
 
             if(this.id) this.element.id = this.id
@@ -92,7 +92,31 @@ export function Component(options = {}){
         return `<div data-slot="${key}" class="slot"></div>`
     }
 
-    
+      /**
+     * Replace the designated slot with the given element
+     * @param slotName {String}
+     * @param element {HTMLElement}
+     */
+      this.fillSlot= function(slotName, element) {
+
+        if(!this.element) throw new Error("Cannot fill slot before the element is defined.")
+
+        const slot = this.element.querySelector(`[data-slot="${slotName.toString()}"]`)
+        if(!slot) throw new Error(`Slot ${slotName} not found`)
+        slot.replaceWith(element)
+    }
+
+
+    /**
+     * Replace the designated slots with the given elements
+     * @param slotMap {Map<String,HTMLElement>}
+     */
+    this.fillSlots= function (slotMap) {
+        for(let [slotName, element] of slotMap){ this.fillSlot(slotName, element) }
+    }
+
+
+
     this.setComponentsToString = function() {
         if(!Object.values(this.subComponents).every(v => v === null)) return;
         for(const [key, value] of Object.entries(this.subComponents)){
