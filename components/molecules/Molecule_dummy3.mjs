@@ -35,4 +35,12 @@ export function Molecule_dummy3() {
     </div>>
   `;
   }
+
+  this.bindScript= function() {
+    this.atoms.forEach(atom => {
+      this.fillSlot(atom.atom, atom.component.getElement())
+    })
+  }
+
+  
 }
