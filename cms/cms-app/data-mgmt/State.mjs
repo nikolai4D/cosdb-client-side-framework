@@ -7,4 +7,5 @@ export const State = {
   molecules: [],
   atoms: [],
   atomValues: [],
+  functions: [],
 };
