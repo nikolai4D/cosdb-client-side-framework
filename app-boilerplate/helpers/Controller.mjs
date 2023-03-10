@@ -72,8 +72,8 @@ export function Controller() {
       }
   };
 
-  this.bindNewScripts = async () => {
-    let component = await this.childComponent;
+  this.bindNewScripts =  () => {
+    let component =  this.childComponent;
 
          component.bindScript=  function() {
 
