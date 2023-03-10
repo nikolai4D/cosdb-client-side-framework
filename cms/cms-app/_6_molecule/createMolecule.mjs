@@ -12,7 +12,6 @@ export async function createMolecule(componentBody, id, selectedValue) {
   const newMol = await newMolecule("molecule", selectedValue, id);
   const moleculeSlot = await Molecule(newMol, subComponentBody);
 
-  console.log(newMol, "newMol!!!!!!!!!!!!!!");
   componentBody.appendChild(moleculeSlot);
 
   await createSubMolecule(subComponentBody, newMol.id, selectedValue);
