@@ -3,6 +3,7 @@ import { createOrganism } from "../_5_organism/createOrganism.mjs";
 import { createAtom } from "../_7_atom/createAtom.mjs";
 import { getAccordionBody } from "../functions/getAccordionBody.mjs";
 import { createSlots } from "../_3_slot/createSlots.mjs";
+import { action_writeModel } from "../data-mgmt/actions/action_writeModel.mjs";
 
 import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
@@ -33,6 +34,7 @@ export async function eventChangeDropdown(id) {
       await createSlots(viewTemplateBody, id, selectedValue);
     }
     console.log("updated viewTemplate dropdown");
+    await action_writeModel();
   }
   if (customType === "component") {
     const componentBody = await getAccordionBody(id);
@@ -54,5 +56,6 @@ export async function eventChangeDropdown(id) {
       }
     }
     console.log("updated component dropdown");
+    await action_writeModel();
   }
 }
