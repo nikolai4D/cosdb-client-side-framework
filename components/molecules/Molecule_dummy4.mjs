@@ -1,4 +1,4 @@
-import { Component } from "../../core/Component.js";
+import { Component } from "../../core/Component.mjs";
 import { slot } from "../../core/helpers.mjs";
 import { Atom_dummy3 } from "../atoms/Atom_dummy3.mjs";
 import { Atom_dummy4 } from "../atoms/Atom_dummy4.mjs";

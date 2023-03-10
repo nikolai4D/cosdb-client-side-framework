@@ -1,4 +1,3 @@
-
 import { Component } from "../../core/Component.mjs";
 
 export function Atom_dummy2() {
