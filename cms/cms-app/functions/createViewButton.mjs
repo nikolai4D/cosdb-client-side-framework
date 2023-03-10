@@ -11,9 +11,9 @@ export async function createViewButton() {
       await View(await newView()),
       document.body.children[1]
     );
-    console.log({ State }, "State after click newView");
+    // console.log({ State }, "State after click newView");
   });
   document.body.insertBefore(createViewButton, document.body.firstChild);
 
-  console.log({ State }, "State after createViewButton");
+  //console.log({ State }, "State after createViewButton");
 }
