@@ -1,8 +1,8 @@
 import { accordionInput } from "../types/accordionInput.mjs";
 import { newViewTemplate } from "../_2_viewTemplate/newViewTemplate.mjs";
 import { ViewTemplate } from "../_2_viewTemplate/ViewTemplate.mjs";
-import { updateModel } from "../requests/updateModel.mjs";
-// import { action } from "../data-mgmt/State.mjs";
+import { State } from "../data-mgmt/State.mjs";
+import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
 export async function View(view) {
   const viewDiv = document.createElement("div");
@@ -30,41 +30,7 @@ export async function View(view) {
   );
   viewDiv.appendChild(viewAccordionInput);
 
-  //action.create(id, value, "", "views")
-  // await updateModel(id, value, parentId, "views");
+  await mutation_updateState("views", view);
 
   return viewDiv;
 }
-
-// async function updateViewInModel(id, value) {
-//   let existingModel = await readModel();
-
-//     existingModel.views.push({
-//       id,
-//       value,
-//       parentId: ""
-//     });
-//   let newModel = existingModel;
-//   await writeModel(newModel);
-// }
-
-// async function updateViewInModel(id, value) {
-//   let existingModel = await readModel();
-
-//   // get view with same id
-//   // replace the name with the new name
-//   // if there is none with that id, add it to views
-//   const existingView = existingModel.views.find((view) => view.id === id);
-//   if (existingView) {
-//     existingView.name = value;
-//   }
-//   else {
-//     existingModel.views.push({
-//       id: id,
-//       name: value,
-//       parentId: ""
-//     });
-//   }
-//   let newModel = existingModel;
-//   await writeModel(newModel);
-// }
