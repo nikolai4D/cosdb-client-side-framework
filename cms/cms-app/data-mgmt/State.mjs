@@ -1,8 +1,8 @@
 export const State = {
   views: [],
   viewTemplates: [],
-  components: [],
   slots: [],
+  components: [],
   organisms: [],
   molecules: [],
   atoms: [],

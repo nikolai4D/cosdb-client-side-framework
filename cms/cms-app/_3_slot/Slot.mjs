@@ -1,10 +1,7 @@
 import { accordionInput } from "../types/accordionInput.mjs";
 import { Component } from "../_4_component/Component.mjs";
 import { newComponent } from "../_4_component/newComponent.mjs";
-import { readModel } from "../requests/readModel.mjs";
-import { writeModel } from "../requests/writeModel.mjs";
-import { updateModel } from "../requests/updateModel.mjs";
-// import { action } from "../data-mgmt/State.mjs";
+import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
 export async function Slot(slot) {
   const SlotDiv = document.createElement("div");
@@ -32,9 +29,8 @@ export async function Slot(slot) {
   );
 
   SlotDiv.appendChild(SlotAccordionInput);
-  //action.create(id, value, parentId, "slots")
 
-  // await updateModel(id, value, parentId, "slots");
+  await mutation_updateState("slots", slot);
 
   return SlotDiv;
 }
