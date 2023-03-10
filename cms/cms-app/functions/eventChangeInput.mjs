@@ -4,8 +4,8 @@ import { State } from "../data-mgmt/State.mjs";
 export async function eventChangeInput(id) {
   const input = document.getElementById(id);
   const value = input.value;
-  const customType = select.getAttribute("customType");
-  const parentId = select.getAttribute("parentId");
+  const customType = input.getAttribute("customType");
+  const parentId = input.getAttribute("parentId");
 
   const data = {};
   data.id = id;
