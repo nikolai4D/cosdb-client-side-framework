@@ -65,7 +65,6 @@ export function Controller() {
             // let organism =   organismComponent;
 
             let organism =  new organismComponent[fileOrganism]();
-            console.log(organism, "organism")
 
             slot.component =  organism
           }
@@ -78,13 +77,14 @@ export function Controller() {
 
          component.bindScript= async function() {
 
-          await component.slots.forEach( async slot => {
+          for (let slot of component.slots) {
             console.log( slot, "slot")
             this.fillSlot(slot.slot, await (await slot.component).getElement())
-          })
+          // await component.slots.forEach( async slot => {
 
         }
-      };
+      }
+    };
 
 
   this.template = async () => {
