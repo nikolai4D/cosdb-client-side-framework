@@ -1,7 +1,6 @@
 import { accordionInput } from "../types/accordionInput.mjs";
 import { newViewTemplate } from "../_2_viewTemplate/newViewTemplate.mjs";
 import { ViewTemplate } from "../_2_viewTemplate/ViewTemplate.mjs";
-import { State } from "../data-mgmt/State.mjs";
 import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
 export async function View(view) {
