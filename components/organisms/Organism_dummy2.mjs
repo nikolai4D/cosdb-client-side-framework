@@ -27,8 +27,16 @@ export function Organism_dummy2() {
 
     return `
     <div>
-      <div>${this.organisms[0].organism}</div>
+      <div>${slot(this.organisms[0].organism)}</div>
     </div>
   `;
   }
+
+  this.bindScript= function() {
+
+    this.organisms.forEach(org => {
+      this.fillSlot(org.organism, org.component.getElement())
+    })
+  }
+
 }

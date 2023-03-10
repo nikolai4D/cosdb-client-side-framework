@@ -40,16 +40,7 @@ export function Organism_dummy1() {
     this.organisms.forEach(org => {
       this.fillSlot(org.organism, org.component.getElement())
     })
-
-    // // const brandComp = new Brand(brand.icon, brand.name)
-    // const headerComp = new Header(header.size, header.name)
-    // const paragraphComp = new Paragraph(paragraph.text)
-
-    // this.fillSlot("header", headerComp.getElement())
-    // // this.fillSlot("brand", brandComp.getElement())
-    // this.fillSlot("paragraph", paragraphComp.getElement())
-
-}
+  }
 }
 
 // export function Organism_dummy1() {
