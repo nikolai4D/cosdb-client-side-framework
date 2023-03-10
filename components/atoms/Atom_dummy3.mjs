@@ -3,11 +3,8 @@ import { Component } from "../../core/Component.mjs";
 export function Atom_dummy3() {
   Component.call(this);
 
-  this.valueOptions = [
-    {
-      valueOption: "valueOption3",
-    }
-  ]
+  this.valueOption = "valueOption3"
+
 
   this.getHtml = function(){
   return (
