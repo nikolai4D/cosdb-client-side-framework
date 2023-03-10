@@ -43,4 +43,16 @@ export function Organism_dummy3() {
   </div>
 `;
 }
+
+this.bindScript= function() {
+
+  this.organisms.forEach(org => {
+    this.fillSlot(org.organism, org.component.getElement())
+  })
+
+  this.molecules.forEach(mol => {
+    this.fillSlot(mol.molecule, mol.component.getElement())
+  })
+}
+
 }
