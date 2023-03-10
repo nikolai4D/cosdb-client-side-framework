@@ -9,11 +9,11 @@ export function Organism_dummy3() {
 
   this.organisms = [
     {
-      organism: "Organism_dummy41",
+      organism: "Organism_dummy4",
       component: new Organism_dummy4()
     },
     {
-      organism: "Organism_dummy42",
+      organism: "Organism_dummy4",
       component: new Organism_dummy4()
     }
   ]
@@ -42,10 +42,10 @@ export function Organism_dummy3() {
   this.getHtml = function(){
   return `
   <div>
-    <div>${this.organisms[0].organism}</div>
-    <div>${this.organisms[1].organism}</div>
-    <div>${this.molecules[0].molecule}</div>
-    <div>${this.molecules[1].molecule}</div>
+    <div>${slot(this.organisms[0].organism)}</div>
+    <div>${slot(this.organisms[1].organism)}</div>
+    <div>${slot(this.molecules[0].molecule)}</div>
+    <div>${slot(this.molecules[1].molecule)}</div>
   </div>
 `;
 }
