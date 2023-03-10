@@ -35,21 +35,21 @@ export function Organism_dummy1() {
   `;
   }
 
-  this.bindScript= function() {
+//   this.bindScript= function() {
 
-    this.organisms.forEach(org => {
-      this.fillSlot(org.organism, org.component.getElement())
-    })
+//     this.organisms.forEach(org => {
+//       this.fillSlot(org.organism, org.component.getElement())
+//     })
 
-    // // const brandComp = new Brand(brand.icon, brand.name)
-    // const headerComp = new Header(header.size, header.name)
-    // const paragraphComp = new Paragraph(paragraph.text)
+//     // // const brandComp = new Brand(brand.icon, brand.name)
+//     // const headerComp = new Header(header.size, header.name)
+//     // const paragraphComp = new Paragraph(paragraph.text)
 
-    // this.fillSlot("header", headerComp.getElement())
-    // // this.fillSlot("brand", brandComp.getElement())
-    // this.fillSlot("paragraph", paragraphComp.getElement())
+//     // this.fillSlot("header", headerComp.getElement())
+//     // // this.fillSlot("brand", brandComp.getElement())
+//     // this.fillSlot("paragraph", paragraphComp.getElement())
 
-}
+// }
 }
 
 // export function Organism_dummy1() {
