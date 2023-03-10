@@ -1,5 +1,5 @@
 
-import Component from "../../core/Component.mjs";
+import { Component } from "../../core/Component.mjs";
 
 export function Atom_dummy2() {
   Component.call(this);
