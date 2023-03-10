@@ -1,4 +1,8 @@
+import { Component } from "../../core/Component.mjs";
+import { slot } from  "../../core/helpers.mjs";
+
 export function Organism_dummy4() {
+  Component.call(this);
 
 
   this.molecules = [
