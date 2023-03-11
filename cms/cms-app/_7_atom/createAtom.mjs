@@ -41,8 +41,8 @@ export async function createSubAtom(subComponentBody, id, selectedValue) {
     await createValueEls(atomValues, parentId, atomBody, subComponentBody);
   }
 
-  function createValueEls(subComps, prntId, compBody, parentBody) {
-    subComps.forEach(async (comp) => {
+  async function createValueEls(subComps, prntId, compBody, parentBody) {
+    for (const comp of subComps) {
       const [[key, value]] = Object.entries(comp);
 
       const customType = "atomValue";
@@ -69,6 +69,6 @@ export async function createSubAtom(subComponentBody, id, selectedValue) {
       parentBody.appendChild(childSlot);
 
       await mutation_updateState("atomValues", atomValue);
-    });
+    }
   }
 }
