@@ -1,4 +1,4 @@
-import { State } from "../State.mjs";
+import { State } from "../data-mgmt/State.mjs";
 
 export async function deleteChildren(id) {
   // Find all items in State with parentId equal to id
