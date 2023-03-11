@@ -6,7 +6,8 @@ export async function writeModel(state) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: await JSON.stringify(state),
+      //body: await JSON.stringify(state),
+      body: state,
     });
     const result = await response.json();
     return await result;
