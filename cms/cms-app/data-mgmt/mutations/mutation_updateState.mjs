@@ -12,6 +12,6 @@ export async function mutation_updateState(customType, data) {
 
   State[customType] = await customTypeData;
 
-  console.log("State, mutation from customType: ", customType, { State });
+  //console.log("State, mutation from customType: ", customType, { State });
   return State;
 }

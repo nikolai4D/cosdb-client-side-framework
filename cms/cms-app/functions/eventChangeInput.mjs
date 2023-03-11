@@ -17,7 +17,6 @@ export async function eventChangeInput(id) {
 
   const state = await mutation_updateState(customTypeArray, data);
 
-  console.log("updated input");
-
   await action_writeModel(state);
+  console.log("updated input with state: ", state);
 }
