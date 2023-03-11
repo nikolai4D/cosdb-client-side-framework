@@ -40,6 +40,8 @@ export async function eventChangeDropdown(id) {
   if (customType === "component") {
     const componentBody = await getAccordionBody(id);
 
+    const state = await mutation_updateState("components", data);
+
     if (selectedValue !== "") {
       if (selectedValue.startsWith("Organism")) {
         console.log("Organism");
@@ -54,7 +56,6 @@ export async function eventChangeDropdown(id) {
         await createAtom(componentBody, id, selectedValue);
       }
     }
-    const state = await mutation_updateState("components", data);
 
     await action_writeModel(state);
     console.log("updated component dropdown with state: ", state);
