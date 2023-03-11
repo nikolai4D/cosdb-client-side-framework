@@ -37,6 +37,14 @@ export async function eventChangeDropdown(id) {
     await action_writeModel(state);
     console.log("updated viewTemplate dropdown with state: ", state);
   }
+
+  if (customType === "function") {
+    const state = await mutation_updateState("functions", data);
+
+    await action_writeModel(state);
+    console.log("updated function dropdown with state: ", state);
+  }
+
   if (customType === "component") {
     const componentBody = await getAccordionBody(id);
 
