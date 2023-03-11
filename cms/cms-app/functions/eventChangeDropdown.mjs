@@ -3,8 +3,8 @@ import { createOrganism } from "../_5_organism/createOrganism.mjs";
 import { createAtom } from "../_7_atom/createAtom.mjs";
 import { getAccordionBody } from "../functions/getAccordionBody.mjs";
 import { createSlots } from "../_3_slot/createSlots.mjs";
-import { action_writeModel } from "../data-mgmt/actions/action_writeModel.mjs";
 
+import { action_writeModel } from "../data-mgmt/actions/action_writeModel.mjs";
 import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
 export async function eventChangeDropdown(id) {
@@ -28,18 +28,16 @@ export async function eventChangeDropdown(id) {
   if (customType === "viewTemplate") {
     const viewTemplateBody = await getAccordionBody(id);
 
-    await mutation_updateState("viewTemplates", data);
+    const state = await mutation_updateState("viewTemplates", data);
 
     if (selectedValue !== "") {
       await createSlots(viewTemplateBody, id, selectedValue);
     }
     console.log("updated viewTemplate dropdown");
-    await action_writeModel();
+    await action_writeModel(state);
   }
   if (customType === "component") {
     const componentBody = await getAccordionBody(id);
-
-    await mutation_updateState("components", data);
 
     if (selectedValue !== "") {
       if (selectedValue.startsWith("Organism")) {
@@ -55,7 +53,8 @@ export async function eventChangeDropdown(id) {
         await createAtom(componentBody, id, selectedValue);
       }
     }
+    const state = await mutation_updateState("components", data);
     console.log("updated component dropdown");
-    await action_writeModel();
+    await action_writeModel(state);
   }
 }

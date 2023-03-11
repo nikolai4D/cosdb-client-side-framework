@@ -1,8 +1,8 @@
 import { State } from "../State.mjs";
 
-export function mutation_updateState(customType, data) {
-  const customTypeData = State[customType];
-  const index = customTypeData.findIndex((item) => item.id === data.id);
+export async function mutation_updateState(customType, data) {
+  const customTypeData = await State[customType];
+  const index = await customTypeData.findIndex((item) => item.id === data.id);
 
   if (index !== -1) {
     customTypeData.splice(index, 1, data);
@@ -10,7 +10,8 @@ export function mutation_updateState(customType, data) {
     customTypeData.push(data);
   }
 
-  State[customType] = customTypeData;
+  State[customType] = await customTypeData;
 
   console.log("State, mutation from customType: ", customType, { State });
+  return State;
 }
