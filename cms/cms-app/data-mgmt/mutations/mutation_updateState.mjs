@@ -25,19 +25,21 @@ export async function mutation_updateState(customType, data) {
 }
 
 async function deleteChildren(id) {
-  // Find all items in State with parentId equal to id
-  for (const key of Object.keys(State)) {
-    const items = State[key];
-    for (const item of items) {
-      if (item.parentId === id) {
-        await deleteChildren(item.id);
-      }
-    }
-  }
+ 
+    console.log("deleteChildren: ", id")
+//   // Find all items in State with parentId equal to id
+//   for (const key of Object.keys(State)) {
+//     const items = State[key];
+//     for (const item of items) {
+//       if (item.parentId === id) {
+//         await deleteChildren(item.id);
+//       }
+//     }
+//   }
 
-  // Remove all items with parentId equal to id or any of its descendants' id
-  for (const key of Object.keys(State)) {
-    const items = State[key];
-    State[key] = items.filter((item) => item.parentId !== id && item.id !== id);
-  }
+//   // Remove all items with parentId equal to id or any of its descendants' id
+//   for (const key of Object.keys(State)) {
+//     const items = State[key];
+//     State[key] = items.filter((item) => item.parentId !== id && item.id !== id);
+//   }
 }
