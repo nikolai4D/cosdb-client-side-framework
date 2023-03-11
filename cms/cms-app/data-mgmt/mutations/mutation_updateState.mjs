@@ -5,12 +5,11 @@ export async function mutation_updateState(customType, data) {
   const index = await customTypeData.findIndex((item) => item.id === data.id);
 
   if (index !== -1) {
-    customTypeData.splice(index, 1, data);
-  } else {
     if (customType === "viewTemplates" || customType === "components") {
       await deleteChildren(data.id);
     }
-
+    customTypeData.splice(index, 1, data);
+  } else {
     customTypeData.push(data);
   }
 
@@ -32,20 +31,20 @@ async function deleteChildren(id) {
     }
   }
 
-  // Recursively delete all children of the children
-  //   for (const child of children) {
-  //     await deleteChildren(child.id);
-  //   }
+  //   Recursively delete all children of the children
+  for (const child of children) {
+    await deleteChildren(child.id);
+  }
 
   console.log("children: ", children);
 
   // Remove all items with parentId equal to id or any of its descendants' id
-  //   for (const key of Object.keys(State)) {
-  //     const items = State[key];
-  //     State[key] = items.filter(
-  //       (item) =>
-  //         item.parentId !== id &&
-  //         !children.find((child) => child.id === item.parentId)
-  //     );
-  //   }
+  for (const key of Object.keys(State)) {
+    const items = State[key];
+    State[key] = items.filter(
+      (item) =>
+        item.parentId !== id &&
+        !children.find((child) => child.id === item.parentId)
+    );
+  }
 }
