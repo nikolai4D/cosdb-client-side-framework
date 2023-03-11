@@ -22,7 +22,11 @@ export async function accordion(
     deleteButton.textContent = "X";
     deleteButton.classList.add("deleteButton");
     deleteButton.addEventListener("click", async () => {
-      console.log("delete view" + id);
+      if (confirm("Are you sure you want to delete?")) {
+        console.log("delete view" + id);
+        headerAccordion.parentElement.remove();
+      }
+
       //   await mutation_deleteState("views", id);
       //   headerAccordion.parentElement.remove();
     });
