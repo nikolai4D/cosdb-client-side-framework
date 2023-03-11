@@ -1,3 +1,4 @@
+import { deleteChildren } from "../../functions/deleteChildren.mjs";
 import { State } from "../State.mjs";
 
 export async function mutation_updateState(customType, data) {
@@ -19,32 +20,32 @@ export async function mutation_updateState(customType, data) {
   return State;
 }
 
-async function deleteChildren(id) {
-  // Find all items in State with parentId equal to id
-  const children = [];
-  for (const key of Object.keys(State)) {
-    const items = State[key];
-    for (const item of items) {
-      if (item.parentId === id) {
-        children.push(item);
-      }
-    }
-  }
+// async function deleteChildren(id) {
+//   // Find all items in State with parentId equal to id
+//   const children = [];
+//   for (const key of Object.keys(State)) {
+//     const items = State[key];
+//     for (const item of items) {
+//       if (item.parentId === id) {
+//         children.push(item);
+//       }
+//     }
+//   }
 
-  //   Recursively delete all children of the children
-  for (const child of children) {
-    await deleteChildren(child.id);
-  }
+//   //   Recursively delete all children of the children
+//   for (const child of children) {
+//     await deleteChildren(child.id);
+//   }
 
-  console.log("children: ", children);
+//   console.log("children: ", children);
 
-  // Remove all items with parentId equal to id or any of its descendants' id
-  for (const key of Object.keys(State)) {
-    const items = State[key];
-    State[key] = items.filter(
-      (item) =>
-        item.parentId !== id &&
-        !children.find((child) => child.id === item.parentId)
-    );
-  }
-}
+//   // Remove all items with parentId equal to id or any of its descendants' id
+//   for (const key of Object.keys(State)) {
+//     const items = State[key];
+//     State[key] = items.filter(
+//       (item) =>
+//         item.parentId !== id &&
+//         !children.find((child) => child.id === item.parentId)
+//     );
+//   }
+// }
