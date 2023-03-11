@@ -33,9 +33,9 @@ async function deleteChildren(id) {
   }
 
   // Recursively delete all children of the children
-  for (const child of children) {
-    await deleteChildren(child.id);
-  }
+  //   for (const child of children) {
+  //     await deleteChildren(child.id);
+  //   }
 
   console.log("children: ", children);
 
