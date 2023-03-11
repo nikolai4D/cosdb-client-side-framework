@@ -62,8 +62,8 @@ export async function createSubMolecule(subComponentBody, id, selectedValue) {
   }
 }
 
-function createSubAtomsEl(subComps, id, compBody, parentBody) {
-  subComps.forEach(async (comp) => {
+async function createSubAtomsEl(subComps, id, compBody, parentBody) {
+  for (const comp of subComps) {
     const [[key, value]] = Object.entries(comp);
     const parentId = id;
 
@@ -78,16 +78,16 @@ function createSubAtomsEl(subComps, id, compBody, parentBody) {
     let nextLevelBody = document.getElementById("accordion-body-" + newId);
 
     await createSubAtom(nextLevelBody, newId, value);
-  });
+  }
 }
 
-function createFunctionsEl(subComps, id, compBody, parentBody) {
-  subComps.forEach(async (comp) => {
+async function createFunctionsEl(subComps, id, compBody, parentBody) {
+  for (const comp of subComps) {
     const [[key, value]] = Object.entries(comp);
     const parentId = id;
 
     let childSlot = await Function(await newFunction(parentId), compBody);
 
     parentBody.insertBefore(childSlot, parentBody.firstChild);
-  });
+  }
 }
