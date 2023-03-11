@@ -12,8 +12,7 @@ export async function createSlots(viewTemplateBody, id, selectedValue) {
     type
   );
 
-
-  viewTemplateSlots.forEach(async (slot) => {
+  for (const slot of viewTemplateSlots) {
     const [[key, value]] = Object.entries(slot);
 
     const slotKey = key;
@@ -25,5 +24,5 @@ export async function createSlots(viewTemplateBody, id, selectedValue) {
     );
 
     viewTemplateBody.appendChild(childSlot);
-  });
+  }
 }
