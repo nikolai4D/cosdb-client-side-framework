@@ -29,16 +29,6 @@ export async function View(view) {
   );
   viewDiv.appendChild(viewAccordionInput);
 
-  // Create delete button
-  const deleteButton = document.createElement("button");
-  deleteButton.textContent = "X";
-  deleteButton.classList.add("deleteButton");
-  deleteButton.addEventListener("click", async () => {
-    await mutation_deleteState("views", id);
-    viewDiv.remove();
-  });
-  viewDiv.appendChild(deleteButton);
-
   await mutation_updateState("views", view);
 
   return viewDiv;
