@@ -7,11 +7,7 @@ export async function mutation_updateState(customType, data) {
   if (index !== -1) {
     customTypeData.splice(index, 1, data);
   } else {
-    if (
-      customType === "views" ||
-      customType === "viewTemplates" ||
-      customType === "components"
-    ) {
+    if (customType === "viewTemplates" || customType === "components") {
       await deleteChildren(data.id);
     }
 
@@ -25,20 +21,29 @@ export async function mutation_updateState(customType, data) {
 }
 
 async function deleteChildren(id) {
-  console.log("deleteChildren: ", id);
-  //   // Find all items in State with parentId equal to id
-  //   for (const key of Object.keys(State)) {
-  //     const items = State[key];
-  //     for (const item of items) {
-  //       if (item.parentId === id) {
-  //         await deleteChildren(item.id);
-  //       }
-  //     }
-  //   }
+  // Find all items in State with parentId equal to id
+  const children = [];
+  for (const key of Object.keys(State)) {
+    const items = State[key];
+    for (const item of items) {
+      if (item.parentId === id) {
+        children.push(item);
+      }
+    }
+  }
 
-  //   // Remove all items with parentId equal to id or any of its descendants' id
-  //   for (const key of Object.keys(State)) {
-  //     const items = State[key];
-  //     State[key] = items.filter((item) => item.parentId !== id && item.id !== id);
-  //   }
+  // Recursively delete all children of the children
+  for (const child of children) {
+    await deleteChildren(child.id);
+  }
+
+  // Remove all items with parentId equal to id or any of its descendants' id
+  for (const key of Object.keys(State)) {
+    const items = State[key];
+    State[key] = items.filter(
+      (item) =>
+        item.parentId !== id &&
+        !children.find((child) => child.id === item.parentId)
+    );
+  }
 }
