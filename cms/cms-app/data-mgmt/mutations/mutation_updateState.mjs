@@ -12,7 +12,7 @@ export async function mutation_updateState(customType, data) {
       customType === "viewTemplates" ||
       customType === "components"
     ) {
-      await deleteChildren(id);
+      await deleteChildren(data.id);
     }
 
     customTypeData.push(data);
