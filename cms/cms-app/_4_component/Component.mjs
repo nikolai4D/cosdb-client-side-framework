@@ -2,7 +2,6 @@ import { accordionDropdown } from "../types/accordionDropdown.mjs";
 // import { action } from "../data-mgmt/State.mjs";
 
 export async function Component(component) {
-  console.log("Component");
   const ComponentDiv = document.createElement("div");
   ComponentDiv.classList.add(component.customType);
 
