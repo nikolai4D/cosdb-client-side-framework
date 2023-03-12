@@ -14,7 +14,9 @@ export async function deleteChildren(id) {
 
   //   Recursively delete all children of the children
   for (const child of children) {
-    await deleteChildren(child.id);
+    if (!path.includes(child.parentId)) {
+      await deleteChildren(child.id, [...path, child.parentId]);
+    }
   }
 
   console.log("children: ", children);
