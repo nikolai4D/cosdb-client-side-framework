@@ -7,7 +7,7 @@ const CHILDREN_MAP = {
   molecules: ["organisms", "components"],
   organisms: ["organisms", "components"],
   components: ["slots"],
-  slots: ["viewTemplates", "components"],
+  slots: ["viewTemplates"],
   viewTemplates: ["views"],
 };
 
