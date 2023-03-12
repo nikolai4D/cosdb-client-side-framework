@@ -32,4 +32,6 @@ export async function deleteChildren(id) {
       );
     }
   }
+  // Clear the children array
+  children.length = 0;
 }
