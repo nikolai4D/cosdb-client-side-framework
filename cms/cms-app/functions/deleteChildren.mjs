@@ -1,41 +1,47 @@
 import { State } from "../data-mgmt/State.mjs";
 
-export async function deleteChildren(id) {
-  const stack = [];
-  stack.push(id);
+const CHILDREN_MAP = {
+  functions: ["organisms", "molecules", "atoms"],
+  atomValues: ["atoms"],
+  atoms: ["molecules", "components"],
+  molecules: ["organisms", "components"],
+  organisms: ["organisms", "components"],
+  components: ["slots"],
+  slots: ["viewTemplates", "components"],
+  viewTemplates: ["views"],
+};
 
-  while (stack.length > 0) {
-    const currentId = stack.pop();
-
-    // Find all items in State with parentId equal to currentId
-    const children = [];
-    for (const key of Object.keys(State)) {
-      if (Array.isArray(State[key])) {
-        const items = State[key];
-        for (const item of items) {
-          if (item.parentId === currentId) {
-            children.push(item);
-          }
-        }
-      }
-    }
-
-    // Remove all items with parentId equal to currentId or any of its descendants' id
-    for (const key of Object.keys(State)) {
-      if (Array.isArray(State[key])) {
-        const items = State[key];
-        State[key] = items.filter(
-          (item) =>
-            item.parentId !== currentId &&
-            !children.find((child) => child.id === item.parentId)
-        );
-      }
-    }
-
-    // Add all children to the stack for processing
-    for (const child of children) {
-      stack.push(child.id);
+function findObjectById(id) {
+  for (const key of Object.keys(State)) {
+    const items = State[key];
+    const foundItem = items.find((item) => item.id === id);
+    if (foundItem) {
+      return foundItem;
     }
   }
-  console.log("State after deleteChildren: ", State);
+  return null;
+}
+
+export async function deleteChildren(id) {
+  const foundItem = findObjectById(id);
+  if (!foundItem) {
+    return;
+  }
+  const stack = [foundItem.id];
+  while (stack.length > 0) {
+    const currentId = stack.pop();
+    for (const key of Object.keys(State)) {
+      const items = State[key];
+      State[key] = items.filter((item) => item.id !== currentId);
+      if (
+        CHILDREN_MAP[key] &&
+        CHILDREN_MAP[key].includes(foundItem.customType)
+      ) {
+        const childrenIds = items
+          .filter((item) => item.parentId === currentId)
+          .map((item) => item.id);
+        stack.push(...childrenIds);
+      }
+    }
+  }
 }
