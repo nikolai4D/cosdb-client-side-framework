@@ -1,5 +1,6 @@
 import { action_readModel } from "../data-mgmt/actions/action_readModel.mjs";
 import { View } from "../_1_view/View.mjs";
+import { State } from "../data-mgmt/State.mjs";
 
 export async function readExistingModel() {
   const readModel = await action_readModel();
@@ -7,7 +8,7 @@ export async function readExistingModel() {
 
   // add views from state
 
-  for (const view of readModel.views) {
+  for (const view of State.views) {
     const viewDiv = await View(view);
     document.body.appendChild(viewDiv);
   }
