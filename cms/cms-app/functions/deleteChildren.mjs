@@ -10,6 +10,9 @@ export async function deleteChildren(id) {
   const children = [];
   for (const key of Object.keys(State)) {
     if (Array.isArray(State[key])) {
+      if (key === "views") {
+        continue; // Skip views array
+      }
       const items = State[key];
       for (const item of items) {
         if (item.parentId === id) {
