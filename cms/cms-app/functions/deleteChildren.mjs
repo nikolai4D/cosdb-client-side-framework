@@ -37,4 +37,5 @@ export async function deleteChildren(id) {
       stack.push(child.id);
     }
   }
+  console.log("State after deleteChildren: ", State);
 }
