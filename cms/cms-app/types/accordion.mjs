@@ -1,3 +1,5 @@
+import { action_deleteView } from "../data-mgmt/actions/action_deleteView.mjs";
+
 export async function accordion(
   headerContent,
   bodyContent,
@@ -23,8 +25,9 @@ export async function accordion(
     deleteButton.classList.add("deleteButton");
     deleteButton.addEventListener("click", async () => {
       if (confirm("Are you sure you want to delete?")) {
-        console.log("delete view" + id);
+        await action_deleteView(id);
         headerAccordion.parentElement.remove();
+        console.log("delete view" + id);
       }
 
       //   await mutation_deleteState("views", id);
