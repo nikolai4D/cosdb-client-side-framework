@@ -1,47 +1,35 @@
 import { State } from "../data-mgmt/State.mjs";
 
-const CHILDREN_MAP = {
-  functions: ["organisms", "molecules", "atoms"],
-  atomValues: ["atoms"],
-  atoms: ["molecules", "components"],
-  molecules: ["organisms", "components"],
-  organisms: ["organisms", "components"],
-  components: ["slots"],
-  slots: ["viewTemplates"],
-  viewTemplates: ["views"],
-};
-
-function findObjectById(id) {
+export async function deleteChildren(id) {
+  // Find all items in State with parentId equal to id
+  const children = [];
   for (const key of Object.keys(State)) {
-    const items = State[key];
-    const foundItem = items.find((item) => item.id === id);
-    if (foundItem) {
-      return foundItem;
+    if (Array.isArray(State[key])) {
+      const items = State[key];
+      for (const item of items) {
+        if (item.parentId === id) {
+          children.push(item);
+        }
+      }
     }
   }
-  return null;
-}
 
-export async function deleteChildren(id) {
-  const foundItem = findObjectById(id);
-  if (!foundItem) {
-    return;
+  // Recursively delete all children of the children
+  for (const child of children) {
+    await deleteChildren(child.id);
   }
-  const stack = [foundItem.id];
-  while (stack.length > 0) {
-    const currentId = stack.pop();
-    for (const key of Object.keys(State)) {
+
+  console.log("children: ", children);
+
+  // Remove all items with parentId equal to id or any of its descendants' id
+  for (const key of Object.keys(State)) {
+    if (Array.isArray(State[key])) {
       const items = State[key];
-      State[key] = items.filter((item) => item.id !== currentId);
-      if (
-        CHILDREN_MAP[key] &&
-        CHILDREN_MAP[key].includes(foundItem.customType)
-      ) {
-        const childrenIds = items
-          .filter((item) => item.parentId === currentId)
-          .map((item) => item.id);
-        stack.push(...childrenIds);
-      }
+      State[key] = items.filter(
+        (item) =>
+          item.parentId !== id &&
+          !children.find((child) => child.id === item.parentId)
+      );
     }
   }
 }
