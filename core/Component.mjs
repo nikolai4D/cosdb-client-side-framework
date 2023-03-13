@@ -76,28 +76,6 @@ export function Component(options = {}) {
     if (this.isString(component)) {
       return `<div data-slot="${component}" class="slot"></div>`;
     }
-<<<<<<< HEAD
-
-    /**
-     * Get the DOM element of the component. Init the element if it is not already done.
-     * param <boolean> forceInit if true, the element will be reinitialized
-     * @returns <Element>
-     */
-    this.getElement =  function(forceInit = false){
-
-        if(!this.element || forceInit){
-            this.setComponentsToString()
-            this.element = stringToHTMLElement(this.getHtml())
-            this.deSetComponentsFromString()
-            this.bindSlots()
-            this.bindScript()
-            this.applyStyle()
-
-            if(this.id) this.element.id = this.id
-        }
-
-        return  this.element
-=======
     let key;
     try {
       key = Object.keys(this.subComponents).find(
@@ -113,7 +91,6 @@ export function Component(options = {}) {
         "subComponents keys: ",
         Object.keys(this.subComponents)
       );
->>>>>>> 2b8dcc80473f8e61d5fb6eed0584068bcbad25ca
     }
     return `<div data-slot="${key}" class="slot"></div>`;
   };
@@ -131,53 +108,6 @@ export function Component(options = {}) {
     for (const [key, value] of Object.entries(this.subComponents)) {
       this.subComponents[key] = null;
     }
-<<<<<<< HEAD
-
-    this.slot = function(component) {
-        if(this.isString(component)){
-            return `<div data-slot="${component}" class="slot"></div>`
-        }
-        let key
-        try {
-            key = Object.keys(this.subComponents).find(key => this.subComponents[key] === component)
-        } catch (e) {
-            console.error("Error while finding key for component: ", component, "while trying to fill slot",
-                "key: ", key,
-                "subComponents keys: ", Object.keys(this.subComponents))
-        }
-        return `<div data-slot="${key}" class="slot"></div>`
-    }
-
-      /**
-     * Replace the designated slot with the given element
-     * @param slotName {String}
-     * @param element {HTMLElement}
-     */
-      this.fillSlot= function(slotName, element) {
-
-        if(!this.element) throw new Error("Cannot fill slot before the element is defined.")
-
-        const slot = this.element.querySelector(`[data-slot="${slotName.toString()}"]`)
-        if(!slot) throw new Error(`Slot ${slotName} not found`)
-        slot.replaceWith(element)
-    }
-
-
-    /**
-     * Replace the designated slots with the given elements
-     * @param slotMap {Map<String,HTMLElement>}
-     */
-    this.fillSlots= function (slotMap) {
-        for(let [slotName, element] of slotMap){ this.fillSlot(slotName, element) }
-    }
-
-
-
-    this.setComponentsToString = function() {
-        if(!Object.values(this.subComponents).every(v => v === null)) return;
-        for(const [key, value] of Object.entries(this.subComponents)){
-            this.subComponents[key] = key
-=======
   };
 
   this.bindSlots = function () {
@@ -193,7 +123,6 @@ export function Component(options = {}) {
           this.fillSlot(key, this.subComponents[key].getElement());
         } else {
           console.warn("No subComponent found for slot: " + key);
->>>>>>> 2b8dcc80473f8e61d5fb6eed0584068bcbad25ca
         }
       } catch (e) {
         console.error(
