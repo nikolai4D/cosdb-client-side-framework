@@ -85,6 +85,7 @@ export function Controller() {
 
          component.bindScript=  function() {
 
+          console.log(component.slots, "slots")
           for (let slot of component.slots) {
             console.log( slot, "slot")
             if (slot.component)
