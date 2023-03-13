@@ -1,6 +1,7 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
 import { Atom_dummy1 } from "../atoms/Atom_dummy1.mjs";
+import { Atom_dummy2 } from "../atoms/Atom_dummy2.mjs";
 
 export function Molecule_dummy1() {
   Component.call(this);
