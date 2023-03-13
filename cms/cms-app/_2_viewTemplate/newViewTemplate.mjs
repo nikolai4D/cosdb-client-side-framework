@@ -4,12 +4,12 @@ import { readComponents } from "../requests/readComponents.mjs";
 export async function newViewTemplate(parentId) {
   const viewTemplate = {};
 
-  const componentsDir = "viewTemplates";
+  //   const componentsDir = "viewTemplates";
 
-  let components = (await readComponents(componentsDir)).map(
-    (component) => component.name
-  );
-  components = ["", ...components];
+  //   let components = (await readComponents(componentsDir)).map(
+  //     (component) => component.name
+  //   );
+  //   components = ["", ...components];
 
   viewTemplate.customType = "viewTemplate";
   viewTemplate.key = viewTemplate.customType;
