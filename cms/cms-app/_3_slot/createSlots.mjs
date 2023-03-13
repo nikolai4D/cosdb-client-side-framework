@@ -2,8 +2,8 @@ import { Slot } from "./Slot.mjs";
 import { newSlot } from "./newSlot.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
-export async function createSlots(viewTemplateBody, id, selectedValue) {
-  const filename = selectedValue;
+export async function createSlots(viewTemplateBody, id, value) {
+  const filename = value;
   const constructorType = "slots";
   const type = "viewTemplates";
   const viewTemplateSlots = await getConstructors(
