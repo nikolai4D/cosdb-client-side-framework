@@ -9,20 +9,21 @@ import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateStat
 
 export async function eventChangeDropdown(id) {
   const select = document.getElementById(id);
-  const selectedValue = select.value;
+  const value = select.value;
   const customType = select.getAttribute("customType");
   const parentId = select.getAttribute("parentId");
 
   const data = {};
   data.id = id;
   data.parentId = parentId;
-  data.value = selectedValue;
+  data.value = value;
   data.key = customType;
+  data.customType = customType;
 
   console.log("update: ", customType, ": ", {
     id,
     parentId,
-    selectedValue,
+    value,
   });
 
   if (customType === "viewTemplate") {
@@ -30,8 +31,8 @@ export async function eventChangeDropdown(id) {
 
     const state = await mutation_updateState("viewTemplates", data);
 
-    if (selectedValue !== "") {
-      await createSlots(viewTemplateBody, id, selectedValue);
+    if (value !== "") {
+      await createSlots(viewTemplateBody, id, value);
     }
 
     await action_writeModel(state);
@@ -52,18 +53,18 @@ export async function eventChangeDropdown(id) {
 
     console.log("state before: ", state);
 
-    if (selectedValue !== "") {
-      if (selectedValue.startsWith("Organism")) {
+    if (value !== "") {
+      if (value.startsWith("Organism")) {
         console.log("Organism");
-        await createOrganism(componentBody, id, selectedValue);
+        await createOrganism(componentBody, id, value);
       }
-      if (selectedValue.startsWith("Molecule")) {
+      if (value.startsWith("Molecule")) {
         console.log("Molecule");
-        await createMolecule(componentBody, id, selectedValue);
+        await createMolecule(componentBody, id, value);
       }
-      if (selectedValue.startsWith("Atom")) {
+      if (value.startsWith("Atom")) {
         console.log("Atom");
-        await createAtom(componentBody, id, selectedValue);
+        await createAtom(componentBody, id, value);
       }
     }
 
