@@ -10,7 +10,6 @@ export function Organism_dummy2() {
     {
       molecule: "Molecule_dummy1",
       component: new Molecule_dummy1()
-
     }
   ]
 

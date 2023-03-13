@@ -3,6 +3,7 @@ import { slot } from  "../../core/helpers.mjs";
 import { Organism_dummy2 } from "./Organism_dummy2.mjs";
 
 export function Organism_dummy1() {
+  Component.call(this);
 
   this.organisms = [
     { 
