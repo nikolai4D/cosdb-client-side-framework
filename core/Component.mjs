@@ -54,7 +54,7 @@ export function Component(options = {}){
             if(this.id) this.element.id = this.id
         }
 
-        return await this.element
+        return  this.element
     }
 
 
