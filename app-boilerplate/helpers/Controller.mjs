@@ -88,7 +88,7 @@ export function Controller() {
           for (let slot of component.slots) {
             console.log( slot, "slot")
             // if (slot.component)
-            component.fillSlot(slot.slot,  slot.component.getElement())
+            // component.fillSlot(slot.slot,  slot.component.getElement())
           // await component.slots.forEach( async slot => {
 
         }
@@ -99,7 +99,7 @@ export function Controller() {
   this.template = async () => {
     this.childComponent = await this.getComponent();
     await this.getSlots();
-    // await this.bindNewScripts();
+    await this.bindNewScripts();
 
 
     console.log(await this.childComponent)
