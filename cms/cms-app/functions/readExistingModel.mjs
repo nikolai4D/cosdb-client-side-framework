@@ -3,6 +3,7 @@ import { View } from "../_1_view/View.mjs";
 import { State } from "../data-mgmt/State.mjs";
 import { ViewTemplate } from "../_2_viewTemplate/ViewTemplate.mjs";
 import { createSlots } from "../_3_slot/createSlots.mjs";
+import { getAccordionBody } from "./getAccordionBody.mjs";
 
 export async function readExistingModel() {
   const readModel = await action_readModel();
