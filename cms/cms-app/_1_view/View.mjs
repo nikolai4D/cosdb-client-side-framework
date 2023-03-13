@@ -3,7 +3,7 @@ import { newViewTemplate } from "../_2_viewTemplate/newViewTemplate.mjs";
 import { ViewTemplate } from "../_2_viewTemplate/ViewTemplate.mjs";
 import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
-export async function View(view) {
+export async function View(view, viewTemplate) {
   const viewDiv = document.createElement("div");
   viewDiv.classList.add(view.customType);
 
@@ -15,7 +15,8 @@ export async function View(view) {
   const valueDisabled = view.valueDisabled;
 
   const bodyDiv = document.createElement("div");
-  const viewTemplateDiv = await ViewTemplate(await newViewTemplate(id));
+  //const viewTemplateDiv = await ViewTemplate(await newViewTemplate(id));
+  const viewTemplateDiv = await viewTemplate;
   bodyDiv.appendChild(viewTemplateDiv);
 
   const viewAccordionInput = await accordionInput(
