@@ -19,7 +19,7 @@ export async function eventChangeDropdown(id) {
   data.value = value;
   data.key = customType;
   data.customType = customType;
-  data.updated = Date.now();
+  data.updated = Date();
 
   console.log("update: ", customType, ": ", {
     id,
