@@ -30,7 +30,7 @@ export async function readExistingModel() {
 
     // add slots form state
 
-    const viewTemplateBody = await getAccordionBody(id);
+    const viewTemplateBody = await getAccordionBody(viewTemplate.id);
     await createSlots(viewTemplateBody, viewTemplate.id, viewTemplate.value);
   }
 
