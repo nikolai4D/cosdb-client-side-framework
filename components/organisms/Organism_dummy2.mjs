@@ -16,12 +16,9 @@ export function Organism_dummy2() {
 
   this.functions = [
     {
-      function: "function3",
+      function: "function2",
     },
-    {
-      function: "function4",
-    }
-  ]
+  ];
 
   this.getHtml = function(){
 
