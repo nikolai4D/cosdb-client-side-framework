@@ -52,25 +52,24 @@ export function Controller() {
 
         if (specificSlot) {
           let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
-        
 
           if (specificComponent) {
 
-        
+            const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
 
-          const organismModel = this.model.organisms.find(organism => organism.parentId === specificSlot.id)
+            console.log(organismModel, "organismModel")
 
 
-          if (organismModel) {
-            slot.slot = organismModel.value; 
+            if (organismModel) {
+              slot.slot = organismModel.value; 
 
-            const fileOrganism = organismModel.value;
-            const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
-            const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
-            let organism =  new organismComponent[fileOrganism]();
+              const fileOrganism = organismModel.value;
+              const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`;
+              const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
+              let organism =  new organismComponent[fileOrganism]();
 
-            slot.component =  organism
-          }
+              slot.component =  organism
+            }
           }
         }
       }
