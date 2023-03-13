@@ -30,8 +30,8 @@ export function Organism_dummy2() {
 
   this.bindScript= function() {
 
-    this.molecules.forEach(org => {
-      this.fillSlot(org.molecule, org.component.getElement())
+    this.molecules.forEach(mol => {
+      this.fillSlot(mol.molecule, mol.component.getElement())
     })
   }
 
