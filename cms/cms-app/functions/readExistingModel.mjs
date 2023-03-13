@@ -11,6 +11,8 @@ export async function readExistingModel() {
   for (const view of State.views) {
     // add viewTemplates from state
 
+    console.log(view + " view.id: " + view.id);
+
     const existingViewTemplate = State.viewTemplates.find(
       (viewTemplate) => viewTemplate.parentId === view.id
     );
