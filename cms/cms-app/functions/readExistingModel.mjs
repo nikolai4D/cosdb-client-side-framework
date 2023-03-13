@@ -9,11 +9,13 @@ export async function readExistingModel() {
   // add views from state
 
   for (const view of State.views) {
-    const viewDiv = await View(view);
+    const viewTemplateDiv = document.createElement("div");
+    const viewDiv = await View(view, viewTemplateDiv);
     document.body.appendChild(viewDiv);
   }
 
   // add viewTemplates from state
+
   // add slots form state
   // add components from state
   // add organisms from state
