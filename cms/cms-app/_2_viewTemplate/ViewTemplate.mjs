@@ -10,7 +10,7 @@ export async function ViewTemplate(viewTemplate) {
   const customType = viewTemplate.customType;
   const key = viewTemplate.key;
   const values = await viewTemplateValues();
-  const selectedValue = viewTemplate.selectedValue;
+  const selectedValue = viewTemplate.value;
   const id = viewTemplate.id;
   const parentId = viewTemplate.parentId;
   const valueDisabled = viewTemplate.valueDisabled;
