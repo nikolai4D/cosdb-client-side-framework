@@ -50,12 +50,19 @@ export function Controller() {
 
         let specificSlot =  this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
 
-        if (specificSlot) { 
+        if (specificSlot) {
+          let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
+        
+
+          if (specificComponent) {
+
+        
+
           const organismModel = this.model.organisms.find(organism => organism.parentId === specificSlot.id)
 
 
           if (organismModel) {
-            slot.slot = organismModel.value;
+            slot.slot = organismModel.value; 
 
             const fileOrganism = organismModel.value;
             const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`
@@ -63,6 +70,7 @@ export function Controller() {
             let organism =  new organismComponent[fileOrganism]();
 
             slot.component =  organism
+          }
           }
         }
       }
