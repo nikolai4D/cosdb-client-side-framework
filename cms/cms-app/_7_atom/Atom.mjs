@@ -1,8 +1,5 @@
 import { accordionInput } from "../types/accordionInput.mjs";
-// import { Component } from "../_4_component/Component.mjs";
-// import { newComponent } from "../_4_component/newComponent.mjs";
-// import { Slot } from "./Slot.mjs";
-import { action } from "../State.mjs";
+import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
 export async function Atom(atom, atomBody) {
   console.log("atom");
@@ -32,7 +29,7 @@ export async function Atom(atom, atomBody) {
 
   atomDiv.appendChild(atomAccordionInput);
 
-  action.create(id, value, parentId, "atoms");
+  await mutation_updateState("atoms", atom);
 
   return atomDiv;
 }

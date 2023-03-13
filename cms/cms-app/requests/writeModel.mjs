@@ -1,14 +1,19 @@
-export async function writeModel(json) {
+export async function writeModel(state) {
+  console.log("writeModel: ", state);
+
+  const sendState = await state;
+  console.log("writeModel sendState: ", sendState);
   try {
     const response = await fetch("/update", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(json),
+      body: await JSON.stringify(sendState),
+      //   body: state,
     });
     const result = await response.json();
-    //console.log(result);
+    return await result;
   } catch (error) {
     console.error("An error occurred while saving the file:", error);
   }

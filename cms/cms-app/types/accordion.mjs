@@ -1,5 +1,4 @@
-// import { readModel } from "../requests/readModel.mjs";
-// import { writeModel } from "../requests/writeModel.mjs";
+import { action_deleteView } from "../data-mgmt/actions/action_deleteView.mjs";
 
 export async function accordion(
   headerContent,
@@ -10,7 +9,6 @@ export async function accordion(
   id,
   parentId
 ) {
-  //console.log(headerContent, bodyContent, customType, key, value, id, parentId);
   const accordion = document.createElement("div");
   accordion.classList.add("accordion");
 
@@ -19,6 +17,24 @@ export async function accordion(
   const headerAccordion = document.createElement("div");
   headerAccordion.classList.add("accordion-header");
   headerAccordion.appendChild(await headerContent);
+
+  // Append delete button to inner accordion header
+  if (customType === "view") {
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "X";
+    deleteButton.classList.add("deleteButton");
+    deleteButton.addEventListener("click", async () => {
+      if (confirm("Are you sure you want to delete?")) {
+        await action_deleteView(id);
+        headerAccordion.parentElement.remove();
+        console.log("delete view" + id);
+      }
+
+      //   await mutation_deleteState("views", id);
+      //   headerAccordion.parentElement.remove();
+    });
+    headerAccordion.appendChild(deleteButton);
+  }
 
   headerAccordion.addEventListener("click", (event) => {
     if (event.target.tagName === "OPTION") {
