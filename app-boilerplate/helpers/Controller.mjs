@@ -52,6 +52,8 @@ export function Controller() {
 
         if (specificSlot) {
           let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
+          console.log(specificComponent, "specificComponent")
+
 
           if (specificComponent) {
 
