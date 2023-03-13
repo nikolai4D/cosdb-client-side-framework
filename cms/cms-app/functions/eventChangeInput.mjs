@@ -13,7 +13,7 @@ export async function eventChangeInput(id) {
   data.value = value;
   data.key = customType;
   data.customType = customType;
-  data.updated = Date.now();
+  data.updated = Date();
 
   const customTypeArray = customType + "s";
 
