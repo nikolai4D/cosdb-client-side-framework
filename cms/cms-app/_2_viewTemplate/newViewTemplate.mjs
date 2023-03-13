@@ -13,7 +13,7 @@ export async function newViewTemplate(parentId) {
 
   viewTemplate.customType = "viewTemplate";
   viewTemplate.key = viewTemplate.customType;
-  viewTemplate.values = components;
+  //viewTemplate.values = components;
   viewTemplate.value = "";
   viewTemplate.id = await getUuid();
   viewTemplate.parentId = parentId;
