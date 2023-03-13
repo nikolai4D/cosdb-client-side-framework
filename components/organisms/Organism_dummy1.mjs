@@ -28,12 +28,12 @@ export function Organism_dummy1() {
 
 
   this.getHtml = function(){
-    return `<div>
-    <div>${slot(this.organisms[0].organism)}</div>
-    <div>${slot(this.organisms[1].organism)}</div>
-  </div>
-  `;
-  }
+    return `<div class="organism_dummy1">
+            <div class="organism_dummy1_1">${slot(this.organisms[0].organism)}</div>
+            <div class="organism_dummy1_2">${slot(this.organisms[1].organism)}</div>
+          </div>
+        `;
+      }
 
   this.bindScript= function() {
 
