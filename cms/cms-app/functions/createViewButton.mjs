@@ -8,13 +8,10 @@ export async function createViewButton() {
   createViewButton.textContent = "Create View";
   createViewButton.classList.add("createViewButton");
   createViewButton.addEventListener("click", async () => {
-    document.body.insertBefore(
-
     const newViewCreated = await newView();
     const newViewTemplateCreated = await newViewTemplate(newViewCreated.id);
-
-    const ViewTemplateCreated = await ViewTemplate(newViewTemplateCreated)
-
+    const ViewTemplateCreated = await ViewTemplate(newViewTemplateCreated);
+    document.body.insertBefore(
       await View(newViewCreated, ViewTemplateCreated),
       document.body.children[1]
     );
