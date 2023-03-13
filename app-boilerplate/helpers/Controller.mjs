@@ -87,6 +87,7 @@ export function Controller() {
 
           for (let slot of component.slots) {
             console.log( slot, "slot")
+            if (slot.component)
             component.fillSlot(slot.slot,  slot.component.getElement())
           // await component.slots.forEach( async slot => {
 
