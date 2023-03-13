@@ -4,7 +4,7 @@ export function dropdown(
   customType,
   key,
   values,
-  selectedValue,
+  value,
   id,
   parentId,
   valueDisabled
@@ -19,11 +19,11 @@ export function dropdown(
   selectEl.setAttribute("customType", customType);
   selectEl.addEventListener("change", () => eventChangeDropdown(id));
 
-  for (const value of values) {
+  for (const val of values) {
     const optionElValue = document.createElement("option");
-    optionElValue.value = value;
-    optionElValue.selected = value === selectedValue;
-    optionElValue.textContent = value;
+    optionElValue.value = val;
+    optionElValue.selected = val === value;
+    optionElValue.textContent = val;
     selectEl.appendChild(optionElValue);
   }
 
