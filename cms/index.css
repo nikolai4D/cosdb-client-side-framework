@@ -25,6 +25,11 @@
     padding: 10px;
     margin-bottom: 10px;
   }
+
+  .createSaveButton {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
   
   .delete-view-button {
     margin-left: 10px;

@@ -19,9 +19,6 @@ export function Molecule_dummy2() {
 
   this.functions = [
     {
-      function: "function1",
-    },
-    {
       function: "function2",
     }
   ]

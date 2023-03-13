@@ -1,6 +1,5 @@
 import { accordionInput } from "../types/accordionInput.mjs";
-import { action } from "../State.mjs";
-
+import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
 export async function Organism(organism, organismBody) {
   console.log("Organism");
@@ -15,8 +14,8 @@ export async function Organism(organism, organismBody) {
   const valueDisabled = organism.valueDisabled;
 
   const bodyDiv = document.createElement("div");
-  const contenDiv = await organismBody;
-  bodyDiv.appendChild(contenDiv);
+  const contentDiv = await organismBody;
+  bodyDiv.appendChild(contentDiv);
 
   const organismAccordionInput = await accordionInput(
     bodyDiv,
@@ -30,7 +29,7 @@ export async function Organism(organism, organismBody) {
 
   organismDiv.appendChild(organismAccordionInput);
 
-  action.create(id, value, parentId, "organisms");
+  await mutation_updateState("organisms", organism);
 
   return organismDiv;
 }

@@ -3,13 +3,13 @@ import { Component } from "../../core/Component.mjs";
 export function Atom_dummy4() {
 
   Component.call(this);
-  this.valueOption = "valueOption4"
+  this.value = [{ value: "value4" }];
 
   this.getHtml = function(){
-  return (
-  `  <div>
-      <h1>${this.valueOption}</h1>
-    </div>
-  `);
+      
+  return `<div>
+          <h1>${this.value[0].value}</h1>
+        </div>
+      `;
 }
 }
