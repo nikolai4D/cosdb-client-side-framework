@@ -49,9 +49,12 @@ export function Controller() {
       // component.slots.forEach(async slot => {
 
         let specificSlot =  this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
-
+        console.log(specificSlot, "specificSlot")
         if (specificSlot) {
           let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
+
+          console.log(this.model, "this.model")
+
           console.log(specificComponent, "specificComponent")
 
 
