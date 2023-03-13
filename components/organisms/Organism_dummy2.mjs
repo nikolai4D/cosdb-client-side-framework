@@ -1,6 +1,6 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
-import { Molecule_dummy1 } from "./Molecule_dummy1.mjs";
+import { Molecule_dummy1 } from "../molecules/Molecule_dummy1.mjs";
 
 
 export function Organism_dummy2() {
