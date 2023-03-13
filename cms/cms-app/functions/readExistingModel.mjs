@@ -9,8 +9,15 @@ export async function readExistingModel() {
   // add views from state
 
   for (const view of State.views) {
-    const viewTemplateDiv = document.createElement("div");
-    const viewDiv = await View(view, viewTemplateDiv);
+    // add viewTemplates from state
+
+    const existingViewTemplate = State.viewTemplates.find(
+      (viewTemplate) => viewTemplate.parentId === view.id
+    );
+
+    const ViewTemplateExistingDiv = await ViewTemplate(existingViewTemplate);
+
+    const viewDiv = await View(view, ViewTemplateExistingDiv);
     document.body.appendChild(viewDiv);
   }
 
