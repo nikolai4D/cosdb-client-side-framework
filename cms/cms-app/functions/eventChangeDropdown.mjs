@@ -29,7 +29,7 @@ export async function eventChangeDropdown(id) {
   if (customType === "viewTemplate") {
     const viewTemplateBody = await getAccordionBody(id);
 
-    const state = await mutation_updateState("viewTemplates", data);
+    const state = await mutation_updateState("viewTemplates", data, true);
 
     if (value !== "") {
       await createSlots(viewTemplateBody, id, value);
@@ -40,7 +40,7 @@ export async function eventChangeDropdown(id) {
   }
 
   if (customType === "function") {
-    const state = await mutation_updateState("functions", data);
+    const state = await mutation_updateState("functions", data, true);
 
     await action_writeModel(state);
     console.log("updated function dropdown with state: ", state);
@@ -49,7 +49,7 @@ export async function eventChangeDropdown(id) {
   if (customType === "component") {
     const componentBody = await getAccordionBody(id);
 
-    const state = await mutation_updateState("components", data);
+    const state = await mutation_updateState("components", data, true);
 
     console.log("state before: ", state);
 
