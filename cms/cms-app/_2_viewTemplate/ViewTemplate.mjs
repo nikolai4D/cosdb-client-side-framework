@@ -3,6 +3,7 @@ import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateStat
 import { viewTemplateValues } from "./viewTemplateValues.mjs";
 
 export async function ViewTemplate(viewTemplate) {
+  console.log("ViewTemplate:", viewTemplate);
   const viewTemplateDiv = document.createElement("div");
   viewTemplateDiv.classList.add(viewTemplate.customType);
 
