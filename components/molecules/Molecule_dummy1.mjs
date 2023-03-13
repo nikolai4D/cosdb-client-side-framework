@@ -26,20 +26,18 @@ export function Molecule_dummy1() {
     }
   ]
 
-this.getHtml = function(){
-  return `
-  <div>
-    <div>${this.atoms[0].atom}</div>
-    <div>${this.atoms[1].atom}</div>
-  </div>
-`;
-}
+  this.getHtml = function(){
+    return `
+    <div>
+      <div>${this.atoms[0].atom}</div>
+      <div>${this.atoms[1].atom}</div>
+    </div>
+  `;
+  }
 
-this.bindScript= function() {
-  this.atoms.forEach(atom => {
-    this.fillSlot(atom.atom, atom.component.getElement())
-  })
-}
-
-
+  this.bindScript= function() {
+    this.atoms.forEach(atom => {
+      this.fillSlot(atom.atom, atom.component.getElement())
+    })
+  }
 }
