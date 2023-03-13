@@ -41,7 +41,7 @@ export function Component(options = {}){
      * param <boolean> forceInit if true, the element will be reinitialized
      * @returns <Element>
      */
-    this.getElement = async function(forceInit = false){
+    this.getElement =  function(forceInit = false){
 
         if(!this.element || forceInit){
             this.setComponentsToString()
