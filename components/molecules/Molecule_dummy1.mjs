@@ -1,15 +1,18 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
+import { Atom_dummy1 } from "../atoms/Atom_dummy1.mjs";
 
 export function Molecule_dummy1() {
   Component.call(this);
 
   this.atoms = [
     {
-      atom: "Atom_dummy1"
+      atom: "Atom_dummy1",
+      component: new Atom_dummy1()
     },
     {
-      atom: "Atom_dummy2"
+      atom: "Atom_dummy2",
+      component: new Atom_dummy2()
     }
   ]
 
