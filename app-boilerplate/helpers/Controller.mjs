@@ -64,7 +64,6 @@ export function Controller() {
 
             console.log(organismModel, "organismModel")
 
-
             if (organismModel) {
               slot.slot = organismModel.value; 
 
@@ -100,7 +99,7 @@ export function Controller() {
   this.template = async () => {
     this.childComponent = await this.getComponent();
     await this.getSlots();
-    await this.bindNewScripts();
+    // await this.bindNewScripts();
 
 
     console.log(await this.childComponent)
