@@ -3,7 +3,7 @@ import { slot } from  "../../core/helpers.mjs";
 import { Molecule_dummy1 } from "./Molecule_dummy1.mjs";
 
 
-export function Molecule_dummy2() {
+export function Organism_dummy2() {
   Component.call(this);
 
   this.molecules = [
