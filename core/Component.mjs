@@ -41,7 +41,7 @@ export function Component(options = {}){
      * param <boolean> forceInit if true, the element will be reinitialized
      * @returns <Element>
      */
-    this.getElement =  function(forceInit = false){
+    this.getElement = async function(forceInit = false){
 
         if(!this.element || forceInit){
             this.setComponentsToString()
@@ -131,13 +131,10 @@ export function Component(options = {}){
         }
     }
 
-    this.bindSlots = async function(){
-        let element = await this.element
+    this.bindSlots = function(){
+        let slots = Array.from(this.element.querySelectorAll("[data-slot]"))
 
-        let slots = Array.from((await this.element).querySelectorAll("[data-slot]"))
-
-        for (let slot of slots) {
-        // slots.forEach(slot => {
+        slots.forEach(slot => {
             let key
             try{
                 key = slot.getAttribute("data-slot")
@@ -154,7 +151,7 @@ export function Component(options = {}){
                     "subComponents keys: ", Object.keys(this.subComponents),
                     e)
             }
-        }
+        })
     }
 
          /**
