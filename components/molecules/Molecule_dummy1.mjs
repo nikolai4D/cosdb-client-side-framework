@@ -40,7 +40,7 @@ export function Molecule_dummy1(parentId) {
 
     const state = await State
     const molecules = state.model.molecules
-    const id = molecules.find(mol => mol.parentId === parentId).id
+    const moleculeId = molecules.find(mol => mol.parentId === parentId).id
     // this.value[0].value = currentAtomValue.value;
 
 
@@ -50,7 +50,7 @@ export function Molecule_dummy1(parentId) {
       const atomValues = state.model.atomValues
       // let currentAtomValue = ""
 
-      const atomsWithParentId = atoms.filter(at => at.parentId === parentId)
+      const atomsWithParentId = atoms.filter(at => at.parentId === moleculeId)
       console.log(atomsWithParentId, "atoms with parent id")
 
       atomsWithParentId.filter(at => {
@@ -58,7 +58,7 @@ export function Molecule_dummy1(parentId) {
         at.value = atomValue.value
       })
 
-      let atomsWithSameValue = atoms.filter(at =>at.value === atom.atom && at.parentId === parentId)
+      let atomsWithSameValue = atoms.filter(at =>at.value === atom.atom && at.parentId === moleculeId)
       console.log(atomsWithSameValue, "atoms with same value")
 
       let atomValuesWithAtomAsParent = atomsWithSameValue.filter(at => atomValues.find(atVal => atVal.parentId === at.id))
