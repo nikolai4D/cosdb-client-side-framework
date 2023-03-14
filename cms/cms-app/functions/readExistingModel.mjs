@@ -131,12 +131,12 @@ async function createAtom(moleculeId, moleculeBody) {
       );
 
       let atomValueDiv = await input(
-        atomVal.customType,
-        atomVal.key,
-        atomVal.value,
-        atomVal.id,
-        atomVal.parentId,
-        atomVal.valueDisabled
+        atomValue.customType,
+        atomValue.key,
+        atomValue.value,
+        atomValue.id,
+        atomValue.parentId,
+        atomValue.valueDisabled
       );
       atomBody.appendChild(atomValueDiv);
     }
