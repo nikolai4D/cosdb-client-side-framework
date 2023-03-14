@@ -24,6 +24,9 @@ export function Controller() {
     console.log(this.model, "this.model")
     // getting the view title from the url to get the view from model
     const path = window.location.pathname.slice(1)
+
+    console.log(path, "path")
+
     // getting the view from the model to get the id
     const view = this.model.views.find(view => view.value === path)
     // getting the viewTemplate from the model with the view id as parentId
