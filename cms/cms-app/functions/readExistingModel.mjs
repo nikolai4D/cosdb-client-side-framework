@@ -99,8 +99,8 @@ async function createOrganism(componentId, componentBody) {
         organism.value,
         organism.id,
         "organisms",
-        organismBody,
-        organismDiv
+        null,
+        organismBody
       );
     }
   }
@@ -125,7 +125,7 @@ async function createMolecule(componentId, componentBody) {
         molecule.value,
         molecule.id,
         "molecules",
-        moleculeBody,
+        null,
         moleculeDiv
       );
     }
