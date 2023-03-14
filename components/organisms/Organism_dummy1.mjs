@@ -8,16 +8,18 @@ import { State } from "../../State.mjs";
 export function Organism_dummy1(parentId) {
   Component.call(this);
 
-  this.id = (State.organisms.find(org => org.parentId === parentId)).id;
+  this.id = async function() {
+    (await State).organisms.find(org => org.parentId === parentId).id
+  }
 
   this.organisms = [
     { 
       organism: "Organism_dummy2",
-      component: new Organism_dummy2(this.id)
+      component: new Organism_dummy2(this.id())
     },
     { 
       organism: "Organism_dummy2",
-      component: new Organism_dummy2(this.id)
+      component: new Organism_dummy2(this.id())
     },
   ]
 
