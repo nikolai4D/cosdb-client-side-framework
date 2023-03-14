@@ -1,6 +1,8 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
 import { Organism_dummy2 } from "./Organism_dummy2.mjs";
+import { State } from "../../app-boilerplate/State.mjs";
+
 
 export function Organism_dummy1(parentId) {
   Component.call(this);
@@ -35,6 +37,7 @@ export function Organism_dummy1(parentId) {
 
   this.bindScript= async function() {
 
+    console.log({State})
     for (let org of this.organisms) {
       await this.fillSlot(org.organism, org.component.getElement())
     }
