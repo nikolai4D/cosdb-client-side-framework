@@ -8,18 +8,15 @@ import { State } from "../../State.mjs";
 export function Organism_dummy1(parentId) {
   Component.call(this);
 
-  this.id = async function() {
-    (await State).organisms.find(org => org.parentId === parentId).id
-  }
 
   this.organisms = [
     { 
       organism: "Organism_dummy2",
-      component: new Organism_dummy2(this.id())
+      component: (param) => new Organism_dummy2(param)
     },
     { 
       organism: "Organism_dummy2",
-      component: new Organism_dummy2(this.id())
+      component: (param) => new Organism_dummy2(param)
     },
   ]
 
@@ -44,11 +41,12 @@ export function Organism_dummy1(parentId) {
 
     console.log({State})
     console.log({parentId})
-    console.log(this.id, "id")
 
-
+    let id = (await State).organisms.find(org => org.parentId === parentId).id
+    console.log({id})
+  
     for (let org of this.organisms) {
-      await this.fillSlot(org.organism, org.component.getElement())
+      await this.fillSlot(org.organism, org.component(id).getElement())
     }
   }
 }
