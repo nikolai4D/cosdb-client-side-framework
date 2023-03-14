@@ -26,7 +26,7 @@ export async function createSlots(viewTemplateBody, id, viewTemplate) {
     const slotParentId = id;
 
     const createdSlot = await newSlot(slotKey, slotValue, slotParentId);
-    const component = await Component(await newComponent(id));
+    const component = await Component(await newComponent(createdSlot.id));
     const childSlot = await Slot(createdSlot, component);
 
     // const childSlot = await Slot(
