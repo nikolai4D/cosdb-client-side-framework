@@ -14,7 +14,7 @@ export function Atom_dummy1() {
   `;
 }
 
-this.bindScripts = function() {
+this.bindScripts = async function() {
 
   console.log("bindScripts");
 
