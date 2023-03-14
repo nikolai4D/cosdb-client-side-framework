@@ -5,6 +5,7 @@ import { ViewTemplate } from "../_2_viewTemplate/ViewTemplate.mjs";
 import { createSlots } from "../_3_slot/createSlots.mjs";
 import { getAccordionBody } from "./getAccordionBody.mjs";
 import { Component } from "../_4_component/Component.mjs";
+import { newComponent } from "../_4_component/newComponent.mjs";
 
 export async function readExistingModel() {
   const readModel = await action_readModel();
@@ -31,25 +32,38 @@ export async function readExistingModel() {
 
     // add slots form state
 
-    const viewTemplateBody = await getAccordionBody(existingViewTemplate.id);
-    const slots = await createSlots(
-      viewTemplateBody,
-      existingViewTemplate.id,
-      existingViewTemplate.value
-    );
+    const viewTemplateBody = await getAccordionBody(existingViewTemplate.id)
+
+    console.log(viewTemplateBody)
+
+
+    const slots = State.components.find(
+        (slot) => slot.parentId === existingViewTemplate.id
+      );
+
+    console.log("readExistingModel: slots:", slots);
+    // const slots = await createSlots(
+    //   viewTemplateBody,
+    //   existingViewTemplate.id,
+    //   existingViewTemplate.value
+    // );
 
     //console.log("readExistingModel: slots:", slots);
 
-    for (const slot of slots) {
-      const existingComponent = State.components.find(
-        (component) => component.parentId === slot.id
-      );
-      console.log("readExistingModel: existingComponent:", existingComponent);
-      const slotBody = await getAccordionBody(slot.id);
-      const componentDiv = await Component(existingComponent);
-      slotBody.appendChild(componentDiv);
-    }
-  }
+//     for (const slot of slots) {
+//       const existingComponent = State.components.find(
+//         (component) => component.parentId === slot.id
+//       );
+//       console.log("readExistingModel: existingComponent:", existingComponent);
+//       const slotBody = await getAccordionBody(slot.id);
+//       if(existingComponent === undefined) {
+//         const componentDiv = await Component(existingComponent);
+//       } else
+//       const componentDiv = await Component(existingComponent);
+//     }
+//       slotBody.appendChild(componentDiv);
+//     }
+//   }
 
   // add components from state
 
