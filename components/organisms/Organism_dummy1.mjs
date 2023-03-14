@@ -33,10 +33,23 @@ export function Organism_dummy1() {
         `;
       }
 
-  this.bindScript= function() {
+  this.bindScript= async function() {
 
-    this.organisms.forEach(org => {
-      this.fillSlot(org.organism, org.component.getElement())
-    })
+    for (let org of this.organisms) {
+    // this.organisms.forEach(org => {
+      await this.fillSlot(org.organism, org.component.getElement())
+    }
+
   }
+
+//   component.bindScript = async function() {
+//     for await (let slot of this.organisms) {
+//       if (await slot.component)
+//       await component.fillSlot(slot.slot, slot.component.getElement())
+//     // await component.slots.forEach( async slot => {
+
+//   }
+// }
+
+
 }
