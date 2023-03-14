@@ -1,5 +1,6 @@
 import { dropdown } from "../types/dropdown.mjs";
 import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
+import { functionValues } from "./functionValues.mjs";
 
 export async function Function(func, functionBody) {
   const functionDiv = document.createElement("div");
@@ -7,8 +8,8 @@ export async function Function(func, functionBody) {
 
   const customType = func.customType;
   const key = func.key;
-  const values = func.values;
-  const selectedValue = func.selectedValue;
+  const values = await functionValues();
+  const value = func.value;
   const id = func.id;
   const parentId = func.parentId;
   const valueDisabled = func.valueDisabled;
@@ -21,7 +22,7 @@ export async function Function(func, functionBody) {
     customType,
     key,
     values,
-    selectedValue,
+    value,
     id,
     parentId,
     valueDisabled
