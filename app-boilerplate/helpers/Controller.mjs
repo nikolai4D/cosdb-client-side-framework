@@ -23,10 +23,8 @@ export function Controller() {
 
     // getting the view title from the url to get the view from model
     const path = window.location.pathname.slice(1)
-
     // getting the view from the model to get the id
     const view = this.model.views.find(view => view.value === path)
-
     // getting the viewTemplate from the model with the view id as parentId
     const viewTemplate = this.model.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id)
     // getting the name of the viewTemplate
@@ -41,7 +39,6 @@ export function Controller() {
 
     let component = new viewTemplateComponent[file]();
 
-
     return component
 
   }
@@ -50,7 +47,6 @@ export function Controller() {
     let component = this.childComponent
 
     for (let slot of component.slots) {
-      // component.slots.forEach(async slot => {
 
         let specificSlot =  this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
         if (specificSlot) {
@@ -82,8 +78,6 @@ export function Controller() {
           for await (let slot of component.slots) {
             if (await slot.component)
             await component.fillSlot(slot.slot, slot.component.getElement())
-          // await component.slots.forEach( async slot => {
-
         }
       }
     };
@@ -93,8 +87,6 @@ export function Controller() {
     this.childComponent = await this.getComponent();
     await this.getSlots();
     await this.bindNewScripts();
-
-    console.log(this.childComponent, "childComponent")
 
     return await this.childComponent ;
 
