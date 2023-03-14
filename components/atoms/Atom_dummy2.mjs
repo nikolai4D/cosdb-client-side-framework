@@ -6,13 +6,8 @@ export function Atom_dummy2(parentId) {
 
   this.value = [{ value: "value2" }];
 
-  this.getHtml = function(){
-    return `  <div>
-      <h1>${this.value[0].value}</h1>
-    </div>
-  `;
-}
-  this.bindScript = async function() {
+
+  this.getHtml = async function(){
 
     const state = await State
     const atoms = state.model.atoms
@@ -23,6 +18,17 @@ export function Atom_dummy2(parentId) {
 
     console.log({currentAtomValue})
 
-    this.value = currentAtomValue.value;
+    this.value[0].value = currentAtomValue.value;
+
+
+    return `  <div>
+      <h1>${this.value[0].value}</h1>
+    </div>
+  `;
+}
+
+  this.bindScript = async function() {
+
+
   }
 }
