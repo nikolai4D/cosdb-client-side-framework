@@ -64,7 +64,7 @@ export function Molecule_dummy1(parentId) {
       let atomValuesWithAtomAsParent = atomsWithSameValue.filter(at => atomValues.find(atVal => atVal.parentId === at.id))
       console.log(atomValuesWithAtomAsParent, "atom values with atom as parent")
       
-      let newComponent = atom.component(id)
+      let newComponent = atom.component(moleculeId)
       atom.component.value  =  [{ value: atomValuesWithAtomAsParent[index].value }]
 
       console.log(newComponent, "new component")
