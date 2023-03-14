@@ -24,7 +24,7 @@ export function Molecule_dummy2(parentId) {
     }
   ]
 
-  this.getHtml = async function(){
+  this.getHtml = function(){
   return `
   <div>
     <div>${slot(this.atoms[0].atom)}</div>

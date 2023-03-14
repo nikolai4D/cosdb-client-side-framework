@@ -7,7 +7,7 @@ export function Atom_dummy2(parentId) {
   this.value = [{ value: "value2" }];
 
 
-  this.getHtml = async function(){
+  this.getHtml = function(){
 
     return await `  <div>
       <h1>${this.value[0].value}</h1>
