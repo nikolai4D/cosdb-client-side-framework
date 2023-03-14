@@ -43,13 +43,14 @@ export async function readExistingModel() {
       const existingComponent = State.components.find(
         (component) => component.parentId === slot.id
       );
+      let componentDiv;
       if (existingComponent === undefined) {
-        const componentDiv = await Component(await newComponent(slot.id));
+        componentDiv = await Component(await newComponent(slot.id));
       } else {
-        const componentDiv = await Component(existingComponent);
+        componentDiv = await Component(existingComponent);
       }
 
-      const existingSlot = await Slot(slot);
+      const existingSlot = await Slot(slot, componentDiv);
       viewTemplateBody.appendChild(existingSlot);
     }
   }
