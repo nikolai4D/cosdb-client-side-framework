@@ -8,7 +8,6 @@ import { State } from "../../State.mjs";
 export function Organism_dummy1(parentId) {
   Component.call(this);
 
-
   this.organisms = [
     { 
       organism: "Organism_dummy2",
@@ -39,14 +38,10 @@ export function Organism_dummy1(parentId) {
 
   this.bindScript= async function() {
 
-    console.log({State})
-    console.log({parentId})
-
-    let state = await State
-    let organisms = state.model.organisms
+    const state = await State
+    const organisms = state.model.organisms
     const id = organisms.find(org => org.parentId === parentId).id
-    console.log({id})
-  
+
     for (let org of this.organisms) {
       await this.fillSlot(org.organism, org.component(id).getElement())
     }
