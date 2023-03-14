@@ -44,7 +44,7 @@ export function Organism_dummy1(parentId) {
 
     let id = await State
     let organisms = id.model.organisms
-    console.log({model})
+    console.log({organisms})
   
     for (let org of this.organisms) {
       await this.fillSlot(org.organism, org.component(id).getElement())
