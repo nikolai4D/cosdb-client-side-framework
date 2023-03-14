@@ -42,9 +42,10 @@ export function Organism_dummy1(parentId) {
     console.log({State})
     console.log({parentId})
 
-    let id = await State
-    let organisms = id.model.organisms
-    console.log({organisms})
+    let state = await State
+    let organisms = state.model.organisms
+    const id = organisms.find(org => org.parentId === parentId).id
+    console.log({id})
   
     for (let org of this.organisms) {
       await this.fillSlot(org.organism, org.component(id).getElement())
