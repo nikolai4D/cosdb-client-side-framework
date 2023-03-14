@@ -21,17 +21,11 @@ export function Controller() {
 
     this.model = await readModel();
 
-    console.log(this.model.views, "this.model")
     // getting the view title from the url to get the view from model
     const path = window.location.pathname.slice(1)
 
-    console.log(path, "path")
-
     // getting the view from the model to get the id
     const view = this.model.views.find(view => view.value === path)
-
-    console.log(view, "view")
-
 
     // getting the viewTemplate from the model with the view id as parentId
     const viewTemplate = this.model.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id)
@@ -41,9 +35,7 @@ export function Controller() {
     const pathToComponent = `../../components/viewTemplates/${file}.mjs`
     // importing the viewTemplate prototype
 
-    console.log("hello")
     const viewTemplateComponent = await importModuleFromFile(pathToComponent, file)
-    console.log("hello22")
 
     this.slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id)
 
@@ -61,20 +53,12 @@ export function Controller() {
       // component.slots.forEach(async slot => {
 
         let specificSlot =  this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
-        console.log(specificSlot, "specificSlot")
         if (specificSlot) {
           let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
-
-          console.log(this.model, "this.model")
-
-          console.log(specificComponent, "specificComponent")
-
 
           if (specificComponent) {
 
             const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
-
-            console.log(organismModel, "organismModel")
 
             if (organismModel) {
               slot.slot = organismModel.value; 
@@ -95,10 +79,7 @@ export function Controller() {
     let component =  this.childComponent;
 
          component.bindScript=  function() {
-
-          console.log(component.slots, "slots")
           for (let slot of component.slots) {
-            console.log( slot, "slot")
             if (slot.component)
             component.fillSlot(slot.slot,  slot.component.getElement())
           // await component.slots.forEach( async slot => {
@@ -112,9 +93,6 @@ export function Controller() {
     this.childComponent = await this.getComponent();
     await this.getSlots();
     await this.bindNewScripts();
-
-
-    console.log(await this.childComponent)
 
     return await this.childComponent ;
 
