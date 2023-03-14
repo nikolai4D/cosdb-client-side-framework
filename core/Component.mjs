@@ -41,11 +41,11 @@ export function Component(options = {}){
      * param <boolean> forceInit if true, the element will be reinitialized
      * @returns <Element>
      */
-    this.getElement =  async function(forceInit = false){
+    this.getElement =  function(forceInit = false){
 
         if(!this.element || forceInit){
             this.setComponentsToString()
-            this.element = stringToHTMLElement(await this.getHtml())
+            this.element = stringToHTMLElement(this.getHtml())
             this.deSetComponentsFromString()
             this.bindSlots()
             this.bindScript()
@@ -54,7 +54,7 @@ export function Component(options = {}){
             if(this.id) this.element.id = this.id
         }
 
-        return await this.element
+        return  this.element
     }
 
 
