@@ -36,7 +36,6 @@ export function Organism_dummy1() {
   this.bindScript= async function() {
 
     for (let org of this.organisms) {
-    // this.organisms.forEach(org => {
       await this.fillSlot(org.organism, org.component.getElement())
     }
 

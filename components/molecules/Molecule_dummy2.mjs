@@ -32,12 +32,14 @@ export function Molecule_dummy2() {
 `;
 }
 
-this.bindScript= function() {
-  this.atoms.forEach(atom => {
-    this.fillSlot(atom.atom, atom.component.getElement())
-  })
-}
+this.bindScript= async function() {
 
+  for (let atom of this.atoms) {
+    await this.fillSlot(atom.atom, atom.component.getElement())
+  }
+
+}
+}
 
 
 }
