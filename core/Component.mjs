@@ -131,10 +131,11 @@ export function Component(options = {}){
         }
     }
 
-    this.bindSlots = function(){
-        let slots = Array.from(this.element.querySelectorAll("[data-slot]"))
+    this.bindSlots = async function(){
+        let slots = Array.from((await this.element).querySelectorAll("[data-slot]"))
 
-        slots.forEach(slot => {
+        for (let slot of slots) {
+        // slots.forEach(slot => {
             let key
             try{
                 key = slot.getAttribute("data-slot")
@@ -151,7 +152,7 @@ export function Component(options = {}){
                     "subComponents keys: ", Object.keys(this.subComponents),
                     e)
             }
-        })
+        }
     }
 
          /**
