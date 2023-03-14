@@ -132,7 +132,9 @@ export function Component(options = {}){
     }
 
     this.bindSlots = async function(){
-        let slots = Array.from((await this.element).querySelectorAll("[data-slot]"))
+        let element = await this.element
+
+        let slots = Array.from(element.querySelectorAll("[data-slot]"))
 
         for (let slot of slots) {
         // slots.forEach(slot => {
