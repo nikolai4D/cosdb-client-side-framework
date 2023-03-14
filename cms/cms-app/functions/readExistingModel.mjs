@@ -97,7 +97,7 @@ async function createOrganism(componentId, componentBody) {
       await getComponentFunctions(
         organismDiv,
         organism.id,
-        "organisms",
+        "organism",
         organismBody,
         componentBody
       );
@@ -123,7 +123,7 @@ async function createMolecule(componentId, componentBody) {
       await getComponentFunctions(
         moleculeDiv,
         molecule.id,
-        "molecules",
+        "molecule",
         moleculeBody,
         componentBody
       );
