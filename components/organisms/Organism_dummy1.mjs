@@ -39,11 +39,12 @@ export function Organism_dummy1(parentId) {
   this.bindScript= async function() {
 
     console.log({State})
+    console.log({parentId})
+
     for (let org of this.organisms) {
       await this.fillSlot(org.organism, org.component.getElement())
     }
 
-    console.log({parentId})
 
   }
 }
