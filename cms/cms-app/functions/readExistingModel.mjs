@@ -38,12 +38,13 @@ export async function readExistingModel() {
       existingViewTemplate.value
     );
 
-    console.log("readExistingModel: slots:", slots);
+    //console.log("readExistingModel: slots:", slots);
 
     for (const slot of slots) {
       const existingComponent = State.components.find(
         (component) => component.parentId === slot.id
       );
+      console.log("readExistingModel: existingComponent:", existingComponent);
       const slotBody = await getAccordionBody(slot.id);
       const componentDiv = await Component(existingComponent);
       slotBody.appendChild(componentDiv);
