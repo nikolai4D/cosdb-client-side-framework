@@ -189,7 +189,7 @@ async function createFunctionsEl(componentFunctions, id, body, parentBody) {
 
     let functionSlot;
 
-    const existingFn = State.functions.filter((fn) => fn.parentId === parentId);
+    const existingFn = State.functions.find((fn) => fn.parentId === parentId);
     console.log("readExistingModel: existingFn:", existingFn);
 
     if (existingFn) {
