@@ -92,7 +92,7 @@ export function Controller() {
   this.template = async () => {
     this.childComponent = await this.getComponent();
     await this.getSlots();
-     this.bindNewScripts();
+    await this.bindNewScripts();
 
     console.log(this.childComponent, "childComponent")
 
