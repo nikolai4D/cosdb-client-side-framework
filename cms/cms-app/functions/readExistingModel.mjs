@@ -44,6 +44,7 @@ export async function readExistingModel() {
         (component) => component.parentId === slot.id
       );
       let componentDiv;
+      let componentId;
       if (existingComponent === undefined) {
         const newComp = await newComponent(slot.id);
         componentId = newComp.id;
