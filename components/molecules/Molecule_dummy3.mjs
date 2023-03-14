@@ -2,18 +2,19 @@ import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
 import { Atom_dummy1 } from "../atoms/Atom_dummy1.mjs";
 import { Atom_dummy2 } from "../atoms/Atom_dummy2.mjs";
+import { State } from "../../State.mjs";
 
-export function Molecule_dummy3() {
+export function Molecule_dummy3(parentId) {
   Component.call(this);
 
   this.atoms = [
     {
       atom: "Atom_dummy1",
-      component: new Atom_dummy1()
+      component: (param) => new Atom_dummy1(param)
     },
     {
       atom: "Atom_dummy2",
-      component: new Atom_dummy2()
+      component: (param) => new Atom_dummy2(param)
     }
   ]
 
@@ -26,8 +27,7 @@ export function Molecule_dummy3() {
     }
   ]
 
-    this.getHtml = function(){
-
+  this.getHtml = function(){
     return `
     <div>
       <div>${slot(this.atoms[0].atom)}</div>
@@ -38,9 +38,12 @@ export function Molecule_dummy3() {
 
   this.bindScript= async function() {
 
-    for (let atom of this.atoms) {
-      await this.fillSlot(atom.atom, atom.component.getElement())
-    }
+    const state = await State
+    const molecules = state.model.molecules
+    const id = molecules.find(mol => mol.parentId === parentId).id
 
+    for (let atom of this.atoms) {
+      await this.fillSlot(atom.atom, atom.component(id).getElement())
+    }
   }
 }
