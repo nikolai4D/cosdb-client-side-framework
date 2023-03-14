@@ -21,7 +21,7 @@ export function Controller() {
 
     this.model = await readModel();
 
-    console.log(this.model, "this.model")
+    console.log(this.model.views, "this.model")
     // getting the view title from the url to get the view from model
     const path = window.location.pathname.slice(1)
 
