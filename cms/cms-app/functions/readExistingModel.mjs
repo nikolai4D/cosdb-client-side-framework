@@ -87,6 +87,9 @@ async function createOrganism(componentId, componentBody) {
     componentBody.appendChild(organismDiv);
     await createOrganism(existingOrganism.id, organismBody);
     await createMolecule(existingOrganism.id, organismBody);
+
+    // add functions from state
+    await createFunction(existingOrganism.id, organismBody, componentBody);
   }
 }
 
@@ -99,6 +102,35 @@ async function createMolecule(componentId, componentBody) {
     const moleculeBody = document.createElement("div");
     const moleculeDiv = await Molecule(existingMolecule, moleculeBody);
     componentBody.appendChild(moleculeDiv);
-    console.log("NEXT ATOMS");
+
+    await createAtom(existingMolecule.id, moleculeBody);
+
+    // add functions from state
+    await createFunction(existingMolecule.id, organismBody, componentBody);
+  }
+}
+
+async function createAtom(moleculeId, moleculeBody) {
+  const existingAtoms = State.atoms.filter(
+    (atom) => atom.parentId === moleculeId
+  );
+
+  if (existingAtoms) {
+    for (const existingAtom of existingAtoms) {
+      const atomBody = document.createElement("div");
+      const atomDiv = await Atom(existingAtom, atomBody);
+      moleculeBody.appendChild(atomDiv);
+    }
+  }
+}
+
+async function createFunction(id, body, parentBody) {
+  const functions = State.functions.filter((fn) => fn.parentId === id);
+
+  if (functions) {
+    for (const fn of functions) {
+      const fnDiv = await Function(fn, body);
+      parentBody.insertBefore(fnDiv, parentBody.firstChild);
+    }
   }
 }
