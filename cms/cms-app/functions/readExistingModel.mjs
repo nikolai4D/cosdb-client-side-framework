@@ -126,7 +126,7 @@ async function createMolecule(componentId, componentBody) {
         molecule.id,
         "molecules",
         null,
-        moleculeDiv
+        moleculeBody
       );
     }
   }
