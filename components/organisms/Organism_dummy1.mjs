@@ -2,7 +2,7 @@ import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
 import { Organism_dummy2 } from "./Organism_dummy2.mjs";
 
-export function Organism_dummy1() {
+export function Organism_dummy1(parentId) {
   Component.call(this);
 
   this.organisms = [
@@ -39,16 +39,7 @@ export function Organism_dummy1() {
       await this.fillSlot(org.organism, org.component.getElement())
     }
 
+    console.log({parentId})
+
   }
-
-//   component.bindScript = async function() {
-//     for await (let slot of this.organisms) {
-//       if (await slot.component)
-//       await component.fillSlot(slot.slot, slot.component.getElement())
-//     // await component.slots.forEach( async slot => {
-
-//   }
-// }
-
-
 }

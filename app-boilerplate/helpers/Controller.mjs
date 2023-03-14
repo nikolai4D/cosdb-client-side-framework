@@ -57,12 +57,12 @@ export function Controller() {
             const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
 
             if (organismModel) {
-              slot.slot = organismModel.value; 
+              slot.slot = organismModel.value;
 
               const fileOrganism = organismModel.value;
               const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`;
               const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
-              let organism =  new organismComponent[fileOrganism]();
+              let organism =  new organismComponent[fileOrganism](specificComponent.id);
 
               slot.component =  organism
             }
@@ -93,49 +93,3 @@ export function Controller() {
   }
 
 }
-
-
-// TODO: 
-
-// step 1
-
-// get model with views
-// get path of view via url
-// route to that view (path is a variable, view is dynamic)
-// get viewTemplate from model.json with view as parentId
-// this.template = new viewTemplate();
-
-
-// step 2
-
-// get subcomponents from model.json with viewTemplate as parentId
-// for each subcomponent, get the component from model.json with subcomponent as parentId
-// render that component somehow...
-
-
-
-
-
-// for each view, create a route with controller
-// in that controller, get the viewTemplate from model.json with view as parentId
-// 
-
-
-
-
-// import { View } from "cosdb-client-framework/core/View.mjs";
-
-// export function Controller({title, view, viewTemplate, slots}) {
-//   View.call(this);
-
-//   this.title = title;
-// //   const view = view;
-
-//   //model
-// //   ListAllInformation_Model(view);
-
-//   //view
-//   this.template = new viewTemplate();
-//   this.template.slots = slots
-// }
-

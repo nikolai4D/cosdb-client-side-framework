@@ -3,7 +3,7 @@ import { slot } from  "../../core/helpers.mjs";
 import { Molecule_dummy1 } from "../molecules/Molecule_dummy1.mjs";
 
 
-export function Organism_dummy2() {
+export function Organism_dummy2(parentId) {
   Component.call(this);
 
   this.molecules = [
@@ -35,6 +35,8 @@ export function Organism_dummy2() {
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
+
+    console.log({parentId})
 
   }
 
