@@ -77,36 +77,40 @@ export async function readExistingModel() {
 }
 
 async function createOrganism(componentId, componentBody) {
-  const existingOrganism = State.organisms.find(
+  const existingOrganism = State.organisms.filter(
     (organism) => organism.parentId === componentId
   );
 
   if (existingOrganism) {
-    const organismBody = document.createElement("div");
-    const organismDiv = await Organism(existingOrganism, organismBody);
-    componentBody.appendChild(organismDiv);
-    await createOrganism(existingOrganism.id, organismBody);
-    await createMolecule(existingOrganism.id, organismBody);
+    for (const organism of existingOrganism) {
+      const organismBody = document.createElement("div");
+      const organismDiv = await Organism(organism, organismBody);
+      componentBody.appendChild(organismDiv);
+      await createOrganism(organism.id, organismBody);
+      await createMolecule(organism.id, organismBody);
 
-    // add functions from state
-    //await createFunction(existingOrganism.id, organismBody, organismDiv);
+      // add functions from state
+      //await createFunction(existingOrganism.id, organismBody, organismDiv);
+    }
   }
 }
 
 async function createMolecule(componentId, componentBody) {
-  const existingMolecule = State.molecules.find(
+  const existingMolecule = State.molecules.filter(
     (molecule) => molecule.parentId === componentId
   );
 
   if (existingMolecule) {
-    const moleculeBody = document.createElement("div");
-    const moleculeDiv = await Molecule(existingMolecule, moleculeBody);
-    componentBody.appendChild(moleculeDiv);
+    for (const molecule of existingMolecule) {
+      const moleculeBody = document.createElement("div");
+      const moleculeDiv = await Molecule(molecule, moleculeBody);
+      componentBody.appendChild(moleculeDiv);
 
-    await createAtom(existingMolecule.id, moleculeBody);
+      await createAtom(molecule.id, moleculeBody);
 
-    // add functions from state
-    //await createFunction(existingMolecule.id, moleculeBody, moleculeDiv);
+      // add functions from state
+      //await createFunction(existingMolecule.id, moleculeBody, moleculeDiv);
+    }
   }
 }
 
