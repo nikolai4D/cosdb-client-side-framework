@@ -95,7 +95,7 @@ async function createOrganism(componentId, componentBody) {
       // add functions from state
       //await createFunction(existingOrganism.id, organismBody, componentBody);
       await getComponentFunctions(
-        organismDiv,
+        organism.value,
         organism.id,
         "organism",
         organismBody,
@@ -121,7 +121,7 @@ async function createMolecule(componentId, componentBody) {
       // add functions from state
       //await createFunction(existingMolecule.id, moleculeBody, componentBody);
       await getComponentFunctions(
-        moleculeDiv,
+        molecule.value,
         molecule.id,
         "molecule",
         moleculeBody,
