@@ -3,6 +3,7 @@ import { View } from "../_1_view/View.mjs";
 import { State } from "../data-mgmt/State.mjs";
 import { ViewTemplate } from "../_2_viewTemplate/ViewTemplate.mjs";
 import { createSlots } from "../_3_slot/createSlots.mjs";
+import { Slot } from "../_3_slot/Slot.mjs";
 import { getAccordionBody } from "./getAccordionBody.mjs";
 import { Component } from "../_4_component/Component.mjs";
 import { newComponent } from "../_4_component/newComponent.mjs";
@@ -38,28 +39,19 @@ export async function readExistingModel() {
       (slot) => slot.parentId === existingViewTemplate.id
     );
 
-    console.log("readExistingModel: slots:", slots);
-    // const slots = await createSlots(
-    //   viewTemplateBody,
-    //   existingViewTemplate.id,
-    //   existingViewTemplate.value
-    // );
+    for (const slot of slots) {
+      const existingComponent = State.components.find(
+        (component) => component.parentId === slot.id
+      );
+      if (existingComponent === undefined) {
+        const componentDiv = await Component(await newComponent(slot.id));
+      } else {
+        const componentDiv = await Component(existingComponent);
+      }
 
-    //console.log("readExistingModel: slots:", slots);
-
-    //     for (const slot of slots) {
-    //       const existingComponent = State.components.find(
-    //         (component) => component.parentId === slot.id
-    //       );
-    //       console.log("readExistingModel: existingComponent:", existingComponent);
-    //       const slotBody = await getAccordionBody(slot.id);
-    //       if(existingComponent === undefined) {
-    //         const componentDiv = await Component(existingComponent);
-    //       } else
-    //       const componentDiv = await Component(existingComponent);
-    //     }
-    //       slotBody.appendChild(componentDiv);
-    //     }
+      const existingSlot = await Slot(slot);
+      viewTemplateBody.appendChild(existingSlot);
+    }
   }
 
   // add components from state
