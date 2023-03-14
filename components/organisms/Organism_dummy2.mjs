@@ -28,11 +28,14 @@ export function Organism_dummy2() {
   `;
   }
 
-  this.bindScript= function() {
 
-    this.molecules.forEach(mol => {
-      this.fillSlot(mol.molecule, mol.component.getElement())
-    })
+
+  this.bindScript= async function() {
+
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
+    }
+
   }
 
 }
