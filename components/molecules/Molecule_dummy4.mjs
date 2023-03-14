@@ -42,5 +42,3 @@ export function Molecule_dummy4() {
 
   }
 }
-  
-}

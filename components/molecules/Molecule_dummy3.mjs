@@ -44,5 +44,3 @@ export function Molecule_dummy3() {
 
   }
 }
-  
-}
