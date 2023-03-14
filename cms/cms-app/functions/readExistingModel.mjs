@@ -195,7 +195,7 @@ async function createFunctionsEl(componentFunctions, id, body, parentBody) {
     if (existingFn) {
       functionSlot = await Function(existingFn, body);
     } else {
-      functionSlot = await Function(await newFunction(parentId), body);
+      functionSlot = await Function(await newFunction(parentId, key), body);
     }
 
     //let functionSlot = await Function(await newFunction(parentId), body);

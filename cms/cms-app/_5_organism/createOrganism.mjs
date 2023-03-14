@@ -137,7 +137,7 @@ async function createFunctionsEl(subComps, id, compBody, parentBody) {
     const [[key, value]] = Object.entries(comp);
     const parentId = id;
 
-    let childSlot = await Function(await newFunction(parentId), compBody);
+    let childSlot = await Function(await newFunction(parentId, key), compBody);
 
     parentBody.insertBefore(childSlot, parentBody.firstChild);
   }
