@@ -21,6 +21,8 @@ export function Atom_dummy2(parentId) {
     const id = atoms.find(at => at.parentId === parentId).id
     const currentAtomValue = atomValues.find(atVal => atVal.parentId === id)
 
+    console.log({currentAtomValue})
+
     this.value = currentAtomValue.value;
   }
 }
