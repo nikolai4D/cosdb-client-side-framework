@@ -88,6 +88,8 @@ export function Controller() {
     await this.getSlots();
     await this.bindNewScripts();
 
+     this.childComponent.model = this.model;
+
     return await this.childComponent ;
 
   }
