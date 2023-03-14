@@ -14,7 +14,7 @@ export function ViewTemplate_dummy1() {
     },
   ];
 
-  this.getHtml = async function()
+  this.getHtml = function()
     {
       return `
         <div>
