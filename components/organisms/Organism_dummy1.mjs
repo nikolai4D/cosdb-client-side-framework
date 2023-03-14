@@ -43,7 +43,7 @@ export function Organism_dummy1(parentId) {
     console.log({parentId})
 
     let id = await State
-    let model = id.model
+    let organisms = id.model.organisms
     console.log({model})
   
     for (let org of this.organisms) {
