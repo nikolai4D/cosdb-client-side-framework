@@ -2,7 +2,6 @@ import { action_readModel } from "../data-mgmt/actions/action_readModel.mjs";
 import { View } from "../_1_view/View.mjs";
 import { State } from "../data-mgmt/State.mjs";
 import { ViewTemplate } from "../_2_viewTemplate/ViewTemplate.mjs";
-import { createSlots } from "../_3_slot/createSlots.mjs";
 import { Slot } from "../_3_slot/Slot.mjs";
 import { getAccordionBody } from "./getAccordionBody.mjs";
 import { Component } from "../_4_component/Component.mjs";
@@ -40,26 +39,52 @@ export async function readExistingModel() {
     );
 
     for (const slot of slots) {
+      // add components from state
       const existingComponent = State.components.find(
         (component) => component.parentId === slot.id
       );
       let componentDiv;
       if (existingComponent === undefined) {
-        componentDiv = await Component(await newComponent(slot.id));
+        const newComp = await newComponent(slot.id);
+        let componentId = newComp.id;
+        componentDiv = await Component(newComp);
       } else {
         componentDiv = await Component(existingComponent);
+        let componentId = existingComponent.id;
       }
 
       const existingSlot = await Slot(slot, componentDiv);
       viewTemplateBody.appendChild(existingSlot);
+
+      // add organisms from state
+      // add molecules from state
+      // add atoms from state
+      // add atomValues from state
+      // add functions from state
+
+      const componentBody = await getAccordionBody(componentId);
+
+      let existingscomponent = [];
+
+      const existingOrganism = State.organisms.find(
+        (organism) => organism.parentId === componentId
+      );
+      const existingMolecule = State.molecules.find(
+        (molecule) => molecule.parentId === componentId
+      );
+      const existingAtom = State.atoms.find(
+        (atom) => atom.parentId === componentId
+      );
+      const existingAtomValue = State.atomValues.find(
+        (atomValue) => atomValue.parentId === componentId
+      );
+
+      existingscomponent.push(existingOrganism);
+      existingscomponent.push(existingMolecule);
+      existingscomponent.push(existingAtom);
+      existingscomponent.push(existingAtomValue);
+
+      console.log("readExistingModel: existingscomponent:", existingscomponent);
     }
   }
-
-  // add components from state
-
-  // add organisms from state
-  // add molecules from state
-  // add atoms from state
-  // add atomValues from state
-  // add functions from state
 }
