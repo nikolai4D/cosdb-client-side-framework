@@ -78,7 +78,7 @@ export function Controller() {
   this.bindNewScripts = async () => {
     let component = this.childComponent;
 
-         component.bindScript=  function() {
+         component.bindScript= async function() {
           for await (let slot of component.slots) {
             if (slot.component)
             component.fillSlot(slot.slot, slot.component.getElement())
