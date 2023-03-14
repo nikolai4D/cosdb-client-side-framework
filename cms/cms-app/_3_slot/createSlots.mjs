@@ -12,6 +12,8 @@ export async function createSlots(viewTemplateBody, id, value) {
     type
   );
 
+  const slots = [];
+
   for (const slot of viewTemplateSlots) {
     const [[key, value]] = Object.entries(slot);
 
@@ -19,10 +21,15 @@ export async function createSlots(viewTemplateBody, id, value) {
     const slotValue = value;
     const slotParentId = id;
 
-    const childSlot = await Slot(
-      await newSlot(slotKey, slotValue, slotParentId)
-    );
+    const createdSlot = await newSlot(slotKey, slotValue, slotParentId);
+    const childSlot = await Slot(createdSlot);
+
+    // const childSlot = await Slot(
+    //     await newSlot(slotKey, slotValue, slotParentId)
+    //   );
 
     viewTemplateBody.appendChild(childSlot);
+    slots.push(childSlot);
   }
+  return slots;
 }

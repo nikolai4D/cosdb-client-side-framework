@@ -4,6 +4,7 @@ import { State } from "../data-mgmt/State.mjs";
 import { ViewTemplate } from "../_2_viewTemplate/ViewTemplate.mjs";
 import { createSlots } from "../_3_slot/createSlots.mjs";
 import { getAccordionBody } from "./getAccordionBody.mjs";
+import { Component } from "../_4_component/Component.mjs";
 
 export async function readExistingModel() {
   const readModel = await action_readModel();
@@ -31,14 +32,17 @@ export async function readExistingModel() {
     // add slots form state
 
     const viewTemplateBody = await getAccordionBody(existingViewTemplate.id);
-    await createSlots(
+    const slots = await createSlots(
       viewTemplateBody,
       existingViewTemplate.id,
       existingViewTemplate.value
     );
+
+    console.log("readExistingModel: slots:", slots);
   }
 
   // add components from state
+
   // add organisms from state
   // add molecules from state
   // add atoms from state
