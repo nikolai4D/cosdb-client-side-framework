@@ -14,9 +14,9 @@ export async function Function(func, functionBody) {
   const parentId = func.parentId;
   const valueDisabled = func.valueDisabled;
 
-  const bodyDiv = document.createElement("div");
-  const contenDiv = await functionBody;
-  bodyDiv.appendChild(contenDiv);
+  //   const bodyDiv = document.createElement("div");
+  //   const contentDiv = await functionBody;
+  //   bodyDiv.appendChild(contentDiv);
 
   const functionDropdown = dropdown(
     customType,
