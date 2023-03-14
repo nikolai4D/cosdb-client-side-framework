@@ -183,6 +183,7 @@ async function getComponentFunctions(
 }
 
 async function createFunctionsEl(componentFunctions, id, body, parentBody) {
+  console.log("readExistingModel: componentFunctions:", componentFunctions);
   for (const compFn of componentFunctions) {
     const [[key, value]] = Object.entries(compFn);
     const parentId = id;
