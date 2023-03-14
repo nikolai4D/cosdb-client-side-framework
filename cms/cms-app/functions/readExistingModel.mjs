@@ -9,7 +9,7 @@ import { newComponent } from "../_4_component/newComponent.mjs";
 
 export async function readExistingModel() {
   const readModel = await action_readModel();
-  console.log("readExistingModel: readModel:", readModel);
+  //console.log("readExistingModel: readModel:", readModel);
 
   // add views from state
 
