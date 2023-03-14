@@ -14,7 +14,7 @@ export function Atom_dummy4(parentId) {
       `;
   }
 
-  this.bindScripts = async function() {
+  this.bindScript = async function() {
 
     const state = await State
     const atoms = state.model.atoms
