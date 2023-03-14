@@ -99,11 +99,11 @@ export function Component(options = {}){
      */
       this.fillSlot= async function(slotName, element) {
 
-        let element = await this.element
+        let thisElement = await this.element;
 
-        if(!element) throw new Error("Cannot fill slot before the element is defined.")
+        if(!thisElement) throw new Error("Cannot fill slot before the element is defined.")
 
-        const slot = element.querySelector(`[data-slot="${slotName.toString()}"]`)
+        const slot = thisElement.querySelector(`[data-slot="${slotName.toString()}"]`)
         if(!slot) throw new Error(`Slot ${slotName} not found`)
         slot.replaceWith(element)
     }
