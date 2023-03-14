@@ -44,7 +44,7 @@ export function Molecule_dummy1(parentId) {
     // this.value[0].value = currentAtomValue.value;
 
 
-    for (let [index, atom] of this.atoms.entres()) {
+    for (let [index, atom] of this.atoms.entries()) {
 
       const atoms = state.model.atoms
       const atomValues = state.model.atomValues
