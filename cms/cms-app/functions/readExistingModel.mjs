@@ -61,17 +61,17 @@ export async function readExistingModel() {
       const slotDiv = await Slot(slot, componentDiv);
       viewTemplateBody.appendChild(slotDiv);
 
-      // add organisms from state
-
       const componentBody = await getAccordionBody(componentId);
       console.log("readExistingModel: componentBody:", componentBody);
 
+      // add organisms from state
       await createOrganism(componentId, componentBody);
 
       // add molecules from state
+      await createMolecule(componentId, componentBody);
+
       // add atoms from state
-      // add atomValues from state
-      // add functions from state
+      await createAtom(componentId, componentBody);
     }
   }
 }
@@ -89,7 +89,7 @@ async function createOrganism(componentId, componentBody) {
     await createMolecule(existingOrganism.id, organismBody);
 
     // add functions from state
-    await createFunction(existingOrganism.id, organismBody, componentBody);
+    await createFunction(existingOrganism.id, organismBody, organismDiv);
   }
 }
 
@@ -106,7 +106,7 @@ async function createMolecule(componentId, componentBody) {
     await createAtom(existingMolecule.id, moleculeBody);
 
     // add functions from state
-    await createFunction(existingMolecule.id, moleculeBody, componentBody);
+    await createFunction(existingMolecule.id, moleculeBody, moleculeDiv);
   }
 }
 
