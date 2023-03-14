@@ -97,7 +97,7 @@ async function createMolecule(componentId, componentBody) {
 
   if (existingMolecule) {
     const moleculeBody = document.createElement("div");
-    const moleculeDiv = await Molecule(existingOrganism, organismBody);
+    const moleculeDiv = await Molecule(existingMolecule, moleculeBody);
     componentBody.appendChild(moleculeDiv);
     console.log("NEXT ATOMS");
   }
