@@ -29,6 +29,10 @@ export function Controller() {
 
     // getting the view from the model to get the id
     const view = this.model.views.find(view => view.value === path)
+
+    console.log(view, "view")
+
+
     // getting the viewTemplate from the model with the view id as parentId
     const viewTemplate = this.model.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id)
     // getting the name of the viewTemplate
