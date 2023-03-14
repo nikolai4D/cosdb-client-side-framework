@@ -9,7 +9,7 @@ export function Atom_dummy2(parentId) {
 
   this.getHtml = function(){
 
-    return await `  <div>
+    return `  <div>
       <h1>${this.value[0].value}</h1>
     </div>
   `;
