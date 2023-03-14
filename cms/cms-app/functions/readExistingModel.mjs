@@ -39,6 +39,15 @@ export async function readExistingModel() {
     );
 
     console.log("readExistingModel: slots:", slots);
+
+    for (const slot of slots) {
+      const existingComponent = State.components.find(
+        (component) => component.parentId === slot.id
+      );
+      const slotBody = await getAccordionBody(slot.id);
+      const componentDiv = await Component(existingComponent);
+      slotBody.appendChild(componentDiv);
+    }
   }
 
   // add components from state
