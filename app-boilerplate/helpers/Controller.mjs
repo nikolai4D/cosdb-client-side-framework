@@ -31,6 +31,8 @@ export function Controller() {
     // getting the path to the viewTemplate prototype
     const pathToComponent = `../../components/viewTemplates/${file}.mjs`
     // importing the viewTemplate prototype
+
+    console.log("hello")
     const viewTemplateComponent = await importModuleFromFile(pathToComponent, file)
 
     this.slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id)
