@@ -80,7 +80,7 @@ export function Controller() {
 
          component.bindScript = async function() {
           for await (let slot of component.slots) {
-            if (slot.component)
+            if (await slot.component)
             await component.fillSlot(slot.slot, slot.component.getElement())
           // await component.slots.forEach( async slot => {
 
