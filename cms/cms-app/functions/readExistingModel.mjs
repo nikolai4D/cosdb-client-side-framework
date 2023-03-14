@@ -46,15 +46,15 @@ export async function readExistingModel() {
       let componentDiv;
       if (existingComponent === undefined) {
         const newComp = await newComponent(slot.id);
-        let componentId = newComp.id;
+        componentId = newComp.id;
         componentDiv = await Component(newComp);
       } else {
         componentDiv = await Component(existingComponent);
-        let componentId = existingComponent.id;
+        componentId = existingComponent.id;
       }
 
-      const existingSlot = await Slot(slot, componentDiv);
-      viewTemplateBody.appendChild(existingSlot);
+      const slotDiv = await Slot(slot, componentDiv);
+      viewTemplateBody.appendChild(slotDiv);
 
       // add organisms from state
       // add molecules from state
@@ -63,6 +63,7 @@ export async function readExistingModel() {
       // add functions from state
 
       const componentBody = await getAccordionBody(componentId);
+      console.log("readExistingModel: componentBody:", componentBody);
 
       let existingscomponent = [];
 
