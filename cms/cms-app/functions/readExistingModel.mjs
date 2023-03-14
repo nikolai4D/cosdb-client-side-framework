@@ -12,6 +12,8 @@ import { Atom } from "../_7_atom/Atom.mjs";
 import { Function } from "../_8_function/Function.mjs";
 import { input } from "../types/input.mjs";
 
+import { getConstructors } from "../functions/getConstructors.mjs";
+
 export async function readExistingModel() {
   const readModel = await action_readModel();
   console.log("readExistingModel: readModel:", readModel);
@@ -92,6 +94,13 @@ async function createOrganism(componentId, componentBody) {
 
       // add functions from state
       //await createFunction(existingOrganism.id, organismBody, componentBody);
+      await getComponentFunctions(
+        organismDiv,
+        organism.id,
+        "organisms",
+        organismBody,
+        componentBody
+      );
     }
   }
 }
@@ -111,6 +120,13 @@ async function createMolecule(componentId, componentBody) {
 
       // add functions from state
       //await createFunction(existingMolecule.id, moleculeBody, componentBody);
+      await getComponentFunctions(
+        moleculeDiv,
+        molecule.id,
+        "molecules",
+        moleculeBody,
+        componentBody
+      );
     }
   }
 }
@@ -143,14 +159,47 @@ async function createAtom(moleculeId, moleculeBody) {
   }
 }
 
-async function createFunction(id, body, parentBody) {
-  const functions = State.functions.filter((fn) => fn.parentId === id);
-  console.log("readExistingModel: functions:", functions);
+async function getComponentFunctions(
+  component,
+  id,
+  componentType,
+  body,
+  parentBody
+) {
+  // get Functions
 
-  if (functions) {
-    for (const fn of functions) {
-      const fnDiv = await Function(fn, body);
-      parentBody.insertBefore(fnDiv, parentBody.firstChild);
-    }
+  const constructorTypeFunctions = "functions";
+
+  const componentFunctions = await getConstructors(
+    component,
+    constructorTypeFunctions,
+    componentType
+  );
+
+  if (componentFunctions) {
+    await createFunctionsEl(componentFunctions, id, body, parentBody);
   }
 }
+
+async function createFunctionsEl(components, id, body, parentBody) {
+  for (const comp of components) {
+    const [[key, value]] = Object.entries(comp);
+    const parentId = id;
+
+    let functionSlot = await Function(await newFunction(parentId), compBody);
+
+    parentBody.insertBefore(functionSlot, parentBody.firstChild);
+  }
+}
+
+// async function createFunction(id, body, parentBody) {
+//   const functions = State.functions.filter((fn) => fn.parentId === id);
+//   console.log("readExistingModel: functions:", functions);
+
+//   if (functions) {
+//     for (const fn of functions) {
+//       const fnDiv = await Function(fn, body);
+//       parentBody.insertBefore(fnDiv, parentBody.firstChild);
+//     }
+//   }
+// }
