@@ -90,7 +90,7 @@ async function createOrganism(componentId, componentBody) {
       await createMolecule(organism.id, organismBody);
 
       // add functions from state
-      //await createFunction(existingOrganism.id, organismBody, organismDiv);
+      await createFunction(existingOrganism.id, organismBody, componentBody);
     }
   }
 }
@@ -109,7 +109,7 @@ async function createMolecule(componentId, componentBody) {
       await createAtom(molecule.id, moleculeBody);
 
       // add functions from state
-      //await createFunction(existingMolecule.id, moleculeBody, moleculeDiv);
+      await createFunction(existingMolecule.id, moleculeBody, componentBody);
     }
   }
 }
