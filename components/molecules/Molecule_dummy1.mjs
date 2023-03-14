@@ -41,14 +41,14 @@ export function Molecule_dummy1(parentId) {
     const state = await State
     const molecules = state.model.molecules
     const id = molecules.find(mol => mol.parentId === parentId).id
-    this.value[0].value = currentAtomValue.value;
+    // this.value[0].value = currentAtomValue.value;
 
 
     for (let [index, atom] of this.atoms.entres()) {
 
       const atoms = state.model.atoms
       const atomValues = state.model.atomValues
-      let currentAtomValue = ""
+      // let currentAtomValue = ""
 
       const atomsWithParentId = atoms.filter(at => at.parentId === parentId)
 
