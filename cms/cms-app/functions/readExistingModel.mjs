@@ -185,12 +185,15 @@ async function getComponentFunctions(
 async function createFunctionsEl(componentFunctions, id, body, parentBody) {
   console.log("readExistingModel: componentFunctions:", componentFunctions);
   for (const compFn of componentFunctions) {
+    console.log("readExistingModel: compFn:", compFn);
     const [[key, value]] = Object.entries(compFn);
     const parentId = id;
 
     let functionSlot;
 
-    const existingFn = State.functions.find((fn) => fn.parentId === parentId);
+    const existingFn = State.functions.find(
+      (fn) => fn.parentId === parentId && fn.key === key
+    );
     console.log("readExistingModel: existingFn:", existingFn);
 
     if (existingFn) {
