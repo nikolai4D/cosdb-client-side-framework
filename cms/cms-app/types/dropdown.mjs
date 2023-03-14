@@ -16,6 +16,7 @@ export function dropdown(
   selectEl.id = id;
   selectEl.disabled = valueDisabled;
   selectEl.setAttribute("parentId", parentId);
+  selectEl.setAttribute("key", key);
   selectEl.setAttribute("customType", customType);
   selectEl.addEventListener("change", () => eventChangeDropdown(id));
 

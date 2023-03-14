@@ -10,6 +10,7 @@ import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateStat
 export async function eventChangeDropdown(id) {
   const select = document.getElementById(id);
   const value = select.value;
+  const key = select.getAttribute("key");
   const customType = select.getAttribute("customType");
   const parentId = select.getAttribute("parentId");
 
@@ -17,7 +18,7 @@ export async function eventChangeDropdown(id) {
   data.id = id;
   data.parentId = parentId;
   data.value = value;
-  data.key = customType;
+  data.key = key;
   data.customType = customType;
   data.updated = Date();
 
