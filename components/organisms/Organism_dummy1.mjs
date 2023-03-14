@@ -1,8 +1,8 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
 import { Organism_dummy2 } from "./Organism_dummy2.mjs";
-// import { State } from "../../app-boilerplate/State.mjs";
-import { State } from "../../data-mgmt/State.mjs";
+import { State } from "../../State.mjs";
+// import { State } from "../../data-mgmt/State.mjs";
 
 
 export function Organism_dummy1(parentId) {
