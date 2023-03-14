@@ -34,6 +34,7 @@ export function Controller() {
 
     console.log("hello")
     const viewTemplateComponent = await importModuleFromFile(pathToComponent, file)
+    console.log("hello22")
 
     this.slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id)
 
