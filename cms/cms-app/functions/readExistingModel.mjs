@@ -32,14 +32,13 @@ export async function readExistingModel() {
 
     // add slots form state
 
-    const viewTemplateBody = await getAccordionBody(existingViewTemplate.id)
+    const viewTemplateBody = await getAccordionBody(existingViewTemplate.id);
 
-    console.log(viewTemplateBody)
-
+    console.log(viewTemplateBody);
 
     const slots = State.components.find(
-        (slot) => slot.parentId === existingViewTemplate.id
-      );
+      (slot) => slot.parentId === existingViewTemplate.id
+    );
 
     console.log("readExistingModel: slots:", slots);
     // const slots = await createSlots(
@@ -50,20 +49,20 @@ export async function readExistingModel() {
 
     //console.log("readExistingModel: slots:", slots);
 
-//     for (const slot of slots) {
-//       const existingComponent = State.components.find(
-//         (component) => component.parentId === slot.id
-//       );
-//       console.log("readExistingModel: existingComponent:", existingComponent);
-//       const slotBody = await getAccordionBody(slot.id);
-//       if(existingComponent === undefined) {
-//         const componentDiv = await Component(existingComponent);
-//       } else
-//       const componentDiv = await Component(existingComponent);
-//     }
-//       slotBody.appendChild(componentDiv);
-//     }
-//   }
+    //     for (const slot of slots) {
+    //       const existingComponent = State.components.find(
+    //         (component) => component.parentId === slot.id
+    //       );
+    //       console.log("readExistingModel: existingComponent:", existingComponent);
+    //       const slotBody = await getAccordionBody(slot.id);
+    //       if(existingComponent === undefined) {
+    //         const componentDiv = await Component(existingComponent);
+    //       } else
+    //       const componentDiv = await Component(existingComponent);
+    //     }
+    //       slotBody.appendChild(componentDiv);
+    //     }
+  }
 
   // add components from state
 
