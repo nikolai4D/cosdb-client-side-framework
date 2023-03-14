@@ -12,7 +12,7 @@ export function ViewTemplate_dummy2() {
     },
   ];
 
-  this.getHtml = function(){
+  this.getHtml = async function(){
   return `
     <div>
           <div>${this.slots[0].slot}</div>

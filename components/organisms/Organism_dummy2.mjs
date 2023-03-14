@@ -19,7 +19,7 @@ export function Organism_dummy2(parentId) {
     },
   ];
 
-  this.getHtml = function(){
+  this.getHtml = async function(){
 
     return `
     <div>
