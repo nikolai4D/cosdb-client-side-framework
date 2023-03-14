@@ -53,10 +53,10 @@ export function Molecule_dummy1(parentId) {
       const atomsWithParentId = atoms.filter(at => at.parentId === moleculeId)
       console.log(atomsWithParentId, "atoms with parent id")
 
-      atomsWithParentId.filter(at => {
-        const atomValue = atomValues.filter(atVal => atVal.value === atom.atom)
-        at.value = atomValue.value
-      })
+      // atomsWithParentId.filter(at => {
+      //   const atomValue = atomValues.filter(atVal => atVal.value === atom.atom)
+      //   at.value = atomValue.value
+      // })
 
       let atomsWithSameValue = atoms.filter(at =>at.value === atom.atom && at.parentId === moleculeId)
       console.log(atomsWithSameValue, "atoms with same value")
