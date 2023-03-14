@@ -34,7 +34,7 @@ export async function readExistingModel() {
 
     const viewTemplateBody = await getAccordionBody(existingViewTemplate.id);
 
-    const slots = State.components.find(
+    const slots = State.slots.find(
       (slot) => slot.parentId === existingViewTemplate.id
     );
 
