@@ -13,4 +13,10 @@ export function Atom_dummy1() {
     </div>
   `;
 }
+
+this.bindScripts = function() {
+
+  console.log("bindScripts");
+
+  }
 }
