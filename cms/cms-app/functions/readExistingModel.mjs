@@ -10,6 +10,7 @@ import { Organism } from "../_5_organism/Organism.mjs";
 import { Molecule } from "../_6_molecule/Molecule.mjs";
 import { Atom } from "../_7_atom/Atom.mjs";
 import { Function } from "../_8_function/Function.mjs";
+import { input } from "../types/input.mjs";
 
 export async function readExistingModel() {
   const readModel = await action_readModel();
@@ -90,7 +91,7 @@ async function createOrganism(componentId, componentBody) {
       await createMolecule(organism.id, organismBody);
 
       // add functions from state
-      await createFunction(existingOrganism.id, organismBody, componentBody);
+      //await createFunction(existingOrganism.id, organismBody, componentBody);
     }
   }
 }
@@ -109,7 +110,7 @@ async function createMolecule(componentId, componentBody) {
       await createAtom(molecule.id, moleculeBody);
 
       // add functions from state
-      await createFunction(existingMolecule.id, moleculeBody, componentBody);
+      //await createFunction(existingMolecule.id, moleculeBody, componentBody);
     }
   }
 }
@@ -124,12 +125,27 @@ async function createAtom(moleculeId, moleculeBody) {
       const atomBody = document.createElement("div");
       const atomDiv = await Atom(existingAtom, atomBody);
       moleculeBody.appendChild(atomDiv);
+
+      const atomValue = State.atomValues.find(
+        (atomVal) => atomVal.parentId === existingAtom.id
+      );
+
+      let atomValueDiv = await input(
+        atomVal.customType,
+        atomVal.key,
+        atomVal.value,
+        atomVal.id,
+        atomVal.parentId,
+        atomVal.valueDisabled
+      );
+      atomBody.appendChild(atomValueDiv);
     }
   }
 }
 
 async function createFunction(id, body, parentBody) {
   const functions = State.functions.filter((fn) => fn.parentId === id);
+  console.log("readExistingModel: functions:", functions);
 
   if (functions) {
     for (const fn of functions) {
