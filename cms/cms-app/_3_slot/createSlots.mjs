@@ -29,7 +29,7 @@ export async function createSlots(viewTemplateBody, id, value) {
     //   );
 
     viewTemplateBody.appendChild(childSlot);
-    slots.push(childSlot);
+    slots.push(createdSlot);
   }
   return slots;
 }
