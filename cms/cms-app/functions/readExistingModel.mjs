@@ -63,19 +63,25 @@ export async function readExistingModel() {
       const componentBody = await getAccordionBody(componentId);
       console.log("readExistingModel: componentBody:", componentBody);
 
-      const existingOrganism = State.organisms.find(
-        (organism) => organism.parentId === componentId
-      );
-      const organismBody = document.createElement("div");
-
-      const organismDiv = await Organism(existingOrganism, organismBody);
-
-      componentBody.appendChild(organismDiv);
+      await createOrganism(componentId, componentBody);
 
       // add molecules from state
       // add atoms from state
       // add atomValues from state
       // add functions from state
     }
+  }
+}
+
+async function createOrganism(componentId, componentBody) {
+  const existingOrganism = State.organisms.find(
+    (organism) => organism.parentId === componentId
+  );
+
+  if (existingOrganism) {
+    const organismBody = document.createElement("div");
+    const organismDiv = await Organism(existingOrganism, organismBody);
+    componentBody.appendChild(organismDiv);
+    await createOrganism(existingOrganism.id, organismBody);
   }
 }
