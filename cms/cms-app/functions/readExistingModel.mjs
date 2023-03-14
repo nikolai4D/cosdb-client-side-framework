@@ -7,6 +7,9 @@ import { getAccordionBody } from "./getAccordionBody.mjs";
 import { Component } from "../_4_component/Component.mjs";
 import { newComponent } from "../_4_component/newComponent.mjs";
 import { Organism } from "../_5_organism/Organism.mjs";
+import { Molecule } from "../_6_molecule/Molecule.mjs";
+import { Atom } from "../_7_atom/Atom.mjs";
+import { Function } from "../_8_function/Function.mjs";
 
 export async function readExistingModel() {
   const readModel = await action_readModel();
@@ -83,5 +86,19 @@ async function createOrganism(componentId, componentBody) {
     const organismDiv = await Organism(existingOrganism, organismBody);
     componentBody.appendChild(organismDiv);
     await createOrganism(existingOrganism.id, organismBody);
+    await createMolecule(existingOrganism.id, organismBody);
+  }
+}
+
+async function createMolecule(componentId, componentBody) {
+  const existingMolecule = State.molecules.find(
+    (molecule) => molecule.parentId === componentId
+  );
+
+  if (existingMolecule) {
+    const moleculeBody = document.createElement("div");
+    const moleculeDiv = await Molecule(existingOrganism, organismBody);
+    componentBody.appendChild(moleculeDiv);
+    console.log("NEXT ATOMS");
   }
 }
