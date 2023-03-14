@@ -50,15 +50,15 @@ export function Molecule_dummy1(parentId) {
       const atomValues = state.model.atomValues
       // let currentAtomValue = ""
 
-      const atomsWithParentId = atoms.filter(at => at.parentId === moleculeId)
-      console.log(atomsWithParentId, "atoms with parent id")
+      // const atomsWithParentId = atoms.filter(at => at.parentId === moleculeId)
+      // console.log(atomsWithParentId, "atoms with parent id")
 
       // atomsWithParentId.filter(at => {
       //   const atomValue = atomValues.filter(atVal => atVal.value === atom.atom)
       //   at.value = atomValue.value
       // })
-
-      let atomsWithSameValue = atoms.filter(at =>at.value === atom.atom && at.parentId === moleculeId)
+      console.log(index, atom, "index atom")
+      let atomsWithSameValue = atoms.filter(at => at.value === atom.atom && at.parentId === moleculeId)
       console.log(atomsWithSameValue, "atoms with same value")
 
       let atomValuesWithAtomAsParent = atomsWithSameValue.filter(at => atomValues.find(atVal => atVal.parentId === at.id))
