@@ -21,7 +21,7 @@ export function Atom_dummy2(parentId) {
     this.value[0].value = currentAtomValue.value;
 
 
-    return `  <div>
+    return await `  <div>
       <h1>${this.value[0].value}</h1>
     </div>
   `;
