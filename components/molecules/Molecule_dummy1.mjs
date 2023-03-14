@@ -9,7 +9,7 @@ export function Molecule_dummy1(parentId) {
 
   this.atoms = [
     {
-      atom: "Atom_dummy2",
+      atom: "Atom_dummy1",
       component: (param) => new Atom_dummy1(param)
     },
     {
