@@ -1,13 +1,13 @@
 export function Molecule_dummy2() {
   this.atoms = [
     {
-      atom: "Atom_dummy4",
+      atom1: "Atom_dummy4",
     },
   ];
 
   this.functions = [
     {
-      function: "function2",
+      function1: "function2",
     },
   ];
 

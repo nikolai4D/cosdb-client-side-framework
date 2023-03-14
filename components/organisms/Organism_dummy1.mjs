@@ -1,25 +1,25 @@
 export function Organism_dummy1() {
   this.organisms = [
     {
-      organism: "Organism_dummy2",
+      organism1: "Organism_dummy2",
     },
   ];
 
   this.molecules = [
     {
-      molecule: "Molecule_dummy1",
+      molecule1: "Molecule_dummy1",
     },
     {
-      molecule: "Molecule_dummy2",
+      molecule2: "Molecule_dummy2",
     },
   ];
 
   this.functions = [
     {
-      function: "function1",
+      function1: "function1",
     },
     {
-      function: "function2",
+      function2: "function2",
     },
   ];
 
