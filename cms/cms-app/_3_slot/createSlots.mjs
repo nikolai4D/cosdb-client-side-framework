@@ -1,16 +1,20 @@
 import { Slot } from "./Slot.mjs";
 import { newSlot } from "./newSlot.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
+import { Component } from "../_4_component/Component.mjs";
+import { newComponent } from "../_4_component/newComponent.mjs";
+import { slotValues } from "./slotValues.mjs";
 
-export async function createSlots(viewTemplateBody, id, value) {
-  const filename = value;
-  const constructorType = "slots";
-  const type = "viewTemplates";
-  const viewTemplateSlots = await getConstructors(
-    filename,
-    constructorType,
-    type
-  );
+export async function createSlots(viewTemplateBody, id, viewTemplate) {
+  const viewTemplateSlots = await slotValues(viewTemplate);
+  //   const filename = viewTemplate;
+  //   const constructorType = "slots";
+  //   const type = "viewTemplates";
+  //   const viewTemplateSlots = await getConstructors(
+  //     filename,
+  //     constructorType,
+  //     type
+  //   );
 
   const slots = [];
 
@@ -22,7 +26,8 @@ export async function createSlots(viewTemplateBody, id, value) {
     const slotParentId = id;
 
     const createdSlot = await newSlot(slotKey, slotValue, slotParentId);
-    const childSlot = await Slot(createdSlot);
+    const component = await Component(await newComponent(id));
+    const childSlot = await Slot(createdSlot, component);
 
     // const childSlot = await Slot(
     //     await newSlot(slotKey, slotValue, slotParentId)
