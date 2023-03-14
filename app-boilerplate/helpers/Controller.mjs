@@ -20,6 +20,8 @@ export function Controller() {
   this.getComponent = async () => { 
 
     this.model = await readModel();
+
+    console.log(this.model, "this.model")
     // getting the view title from the url to get the view from model
     const path = window.location.pathname.slice(1)
     // getting the view from the model to get the id
