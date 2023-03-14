@@ -6,6 +6,7 @@ import { Slot } from "../_3_slot/Slot.mjs";
 import { getAccordionBody } from "./getAccordionBody.mjs";
 import { Component } from "../_4_component/Component.mjs";
 import { newComponent } from "../_4_component/newComponent.mjs";
+import { Organism } from "../_5_organism/Organism.mjs";
 
 export async function readExistingModel() {
   const readModel = await action_readModel();
@@ -58,35 +59,23 @@ export async function readExistingModel() {
       viewTemplateBody.appendChild(slotDiv);
 
       // add organisms from state
-      // add molecules from state
-      // add atoms from state
-      // add atomValues from state
-      // add functions from state
 
       const componentBody = await getAccordionBody(componentId);
       console.log("readExistingModel: componentBody:", componentBody);
 
-      let existingscomponent = [];
-
       const existingOrganism = State.organisms.find(
         (organism) => organism.parentId === componentId
       );
-      const existingMolecule = State.molecules.find(
-        (molecule) => molecule.parentId === componentId
-      );
-      const existingAtom = State.atoms.find(
-        (atom) => atom.parentId === componentId
-      );
-      const existingAtomValue = State.atomValues.find(
-        (atomValue) => atomValue.parentId === componentId
-      );
+      const organismBody = document.createElement("div");
 
-      existingscomponent.push(existingOrganism);
-      existingscomponent.push(existingMolecule);
-      existingscomponent.push(existingAtom);
-      existingscomponent.push(existingAtomValue);
+      const organismDiv = await Organism(existingOrganism, organismBody);
 
-      console.log("readExistingModel: existingscomponent:", existingscomponent);
+      componentBody.appendChild(organismDiv);
+
+      // add molecules from state
+      // add atoms from state
+      // add atomValues from state
+      // add functions from state
     }
   }
 }
