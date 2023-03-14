@@ -94,6 +94,8 @@ export function Controller() {
     await this.getSlots();
     await this.bindNewScripts();
 
+    console.log(this.childComponent, "childComponent")
+
     return await this.childComponent ;
 
   }
