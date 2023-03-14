@@ -10,6 +10,7 @@ import { Organism } from "../_5_organism/Organism.mjs";
 import { Molecule } from "../_6_molecule/Molecule.mjs";
 import { Atom } from "../_7_atom/Atom.mjs";
 import { Function } from "../_8_function/Function.mjs";
+import { newFunction } from "../_8_function/newFunction.mjs";
 import { input } from "../types/input.mjs";
 
 import { getConstructors } from "../functions/getConstructors.mjs";
