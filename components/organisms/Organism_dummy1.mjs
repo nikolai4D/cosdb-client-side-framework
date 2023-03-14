@@ -8,14 +8,16 @@ import { State } from "../../State.mjs";
 export function Organism_dummy1(parentId) {
   Component.call(this);
 
+  this.id = (State.organisms.find(org => org.parentId === parentId)).id;
+
   this.organisms = [
     { 
       organism: "Organism_dummy2",
-      component: new Organism_dummy2()
+      component: new Organism_dummy2(this.id)
     },
     { 
       organism: "Organism_dummy2",
-      component: new Organism_dummy2()
+      component: new Organism_dummy2(this.id)
     },
   ]
 
@@ -40,11 +42,11 @@ export function Organism_dummy1(parentId) {
 
     console.log({State})
     console.log({parentId})
+    console.log(this.id, "id")
+
 
     for (let org of this.organisms) {
       await this.fillSlot(org.organism, org.component.getElement())
     }
-
-
   }
 }
