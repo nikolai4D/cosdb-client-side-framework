@@ -197,7 +197,7 @@ export function Controller() {
 
                     if (subSubSubComp.atoms){
 
-                      for (let subCompAtom of subSubSubComp.atoms) {
+                      for (let [index, subCompAtom] of subSubSubComp.atoms.entries()) {
 
                         let subSubSubSubComp = subCompAtom.component
                         let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[0].id)
@@ -206,10 +206,10 @@ export function Controller() {
       
                         if (subSubSubSubComp.value) {
 
-                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[0].id)
+                          let subSubSubSubSubCompModels = this.model.atomValues.filter(at => at.parentId === subSubSubSubCompModels[0].id)
 
 
-                          subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+                          subSubSubSubComp.value = [{value: subSubSubSubSubCompModels[index].value}]
 
 
                         }
