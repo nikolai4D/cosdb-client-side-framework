@@ -206,7 +206,7 @@ export function Controller() {
       
                         if (subSubSubSubComp.value) {
 
-                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[0].id)
+                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index].id)
 
                           console.log("subSubSubSubSubCompModels", subSubSubSubSubCompModels)
                           console.log("subCompAtom", subCompAtom)
