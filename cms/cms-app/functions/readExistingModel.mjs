@@ -186,7 +186,9 @@ async function createFunctionsEl(componentFunctions, id, body, parentBody) {
   console.log("readExistingModel: componentFunctions:", componentFunctions);
   for (const compFn of componentFunctions) {
     console.log("readExistingModel: compFn:", compFn);
-    const [[key, value]] = Object.entries(compFn);
+    // const [[key, value]] = Object.entries(compFn);
+    const key = "function " + compFn.id;
+    const value = compFn.function;
     const parentId = id;
 
     let functionSlot;
