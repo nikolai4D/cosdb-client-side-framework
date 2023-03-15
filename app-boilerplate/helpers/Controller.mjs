@@ -88,7 +88,7 @@ export function Controller() {
               slot.component =  organismComp
 
               // next step would be to decide if the organism contains other organisms, molecules or atoms
-              if(organism.organisms){
+              if(organismComp.organisms){
 
                 // for viewTempalate slot that has an organism, loop through its organisms
                 for (let subCompOrganism of organism.organisms) {
