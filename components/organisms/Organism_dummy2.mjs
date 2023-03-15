@@ -1,6 +1,6 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
-import { Molecule_dummy1 } from "../molecules/Molecule_dummy1.mjs";
+import { Molecule_dummy2 } from "../molecules/Molecule_dummy2.mjs";
 import { State } from "../../State.mjs";
 
 export function Organism_dummy2() {
@@ -8,8 +8,8 @@ export function Organism_dummy2() {
 
   this.molecules = [
     {
-      molecule: "Molecule_dummy1",
-      component: new Molecule_dummy1()
+      molecule: "Molecule_dummy2",
+      component: new Molecule_dummy2()
     }
   ]
 
