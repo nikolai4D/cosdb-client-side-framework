@@ -40,6 +40,8 @@ export function Molecule_dummy1() {
     for (let atom of this.atoms) {
       await this.fillSlot(atom.atom, atom.component.getElement())
     }
+  }
+}
 
 
     // const state = await State
@@ -80,5 +82,3 @@ export function Molecule_dummy1() {
 
       // await this.fillSlot(atom.atom, atom.component.getElement())
 
-  }
-}
