@@ -102,6 +102,9 @@ async function createSubOrganismsEl(subComps, id, compBody, parentBody) {
     console.log("!!!!!!!!!!comp", comp);
     const [[key, value]] = Object.entries(comp);
     console.log("key", key, "value", value);
+    const testOjb = Object.entries(comp);
+    console.log("testOjb", testOjb);
+
     const parentId = id;
 
     let childSlot = await Organism(
