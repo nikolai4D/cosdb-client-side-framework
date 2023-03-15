@@ -120,17 +120,28 @@ export function Controller() {
     
                       if (subSubSubComp.atoms){
 
-
                         for (let subCompAtom of subSubSubComp.atoms) {
 
                           let subSubSubSubComp = subCompAtom.component
+                          let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[0].id)
+
         
-                          console.log("subSubSubComp", subSubSubSubComp)
+                          console.log("subSubSubSubCompModels", subSubSubSubCompModels)
+                          console.log("subSubSubSubCompModels.id", subSubSubSubCompModels[0].id)
         
                           if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
         
                           if (subSubSubSubComp.value) {
-                             console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.value)
+
+                            let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[0].id)
+
+                            // if (subSubSubSubSubCompModels.length > 1) console.log("more than one atomValue")
+
+                             console.log("atomvalue", subSubSubSubSubCompModels.value)
+                             subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+
+                             console.log("subSubSubSubComp!!!!!!", subSubSubSubComp)
+
 
                              // in model
                             //  find atomValue with parentId of atom
@@ -146,7 +157,7 @@ export function Controller() {
 
                       }
                       
-                      }
+                    }
 
                   }
 
