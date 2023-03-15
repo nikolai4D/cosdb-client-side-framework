@@ -27,7 +27,7 @@ export async function mutation_updateState(
       //   data.valueDisabled = index.valueDisabled;
       //   data.protected = index.protected;
       //   data.startView = index.startView;
-      console.log("view data: ", data, "view index: ", index);
+      console.log("view data: ", data, "view index: ", customTypeData[index]);
       customTypeData.splice(index, 1, data);
     } else {
       customTypeData.splice(index, 1, data);
