@@ -99,11 +99,13 @@ async function createSubOrganism(subComponentBody, id, selectedValue) {
 
 async function createSubOrganismsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
-    console.log("!!!!!!!!!!comp", comp);
-    const [[key, value]] = Object.entries(comp);
-    console.log("key", key, "value", value);
-    const testOjb = Object.entries(comp);
-    console.log("testOjb", testOjb);
+    // console.log("!!!!!!!!!!comp", comp);
+    // const [[key, value]] = Object.entries(comp);
+    // console.log("key", key, "value", value);
+    // const testOjb = Object.entries(comp);
+    // console.log("testOjb", testOjb);
+    const key = "organism";
+    const value = comp.organism;
 
     const parentId = id;
 
