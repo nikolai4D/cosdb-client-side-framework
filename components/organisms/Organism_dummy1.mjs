@@ -1,33 +1,40 @@
-export function Organism_dummy1() {
+export async function Organism_dummy1() {
   this.organisms = [
     {
-      organism1: "Organism_dummy2",
+      id: 1,
+      organism: "Organism_dummy2",
     },
   ];
 
   this.molecules = [
     {
-      molecule1: "Molecule_dummy1",
+      id: 1,
+      molecule: "Molecule_dummy1",
     },
     {
-      molecule2: "Molecule_dummy2",
+      id: 2,
+      molecule: "Molecule_dummy2",
     },
   ];
 
   this.functions = [
     {
-      function: "function11",
+      id: 1,
+      function: "placeholder",
     },
     {
-      function: "function22",
+      id: 2,
+      function: "placeholder",
     },
   ];
 
   return `
   <div>
-    <div>${this.organisms[0].organism}</div>
-    <div>${this.molecules[0].molecule}</div>
-    <div>${this.molecules[1].molecule}</div>
+    <div>${await comp(org, 1)}</div>
+    <div>${await comp(mol, 1)}</div>
+    <div>${await comp(mol, 2)}</div>
   </div>
 `;
 }
+
+function comp(type, id) {}

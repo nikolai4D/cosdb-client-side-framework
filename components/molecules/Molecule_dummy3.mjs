@@ -1,20 +1,12 @@
 export function Molecule_dummy3() {
   this.atoms = [
-    {
-      atom1: "Atom_dummy1",
-    },
-    {
-      atom2: "Atom_dummy2",
-    },
+    { id: 1, atom: "Atom_dummy1" },
+    { id: 2, atom: "Atom_dummy2" },
   ];
 
   this.functions = [
-    {
-      function1: "function1",
-    },
-    {
-      function2: "function2",
-    },
+    { id: 1, function: "placeholder" },
+    { id: 2, function: "placeholder" },
   ];
 
   return `

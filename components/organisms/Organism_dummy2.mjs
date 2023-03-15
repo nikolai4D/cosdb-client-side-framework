@@ -1,15 +1,12 @@
 export function Organism_dummy2() {
   this.molecules = [
     {
-      molecule1: "Molecule_dummy2",
+      id: 1,
+      molecule: "Molecule_dummy2",
     },
   ];
 
-  this.functions = [
-    {
-      function1: "function2",
-    },
-  ];
+  this.functions = [{ id: 1, function1: "placeholder" }];
 
   return `
     <div>
