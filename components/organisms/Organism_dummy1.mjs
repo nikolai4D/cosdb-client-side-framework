@@ -43,7 +43,7 @@ export function Organism_dummy1() {
     // const id = organisms.find(org => org.parentId === parentId).id
 
     for (let org of this.organisms) {
-      await this.fillSlot(org.organism, org.component().getElement())
+      await this.fillSlot(org.organism, org.component.getElement())
     }
   }
 }

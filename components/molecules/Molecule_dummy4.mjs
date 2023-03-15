@@ -39,7 +39,7 @@ export function Molecule_dummy4() {
   this.bindScript = async function() {
 
     for (let atom of this.atoms) {
-      await this.fillSlot(atom.atom, atom.component().getElement())
+      await this.fillSlot(atom.atom, atom.component.getElement())
     }
   }
 }

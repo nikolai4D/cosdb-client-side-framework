@@ -35,12 +35,12 @@ export function Molecule_dummy2() {
 
   this.bindScript= async function() {
 
-    const state = await State
-    const molecules = state.model.molecules
-    const id = molecules.find(mol => mol.parentId === parentId).id
+    // const state = await State
+    // const molecules = state.model.molecules
+    // const id = molecules.find(mol => mol.parentId === parentId).id
 
     for (let atom of this.atoms) {
-      await this.fillSlot(atom.atom, atom.component().getElement())
+      await this.fillSlot(atom.atom, atom.component.getElement())
     }
 
   }

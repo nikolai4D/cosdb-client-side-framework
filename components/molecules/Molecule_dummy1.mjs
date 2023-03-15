@@ -37,6 +37,10 @@ export function Molecule_dummy1() {
   }
 
   this.bindScript= async function() {
+    for (let atom of this.atoms) {
+      await this.fillSlot(atom.atom, atom.component.getElement())
+    }
+
 
     // const state = await State
     // const molecules = state.model.molecules
@@ -74,7 +78,7 @@ export function Molecule_dummy1() {
       // const currentAtomValue = atomValues.find(atVal => atVal.parentId === atomId)
 
 
-      await this.fillSlot(atom.atom, atom.component().getElement())
+      // await this.fillSlot(atom.atom, atom.component.getElement())
 
   }
 }
