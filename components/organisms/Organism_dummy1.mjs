@@ -16,10 +16,10 @@ export function Organism_dummy1() {
 
   this.functions = [
     {
-      function1: "function1",
+      function: "function1",
     },
     {
-      function2: "function2",
+      function: "function2",
     },
   ];
 
