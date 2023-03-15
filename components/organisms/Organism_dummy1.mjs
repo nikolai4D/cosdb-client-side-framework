@@ -18,11 +18,11 @@ export function Organism_dummy1() {
 
   this.molecules = [
     {
-      molecule1: "Molecule_dummy1",
+      molecule: "Molecule_dummy1",
       component: new Molecule_dummy1()
     },
     {
-      molecule2: "Molecule_dummy2",
+      molecule: "Molecule_dummy2",
       component: new Molecule_dummy2()
     },
   ];
