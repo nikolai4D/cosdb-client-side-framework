@@ -37,7 +37,7 @@ export function Controller() {
 
     this.slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id)
 
-    let component = new viewTemplateComponent[file](model);
+    let component = new viewTemplateComponent[file]();
 
     return component
 
