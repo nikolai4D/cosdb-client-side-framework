@@ -9,29 +9,32 @@ import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateStat
 
 export async function eventChangeDropdown(id) {
   const select = document.getElementById(id);
-  const selectedValue = select.value;
+  const value = select.value;
+  const key = select.getAttribute("key");
   const customType = select.getAttribute("customType");
   const parentId = select.getAttribute("parentId");
 
   const data = {};
   data.id = id;
   data.parentId = parentId;
-  data.value = selectedValue;
-  data.key = customType;
+  data.value = value;
+  data.key = key;
+  data.customType = customType;
+  data.updated = Date();
 
   console.log("update: ", customType, ": ", {
     id,
     parentId,
-    selectedValue,
+    value,
   });
 
   if (customType === "viewTemplate") {
     const viewTemplateBody = await getAccordionBody(id);
 
-    const state = await mutation_updateState("viewTemplates", data);
+    const state = await mutation_updateState("viewTemplates", data, true);
 
-    if (selectedValue !== "") {
-      await createSlots(viewTemplateBody, id, selectedValue);
+    if (value !== "") {
+      await createSlots(viewTemplateBody, id, value);
     }
 
     await action_writeModel(state);
@@ -39,7 +42,7 @@ export async function eventChangeDropdown(id) {
   }
 
   if (customType === "function") {
-    const state = await mutation_updateState("functions", data);
+    const state = await mutation_updateState("functions", data, true);
 
     await action_writeModel(state);
     console.log("updated function dropdown with state: ", state);
@@ -48,22 +51,22 @@ export async function eventChangeDropdown(id) {
   if (customType === "component") {
     const componentBody = await getAccordionBody(id);
 
-    const state = await mutation_updateState("components", data);
+    const state = await mutation_updateState("components", data, true);
 
     console.log("state before: ", state);
 
-    if (selectedValue !== "") {
-      if (selectedValue.startsWith("Organism")) {
+    if (value !== "") {
+      if (value.startsWith("Organism")) {
         console.log("Organism");
-        await createOrganism(componentBody, id, selectedValue);
+        await createOrganism(componentBody, id, value);
       }
-      if (selectedValue.startsWith("Molecule")) {
+      if (value.startsWith("Molecule")) {
         console.log("Molecule");
-        await createMolecule(componentBody, id, selectedValue);
+        await createMolecule(componentBody, id, value);
       }
-      if (selectedValue.startsWith("Atom")) {
+      if (value.startsWith("Atom")) {
         console.log("Atom");
-        await createAtom(componentBody, id, selectedValue);
+        await createAtom(componentBody, id, value);
       }
     }
 

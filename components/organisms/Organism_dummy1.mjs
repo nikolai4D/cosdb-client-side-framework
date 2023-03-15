@@ -1,33 +1,36 @@
 export function Organism_dummy1() {
   this.organisms = [
     {
+      id: 1,
       organism: "Organism_dummy2",
     },
   ];
 
   this.molecules = [
     {
+      id: 1,
       molecule: "Molecule_dummy1",
     },
     {
+      id: 2,
       molecule: "Molecule_dummy2",
     },
   ];
 
   this.functions = [
     {
-      function: "function1",
+      id: 1,
+      function: "placeholder",
     },
     {
-      function: "function2",
+      id: 2,
+      function: "placeholder",
     },
   ];
 
   return `
   <div>
-    <div>${this.organisms[0].organism}</div>
-    <div>${this.molecules[0].molecule}</div>
-    <div>${this.molecules[1].molecule}</div>
+  <div>${this.molecules[0].molecule}</div>
   </div>
 `;
 }

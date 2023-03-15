@@ -12,13 +12,12 @@ export function ViewTemplate_dummy1() {
     },
   ];
 
-  this.getHtml = function()
-    {
-      return `
+  this.getHtml = function () {
+    return `
         <div>
               <div>${this.slots[0].slot}</div>
               <div>${this.slots[1].slot}</div>
         </div>
       `;
-    }
+  };
 }
