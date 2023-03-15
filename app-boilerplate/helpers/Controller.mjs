@@ -99,7 +99,7 @@ export function Controller() {
                   if (subSubCompModels.length > 1) console.log("more than one organism")
 
                   console.log("subSubCompModels", subSubCompModels)
-                  console.log("subSubCompModel.id", subSubCompModel[0].id)
+                  console.log("subSubCompModel.id", subSubCompModels[0].id)
 
                   if (subSubComp.functions) console.log(subSubComp.constructorKey, subSubComp.functions)
 
@@ -112,8 +112,8 @@ export function Controller() {
 
                       if (subSubSubCompModel.length > 1) console.log("more than one molecule")
 
-                      console.log("subSubSubCompModel", subSubSubCompModel)
-                      console.log("subSubSubCompModel.id", subSubSubCompModel[0].id)
+                      console.log("subSubSubCompModel", subSubSubCompModels)
+                      console.log("subSubSubCompModel.id", subSubSubCompModels[0].id)
 
     
                       if (subSubSubComp.functions) console.log(subSubSubComp.constructorKey, subSubSubComp.functions)
