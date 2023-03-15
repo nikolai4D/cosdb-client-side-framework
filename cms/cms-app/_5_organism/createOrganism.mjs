@@ -150,8 +150,9 @@ async function createSubMoleculesEl(subComps, id, compBody, parentBody) {
 async function createFunctionsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
     console.log("comp", comp);
-    const [[key, value]] = Object.entries(comp);
-
+    // const [[key, value]] = Object.entries(comp);
+    const key = "function";
+    const value = comp.function;
     const parentId = id;
 
     let childSlot = await Function(await newFunction(parentId, key), compBody);
