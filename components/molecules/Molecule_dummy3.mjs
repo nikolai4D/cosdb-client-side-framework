@@ -8,24 +8,20 @@ export function Molecule_dummy3() {
   Component.call(this);
 
   this.atoms = [
-    {
+    { id: 1,
       atom: "Atom_dummy1",
       component: Atom_dummy1()
     },
-    {
+    { id: 2,
       atom: "Atom_dummy2",
       component: Atom_dummy2()
     }
   ]
 
   this.functions = [
-    {
-      function: "function1",
-    },
-    {
-      function: "function2",
-    }
-  ]
+    { id: 1, function: "placeholder" },
+    { id: 2, function: "placeholder" },
+  ];
 
   this.getHtml = function(){
     return `

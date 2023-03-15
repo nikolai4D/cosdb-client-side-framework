@@ -9,6 +9,8 @@ export async function newView() {
   view.id = await getUuid();
   view.parentId = view.id;
   view.valueDisabled = false;
+  view.protected = true;
+  view.startView = false;
 
   return view;
 }

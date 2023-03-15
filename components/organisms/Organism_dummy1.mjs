@@ -10,7 +10,8 @@ export function Organism_dummy1() {
   Component.call(this);
 
   this.organisms = [
-    { 
+    {
+      id: 1,
       organism: "Organism_dummy2",
       component:  new Organism_dummy2()
     }
@@ -18,10 +19,12 @@ export function Organism_dummy1() {
 
   this.molecules = [
     {
+      id: 1,
       molecule: "Molecule_dummy1",
       component: new Molecule_dummy1()
     },
     {
+      id: 2,
       molecule: "Molecule_dummy2",
       component: new Molecule_dummy2()
     },
@@ -29,10 +32,12 @@ export function Organism_dummy1() {
 
   this.functions = [
     {
-      function: "function1",
+      id: 1,
+      function: "placeholder",
     },
     {
-      function: "function2",
+      id: 2,
+      function: "placeholder",
     },
   ];
 

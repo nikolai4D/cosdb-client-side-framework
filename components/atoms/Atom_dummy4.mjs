@@ -4,7 +4,7 @@ import { State } from "../../State.mjs";
 export function Atom_dummy4() {
   Component.call(this);
 
-  this.value = [{ value: "placeholder4" }];
+  this.value = [{ value: "placeholder" }];
 
   this.getHtml = function(){
 

@@ -7,7 +7,7 @@ export function Molecule_dummy2() {
   Component.call(this);
 
   this.atoms = [
-    {
+    { id: 1, 
       atom: "Atom_dummy4",
       component: new Atom_dummy4()
     }
@@ -15,6 +15,7 @@ export function Molecule_dummy2() {
 
   this.functions = [
     {
+      id: 1,
       function: "function2",
     }
   ]
@@ -28,10 +29,6 @@ export function Molecule_dummy2() {
 }
 
   this.bindScript= async function() {
-
-    // const state = await State
-    // const molecules = state.model.molecules
-    // const id = molecules.find(mol => mol.parentId === parentId).id
 
     for (let atom of this.atoms) {
       await this.fillSlot(atom.atom, atom.component.getElement())
