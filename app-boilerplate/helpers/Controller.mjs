@@ -3,38 +3,39 @@ import { State } from "../State.mjs";
 import { importModuleFromFile } from "../../core/helpers.mjs";
 import { readModel } from "./readModel.mjs";
 
-async function importComponent(name, type, parentId, model) {
+async function importComponent(model, parentId) {
+  const componentModel = model.components.find(comp => comp.parentId === parentId);
+  if (!componentModel) return null;
+
+  const type = componentModel.type;
+  const name = componentModel.value;
   const pathToComponent = `../../components/${type}/${name}.mjs`;
   const componentModule = await importModuleFromFile(pathToComponent, name);
   const componentInstance = new componentModule[name]();
-  await processComponent(componentInstance, type, parentId, model);
-  return componentInstance;
-}
 
-async function processComponent(component, type, parentId, model) {
-  if (type === 'molecules' || type === 'organisms') {
-    if (component.atoms) {
-      for (let [index, subCompAtom] of component.atoms.entries()) {
-        let atomModel = model.atoms.find(at => at.parentId === parentId);
-        if (atomModel) {
-          subCompAtom.component = await importComponent(atomModel.value, 'atoms', atomModel.id, model);
-          let atomValueModel = model.atomValues.find(av => av.parentId === atomModel.id);
-          subCompAtom.component.value = [{ value: atomValueModel.value }];
-        }
+  if (componentInstance[type]) {
+    for (let [index, subComp] of componentInstance[type].entries()) {
+      subComp.component = await importComponent(model, model[type][index].id);
+      if (type === 'atoms' && subComp.component) {
+        const atomValueModel = model.atomValues.find(av => av.parentId === model[type][index].id);
+        subComp.component.value = [{ value: atomValueModel.value }];
       }
     }
   }
-}
 
+  return componentInstance;
+}
 
 export function Controller() {
   View.call(this);
+
   this.childComponent = null;
   this.slotsFromModel = null;
   this.model = null;
 
   this.getComponent = async () => {
     this.model = await readModel();
+
     const path = window.location.pathname.slice(1);
     const view = this.model.views.find(view => view.value === path);
     const viewTemplate = this.model.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id);
@@ -43,7 +44,9 @@ export function Controller() {
     const viewTemplateComponent = await importModuleFromFile(pathToComponent, file);
 
     this.slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id);
+
     let component = new viewTemplateComponent[file]();
+
     return component;
   };
 
@@ -54,58 +57,33 @@ export function Controller() {
       let specificSlot = this.slotsFromModel.find(slotModel => slotModel.value === slot.slot);
 
       if (specificSlot) {
-        let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id);
+        slot.component = await importComponent(this.model, specificSlot.id);
+        slot.slot = specificSlot.value;
+      }
+    }
+  };
 
-        if (specificComponent) {
-          const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id);
-          const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id);
-          const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id);
+  this.bindNewScripts = async () => {
+    let component = this.childComponent;
 
-          if (organismModel) {
-            slot.slot = organismModel.value;
-            slot.component = await importComponent(organismModel.value, "organisms", organismModel.id, this.model);
-          } else if (moleculeModel) {
-            slot.slot = moleculeModel.value;
-            slot.component = await importComponent(moleculeModel.value, "molecules", moleculeModel.id, this.model);
-          } else if (atomModel) {
-            slot.slot = atomModel.value;
-            slot.component = await importComponent(atomModel.value, "atoms", atomModel.id, this.model);
-          }
-                    }
-                  }
-                }
-              };
-            
-              this.bindNewScripts = async () => {
-                let component = this.childComponent;
-            
-                component.bindScript = async function () {
-                  for await (let slot of component.slots) {
-                    if (await slot.component) {
-                      await component.fillSlot(slot.slot, slot.component.getElement());
-                    }
-                  }
-                };
-              };
-            
-              this.template = async () => {
-                this.childComponent = await this.getComponent();
-                await this.getSlots();
-                await this.bindNewScripts();
-            
-                this.childComponent.model = this.model;
-            
-                return this.childComponent;
-              };
-            }
-            
-            Controller.prototype = Object.create(View.prototype);
-            Controller.prototype.constructor = Controller;
-            
+    component.bindScript = async function() {
+      for await (let slot of component.slots) {
+        if (await slot.component)
+          await component.fillSlot(slot.slot, slot.component.getElement());
+      }
+    };
+  };
 
+  this.template = async () => {
+    this.childComponent = await this.getComponent();
+    await this.getSlots();
+    await this.bindNewScripts();
 
+    this.childComponent.model = this.model;
 
-
+    return this.childComponent;
+  };
+}
 // import { View } from "../../core/View.mjs";
 // import { ViewTemplate_dummy1 } from "../../components/viewTemplates/ViewTemplate_dummy1.mjs";
 // import { ViewTemplate_dummy2 } from "../../components/viewTemplates/ViewTemplate_dummy2.mjs";
