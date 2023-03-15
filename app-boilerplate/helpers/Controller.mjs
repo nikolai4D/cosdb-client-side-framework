@@ -138,7 +138,7 @@ export function Controller() {
                             // if (subSubSubSubSubCompModels.length > 1) console.log("more than one atomValue")
 
                              console.log("atomvalue", subSubSubSubSubCompModels.value)
-                            //  subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+                             subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
 
                              console.log("subSubSubSubComp!!!!!!", subSubSubSubComp)
 
