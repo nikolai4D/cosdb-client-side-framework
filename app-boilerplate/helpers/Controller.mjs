@@ -43,6 +43,8 @@ export function Controller() {
 
   }
 
+  this.getComponents = async () => {}
+
   this.getSlots = async () => {
 
     // get viewTemplate from model
@@ -90,6 +92,7 @@ export function Controller() {
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
                 if (slot.component.organisms) {
+
                 // for viewTempalate slot that has an organism, loop through its organisms
                 for (let subCompOrganism of slot.component.organisms) {
 
@@ -175,6 +178,107 @@ export function Controller() {
                 //     let subCompOrganism =  new organismComponent[fileOrganism](specificComponent.id);
                 // }
               }
+            }
+
+            if (slot.component.molecules) {
+
+                for (let subCompMolecule of slot.component.molecules) {
+
+                  let subSubSubComp = subCompMolecule.component
+                  let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
+
+                  if (subSubSubCompModels.length > 1) console.log("more than one molecule")
+
+                  console.log("subSubSubCompModel", subSubSubCompModels)
+                  console.log("subSubSubCompModel.id", subSubSubCompModels[0].id)
+
+
+                  if (subSubSubComp.functions) console.log(subSubSubComp.constructorKey, subSubSubComp.functions)
+
+                  if (subSubSubComp.atoms){
+
+                    for (let subCompAtom of subSubSubComp.atoms) {
+
+                      let subSubSubSubComp = subCompAtom.component
+                      let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[0].id)
+
+    
+                      console.log("subSubSubSubCompModels", subSubSubSubCompModels)
+                      console.log("subSubSubSubCompModels.id", subSubSubSubCompModels[0].id)
+    
+                      if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+    
+                      if (subSubSubSubComp.value) {
+
+                        let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[0].id)
+
+                        // if (subSubSubSubSubCompModels.length > 1) console.log("more than one atomValue")
+
+                         console.log("atomvalue", subSubSubSubSubCompModels.value)
+                         subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+
+                         console.log("subSubSubSubComp!!!!!!", subSubSubSubComp)
+
+
+                         // in model
+                        //  find atomValue with parentId of atom
+                        //     find atom with parentId of molecule
+                        //        find molecule with parentId of organism
+                        //           find organism with parentId of organism
+                        //            find organism with parentId of viewTemplate
+
+                      }
+
+
+                      }
+
+                  }
+                  
+                }
+
+
+
+
+            }
+
+            if (slot.component.atoms) {
+
+
+                for (let subCompAtom of slot.component.atoms) {
+
+                  let subSubSubSubComp = subCompAtom.component
+                  let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === organismModel.id)
+
+
+
+                  if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+
+                  if (subSubSubSubComp.value) {
+
+                    let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[0].id)
+
+                    // if (subSubSubSubSubCompModels.length > 1) console.log("more than one atomValue")
+
+                     console.log("atomvalue", subSubSubSubSubCompModels.value)
+                     subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+
+                     console.log("subSubSubSubComp!!!!!!", subSubSubSubComp)
+
+
+                     // in model
+                    //  find atomValue with parentId of atom
+                    //     find atom with parentId of molecule
+                    //        find molecule with parentId of organism
+                    //           find organism with parentId of organism
+                    //            find organism with parentId of viewTemplate
+
+                  }
+
+
+                  }
+
+              
+
             }
           }
                           // if (organism.molecules) {
