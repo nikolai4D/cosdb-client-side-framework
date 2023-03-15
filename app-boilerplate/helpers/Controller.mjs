@@ -3,43 +3,29 @@ import { State } from "../State.mjs";
 import { importModuleFromFile } from "../../core/helpers.mjs";
 import { readModel } from "./readModel.mjs";
 
-async function importComponent(file, folder, parentId, model) {
-  const pathToComponent = `../../components/${folder}/${file}.mjs`;
-  const componentModule = await importModuleFromFile(pathToComponent, file);
-  let componentInstance = new componentModule[file]();
-  await processComponent(parentId, componentInstance, model);
+async function importComponent(name, type, parentId, model) {
+  const pathToComponent = `../../components/${type}/${name}.mjs`;
+  const componentModule = await importModuleFromFile(pathToComponent, name);
+  const componentInstance = new componentModule[name]();
+  await processComponent(componentInstance, type, parentId, model);
   return componentInstance;
 }
 
-async function processComponent(parentId, component, model) {
-  const componentTypes = [
-    { type: "organisms", folder: "organisms" },
-    { type: "molecules", folder: "molecules" },
-    { type: "atoms", folder: "atoms" },
-  ];
-
-  for (const componentType of componentTypes) {
-    const subComponents = component[componentType.type];
-
-    if (subComponents) {
-      for (let [index, subComp] of subComponents.entries()) {
-        const subCompModel = model[componentType.type].find(c => c.parentId === parentId);
-
-        if (subCompModel) {
-          subComp.component = await importComponent(subCompModel.value, componentType.folder, subCompModel.id, model);
-        }
-
-        if (componentType.type === "atoms" && subComp.component.value) {
-          const atomValueModel = model.atomValues.find(at => at.parentId === subCompModel.id);
-
-          if (atomValueModel) {
-            subComp.component.value = [{ value: atomValueModel.value }];
-          }
+async function processComponent(component, type, parentId, model) {
+  if (type === 'molecules' || type === 'organisms') {
+    if (component.atoms) {
+      for (let [index, subCompAtom] of component.atoms.entries()) {
+        let atomModel = model.atoms.find(at => at.parentId === parentId);
+        if (atomModel) {
+          subCompAtom.component = await importComponent(atomModel.value, 'atoms', atomModel.id, model);
+          let atomValueModel = model.atomValues.find(av => av.parentId === atomModel.id);
+          subCompAtom.component.value = [{ value: atomValueModel.value }];
         }
       }
     }
   }
 }
+
 
 export function Controller() {
   View.call(this);
@@ -81,10 +67,10 @@ export function Controller() {
           } else if (moleculeModel) {
             slot.slot = moleculeModel.value;
             slot.component = await importComponent(moleculeModel.value, "molecules", moleculeModel.id, this.model);
-                      } else if (atomModel) {
-                        slot.slot = atomModel.value;
-                        slot.component = await importComponent(atomModel.value, "atoms", atomModel.id, this.model);
-                      }
+          } else if (atomModel) {
+            slot.slot = atomModel.value;
+            slot.component = await importComponent(atomModel.value, "atoms", atomModel.id, this.model);
+          }
                     }
                   }
                 }
