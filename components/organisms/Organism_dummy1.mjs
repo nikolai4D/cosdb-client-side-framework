@@ -1,4 +1,4 @@
-export async function Organism_dummy1() {
+export function Organism_dummy1() {
   this.organisms = [
     {
       id: 1,
@@ -30,11 +30,7 @@ export async function Organism_dummy1() {
 
   return `
   <div>
-    <div>${await comp(org, 1)}</div>
-    <div>${await comp(mol, 1)}</div>
-    <div>${await comp(mol, 2)}</div>
+  <div>${this.molecules[0].molecule}</div>
   </div>
 `;
 }
-
-function comp(type, id) {}
