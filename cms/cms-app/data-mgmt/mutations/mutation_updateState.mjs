@@ -1,6 +1,5 @@
 import { deleteChildren } from "../../functions/deleteChildren.mjs";
 import { State } from "../State.mjs";
-import { deleteFunction } from "../../functions/deleteFunction.mjs";
 
 export async function mutation_updateState(
   customType,
@@ -19,10 +18,13 @@ export async function mutation_updateState(
     if (customType === "functions") {
       console.log("function data: ", data);
       if (data.value === "") {
-        await deleteFunction(data.id);
+        customTypeData.splice(index, 1);
+      } else {
+        customTypeData.splice(index, 1, data);
       }
+    } else {
+      customTypeData.splice(index, 1, data);
     }
-    customTypeData.splice(index, 1, data);
   } else {
     customTypeData.push(data);
   }
