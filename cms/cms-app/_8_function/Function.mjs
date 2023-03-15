@@ -26,7 +26,7 @@ export async function Function(func, functionBody) {
 
   functionDiv.appendChild(functionDropdown);
 
-  await mutation_updateState("functions", func);
+  //await mutation_updateState("functions", func);
 
   return functionDiv;
 }
