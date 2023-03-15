@@ -116,8 +116,24 @@ export function Controller() {
     
                       if (subSubSubComp.atoms){
 
-                        let that = this;
-                        generateAtoms.call(that, subSubSubComp, subSubSubCompModels);
+                        for (let [index, subCompAtom] of subSubSubComp.atoms.entries()) {
+
+                          let subSubSubSubComp = subCompAtom.component
+                          let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[0].id)
+
+                          if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+        
+                          if (subSubSubSubComp.value) {
+
+                            let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index].id)
+
+                             subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+
+
+                          }
+
+
+                          }
 
                       }
                       
@@ -126,18 +142,6 @@ export function Controller() {
                   }
 
 
-                  // get the organism from the model with the organism id as parentId
-                  // const subOrganismModel = this.model.organisms.find(org => org.parentId === organismModel.id)
-
-                  // if the organism exists in the model
-                //   if (subOrganismModel) {
-
-                //     organismComp.slot = organismModel.value;
-                //     const fileOrganism = organismModel.value;
-                //     const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`;
-                //     const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
-                //     let subCompOrganism =  new organismComponent[fileOrganism](specificComponent.id);
-                // }
               }
               }
 
@@ -205,14 +209,79 @@ export function Controller() {
 
               }
           }
-                          // if (organism.molecules) {
-              //   console.log("contains molecules")
-              // }
 
-              // if (organism.atoms) {
-              //   console.log("contains atoms")
-              // }
           }
+          
+          if (moleculeModel){
+
+            // set the slot of viewTemplate to the be the value of the organism
+            slot.slot = moleculeModel.value;
+
+            // get the name of the organism from the model and import it from the organisms folder
+            const fileMolecule = moleculeModel.value;
+            const pathToComponent = `../../components/molecules/${fileMolecule}.mjs`;
+            const moleculeComponent = await importModuleFromFile(pathToComponent, fileMolecule)
+            let moleculeComp =  new moleculeComponent[fileMolecule]();
+
+            // for that slot in viewTemplate, set component to be molecule
+            slot.component = moleculeComp
+
+            // next step would be to decide if the molecule contains other molecules, molecules or atoms
+            if(slot.component){
+              if (slot.component.atoms) {
+
+                      for (let [index, subCompAtom] of slot.component.atoms.entries()) {
+
+                        let subSubSubSubComp = subCompAtom.component
+                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === moleculeModel.id)
+
+                        if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+      
+                        if (subSubSubSubComp.value) {
+
+                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index].id)
+
+                           subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+
+
+                        }
+
+
+                        }
+
+                    }
+                    
+                  }
+
+                }
+
+          if (atomModel){
+
+            // set the slot of viewTemplate to the be the value of the organism
+            slot.slot = atomModel.value;
+
+            // get the name of the organism from the model and import it from the organisms folder
+            const fileAtom = atomModel.value;
+            const pathToComponent = `../../components/atoms/${fileAtom}.mjs`;
+            const atomComponent = await importModuleFromFile(pathToComponent, fileAtom)
+            let atomComp =  new atomComponent[fileAtom]();
+
+            // for that slot in viewTemplate, set component to be molecule
+            slot.component = atomComp
+
+            // next step would be to decide if the molecule contains other molecules, molecules or atoms
+            if(slot.component){
+              if (slot.component.value) {
+
+                          let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModel.id)
+
+                          slot.component.value = [{value: atomValueModel.value}]
+
+                    }
+
+                  }
+
+                }
         }
         }
       }
@@ -242,25 +311,3 @@ export function Controller() {
   }
 
 }
-function generateAtoms(that, subSubSubComp, subSubSubCompModels) {
-  for (let [index, subCompAtom] of subSubSubComp.atoms.entries()) {
-
-    let subSubSubSubComp = subCompAtom.component;
-    let subSubSubSubCompModels = that.model.atoms.filter(at => at.parentId === subSubSubCompModels[0].id);
-
-    if (subSubSubSubComp.functions)
-      console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions);
-
-    if (subSubSubSubComp.value) {
-
-      let subSubSubSubSubCompModels = that.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index].id);
-
-      subSubSubSubComp.value = [{ value: subSubSubSubSubCompModels.value }];
-
-
-    }
-
-
-  }
-}
-
