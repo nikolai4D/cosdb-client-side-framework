@@ -97,6 +97,42 @@ export function Controller() {
 
                   console.log("subSubComp", subSubComp)
 
+                  if (subSubComp.functions) console.log(subSubComp.constructorKey, subSubComp.functions)
+
+                  if (subSubComp.molecules){
+
+                    for (let subCompMolecule of subSubComp.molecules) {
+
+                      let subSubSubComp = subCompMolecule.component
+    
+                      console.log("subSubSubComp", subSubSubComp)
+    
+                      if (subSubSubComp.functions) console.log(subSubSubComp.constructorKey, subSubSubComp.functions)
+    
+                      if (subSubSubComp.atoms){
+
+
+                        for (let subCompAtom of subSubSubComp.atoms) {
+
+                          let subSubSubSubComp = subCompAtom.component
+        
+                          console.log("subSubSubComp", subSubSubSubComp)
+        
+                          if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+        
+                          // if (subSubComp.atoms){
+
+                            
+                          
+                          // }
+
+                      }
+                      
+                      }
+
+                  }
+
+
                   // get the organism from the model with the organism id as parentId
                   // const subOrganismModel = this.model.organisms.find(org => org.parentId === organismModel.id)
 
