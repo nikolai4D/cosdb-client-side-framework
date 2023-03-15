@@ -99,11 +99,7 @@ async function createSubOrganism(subComponentBody, id, selectedValue) {
 
 async function createSubOrganismsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
-    // console.log("!!!!!!!!!!comp", comp);
     // const [[key, value]] = Object.entries(comp);
-    // console.log("key", key, "value", value);
-    // const testOjb = Object.entries(comp);
-    // console.log("testOjb", testOjb);
     const key = "organism";
     const value = comp.organism;
 
@@ -128,7 +124,9 @@ async function createSubOrganismsEl(subComps, id, compBody, parentBody) {
 
 async function createSubMoleculesEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
-    const [[key, value]] = Object.entries(comp);
+    // const [[key, value]] = Object.entries(comp);
+    const key = "molecule";
+    const value = comp.molecule;
     const parentId = id;
 
     let childSlot = await Molecule(
@@ -149,8 +147,9 @@ async function createSubMoleculesEl(subComps, id, compBody, parentBody) {
 
 async function createFunctionsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
+    console.log("comp", comp);
     const [[key, value]] = Object.entries(comp);
-    console.log("key", key, "value", value);
+
     const parentId = id;
 
     let childSlot = await Function(await newFunction(parentId, key), compBody);
