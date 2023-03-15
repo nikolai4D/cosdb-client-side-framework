@@ -182,7 +182,7 @@ export function Controller() {
 
               if (slot.component.molecules) {
 
-                  for (let subCompMolecule of slot.component.molecules) {
+                  for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
 
                     let subSubSubComp = subCompMolecule.component
                     let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
@@ -197,20 +197,20 @@ export function Controller() {
 
                     if (subSubSubComp.atoms){
 
-                      for (let [index, subCompAtom] of subSubSubComp.atoms.entries()) {
+                      for (let [index2, subCompAtom] of subSubSubComp.atoms.entries()) {
 
                         let subSubSubSubComp = subCompAtom.component
-                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[0].id)
+                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id)
       
                         if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
       
                         if (subSubSubSubComp.value) {
 
-                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index].id)
+                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index2].id)
 
                           console.log("subSubSubSubSubCompModels", subSubSubSubSubCompModels)
                           console.log("subCompAtom", subCompAtom)
-                          console.log("index", index)
+                          console.log("index", index2)
                           subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
 
 
