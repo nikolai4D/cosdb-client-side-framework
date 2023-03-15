@@ -37,7 +37,7 @@ export function Controller() {
 
     this.slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id)
 
-    let component = new viewTemplateComponent[file]();
+    let component = new viewTemplateComponent[file](model);
 
     return component
 
@@ -89,7 +89,7 @@ export function Controller() {
 
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
-
+                if (slot.component.organisms) {
                 // for viewTempalate slot that has an organism, loop through its organisms
                 for (let subCompOrganism of slot.component.organisms) {
 
@@ -138,7 +138,7 @@ export function Controller() {
                             // if (subSubSubSubSubCompModels.length > 1) console.log("more than one atomValue")
 
                              console.log("atomvalue", subSubSubSubSubCompModels.value)
-                             subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+                            //  subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
 
                              console.log("subSubSubSubComp!!!!!!", subSubSubSubComp)
 
@@ -176,7 +176,7 @@ export function Controller() {
                 // }
               }
             }
-
+          }
                           // if (organism.molecules) {
               //   console.log("contains molecules")
               // }
