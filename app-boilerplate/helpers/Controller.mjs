@@ -244,6 +244,8 @@ export function Controller() {
 
 
 function generateAtoms(that, subSubSubComp, subSubSubCompModels, index) {
+
+  console.log(that, subSubSubComp, subSubSubCompModels, index, "HELLO")
   for (let [index2, subCompAtom] of subSubSubComp.atoms.entries()) {
 
     let subSubSubSubComp = subCompAtom.component;
