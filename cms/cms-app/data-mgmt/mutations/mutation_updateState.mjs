@@ -24,9 +24,10 @@ export async function mutation_updateState(
       }
     }
     if (customType === "views") {
-      data.valueDisabled = index.valueDisabled;
-      data.protected = index.protected;
-      data.startView = index.startView;
+      //   data.valueDisabled = index.valueDisabled;
+      //   data.protected = index.protected;
+      //   data.startView = index.startView;
+      console.log("view data: ", data, "view index: ", index);
       customTypeData.splice(index, 1, data);
     } else {
       customTypeData.splice(index, 1, data);
