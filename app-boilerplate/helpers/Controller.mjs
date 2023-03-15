@@ -85,7 +85,7 @@ export function Controller() {
               let organismComp =  new organismComponent[fileOrganism]();
 
               // for that slot in viewTemplate, set component to be organism
-              slot.component =  organismComp
+              slot.component = organismComp
 
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
@@ -94,8 +94,12 @@ export function Controller() {
                 for (let subCompOrganism of slot.component.organisms) {
 
                   let subSubComp = subCompOrganism.component
+                  let subSubCompModels = this.model.organisms.filter(org => org.parentId === organismModel.id)
 
-                  console.log("subSubComp", subSubComp)
+                  if (subSubCompModels.length > 1) console.log("more than one organism")
+
+                  console.log("subSubCompModels", subSubCompModels)
+                  console.log("subSubCompModel.id", subSubCompModel[0].id)
 
                   if (subSubComp.functions) console.log(subSubComp.constructorKey, subSubComp.functions)
 
@@ -104,8 +108,13 @@ export function Controller() {
                     for (let subCompMolecule of subSubComp.molecules) {
 
                       let subSubSubComp = subCompMolecule.component
-    
-                      console.log("subSubSubComp", subSubSubComp)
+                      let subSubSubCompModel = this.model.molecules.filter(mol => mol.parentId === subSubCompModel.id)
+
+                      if (subSubSubCompModel.length > 1) console.log("more than one molecule")
+
+                      console.log("subSubSubCompModel", subSubSubCompModel)
+                      console.log("subSubSubCompModel.id", subSubSubCompModel[0].id)
+
     
                       if (subSubSubComp.functions) console.log(subSubSubComp.constructorKey, subSubSubComp.functions)
     
@@ -122,6 +131,13 @@ export function Controller() {
         
                           if (subSubSubSubComp.value) {
                              console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.value)
+
+                             // in model
+                            //  find atomValue with parentId of atom
+                            //     find atom with parentId of molecule
+                            //        find molecule with parentId of organism
+                            //           find organism with parentId of organism
+                            //            find organism with parentId of viewTemplate
 
                           }
 
