@@ -29,7 +29,7 @@ export function Molecule_dummy4() {
 
   this.getHtml = function() {
     return `
-    <div>
+    <div class="molecule_dummy4">
       <div>${slot(this.atoms[0].atom)}</div>
       <div>${slot(this.atoms[1].atom)}</div>
     </div>
