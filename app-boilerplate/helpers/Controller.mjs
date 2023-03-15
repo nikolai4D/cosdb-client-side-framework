@@ -255,12 +255,12 @@ export function Controller() {
 
                   if (subSubSubSubComp.value) {
 
-                    let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[0].id)
+                    let subSubSubSubSubCompModels = this.model.atomValues.filter(at => at.parentId === subSubSubSubCompModels[0].id)
 
                     // if (subSubSubSubSubCompModels.length > 1) console.log("more than one atomValue")
 
                      console.log("atomvalue", subSubSubSubSubCompModels.value)
-                     subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+                     subSubSubSubComp.value = [{value: subSubSubSubSubCompModels[0].value}]
 
                      console.log("subSubSubSubComp!!!!!!", subSubSubSubComp)
 
