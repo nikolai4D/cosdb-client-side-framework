@@ -120,10 +120,12 @@ export function Controller() {
         
                           if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
         
-                          // if (subSubComp.atoms){
+                          if (subSubSubSubComp.value) {
+                             console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.value)
 
-                            
-                          
+                          }
+
+
                           }
 
                       }
