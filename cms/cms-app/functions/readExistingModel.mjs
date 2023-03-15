@@ -94,7 +94,7 @@ async function createOrganism(componentId, componentBody) {
       await createMolecule(organism.id, organismBody);
 
       // add functions from state
-      //await createFunction(existingOrganism.id, organismBody, componentBody);
+
       await getComponentFunctions(
         organism.value,
         organism.id,
@@ -120,7 +120,7 @@ async function createMolecule(componentId, componentBody) {
       await createAtom(molecule.id, moleculeBody);
 
       // add functions from state
-      //await createFunction(existingMolecule.id, moleculeBody, componentBody);
+
       await getComponentFunctions(
         molecule.value,
         molecule.id,
@@ -202,20 +202,6 @@ async function createFunctionsEl(componentFunctions, id, body, parentBody) {
       functionSlot = await Function(await newFunction(parentId, key), body);
     }
 
-    //let functionSlot = await Function(await newFunction(parentId), body);
-
     parentBody.insertBefore(functionSlot, parentBody.firstChild);
   }
 }
-
-// async function createFunction(id, body, parentBody) {
-//   const functions = State.functions.filter((fn) => fn.parentId === id);
-//   console.log("readExistingModel: functions:", functions);
-
-//   if (functions) {
-//     for (const fn of functions) {
-//       const fnDiv = await Function(fn, body);
-//       parentBody.insertBefore(fnDiv, parentBody.firstChild);
-//     }
-//   }
-// }
