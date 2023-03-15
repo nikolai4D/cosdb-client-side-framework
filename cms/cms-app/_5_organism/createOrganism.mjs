@@ -101,7 +101,7 @@ async function createSubOrganismsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
     console.log("comp", comp);
     // const [[key, value]] = Object.entries(comp);
-    const key = "organism";
+    const key = "organism " + comp.id;
     const value = comp.organism;
 
     const parentId = id;
@@ -127,7 +127,7 @@ async function createSubMoleculesEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
     console.log("comp", comp);
     // const [[key, value]] = Object.entries(comp);
-    const key = "molecule";
+    const key = "molecule " + comp.id;
     const value = comp.molecule;
     const parentId = id;
 
@@ -151,7 +151,7 @@ async function createFunctionsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
     console.log("comp", comp);
     // const [[key, value]] = Object.entries(comp);
-    const key = "function";
+    const key = "function " + comp.id;
     const value = comp.function;
     const parentId = id;
 
