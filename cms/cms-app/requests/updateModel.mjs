@@ -4,7 +4,9 @@ import { writeModel } from "./writeModel.mjs";
 
 export async function updateModel(id, value, parentId="", type) {
 
-    try {    let existingModel = await readModel();
+    try {
+      
+      let existingModel = await readModel();
     
       existingModel[type].push({
         id,

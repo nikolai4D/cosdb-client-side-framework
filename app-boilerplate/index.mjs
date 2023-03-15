@@ -1,12 +1,24 @@
 import {Router, route} from "../core/Router.mjs";
 import {Controller} from "./helpers/Controller.mjs";
-
-export const router = new Router([
-    route("", Controller)
-])
+import { readModel } from "./helpers/readModel.mjs";
+import { ViewTemplate_dummy1 } from "../../components/viewTemplates/ViewTemplate_dummy1.mjs";
 
 const path = window.location.pathname.slice(1)
 console.log("path: " , path)
 
+readModel();
+
+export const router = new Router([
+    route(path, Controller)
+])
+
+
 router.goTo(path)
 
+
+
+// get viewPath if in model
+
+
+
+// Controller.prototype.template= new ViewTemplate_dummy1();

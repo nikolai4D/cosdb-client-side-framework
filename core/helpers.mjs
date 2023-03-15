@@ -18,6 +18,7 @@ export async function importModuleFromFile(
   filename
 ) {
   const module = await import(`${path}`);
-  return module[filename]();
+  return module;
 }
 
+export const slot =(name)=> `<div data-slot="${name}" class="slot"></div>`
