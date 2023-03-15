@@ -170,24 +170,7 @@ export function Controller() {
 
                     if (subSubSubComp.atoms){
 
-                      for (let [index2, subCompAtom] of subSubSubComp.atoms.entries()) {
-
-                        let subSubSubSubComp = subCompAtom.component
-                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id)
-      
-                        if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
-      
-                        if (subSubSubSubComp.value) {
-
-                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index2].id)
-
-                          subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
-
-
-                        }
-
-
-                        }
+                      generateAtoms.call(this, subSubSubComp, subSubSubCompModels, index);
 
                     }
                     
@@ -258,3 +241,25 @@ export function Controller() {
   }
 
 }
+function generateAtoms(this, subSubSubComp, subSubSubCompModels, index) {
+  for (let [index2, subCompAtom] of subSubSubComp.atoms.entries()) {
+
+    let subSubSubSubComp = subCompAtom.component;
+    let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id);
+
+    if (subSubSubSubComp.functions)
+      console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions);
+
+    if (subSubSubSubComp.value) {
+
+      let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index2].id);
+
+      subSubSubSubComp.value = [{ value: subSubSubSubSubCompModels.value }];
+
+
+    }
+
+
+  }
+}
+
