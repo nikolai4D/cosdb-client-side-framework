@@ -5,17 +5,17 @@ import { State } from "../../State.mjs";
 // import { State } from "../../data-mgmt/State.mjs";
 
 
-export function Organism_dummy1(parentId) {
+export function Organism_dummy1() {
   Component.call(this);
 
   this.organisms = [
     { 
       organism: "Organism_dummy2",
-      component: (param) => new Organism_dummy2(param)
+      component:  new Organism_dummy2()
     },
     { 
       organism: "Organism_dummy2",
-      component: (param) => new Organism_dummy2(param)
+      component:  new Organism_dummy2()
     },
   ]
 
@@ -38,12 +38,12 @@ export function Organism_dummy1(parentId) {
 
   this.bindScript= async function() {
 
-    const state = await State
-    const organisms = state.model.organisms
-    const id = organisms.find(org => org.parentId === parentId).id
+    // const state = await State
+    // const organisms = state.model.organisms
+    // const id = organisms.find(org => org.parentId === parentId).id
 
     for (let org of this.organisms) {
-      await this.fillSlot(org.organism, org.component(id).getElement())
+      await this.fillSlot(org.organism, org.component().getElement())
     }
   }
 }

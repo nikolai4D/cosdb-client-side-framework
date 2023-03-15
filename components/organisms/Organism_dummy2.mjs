@@ -3,13 +3,13 @@ import { slot } from  "../../core/helpers.mjs";
 import { Molecule_dummy1 } from "../molecules/Molecule_dummy1.mjs";
 import { State } from "../../State.mjs";
 
-export function Organism_dummy2(parentId) {
+export function Organism_dummy2() {
   Component.call(this);
 
   this.molecules = [
     {
       molecule: "Molecule_dummy1",
-      component: (param) => new Molecule_dummy1(param)
+      component: new Molecule_dummy1()
     }
   ]
 
@@ -30,12 +30,12 @@ export function Organism_dummy2(parentId) {
 
   this.bindScript= async function() {
 
-    const state = await State
-    const organisms = state.model.organisms
-    const id = organisms.find(org => org.parentId === parentId).id
+    // const state = await State
+    // const organisms = state.model.organisms
+    // const id = organisms.find(org => org.parentId === parentId).id
 
     for (let mol of this.molecules) {
-      await this.fillSlot(mol.molecule, mol.component(id).getElement())
+      await this.fillSlot(mol.molecule, mol.component().getElement())
     }
   }
 

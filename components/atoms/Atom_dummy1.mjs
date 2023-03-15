@@ -1,7 +1,7 @@
 import { Component } from "../../core/Component.mjs";
 import { State } from "../../State.mjs";
 
-export function Atom_dummy1(parentId) {
+export function Atom_dummy1() {
   Component.call(this);
 
   this.value = [{ value: "value1" }];
