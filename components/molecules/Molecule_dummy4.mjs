@@ -9,23 +9,21 @@ export function Molecule_dummy4() {
   
   this.atoms = [
     {
+      id: 1,
       atom: "Atom_dummy3",
       component: Atom_dummy3()
     },
     {
+      id: 2,
       atom: "Atom_dummy4",
       component: Atom_dummy4()
     }
   ]
 
   this.functions = [
-    {
-      function: "function1",
-    },
-    {
-      function: "function2",
-    }
-  ]
+    { id: 1, function: "placeholder" },
+    { id: 2, function: "placeholder" },
+  ];
 
   this.getHtml = function() {
     return `

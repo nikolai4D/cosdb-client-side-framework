@@ -1,14 +1,16 @@
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
 import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
+import { viewTemplateValues } from "./viewTemplateValues.mjs";
 
 export async function ViewTemplate(viewTemplate) {
+  //console.log("ViewTemplate:", viewTemplate);
   const viewTemplateDiv = document.createElement("div");
   viewTemplateDiv.classList.add(viewTemplate.customType);
 
   const customType = viewTemplate.customType;
   const key = viewTemplate.key;
-  const values = viewTemplate.values;
-  const selectedValue = viewTemplate.selectedValue;
+  const values = await viewTemplateValues();
+  const value = viewTemplate.value;
   const id = viewTemplate.id;
   const parentId = viewTemplate.parentId;
   const valueDisabled = viewTemplate.valueDisabled;
@@ -22,7 +24,7 @@ export async function ViewTemplate(viewTemplate) {
     customType,
     key,
     values,
-    selectedValue,
+    value,
     id,
     parentId,
     valueDisabled

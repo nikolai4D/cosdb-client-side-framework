@@ -6,7 +6,7 @@ export function accordionDropdown(
   customType,
   key,
   values,
-  selectedValue,
+  value,
   id,
   parentId,
   valueDisabled
@@ -15,7 +15,7 @@ export function accordionDropdown(
     customType,
     key,
     values,
-    selectedValue,
+    value,
     id,
     parentId,
     valueDisabled
@@ -27,7 +27,7 @@ export function accordionDropdown(
     bodyContent,
     customType,
     key,
-    selectedValue,
+    value,
     id,
     parentId
   );

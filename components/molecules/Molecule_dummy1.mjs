@@ -9,23 +9,21 @@ export function Molecule_dummy1() {
 
   this.atoms = [
     {
+      id: 1,
       atom: "Atom_dummy1",
       component:  new Atom_dummy1()
     },
     {
+      id: 2,
       atom: "Atom_dummy2",
       component: new Atom_dummy2()
     }
   ]
 
   this.functions = [
-    {
-      function: "function1",
-    },
-    {
-      function: "function2",
-    }
-  ]
+    { id: 1, function: "placeholder" },
+    { id: 2, function: "placeholder" },
+  ];
 
   this.getHtml = function(){
     return `
@@ -42,43 +40,3 @@ export function Molecule_dummy1() {
     }
   }
 }
-
-
-    // const state = await State
-    // const molecules = state.model.molecules
-    // const moleculeId = molecules.find(mol => mol.parentId === parentId).id
-
-    // for (let [index, atom] of this.atoms.entries()) {
-
-    //   const atoms = state.model.atoms
-    //   const atomValues = state.model.atomValues
-
-    //   // })
-    //   console.log(index, atom, "index atom")
-
-    //   console.log(moleculeId, "moleculeId")
-
-
-    //   let atomsWithSameValue = atoms.filter(at => at.value === atom.atom && at.parentId === moleculeId)
-    //   console.log(atomsWithSameValue, "atoms with same value")
-
-    //   let atomValuesWithAtomAsParent = atomsWithSameValue.filter(at => atomValues.find(atVal => atVal.parentId === at.id))
-    //   console.log(atomValuesWithAtomAsParent, "atom values with atom as parent")
-      
-    //   let newComponent = atom.component(moleculeId)
-    //   atom.component.value  =  [{ value: atomValuesWithAtomAsParent[index].value }]
-
-    //   console.log(newComponent, "new component")
-
-      // atomValues.filter(at => at.parentId === parentId)
-
-
-      // atomValues.filter(atVal => {
-      //   if (atVal.parentId === atom.atom) {
-
-
-      // const currentAtomValue = atomValues.find(atVal => atVal.parentId === atomId)
-
-
-      // await this.fillSlot(atom.atom, atom.component.getElement())
-
