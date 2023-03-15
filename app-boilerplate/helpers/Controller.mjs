@@ -167,10 +167,10 @@ export function Controller() {
                     if (subSubSubCompModels.length > 1) console.log("more than one molecule")
 
                     if (subSubSubComp.functions) console.log(subSubSubComp.constructorKey, subSubSubComp.functions)
+                    let that = this
 
                     if (subSubSubComp.atoms){
-
-                      generateAtoms.call(this, subSubSubComp, subSubSubCompModels, index);
+                      generateAtoms.call(that, subSubSubComp, subSubSubCompModels, index);
 
                     }
                     
@@ -241,18 +241,18 @@ export function Controller() {
   }
 
 }
-function generateAtoms(this: this, subSubSubComp, subSubSubCompModels, index) {
+function generateAtoms(that, subSubSubComp, subSubSubCompModels, index) {
   for (let [index2, subCompAtom] of subSubSubComp.atoms.entries()) {
 
     let subSubSubSubComp = subCompAtom.component;
-    let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id);
+    let subSubSubSubCompModels = that.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id);
 
     if (subSubSubSubComp.functions)
       console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions);
 
     if (subSubSubSubComp.value) {
 
-      let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index2].id);
+      let subSubSubSubSubCompModels = that.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index2].id);
 
       subSubSubSubComp.value = [{ value: subSubSubSubSubCompModels.value }];
 
