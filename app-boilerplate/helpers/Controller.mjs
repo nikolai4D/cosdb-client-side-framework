@@ -91,7 +91,7 @@ export function Controller() {
               if(slot.component){
 
                 // for viewTempalate slot that has an organism, loop through its organisms
-                for (let subCompOrganism of organism.organisms) {
+                for (let subCompOrganism of slot.component.organisms) {
 
                   let subSubComp = subCompOrganism.component
 
