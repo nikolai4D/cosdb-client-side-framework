@@ -201,10 +201,6 @@ export function Controller() {
 
                         let subSubSubSubComp = subCompAtom.component
                         let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[0].id)
-
-      
-                        console.log("subSubSubSubCompModels", subSubSubSubCompModels)
-                        console.log("subSubSubSubCompModels.id", subSubSubSubCompModels[0].id)
       
                         if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
       
@@ -212,20 +208,9 @@ export function Controller() {
 
                           let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[0].id)
 
-                          // if (subSubSubSubSubCompModels.length > 1) console.log("more than one atomValue")
 
-                          console.log("atomvalue", subSubSubSubSubCompModels.value)
                           subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
 
-                          console.log("subSubSubSubComp!!!!!!", subSubSubSubComp)
-
-
-                          // in model
-                          //  find atomValue with parentId of atom
-                          //     find atom with parentId of molecule
-                          //        find molecule with parentId of organism
-                          //           find organism with parentId of organism
-                          //            find organism with parentId of viewTemplate
 
                         }
 
@@ -261,8 +246,6 @@ export function Controller() {
 
 
                     }
-
-                
 
               }
           }
