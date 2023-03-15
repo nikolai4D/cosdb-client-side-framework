@@ -108,7 +108,7 @@ export function Controller() {
                     for (let subCompMolecule of subSubComp.molecules) {
 
                       let subSubSubComp = subCompMolecule.component
-                      let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModel.id)
+                      let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModels.id)
 
                       if (subSubSubCompModels.length > 1) console.log("more than one molecule")
 
