@@ -9,6 +9,14 @@ import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
 export async function createOrganism(componentBody, id, selectedValue) {
+  console.log(
+    "componentBody",
+    componentBody,
+    "id",
+    id,
+    "selectedValue",
+    selectedValue
+  );
   const subComponentBody = document.createElement("div");
   const newOrg = await newOrganism("organism", selectedValue, id);
   const organismSlot = await Organism(newOrg, subComponentBody);
