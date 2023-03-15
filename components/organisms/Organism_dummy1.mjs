@@ -55,5 +55,9 @@ export function Organism_dummy1() {
     for (let org of this.organisms) {
       await this.fillSlot(org.organism, org.component.getElement())
     }
+
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecules, mol.component.getElement())
+    }
   }
 }
