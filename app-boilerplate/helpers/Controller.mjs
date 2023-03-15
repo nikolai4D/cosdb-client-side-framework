@@ -208,8 +208,9 @@ export function Controller() {
 
                           let subSubSubSubSubCompModels = this.model.atomValues.filter(at => at.parentId === subSubSubSubCompModels[0].id)
 
-
-                          subSubSubSubComp.value = [{value: subSubSubSubSubCompModels[index].value}]
+                          console.log("subSubSubSubSubCompModels", subSubSubSubSubCompModels)
+                          console.log("index", index)
+                          subSubSubSubComp.value = [{value: subSubSubSubSubCompModels[0].value}]
 
 
                         }
