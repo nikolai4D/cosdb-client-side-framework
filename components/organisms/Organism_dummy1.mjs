@@ -1,8 +1,6 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
 import { Organism_dummy2 } from "./Organism_dummy2.mjs";
-import { State } from "../../State.mjs";
-// import { State } from "../../data-mgmt/State.mjs";
 import { Molecule_dummy1 } from "../molecules/Molecule_dummy1.mjs";
 import { Molecule_dummy2 } from "../molecules/Molecule_dummy2.mjs";
 
