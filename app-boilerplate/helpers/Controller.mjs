@@ -44,30 +44,81 @@ export function Controller() {
   }
 
   this.getSlots = async () => {
+
+    // get viewTemplate from model
     let component = this.childComponent
 
+    // loop through slots in viewTemplate
     for (let slot of component.slots) {
 
+      // get the slot from the model
         let specificSlot =  this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
+
+        // if the slot exists in the model
         if (specificSlot) {
+
+          // get the component from the model with the slot id as parentId
           let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
 
+          // if the component exists in the model
           if (specificComponent) {
 
+            // find organism with the component id as parentId
             const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
 
+            // find molecule with the component id as parentId
+            const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id)
+
+            // find atom with the component id as parentId
+            const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
+
+            // if the organism exists in the model
             if (organismModel) {
+
+              // set the slot of viewTemplate to the be the value of the organism
               slot.slot = organismModel.value;
 
+              // get the name of the organism from the model and import it from the organisms folder
               const fileOrganism = organismModel.value;
               const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`;
               const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
-              let organism =  new organismComponent[fileOrganism](specificComponent.id);
+              let organismComp =  new organismComponent[fileOrganism]();
 
-              console.log(organism, "organism")
+              // for that slot in viewTemplate, set component to be organism
+              slot.component =  organismComp
 
-              slot.component =  organism
+              // next step would be to decide if the organism contains other organisms, molecules or atoms
+              if(organism.organisms){
+
+                // for viewTempalate slot that has an organism, loop through its organisms
+                for (let subCompOrganism of organism.organisms) {
+
+                  let subSubComp = subCompOrganism.component
+
+                  console.log("subSubComp", subSubComp)
+
+                  // get the organism from the model with the organism id as parentId
+                  // const subOrganismModel = this.model.organisms.find(org => org.parentId === organismModel.id)
+
+                  // if the organism exists in the model
+                //   if (subOrganismModel) {
+
+                //     organismComp.slot = organismModel.value;
+                //     const fileOrganism = organismModel.value;
+                //     const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`;
+                //     const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
+                //     let subCompOrganism =  new organismComponent[fileOrganism](specificComponent.id);
+                // }
+              }
             }
+
+                          // if (organism.molecules) {
+              //   console.log("contains molecules")
+              // }
+
+              // if (organism.atoms) {
+              //   console.log("contains atoms")
+              // }
           }
         }
       }
