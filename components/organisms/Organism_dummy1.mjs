@@ -38,7 +38,7 @@ export function Organism_dummy1() {
 
   this.getHtml = function(){
     return `<div class="organism_dummy1">
-            <div class="organism_dummy1_1">${slot(this.organisms[0].organism)}</div>
+            <div class="organism_dummy1_2">${slot(this.organisms[0].organism)}</div>
             <div>${slot(this.molecules[0].molecule)}</div>
             <div>${slot(this.molecules[1].molecule)}</div>
 
