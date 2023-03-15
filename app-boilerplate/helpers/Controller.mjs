@@ -90,7 +90,7 @@ export function Controller() {
 
      this.childComponent.model = this.model;
 
-    return await this.childComponent ;
+    return  this.childComponent ;
 
   }
 
