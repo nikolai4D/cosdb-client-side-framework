@@ -101,6 +101,7 @@ async function createSubOrganismsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
     console.log("!!!!!!!!!!comp", comp);
     const [[key, value]] = Object.entries(comp);
+    console.log("key", key, "value", value);
     const parentId = id;
 
     let childSlot = await Organism(
