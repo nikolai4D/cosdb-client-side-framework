@@ -22,6 +22,12 @@ export async function mutation_updateState(
       } else {
         customTypeData.splice(index, 1, data);
       }
+    }
+    if (customType === "views") {
+      data.valueDisabled = index.valueDisabled;
+      data.protected = index.protected;
+      data.startView = index.startView;
+      customTypeData.splice(index, 1, data);
     } else {
       customTypeData.splice(index, 1, data);
     }
