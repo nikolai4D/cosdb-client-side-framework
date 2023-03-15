@@ -1,4 +1,5 @@
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
+import { componentValues } from "./componentValues.mjs";
 // import { action } from "../data-mgmt/State.mjs";
 
 export async function Component(component) {
@@ -7,8 +8,8 @@ export async function Component(component) {
 
   const customType = component.customType;
   const key = component.key;
-  const values = component.values;
-  const selectedValue = component.selectedValue;
+  const values = await componentValues();
+  const value = component.value;
   const id = component.id;
   const parentId = component.parentId;
   const valueDisabled = component.valueDisabled;
@@ -22,7 +23,7 @@ export async function Component(component) {
     customType,
     key,
     values,
-    selectedValue,
+    value,
     id,
     parentId,
     valueDisabled

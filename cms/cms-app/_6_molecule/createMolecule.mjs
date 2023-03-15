@@ -64,7 +64,9 @@ export async function createSubMolecule(subComponentBody, id, selectedValue) {
 
 async function createSubAtomsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
-    const [[key, value]] = Object.entries(comp);
+    // const [[key, value]] = Object.entries(comp);
+    const key = "atom " + comp.id;
+    const value = comp.atom;
     const parentId = id;
 
     let childSlot = await Atom(await newAtom(key, value, parentId), compBody);
@@ -83,10 +85,12 @@ async function createSubAtomsEl(subComps, id, compBody, parentBody) {
 
 async function createFunctionsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
-    const [[key, value]] = Object.entries(comp);
+    // const [[key, value]] = Object.entries(comp);
+    const key = "function " + comp.id;
+    const value = comp.function;
     const parentId = id;
 
-    let childSlot = await Function(await newFunction(parentId), compBody);
+    let childSlot = await Function(await newFunction(parentId, key), compBody);
 
     parentBody.insertBefore(childSlot, parentBody.firstChild);
   }
