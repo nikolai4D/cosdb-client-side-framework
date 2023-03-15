@@ -15,7 +15,9 @@ export async function mutation_updateState(
       if (triggeredFromChange) {
         await deleteChildren(data.id);
       }
-    } else if (customType === "functions") {
+    }
+    if (customType === "functions") {
+      console.log("function data: ", data);
       if ((data.value = "")) {
         await deleteFunction(data.id);
       }
