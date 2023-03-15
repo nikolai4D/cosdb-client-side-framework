@@ -4,17 +4,17 @@ import { Atom_dummy1 } from "../atoms/Atom_dummy1.mjs";
 import { Atom_dummy2 } from "../atoms/Atom_dummy2.mjs";
 import { State } from "../../State.mjs";
 
-export function Molecule_dummy3(parentId) {
+export function Molecule_dummy3() {
   Component.call(this);
 
   this.atoms = [
     {
       atom: "Atom_dummy1",
-      component: (param) => new Atom_dummy1(param)
+      component: Atom_dummy1()
     },
     {
       atom: "Atom_dummy2",
-      component: (param) => new Atom_dummy2(param)
+      component: Atom_dummy2()
     }
   ]
 
@@ -43,7 +43,7 @@ export function Molecule_dummy3(parentId) {
     const id = molecules.find(mol => mol.parentId === parentId).id
 
     for (let atom of this.atoms) {
-      await this.fillSlot(atom.atom, atom.component(id).getElement())
+      await this.fillSlot(atom.atom, atom.component().getElement())
     }
   }
 }
