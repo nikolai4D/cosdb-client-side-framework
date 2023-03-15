@@ -200,7 +200,7 @@ export function Controller() {
                       for (let [index, subCompAtom] of subSubSubComp.atoms.entries()) {
 
                         let subSubSubSubComp = subCompAtom.component
-                        let subSubSubSubCompModels = this.model.atoms.find(at => at.parentId === subSubSubCompModels[0].id)
+                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[0].id)
       
                         if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
       
