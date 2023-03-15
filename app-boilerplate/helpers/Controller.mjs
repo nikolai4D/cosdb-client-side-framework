@@ -200,17 +200,18 @@ export function Controller() {
                       for (let [index, subCompAtom] of subSubSubComp.atoms.entries()) {
 
                         let subSubSubSubComp = subCompAtom.component
-                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[0].id)
+                        let subSubSubSubCompModels = this.model.atoms.find(at => at.parentId === subSubSubCompModels[0].id)
       
                         if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
       
                         if (subSubSubSubComp.value) {
 
-                          let subSubSubSubSubCompModels = this.model.atomValues.filter(at => at.parentId === subSubSubSubCompModels[0].id)
+                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[0].id)
 
                           console.log("subSubSubSubSubCompModels", subSubSubSubSubCompModels)
+                          console.log("subCompAtom", subCompAtom)
                           console.log("index", index)
-                          subSubSubSubComp.value = [{value: subSubSubSubSubCompModels[0].value}]
+                          subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
 
 
                         }
