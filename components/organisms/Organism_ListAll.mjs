@@ -1,7 +1,7 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
 import { Molecule_ListWHeading } from "../molecules/Molecule_ListWHeading.mjs";
-import { Molecule_HeadingSearchWButton } from "../molecules/Molecule_HeadingSearchButton.mjs";
+import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearchButton.mjs";
 
 export function Organism_ListAll() {
   Component.call(this);
@@ -9,8 +9,8 @@ export function Organism_ListAll() {
   this.molecules = [
     {
         id: 1,
-        molecule: "Molecule_HeadingSearchWButton",
-        component: new Molecule_HeadingSearchWButton()
+        molecule: "Molecule_HeadingSearchButton",
+        component: new Molecule_HeadingSearchButton()
     },
     {
         id: 2,
