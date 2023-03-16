@@ -186,7 +186,7 @@ export function Controller() {
             if(slot.component){
               if (slot.component.atoms) {
                 if (slot.component.atoms) {
-                  await processAtoms(slot.component, organismModel);
+                  await processAtoms(slot.component, moleculeComp);
                 }
 
                     }
