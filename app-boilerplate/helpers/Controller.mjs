@@ -1,4 +1,5 @@
 
+
 import { View } from "../../core/View.mjs";
 import { ViewTemplate_dummy1 } from "../../components/viewTemplates/ViewTemplate_dummy1.mjs";
 import { ViewTemplate_dummy2 } from "../../components/viewTemplates/ViewTemplate_dummy2.mjs";
@@ -18,35 +19,74 @@ export function Controller() {
 
   this.model = null;
 
-  this.getComponent = async () => { 
-
+  this.getComponent = async function() {
     this.model = await readModel();
-
-    // getting the view title from the url to get the view from model
-    const path = window.location.pathname.slice(1)
-    // getting the view from the model to get the id
-    const view = this.model.views.find(view => view.value === path)
-    // getting the viewTemplate from the model with the view id as parentId
-    const viewTemplate = this.model.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id)
-    // getting the name of the viewTemplate
+  
+    // Get the view title from the URL to find the corresponding view from the model
+    const path = window.location.pathname.slice(1);
+  
+    // Find the view in the model using the path
+    const view = this.model.views.find(view => view.value === path);
+    if (!view) {
+      throw new Error(`View not found for path: ${path}`);
+    }
+  
+    // Find the viewTemplate in the model using the view's ID as the parentId
+    const viewTemplate = this.model.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id);
+    if (!viewTemplate) {
+      throw new Error(`ViewTemplate not found for view ID: ${view.id}`);
+    }
+  
+    // Get the name and path of the viewTemplate component file
     const file = viewTemplate.value;
-    // getting the path to the viewTemplate prototype
-    const pathToComponent = `../../components/viewTemplates/${file}.mjs`
-    // importing the viewTemplate prototype
-
-    const viewTemplateComponent = await importModuleFromFile(pathToComponent, file)
-
-    this.slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id)
-
+    const pathToComponent = `../../components/viewTemplates/${file}.mjs`;
+  
+    // Import the viewTemplate component
+    const viewTemplateComponent = await importModuleFromFile(pathToComponent, file);
+  
+    // Filter the slots based on the viewTemplate's ID
+    this.slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id);
+  
+    // Instantiate the component
     let component = new viewTemplateComponent[file]();
-
-    return component
-
-  }
+  
+    return component;
+  };
 
   this.getComponents = async () => {}
 
   this.getSlots = async () => {
+
+    const processMolecules = async (subSubComp, subSubCompModels) => {
+      for (let molecule of subSubComp.molecules) {
+        let moleculeComponent = molecule.component;
+        let moleculeModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
+    
+        if (moleculeComponent.functions) {
+          // Perform necessary actions with moleculeComponent.functions
+        }
+    
+        if (moleculeComponent.atoms) {
+          await processAtoms(moleculeComponent, moleculeModels);
+        }
+      }
+    };
+    
+    const processAtoms = async (moleculeComponent, moleculeModels) => {
+      for (let [index, atom] of moleculeComponent.atoms.entries()) {
+        let atomComponent = atom.component;
+        let atomModels = this.model.atoms.filter(at => at.parentId === moleculeModels[0].id);
+    
+        if (atomComponent.functions) {
+          // Perform necessary actions with atomComponent.functions
+        }
+    
+        if (atomComponent.value) {
+          let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModels[index].id);
+          atomComponent.value = [{ value: atomValueModel.value }];
+        }
+      }
+    };
 
     // get viewTemplate from model
     let component = this.childComponent
@@ -74,6 +114,8 @@ export function Controller() {
 
             // find atom with the component id as parentId
             const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
+
+
 
             // if the organism exists in the model
             if (organismModel) {
@@ -104,42 +146,10 @@ export function Controller() {
 
                   if (subSubComp.functions) console.log(subSubComp.constructorKey, subSubComp.functions)
 
-                  if (subSubComp.molecules){
 
-                    for (let subCompMolecule of subSubComp.molecules) {
-
-                      let subSubSubComp = subCompMolecule.component
-                      let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id)
-
-                      if (subSubSubCompModels.length > 1) console.log("more than one molecule")
-    
-                      if (subSubSubComp.functions) console.log(subSubSubComp.constructorKey, subSubSubComp.functions)
-    
-                      if (subSubSubComp.atoms){
-
-                        for (let [index, subCompAtom] of subSubSubComp.atoms.entries()) {
-
-                          let subSubSubSubComp = subCompAtom.component
-                          let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[0].id)
-
-                          if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
-        
-                          if (subSubSubSubComp.value) {
-
-                            let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index].id)
-
-                             subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
-
-
-                          }
-
-
-                          }
-
-                      }
-                      
-                    }
-
+                  
+                  if (subSubComp.molecules) {
+                    await processMolecules(subSubComp, subSubCompModels);
                   }
 
 
