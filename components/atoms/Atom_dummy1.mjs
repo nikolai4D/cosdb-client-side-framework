@@ -13,18 +13,20 @@ export function Atom_dummy1() {
   `;
 }
 
-  this.bindScript = async function() {
-
-    // const state = await State
-    // const atoms = state.model.atoms
-    // const atomValues = state.model.atomValues
-
-    // const id = atoms.find(at => at.parentId === parentId).id
-    // const currentAtomValue = atomValues.find(atVal => atVal.parentId === id)
-
-    // console.log({currentAtomValue})
-
-    // this.value = currentAtomValue.value;
-
-  }
 }
+
+
+// import { Component } from "../../core/Component.mjs";
+
+
+// export function Atom_listItem(data=null) {
+//   Component.call(this);
+
+//   this.value = [{ value: "placeholder" }];
+
+//   this.getHtml = function(){
+//     return `<li>${data}</li>
+//   `
+// }
+
+// }
