@@ -58,9 +58,7 @@ nav {
     height: 75px;
 }
 
-nav > div {
-    padding-left: 1em;
-}
+
 
 nav > ul > div > a {
     color: black;
@@ -325,4 +323,11 @@ nav > ul {
 
 .organism_organisation-modal > i {
     font-size: xx-large;
+}
+
+.organism_navbar-logo {
+
+    display: flex;
+    align-items: center;
+
 }
