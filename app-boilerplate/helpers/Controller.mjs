@@ -60,7 +60,7 @@ export function Controller() {
   //   }
   // };
 
-  // A helper function to process the model based on its type
+// A helper function to process the model based on its type
 const processModel = async (slot, model, type) => {
   if (model) {
     slot.slot = model.value;
@@ -80,13 +80,15 @@ const processModel = async (slot, model, type) => {
 
       for (const nextType of nextTypes) {
         if (slot.component[nextType]) {
-          for (const nextComponent of slot.component[nextType]) {
+          for (let [index, nextComponent] of slot.component[nextType].entries()) {
             const nextModel = this.model[nextType].find(c => c.parentId === nextComponent.id);
             await processModel(nextComponent, nextModel, nextType);
 
             if (nextType === 'atoms' && nextComponent.value) {
-              let atomValueModel = this.model.atomValues.find(at => at.parentId === nextModel.id);
-              nextComponent.value = [{value: atomValueModel.value}];
+              let atomValueModels = this.model.atomValues.filter(at => at.parentId === nextModel.id);
+              if (atomValueModels[index]) {
+                nextComponent.value = [{value: atomValueModels[index].value}];
+              }
             }
           }
         }
@@ -117,7 +119,6 @@ this.getSlots = async () => {
     }
   }
 };
-
 //   // A helper function to process the model based on its type
 // // A helper function to process the model based on its type
 // const processModel = async (slot, model, type) => {
