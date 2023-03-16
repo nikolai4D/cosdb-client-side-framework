@@ -1,7 +1,7 @@
 import { Component } from "../../core/Component.mjs";
 
 
-export function Atom_Heading2() {
+export function Atom_Text1() {
   Component.call(this);
 
   this.value = [{ value: "placeholder" }];
