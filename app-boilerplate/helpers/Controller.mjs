@@ -84,6 +84,37 @@ export function Controller() {
             // find atom with the component id as parentId
             const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
 
+            const processMolecules = async (subSubComp, subSubCompModels) => {
+              for (let molecule of subSubComp.molecules) {
+                let moleculeComponent = molecule.component;
+                let moleculeModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
+            
+                if (moleculeComponent.functions) {
+                  // Perform necessary actions with moleculeComponent.functions
+                }
+            
+                if (moleculeComponent.atoms) {
+                  await processAtoms(moleculeComponent, moleculeModels);
+                }
+              }
+            };
+            
+            const processAtoms = async (moleculeComponent, moleculeModels) => {
+              for (let [index, atom] of moleculeComponent.atoms.entries()) {
+                let atomComponent = atom.component;
+                let atomModels = this.model.atoms.filter(at => at.parentId === moleculeModels[0].id);
+            
+                if (atomComponent.functions) {
+                  // Perform necessary actions with atomComponent.functions
+                }
+            
+                if (atomComponent.value) {
+                  let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModels[index].id);
+                  atomComponent.value = [{ value: atomValueModel.value }];
+                }
+              }
+            };
+
             // if the organism exists in the model
             if (organismModel) {
 
@@ -113,42 +144,10 @@ export function Controller() {
 
                   if (subSubComp.functions) console.log(subSubComp.constructorKey, subSubComp.functions)
 
-                  if (subSubComp.molecules){
 
-                    for (let subCompMolecule of subSubComp.molecules) {
-
-                      let subSubSubComp = subCompMolecule.component
-                      let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id)
-
-                      if (subSubSubCompModels.length > 1) console.log("more than one molecule")
-    
-                      if (subSubSubComp.functions) console.log(subSubSubComp.constructorKey, subSubSubComp.functions)
-    
-                      if (subSubSubComp.atoms){
-
-                        for (let [index, subCompAtom] of subSubSubComp.atoms.entries()) {
-
-                          let subSubSubSubComp = subCompAtom.component
-                          let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[0].id)
-
-                          if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
-        
-                          if (subSubSubSubComp.value) {
-
-                            let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index].id)
-
-                             subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
-
-
-                          }
-
-
-                          }
-
-                      }
-                      
-                    }
-
+                  
+                  if (subSubComp.molecules) {
+                    await processMolecules(subSubComp, subSubCompModels);
                   }
 
 
