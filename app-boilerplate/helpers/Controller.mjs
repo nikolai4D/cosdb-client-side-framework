@@ -30,38 +30,37 @@ export function Controller() {
 
   this.getComponents = async () => {};
 
-  this.getSlots = async () => {
-    let component = this.childComponent;
+  // this.getSlots = async () => {
+  //   let component = this.childComponent;
 
-    // Loop through slots in viewTemplate
-    for (let slot of component.slots) {
-      // Get the slot from the model
-      let specificSlot = this.slotsFromModel.find(slotModel => slotModel.value === slot.slot);
+  //   // Loop through slots in viewTemplate
+  //   for (let slot of component.slots) {
+  //     // Get the slot from the model
+  //     let specificSlot = this.slotsFromModel.find(slotModel => slotModel.value === slot.slot);
 
-      // If the slot exists in the model
-      if (specificSlot) {
-        // Get the component from the model with the slot id as parentId
-        let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id);
+  //     // If the slot exists in the model
+  //     if (specificSlot) {
+  //       // Get the component from the model with the slot id as parentId
+  //       let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id);
 
-        // If the component exists in the model
-        if (specificComponent) {
-          // Find the appropriate model based on the parentId
-          const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id);
-          const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id);
-          const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id);
+  //       // If the component exists in the model
+  //       if (specificComponent) {
+  //         // Find the appropriate model based on the parentId
+  //         const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id);
+  //         const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id);
+  //         const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id);
 
-          // Process the model depending on its type (organism, molecule, atom)
-          // The processModel function is defined below
-          await processModel(slot, organismModel, 'organisms');
-          await processModel(slot, moleculeModel, 'molecules');
-          await processModel(slot, atomModel, 'atoms');
-        }
-      }
-    }
-  };
+  //         // Process the model depending on its type (organism, molecule, atom)
+  //         // The processModel function is defined below
+  //         await processModel(slot, organismModel, 'organisms');
+  //         await processModel(slot, moleculeModel, 'molecules');
+  //         await processModel(slot, atomModel, 'atoms');
+  //       }
+  //     }
+  //   }
+  // };
 
   // A helper function to process the model based on its type
-// A helper function to process the model based on its type
 const processModel = async (slot, model, type) => {
   if (model) {
     slot.slot = model.value;
@@ -75,52 +74,111 @@ const processModel = async (slot, model, type) => {
 
     // Process nested components if they exist
     if (slot.component) {
-      if (type === 'organisms') {
-        // Process nested organisms, molecules, and atoms
-        if (slot.component.organisms) {
-          for (let organism of slot.component.organisms) {
-            const organismModel = this.model.organisms.find(org => org.parentId === organism.id);
-            await processModel(organism, organismModel, 'organisms');
-          }
-        }
-        if (slot.component.molecules) {
-          for (let molecule of slot.component.molecules) {
-            const moleculeModel = this.model.molecules.find(mol => mol.parentId === molecule.id);
-            await processModel(molecule, moleculeModel, 'molecules');
-          }
-        }
-        if (slot.component.atoms) {
-          for (let atom of slot.component.atoms) {
-            const atomModel = this.model.atoms.find(at => at.parentId === atom.id);
-            await processModel(atom, atomModel, 'atoms');
-          }
-        }
-      } else if (type === 'molecules') {
-        // Process nested molecules and atoms
-        if (slot.component.molecules) {
-          for (let molecule of slot.component.molecules) {
-            const moleculeModel = this.model.molecules.find(mol => mol.parentId === molecule.id);
-            await processModel(molecule, moleculeModel, 'molecules');
-          }
-        }
-        if (slot.component.atoms) {
-          for (let atom of slot.component.atoms) {
-            const atomModel = this.model.atoms.find(at => at.parentId === atom.id);
-            await processModel(atom, atomModel, 'atoms');
-          }
-        }
-      } else if (type === 'atoms') {
-        // Process nested atoms
-        if (slot.component.atoms) {
-          for (let atom of slot.component.atoms) {
-            const atomModel = this.model.atoms.find(at => at.parentId === atom.id);
-            await processModel(atom, atomModel, 'atoms');
+      const types = ['organisms', 'molecules', 'atoms'];
+      const index = types.indexOf(type);
+      const nextTypes = types.slice(index + 1);
+
+      for (const nextType of nextTypes) {
+        if (slot.component[nextType]) {
+          for (const nextComponent of slot.component[nextType]) {
+            const nextModel = this.model[nextType].find(c => c.parentId === nextComponent.id);
+            await processModel(nextComponent, nextModel, nextType);
+
+            if (nextType === 'atoms' && nextComponent.value) {
+              let atomValueModel = this.model.atomValues.find(at => at.parentId === nextModel.id);
+              nextComponent.value = [{value: atomValueModel.value}];
+            }
           }
         }
       }
     }
   }
 };
+
+this.getSlots = async () => {
+  let component = this.childComponent;
+
+  for (let slot of component.slots) {
+    let specificSlot = this.slotsFromModel.find(slotModel => slotModel.value === slot.slot);
+
+    if (specificSlot) {
+      let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id);
+
+      if (specificComponent) {
+        const types = ['organisms', 'molecules', 'atoms'];
+        for (const type of types) {
+          const model = this.model[type].find(c => c.parentId === specificComponent.id);
+          if (model) {
+            await processModel(slot, model, type);
+            break;
+          }
+        }
+      }
+    }
+  }
+};
+
+//   // A helper function to process the model based on its type
+// // A helper function to process the model based on its type
+// const processModel = async (slot, model, type) => {
+//   if (model) {
+//     slot.slot = model.value;
+
+//     const fileType = model.value;
+//     const pathToComponent = `../../components/${type}/${fileType}.mjs`;
+//     const component = await importModuleFromFile(pathToComponent, fileType);
+//     const compInstance = new component[fileType]();
+
+//     slot.component = compInstance;
+
+//     // Process nested components if they exist
+//     if (slot.component) {
+//       if (type === 'organisms') {
+//         // Process nested organisms, molecules, and atoms
+//         if (slot.component.organisms) {
+//           for (let organism of slot.component.organisms) {
+//             const organismModel = this.model.organisms.find(org => org.parentId === organism.id);
+//             await processModel(organism, organismModel, 'organisms');
+//           }
+//         }
+//         if (slot.component.molecules) {
+//           for (let molecule of slot.component.molecules) {
+//             const moleculeModel = this.model.molecules.find(mol => mol.parentId === molecule.id);
+//             await processModel(molecule, moleculeModel, 'molecules');
+//           }
+//         }
+//         if (slot.component.atoms) {
+//           for (let atom of slot.component.atoms) {
+//             const atomModel = this.model.atoms.find(at => at.parentId === atom.id);
+//             await processModel(atom, atomModel, 'atoms');
+//           }
+//         }
+//       } else if (type === 'molecules') {
+//         // Process nested molecules and atoms
+//         if (slot.component.molecules) {
+//           for (let molecule of slot.component.molecules) {
+//             const moleculeModel = this.model.molecules.find(mol => mol.parentId === molecule.id);
+//             await processModel(molecule, moleculeModel, 'molecules');
+//           }
+//         }
+//         if (slot.component.atoms) {
+//           for (let atom of slot.component.atoms) {
+//             const atomModel = this.model.atoms.find(at => at.parentId === atom.id);
+//             await processModel(atom, atomModel, 'atoms');
+//           }
+//         }
+//       } else if (type === 'atoms') {
+//         // Process nested atoms
+//         if (slot.component.atoms) {
+//           for (let atom of slot.component.atoms) {
+//             const atomModel = this.model.atoms.find(at => at.parentId === atom.id);
+//             await processModel(atom, atomModel, 'atoms');
+//           }
+//         }
+//       }
+//     }
+//   }
+// };
 
 
 // ...
