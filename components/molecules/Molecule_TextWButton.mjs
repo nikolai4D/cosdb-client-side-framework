@@ -29,9 +29,7 @@ export function Molecule_TextWButton() {
 
     return `
         <div>
-            <div class="user-text">
                 ${slot(this.atoms[0].atom)}
-            </div>
                 ${slot(this.atoms[1].atom)}
         </div>
 
