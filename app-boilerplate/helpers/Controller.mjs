@@ -57,21 +57,6 @@ export function Controller() {
 
   this.getSlots = async () => {
 
-    const processOrganisms = async (slotComponent, organismModel) => {
-      for (let organism of slotComponent.organisms) {
-        let organismComponent = organism.component;
-        let organismModels = this.model.organisms.filter(org => org.parentId === organismModel.id);
-    
-        if (organismComponent.functions) {
-          // Perform necessary actions with organismComponent.functions
-        }
-    
-        if (organismComponent.molecules) {
-          await processMolecules(organismComponent, organismModels);
-        }
-      }
-    };
-
     const processMolecules = async (subSubComp, subSubCompModels) => {
       for (let molecule of subSubComp.molecules) {
         let moleculeComponent = molecule.component;
@@ -102,13 +87,6 @@ export function Controller() {
         }
       }
     };
-
-    const createComponent = async (type, componentName) => {
-      const filePath = `../../components/${type}s/${componentName}.mjs`;
-      const componentModule = await importModuleFromFile(filePath, componentName);
-      return new componentModule[componentName]();
-    };
-    
 
     // get viewTemplate from model
     let component = this.childComponent
@@ -156,19 +134,91 @@ export function Controller() {
 
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
+                if (slot.component.organisms) {
 
-                  if (slot.component.organisms) {
-                    await processOrganisms(slot.component, organismModel);
+                // for viewTempalate slot that has an organism, loop through its organisms
+                for (let subCompOrganism of slot.component.organisms) {
+
+                  let subSubComp = subCompOrganism.component
+                  let subSubCompModels = this.model.organisms.filter(org => org.parentId === organismModel.id)
+
+                  if (subSubCompModels.length > 1) console.log("more than one organism")
+
+                  if (subSubComp.functions) console.log(subSubComp.constructorKey, subSubComp.functions)
+
+
+                  
+                  if (subSubComp.molecules) {
+                    await processMolecules(subSubComp, subSubCompModels);
                   }
 
 
-                  if (slot.component.molecules) {
-                    await processMolecules(slot.component, [organismModel]);
+              }
+              }
+
+              if (slot.component.molecules) {
+
+                  for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
+
+                    let subSubSubComp = subCompMolecule.component
+                    let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
+
+                    if (subSubSubCompModels.length > 1) console.log("more than one molecule")
+
+                    if (subSubSubComp.functions) console.log(subSubSubComp.constructorKey, subSubSubComp.functions)
+
+                    if (subSubSubComp.atoms){
+
+                      for (let [index2, subCompAtom] of subSubSubComp.atoms.entries()) {
+
+                        let subSubSubSubComp = subCompAtom.component
+                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id)
+      
+                        if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+      
+                        if (subSubSubSubComp.value) {
+
+                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index2].id)
+
+                          subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+
+
+                        }
+
+
+                        }
+
+                    }
+                    
                   }
 
-                  if (slot.component.atoms) {
-                    await processAtoms(slot.component, [organismModel]);
-                  }
+
+
+
+              }
+
+              if (slot.component.atoms) {
+
+
+                  for (let [index, subCompAtom] of slot.component.atoms.entries()) {
+
+                    let subSubSubSubComp = subCompAtom.component
+                    let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === organismModel.id)
+
+                    if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+
+                    if (subSubSubSubComp.value) {
+
+                      let subSubSubSubSubCompModels = this.model.atomValues.filter(at => at.parentId === subSubSubSubCompModels[0].id)
+
+                      subSubSubSubComp.value = [{value: subSubSubSubSubCompModels[index].value}]
+
+                    }
+
+
+                    }
+
+              }
           }
 
           }
@@ -243,7 +293,7 @@ export function Controller() {
                   }
 
                 }
-          }
+        }
         }
       }
   };
