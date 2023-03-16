@@ -106,8 +106,14 @@ export function Controller() {
         }
     
         if (atomComponent.value) {
-          const atomValueModel = this.model.atomValues.find(at => at.parentId === atomModels[index].id);
-          atomComponent.value = [{ value: atomValueModel.value }];
+          const atomValueModel = this.model.atomValues.find(at => {
+            // Make sure the atom model exists at the given index before accessing it
+            return atomModels[index] && at.parentId === atomModels[index].id;
+          });
+    
+          if (atomValueModel) {
+            atomComponent.value = [{ value: atomValueModel.value }];
+          }
         }
       }
     };
