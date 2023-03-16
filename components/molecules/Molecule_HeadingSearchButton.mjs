@@ -1,7 +1,8 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from "../../core/helpers.mjs";
 import { Atom_Input } from "../atoms/Atom_Input.mjs";
-
+import { Atom_ButtonPositive } from "../atoms/Atom_ButtonPositive.mjs";
+import { Atom_Heading2 } from "../atoms/Atom_Heading2.mjs";
 
 
 export function Molecule_HeadingSearchButton() {
@@ -9,10 +10,11 @@ export function Molecule_HeadingSearchButton() {
   
   this.atoms = [
 
+
     {
       id: 1,
-      atom: "Atom_Input",
-      component: Atom_Input()
+      atom: "Atom_ButtonPositive",
+      component: Atom_ButtonPositive()
     }
   ]
 
@@ -25,8 +27,9 @@ export function Molecule_HeadingSearchButton() {
     return `
       <div>
           <div class="organism_list-all-search__top">
+            ${slot(this.atoms[0].atom)}
             <div class="organism_list_search_btn">
-              ${slot(this.atoms[0].atom)}
+
             </div>
           </div>
       </div>
