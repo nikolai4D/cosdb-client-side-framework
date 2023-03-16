@@ -33,7 +33,6 @@ export function Molecule_HeadingSearchButton() {
 
 this.getHtml = function() {
   return `
-    <div>
         <div class="organism_list-all-search__top">
           ${slot(this.atoms[0].atom)}
           <div class="organism_list_search_btn">
@@ -41,7 +40,7 @@ this.getHtml = function() {
             ${slot(this.atoms[2].atom)}
           </div>
         </div>
-    </div>
+
 `;
 }
 
