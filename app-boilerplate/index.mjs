@@ -14,11 +14,3 @@ export const router = new Router([
 
 
 router.goTo(path)
-
-
-
-// get viewPath if in model
-
-
-
-// Controller.prototype.template= new ViewTemplate_dummy1();
