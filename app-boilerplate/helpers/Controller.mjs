@@ -158,11 +158,11 @@ export function Controller() {
 
 
                   if (slot.component.molecules) {
-                    await processMolecules(slot.component, organismModel);
+                    await processMolecules(slot.component, [organismModel]);
                   }
 
                   if (slot.component.atoms) {
-                    await processAtoms(slot.component, organismModel);
+                    await processAtoms(slot.component, [organismModel]);
                   }
           }
 
