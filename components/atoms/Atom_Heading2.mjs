@@ -11,9 +11,7 @@ export function Atom_Heading2() {
 
     return `  
       <h4 class="atom_heading4">${this.value[0].value}</h4>
-
     `;
     }
-
 
 }
