@@ -90,7 +90,8 @@ export function Controller() {
     const processMolecules = async (subSubComp, subSubCompModels) => {
       for (let molecule of subSubComp.molecules) {
         let moleculeComponent = molecule.component;
-        let moleculeModels = findModelsByParentId(molecules, subSubCompModels[0].id);
+        
+        let moleculeModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
     
         if (moleculeComponent.functions) {
           // Perform necessary actions with moleculeComponent.functions
@@ -105,7 +106,7 @@ export function Controller() {
     const processAtoms = async (moleculeComponent, moleculeModels) => {
       for (let [index, atom] of moleculeComponent.atoms.entries()) {
         let atomComponent = atom.component;
-        let atomModels = findModelsByParentId(atoms, moleculeModels[0].id);
+        let atomModels = this.model.atoms.filter(at => at.parentId === moleculeModels[0].id);
     
         if (atomComponent.functions) {
           // Perform necessary actions with atomComponent.functions
