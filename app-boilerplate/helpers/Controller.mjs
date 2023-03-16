@@ -103,6 +103,13 @@ export function Controller() {
       }
     };
 
+    const overWriteAtomValue = async (component, componentModel) => {
+
+      let atomValueModel = this.model.atomValues.find(at => at.parentId === componentModel.id)
+      component.value = [{value: atomValueModel.value}]
+    }
+
+
     const createComponent = async (type, componentName) => {
       const filePath = `../../components/${type}s/${componentName}.mjs`;
       const componentModule = await importModuleFromFile(filePath, componentName);
@@ -184,10 +191,7 @@ export function Controller() {
       
                         if (subSubSubSubComp.value) {
 
-                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index].id)
-
-                           subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
-
+                          overWriteAtomValue(subSubSubSubComp, subSubSubSubCompModels[index])
 
                         }
 
@@ -209,8 +213,7 @@ export function Controller() {
             // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
               if (slot.component.value) {
-                          let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModel.id)
-                          slot.component.value = [{value: atomValueModel.value}]
+                          overWriteAtomValue(slot.component, atomModel)
                     }
                   }
                 }
