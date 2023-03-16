@@ -58,9 +58,9 @@ export function Controller() {
   this.getSlots = async () => {
 
     const processOrganisms = async (slotComponent, organismModel) => {
-      for (const organism of slotComponent.organisms) {
-        const organismComponent = organism.component;
-        const organismModels = this.model.organisms.filter(org => org.parentId === organismModel.id);
+      for (let organism of slotComponent.organisms) {
+        let organismComponent = organism.component;
+        let organismModels = this.model.organisms.filter(org => org.parentId === organismModel.id);
     
         if (organismComponent.functions) {
           // Perform necessary actions with organismComponent.functions
@@ -71,11 +71,11 @@ export function Controller() {
         }
       }
     };
-    
-    const processMolecules = async (parentComponent, parentComponentModels) => {
-      for (const molecule of parentComponent.molecules) {
-        const moleculeComponent = molecule.component;
-        const moleculeModels = this.model.molecules.filter(mol => mol.parentId === parentComponentModels[0]?.id);
+
+    const processMolecules = async (subSubComp, subSubCompModels) => {
+      for (let molecule of subSubComp.molecules) {
+        let moleculeComponent = molecule.component;
+        let moleculeModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
     
         if (moleculeComponent.functions) {
           // Perform necessary actions with moleculeComponent.functions
@@ -88,27 +88,21 @@ export function Controller() {
     };
     
     const processAtoms = async (moleculeComponent, moleculeModels) => {
-      if (moleculeModels.length === 0) {
-        return;
-      }
-    
-      for (const [index, atom] of moleculeComponent.atoms.entries()) {
-        const atomComponent = atom.component;
-        const atomModels = this.model.atoms.filter(at => at.parentId === moleculeModels[0].id);
+      for (let [index, atom] of moleculeComponent.atoms.entries()) {
+        let atomComponent = atom.component;
+        let atomModels = this.model.atoms.filter(at => at.parentId === moleculeModels[0].id);
     
         if (atomComponent.functions) {
           // Perform necessary actions with atomComponent.functions
         }
     
         if (atomComponent.value) {
-          const atomValueModel = this.model.atomValues.find(at => atomModels[index]?.id && at.parentId === atomModels[index].id);
-          if (atomValueModel) {
-            atomComponent.value = [{ value: atomValueModel.value }];
-          }
+          let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModels[index].id);
+          atomComponent.value = [{ value: atomValueModel.value }];
         }
       }
     };
-    
+
 
 
     // get viewTemplate from model
@@ -192,7 +186,7 @@ export function Controller() {
             if(slot.component){
               if (slot.component.atoms) {
                 if (slot.component.atoms) {
-                  await processAtoms(slot.component, moleculeComp);
+                  await processAtoms(slot.component, organismModel);
                 }
 
                     }
