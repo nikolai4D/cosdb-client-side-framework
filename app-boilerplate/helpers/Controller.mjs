@@ -57,25 +57,17 @@ export function Controller() {
   this.getSlots = async () => {
 
     const { organisms, molecules, atoms, atomValues } = this.model;
-
-    const findModelsByParentId = (models, parentId) => {
-      return models.filter(model => model.parentId === parentId);
-    }
-
-    const findModelByParentId = (models, parentId) => {
-      return models.find(model => model.parentId === parentId);
-    }
-    
     
     const overWriteAtomValue = async (component, componentModel) => {
-      let atomValueModel = findModelByParentId(atomValues, componentModel.id)
+
+      let atomValueModel = this.model.atomValues.find(at => at.parentId === componentModel.id)
       component.value = [{value: atomValueModel.value}]
     }
 
     const processOrganisms = async (slotComponent, organismModel) => {
       for (let organism of slotComponent.organisms) {
         let organismComponent = organism.component;
-        let organismModels = findModelsByParentId(organisms, organismModel.id)
+        let organismModels = this.model.organisms.filter(org => org.parentId === organismModel.id);
     
         if (organismComponent.functions) {
           // Perform necessary actions with organismComponent.functions
@@ -90,7 +82,6 @@ export function Controller() {
     const processMolecules = async (subSubComp, subSubCompModels) => {
       for (let molecule of subSubComp.molecules) {
         let moleculeComponent = molecule.component;
-        
         let moleculeModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
     
         if (moleculeComponent.functions) {
