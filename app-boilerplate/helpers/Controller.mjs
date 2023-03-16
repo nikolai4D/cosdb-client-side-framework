@@ -55,162 +55,85 @@ export function Controller() {
 
 
   this.getSlots = async () => {
-
     const { organisms, molecules, atoms, atomValues } = this.model;
-
+  
     const findModelsByParentId = (models, parentId) => {
       return models.filter(model => model.parentId === parentId);
-    }
-
+    };
+  
     const findModelByParentId = (models, parentId) => {
       return models.find(model => model.parentId === parentId);
-    }
-    
-    
+    };
+  
     const overWriteAtomValue = async (component, componentModel) => {
-      let atomValueModel = findModelByParentId(atomValues, componentModel.id)
-      component.value = [{value: atomValueModel.value}]
-    }
-
-    const processOrganisms = async (slotComponent, organismModel) => {
-      for (let organism of slotComponent.organisms) {
-        let organismComponent = organism.component;
-        let organismModels = findModelsByParentId(organisms, organismModel.id)
-    
-        if (organismComponent.functions) {
-          // Perform necessary actions with organismComponent.functions
+      let atomValueModel = findModelByParentId(atomValues, componentModel.id);
+      component.value = [{ value: atomValueModel.value }];
+    };
+  
+    const processComponents = async (components, componentModels, childKey, childModels) => {
+      for (const component of components) {
+        const componentInstance = component.component;
+        const relatedModels = findModelsByParentId(childModels, componentModels[0]?.id);
+  
+        if (componentInstance.functions) {
+          // Perform necessary actions with componentInstance.functions
         }
-    
-        if (organismComponent.molecules) {
-          await processMolecules(organismComponent, organismModels);
-        }
-
-        else if (organismComponent.organisms)  {
-            await processOrganisms(organismComponent, organismModels);
+  
+        if (componentInstance[childKey]) {
+          await processComponents(componentInstance[childKey], relatedModels, childKey === 'organisms' ? 'molecules' : 'atoms', childKey === 'organisms' ? molecules : atoms);
         }
       }
     };
-
-    const processMolecules = async (subSubComp, subSubCompModels) => {
-      for (let molecule of subSubComp.molecules) {
-        let moleculeComponent = molecule.component;
-        let moleculeModels = findModelsByParentId(molecules, subSubCompModels[0].id);
-    
-        if (moleculeComponent.functions) {
-          // Perform necessary actions with moleculeComponent.functions
-        }
-    
-        if (moleculeComponent.atoms) {
-          await processAtoms(moleculeComponent, moleculeModels);
-        }
-      }
-    };
-    
-    const processAtoms = async (moleculeComponent, moleculeModels) => {
-      for (let [index, atom] of moleculeComponent.atoms.entries()) {
-        let atomComponent = atom.component;
-        let atomModels = findModelsByParentId(atoms, moleculeModels[0].id);
-    
-        if (atomComponent.functions) {
-          // Perform necessary actions with atomComponent.functions
-        }
-    
-        if (atomComponent.value) {
-          overWriteAtomValue(atomComponent, atomModels[index])
-        }
-      }
-    };
-
+  
     const createComponent = async (type, componentName) => {
       const filePath = `../../components/${type}s/${componentName}.mjs`;
       const componentModule = await importModuleFromFile(filePath, componentName);
       return new componentModule[componentName]();
     };
-    
-
+  
     // get viewTemplate from model
-    let component = this.childComponent
-
+    let component = this.childComponent;
+  
     // loop through slots in viewTemplate
     for (let slot of component.slots) {
-
       // get the slot from the model
-        let specificSlot =  this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
-
-        // if the slot exists in the model
-        if (specificSlot) {
-
-          // get the component from the model with the slot id as parentId
-          let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
-
-          // if the component exists in the model
-          if (specificComponent) {
-
-            // find organism with the component id as parentId
-            const organismModel = findModelByParentId(organisms, specificComponent.id)
-
-            // find molecule with the component id as parentId
-            const moleculeModel = findModelByParentId(molecules, specificComponent.id)
-
-            // find atom with the component id as parentId
-            const atomModel = findModelByParentId(atoms, specificComponent.id)
-
-            // if the organism exists in the model
-            if (organismModel) {
-
-              // set the slot of viewTemplate to the be the value of the organism
-              slot.slot = organismModel.value;
-              slot.component = await createComponent('organism', organismModel.value);
-
-              // next step would be to decide if the organism contains other organisms, molecules or atoms
-              if(slot.component){
-
-                  if (slot.component.organisms) {
-                    await processOrganisms(slot.component, organismModel);
-                  }
-
-                  if (slot.component.molecules) {
-                    await processMolecules(slot.component, [organismModel]);
-                  }
-
-                  if (slot.component.atoms) {
-                    await processAtoms(slot.component, [organismModel]);
-                  }
-          }
-
-          }
-          
-          if (moleculeModel){
-
-            // set the slot of viewTemplate to the be the value of the organism
-            slot.slot = moleculeModel.value;
-            slot.component = await createComponent('molecule', moleculeModel.value);
-
-            // next step would be to decide if the molecule contains other molecules, molecules or atoms
-            if(slot.component){
-              if (slot.component.atoms) {
-
-                await processAtoms(slot.component, [moleculeModel]);
-                    }
-                  }
+      let specificSlot = this.slotsFromModel.find(slotModel => slotModel.value === slot.slot);
+  
+      // if the slot exists in the model
+      if (specificSlot) {
+        // get the component from the model with the slot id as parentId
+        let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id);
+  
+        // if the component exists in the model
+        if (specificComponent) {
+          const componentTypes = [
+            { name: 'organism', models: organisms },
+            { name: 'molecule', models: molecules },
+            { name: 'atom', models: atoms },
+          ];
+  
+          for (const componentType of componentTypes) {
+            const componentModel = findModelByParentId(componentType.models, specificComponent.id);
+  
+            if (componentModel) {
+              slot.slot = componentModel.value;
+              slot.component = await createComponent(componentType.name, componentModel.value);
+  
+              if (slot.component) {
+                if (componentType.name === 'atom' && slot.component.value) {
+                  overWriteAtomValue(slot.component, componentModel);
+                } else if (slot.component[`${componentType.name}s`]) {
+                  await processComponents(slot.component[`${componentType.name}s`], [componentModel], componentType.name === 'organism' ? 'molecules' : 'atoms', componentType.name === 'organism' ? molecules : atoms);
                 }
-
-          if (atomModel){
-
-            // set the slot of viewTemplate to the be the value of the organism
-            slot.slot = atomModel.value;
-            slot.component = await createComponent('atom', atomModel.value);
-
-            if(slot.component){
-              if (slot.component.value) {
-                          overWriteAtomValue(slot.component, atomModel)
-                    }
-                  }
-                }
+              }
+              break;
+            }
           }
         }
       }
+    }
   };
+  
 
   this.bindNewScripts = async () => {
     let component = this.childComponent;
