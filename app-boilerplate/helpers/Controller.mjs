@@ -39,40 +39,51 @@ export function Controller() {
     
       const findModelById = (models, id) => models.find(model => model.parentId === id);
     
-      const processSubComponents = async (component, subComponents, models) => {
-        for (const [index, subComponent] of subComponents.entries()) {
-          const subComponentModel = findModelById(models, subComponent.parentId);
-          if (subComponentModel) {
-            const newComponent = await createComponent(subComponentModel.value, subComponent.folder);
-            subComponent.component = newComponent;
-            await processSlots(subComponent, subComponentModel.id);
-          }
-        }
-      };
-    
       const organismModel = findModelById(organisms, parentId);
       const moleculeModel = findModelById(molecules, parentId);
       const atomModel = findModelById(atoms, parentId);
     
       if (organismModel) {
         slot.slot = organismModel.value;
-        slot.component = await createComponent(organismModel.value, 'organisms');
-        await processSubComponents(slot.component, slot.component.organisms, organisms);
-        await processSubComponents(slot.component, slot.component.molecules, molecules);
-        await processSubComponents(slot.component, slot.component.atoms, atoms);
+        slot.component = await importAndCreateComponent(organismModel.value, 'organisms');
+        await processSlotsForComponent(slot.component, organisms, 'organisms');
+        await processSlotsForComponent(slot.component, molecules, 'molecules');
+        await processSlotsForComponent(slot.component, atoms, 'atoms');
       } else if (moleculeModel) {
         slot.slot = moleculeModel.value;
-        slot.component = await createComponent(moleculeModel.value, 'molecules');
-        await processSubComponents(slot.component, slot.component.atoms, atoms);
+        slot.component = await importAndCreateComponent(moleculeModel.value, 'molecules');
+        await processSlotsForComponent(slot.component, atoms, 'atoms');
       } else if (atomModel) {
         slot.slot = atomModel.value;
-        slot.component = await createComponent(atomModel.value, 'atoms');
+        slot.component = await importAndCreateComponent(atomModel.value, 'atoms');
         const atomValueModel = findModelById(atomValues, parentId);
         if (atomValueModel) {
           slot.component.value = [{ value: atomValueModel.value }];
         }
       }
     };
+    
+    const importAndCreateComponent = async (value, folder) => {
+      const pathToComponent = `../../components/${folder}/${value}.mjs`;
+      const componentModule = await importModuleFromFile(pathToComponent, value);
+      return new componentModule[value]();
+    };
+    
+    const processSlotsForComponent = async (component, models, propertyName) => {
+      if (component[propertyName]) {
+        for (const subComponent of component[propertyName]) {
+          const model = findModelById(models, subComponent.parentId);
+          if (model) {
+            const newComponent = await importAndCreateComponent(model.value, propertyName);
+            subComponent.component = newComponent;
+            await processSlots(subComponent, model.id);
+          }
+        }
+      }
+    };
+    
+    // In the getSlots function, replace the logic for processing slots with the following line
+    await processSlots(slot, specificSlot.id);
     
 
     for (const slot of component.slots) {
