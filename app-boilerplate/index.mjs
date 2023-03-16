@@ -9,7 +9,7 @@ console.log("path: " , path)
 readModel();
 
 export const router = new Router([
-    route(path, Controller)
+    route("test", Controller)
 ])
 
 
