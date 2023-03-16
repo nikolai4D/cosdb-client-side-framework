@@ -5,7 +5,7 @@ import { Atom_ButtonPositive } from "../atoms/Atom_ButtonPositive.mjs";
 import { Atom_Heading2 } from "../atoms/Atom_Heading2.mjs";
 
 
-export function Molecule_HeadingSearchWButton() {
+export function Molecule_HeadingSearchButton() {
   Component.call(this);
   
   this.atoms = [
