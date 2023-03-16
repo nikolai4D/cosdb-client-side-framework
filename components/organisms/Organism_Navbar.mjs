@@ -1,7 +1,9 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
-import { Molecule_ListWHeading } from "../molecules/Molecule_ListWHeading.mjs";
-import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearchButton.mjs";
+import { Molecule_Logo } from "../molecules/Molecule_Logo.mjs";
+import { Molecule_ListWIconLinks } from "../molecules/Molecule_ListWIconLinks.mjs";
+import { Molecule_TextWButton } from "../molecules/Molecule_TextWButton.mjs";
+
 
 export function Organism_Navbar() {
   Component.call(this);
@@ -9,23 +11,18 @@ export function Organism_Navbar() {
   this.molecules = [
     {
         id: 1,
-        molecule: "Molecule_HeadingSearchButton",
-        component: new Molecule_HeadingSearchButton()
+        molecule: "Molecule_Logo",
+        component: new Molecule_Logo()
     },
     {
         id: 2,
-        molecule: "Molecule_ListWHeading",
-        component: new Molecule_ListWHeading()
+        molecule: "Molecule_ListWIconLinks",
+        component: new Molecule_ListWIconLinks()
     },
     {
         id: 3,
-        molecule: "Molecule_ListWHeading",
-        component: new Molecule_ListWHeading()
-    },
-    {
-        id: 4,
-        molecule: "Molecule_ListWHeading",
-        component: new Molecule_ListWHeading()
+        molecule: "Molecule_TextWButton",
+        component: new Molecule_TextWButton()
     }
   ];
 
@@ -44,14 +41,22 @@ export function Organism_Navbar() {
 
     return `
 
-    <div class="organism_list-all-search">
-        ${slot(this.molecules[0].molecule)}
-        <div id="organism_all_lists" class="organism_list-all-search__lists">
-            ${slot(this.molecules[1].molecule)}
-            ${slot(this.molecules[2].molecule)}
-            ${slot(this.molecules[3].molecule)}
-        </div>
+
+    <div>
+        <nav class="my-nav">
+            ${slot("Molecule_Logo")}
+
+            ${slot("Molecule_ListWIconLinks")}
+
+            <div class="organism_user-navbar">
+                ${slot("Molecule_TextWButton")}
+            </div>
+        </nav>
+        <div id="user-modal"></div>
     </div>
+
+
+   
         `;
       }
 
