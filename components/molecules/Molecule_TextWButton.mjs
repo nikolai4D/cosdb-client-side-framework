@@ -28,7 +28,7 @@ export function Molecule_TextWButton() {
 
 
     return `
-        <div>
+        <div class="molecule_textWButton">
                 ${slot(this.atoms[0].atom)}
                 ${slot(this.atoms[1].atom)}
         </div>
