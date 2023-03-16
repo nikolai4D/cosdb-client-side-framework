@@ -1,7 +1,7 @@
 import { Component } from "../../core/Component.mjs";
 
 
-export function Atom_ButtonPositive(onClick = () => console.log("click")) {
+export function Atom_ButtonPositive() {
   Component.call(this);
 
   this.value = [{ value: "placeholder" }];
@@ -11,6 +11,6 @@ export function Atom_ButtonPositive(onClick = () => console.log("click")) {
     }
 
     this.bindScript= function() {
-        this.element.addEventListener("click", onClick)
+        this.element.addEventListener("click", () => console.log("click"))
     }
 }
