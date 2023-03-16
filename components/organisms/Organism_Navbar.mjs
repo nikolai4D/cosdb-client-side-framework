@@ -44,11 +44,15 @@ export function Organism_Navbar() {
 
     <div>
         <nav class="my-nav">
-            ${slot(this.molecules[0].molecule)}
+
+            <div class="organism_navbar-logo">
+                ${slot(this.molecules[0].molecule)}
+            </div>
+
             ${slot(this.molecules[1].molecule)}
 
             <div class="organism_user-navbar">
-            ${slot(this.molecules[2].molecule)}
+                ${slot(this.molecules[2].molecule)}
             </div>
         </nav>
         <div id="user-modal"></div>
