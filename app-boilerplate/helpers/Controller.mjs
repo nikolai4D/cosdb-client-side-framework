@@ -152,75 +152,18 @@ export function Controller() {
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
 
-
                   if (slot.component.organisms) {
                     await processOrganisms(slot.component, organismModel);
                   }
 
 
-              if (slot.component.molecules) {
-
-                  for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
-
-                    let subSubSubComp = subCompMolecule.component
-                    let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
-
-                    if (subSubSubCompModels.length > 1) console.log("more than one molecule")
-
-                    if (subSubSubComp.functions) console.log(subSubSubComp.constructorKey, subSubSubComp.functions)
-
-                    if (subSubSubComp.atoms){
-
-                      for (let [index2, subCompAtom] of subSubSubComp.atoms.entries()) {
-
-                        let subSubSubSubComp = subCompAtom.component
-                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id)
-      
-                        if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
-      
-                        if (subSubSubSubComp.value) {
-
-                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index2].id)
-
-                          subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
-
-
-                        }
-
-
-                        }
-
-                    }
-                    
+                  if (slot.component.molecules) {
+                    await processMolecules(slot.component, organismModel);
                   }
 
-
-
-
-              }
-
-              if (slot.component.atoms) {
-
-
-                  for (let [index, subCompAtom] of slot.component.atoms.entries()) {
-
-                    let subSubSubSubComp = subCompAtom.component
-                    let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === organismModel.id)
-
-                    if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
-
-                    if (subSubSubSubComp.value) {
-
-                      let subSubSubSubSubCompModels = this.model.atomValues.filter(at => at.parentId === subSubSubSubCompModels[0].id)
-
-                      subSubSubSubComp.value = [{value: subSubSubSubSubCompModels[index].value}]
-
-                    }
-
-
-                    }
-
-              }
+                  if (slot.component.atoms) {
+                    await processAtoms(slot.component, organismModel);
+                  }
           }
 
           }
