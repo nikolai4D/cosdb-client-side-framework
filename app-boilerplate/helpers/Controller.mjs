@@ -206,13 +206,27 @@ export function Controller() {
             slot.slot = atomModel.value;
             slot.component = await createComponent('atom', atomModel.value);
 
+            // get the name of the organism from the model and import it from the organisms folder
+            const fileAtom = atomModel.value;
+            const pathToComponent = `../../components/atoms/${fileAtom}.mjs`;
+            const atomComponent = await importModuleFromFile(pathToComponent, fileAtom)
+            let atomComp =  new atomComponent[fileAtom]();
+
+            // for that slot in viewTemplate, set component to be molecule
+            slot.component = atomComp
+
             // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
               if (slot.component.value) {
+
                           let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModel.id)
+
                           slot.component.value = [{value: atomValueModel.value}]
+
                     }
+
                   }
+
                 }
           }
         }
