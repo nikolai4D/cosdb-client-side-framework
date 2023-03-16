@@ -144,7 +144,15 @@ export function Controller() {
 
               // set the slot of viewTemplate to the be the value of the organism
               slot.slot = organismModel.value;
-              slot.component = await createComponent('organism', organismModel.value);
+
+              // get the name of the organism from the model and import it from the organisms folder
+              const fileOrganism = organismModel.value;
+              const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`;
+              const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
+              let organismComp =  new organismComponent[fileOrganism]();
+
+              // for that slot in viewTemplate, set component to be organism
+              slot.component = organismComp
 
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
@@ -169,7 +177,15 @@ export function Controller() {
 
             // set the slot of viewTemplate to the be the value of the organism
             slot.slot = moleculeModel.value;
-            slot.component = await createComponent('molecule', moleculeModel.value);
+
+            // get the name of the organism from the model and import it from the organisms folder
+            const fileMolecule = moleculeModel.value;
+            const pathToComponent = `../../components/molecules/${fileMolecule}.mjs`;
+            const moleculeComponent = await importModuleFromFile(pathToComponent, fileMolecule)
+            let moleculeComp =  new moleculeComponent[fileMolecule]();
+
+            // for that slot in viewTemplate, set component to be molecule
+            slot.component = moleculeComp
 
             // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
@@ -204,7 +220,6 @@ export function Controller() {
 
             // set the slot of viewTemplate to the be the value of the organism
             slot.slot = atomModel.value;
-            slot.component = await createComponent('atom', atomModel.value);
 
             // get the name of the organism from the model and import it from the organisms folder
             const fileAtom = atomModel.value;
