@@ -84,6 +84,10 @@ export function Controller() {
         if (organismComponent.molecules) {
           await processMolecules(organismComponent, organismModels);
         }
+
+        else if (organismComponent.organisms)  {
+            await processOrganisms(organismComponent, organismModels);
+        }
       }
     };
 
