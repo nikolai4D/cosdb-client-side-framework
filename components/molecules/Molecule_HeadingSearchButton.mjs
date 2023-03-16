@@ -3,7 +3,7 @@ import { slot } from "../../core/helpers.mjs";
 import { Atom_Input } from "../atoms/Atom_Input.mjs";
 import { Atom_ButtonPositive } from "../atoms/Atom_ButtonPositive.mjs";
 
-export function Molecule_SearchWButton() {
+export function Molecule_HeadingSearchWButton() {
   Component.call(this);
   
   this.atoms = [
