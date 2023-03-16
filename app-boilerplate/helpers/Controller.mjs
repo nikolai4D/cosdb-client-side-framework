@@ -179,18 +179,21 @@ export function Controller() {
             if(slot.component){
               if (slot.component.atoms) {
 
-                      for (let [index, subCompAtom] of slot.component.atoms.entries()) {
+                await processAtoms(slot.component, moleculeModel);
 
-                        let subSubSubSubComp = subCompAtom.component
-                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === moleculeModel.id)
 
-                        if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+                      // for (let [index, subCompAtom] of slot.component.atoms.entries()) {
+
+                      //   let subSubSubSubComp = subCompAtom.component
+                      //   let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === moleculeModel.id)
+
+                      //   if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
       
-                        if (subSubSubSubComp.value) {
-                          overWriteAtomValue(subSubSubSubComp, subSubSubSubCompModels[index])
+                      //   if (subSubSubSubComp.value) {
+                      //     overWriteAtomValue(subSubSubSubComp, subSubSubSubCompModels[index])
 
-                        }
-                        }
+                      //   }
+                      //   }
                     }
                   }
                 }
