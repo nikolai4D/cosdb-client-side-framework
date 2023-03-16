@@ -88,12 +88,15 @@ export function Controller() {
         }
     
         if (moleculeComponent.atoms) {
-          await processAtoms(moleculeComponent, moleculeModels);
+          await processAtoms(moleculeComponent, [moleculeModels]);
         }
       }
     };
     
     const processAtoms = async (moleculeComponent, moleculeModels) => {
+      if (moleculeModels.length === 0) {
+        return;
+      }
       for (const [index, atom] of moleculeComponent.atoms.entries()) {
         const atomComponent = atom.component;
         const atomModels = this.model.atoms.filter(at => at.parentId === moleculeModels[0].id);
