@@ -185,9 +185,25 @@ export function Controller() {
             // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
               if (slot.component.atoms) {
-                if (slot.component.atoms) {
-                  await processAtoms(slot.component, moleculeComp);
-                }
+
+                      for (let [index, subCompAtom] of slot.component.atoms.entries()) {
+
+                        let subSubSubSubComp = subCompAtom.component
+                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === moleculeModel.id)
+
+                        if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+      
+                        if (subSubSubSubComp.value) {
+
+                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index].id)
+
+                           subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+
+
+                        }
+
+
+                        }
 
                     }
                     
