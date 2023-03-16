@@ -143,13 +143,13 @@ export function Controller() {
           if (specificComponent) {
 
             // find organism with the component id as parentId
-            const organismModel = findModelByParentId(organisms, specificComponent.id)
+            const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
 
             // find molecule with the component id as parentId
-            const moleculeModel = findModelByParentId(molecules, specificComponent.id)
+            const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id)
 
             // find atom with the component id as parentId
-            const atomModel = findModelByParentId(atoms, specificComponent.id)
+            const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
 
             // if the organism exists in the model
             if (organismModel) {
