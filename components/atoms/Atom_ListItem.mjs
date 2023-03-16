@@ -1,7 +1,7 @@
 import { Component } from "../../core/Component.mjs";
 
 
-export function Atom_dummy1() {
+export function Atom_ListItem() {
   Component.call(this);
 
   this.value = [{ value: "placeholder" }];
