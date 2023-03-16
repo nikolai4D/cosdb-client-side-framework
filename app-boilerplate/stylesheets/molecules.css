@@ -110,7 +110,7 @@
 
 .molecule_textWButton {
     display: flex;
-   
+   gap: 0.8rem;
 }
 
 .molecule_heading-icon {
