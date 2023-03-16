@@ -8,7 +8,7 @@ export function Organism_ListAll() {
   this.molecules = [
     {
         id: 1,
-        molecule: "Molecule_List",
+        molecule: "Molecule_ListWHeading",
         component: new Molecule_ListWHeading()
     },
     {
