@@ -57,12 +57,6 @@ export function Controller() {
 
   this.getSlots = async () => {
 
-    const createComponent = async (type, componentName) => {
-      const filePath = `../../components/${type}s/${componentName}.mjs`;
-      const componentModule = await importModuleFromFile(filePath, componentName);
-      return new componentModule[componentName]();
-    };
-    
     const processOrganisms = async (slotComponent, organismModel) => {
       for (const organism of slotComponent.organisms) {
         const organismComponent = organism.component;
@@ -78,17 +72,17 @@ export function Controller() {
       }
     };
     
-    const processMolecules = async (parentComponent, parentModels) => {
+    const processMolecules = async (parentComponent, parentComponentModels) => {
       for (const molecule of parentComponent.molecules) {
         const moleculeComponent = molecule.component;
-        const moleculeModels = this.model.molecules.filter(mol => mol.parentId === parentModels[0].id);
+        const moleculeModels = this.model.molecules.filter(mol => mol.parentId === parentComponentModels[0]?.id);
     
         if (moleculeComponent.functions) {
           // Perform necessary actions with moleculeComponent.functions
         }
     
         if (moleculeComponent.atoms) {
-          await processAtoms(moleculeComponent, [moleculeModels]);
+          await processAtoms(moleculeComponent, moleculeModels);
         }
       }
     };
@@ -107,11 +101,7 @@ export function Controller() {
         }
     
         if (atomComponent.value) {
-          const atomValueModel = this.model.atomValues.find(at => {
-            // Make sure the atom model exists at the given index before accessing it
-            return atomModels[index] && at.parentId === atomModels[index].id;
-          });
-    
+          const atomValueModel = this.model.atomValues.find(at => atomModels[index]?.id && at.parentId === atomModels[index].id);
           if (atomValueModel) {
             atomComponent.value = [{ value: atomValueModel.value }];
           }
@@ -119,46 +109,128 @@ export function Controller() {
       }
     };
     
-    const component = this.childComponent;
-    
-    for (const slot of component.slots) {
-      const specificSlot = this.slotsFromModel.find(slotModel => slotModel.value === slot.slot);
-    
-      if (specificSlot) {
-        const specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id);
-    
-        if (specificComponent) {
-          const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id);
-          const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id);
-          const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id);
-    
-          if (organismModel) {
-            slot.slot = organismModel.value;
-            slot.component = await createComponent('organism', organismModel.value);
-          } else if (moleculeModel) {
+
+
+    // get viewTemplate from model
+    let component = this.childComponent
+
+    // loop through slots in viewTemplate
+    for (let slot of component.slots) {
+
+      // get the slot from the model
+        let specificSlot =  this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
+
+        // if the slot exists in the model
+        if (specificSlot) {
+
+          // get the component from the model with the slot id as parentId
+          let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
+
+          // if the component exists in the model
+          if (specificComponent) {
+
+            // find organism with the component id as parentId
+            const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
+
+            // find molecule with the component id as parentId
+            const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id)
+
+            // find atom with the component id as parentId
+            const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
+
+
+
+            // if the organism exists in the model
+            if (organismModel) {
+
+              // set the slot of viewTemplate to the be the value of the organism
+              slot.slot = organismModel.value;
+
+              // get the name of the organism from the model and import it from the organisms folder
+              const fileOrganism = organismModel.value;
+              const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`;
+              const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
+              let organismComp =  new organismComponent[fileOrganism]();
+
+              // for that slot in viewTemplate, set component to be organism
+              slot.component = organismComp
+
+              // next step would be to decide if the organism contains other organisms, molecules or atoms
+              if(slot.component){
+
+                  if (slot.component.organisms) {
+                    await processOrganisms(slot.component, organismModel);
+                  }
+
+
+                  if (slot.component.molecules) {
+                    await processMolecules(slot.component, [organismModel]);
+                  }
+
+                  if (slot.component.atoms) {
+                    await processAtoms(slot.component, [organismModel]);
+                  }
+          }
+
+          }
+          
+          if (moleculeModel){
+
+            // set the slot of viewTemplate to the be the value of the organism
             slot.slot = moleculeModel.value;
-            slot.component = await createComponent('molecule', moleculeModel.value);
-          } else if (atomModel) {
+
+            // get the name of the organism from the model and import it from the organisms folder
+            const fileMolecule = moleculeModel.value;
+            const pathToComponent = `../../components/molecules/${fileMolecule}.mjs`;
+            const moleculeComponent = await importModuleFromFile(pathToComponent, fileMolecule)
+            let moleculeComp =  new moleculeComponent[fileMolecule]();
+
+            // for that slot in viewTemplate, set component to be molecule
+            slot.component = moleculeComp
+
+            // next step would be to decide if the molecule contains other molecules, molecules or atoms
+            if(slot.component){
+              if (slot.component.atoms) {
+                if (slot.component.atoms) {
+                  await processAtoms(slot.component, moleculeComp);
+                }
+
+                    }
+                    
+                  }
+
+                }
+
+          if (atomModel){
+
+            // set the slot of viewTemplate to the be the value of the organism
             slot.slot = atomModel.value;
-            slot.component = await createComponent('atom', atomModel.value);
-          }
-    
-          if (slot.component) {
-            if (slot.component.organisms) {
-              await processOrganisms(slot.component, organismModel);
-            }
-    
-            if (slot.component.molecules) {
-              await processMolecules(slot.component, [organismModel]);
-            }
-    
-            if (slot.component.atoms) {
-              await processAtoms(slot.component, [organismModel]);
-            }
-          }
+
+            // get the name of the organism from the model and import it from the organisms folder
+            const fileAtom = atomModel.value;
+            const pathToComponent = `../../components/atoms/${fileAtom}.mjs`;
+            const atomComponent = await importModuleFromFile(pathToComponent, fileAtom)
+            let atomComp =  new atomComponent[fileAtom]();
+
+            // for that slot in viewTemplate, set component to be molecule
+            slot.component = atomComp
+
+            // next step would be to decide if the molecule contains other molecules, molecules or atoms
+            if(slot.component){
+              if (slot.component.value) {
+
+                          let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModel.id)
+
+                          slot.component.value = [{value: atomValueModel.value}]
+
+                    }
+
+                  }
+
+                }
+        }
         }
       }
-    }    
   };
 
   this.bindNewScripts = async () => {
