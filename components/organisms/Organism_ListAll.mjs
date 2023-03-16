@@ -1,6 +1,6 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
-import { Molecule_List } from "../molecules/Molecule_List.mjs";
+import { Molecule_ListWHeading } from "../molecules/Molecule_ListWHeading.mjs";
 
 export function Organism_ListAll() {
   Component.call(this);
@@ -9,17 +9,17 @@ export function Organism_ListAll() {
     {
         id: 1,
         molecule: "Molecule_List",
-        component: new Molecule_List()
+        component: new Molecule_ListWHeading()
     },
     {
         id: 2,
-        molecule: "Molecule_List",
-        component: new Molecule_List()
+        molecule: "Molecule_ListWHeading",
+        component: new Molecule_ListWHeading()
     },
     {
         id: 3,
-        molecule: "Molecule_List",
-        component: new Molecule_List()
+        molecule: "Molecule_ListWHeading",
+        component: new Molecule_ListWHeading()
     },
   ];
 
