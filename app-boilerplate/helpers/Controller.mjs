@@ -53,9 +53,14 @@ export function Controller() {
     return component;
   };
 
-  this.getComponents = async () => {}
 
   this.getSlots = async () => {
+
+    const overWriteAtomValue = async (component, componentModel) => {
+
+      let atomValueModel = this.model.atomValues.find(at => at.parentId === componentModel.id)
+      component.value = [{value: atomValueModel.value}]
+    }
 
     const processOrganisms = async (slotComponent, organismModel) => {
       for (let organism of slotComponent.organisms) {
@@ -97,18 +102,10 @@ export function Controller() {
         }
     
         if (atomComponent.value) {
-          let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModels[index].id);
-          atomComponent.value = [{ value: atomValueModel.value }];
+          overWriteAtomValue(atomComponent, atomModels[index])
         }
       }
     };
-
-    const overWriteAtomValue = async (component, componentModel) => {
-
-      let atomValueModel = this.model.atomValues.find(at => at.parentId === componentModel.id)
-      component.value = [{value: atomValueModel.value}]
-    }
-
 
     const createComponent = async (type, componentName) => {
       const filePath = `../../components/${type}s/${componentName}.mjs`;
@@ -190,18 +187,12 @@ export function Controller() {
                         if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
       
                         if (subSubSubSubComp.value) {
-
                           overWriteAtomValue(subSubSubSubComp, subSubSubSubCompModels[index])
 
                         }
-
-
                         }
-
                     }
-                    
                   }
-
                 }
 
           if (atomModel){
