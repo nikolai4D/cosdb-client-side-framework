@@ -72,28 +72,32 @@ const processModel = async (slot, model, type) => {
 
     slot.component = compInstance;
 
-    // Process nested components if they exist
-    if (slot.component) {
-      const types = ['organisms', 'molecules', 'atoms'];
-      const index = types.indexOf(type);
-      const nextTypes = types.slice(index + 1);
-
-      for (const nextType of nextTypes) {
-        if (slot.component[nextType]) {
-          for (let [index, nextComponent] of slot.component[nextType].entries()) {
-            const nextModel = this.model[nextType].find(c => c.parentId === nextComponent.id);
-            await processModel(nextComponent, nextModel, nextType);
-
-            if (nextType === 'atoms' && nextComponent.value) {
-              let atomValueModels = this.model.atomValues.filter(at => at.parentId === nextModel.id);
-              if (atomValueModels[index]) {
-                nextComponent.value = [{value: atomValueModels[index].value}];
-              }
-            }
+// Process nested components if they exist
+if (slot.component) {
+  const processNested = (comp, type) => {
+    if (comp[type]) {
+      for (let [index, nestedComp] of comp[type].entries()) {
+        const nestedCompModel = this.model[type].find(x => x.parentId === comp.id);
+        if (nestedCompModel) {
+          const atomValueModel = this.model.atomValues.find(av => av.parentId === nestedCompModel.id);
+          if (atomValueModel) {
+            nestedComp.value = [{ value: atomValueModel.value }];
           }
+
+          // Process further nested components
+          processNested(nestedComp, 'organisms');
+          processNested(nestedComp, 'molecules');
+          processNested(nestedComp, 'atoms');
         }
       }
     }
+  };
+
+  processNested(slot.component, 'organisms');
+  processNested(slot.component, 'molecules');
+  processNested(slot.component, 'atoms');
+}
+
   }
 };
 
