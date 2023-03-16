@@ -97,6 +97,7 @@ export function Controller() {
       if (moleculeModels.length === 0) {
         return;
       }
+    
       for (const [index, atom] of moleculeComponent.atoms.entries()) {
         const atomComponent = atom.component;
         const atomModels = this.model.atoms.filter(at => at.parentId === moleculeModels[0].id);
