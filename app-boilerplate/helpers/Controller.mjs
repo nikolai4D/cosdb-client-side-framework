@@ -84,10 +84,6 @@ export function Controller() {
         if (organismComponent.molecules) {
           await processMolecules(organismComponent, organismModels);
         }
-
-        else if (organismComponent.organisms)  {
-            await processOrganisms(organismComponent, organismModels);
-        }
       }
     };
 
@@ -126,7 +122,7 @@ export function Controller() {
       const componentModule = await importModuleFromFile(filePath, componentName);
       return new componentModule[componentName]();
     };
-
+    
 
     // get viewTemplate from model
     let component = this.childComponent
