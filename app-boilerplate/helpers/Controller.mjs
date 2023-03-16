@@ -53,16 +53,9 @@ export function Controller() {
     return component;
   };
 
+  this.getComponents = async () => {}
 
   this.getSlots = async () => {
-
-    const { organisms, molecules, atoms, atomValues } = this.model;
-    
-    const overWriteAtomValue = async (component, componentModel) => {
-
-      let atomValueModel = this.model.atomValues.find(at => at.parentId === componentModel.id)
-      component.value = [{value: atomValueModel.value}]
-    }
 
     const processOrganisms = async (slotComponent, organismModel) => {
       for (let organism of slotComponent.organisms) {
@@ -104,7 +97,8 @@ export function Controller() {
         }
     
         if (atomComponent.value) {
-          overWriteAtomValue(atomComponent, atomModels[index])
+          let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModels[index].id);
+          atomComponent.value = [{ value: atomValueModel.value }];
         }
       }
     };
@@ -143,6 +137,8 @@ export function Controller() {
             // find atom with the component id as parentId
             const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
 
+
+
             // if the organism exists in the model
             if (organismModel) {
 
@@ -156,6 +152,7 @@ export function Controller() {
                   if (slot.component.organisms) {
                     await processOrganisms(slot.component, organismModel);
                   }
+
 
                   if (slot.component.molecules) {
                     await processMolecules(slot.component, [organismModel]);
@@ -178,9 +175,29 @@ export function Controller() {
             if(slot.component){
               if (slot.component.atoms) {
 
-                await processAtoms(slot.component, [moleculeModel]);
+                      for (let [index, subCompAtom] of slot.component.atoms.entries()) {
+
+                        let subSubSubSubComp = subCompAtom.component
+                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === moleculeModel.id)
+
+                        if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+      
+                        if (subSubSubSubComp.value) {
+
+                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index].id)
+
+                           subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+
+
+                        }
+
+
+                        }
+
                     }
+                    
                   }
+
                 }
 
           if (atomModel){
@@ -189,9 +206,11 @@ export function Controller() {
             slot.slot = atomModel.value;
             slot.component = await createComponent('atom', atomModel.value);
 
+            // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
               if (slot.component.value) {
-                          overWriteAtomValue(slot.component, atomModel)
+                          let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModel.id)
+                          slot.component.value = [{value: atomValueModel.value}]
                     }
                   }
                 }
