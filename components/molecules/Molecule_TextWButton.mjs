@@ -10,7 +10,7 @@ export function Molecule_TextWButton() {
         {
             id: 1,
             atom: "Atom_Text1",
-            component:  new Atom_Text1()
+            component: new Atom_Text1()
         },
         {
             id: 2,
