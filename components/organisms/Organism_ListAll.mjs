@@ -45,17 +45,11 @@ export function Organism_ListAll() {
     return `
 
     <div class="organism_list-all-search">
-        <div class="organism_list-all-search__top">
-            ${""}
-            <div class="organism_list_search_btn">
-                ${""}
-                ${""}
-            </div>
-        </div>
+        ${slot(this.molecules[0].molecule)}
         <div id="organism_all_lists" class="organism_list-all-search__lists">
-            ${slot(this.molecules[0].molecule)}
             ${slot(this.molecules[1].molecule)}
             ${slot(this.molecules[2].molecule)}
+            ${slot(this.molecules[3].molecule)}
         </div>
     </div>
         `;
