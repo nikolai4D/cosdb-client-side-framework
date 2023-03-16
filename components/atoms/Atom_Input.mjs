@@ -7,9 +7,6 @@ export function Atom_Input() {
   this.value = [{ value: "placeholder" }];
 
   this.getHtml = function(){
-    return `<li>
-                ${this.value[0].value}
-            </li>
-            `;
+    return `<input class="atom_input" type="text" placeholder="${this.value[0].value}">`;
     }
 }

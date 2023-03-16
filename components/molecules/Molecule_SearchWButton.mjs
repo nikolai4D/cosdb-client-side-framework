@@ -26,7 +26,7 @@ export function Molecule_SearchWButton() {
 
   this.getHtml = function() {
     return `
-    <div class="">
+    <div>
       <div>${slot(this.atoms[0].atom)}</div>
       <div>${slot(this.atoms[1].atom)}</div>
     </div>
