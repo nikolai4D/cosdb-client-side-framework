@@ -108,6 +108,10 @@
    
 }
 
+.molecule_textWButton {
+    display: flex;
+   
+}
 
 .molecule_heading-icon {
     display: flex;
