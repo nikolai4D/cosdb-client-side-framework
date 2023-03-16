@@ -12,17 +12,17 @@ export function Molecule_HeadingSearchButton() {
     {
       id: 1,
       atom: "Atom_Heading2",
-      component: Atom_Heading2()
+      component: new Atom_Heading2()
     },
     {
       id: 2,
       atom: "Atom_Input",
-      component: Atom_Input()
+      component: new Atom_Input()
     },
     {
       id: 3,
       atom: "Atom_ButtonPositive",
-      component: Atom_ButtonPositive()
+      component: new Atom_ButtonPositive()
     },
   ]
 

@@ -10,12 +10,12 @@ export function Molecule_dummy4() {
     {
       id: 1,
       atom: "Atom_dummy3",
-      component: Atom_dummy3()
+      component: new Atom_dummy3()
     },
     {
       id: 2,
       atom: "Atom_dummy4",
-      component: Atom_dummy4()
+      component: new Atom_dummy4()
     }
   ]
 
