@@ -179,7 +179,7 @@ export function Controller() {
             if(slot.component){
               if (slot.component.atoms) {
 
-                await processAtoms(slot.component, moleculeModel);
+                await processAtoms(slot.component, [moleculeModel]);
 
 
                       // for (let [index, subCompAtom] of slot.component.atoms.entries()) {
