@@ -36,11 +36,6 @@ export function Organism_ListAll() {
 
   this.getHtml = function(){
 
-    const [molecule1, molecule2, molecule3] = [
-        ...this.molecules
-      ];
-
-
     return `
 
     <div class="organism_list-all-search">
@@ -52,9 +47,9 @@ export function Organism_ListAll() {
             </div>
         </div>
         <div id="organism_all_lists" class="organism_list-all-search__lists">
-            ${slot(molecule1)}
-            ${slot(molecule2)}
-            ${slot(molecule3)}
+            ${slot(this.molecules[0].molecule)}
+            ${slot(this.molecules[1].molecule)}
+            ${slot(this.molecules[2].molecule)}
         </div>
     </div>
         `;
