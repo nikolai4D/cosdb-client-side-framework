@@ -131,8 +131,7 @@ export function Molecule_ListWHeading() {
         let dataMap = data.map((item) => {
           return item.title.trim()
         }
-        ).sort()
-
+        )
         let dataObjMap = groupByFirstLetter(dataMap)
 
 
