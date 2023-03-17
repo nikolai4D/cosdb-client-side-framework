@@ -60,5 +60,13 @@ export function Organism_ListAll() {
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
+
+    for (let func of this.functions) {
+
+
+      if (func.functionCall)
+        await func.functionCall();
+    }
+
   }
 }

@@ -73,15 +73,6 @@ export function Controller() {
 
 
 
-      // for (let [index, func] of component.functions.entries()) {
-
-      //   let atomModels = this.model.atoms.filter(at => at.parentId === componentModel.id);
-    
-      //   if (atomComponent.functions) {
-      //     // Perform necessary actions with atomComponent.functions
-      //   }
-
-
         let functionModels = this.model.functions.filter(func => func.parentId === componentModel.id);
 
         for (let func of functionModels) {
@@ -93,11 +84,6 @@ export function Controller() {
 
         }
 
-      // let action = await createAction(func.value);
-      // let actionModels = funcModels.filter(func => func.parentId === funcModels[0].id);
-      // let actionModel = actionModels[0];
-      // let actionState = new State(actionModel);
-      // await action(actionState);
     }
 
 
