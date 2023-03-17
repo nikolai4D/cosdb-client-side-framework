@@ -146,7 +146,7 @@ export function Molecule_ListWHeading() {
             atom.component.value = [{value: this.data[0].letter}]
           }
           else {
-          atom.component.value = [{value: this.data[0].sentence[index-1]}]
+          atom.component.value = [{value: this.data[0].title[index-1]}]
         }
           await this.fillSlot(atom.atom, atom.component.getElement())
         }
