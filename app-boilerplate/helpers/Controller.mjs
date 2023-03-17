@@ -151,10 +151,11 @@ export function Controller() {
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
                 if (slot.component.organisms) {
+                  console.log(slot.component)
 
                 // for viewTempalate slot that has an organism, loop through its organisms
                 for (let [index, subCompOrganism] of slot.component.organisms.entries()) {
-                  // console.log("organism", subCompOrganism)
+                  console.log("organism", subCompOrganism)
 
 
                   let subSubComp = subCompOrganism.component
