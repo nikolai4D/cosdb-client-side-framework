@@ -184,14 +184,13 @@ export function Controller() {
                     if (subSubSubComp.functions) 
 
                     {
-
-                      let moleculeFunctions = subSubSubComp.functions;
-                      console.log(subSubSubComp)
-                      console.log(subSubSubCompModels)
-
                       let functionModels = this.model.functions.filter(func => func.parentId === subSubSubCompModels[index].id);
-
                       console.log(functionModels)
+
+                      for (let func of functionModels) {
+                        let action = await createAction(func.value)
+                        // action.execute()
+                      }
                     }
 
                     if (subSubSubComp.atoms){
