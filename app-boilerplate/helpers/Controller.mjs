@@ -90,7 +90,7 @@ export function Controller() {
           let funcId = func.key.split(" ")[1]
           console.log(funcId)
           console.log(component)
-          let compFunc = component.functions.find(aFunc => aFunc.id === funcId)
+          let compFunc = component.functions.find(aFunc => aFunc.id == funcId)
           console.log(compFunc)
           
         }
