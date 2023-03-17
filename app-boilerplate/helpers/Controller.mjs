@@ -153,14 +153,23 @@ export function Controller() {
                 if (slot.component.organisms) {
 
                 // for viewTempalate slot that has an organism, loop through its organisms
-                for (let subCompOrganism of slot.component.organisms) {
+                for (let [index, subCompOrganism] of slot.component.organisms.entries()) {
 
                   let subSubComp = subCompOrganism.component
                   let subSubCompModels = this.model.organisms.filter(org => org.parentId === organismModel.id)
 
                   if (subSubCompModels.length > 1) console.log("more than one organism")
 
-                  if (subSubComp.functions) console.log(subSubComp.constructorKey, subSubComp.functions)
+                  if (subSubComp.functions) 
+                  {
+                    let functionModels = this.model.functions.filter(func => func.parentId === subSubCompModels[index].id);
+                    console.log(functionModels)
+
+                    for (let func of functionModels) {
+                      let action = await createAction(func.value)
+                      // action.execute()
+                    }
+                  }
 
 
                   
