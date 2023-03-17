@@ -110,7 +110,7 @@ export function Molecule_ListWHeading() {
 
         data.sort((a, b) => a.title.localeCompare(b.title))
         let dataMap = data.map((item) => {
-          return item.title
+          return item.title.trim()
         }
         )
         console.log(dataMap, "dataMap")
