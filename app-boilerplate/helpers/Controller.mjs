@@ -154,7 +154,7 @@ export function Controller() {
 
                 // for viewTempalate slot that has an organism, loop through its organisms
                 for (let [index, subCompOrganism] of slot.component.organisms.entries()) {
-
+                  console.log("organism", subCompOrganism)
                   let subSubComp = subCompOrganism.component
                   let subSubCompModels = this.model.organisms.filter(org => org.parentId === organismModel.id)
 
