@@ -1,4 +1,4 @@
-import API_KEY from '../constants.mjs';
+import {API_KEY} from '../constants.mjs';
 
 export const GET_ALL_PROCESSES = async () => {
     console.log(API_KEY);
