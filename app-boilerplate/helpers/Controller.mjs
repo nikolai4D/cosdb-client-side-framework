@@ -95,16 +95,14 @@ export function Controller() {
         if (moleculeComponent.functions) {
           // Perform necessary actions with moleculeComponent.functions
 
-          processFunction(moleculeComponent, moleculeModels[0])
+          let moleculeFunctions = molecule.functions;
+          console.log(moleculeComponent)
+          console.log(moleculeModels)
+          console.log(subSubCompModels)
 
-          // let moleculeFunctions = molecule.functions;
-          // console.log(moleculeComponent)
-          // console.log(moleculeModels)
-          // console.log(subSubCompModels)
+          let functionModels = this.model.functions.filter(func => func.parentId === subSubCompModels[0].id);
 
-          // let functionModels = this.model.functions.filter(func => func.parentId === subSubCompModels[0].id);
-
-          // console.log(functionModels)
+          console.log(functionModels)
 
         }
     
