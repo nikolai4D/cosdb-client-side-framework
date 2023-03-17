@@ -57,6 +57,19 @@ export function Controller() {
 
   this.getSlots = async () => {
 
+    const createComponent = async (type, file) => {
+      const pathToComponent = `../../components/${type}/${file}.mjs`;
+      const Component = await importModuleFromFile(pathToComponent, file)
+      return new Component[file]();
+    }
+
+    const createAction = async (file) => {
+      const pathToComponent = `../../data-mgmt/actions/${file}.mjs`;
+      const action = await importModuleFromFile(pathToComponent, file)
+      return action[file]();
+    }
+
+
     const processMolecules = async (subSubComp, subSubCompModels) => {
       for (let molecule of subSubComp.molecules) {
         let moleculeComponent = molecule.component;
@@ -122,15 +135,8 @@ export function Controller() {
 
               // set the slot of viewTemplate to the be the value of the organism
               slot.slot = organismModel.value;
-
-              // get the name of the organism from the model and import it from the organisms folder
-              const fileOrganism = organismModel.value;
-              const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`;
-              const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
-              let organismComp =  new organismComponent[fileOrganism]();
-
               // for that slot in viewTemplate, set component to be organism
-              slot.component = organismComp
+              slot.component = createComponent("organisms", organismModel.value)
 
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
@@ -227,15 +233,8 @@ export function Controller() {
 
             // set the slot of viewTemplate to the be the value of the organism
             slot.slot = moleculeModel.value;
-
-            // get the name of the organism from the model and import it from the organisms folder
-            const fileMolecule = moleculeModel.value;
-            const pathToComponent = `../../components/molecules/${fileMolecule}.mjs`;
-            const moleculeComponent = await importModuleFromFile(pathToComponent, fileMolecule)
-            let moleculeComp =  new moleculeComponent[fileMolecule]();
-
             // for that slot in viewTemplate, set component to be molecule
-            slot.component = moleculeComp
+            slot.component = createComponent("molecules", moleculeModel.value)
 
             // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
@@ -270,15 +269,8 @@ export function Controller() {
 
             // set the slot of viewTemplate to the be the value of the organism
             slot.slot = atomModel.value;
-
-            // get the name of the organism from the model and import it from the organisms folder
-            const fileAtom = atomModel.value;
-            const pathToComponent = `../../components/atoms/${fileAtom}.mjs`;
-            const atomComponent = await importModuleFromFile(pathToComponent, fileAtom)
-            let atomComp =  new atomComponent[fileAtom]();
-
             // for that slot in viewTemplate, set component to be molecule
-            slot.component = atomComp
+            slot.component = createComponent("atoms", atomModel.value)
 
             // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
