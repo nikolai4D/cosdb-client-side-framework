@@ -139,17 +139,25 @@ export function Molecule_ListWHeading() {
         this.data= dataObjMap
 
         this.atoms = []
-        let newComponent = new Atom_Heading4()
-        newComponent.value = [{value: this.data[0].letter}]
-        this.atoms.push({value: this.data[0].letter, id: 1, atom: "Atom_Heading4", component: newComponent })
 
-        for (let [index, item] of this.data[0].title.entries()){
 
-          let newComponent = new Atom_ListItem()
-          newComponent.value = [{value: item}]
+        for (let aLetter of this.data){
 
-          this.atoms.push({value: item, id: index, atom: "Atom_ListItem", component: newComponent })
+          let newComponent = new Atom_Heading4()
+          newComponent.value = [{value: aLetter.letter}]
+
+          this.atoms.push({value: aLetter.letter, id: 1, atom: "Atom_Heading4", component: newComponent })
+
+          for (let [index, item] of aLetter.title.entries()){
+  
+            let newComponent = new Atom_ListItem()
+            newComponent.value = [{value: item}]
+  
+            this.atoms.push({value: item, id: index, atom: "Atom_ListItem", component: newComponent })
+          }
         }
+
+
 
         // for (let [index, atom] of this.atoms.entries()) {
         //   if (atom.atom === "Atom_Heading4"){
