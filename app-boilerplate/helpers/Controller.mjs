@@ -181,7 +181,19 @@ export function Controller() {
 
                     if (subSubSubCompModels.length > 1) console.log("more than one molecule")
 
-                    if (subSubSubComp.functions) console.log(subSubSubComp.constructorKey, subSubSubComp.functions)
+                    if (subSubSubComp.functions) 
+
+                    {
+
+                      let moleculeFunctions = subSubSubComp.functions;
+                      console.log(subSubSubComp)
+                      console.log(subSubSubCompModels)
+                      console.log(subSubCompModels)
+
+                      let functionModels = this.model.functions.filter(func => func.parentId === subSubSubCompModels[index].id);
+
+                      console.log(functionModels)
+                    }
 
                     if (subSubSubComp.atoms){
 
