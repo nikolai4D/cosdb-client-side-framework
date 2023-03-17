@@ -162,7 +162,7 @@ export function Controller() {
               // for that slot in viewTemplate, set component to be organism
               slot.component = await createComponent("organisms", organismModel.value)
 
-              if (slot.component.function){
+              if (slot.component.functions){
                 await processFunction(organismModel)
               }
 
