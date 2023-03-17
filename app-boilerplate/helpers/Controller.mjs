@@ -188,7 +188,6 @@ export function Controller() {
                       let moleculeFunctions = subSubSubComp.functions;
                       console.log(subSubSubComp)
                       console.log(subSubSubCompModels)
-                      console.log(subSubCompModels)
 
                       let functionModels = this.model.functions.filter(func => func.parentId === subSubSubCompModels[index].id);
 
