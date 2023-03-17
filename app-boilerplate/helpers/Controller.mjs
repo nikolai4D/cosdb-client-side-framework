@@ -136,7 +136,7 @@ export function Controller() {
               // set the slot of viewTemplate to the be the value of the organism
               slot.slot = organismModel.value;
               // for that slot in viewTemplate, set component to be organism
-              slot.component = createComponent("organisms", organismModel.value)
+              slot.component = await createComponent("organisms", organismModel.value)
 
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
@@ -234,7 +234,7 @@ export function Controller() {
             // set the slot of viewTemplate to the be the value of the organism
             slot.slot = moleculeModel.value;
             // for that slot in viewTemplate, set component to be molecule
-            slot.component = createComponent("molecules", moleculeModel.value)
+            slot.component = await createComponent("molecules", moleculeModel.value)
 
             // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
@@ -270,7 +270,7 @@ export function Controller() {
             // set the slot of viewTemplate to the be the value of the organism
             slot.slot = atomModel.value;
             // for that slot in viewTemplate, set component to be molecule
-            slot.component = createComponent("atoms", atomModel.value)
+            slot.component = await createComponent("atoms", atomModel.value)
 
             // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
