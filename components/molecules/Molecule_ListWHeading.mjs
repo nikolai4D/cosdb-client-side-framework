@@ -139,7 +139,7 @@ export function Molecule_ListWHeading() {
         this.data= dataObjMap
 
         this.atoms = []
-        this.atoms.push={value: this.data[0].letter, id: 1, atom: "Atom_Heading4", component:  new Atom_Heading4()}
+        this.atoms.push({value: this.data[0].letter, id: 1, atom: "Atom_Heading4", component:  new Atom_Heading4()})
 
         for (let [index, item] of this.data[0].title.entries()){
 
