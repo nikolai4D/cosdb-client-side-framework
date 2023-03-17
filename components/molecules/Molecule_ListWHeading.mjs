@@ -99,6 +99,26 @@ export function Molecule_ListWHeading() {
   }
 
   this.bindScript= async function() {
+
+    const groupByFirstLetter = (strings) => {
+      const grouped = strings.reduce((acc, str) => {
+        const firstLetter = str[0].toUpperCase();
+        if (!acc[firstLetter]) {
+          acc[firstLetter] = [];
+        }
+        acc[firstLetter].push(str);
+        return acc;
+      }, {});
+    
+      const sortedGrouped = Object.entries(grouped)
+        .sort(([a], [b]) => a.localeCompare(b))
+        .map(([letter, title]) => ({ letter, title }));
+    
+      return sortedGrouped;
+    };
+    
+
+    
     for (let atom of this.atoms) {
       await this.fillSlot(atom.atom, atom.component.getElement())
     }
@@ -112,9 +132,13 @@ export function Molecule_ListWHeading() {
           return item.title.trim()
         }
         ).sort()
-        console.log(dataMap, "dataMap")
-      
+
+        let dataObjMap = groupByFirstLetter(dataMap)
+        console.log(dataObjMap, "dataObjMap")
       }
     }
+
+
+
   }
 }
