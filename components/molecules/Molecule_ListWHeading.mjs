@@ -107,6 +107,7 @@ export function Molecule_ListWHeading() {
 
 
       if (func.functionCall)
+      console.log("molecule")
         await func.functionCall();
     }
   }

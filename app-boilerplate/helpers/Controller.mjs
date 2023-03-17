@@ -211,14 +211,17 @@ export function Controller() {
 
                     if (subSubSubComp.functions) 
 
-                    {
-                      let functionModels = this.model.functions.filter(func => func.parentId === subSubSubCompModels[index].id);
+                    await processFunction(slot.component, subSubSubCompModels[index])
 
-                      for (let func of functionModels) {
-                        let action = await createAction(func.value)
-                        // action.execute()
-                      }
-                    }
+
+                    // {
+                    //   let functionModels = this.model.functions.filter(func => func.parentId === subSubSubCompModels[index].id);
+
+                    //   for (let func of functionModels) {
+                    //     let action = await createAction(func.value)
+                    //     // action.execute()
+                    //   }
+                    // }
 
                     if (subSubSubComp.atoms){
 
