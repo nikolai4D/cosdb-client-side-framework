@@ -66,7 +66,7 @@ export function Controller() {
     const createAction = async (file) => {
       const pathToAction = `../../data-mgmt/actions/${file}.mjs`;
       const action = await importModuleFromFile(pathToAction, file)
-      return action[file]();
+      return action[file];
     }
 
     const processFunction = async (component, componentModel) => {
