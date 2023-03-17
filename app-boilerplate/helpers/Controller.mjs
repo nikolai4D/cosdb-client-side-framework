@@ -138,31 +138,22 @@ export function Controller() {
             // find atom with the component id as parentId
             const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
 
-            console.log(organismModel, "organism")
-            console.log(moleculeModel, "organism")
-            console.log(atomModel, "organism")
 
             // if the organism exists in the model
             if (organismModel) {
-              console.log("HELLO")
               // set the slot of viewTemplate to the be the value of the organism
               slot.slot = organismModel.value;
               // for that slot in viewTemplate, set component to be organism
               slot.component = await createComponent("organisms", organismModel.value)
 
-              console.log("organisms", organismModel.value)
-              console.log("component",  slot.component )
-
-
+              console.log(slot.component, "slot.component")
 
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
                 if (slot.component.organisms) {
-                  console.log(slot.component)
 
                 // for viewTempalate slot that has an organism, loop through its organisms
                 for (let [index, subCompOrganism] of slot.component.organisms.entries()) {
-                  console.log("organism", subCompOrganism)
 
 
                   let subSubComp = subCompOrganism.component
@@ -173,7 +164,6 @@ export function Controller() {
                   if (subSubComp.functions) 
                   {
                     let functionModels = this.model.functions.filter(func => func.parentId === subSubCompModels[index].id);
-                    console.log(functionModels)
 
                     for (let func of functionModels) {
                       let action = await createAction(func.value)
