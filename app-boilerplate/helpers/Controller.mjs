@@ -154,7 +154,9 @@ export function Controller() {
 
                 // for viewTempalate slot that has an organism, loop through its organisms
                 for (let [index, subCompOrganism] of slot.component.organisms.entries()) {
-                  console.log("organism", subCompOrganism)
+                  // console.log("organism", subCompOrganism)
+
+
                   let subSubComp = subCompOrganism.component
                   let subSubCompModels = this.model.organisms.filter(org => org.parentId === organismModel.id)
 
@@ -187,7 +189,9 @@ export function Controller() {
 
                     let subSubSubComp = subCompMolecule.component
                     let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
+                    console.log(subSubSubComp)
 
+                    console.log(subSubSubCompModels)
                     if (subSubSubCompModels.length > 1) console.log("more than one molecule")
 
                     if (subSubSubComp.functions) 
