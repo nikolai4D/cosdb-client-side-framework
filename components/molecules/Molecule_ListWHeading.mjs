@@ -102,5 +102,12 @@ export function Molecule_ListWHeading() {
     for (let atom of this.atoms) {
       await this.fillSlot(atom.atom, atom.component.getElement())
     }
+
+    for (let func of this.functions) {
+
+
+      if (func.functionCall)
+        await func.functionCall();
+    }
   }
 }
