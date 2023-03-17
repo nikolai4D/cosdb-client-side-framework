@@ -144,11 +144,16 @@ export function Controller() {
 
             // if the organism exists in the model
             if (organismModel) {
-
+              console.log("HELLO")
               // set the slot of viewTemplate to the be the value of the organism
               slot.slot = organismModel.value;
               // for that slot in viewTemplate, set component to be organism
               slot.component = await createComponent("organisms", organismModel.value)
+
+              console.log("organisms", organismModel.value)
+              console.log("component",  slot.component )
+
+
 
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
