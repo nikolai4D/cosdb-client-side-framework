@@ -1,4 +1,4 @@
-import { API_KEY } from '../constants.mjs';
+import * as constant from '../constants.mjs';
 
 export const GET_ALL_PROCESSES = async () => {
         const response = await fetch('https://jsonplaceholder.typicode.com/todos/1', {
