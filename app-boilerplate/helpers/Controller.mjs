@@ -69,13 +69,24 @@ export function Controller() {
       return action[file]();
     }
 
-    const processFunction = async (componentModel) => {
+    const processFunction = async (component, componentModel) => {
+
+
+
+      // for (let [index, func] of component.functions.entries()) {
+
+      //   let atomModels = this.model.atoms.filter(at => at.parentId === componentModel.id);
+    
+      //   if (atomComponent.functions) {
+      //     // Perform necessary actions with atomComponent.functions
+      //   }
+
 
         let functionModels = this.model.functions.filter(func => func.parentId === componentModel.id);
 
         for (let func of functionModels) {
           let action = await createAction(func.value)
-          // action.execute()
+          
         }
 
       // let action = await createAction(func.value);
@@ -163,7 +174,7 @@ export function Controller() {
               slot.component = await createComponent("organisms", organismModel.value)
 
               if (slot.component.functions){
-                await processFunction(organismModel)
+                await processFunction(slot.component, organismModel)
               }
 
               // next step would be to decide if the organism contains other organisms, molecules or atoms
