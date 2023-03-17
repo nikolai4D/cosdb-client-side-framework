@@ -61,12 +61,98 @@ export function Organism_ListAll() {
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
 
+
+
+
+    const groupByFirstLetter = (strings) => {
+      const grouped = strings.reduce((acc, str) => {
+        const firstLetter = str[0].toUpperCase();
+        if (!acc[firstLetter]) {
+          acc[firstLetter] = [];
+        }
+        acc[firstLetter].push(str);
+        return acc;
+      }, {});
+    
+      const sortedGrouped = Object.entries(grouped)
+        .sort(([a], [b]) => a.localeCompare(b, "sv"))
+        .map(([letter, title]) => ({ letter, title }));
+    
+      return sortedGrouped;
+    };
+    
+
+
     for (let func of this.functions) {
 
 
       if (func.functionCall)
         await func.functionCall();
+
+
+        for (let func of this.functions) {
+          if (func.functionCall){
+            let data = await func.functionCall();
+    
+            let dataMap = data.map((item) => {
+              return item.title.trim()
+            })
+            let dataObjMap = groupByFirstLetter(dataMap)
+    
+            this.data= dataObjMap
+    
+
+            this.molecules = []
+
+
+            for (let [index, molecule] of this.data.entries()){
+
+
+            
+
+            let newComponent = new Molecule_ListWHeading()
+            this.molecules.push(newComponent)
+            newComponent.atoms = []
+
+
+            let newAtom= new Atom_Heading4()
+            let firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
+            newAtom.value = [firstAtom]
+
+
+            //-----
+            this.atoms = []
+
+            
+            this.atoms.push({value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newComponent })
+    
+            for (let [index, item] of molecule.title.entries()){
+    
+              let newComponent = new Atom_ListItem()
+              newComponent.value = [{value: item}]
+    
+              this.atoms.push({value: item, id: index, atom: "Atom_ListItem", component: newComponent })
+            }
+    
+            // for (let [index, atom] of this.atoms.entries()) {
+            //   if (atom.atom === "Atom_Heading4"){
+            //     atom.component.value = [{value: this.data[0].letter}]
+            //   }
+            //   else {
+            //   atom.component.value = [{value: this.data[0].title[index-1]}]
+            // }
+            
+            }
+            }
+          }
+      
+          
+
+          
     }
+
+
+
 
   }
 }
