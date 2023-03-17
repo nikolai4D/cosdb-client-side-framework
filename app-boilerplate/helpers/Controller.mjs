@@ -69,6 +69,22 @@ export function Controller() {
       return action[file]();
     }
 
+    const processFunction = async (componentModel) => {
+
+        let functionModels = this.model.functions.filter(func => func.parentId === componentModel.id);
+
+        for (let func of functionModels) {
+          let action = await createAction(func.value)
+          // action.execute()
+        }
+
+      // let action = await createAction(func.value);
+      // let actionModels = funcModels.filter(func => func.parentId === funcModels[0].id);
+      // let actionModel = actionModels[0];
+      // let actionState = new State(actionModel);
+      // await action(actionState);
+    }
+
 
     const processMolecules = async (subSubComp, subSubCompModels) => {
       for (let molecule of subSubComp.molecules) {
@@ -145,6 +161,10 @@ export function Controller() {
               slot.slot = organismModel.value;
               // for that slot in viewTemplate, set component to be organism
               slot.component = await createComponent("organisms", organismModel.value)
+
+              if (slot.component.function){
+                await processFunction(organismModel)
+              }
 
               console.log(slot.component, "slot.component")
 
