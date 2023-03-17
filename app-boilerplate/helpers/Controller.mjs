@@ -86,6 +86,7 @@ export function Controller() {
 
         for (let func of functionModels) {
           let action = await createAction(func.value)
+          console.log(func)
           
         }
 
