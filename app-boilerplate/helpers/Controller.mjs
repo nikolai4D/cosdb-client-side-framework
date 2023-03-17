@@ -64,8 +64,8 @@ export function Controller() {
     }
 
     const createAction = async (file) => {
-      const pathToComponent = `../../data-mgmt/actions/${file}.mjs`;
-      const action = await importModuleFromFile(pathToComponent, file)
+      const pathToAction = `../../data-mgmt/actions/${file}.mjs`;
+      const action = await importModuleFromFile(pathToAction, file)
       return action[file]();
     }
 
@@ -77,6 +77,16 @@ export function Controller() {
     
         if (moleculeComponent.functions) {
           // Perform necessary actions with moleculeComponent.functions
+
+          let moleculeFunctions = molecule.functions;
+          console.log(moleculeComponent)
+          console.log(moleculeModels)
+          console.log(subSubCompModels)
+
+          let functionModels = this.model.functions.filter(func => func.parentId === subSubCompModels[0].id);
+
+          console.log(functionModels)
+
         }
     
         if (moleculeComponent.atoms) {
