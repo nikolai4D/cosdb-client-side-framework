@@ -166,8 +166,6 @@ export function Controller() {
                 await processFunction(organismModel)
               }
 
-              console.log(slot.component, "slot.component")
-
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
                 if (slot.component.organisms) {
@@ -207,16 +205,13 @@ export function Controller() {
 
                     let subSubSubComp = subCompMolecule.component
                     let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
-                    console.log(subSubSubComp)
 
-                    console.log(subSubSubCompModels)
                     if (subSubSubCompModels.length > 1) console.log("more than one molecule")
 
                     if (subSubSubComp.functions) 
 
                     {
                       let functionModels = this.model.functions.filter(func => func.parentId === subSubSubCompModels[index].id);
-                      console.log(functionModels)
 
                       for (let func of functionModels) {
                         let action = await createAction(func.value)
