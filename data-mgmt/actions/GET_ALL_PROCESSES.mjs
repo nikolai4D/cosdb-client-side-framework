@@ -9,5 +9,5 @@ export const GET_ALL_PROCESSES = async () => {
             'apikey': `${API_KEY}`
           },
         });
-        const myJson = await response.json();
+        return await response.json();
 }
