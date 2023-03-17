@@ -135,10 +135,7 @@ export function Molecule_ListWHeading() {
 
         let dataObjMap = groupByFirstLetter(dataMap)
 
-        let dataMap1 = dataObjMap.map((item) => {
-          return item.title.trim()
-        }
-        ).sort(function(a,b){
+        let dataMap1 = dataObjMap.sort(function(a,b){
           return a.localeCompare(b);
         });
 
