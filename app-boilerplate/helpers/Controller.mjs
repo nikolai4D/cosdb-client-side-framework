@@ -89,6 +89,9 @@ export function Controller() {
           console.log(func)
           let funcId = func.key.split(" ")[1]
           console.log(funcId)
+
+          let compFunc = component.functions.find(aFunc => aFunc.id === funcId)
+          console.log(compFunc)
           
         }
 
