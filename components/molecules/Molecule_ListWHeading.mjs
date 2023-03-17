@@ -104,12 +104,15 @@ export function Molecule_ListWHeading() {
     }
 
     for (let func of this.functions) {
-
-      console.log(func, "func")
-
       if (await func.functionCall){
-      console.log("molecule")
-        await func.functionCall();}
+        let data = await func.functionCall();
+        let dataMap = data.map((item) => {
+          return item.title
+        }
+        )
+        console.log(dataMap, "dataMap")
+      
+      }
     }
   }
 }
