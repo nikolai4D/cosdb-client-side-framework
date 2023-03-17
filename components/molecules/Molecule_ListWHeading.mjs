@@ -99,6 +99,7 @@ export function Molecule_ListWHeading() {
   }
 
   this.bindScript= async function() {
+    console.log("HELLO")
     for (let atom of this.atoms) {
       await this.fillSlot(atom.atom, atom.component.getElement())
     }
