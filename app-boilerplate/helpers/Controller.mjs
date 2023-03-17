@@ -138,7 +138,9 @@ export function Controller() {
             // find atom with the component id as parentId
             const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
 
-
+            console.log(organismModel, "organism")
+            console.log(moleculeModel, "organism")
+            console.log(atomModel, "organism")
 
             // if the organism exists in the model
             if (organismModel) {
