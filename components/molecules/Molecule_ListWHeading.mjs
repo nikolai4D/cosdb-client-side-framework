@@ -6,6 +6,8 @@ import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
 export function Molecule_ListWHeading() {
   Component.call(this);
 
+  this.data={}
+
   this.atoms = [
     {
       id: 1,
@@ -100,6 +102,11 @@ export function Molecule_ListWHeading() {
 
   this.bindScript= async function() {
 
+
+    for (let atom of this.atoms) {
+      await this.fillSlot(atom.atom, atom.component.getElement())
+    }
+    
     const groupByFirstLetter = (strings) => {
       const grouped = strings.reduce((acc, str) => {
         const firstLetter = str[0].toUpperCase();
@@ -119,27 +126,29 @@ export function Molecule_ListWHeading() {
     
 
 
-    for (let atom of this.atoms) {
-      await this.fillSlot(atom.atom, atom.component.getElement())
-    }
+
 
     for (let func of this.functions) {
       if (func.functionCall){
         let data = await func.functionCall();
-        // console.log(data, "data")
 
         let dataMap = data.map((item) => {
           return item.title.trim()
-        }
-        )
+        })
         let dataObjMap = groupByFirstLetter(dataMap)
 
-
-
         console.log(dataObjMap, "dataObjMap")
+
+        this.data= dataObjMap
+
+        for (let atom of this.atoms) {
+          if (atom.atom === "Atom_Heading4"){
+            atom.component.value = [{value: this.data[0].letter}]
+          }
+          await this.fillSlot(atom.atom, atom.component.getElement())
+        }
       }
     }
-
 
 
   }
