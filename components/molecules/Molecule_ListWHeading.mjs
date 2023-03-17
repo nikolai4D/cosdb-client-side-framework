@@ -103,10 +103,7 @@ export function Molecule_ListWHeading() {
   this.bindScript= async function() {
 
 
-    // for (let atom of this.atoms) {
-    //   await this.fillSlot(atom.atom, atom.component.getElement())
-    // }
-    
+
     const groupByFirstLetter = (strings) => {
       const grouped = strings.reduce((acc, str) => {
         const firstLetter = str[0].toUpperCase();
@@ -141,18 +138,31 @@ export function Molecule_ListWHeading() {
 
         this.data= dataObjMap
 
-        for (let [index, atom] of this.atoms.entries()) {
-          if (atom.atom === "Atom_Heading4"){
-            atom.component.value = [{value: this.data[0].letter}]
-          }
-          else {
-          atom.component.value = [{value: this.data[0].title[index-1]}]
+        this.atoms = []
+        this.atoms.push={value: this.data[0].letter, id: 1, atom: "Atom_Heading4", component:  new Atom_Heading4()}
+
+        for (let [index, item] of this.data[0].title.entries()){
+
+          this.atoms.push({value: item, id: index, atom: "Atom_ListItem", component:  new Atom_ListItem()})
         }
-          await this.fillSlot(atom.atom, atom.component.getElement())
+
+        // for (let [index, atom] of this.atoms.entries()) {
+        //   if (atom.atom === "Atom_Heading4"){
+        //     atom.component.value = [{value: this.data[0].letter}]
+        //   }
+        //   else {
+        //   atom.component.value = [{value: this.data[0].title[index-1]}]
+        // }
+        
         }
       }
-    }
+      for (let atom of this.atoms) {
+        await this.fillSlot(atom.atom, atom.component.getElement())
+      }
 
 
   }
+
+
+    
 }
