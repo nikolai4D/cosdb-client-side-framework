@@ -59,11 +59,6 @@ export function Organism_ListAll() {
 
   this.bindScript= async function() {
 
-    for (let mol of this.molecules) {
-      await this.fillSlot(mol.molecule, mol.component.getElement())
-    }
-
-
 
 
     const groupByFirstLetter = (strings) => {
@@ -153,6 +148,11 @@ export function Organism_ListAll() {
           
     }
 
+
+
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
+    }
 
 
 
