@@ -211,7 +211,7 @@ export function Controller() {
 
                     if (subSubSubComp.functions) 
 
-                    await processFunction(slot.component, subSubSubCompModels[index])
+                    await processFunction(subSubSubComp, subSubSubCompModels[index])
 
 
                     // {
