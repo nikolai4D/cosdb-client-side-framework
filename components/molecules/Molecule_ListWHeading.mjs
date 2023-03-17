@@ -111,7 +111,7 @@ export function Molecule_ListWHeading() {
       }, {});
     
       const sortedGrouped = Object.entries(grouped)
-        .sort(([a], [b]) => a.localeCompare(b))
+        .sort(([a], [b]) => a.localeCompare(b, "sv"))
         .map(([letter, title]) => ({ letter, title }));
     
       return sortedGrouped;
