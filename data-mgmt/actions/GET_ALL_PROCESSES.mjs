@@ -10,5 +10,4 @@ export const GET_ALL_PROCESSES = async () => {
           },
         });
         const myJson = await response.json();
-        console.log(myJson);
 }
