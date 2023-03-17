@@ -118,7 +118,7 @@ export function Molecule_ListWHeading() {
     };
     
 
-    
+
     for (let atom of this.atoms) {
       await this.fillSlot(atom.atom, atom.component.getElement())
     }
@@ -134,7 +134,16 @@ export function Molecule_ListWHeading() {
         ).sort()
 
         let dataObjMap = groupByFirstLetter(dataMap)
-        console.log(dataObjMap, "dataObjMap")
+
+        let dataMap1 = dataObjMap.map((item) => {
+          return item.title.trim()
+        }
+        ).sort(function(a,b){
+          return a.localeCompare(b);
+        });
+
+
+        console.log(dataMap1, "dataMap1")
       }
     }
 
