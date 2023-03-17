@@ -85,14 +85,12 @@ export function Controller() {
         let functionModels = this.model.functions.filter(func => func.parentId === componentModel.id);
 
         for (let func of functionModels) {
-          let action = await createAction(func.value)
-          console.log(func)
           let funcId = func.key.split(" ")[1]
-          console.log(funcId)
-          console.log(component)
           let compFunc = component.functions.find(aFunc => aFunc.id == funcId)
+          compFunc.function = func.value
+          compFunc.functionCall = await createAction(func.value);
           console.log(compFunc)
-          
+
         }
 
       // let action = await createAction(func.value);
