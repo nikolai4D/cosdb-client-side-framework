@@ -107,6 +107,8 @@ export function Molecule_ListWHeading() {
       if (func.functionCall){
         let data = await func.functionCall();
         // console.log(data, "data")
+
+        data.sort((a, b) => a.title.localeCompare(b.title))
         let dataMap = data.map((item) => {
           return item.title
         }
