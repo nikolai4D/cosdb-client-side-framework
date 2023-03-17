@@ -103,9 +103,9 @@ export function Molecule_ListWHeading() {
   this.bindScript= async function() {
 
 
-    for (let atom of this.atoms) {
-      await this.fillSlot(atom.atom, atom.component.getElement())
-    }
+    // for (let atom of this.atoms) {
+    //   await this.fillSlot(atom.atom, atom.component.getElement())
+    // }
     
     const groupByFirstLetter = (strings) => {
       const grouped = strings.reduce((acc, str) => {
