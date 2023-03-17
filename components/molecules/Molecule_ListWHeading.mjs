@@ -141,7 +141,7 @@ export function Molecule_ListWHeading() {
 
         this.data= dataObjMap
 
-        for (let [index, atom] of this.atoms) {
+        for (let [index, atom] of this.atoms.entries()) {
           if (atom.atom === "Atom_Heading4"){
             atom.component.value = [{value: this.data[0].letter}]
           }
