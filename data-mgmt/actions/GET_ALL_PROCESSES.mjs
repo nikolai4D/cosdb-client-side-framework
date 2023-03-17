@@ -6,7 +6,7 @@ export const GET_ALL_PROCESSES = async () => {
         //   body: myBody, // string or object
           headers: {
             'Content-Type': 'application/json',
-            'authorization': `${API_KEY}`
+            'apikey': `${API_KEY}`
           },
         });
         const myJson = await response.json();
