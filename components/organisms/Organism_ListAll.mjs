@@ -123,8 +123,10 @@ export function Organism_ListAll() {
           }
     }
 
-    console.log(this.element, "elmenent")
+    console.log(  this.element.getElementById("organism_all_lists")
+    , "elmenent")
 
+  
           for (let mol of this.molecules) {
             await this.fillSlot(mol.molecule, mol.component.getElement())
           }
