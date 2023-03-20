@@ -82,74 +82,74 @@ export function Organism_ListAll() {
     
 
 
-    for (let func of this.functions) {
+    // for (let func of this.functions) {
 
 
-      if (func.functionCall)
-        await func.functionCall();
+    //   if (func.functionCall)
+    //     await func.functionCall();
 
 
-        for (let func of this.functions) {
-          if (func.functionCall){
-            let data = await func.functionCall();
+    //     for (let func of this.functions) {
+    //       if (func.functionCall){
+    //         let data = await func.functionCall();
     
-            let dataMap = data.map((item) => {
-              return item.title.trim()
-            })
-            let dataObjMap = groupByFirstLetter(dataMap)
+    //         let dataMap = data.map((item) => {
+    //           return item.title.trim()
+    //         })
+    //         let dataObjMap = groupByFirstLetter(dataMap)
     
-            this.data= dataObjMap
+    //         this.data= dataObjMap
     
 
-            this.molecules = []
+    //         this.molecules = []
 
 
-            for (let [index, molecule] of this.data.entries()){
+    //         for (let [index, molecule] of this.data.entries()){
 
 
             
 
-            let newComponent = new Molecule_ListWHeading()
-            this.molecules.push(newComponent)
-            newComponent.atoms = []
+    //         let newComponent = new Molecule_ListWHeading()
+    //         this.molecules.push(newComponent)
+    //         newComponent.atoms = []
 
 
-            let newAtom= new Atom_Heading4()
-            let firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
-            newAtom.value = [firstAtom]
+    //         let newAtom= new Atom_Heading4()
+    //         let firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
+    //         newAtom.value = [firstAtom]
 
 
-            //-----
-            this.atoms = []
+    //         //-----
+    //         this.atoms = []
 
             
-            this.atoms.push({value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newComponent })
+    //         this.atoms.push({value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newComponent })
     
-            for (let [index, item] of molecule.title.entries()){
+    //         for (let [index, item] of molecule.title.entries()){
     
-              let newComponent = new Atom_ListItem()
-              newComponent.value = [{value: item}]
+    //           let newComponent = new Atom_ListItem()
+    //           newComponent.value = [{value: item}]
     
-              this.atoms.push({value: item, id: index, atom: "Atom_ListItem", component: newComponent })
-            }
+    //           this.atoms.push({value: item, id: index, atom: "Atom_ListItem", component: newComponent })
+    //         }
     
-            // for (let [index, atom] of this.atoms.entries()) {
-            //   if (atom.atom === "Atom_Heading4"){
-            //     atom.component.value = [{value: this.data[0].letter}]
-            //   }
-            //   else {
-            //   atom.component.value = [{value: this.data[0].title[index-1]}]
-            // }
+    //         // for (let [index, atom] of this.atoms.entries()) {
+    //         //   if (atom.atom === "Atom_Heading4"){
+    //         //     atom.component.value = [{value: this.data[0].letter}]
+    //         //   }
+    //         //   else {
+    //         //   atom.component.value = [{value: this.data[0].title[index-1]}]
+    //         // }
             
-            }
-            }
-          }
+    //         }
+    //         }
+    //       }
       
 
       
 
           
-    }
+    // }
 
           for (let mol of this.molecules) {
             await this.fillSlot(mol.molecule, mol.component.getElement())
