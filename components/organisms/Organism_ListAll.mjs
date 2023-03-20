@@ -49,9 +49,8 @@ export function Organism_ListAll() {
     <div class="organism_list-all-search">
         ${slot(this.molecules[0].molecule)}
         <div id="organism_all_lists" class="organism_list-all-search__lists">
-            ${slot(this.molecules[1].molecule)}
-            ${slot(this.molecules[2].molecule)}
-            ${slot(this.molecules[3].molecule)}
+        ${this.molecules.slice(1).map(mol => slot(mol.molecule)).join("")}
+
         </div>
     </div>
         `;
@@ -120,7 +119,7 @@ export function Organism_ListAll() {
               }
             }
 
-            
+
           }
     }
 
