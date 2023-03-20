@@ -9,11 +9,11 @@ export function Molecule_dummy3() {
   this.atoms = [
     { id: 1,
       atom: "Atom_dummy1",
-      component: Atom_dummy1()
+      component: new Atom_dummy1()
     },
     { id: 2,
       atom: "Atom_dummy2",
-      component: Atom_dummy2()
+      component: new Atom_dummy2()
     }
   ]
 

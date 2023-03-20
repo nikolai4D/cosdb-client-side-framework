@@ -57,6 +57,36 @@ export function Controller() {
 
   this.getSlots = async () => {
 
+    const createComponent = async (type, file) => {
+      const pathToComponent = `../../components/${type}/${file}.mjs`;
+      const Component = await importModuleFromFile(pathToComponent, file)
+      return new Component[file]();
+    }
+
+    const createAction = async (file) => {
+      const pathToAction = `../../data-mgmt/actions/${file}.mjs`;
+      const action = await importModuleFromFile(pathToAction, file)
+      return action[file];
+    }
+
+    const processFunction = async (component, componentModel) => {
+
+
+
+        let functionModels = this.model.functions.filter(func => func.parentId === componentModel.id);
+
+        for (let func of functionModels) {
+          let funcId = func.key.split(" ")[1]
+          let compFunc = component.functions.find(aFunc => aFunc.id == funcId)
+          compFunc.function = func.value
+          compFunc.functionCall = await createAction(func.value);
+          console.log(compFunc)
+
+        }
+
+    }
+
+
     const processMolecules = async (subSubComp, subSubCompModels) => {
       for (let molecule of subSubComp.molecules) {
         let moleculeComponent = molecule.component;
@@ -64,6 +94,16 @@ export function Controller() {
     
         if (moleculeComponent.functions) {
           // Perform necessary actions with moleculeComponent.functions
+
+          let moleculeFunctions = molecule.functions;
+          console.log(moleculeComponent)
+          console.log(moleculeModels)
+          console.log(subSubCompModels)
+
+          let functionModels = this.model.functions.filter(func => func.parentId === subSubCompModels[0].id);
+
+          console.log(functionModels)
+
         }
     
         if (moleculeComponent.atoms) {
@@ -116,35 +156,39 @@ export function Controller() {
             const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
 
 
-
             // if the organism exists in the model
             if (organismModel) {
-
               // set the slot of viewTemplate to the be the value of the organism
               slot.slot = organismModel.value;
-
-              // get the name of the organism from the model and import it from the organisms folder
-              const fileOrganism = organismModel.value;
-              const pathToComponent = `../../components/organisms/${fileOrganism}.mjs`;
-              const organismComponent = await importModuleFromFile(pathToComponent, fileOrganism)
-              let organismComp =  new organismComponent[fileOrganism]();
-
               // for that slot in viewTemplate, set component to be organism
-              slot.component = organismComp
+              slot.component = await createComponent("organisms", organismModel.value)
+
+              if (slot.component.functions){
+                await processFunction(slot.component, organismModel)
+              }
 
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
                 if (slot.component.organisms) {
 
                 // for viewTempalate slot that has an organism, loop through its organisms
-                for (let subCompOrganism of slot.component.organisms) {
+                for (let [index, subCompOrganism] of slot.component.organisms.entries()) {
+
 
                   let subSubComp = subCompOrganism.component
                   let subSubCompModels = this.model.organisms.filter(org => org.parentId === organismModel.id)
 
                   if (subSubCompModels.length > 1) console.log("more than one organism")
 
-                  if (subSubComp.functions) console.log(subSubComp.constructorKey, subSubComp.functions)
+                  if (subSubComp.functions) 
+                  {
+                    let functionModels = this.model.functions.filter(func => func.parentId === subSubCompModels[index].id);
+
+                    for (let func of functionModels) {
+                      let action = await createAction(func.value)
+                      // action.execute()
+                    }
+                  }
 
 
                   
@@ -165,7 +209,19 @@ export function Controller() {
 
                     if (subSubSubCompModels.length > 1) console.log("more than one molecule")
 
-                    if (subSubSubComp.functions) console.log(subSubSubComp.constructorKey, subSubSubComp.functions)
+                    if (subSubSubComp.functions) 
+
+                    await processFunction(subSubSubComp, subSubSubCompModels[index])
+
+
+                    // {
+                    //   let functionModels = this.model.functions.filter(func => func.parentId === subSubSubCompModels[index].id);
+
+                    //   for (let func of functionModels) {
+                    //     let action = await createAction(func.value)
+                    //     // action.execute()
+                    //   }
+                    // }
 
                     if (subSubSubComp.atoms){
 
@@ -227,15 +283,8 @@ export function Controller() {
 
             // set the slot of viewTemplate to the be the value of the organism
             slot.slot = moleculeModel.value;
-
-            // get the name of the organism from the model and import it from the organisms folder
-            const fileMolecule = moleculeModel.value;
-            const pathToComponent = `../../components/molecules/${fileMolecule}.mjs`;
-            const moleculeComponent = await importModuleFromFile(pathToComponent, fileMolecule)
-            let moleculeComp =  new moleculeComponent[fileMolecule]();
-
             // for that slot in viewTemplate, set component to be molecule
-            slot.component = moleculeComp
+            slot.component = await createComponent("molecules", moleculeModel.value)
 
             // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
@@ -270,15 +319,8 @@ export function Controller() {
 
             // set the slot of viewTemplate to the be the value of the organism
             slot.slot = atomModel.value;
-
-            // get the name of the organism from the model and import it from the organisms folder
-            const fileAtom = atomModel.value;
-            const pathToComponent = `../../components/atoms/${fileAtom}.mjs`;
-            const atomComponent = await importModuleFromFile(pathToComponent, fileAtom)
-            let atomComp =  new atomComponent[fileAtom]();
-
             // for that slot in viewTemplate, set component to be molecule
-            slot.component = atomComp
+            slot.component = await createComponent("atoms", atomModel.value)
 
             // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
