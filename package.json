@@ -4,9 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "postinstall": "export BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "cdev": "npm install && git add . && git commit -m \"auto commit\" && git push origin ${BRANCH_NAME}"
+        "cdev": "npm install && git add . && git commit -m \"auto commit\" && git push origin HEAD"
     },
     "repository": {
         "type": "git",
@@ -17,8 +16,5 @@
     "bugs": {
         "url": "https://github.com/nikolai4D/cosdb-client-side-framework/issues"
     },
-    "homepage": "https://github.com/nikolai4D/cosdb-client-side-framework#readme",
-    "devDependencies": {
-        "git-rev-sync": "^3.0.2"
-    }
+    "homepage": "https://github.com/nikolai4D/cosdb-client-side-framework#readme"
 }
