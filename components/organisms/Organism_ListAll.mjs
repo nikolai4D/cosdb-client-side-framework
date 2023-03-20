@@ -82,11 +82,12 @@ export function Organism_ListAll() {
     
 
 
-    // for (let func of this.functions) {
+    for (let func of this.functions) {
 
 
-    //   if (func.functionCall)
-    //     await func.functionCall();
+      if (func.functionCall)
+        // await func.functionCall();
+        console.log("Yup!")
 
 
     //     for (let func of this.functions) {
@@ -140,16 +141,10 @@ export function Organism_ListAll() {
     //         //   else {
     //         //   atom.component.value = [{value: this.data[0].title[index-1]}]
     //         // }
-            
     //         }
     //         }
     //       }
-      
-
-      
-
-          
-    // }
+    }
 
           for (let mol of this.molecules) {
             await this.fillSlot(mol.molecule, mol.component.getElement())
