@@ -10,6 +10,4 @@ export async function mutation_initializeState(model) {
   State.atoms = model.atoms;
   State.atomValues = model.atomValues;
   State.functions = model.functions;
-
-  //console.log(State);
 }

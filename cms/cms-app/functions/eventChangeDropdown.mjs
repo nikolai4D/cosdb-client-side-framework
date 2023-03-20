@@ -22,12 +22,6 @@ export async function eventChangeDropdown(id) {
   data.customType = customType;
   data.updated = Date();
 
-  console.log("update: ", customType, ": ", {
-    id,
-    parentId,
-    value,
-  });
-
   if (customType === "viewTemplate") {
     const viewTemplateBody = await getAccordionBody(id);
 
@@ -38,14 +32,12 @@ export async function eventChangeDropdown(id) {
     }
 
     await action_writeModel(state);
-    console.log("updated viewTemplate dropdown with state: ", state);
   }
 
   if (customType === "function") {
     const state = await mutation_updateState("functions", data, true);
 
     await action_writeModel(state);
-    console.log("updated function dropdown with state: ", state);
   }
 
   if (customType === "component") {
@@ -53,26 +45,18 @@ export async function eventChangeDropdown(id) {
 
     const state = await mutation_updateState("components", data, true);
 
-    console.log("state before: ", state);
-
     if (value !== "") {
       if (value.startsWith("Organism")) {
-        console.log("Organism");
         await createOrganism(componentBody, id, value);
       }
       if (value.startsWith("Molecule")) {
-        console.log("Molecule");
         await createMolecule(componentBody, id, value);
       }
       if (value.startsWith("Atom")) {
-        console.log("Atom");
         await createAtom(componentBody, id, value);
       }
     }
 
-    console.log("state after: ", state);
-
     await action_writeModel(state);
-    console.log("updated component dropdown with state: ", state);
   }
 }

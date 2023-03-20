@@ -2,7 +2,6 @@ import { accordionInput } from "../types/accordionInput.mjs";
 import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
 export async function Atom(atom, atomBody) {
-  console.log("atom");
   const atomDiv = document.createElement("div");
   atomDiv.classList.add(atom.customType);
 

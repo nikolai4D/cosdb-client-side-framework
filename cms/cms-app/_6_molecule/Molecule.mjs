@@ -2,7 +2,6 @@ import { accordionInput } from "../types/accordionInput.mjs";
 import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
 export async function Molecule(molecule, moleculeBody) {
-  console.log("Molecule");
   const moleculeDiv = document.createElement("div");
   moleculeDiv.classList.add(molecule.customType);
 
@@ -29,8 +28,6 @@ export async function Molecule(molecule, moleculeBody) {
   );
 
   moleculeDiv.appendChild(moleculeAccordionInput);
-
-  console.log(id, value, parentId, "molecules");
 
   await mutation_updateState("molecules", molecule);
 
