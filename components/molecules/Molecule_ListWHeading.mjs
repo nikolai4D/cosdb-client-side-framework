@@ -78,23 +78,7 @@ export function Molecule_ListWHeading() {
             <ul class="molecule_list__list">
 
               ${slot(this.atoms[1].atom)}
-
-              ${slot(this.atoms[2].atom)}
-
-              ${slot(this.atoms[3].atom)}
-
-              ${slot(this.atoms[4].atom)}
-
-              ${slot(this.atoms[5].atom)}
-
-              ${slot(this.atoms[6].atom)}
-
-              ${slot(this.atoms[7].atom)}
-
-              ${slot(this.atoms[8].atom)}
-
-              ${slot(this.atoms[9].atom)}
-
+              
             </ul>
         </div>
   `;
