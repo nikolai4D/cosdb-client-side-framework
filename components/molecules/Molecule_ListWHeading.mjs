@@ -78,7 +78,7 @@ export function Molecule_ListWHeading() {
             </div>
             <ul class="molecule_list__list">
 
-            ${this.atoms.slice(1).map(at => at.atom).join("")}
+            ${this.atoms.slice(1).map(at => slot(at.atom)).join("")}
 
             </ul>
         </div>
