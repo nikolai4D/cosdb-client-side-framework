@@ -126,10 +126,12 @@ export function Organism_ListAll() {
     console.log(this.element, "this elelemnt")
 
     console.log(  this.element.lastElementChild, "hello")
-
+    this.element.lastElementChild.innerHTML = ""
+    let moleculesSlots  =  this.element.lastElementChild
   
           for (let mol of this.molecules) {
-            await this.fillSlot(mol.molecule, mol.component.getElement())
+            moleculesSlots.appendChild(mol.component.getElement())
+            // await this.fillSlot(mol.molecule, )
           }
   }
 }
