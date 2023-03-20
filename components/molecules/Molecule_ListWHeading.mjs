@@ -104,64 +104,64 @@ export function Molecule_ListWHeading() {
 
 
 
-    const groupByFirstLetter = (strings) => {
-      const grouped = strings.reduce((acc, str) => {
-        const firstLetter = str[0].toUpperCase();
-        if (!acc[firstLetter]) {
-          acc[firstLetter] = [];
-        }
-        acc[firstLetter].push(str);
-        return acc;
-      }, {});
+    // const groupByFirstLetter = (strings) => {
+    //   const grouped = strings.reduce((acc, str) => {
+    //     const firstLetter = str[0].toUpperCase();
+    //     if (!acc[firstLetter]) {
+    //       acc[firstLetter] = [];
+    //     }
+    //     acc[firstLetter].push(str);
+    //     return acc;
+    //   }, {});
     
-      const sortedGrouped = Object.entries(grouped)
-        .sort(([a], [b]) => a.localeCompare(b, "sv"))
-        .map(([letter, title]) => ({ letter, title }));
+    //   const sortedGrouped = Object.entries(grouped)
+    //     .sort(([a], [b]) => a.localeCompare(b, "sv"))
+    //     .map(([letter, title]) => ({ letter, title }));
     
-      return sortedGrouped;
-    };
+    //   return sortedGrouped;
+    // };
     
 
 
 
 
-    for (let func of this.functions) {
-      if (func.functionCall){
-        let data = await func.functionCall();
+    // for (let func of this.functions) {
+    //   if (func.functionCall){
+    //     let data = await func.functionCall();
 
-        let dataMap = data.map((item) => {
-          return item.title.trim()
-        })
-        let dataObjMap = groupByFirstLetter(dataMap)
+    //     let dataMap = data.map((item) => {
+    //       return item.title.trim()
+    //     })
+    //     let dataObjMap = groupByFirstLetter(dataMap)
 
-        console.log(dataObjMap, "dataObjMap")
+    //     console.log(dataObjMap, "dataObjMap")
 
-        this.data= dataObjMap
+    //     this.data= dataObjMap
 
-        this.atoms = []
-        let newComponent = new Atom_Heading4()
-        newComponent.value = [{value: this.data[0].letter}]
+    //     this.atoms = []
+    //     let newComponent = new Atom_Heading4()
+    //     newComponent.value = [{value: this.data[0].letter}]
         
-        this.atoms.push({value: this.data[0].letter, id: 1, atom: "Atom_Heading4", component: newComponent })
+    //     this.atoms.push({value: this.data[0].letter, id: 1, atom: "Atom_Heading4", component: newComponent })
 
-        for (let [index, item] of this.data[0].title.entries()){
+    //     for (let [index, item] of this.data[0].title.entries()){
 
-          let newComponent = new Atom_ListItem()
-          newComponent.value = [{value: item}]
+    //       let newComponent = new Atom_ListItem()
+    //       newComponent.value = [{value: item}]
 
-          this.atoms.push({value: item, id: index, atom: "Atom_ListItem", component: newComponent })
-        }
+    //       this.atoms.push({value: item, id: index, atom: "Atom_ListItem", component: newComponent })
+    //     }
 
-        // for (let [index, atom] of this.atoms.entries()) {
-        //   if (atom.atom === "Atom_Heading4"){
-        //     atom.component.value = [{value: this.data[0].letter}]
-        //   }
-        //   else {
-        //   atom.component.value = [{value: this.data[0].title[index-1]}]
-        // }
+    //     // for (let [index, atom] of this.atoms.entries()) {
+    //     //   if (atom.atom === "Atom_Heading4"){
+    //     //     atom.component.value = [{value: this.data[0].letter}]
+    //     //   }
+    //     //   else {
+    //     //   atom.component.value = [{value: this.data[0].title[index-1]}]
+    //     // }
         
-        }
-      }
+    //     }
+    //   }
       for (let atom of this.atoms) {
         await this.fillSlot(atom.atom, atom.component.getElement())
       }
