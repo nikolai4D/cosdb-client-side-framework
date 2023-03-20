@@ -78,7 +78,7 @@ export function Molecule_ListWHeading() {
             <ul class="molecule_list__list">
 
               ${slot(this.atoms[1].atom)}
-              
+
             </ul>
         </div>
   `;
@@ -147,6 +147,7 @@ export function Molecule_ListWHeading() {
     //     }
     //   }
       for (let atom of this.atoms) {
+        console.log(atom,"atom")
         await this.fillSlot(atom.atom, atom.component.getElement())
       }
 
