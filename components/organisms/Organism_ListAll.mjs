@@ -76,8 +76,8 @@ export function Organism_ListAll() {
       return sortedGrouped;
     };
 
-    const compData = await this.functions.function[1].functionCall()
-    const getData = State[compData]
+    // const compData = await this.functions.function[1].functionCall()
+    // const getData = State[compData]
 
         for (let func of this.functions) {
           if (func.functionCall){
