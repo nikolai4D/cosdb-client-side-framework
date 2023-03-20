@@ -59,10 +59,6 @@ export function Organism_ListAll() {
 
   this.bindScript= async function() {
 
-
-
-
-
     const groupByFirstLetter = (strings) => {
       const grouped = strings.reduce((acc, str) => {
         const firstLetter = str[0].toUpperCase();
@@ -79,10 +75,6 @@ export function Organism_ListAll() {
     
       return sortedGrouped;
     };
-    
-
-
-
 
         for (let func of this.functions) {
           if (func.functionCall){
@@ -91,9 +83,13 @@ export function Organism_ListAll() {
             let dataMap = data.map((item) => {
               return item.title.trim()
             })
+
+
             let dataObjMap = groupByFirstLetter(dataMap)
     
             this.data= dataObjMap
+
+            console.log(dataObjMap, "data")
     
 
             this.molecules = []
@@ -101,39 +97,24 @@ export function Organism_ListAll() {
 
             for (let [index, molecule] of this.data.entries()){
 
+              let newComponent = new Molecule_ListWHeading()
+
+              this.molecules.push({id: index+1, molecule: newComponent.constructorKey, component: newComponent})
+              
+              let newAtom= new Atom_Heading4()
+              let firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
+              newAtom.value = [firstAtom]
+              newComponent.atoms = [firstAtom]
 
 
-            let newComponent = new Molecule_ListWHeading()
-            console.log(newComponent)
-            this.molecules.push({id: index+1, molecule: newComponent.constructorKey, component: newComponent})
-            
-            let newAtom= new Atom_Heading4()
-            let firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
-            newAtom.value = [firstAtom]
-            newComponent.atoms = [firstAtom]
 
-    //         //-----
-            // this.atoms = []
-
-            // this.atom.push(newAtom)
-            // this.atoms.push({value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newComponent })
-    
-            for (let [index2, item] of molecule.title.entries()){
-    
-              let newComponentAtom = new Atom_ListItem()
-              newComponentAtom.value = [{value: item}]
-    
-              newComponent.atoms.push({value: item, id: index2, atom: "Atom_ListItem", component: newComponentAtom })
-            }
-    
-    //         // for (let [index, atom] of this.atoms.entries()) {
-    //         //   if (atom.atom === "Atom_Heading4"){
-    //         //     atom.component.value = [{value: this.data[0].letter}]
-    //         //   }
-    //         //   else {
-    //         //   atom.component.value = [{value: this.data[0].title[index-1]}]
-    //         // }
-            // }
+              for (let [index2, item] of molecule.title.entries()){
+      
+                let newComponentAtom = new Atom_ListItem()
+                newComponentAtom.value = [{value: item}]
+      
+                newComponent.atoms.push({value: item, id: index2, atom: "Atom_ListItem", component: newComponentAtom })
+              }
             }
           }
     }
@@ -142,7 +123,5 @@ export function Organism_ListAll() {
             console.log(mol, "mol")
             await this.fillSlot(mol.molecule, mol.component.getElement())
           }
-
-
   }
 }
