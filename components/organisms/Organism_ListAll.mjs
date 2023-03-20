@@ -99,13 +99,12 @@ export function Organism_ListAll() {
             this.molecules = []
 
 
-            for (let [index, molecule] of this.data.entries()){
+            for (let molecule of this.data){
 
 
 
             let newComponent = new Molecule_ListWHeading()
             this.molecules.push(newComponent)
-
 
             let newAtom= new Atom_Heading4()
             let firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
@@ -123,7 +122,7 @@ export function Organism_ListAll() {
               let newComponentAtom = new Atom_ListItem()
               newComponentAtom.value = [{value: item}]
     
-              this.atoms.push({value: item, id: index, atom: "Atom_ListItem", component: newComponentAtom })
+              newComponent.push({value: item, id: index, atom: "Atom_ListItem", component: newComponentAtom })
             }
     
     //         // for (let [index, atom] of this.atoms.entries()) {
