@@ -90,8 +90,6 @@ export function Organism_ListAll() {
             let dataObjMap = groupByFirstLetter(dataMap)
     
             this.data= dataObjMap
-
-            console.log(dataObjMap, "data")
     
 
             this.molecules = []
@@ -123,15 +121,11 @@ export function Organism_ListAll() {
           }
     }
 
-    console.log(this.element, "this elelemnt")
-
-    console.log(  this.element.lastElementChild, "hello")
     this.element.lastElementChild.innerHTML = ""
     let moleculesSlots  =  this.element.lastElementChild
   
           for (let mol of this.molecules) {
             moleculesSlots.appendChild(mol.component.getElement())
-            // await this.fillSlot(mol.molecule, )
           }
   }
 }

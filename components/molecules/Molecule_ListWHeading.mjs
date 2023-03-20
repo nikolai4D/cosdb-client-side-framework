@@ -55,6 +55,4 @@ export function Molecule_ListWHeading() {
 
   }
 
-
-    
 }
