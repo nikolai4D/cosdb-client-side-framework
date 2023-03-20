@@ -1,6 +1,6 @@
 
 
-// import { View } from "../../core/View.mjs";
+import { View } from "../../core/View.mjs";
 import { importModuleFromFile } from "../../core/helpers.mjs";
 import { readModel } from "./readModel.mjs";
 
