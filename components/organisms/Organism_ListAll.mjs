@@ -123,7 +123,6 @@ export function Organism_ListAll() {
     }
 
           for (let mol of this.molecules) {
-            console.log(mol, "mol")
             await this.fillSlot(mol.molecule, mol.component.getElement())
           }
   }
