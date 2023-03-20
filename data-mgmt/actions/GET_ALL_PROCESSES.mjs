@@ -1,13 +1,10 @@
-import {API_KEY} from '../constants.js';
+import {URL_PROCESS_1, URL_PROCESS_2} from '../constants.mjs';
+import { apiCallGet } from './apiCalls.mjs'
 
 export const GET_ALL_PROCESSES = async () => {
-        const response = await fetch('https://uc1.cosdb.io/api/typeData?parentId=co_140ca73c-1275-4fa5-8e74-fa71e845afe3', {
-          method: 'get',
-        //   body: myBody, // string or object
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': `${API_KEY}`
-          },
-        });
-        return await response.json();
+      const firstProcess =  await apiCallGet(URL_PROCESS_1);
+      const secondProcess = await apiCallGet(URL_PROCESS_2)
+
+      return [...firstProcess, ...secondProcess]
 }
+
