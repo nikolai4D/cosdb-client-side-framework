@@ -76,46 +76,49 @@ export function Organism_ListAll() {
       return sortedGrouped;
     };
 
+    const compData = await this.functions.function[1].functionCall()
+    const getData = State[compData]
+
         for (let func of this.functions) {
           if (func.functionCall){
             let data = await func.functionCall();
     
-            let dataMap = data.map((item) => {
-              return item.title.trim()
-            })
+          //   let dataMap = data.map((item) => {
+          //     return item.title.trim()
+          //   })
 
 
-            let dataObjMap = groupByFirstLetter(dataMap)
+          //   let dataObjMap = groupByFirstLetter(dataMap)
     
-            this.data= dataObjMap
+          //   this.data= dataObjMap
 
-            console.log(dataObjMap, "data")
+          //   console.log(dataObjMap, "data")
     
 
-            this.molecules = []
+          //   this.molecules = []
 
 
-            for (let [index, molecule] of this.data.entries()){
+          //   for (let [index, molecule] of this.data.entries()){
 
-              let newComponent = new Molecule_ListWHeading()
+          //     let newComponent = new Molecule_ListWHeading()
 
-              this.molecules.push({id: index+1, molecule: newComponent.constructorKey, component: newComponent})
+          //     this.molecules.push({id: index+1, molecule: newComponent.constructorKey, component: newComponent})
               
-              let newAtom= new Atom_Heading4()
-              let firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
-              newAtom.value = [firstAtom]
-              newComponent.atoms = [firstAtom]
+          //     let newAtom= new Atom_Heading4()
+          //     let firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
+          //     newAtom.value = [firstAtom]
+          //     newComponent.atoms = [firstAtom]
 
 
 
-              for (let [index2, item] of molecule.title.entries()){
+          //     for (let [index2, item] of molecule.title.entries()){
       
-                let newComponentAtom = new Atom_ListItem()
-                newComponentAtom.value = [{value: item}]
+          //       let newComponentAtom = new Atom_ListItem()
+          //       newComponentAtom.value = [{value: item}]
       
-                newComponent.atoms.push({value: item, id: index2, atom: "Atom_ListItem", component: newComponentAtom })
-              }
-            }
+          //       newComponent.atoms.push({value: item, id: index2, atom: "Atom_ListItem", component: newComponentAtom })
+          //     }
+          //   }
           }
     }
 
