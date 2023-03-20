@@ -67,6 +67,7 @@ export function Molecule_ListWHeading() {
   ];
 
   this.getHtml = function(){
+    console.log(this.atoms.slice(1).map(at => at.atom).join(""))
 
 
     return `
