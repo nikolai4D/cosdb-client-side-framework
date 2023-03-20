@@ -66,9 +66,6 @@ export function Controller() {
     }
 
     const processFunction = async (component, componentModel) => {
-
-
-
         let functionModels = this.model.functions.filter(func => func.parentId === componentModel.id);
 
         for (let func of functionModels) {
@@ -76,6 +73,7 @@ export function Controller() {
           let compFunc = component.functions.find(aFunc => aFunc.id == funcId)
           compFunc.function = func.value
           compFunc.functionCall = await createAction(func.value);
+
         }
 
     }
