@@ -122,7 +122,7 @@ export function Organism_ListAll() {
               let newComponentAtom = new Atom_ListItem()
               newComponentAtom.value = [{value: item}]
     
-              newComponent.push({value: item, id: index, atom: "Atom_ListItem", component: newComponentAtom })
+              newComponent.atoms.push({value: item, id: index, atom: "Atom_ListItem", component: newComponentAtom })
             }
     
     //         // for (let [index, atom] of this.atoms.entries()) {
