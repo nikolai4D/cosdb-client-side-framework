@@ -123,6 +123,8 @@ export function Organism_ListAll() {
           }
     }
 
+    console.log(this.element, "this elelemnt")
+
     console.log(  this.element.getElementById("organism_all_lists")
     , "elmenent")
 
