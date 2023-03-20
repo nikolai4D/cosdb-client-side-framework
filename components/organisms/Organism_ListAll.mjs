@@ -104,6 +104,7 @@ export function Organism_ListAll() {
 
 
             let newComponent = new Molecule_ListWHeading()
+            console.log(newComponent)
             this.molecules.push(newComponent)
 
             let newAtom= new Atom_Heading4()
@@ -138,6 +139,7 @@ export function Organism_ListAll() {
     }
 
           for (let mol of this.molecules) {
+            
             await this.fillSlot(mol.molecule, mol.component.getElement())
           }
 
