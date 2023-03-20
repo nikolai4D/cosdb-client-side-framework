@@ -1,4 +1,4 @@
-import { API_KEY } from "../constants.mjs";
+import { API_KEY } from "../constants.js";
 
 async function apiCallGet(url) {
     const response = await fetch(url, {
