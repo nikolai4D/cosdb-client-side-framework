@@ -21,9 +21,9 @@ export async function eventChangeInput(id) {
   if (customType === "functionParameters") {
     const parentInput = document.getElementById(parentId);
     let parentValue = parentInput.value;
-    const parentCustomType = input.getAttribute("customType");
-    const parentParentId = input.getAttribute("parentId");
-    const parentKey = input.getAttribute("key");
+    const parentCustomType = parentInput.getAttribute("customType");
+    const parentParentId = parentInput.getAttribute("parentId");
+    const parentKey = parentInput.getAttribute("key");
 
     data.id = parentId;
     data.parentId = parentParentId;
