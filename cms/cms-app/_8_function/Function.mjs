@@ -30,13 +30,15 @@ export async function Function(func, functionBody) {
   const parametersKey = "parameters";
   const parametersValue = func.parameters;
   const parametersValueDisabled = false;
+  const parametersId = id + "parameters";
+  const parametersParentId = id;
 
   const functionParameters = await input(
     parametersCustomType,
     parametersKey,
     parametersValue,
-    id,
-    parentId,
+    parametersId,
+    parametersParentId,
     parametersValueDisabled
   );
 
