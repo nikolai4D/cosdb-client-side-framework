@@ -4,9 +4,8 @@ import { apiCallGet } from './apiCalls.mjs'
 export async function action_getAllListData() {
 
       const response =  await apiCallGet("api/");
-      const data = await response.json();
 
-      console.log(data)
+      console.log(response)
 
       return [{"title": data}]
 
