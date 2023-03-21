@@ -5,12 +5,6 @@ export async function action_getAllListData() {
 
       const response =  await apiCallGet("api/");
 
-      console.log(response)
-
       return [{"title": response}]
 
-      // const firstProcess =  await apiCallGet(URL_PROCESS_1);
-      // const secondProcess = await apiCallGet(URL_PROCESS_2)
-
-      // return [...firstProcess, ...secondProcess]
 }
