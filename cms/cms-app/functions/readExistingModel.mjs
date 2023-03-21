@@ -188,10 +188,9 @@ async function createFunctionsEl(componentFunctions, id, body, parentBody) {
     );
 
     if (existingFn) {
+      console.log("existingFn.parameters", existingFn.parameters);
       if (typeof existingFn.parameters === "object") {
-        existingFn.parameters = JSON.stringify(
-          JSON.parse(existingFn.parameters)
-        );
+        existingFn.parameters = JSON.stringify(existingFn.parameters);
       }
       functionSlot = await Function(existingFn, body);
     } else {
