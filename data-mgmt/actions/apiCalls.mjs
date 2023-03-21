@@ -1,13 +1,10 @@
-import { API_KEY } from "../constants.js";
-
 export async function apiCallGet(url) {
     const response = await fetch(url, {
       method: 'get',
       //   body: myBody, // string or object
       headers: {
-        'Content-Type': 'application/json',
-        'apikey': `${API_KEY}`
-      },
+        'Content-Type': 'application/json'
+            },
     });
     return await response.json();
   }
