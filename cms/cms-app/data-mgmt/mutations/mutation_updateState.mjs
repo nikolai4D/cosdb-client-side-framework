@@ -18,6 +18,10 @@ export async function mutation_updateState(
     }
     if (customType === "functions") {
       if (data.value === "") {
+        const functionParamsInput = document.querySelector(
+          `[parentId="${data.id}"]`
+        );
+        functionParamsInput.value = "";
         console.log("data.value === ''", data.value);
         customTypeData.splice(index, 1);
       } else {
