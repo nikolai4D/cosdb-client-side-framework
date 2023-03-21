@@ -6,7 +6,7 @@ export async function action_getAllListData() {
       const data =  await apiCallGet("api/");
       console.log(data)
 
-      return [{"title": data}]
+      return [{"title": data.json()}]
 
       // const firstProcess =  await apiCallGet(URL_PROCESS_1);
       // const secondProcess = await apiCallGet(URL_PROCESS_2)
