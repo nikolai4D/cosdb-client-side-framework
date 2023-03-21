@@ -20,10 +20,12 @@ export async function mutation_updateState(
       const functionParamsInput = document.querySelector(
         `[parentId="${data.id}"]`
       );
-      functionParamsInput.value = "";
+
       if (data.value === "") {
+        functionParamsInput.value = "";
         customTypeData.splice(index, 1);
       } else {
+        functionParamsInput.value = data.parameters;
         customTypeData.splice(index, 1, data);
       }
     }
