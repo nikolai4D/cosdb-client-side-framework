@@ -1,5 +1,6 @@
 import { dropdown } from "../types/dropdown.mjs";
 import { functionValues } from "./functionValues.mjs";
+import { input } from "../types/input.mjs";
 
 export async function Function(func, functionBody) {
   const functionDiv = document.createElement("div");
@@ -24,6 +25,22 @@ export async function Function(func, functionBody) {
   );
 
   functionDiv.appendChild(functionDropdown);
+
+  const parametersCustomType = "functionParameters";
+  const parametersKey = "parameters:";
+  const parametersValue = "";
+  const parametersValueDisabled = false;
+
+  const functionParameters = await input(
+    parametersCustomType,
+    parametersKey,
+    parametersValue,
+    id,
+    parentId,
+    parametersValueDisabled
+  );
+
+  functionDiv.appendChild(functionParameters);
 
   return functionDiv;
 }
