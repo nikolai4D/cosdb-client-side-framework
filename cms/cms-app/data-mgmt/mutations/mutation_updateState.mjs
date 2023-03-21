@@ -26,6 +26,9 @@ export async function mutation_updateState(
         customTypeData.splice(index, 1);
       } else {
         functionParamsInput.value = data.parameters;
+        if (typeof data.parameters.startsWith("{")) {
+          data.parameters = JSON.parse(data.parameters);
+        }
         customTypeData.splice(index, 1, data);
       }
     }
@@ -48,8 +51,6 @@ export async function mutation_updateState(
   } else {
     customTypeData.push(data);
   }
-
-  console.log(await customTypeData);
 
   State[customType] = await customTypeData;
   return State;
