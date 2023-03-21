@@ -30,6 +30,9 @@ export async function eventChangeInput(id) {
     data.value = parentValue;
     data.key = parentKey;
     data.customType = parentCustomType;
+    if (value.startsWith("{")) {
+      value = JSON.parse(value);
+    }
     data.parameters = value;
 
     customTypeArray = parentCustomType + "s";
