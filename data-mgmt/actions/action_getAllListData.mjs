@@ -3,7 +3,7 @@ import { apiCallGet } from './apiCalls.mjs'
 
 export async function action_getAllListData() {
 
-      const firstProcess =  await apiCallGet("/");
+      const firstProcess =  await apiCallGet("api/");
       console.log(firstProcess)
 
       return [{"title": "test"}]
