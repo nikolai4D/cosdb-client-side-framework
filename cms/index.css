@@ -35,3 +35,8 @@
     margin-left: 10px;
   }
   
+  .function {
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
