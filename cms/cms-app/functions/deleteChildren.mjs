@@ -1,10 +1,6 @@
 import { State } from "../data-mgmt/State.mjs";
 
-let counter = 0;
-
 export async function deleteChildren(id) {
-  counter++;
-  console.log(`deleteChildren called with id=${id}, counter=${counter}`);
   // Find all items in State with parentId equal to i
 
   const children = [];
@@ -26,8 +22,6 @@ export async function deleteChildren(id) {
   for (const child of children) {
     await deleteChildren(child.id);
   }
-
-  console.log("children: ", children);
 
   // Remove all items with parentId equal to id or any of its descendants' id
   for (const key of Object.keys(State)) {

@@ -15,7 +15,6 @@ export async function Slot(slot, component) {
   const valueDisabled = slot.valueDisabled;
 
   const bodyDiv = document.createElement("div");
-  //const componentDiv = await Component(await newComponent(id));
   const componentDiv = await component;
   bodyDiv.appendChild(componentDiv);
 

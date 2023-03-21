@@ -16,7 +16,6 @@ export async function mutation_updateState(
       }
     }
     if (customType === "functions") {
-      console.log("function data: ", data);
       if (data.value === "") {
         customTypeData.splice(index, 1);
       } else {

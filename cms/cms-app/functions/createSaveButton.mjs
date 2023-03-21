@@ -5,12 +5,7 @@ export async function createSaveButton() {
   createSaveButton.textContent = "Save";
   createSaveButton.classList.add("createSaveButton");
   createSaveButton.addEventListener("click", async () => {
-    
-    action.updateModel(State)
-
+    action.updateModel(State);
   });
-  document.body.appendChild(createSaveButton)
-
-console.log({State})
-
+  document.body.appendChild(createSaveButton);
 }

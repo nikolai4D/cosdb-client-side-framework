@@ -5,7 +5,7 @@ export async function newView() {
 
   view.customType = "view";
   view.key = view.customType;
-  view.value = "New View";
+  view.value = "view";
   view.id = await getUuid();
   view.parentId = view.id;
   view.valueDisabled = false;

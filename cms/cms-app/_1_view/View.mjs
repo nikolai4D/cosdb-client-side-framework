@@ -15,7 +15,6 @@ export async function View(view, viewTemplate) {
   const valueDisabled = view.valueDisabled;
 
   const bodyDiv = document.createElement("div");
-  //const viewTemplateDiv = await ViewTemplate(await newViewTemplate(id));
   const viewTemplateDiv = await viewTemplate;
   bodyDiv.appendChild(viewTemplateDiv);
 
