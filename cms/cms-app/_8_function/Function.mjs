@@ -27,8 +27,8 @@ export async function Function(func, functionBody) {
   functionDiv.appendChild(functionDropdown);
 
   const parametersCustomType = "functionParameters";
-  const parametersKey = "parameters:";
-  const parametersValue = "";
+  const parametersKey = "parameters";
+  const parametersValue = func.parameters;
   const parametersValueDisabled = false;
 
   const functionParameters = await input(
