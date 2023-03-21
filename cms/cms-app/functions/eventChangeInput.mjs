@@ -13,12 +13,29 @@ export async function eventChangeInput(id) {
   }
 
   const data = {};
-  data.id = id;
-  data.parentId = parentId;
-  data.value = value;
-  data.key = customType;
-  data.customType = customType;
+
   data.updated = Date();
+
+  if (customType === "functionParameters") {
+    const parentInput = document.getElementById(parentId);
+    let parentValue = parentInput.value;
+    const parentCustomType = input.getAttribute("customType");
+    const parentParentId = input.getAttribute("parentId");
+    const parentKey = input.getAttribute("key");
+
+    data.id = parentId;
+    data.parentId = parentParentId;
+    data.value = parentValue;
+    data.key = parentKey;
+    data.customType = parentCustomType;
+    data.parameters = value;
+  } else {
+    data.id = id;
+    data.parentId = parentId;
+    data.value = value;
+    data.key = customType;
+    data.customType = customType;
+  }
 
   const customTypeArray = customType + "s";
 
