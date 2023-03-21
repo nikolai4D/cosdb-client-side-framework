@@ -64,7 +64,6 @@ export async function createSubMolecule(subComponentBody, id, selectedValue) {
 
 async function createSubAtomsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
-    // const [[key, value]] = Object.entries(comp);
     const key = "atom " + comp.id;
     const value = comp.atom;
     const parentId = id;
@@ -85,7 +84,6 @@ async function createSubAtomsEl(subComps, id, compBody, parentBody) {
 
 async function createFunctionsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
-    // const [[key, value]] = Object.entries(comp);
     const key = "function " + comp.id;
     const value = comp.function;
     const parentId = id;

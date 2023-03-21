@@ -1,5 +1,4 @@
 import { dropdown } from "../types/dropdown.mjs";
-import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 import { functionValues } from "./functionValues.mjs";
 
 export async function Function(func, functionBody) {
@@ -25,8 +24,6 @@ export async function Function(func, functionBody) {
   );
 
   functionDiv.appendChild(functionDropdown);
-
-  //await mutation_updateState("functions", func);
 
   return functionDiv;
 }

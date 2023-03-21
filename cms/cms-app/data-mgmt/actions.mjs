@@ -2,8 +2,6 @@ import { writeModel } from "./requests/writeModel.mjs";
 
 export const action = {
   create: async function (id, value, parentId, type) {
-    console.log({ State });
-    console.log({ type });
     try {
       let newElement = {
         id,
@@ -20,7 +18,6 @@ export const action = {
     }
   },
   updateModel: async function (data) {
-    console.log({ State });
     try {
       await writeModel(data);
     } catch {

@@ -27,11 +27,7 @@ export async function accordion(
       if (confirm("Are you sure you want to delete?")) {
         await action_deleteView(id);
         headerAccordion.parentElement.remove();
-        console.log("delete view" + id);
       }
-
-      //   await mutation_deleteState("views", id);
-      //   headerAccordion.parentElement.remove();
     });
     headerAccordion.appendChild(deleteButton);
   }

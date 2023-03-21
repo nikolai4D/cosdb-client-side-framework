@@ -3,7 +3,6 @@ import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateStat
 import { viewTemplateValues } from "./viewTemplateValues.mjs";
 
 export async function ViewTemplate(viewTemplate) {
-  //console.log("ViewTemplate:", viewTemplate);
   const viewTemplateDiv = document.createElement("div");
   viewTemplateDiv.classList.add(viewTemplate.customType);
 
@@ -16,7 +15,7 @@ export async function ViewTemplate(viewTemplate) {
   const valueDisabled = viewTemplate.valueDisabled;
 
   const bodyDiv = document.createElement("div");
-  const slotsDiv = document.createElement("div"); //await Slots(id);
+  const slotsDiv = document.createElement("div");
   bodyDiv.appendChild(slotsDiv);
 
   const viewTemplateAccordionDropdown = await accordionDropdown(
