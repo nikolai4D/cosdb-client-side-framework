@@ -8,6 +8,7 @@ export async function mutation_updateState(
 ) {
   const customTypeData = await State[customType];
   const index = await customTypeData.findIndex((item) => item.id === data.id);
+  console.log(customTypeData + " " + index + "before IFS");
 
   if (index !== -1) {
     if (customType === "viewTemplates" || customType === "components") {
@@ -17,7 +18,9 @@ export async function mutation_updateState(
     }
     if (customType === "functions") {
       if (data.value === "") {
+        console.log(customTypeData + " " + index + "before splice");
         customTypeData.splice(index, 1);
+        console.log(customTypeData + " " + index + "after splice");
       } else {
         customTypeData.splice(index, 1, data);
       }
