@@ -9,6 +9,7 @@ export async function eventChangeInput(id) {
 
   if (customType === "view") {
     value = value.toLowerCase().replace(/\s+/g, "");
+    input.value = value;
   }
 
   const data = {};
