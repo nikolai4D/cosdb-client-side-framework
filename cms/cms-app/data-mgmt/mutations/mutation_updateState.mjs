@@ -17,20 +17,17 @@ export async function mutation_updateState(
       customTypeData.splice(index, 1, data);
     }
     if (customType === "functions") {
+      const functionParamsInput = document.querySelector(
+        `[parentId="${data.id}"]`
+      );
+      functionParamsInput.value = "";
       if (data.value === "") {
-        const functionParamsInput = document.querySelector(
-          `[parentId="${data.id}"]`
-        );
-        functionParamsInput.value = "";
-        console.log("data.value === ''", data.value);
         customTypeData.splice(index, 1);
       } else {
-        console.log("1");
         customTypeData.splice(index, 1, data);
       }
     }
     if (customType === "views") {
-      console.log("2");
       data.valueDisabled = customTypeData[index].valueDisabled;
       data.protected = customTypeData[index].protected;
       data.startView = customTypeData[index].startView;
@@ -44,11 +41,9 @@ export async function mutation_updateState(
       customType === "atoms" ||
       customType === "atomValues"
     ) {
-      console.log("3", customType);
       customTypeData.splice(index, 1, data);
     }
   } else {
-    console.log("4");
     customTypeData.push(data);
   }
 
