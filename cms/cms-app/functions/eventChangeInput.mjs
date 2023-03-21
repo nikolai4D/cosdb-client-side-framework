@@ -14,8 +14,9 @@ export async function eventChangeInput(id) {
   }
 
   const data = {};
-
   data.updated = Date();
+
+  let customTypeArray;
 
   if (customType === "functionParameters") {
     const parentInput = document.getElementById(parentId);
@@ -30,15 +31,17 @@ export async function eventChangeInput(id) {
     data.key = parentKey;
     data.customType = parentCustomType;
     data.parameters = value;
+
+    customTypeArray = parentCustomType + "s";
   } else {
     data.id = id;
     data.parentId = parentId;
     data.value = value;
     data.key = customType;
     data.customType = customType;
-  }
 
-  const customTypeArray = customType + "s";
+    customTypeArray = customType + "s";
+  }
 
   const state = await mutation_updateState(customTypeArray, data);
   console.log({ state });
