@@ -3,10 +3,10 @@ import { apiCallGet } from './apiCalls.mjs'
 
 export async function action_getAllListData() {
 
-      const firstProcess =  await apiCallGet("api/");
-      console.log(firstProcess)
+      const data =  await apiCallGet("api/");
+      console.log(data)
 
-      return [{"title": firstProcess}]
+      return [{"title": data}]
 
       // const firstProcess =  await apiCallGet(URL_PROCESS_1);
       // const secondProcess = await apiCallGet(URL_PROCESS_2)
