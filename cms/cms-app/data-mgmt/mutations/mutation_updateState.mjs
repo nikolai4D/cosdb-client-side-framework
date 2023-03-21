@@ -6,6 +6,7 @@ export async function mutation_updateState(
   data,
   triggeredFromChange = false
 ) {
+  console.log({ customType });
   const customTypeData = await State[customType];
   const index = await customTypeData.findIndex((item) => item.id === data.id);
   console.log(customTypeData + " " + index + "before IFS");
