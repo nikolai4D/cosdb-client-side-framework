@@ -31,11 +31,9 @@ export async function eventChangeInput(id) {
     data.key = parentKey;
     data.customType = parentCustomType;
     if (value.startsWith("{")) {
-      const jsonValue = JSON.parse(value);
-      data.parameters = jsonValue;
-    } else {
-      data.parameters = value;
+      value = JSON.parse(value);
     }
+    data.parameters = value;
 
     customTypeArray = parentCustomType + "s";
   } else {
