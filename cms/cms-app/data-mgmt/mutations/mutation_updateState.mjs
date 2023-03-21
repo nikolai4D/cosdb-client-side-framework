@@ -25,11 +25,8 @@ export async function mutation_updateState(
         functionParamsInput.value = "";
         customTypeData.splice(index, 1);
       } else {
-        customTypeData.splice(index, 1, data);
-        if (typeof data.parameters === "object") {
-          data.parameters = JSON.stringify(data.parameters);
-        }
         functionParamsInput.value = data.parameters;
+        customTypeData.splice(index, 1, data);
       }
     }
     if (customType === "views") {
