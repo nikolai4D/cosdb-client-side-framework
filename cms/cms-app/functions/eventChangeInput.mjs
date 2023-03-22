@@ -35,6 +35,7 @@ export async function eventChangeInput(id) {
       try {
         const valueParsed = JSON.parse(value);
         if (!Array.isArray(valueParsed) || typeof valueParsed !== "object") {
+          console.log({ valueParsed });
           // Invalid JSON object or array
           alert("Invalid JSON object or array!");
           return;
