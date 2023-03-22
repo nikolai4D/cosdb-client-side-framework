@@ -69,12 +69,11 @@ export function Organism_ListAll() {
 
             await func.functionCall(type);
 
-            // await State[type]
+            await State[type]
 
-            const data = await State[type]
-            console.log(await data)
+            const data =  State[type]
 
-            for (const [index, molecule] of await data.entries()){
+            for (const [index, molecule] of  data.entries()){
 
               const newComponent = new Molecule_ListWHeading()
 
