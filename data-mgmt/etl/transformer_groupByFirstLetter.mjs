@@ -1,6 +1,7 @@
-export function transformer_groupByFirstLetter({strings}) {
+export async function transformer_groupByFirstLetter({strings}) {
 
-        const grouped = strings.reduce((acc, str) => {
+        let awaitedStrings = await strings;
+        const grouped = awaitedStrings.reduce((acc, str) => {
           const firstLetter = str[0].toUpperCase();
           if (!acc[firstLetter]) {
             acc[firstLetter] = [];
