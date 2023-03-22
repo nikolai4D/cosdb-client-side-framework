@@ -73,7 +73,7 @@ export function Organism_ListAll() {
             console.log(State, "State")
             console.log(State[type], "State[type]")
 
-            console.log(await data, "DATA")
+            console.log(data, "DATA")
 
             this.molecules = []
 
