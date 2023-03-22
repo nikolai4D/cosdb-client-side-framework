@@ -34,9 +34,7 @@ export async function eventChangeInput(id) {
     if (value.startsWith("{") || value.startsWith("[")) {
       try {
         const valueParsed = JSON.parse(value);
-        if (Array.isArray(valueParsed) || typeof valueParsed === "object") {
-          value = valueParsed;
-        } else {
+        if (!Array.isArray(valueParsed) || typeof valueParsed !== "object") {
           // Invalid JSON object or array
           alert("Invalid JSON object or array!");
           return;
