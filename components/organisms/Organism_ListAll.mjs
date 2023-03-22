@@ -45,12 +45,14 @@ export function Organism_ListAll() {
   };
 
   this.bindScript = async function () {
-    const type = "processes";
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
     for (const func of this.functions) {
       if (func.functionCall) {
+        let type = window.location.pathname.slice(1)
+        console.log(func, "func")
+
         await func.functionCall(type);
 
         await State[type];
