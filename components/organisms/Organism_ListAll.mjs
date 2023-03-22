@@ -60,6 +60,10 @@ export function Organism_ListAll() {
     }
 
     renderMolecules();
+
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
+    }
   };
 
   const createMolecule = (MoleculeClass, id) => {
