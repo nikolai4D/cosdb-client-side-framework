@@ -20,6 +20,7 @@ export async function mutation_updateState(
       const functionParamsInput = document.querySelector(
         `[parentId="${data.id}"]`
       );
+      console.log(functionParamsInput);
 
       if (data.value === "") {
         functionParamsInput.value = "";
