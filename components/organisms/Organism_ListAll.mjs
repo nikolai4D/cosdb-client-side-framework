@@ -72,40 +72,45 @@ export function Organism_ListAll() {
     let newMolecules = [];
 
     for (const [index, molecule] of data.entries()) {
-      const newComponent = new Molecule_ListWHeading();
+
+      // Creating a list (molecule)
+      const newMolecule = new Molecule_ListWHeading();
       newMolecules.push({
         id: index + 1,
-        molecule: newComponent.constructorKey,
-        component: newComponent,
+        molecule: newMolecule.constructorKey,
+        component: newMolecule,
       });
 
-      const newAtom = new Atom_Heading4();
+      // Creating header and list items (atoms) to molecule
+      const newAtomHeading = new Atom_Heading4();
       const firstAtom = {
         value: molecule.letter,
         id: 1,
         atom: "Atom_Heading4",
-        component: newAtom,
+        component: newAtomHeading,
       };
-      newAtom.value = [firstAtom];
-      newComponent.atoms = [firstAtom];
+      newAtomHeading.value = [firstAtom];
+      newMolecule.atoms = [firstAtom];
 
       for (const [index2, item] of molecule.title.entries()) {
-        const newComponentAtom = new Atom_ListItem();
-        newComponentAtom.value = [{ value: item }];
+        const newAtomListItem = new Atom_ListItem();
+        newAtomListItem.value = [{ value: item }];
 
-        newComponent.atoms.push({
+        newMolecule.atoms.push({
           value: item,
           id: index2,
           atom: "Atom_ListItem",
-          component: newComponentAtom,
+          component: newAtomListItem,
         });
       }
     }
 
+    // Replacing placeholder molecule with new
     this.molecules.splice(indexOfComp, 1, ...newMolecules);
   };
 
   const renderMolecules = () => {
+    // Replacing placeholder DOM elements (slots are rendered at this point) with new molecule DOM elements 
     this.element.lastElementChild.innerHTML = "";
     const moleculesSlots = this.element.lastElementChild;
 
