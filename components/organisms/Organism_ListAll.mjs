@@ -52,11 +52,8 @@ export function Organism_ListAll() {
       if (func.functionCall) {
         let type = window.location.pathname.slice(1)
         let url = func.parameters;
-
         await func.functionCall({type, url});
-
         await State[type];
-
         const data = State[type];
 
         updateMolecules(data);
