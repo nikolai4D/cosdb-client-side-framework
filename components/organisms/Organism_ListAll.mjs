@@ -112,6 +112,8 @@ export function Organism_ListAll() {
     this.element.lastElementChild.innerHTML = "";
     const moleculesSlots = this.element.lastElementChild;
 
+    console.log(this.element, "element")
+
     for (const mol of this.molecules) {
       moleculesSlots.appendChild(mol.component.getElement());
     }
