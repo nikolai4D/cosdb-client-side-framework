@@ -62,49 +62,61 @@ export function Organism_ListAll() {
     renderMolecules();
   };
 
+  const createHeadingAtom = (letter, id) => {
+    const newAtom = new Atom_Heading4();
+    return {
+      value: letter,
+      id,
+      atom: 'Atom_Heading4',
+      component: newAtom,
+    };
+  };
+  
+  const createListItemAtom = (item, id) => {
+    const newAtom = new Atom_ListItem();
+    newAtom.value = [{ value: item }];
+  
+    return {
+      value: item,
+      id,
+      atom: 'Atom_ListItem',
+      component: newAtom,
+    };
+  };
+  
+  const createNewMolecule = (moleculeData, id) => {
+    const newComponent = new Molecule_ListWHeading();
+    const headingAtom = createHeadingAtom(moleculeData.letter, 1);
+  
+    newComponent.atoms = [headingAtom];
+  
+    const listItemAtoms = moleculeData.title.map((item, index) =>
+      createListItemAtom(item, index + 2)
+    );
+  
+    newComponent.atoms.push(...listItemAtoms);
+  
+    return {
+      id,
+      molecule: newComponent.constructorKey,
+      component: newComponent,
+    };
+  };
+  
   const updateMolecules = (data) => {
     const indexOfComp = this.molecules.findIndex(
       (obj) =>
         obj.component.constructorKey ===
         new Molecule_ListWHeading().constructorKey
     );
-
-    let newMolecules = [];
-
-    for (const [index, molecule] of data.entries()) {
-      const newComponent = new Molecule_ListWHeading();
-      newMolecules.push({
-        id: index + 1,
-        molecule: newComponent.constructorKey,
-        component: newComponent,
-      });
-
-      const newAtom = new Atom_Heading4();
-      const firstAtom = {
-        value: molecule.letter,
-        id: 1,
-        atom: "Atom_Heading4",
-        component: newAtom,
-      };
-      newAtom.value = [firstAtom];
-      newComponent.atoms = [firstAtom];
-
-      for (const [index2, item] of molecule.title.entries()) {
-        const newComponentAtom = new Atom_ListItem();
-        newComponentAtom.value = [{ value: item }];
-
-        newComponent.atoms.push({
-          value: item,
-          id: index2,
-          atom: "Atom_ListItem",
-          component: newComponentAtom,
-        });
-      }
-    }
-
+  
+    const newMolecules = data.map((molecule, index) =>
+      createNewMolecule(molecule, index + 1)
+    );
+  
     this.molecules.splice(indexOfComp, 1, ...newMolecules);
   };
-
+  
   const renderMolecules = () => {
     this.element.lastElementChild.innerHTML = "";
     const moleculesSlots = this.element.lastElementChild;
