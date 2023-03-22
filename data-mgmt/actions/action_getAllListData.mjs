@@ -1,10 +1,8 @@
-// import {URL_PROCESS_1, URL_PROCESS_2} from '../constants.js';
-import { apiCallGet } from './apiCalls.mjs'
+import { apiCallPost } from './apiCalls.mjs'
+import { mutation_setAllListData } from '../mutations/mutation_setAllListData.mjs';
 
-export async function action_getAllListData() {
+export async function action_getAllListData(type) {
+      const data =  await apiCallPost({url: "api/getListData", body: type});
 
-      const response =  await apiCallGet("api/");
-
-      return [{"title": response}]
-
+      mutation_setAllListData({type, data})
 }

@@ -58,39 +58,19 @@ export function Organism_ListAll() {
 
   this.bindScript= async function() {
 
-    const groupByFirstLetter = (strings) => {
-      const grouped = strings.reduce((acc, str) => {
-        const firstLetter = str[0].toUpperCase();
-        if (!acc[firstLetter]) {
-          acc[firstLetter] = [];
-        }
-        acc[firstLetter].push(str);
-        return acc;
-      }, {});
-    
-      const sortedGrouped = Object.entries(grouped)
-        .sort(([a], [b]) => a.localeCompare(b, "sv"))
-        .map(([letter, title]) => ({ letter, title }));
-    
-      return sortedGrouped;
-    };
 
+    let type = "processes" 
     // const compData = await this.functions.function[1].functionCall()
     // const getData = State[compData]
 
         for (let func of this.functions) {
           if (func.functionCall){
-            let data = await func.functionCall();
-    
-            let dataMap = data.map((item) => {
-              return item.title.trim()
-            })
 
+            await func.functionCall(type);
 
-            let dataObjMap = groupByFirstLetter(dataMap)
-    
-            this.data= dataObjMap
-    
+            this.data= await State[type]
+
+            console.log(this.data, "THIS.DATA")
 
             this.molecules = []
 
@@ -100,12 +80,11 @@ export function Organism_ListAll() {
               let newComponent = new Molecule_ListWHeading()
 
               this.molecules.push({id: index+1, molecule: newComponent.constructorKey, component: newComponent})
-              
+
               let newAtom= new Atom_Heading4()
               let firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
               newAtom.value = [firstAtom]
               newComponent.atoms = [firstAtom]
-
 
 
               for (let [index2, item] of molecule.title.entries()){
@@ -113,19 +92,21 @@ export function Organism_ListAll() {
                 let newComponentAtom = new Atom_ListItem()
                 newComponentAtom.value = [{value: item}]
       
-                newComponent.atoms.push({value: item, id: index2, atom: "Atom_ListItem", component: newComponentAtom })
+                newComponent.atoms.push(
+                  {value: item, id: index2, atom: "Atom_ListItem", component: newComponentAtom }
+                  )
               }
             }
 
 
           }
-    }
+        }
 
-    this.element.lastElementChild.innerHTML = ""
-    let moleculesSlots  =  this.element.lastElementChild
-  
-          for (let mol of this.molecules) {
-            moleculesSlots.appendChild(mol.component.getElement())
-          }
+        this.element.lastElementChild.innerHTML = ""
+        let moleculesSlots  =  this.element.lastElementChild
+      
+        for (let mol of this.molecules) {
+          moleculesSlots.appendChild(mol.component.getElement())
+        }
   }
 }
