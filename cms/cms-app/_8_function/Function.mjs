@@ -30,9 +30,9 @@ export async function Function(func, functionBody) {
   const parametersCustomType = "functionParameters";
   const parametersKey = "parameters";
 
-  const parametersValue = func.parameters;
+  const parametersValue = parameters;
   let parametersValueDisabled;
-  if (parameters !== "") {
+  if (value !== "") {
     parametersValueDisabled = false;
   } else {
     parametersValueDisabled = true;
