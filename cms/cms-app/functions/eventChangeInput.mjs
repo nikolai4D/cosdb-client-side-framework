@@ -56,7 +56,7 @@ function validateObjectOrArray(value) {
     } catch (error) {
       // Not a JSON object or array
       alert("Invalid JSON object or array!");
-      return;
+      throw error;
     }
   }
 }
