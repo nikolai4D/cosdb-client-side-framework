@@ -39,13 +39,11 @@ export async function eventChangeInput(id) {
         } else {
           // Invalid JSON object or array
           alert("Invalid JSON object or array!");
-          input.style.borderColor = "red";
           return;
         }
       } catch (error) {
         // Not a JSON object or array
         alert("Invalid JSON object or array!");
-        input.style.borderColor = "red";
         return;
       }
     }
