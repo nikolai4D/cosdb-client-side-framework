@@ -78,7 +78,7 @@ export function Organism_ListAll() {
             this.molecules = []
 
 
-            for (let [index, molecule] of data.entries()){
+            for (let [index, molecule] of State[type].entries()){
 
               let newComponent = new Molecule_ListWHeading()
 
