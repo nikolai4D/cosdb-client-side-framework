@@ -42,7 +42,7 @@ export async function eventChangeInput(id) {
         }
       } catch (error) {
         // Not a JSON object or array
-        alert("Invalid JSON object or array!");
+        alert("Error, Invalid JSON object or array!");
         return;
       }
     }
