@@ -29,12 +29,12 @@ export async function Function(func, functionBody) {
   const parametersCustomType = "functionParameters";
   const parametersKey = "parameters";
 
-  if (typeof func.parameters === "object") {
-    func.parameters = JSON.stringify(func.parameters);
-  }
+  //   if (typeof func.parameters === "object") {
+  //     func.parameters = JSON.stringify(func.parameters);
+  //   }
 
   const parametersValue = func.parameters;
-  const parametersValueDisabled = false;
+  const parametersValueDisabled = true;
   const parametersId = id + "parameters";
   const parametersParentId = id;
 
