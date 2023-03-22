@@ -9,6 +9,7 @@ export async function newFunction(parentId, fnKey) {
   func.id = await getUuid();
   func.parentId = parentId;
   func.valueDisabled = false;
+  func.parameters = "";
 
   return func;
 }
