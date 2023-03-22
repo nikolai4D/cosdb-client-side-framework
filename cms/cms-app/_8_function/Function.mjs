@@ -34,7 +34,7 @@ export async function Function(func, functionBody) {
   //   }
 
   const parametersValue = func.parameters;
-  const parametersValueDisabled = true;
+  const parametersValueDisabled = false;
   const parametersId = id + "parameters";
   const parametersParentId = id;
 
