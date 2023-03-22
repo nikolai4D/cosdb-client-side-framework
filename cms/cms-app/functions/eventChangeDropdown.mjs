@@ -37,7 +37,6 @@ export async function eventChangeDropdown(id) {
   if (customType === "function") {
     data.parameters = "";
     const state = await mutation_updateState("functions", data, true);
-    console.log({ state });
 
     await action_writeModel(state);
   }

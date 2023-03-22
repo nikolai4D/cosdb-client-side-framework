@@ -188,7 +188,6 @@ async function createFunctionsEl(componentFunctions, id, body, parentBody) {
     );
 
     if (existingFn) {
-      console.log("existingFn.parameters", existingFn.parameters);
       if (
         typeof existingFn.parameters === "object" ||
         Array.isArray(existingFn.parameters)
