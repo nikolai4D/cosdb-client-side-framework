@@ -69,7 +69,7 @@ export function Organism_ListAll() {
 
             await func.functionCall(type);
 
-            this.data= State[type]
+            this.data= await State[type]
             console.log(State, "State")
             console.log(State[type], "State[type]")
 
