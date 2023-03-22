@@ -24,7 +24,7 @@ export async function mutation_updateState(
 
       if (data.value === "") {
         functionParamsInput.value = "";
-
+        functionParamsInput.disabled = true;
         customTypeData.splice(index, 1);
       } else {
         functionParamsInput.disabled = false;
