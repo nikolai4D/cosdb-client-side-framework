@@ -67,6 +67,10 @@ export function Organism_ListAll() {
 
               const newComponent = new Molecule_ListWHeading()
 
+             
+              const indexOfComp =  this.molecules.findIndex((obj) => obj.component.constructorKey === newComponent.constructorKey);
+              console.log(indexOfComp, "component")
+
               this.molecules.push({id: index+1, molecule: newComponent.constructorKey, component: newComponent})
 
               const newAtom= new Atom_Heading4()
