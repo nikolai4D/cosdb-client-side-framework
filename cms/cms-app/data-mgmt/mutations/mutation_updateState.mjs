@@ -20,13 +20,13 @@ export async function mutation_updateState(
       const functionParamsInput = document.querySelector(
         `[parentId="${data.id}"]`
       );
+      functionParamsInput.disabled = false;
 
       if (data.value === "") {
         functionParamsInput.value = "";
         functionParamsInput.disabled = true;
         customTypeData.splice(index, 1);
       } else {
-        functionParamsInput.disabled = false;
         functionParamsInput.value = data.parameters;
         if (
           data.parameters.startsWith("{") ||
