@@ -5,6 +5,7 @@ export async function eventChangeInput(id) {
   const input = document.getElementById(id);
 
   let value = input.value;
+
   const customType = input.getAttribute("customType");
   const parentId = input.getAttribute("parentId");
 
@@ -19,6 +20,7 @@ export async function eventChangeInput(id) {
   let customTypeArray;
 
   if (customType === "functionParameters") {
+    await validateObjectOrArray(value);
     const parentInput = document.getElementById(parentId);
     let parentValue = parentInput.value;
     const parentCustomType = parentInput.getAttribute("customType");
@@ -30,18 +32,6 @@ export async function eventChangeInput(id) {
     data.value = parentValue;
     data.key = parentKey;
     data.customType = parentCustomType;
-
-    await validateObjectOrArray(value);
-
-    // if (value.startsWith("{") || value.startsWith("[")) {
-    //   try {
-    //     JSON.parse(value);
-    //   } catch (error) {
-    //     // Not a JSON object or array
-    //     alert("Invalid JSON object or array!");
-    //     return;
-    //   }
-    // }
     data.parameters = value;
 
     customTypeArray = parentCustomType + "s";
