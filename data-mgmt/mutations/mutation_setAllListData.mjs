@@ -4,7 +4,7 @@ import { transformer_groupByFirstLetter } from "../etl/transformer_groupByFirstL
 
 export async function mutation_setAllListData({type, data}) {
 
-    let trimmedData = transformer_trimAllElements(data, "title")
+    let trimmedData = await transformer_trimAllElements(data, "title")
     let sortedData = transformer_groupByFirstLetter({trimmedData})
 
 
