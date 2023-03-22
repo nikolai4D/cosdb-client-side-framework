@@ -121,7 +121,7 @@ export function Organism_ListAll() {
       }
     }
     
-            this.element.appendChild(this.molecules[0].component.getElement())
+            this.element.firstElementChild.appendChild(this.molecules[0].component.getElement())
 
 
     console.log(this.molecules,  "hej")
