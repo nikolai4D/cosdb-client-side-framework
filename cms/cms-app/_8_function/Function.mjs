@@ -32,7 +32,7 @@ export async function Function(func, functionBody) {
 
   const parametersValue = func.parameters;
   let parametersValueDisabled;
-  if (parameters !== "") {
+  if (value !== "") {
     parametersValueDisabled = false;
   } else {
     parametersValueDisabled = true;
