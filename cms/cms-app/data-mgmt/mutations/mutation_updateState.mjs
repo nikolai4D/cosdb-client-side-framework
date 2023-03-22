@@ -57,11 +57,13 @@ export async function mutation_updateState(
     }
   } else {
     if (customType === "functions") {
+      const functionParamsInput = document.querySelector(
+        `[parentId="${data.id}"]`
+      );
       if (data.value !== "") {
-        const functionParamsInput = document.querySelector(
-          `[parentId="${data.id}"]`
-        );
         functionParamsInput.disabled = false;
+      } else {
+        functionParamsInput.disabled = true;
       }
     }
 
