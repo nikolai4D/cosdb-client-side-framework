@@ -60,41 +60,35 @@ export function Organism_ListAll() {
   this.bindScript= async function() {
 
 
-    let type = "processes" 
+    const type = "processes" 
     // const compData = await this.functions.function[1].functionCall()
     // const getData = State[compData]
 
-        for (let func of this.functions) {
+        for (const func of this.functions) {
           if (func.functionCall){
 
             await func.functionCall(type);
 
-            let data = await State[type]
-
-            console.log(State, "State")
-            console.log(State[type], "State[type]")
-            console.log(data, "DATA")
-            console.log(await data, "DATA")
-
+            const data = await State[type]
 
             this.molecules = []
 
 
-            for (let [index, molecule] of State[type].entries()){
+            for (const [index, molecule] of State[type].entries()){
 
-              let newComponent = new Molecule_ListWHeading()
+              const newComponent = new Molecule_ListWHeading()
 
               this.molecules.push({id: index+1, molecule: newComponent.constructorKey, component: newComponent})
 
-              let newAtom= new Atom_Heading4()
-              let firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
+              const newAtom= new Atom_Heading4()
+              const firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
               newAtom.value = [firstAtom]
               newComponent.atoms = [firstAtom]
 
 
-              for (let [index2, item] of molecule.title.entries()){
+              for (const [index2, item] of molecule.title.entries()){
       
-                let newComponentAtom = new Atom_ListItem()
+                const newComponentAtom = new Atom_ListItem()
                 newComponentAtom.value = [{value: item}]
       
                 newComponent.atoms.push(
@@ -108,9 +102,9 @@ export function Organism_ListAll() {
         }
 
         this.element.lastElementChild.innerHTML = ""
-        let moleculesSlots  =  this.element.lastElementChild
+        const moleculesSlots = this.element.lastElementChild
       
-        for (let mol of this.molecules) {
+        for (const mol of this.molecules) {
           moleculesSlots.appendChild(mol.component.getElement())
         }
   }
