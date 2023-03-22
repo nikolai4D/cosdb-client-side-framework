@@ -31,23 +31,17 @@ export async function eventChangeInput(id) {
     data.key = parentKey;
     data.customType = parentCustomType;
 
-    if (value.startsWith("{") || value.startsWith("[")) {
-      try {
-        JSON.parse(value);
-        // const valueParsed = JSON.parse(value);
-        // if (!Array.isArray(valueParsed) || typeof valueParsed !== "object") {
-        //   console.log("typeof valueParsed", typeof valueParsed);
-        //   // Invalid JSON object or array
-        //   alert("Invalid JSON object or array!");
-        //   return;
-        // }
-      } catch (error) {
-        // Not a JSON object or array
-        alert("Error, Invalid JSON object or array!");
-        return;
-      }
-    }
+    await validateObjectOrArray(value);
 
+    // if (value.startsWith("{") || value.startsWith("[")) {
+    //   try {
+    //     JSON.parse(value);
+    //   } catch (error) {
+    //     // Not a JSON object or array
+    //     alert("Invalid JSON object or array!");
+    //     return;
+    //   }
+    // }
     data.parameters = value;
 
     customTypeArray = parentCustomType + "s";
@@ -65,4 +59,16 @@ export async function eventChangeInput(id) {
   console.log({ state });
 
   await action_writeModel(state);
+}
+
+function validateObjectOrArray(value) {
+  if (value.startsWith("{") || value.startsWith("[")) {
+    try {
+      JSON.parse(value);
+    } catch (error) {
+      // Not a JSON object or array
+      alert("Invalid JSON object or array!");
+      return;
+    }
+  }
 }
