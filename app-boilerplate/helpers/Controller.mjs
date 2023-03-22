@@ -72,7 +72,8 @@ export function Controller() {
           let funcId = func.key.split(" ")[1]
           let compFunc = component.functions.find(aFunc => aFunc.id == funcId)
           compFunc.function = func.value
-          compFunc.functionCall = await createAction(func.value);
+          compFunc.functionCall = await createAction(func.value)
+          compFunc.parameters = func.parameters;
 
         }
 

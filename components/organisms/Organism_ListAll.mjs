@@ -1,34 +1,25 @@
 import { Component } from "../../core/Component.mjs";
-import { slot } from  "../../core/helpers.mjs";
+import { slot } from "../../core/helpers.mjs";
 import { Molecule_ListWHeading } from "../molecules/Molecule_ListWHeading.mjs";
 import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearchButton.mjs";
 import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
-import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs"; 
+import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
+import { State } from "../../data-mgmt/state.mjs";
 
 export function Organism_ListAll() {
   Component.call(this);
 
   this.molecules = [
     {
-        id: 1,
-        molecule: "Molecule_HeadingSearchButton",
-        component: new Molecule_HeadingSearchButton()
+      id: 1,
+      molecule: "Molecule_HeadingSearchButton",
+      component: new Molecule_HeadingSearchButton(),
     },
     {
-        id: 2,
-        molecule: "Molecule_ListWHeading",
-        component: new Molecule_ListWHeading()
+      id: 2,
+      molecule: "Molecule_ListWHeading",
+      component: new Molecule_ListWHeading(),
     },
-    {
-        id: 3,
-        molecule: "Molecule_ListWHeading",
-        component: new Molecule_ListWHeading()
-    },
-    {
-        id: 4,
-        molecule: "Molecule_ListWHeading",
-        component: new Molecule_ListWHeading()
-    }
   ];
 
   this.functions = [
@@ -42,90 +33,87 @@ export function Organism_ListAll() {
     },
   ];
 
-  this.getHtml = function(){
-
+  this.getHtml = function () {
     return `
-
-    <div class="organism_list-all-search">
+      <div class="organism_list-all-search">
         ${slot(this.molecules[0].molecule)}
         <div id="organism_all_lists" class="organism_list-all-search__lists">
-        ${this.molecules.slice(1).map(mol => slot(mol.molecule)).join("")}
-
+          ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
-    </div>
-        `;
-      }
+      </div>
+    `;
+  };
 
-  this.bindScript= async function() {
-
-    const groupByFirstLetter = (strings) => {
-      const grouped = strings.reduce((acc, str) => {
-        const firstLetter = str[0].toUpperCase();
-        if (!acc[firstLetter]) {
-          acc[firstLetter] = [];
-        }
-        acc[firstLetter].push(str);
-        return acc;
-      }, {});
-    
-      const sortedGrouped = Object.entries(grouped)
-        .sort(([a], [b]) => a.localeCompare(b, "sv"))
-        .map(([letter, title]) => ({ letter, title }));
-    
-      return sortedGrouped;
-    };
-
-    // const compData = await this.functions.function[1].functionCall()
-    // const getData = State[compData]
-
-        for (let func of this.functions) {
-          if (func.functionCall){
-            let data = await func.functionCall();
-    
-            let dataMap = data.map((item) => {
-              return item.title.trim()
-            })
-
-
-            let dataObjMap = groupByFirstLetter(dataMap)
-    
-            this.data= dataObjMap
-    
-
-            this.molecules = []
-
-
-            for (let [index, molecule] of this.data.entries()){
-
-              let newComponent = new Molecule_ListWHeading()
-
-              this.molecules.push({id: index+1, molecule: newComponent.constructorKey, component: newComponent})
-              
-              let newAtom= new Atom_Heading4()
-              let firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
-              newAtom.value = [firstAtom]
-              newComponent.atoms = [firstAtom]
-
-
-
-              for (let [index2, item] of molecule.title.entries()){
-      
-                let newComponentAtom = new Atom_ListItem()
-                newComponentAtom.value = [{value: item}]
-      
-                newComponent.atoms.push({value: item, id: index2, atom: "Atom_ListItem", component: newComponentAtom })
-              }
-            }
-
-
-          }
+  this.bindScript = async function () {
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
     }
+    for (const func of this.functions) {
+      if (func.functionCall) {
+        let type = window.location.pathname.slice(1)
+        let url = func.parameters;
+        await func.functionCall({type, url});
+        await State[type];
+        const data = State[type];
 
-    this.element.lastElementChild.innerHTML = ""
-    let moleculesSlots  =  this.element.lastElementChild
+        updateMolecules(data);
+      }
+    }
+    renderMolecules();
+
+  };
+
+  const createMolecule = (MoleculeClass, id) => {
+    const molecule = new MoleculeClass();
+    return {
+      id,
+      molecule: molecule.constructorKey,
+      component: molecule,
+    };
+  };
   
-          for (let mol of this.molecules) {
-            moleculesSlots.appendChild(mol.component.getElement())
-          }
-  }
+  const createAtom = (AtomClass, value, id) => {
+    const atom = new AtomClass();
+    atom.value = Array.isArray(value) ? value : [{ value }];
+  
+    return {
+      value,
+      id,
+      atom: AtomClass.name,
+      component: atom,
+    };
+  };
+  
+  const updateMolecules = (data) => {
+    const indexOfComp = this.molecules.findIndex(
+      (obj) => obj.component.constructorKey === new Molecule_ListWHeading().constructorKey
+    );
+  
+    const newMolecules = data.map((molecule, index) => {
+      const newMolecule = createMolecule(Molecule_ListWHeading, index + 1);
+  
+      const headingAtom = createAtom(Atom_Heading4, molecule.letter, 1);
+      newMolecule.component.atoms = [headingAtom];
+  
+      molecule.title.forEach((item, index2) => {
+        const listItemAtom = createAtom(Atom_ListItem, item, index2);
+        newMolecule.component.atoms.push(listItemAtom);
+      });
+  
+      return newMolecule;
+    });
+  
+    this.molecules.splice(indexOfComp, 1, ...newMolecules);
+  };
+
+  const renderMolecules = () => {
+    // Replacing placeholder DOM elements (slots are rendered at this point) with new molecule DOM elements 
+    this.element.lastElementChild.innerHTML = "";
+    const moleculesSlots = this.element.lastElementChild;
+
+    for (const [index, mol] of this.molecules.entries()) {
+      if (index !== 0) moleculesSlots.appendChild(mol.component.getElement());
+
+    }
+  };
 }
