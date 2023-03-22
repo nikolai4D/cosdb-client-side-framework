@@ -63,15 +63,17 @@ export function Organism_ListAll() {
 
             const data = State[type]
 
+            const indexOfComp =  this.molecules.findIndex((obj) => obj.component.constructorKey === newComponent.constructorKey);
+
+
+
+            let newMolecules = []
             for (const [index, molecule] of  data.entries()){
 
               const newComponent = new Molecule_ListWHeading()
 
              
-              const indexOfComp =  this.molecules.findIndex((obj) => obj.component.constructorKey === newComponent.constructorKey);
-              console.log(indexOfComp, "component")
-
-              this.molecules.push({id: index+1, molecule: newComponent.constructorKey, component: newComponent})
+              newMolecules.push({id: index+1, molecule: newComponent.constructorKey, component: newComponent})
 
               const newAtom= new Atom_Heading4()
               const firstAtom = {value: molecule.letter, id: 1, atom: "Atom_Heading4", component: newAtom }
@@ -90,7 +92,7 @@ export function Organism_ListAll() {
               }
             }
 
-
+            this.molecules.splice(indexOfComp, 1, ...newMolecules);
           }
         }
 
