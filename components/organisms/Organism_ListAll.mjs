@@ -69,8 +69,12 @@ export function Organism_ListAll() {
 
             await func.functionCall(type);
 
+            await State[type]
+
             const data = State[type]
             console.log(data)
+            console.log(await data)
+
             this.molecules = []
 
 
