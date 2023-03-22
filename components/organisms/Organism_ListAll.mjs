@@ -71,6 +71,7 @@ export function Organism_ListAll() {
             let newMolecules = []
             for (const [index, molecule] of  data.entries()){
 
+              const newComponent = new Molecule_ListWHeading()
 
              
               newMolecules.push({id: index+1, molecule: newComponent.constructorKey, component: newComponent})
