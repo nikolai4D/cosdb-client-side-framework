@@ -71,7 +71,7 @@ export function Organism_ListAll() {
 
             await State[type]
 
-            const data =  State[type]
+            const data = State[type]
 
             for (const [index, molecule] of  data.entries()){
 
