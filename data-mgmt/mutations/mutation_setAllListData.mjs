@@ -6,7 +6,7 @@ export async function mutation_setAllListData({type, data}) {
 
     let trimmedData = await transformer_trimAllElements(data, "title")
     console.log(trimmedData, data)
-    let sortedData = transformer_groupByFirstLetter({trimmedData})
+    let sortedData = transformer_groupByFirstLetter(trimmedData)
 
 
     State[type] = sortedData;
