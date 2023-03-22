@@ -13,6 +13,7 @@ export async function Function(func, functionBody) {
   const id = func.id;
   const parentId = func.parentId;
   const valueDisabled = func.valueDisabled;
+  const parameters = func.parameters;
 
   const functionDropdown = dropdown(
     customType,
@@ -29,12 +30,14 @@ export async function Function(func, functionBody) {
   const parametersCustomType = "functionParameters";
   const parametersKey = "parameters";
 
-  //   if (typeof func.parameters === "object") {
-  //     func.parameters = JSON.stringify(func.parameters);
-  //   }
-
   const parametersValue = func.parameters;
-  const parametersValueDisabled = false;
+  let parametersValueDisabled;
+  if (parameters !== "") {
+    parametersValueDisabled = false;
+  } else {
+    parametersValueDisabled = true;
+  }
+
   const parametersId = id + "parameters";
   const parametersParentId = id;
 
