@@ -16,6 +16,8 @@ export async function apiCallPost({url, body}) {
       headers: {
         'Content-Type': 'application/json'
             },
+      credentials: "include",
+      body: JSON.stringify({ body })
     });
     return await response.json();
   }
