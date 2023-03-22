@@ -34,12 +34,12 @@ export async function eventChangeInput(id) {
     if (value.startsWith("{") || value.startsWith("[")) {
       try {
         const valueParsed = JSON.parse(value);
-        if (!Array.isArray(valueParsed) || typeof valueParsed !== "object") {
-          console.log("typeof valueParsed", typeof valueParsed);
-          // Invalid JSON object or array
-          alert("Invalid JSON object or array!");
-          return;
-        }
+        // if (!Array.isArray(valueParsed) || typeof valueParsed !== "object") {
+        //   console.log("typeof valueParsed", typeof valueParsed);
+        //   // Invalid JSON object or array
+        //   alert("Invalid JSON object or array!");
+        //   return;
+        // }
       } catch (error) {
         // Not a JSON object or array
         alert("Error, Invalid JSON object or array!");
