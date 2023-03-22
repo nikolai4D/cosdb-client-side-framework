@@ -19,16 +19,6 @@ export function Organism_ListAll() {
         id: 2,
         molecule: "Molecule_ListWHeading",
         component: new Molecule_ListWHeading()
-    },
-    {
-        id: 3,
-        molecule: "Molecule_ListWHeading",
-        component: new Molecule_ListWHeading()
-    },
-    {
-        id: 4,
-        molecule: "Molecule_ListWHeading",
-        component: new Molecule_ListWHeading()
     }
   ];
 
