@@ -46,8 +46,6 @@ export async function eventChangeInput(id) {
   }
 
   const state = await mutation_updateState(customTypeArray, data);
-  console.log({ state });
-
   await action_writeModel(state);
 }
 
