@@ -112,18 +112,9 @@ export function Organism_ListAll() {
     this.element.lastElementChild.innerHTML = "";
     const moleculesSlots = this.element.lastElementChild;
 
-    console.log(this.element, "element")
-
     for (const [index, mol] of this.molecules.entries()) {
-      if (index !== 0){
+      if (index !== 0) moleculesSlots.appendChild(mol.component.getElement());
 
-      moleculesSlots.appendChild(mol.component.getElement());
-      }
     }
-    
-            // this.element.firstElementChild.appendChild(this.molecules[0].component.getElement())
-
-
-    console.log(this.molecules,  "hej")
   };
 }
