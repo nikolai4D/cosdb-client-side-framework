@@ -51,9 +51,9 @@ export function Organism_ListAll() {
     for (const func of this.functions) {
       if (func.functionCall) {
         let type = window.location.pathname.slice(1)
-        console.log(func, "func")
+        let url = func.parameters;
 
-        await func.functionCall(type);
+        await func.functionCall({type, url});
 
         await State[type];
 
