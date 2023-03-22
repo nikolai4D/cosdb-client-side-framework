@@ -30,25 +30,25 @@ export async function eventChangeInput(id) {
     data.value = parentValue;
     data.key = parentKey;
     data.customType = parentCustomType;
-    
+
     if (value.startsWith("{") || value.startsWith("[")) {
-        try {
-          const valueParsed = JSON.parse(value);
-          if (Array.isArray(valueParsed) || typeof valueParsed === "object") {
-            value = valueParsed
-          } else {
-            // Invalid JSON object or array
-            alert("Invalid JSON object or array!");
-            input.style.borderColor = "red";
-            return;
-          }
-        } catch (error) {
-          // Not a JSON object or array
+      try {
+        const valueParsed = JSON.parse(value);
+        if (Array.isArray(valueParsed) || typeof valueParsed === "object") {
+          value = valueParsed;
+        } else {
+          // Invalid JSON object or array
           alert("Invalid JSON object or array!");
           input.style.borderColor = "red";
           return;
         }
-
+      } catch (error) {
+        // Not a JSON object or array
+        alert("Invalid JSON object or array!");
+        input.style.borderColor = "red";
+        return;
+      }
+    }
 
     data.parameters = value;
 
