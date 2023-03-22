@@ -56,6 +56,15 @@ export async function mutation_updateState(
       customTypeData.splice(index, 1, data);
     }
   } else {
+    if (customType === "functions") {
+      if (data.value !== "") {
+        const functionParamsInput = document.querySelector(
+          `[parentId="${data.id}"]`
+        );
+        functionParamsInput.disabled = false;
+      }
+    }
+
     customTypeData.push(data);
   }
 
