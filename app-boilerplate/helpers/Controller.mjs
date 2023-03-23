@@ -165,7 +165,7 @@ const processMolecules = async (model, comp, foundModelParent) => {
     const moleculeComponent = molecule.component;
     const foundModelMolecules = model.molecules.filter(mol => mol.parentId === foundModelParent[index].id);
     if (moleculeComponent.functions) processFunction(model, moleculeComponent,foundModelParent[index])
-    if (moleculeComponent.atoms) await processAtoms(model, moleculeComponent, foundModelMolecules);
+    if (moleculeComponent.atoms) await processAtoms(model, moleculeComponent, [foundModelMolecules[index]]);
   }
 };
 
