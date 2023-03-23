@@ -37,7 +37,7 @@ export async function ViewTemplate(parentId) {
 
   console.log(viewTemplateObjectSlots, "viewTemplateObjectSlots");
   for (const slot of viewTemplateObjectSlots) {
-    div.appendChild(slot);
+    div.appendChild(slot.content);
   }
 
   return div;
