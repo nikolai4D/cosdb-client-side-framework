@@ -3,7 +3,9 @@ import { ViewTester2 } from "./ViewTester2.mjs";
 
 export async function View(viewPath) {
   //validate and authenticate path
-  const { id, value } = await apiCallGet(`/auth/${viewPath}`);
+  const newView = await apiCallGet(`/auth/${viewPath}`);
+  const id = newView.id;
+  const value = newView.value;
 
   //set browser history
   window.history.pushState({ viewPath: value }, "", value);
