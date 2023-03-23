@@ -32,3 +32,10 @@ export function html2dom(strings, ...values) {
 
   return container.childNodes;
 }
+
+export async function createComponent(type, file) => {
+    const pathToComponent = `../../components/${type}s/${file}.mjs`;
+    const Component = await importModuleFromFile(pathToComponent, file)
+    return new Component[file]();
+  }
+
