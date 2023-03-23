@@ -65,6 +65,7 @@ export function Controller() {
         if(slot.component){
           if (slot.component.organisms) {
               processOrganisms(this.model, slot.component, foundModelOrganism)
+        }
 
         if (slot.component.molecules) {
             for (const [index, molecule] of slot.component.molecules.entries()) {
@@ -88,7 +89,6 @@ export function Controller() {
           await processFunction(this.model, slot.component, foundModelOrganism)
         }
       }
-    }
 
     if (foundModelMolecule !== undefined){
       slot.slot = foundModelMolecule.value;
