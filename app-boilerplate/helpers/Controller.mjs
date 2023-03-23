@@ -101,7 +101,7 @@ export function Controller() {
 
   this.addBindScriptToViewTemplate = async () => {
     this.viewTemplate.bindScript = async function() {
-        for await (const slot of this.slots) {
+        for await (const slotComp of this.slots) {
           if (await slotComp.component)
             await this.fillSlot(slotComp.slot, slotComp.component.getElement())
       }
