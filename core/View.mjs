@@ -1,38 +1,27 @@
-import { Router } from "./Router.mjs";
+import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
+import { ViewTester2 } from "./ViewTester2.mjs";
 
-export async function View(newView) {
+export async function View(viewPath) {
+  //validate and authenticate path
+  const { id, value } = await apiCallGet(`/auth/${viewPath}`);
+
+  //set browser history
+  window.history.pushState({ viewPath: value }, "", value);
+
   await deletePreviousView();
-  // Create a new <div> element
-  const divElement = document.createElement("div");
-  divElement.classList.add("view");
+  // Create a new view
+  const viewDiv = document.createElement("div");
+  viewDiv.classList.add("view");
 
-  // Create a new <h1> element
-  const h1Element = document.createElement("h1");
-  h1Element.textContent = newView.value;
-  divElement.appendChild(h1Element);
+  const viewContentDiv = await ViewTester2(value);
+  viewDiv.appendChild(viewContentDiv);
 
-  // Create a new <input> element
-  const inputElement = document.createElement("input");
-  inputElement.setAttribute("type", "text");
-  inputElement.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      buttonElement.click();
-    }
-  });
-  divElement.appendChild(inputElement);
+  // Create a new viewTemplate
+  //const viewTemplateDiv = await ViewTemplate(id);
+  //viewDiv.appendChild(viewTemplateDiv);
 
-  // Create a new <button> element
-  const buttonElement = document.createElement("button");
-  buttonElement.textContent = "Go";
-  buttonElement.addEventListener("click", async function (event) {
-    event.preventDefault();
-    const inputValue = inputElement.value;
-    await Router(inputValue);
-  });
-  divElement.appendChild(buttonElement);
-
-  // Append the <div> element to the <body> element
-  document.body.appendChild(divElement);
+  // Append the view to the body
+  document.body.appendChild(viewDiv);
 }
 
 function deletePreviousView() {
