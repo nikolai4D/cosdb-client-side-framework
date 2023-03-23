@@ -6,7 +6,7 @@ export async function Router(path) {
   //validate path
   const views = apiCallGet("/read/views");
   console.log(path);
-  console.log(views);
+  console.log(await views);
 
   //auth
 
