@@ -86,7 +86,7 @@ export function Controller() {
 
         if (slot.component.molecules) {
 
-          processMolecules(this.model, slot.component,foundModelMolecules)
+          processMolecules(this.model, slot.component,[foundModelOrganism])
             // for (const [index, molecule] of slot.component.molecules.entries()) {
             //   const moleculeComp = molecule.component
             //   const foundModelMolecules = this.model.molecules.filter(mol => mol.parentId ===  foundModelOrganism.id)
