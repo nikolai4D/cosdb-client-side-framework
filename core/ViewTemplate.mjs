@@ -4,9 +4,9 @@ export async function ViewTemplate(parentId) {
   const type = "viewTemplate";
   //validate and authenticate path
   const viewTemplate = await apiCallGet(`/read/${type}s/${parentId}`);
-  console.log({ viewTemplate });
-  const id = viewTemplate.id;
-  const value = viewTemplate.value;
+  console.log(viewTemplate);
+  const id = viewTemplate[0].id;
+  const value = viewTemplate[0].value;
 
   // Create a new div from type
   const div = document.createElement("div");

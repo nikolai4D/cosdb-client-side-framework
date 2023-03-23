@@ -1,6 +1,6 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
-//import { ViewTester2 } from "./ViewTester2.mjs";
 import { ViewTemplate } from "./ViewTemplate.mjs";
+//import { ViewTester2 } from "./ViewTester2.mjs"; //for testing - delete later
 
 export async function View(viewPath) {
   const type = "view";
@@ -21,8 +21,8 @@ export async function View(viewPath) {
   div.classList.add(type);
   div.setAttribute("id", id);
 
-  //   const viewContentDiv = await ViewTester2(value);
-  //   viewDiv.appendChild(viewContentDiv);
+  //   const viewContentDiv = await ViewTester2(value); //for testing - delete later
+  //   viewDiv.appendChild(viewContentDiv); //for testing - delete later
 
   // Create a new viewTemplate
   const childDiv = await ViewTemplate(id);
