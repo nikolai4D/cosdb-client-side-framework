@@ -23,7 +23,7 @@ export async function ViewTemplate(parentId) {
 
   const slot2 = document.createElement("div");
   const h2Element2 = document.createElement("h2");
-  h2Element2.textContent = "2 dom";
+  h2Element2.textContent = "2 dom 3";
   slot2.appendChild(h2Element2);
 
   const content = [
