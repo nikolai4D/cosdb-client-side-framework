@@ -50,10 +50,8 @@ export function Controller() {
   this.addComponentsInTemplateSlotConstructors = async () => {
 
 
-
-
-    const processFunction = async (component, componentModel) => {
-        let functionModels = this.model.functions.filter(func => func.parentId === componentModel.id);
+    const processFunction  = async (model, component, componentModel) => {
+        let functionModels = model.functions.filter(func => func.parentId === componentModel.id);
 
         for (let func of functionModels) {
           let funcId = func.key.split(" ")[1]
@@ -73,7 +71,7 @@ export function Controller() {
         let moleculeModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
     
         if (moleculeComponent.functions) {
-          processFunction(moleculeComponent,subSubCompModels[index])
+          processFunction(this.model, moleculeComponent,subSubCompModels[index])
         }
     
         if (moleculeComponent.atoms) {
@@ -132,7 +130,7 @@ export function Controller() {
               slot.component = await createComponent("organisms", organismModel.value)
 
               if (slot.component.functions){
-                await processFunction(slot.component, organismModel)
+                await processFunction(this.model, slot.component, organismModel)
               }
 
               // next step would be to decide if the organism contains other organisms, molecules or atoms
@@ -150,7 +148,7 @@ export function Controller() {
 
                   if (subSubComp.functions) 
                   {
-                    processFunction(subSubComp, subSubCompModels[index])
+                    processFunction(this.model, subSubComp, subSubCompModels[index])
                   }
                   if (subSubComp.molecules) {
                     await processMolecules(subSubComp, subSubCompModels);
@@ -169,7 +167,7 @@ export function Controller() {
 
                     if (subSubSubComp.functions) 
 
-                    await processFunction(subSubSubComp, subSubSubCompModels[index])
+                    await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
 
 
 
@@ -263,7 +261,6 @@ function assignAtomValue(atomValuesModel, atomComp, atomModels, index) {
     atomComp.value = [{ value: matchedAtomValue.value }];
   }
 }
-
 
 const createComponent = async (type, file) => {
   const pathToComponent = `../../components/${type}/${file}.mjs`;
