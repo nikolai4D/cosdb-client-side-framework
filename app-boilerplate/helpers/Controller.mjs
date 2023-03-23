@@ -44,9 +44,9 @@ export function Controller() {
   };
 
   this.addComponentsInTemplateSlotConstructors = async () => {
+    const modelSlots = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
 
     for (const slot of this.viewTemplate.slots) {
-      const modelSlots = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
 
       const foundModelSlot =  modelSlots.find(slotModel => slotModel.value === slot.slot)
       validate(foundModelSlot)
