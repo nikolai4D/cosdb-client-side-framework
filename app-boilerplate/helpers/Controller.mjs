@@ -11,8 +11,6 @@ export function Controller() {
 
   this.viewTemplate = null;
 
-  this.slotsFromModel = null;
-
   this.model = null;
 
   this.getViewTemplate = async function() {
@@ -39,9 +37,6 @@ export function Controller() {
   
     // Import the viewTemplate component
     const viewTemplateComponent = await importModuleFromFile(pathToComponent, file);
-  
-    // Filter the slots based on the viewTemplate's ID
-    this.slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id);
   
     // Instantiate the component
     const viewTemplateCom = new viewTemplateComponent[file]();
@@ -115,8 +110,11 @@ export function Controller() {
     // loop through slots in viewTemplate
     for (let slot of component.slots) {
 
+        // Filter the slots based on the viewTemplate's ID
+      const slotModels = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
+
       // get the slot from the model
-        let specificSlot =  this.slotsFromModel.find(slotModel => slotModel.value === slot.slot)
+        let specificSlot =  slotModels.find(slotModel => slotModel.value === slot.slot)
 
         // if the slot exists in the model
         if (specificSlot) {
