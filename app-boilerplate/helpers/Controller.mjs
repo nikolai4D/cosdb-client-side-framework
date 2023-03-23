@@ -52,11 +52,11 @@ export function Controller() {
     for (const slot of this.viewTemplate.slots) {
       const slotModels = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
       const specificSlot =  slotModels.find(slotModel => slotModel.value === slot.slot)
+
       if (specificSlot) {
-
           const specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
-          if (specificComponent) {
 
+          if (specificComponent) {
             const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
             const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id)
             const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
@@ -73,8 +73,8 @@ export function Controller() {
                 if (slot.component.organisms) {
                    processOrganisms(this.model, slot.component, organismModel)
               }
+              
               if (slot.component.molecules) {
-
                   for (const [index, subCompMolecule] of slot.component.molecules.entries()) {
                     const subSubSubComp = subCompMolecule.component
                     const subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
