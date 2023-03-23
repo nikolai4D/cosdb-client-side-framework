@@ -49,7 +49,7 @@ export function Controller() {
     return component;
   };
 
-  this.getSlots = async () => {
+  this.syncComponentValues = async () => {
 
     const createComponent = async (type, file) => {
       const pathToComponent = `../../components/${type}/${file}.mjs`;
@@ -248,7 +248,7 @@ export function Controller() {
       }
   };
 
-  this.bindNewScripts = async () => {
+  this.fillSlotViewTemplate = async () => {
     let component = this.viewTemplate;
         component.bindScript = async function() {
         for await (let slot of component.slots) {
@@ -257,12 +257,13 @@ export function Controller() {
       }
     }
   };
+
   this.template = async () => {
     this.viewTemplate = await this.getViewTemplate();
-    await this.getSlots();
-    await this.bindNewScripts();
-    this.viewTemplate.model = this.model;
-    return  this.viewTemplate ;
+    await this.syncComponentValues();
+    await this.fillSlotViewTemplate();
+    // this.viewTemplate.model = this.model;
+    return this.viewTemplate ;
   }
 }
 
