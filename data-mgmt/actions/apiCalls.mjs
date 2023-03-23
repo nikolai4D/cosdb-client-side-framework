@@ -5,7 +5,7 @@ export async function apiCallGet(url) {
       "Content-Type": "application/json",
     },
   });
-  console.log(response);
+  console.log(response.json());
   return await response.json();
 }
 
@@ -19,6 +19,6 @@ export async function apiCallPost({ url, body }) {
     credentials: "include",
     body: JSON.stringify({ body }),
   });
-  console.log(response);
+  console.log(response.json());
   return await response.json();
 }
