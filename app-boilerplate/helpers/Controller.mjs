@@ -48,15 +48,15 @@ export function Controller() {
     for (const slot of this.viewTemplate.slots) {
       const slotModels = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
 
-      const specificSlot =  slotModels.find(slotModel => slotModel.value === slot.slot)
-      validate(specificSlot)
+      const matchSlotModel =  slotModels.find(slotModel => slotModel.value === slot.slot)
+      validate(matchSlotModel)
 
-      const specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
-      validate(specificComponent)
+      const matchComponentModel = this.model.components.find(comp => comp.parentId === matchSlotModel.id)
+      validate(matchComponentModel)
 
-      const matchOrganismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
-      const matchMoleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id)
-      const matchAtomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
+      const matchOrganismModel = this.model.organisms.find(organism => organism.parentId === matchComponentModel.id)
+      const matchMoleculeModel = this.model.molecules.find(molecule => molecule.parentId === matchComponentModel.id)
+      const matchAtomModel = this.model.atoms.find(atom => atom.parentId === matchComponentModel.id)
 
       if (matchOrganismModel !== undefined) {
         slot.slot = matchOrganismModel.value;
