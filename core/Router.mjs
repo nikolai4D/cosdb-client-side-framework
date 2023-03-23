@@ -10,7 +10,9 @@ export async function Router(viewPath) {
 
   console.log(newView.viewPath);
 
-  window.location.pathname = newView.viewPath;
+  if (window.location.pathname !== newPath) {
+    window.location.pathname = newPath;
+  }
 
   //set browser history
 
