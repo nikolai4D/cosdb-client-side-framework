@@ -128,19 +128,19 @@ export function Controller() {
 
                     if (subSubSubComp.atoms){
 
-                      processAtoms(this.model, subSubSubComp, subSubSubCompModels)
+                      // processAtoms(this.model, subSubSubComp, subSubSubCompModels)
 
 
-                      // for (let [index2, subCompAtom] of subSubSubComp.atoms.entries()) {
+                      for (let [index2, subCompAtom] of subSubSubComp.atoms.entries()) {
 
-                      //   let subSubSubSubComp = subCompAtom.component
-                      //   let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id)
+                        let subSubSubSubComp = subCompAtom.component
+                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id)
       
-                      //   if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+                        if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
 
-                      //   assignAtomValue(this.model.atomValues, subSubSubSubComp, subSubSubSubCompModels, index2)
+                        assignAtomValue(this.model.atomValues, subSubSubSubComp, subSubSubSubCompModels, index2)
 
-                      //   }
+                        }
                     }
                   }
               }
