@@ -143,21 +143,7 @@ export function Controller() {
               }
 
               if (slot.component.atoms) {
-                
                 processAtoms(this.model, slot.component, slotModels)
-
-                
-
-
-                  // for (let [index, subCompAtom] of slot.component.atoms.entries()) {
-
-                  //   let subSubSubSubComp = subCompAtom.component
-                  //   let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === organismModel.id)
-
-                  //   if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
-
-                  //   assignAtomValue(this.model.atomValues, subSubSubSubComp, subSubSubSubCompModels, index)
-                  // }
                 }
               }
             }
