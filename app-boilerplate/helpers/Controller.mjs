@@ -83,10 +83,10 @@ export function Controller() {
         if (slot.component.atoms) {
           processAtoms(this.model, slot.component, modelSlots)
           }
-        }
 
-        if (slot.component.functions){
-          await processFunction(this.model, slot.component, foundModelOrganism)
+          if (slot.component.functions){
+            await processFunction(this.model, slot.component, foundModelOrganism)
+          }
         }
       }
 
