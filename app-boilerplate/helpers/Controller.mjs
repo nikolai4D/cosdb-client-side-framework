@@ -20,10 +20,10 @@ export function Controller() {
   
     // Find the view in the model using the path
     const view = this.model.views.find(view => view.value === path);
-    validate(view)
+    throwErrorIfUndefined(view)
     // Find the viewTemplate in the model using the view's ID as the parentId
     const foundModelViewTemplate = this.model.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id);
-    validate(foundModelViewTemplate)
+    throwErrorIfUndefined(foundModelViewTemplate)
   
     // Get the name and path of the viewTemplate component file
     const file = foundModelViewTemplate.value;
@@ -31,7 +31,7 @@ export function Controller() {
   
     // Import the viewTemplate component
     const viewTemplateComponent = await importModuleFromFile(pathToComponent, file);
-    validate(viewTemplateComponent)
+    throwErrorIfUndefined(viewTemplateComponent)
   
     // Instantiate the component
     const viewTemplateComp = new viewTemplateComponent[file]();
@@ -42,63 +42,101 @@ export function Controller() {
   
   };
 
+
   this.addComponentsInTemplateSlotConstructors = async () => {
-    const foundModelSlotsForViewTemplate = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
-    const foundComponentSlotsForViewTemplate = this.viewTemplate.slots;
-    
+    const foundModelSlotsForViewTemplate = model.slots.filter(slot => slot.parentId === viewTemplate.id);
+    const foundComponentSlotsForViewTemplate = viewTemplate.slots;
+  
     for (const slotComp of foundComponentSlotsForViewTemplate) {
-
-      const foundModelSlot =  foundModelSlotsForViewTemplate.find(slotModel => slotModel.value === slotComp.slot)
-      validate(foundModelSlot)
-
-      const foundModelComponent = this.model.components.find(comp => comp.parentId === foundModelSlot.id)
-      validate(foundModelComponent)
-
-      const foundModelAtom = this.model.atoms.find(atom => atom.parentId === foundModelComponent.id)
-      const foundModelMolecule = this.model.molecules.find(molecule => molecule.parentId === foundModelComponent.id)
-      const foundModelOrganism = this.model.organisms.find(organism => organism.parentId === foundModelComponent.id)
-
-      if (foundModelAtom !== undefined){
-        slotComp.slot = foundModelAtom.value;
-        slotComp.component = await createComponent("atoms", foundModelAtom.value)
-        if(slotComp.component){
-          assignAtomValue(this.model.atomValues, slotComp.component, [foundModelAtom], 0)
-          }
-        }
-
-      if (foundModelMolecule !== undefined){
-        slotComp.slot = foundModelMolecule.value;
-        slotComp.component = await createComponent("molecules", foundModelMolecule.value)
-
-        if (slotComp.component.atoms) {
-            processAtoms(this.model, slotComp.component, [foundModelMolecule])
-        }
+      const foundModelSlot = foundModelSlotsForViewTemplate.find(slotModel => slotModel.value === slotComp.slot);
+      validate(foundModelSlot);
+  
+      const foundModelComponent = model.components.find(comp => comp.parentId === foundModelSlot.id);
+      validate(foundModelComponent);
+  
+      const foundModelAtom = model.atoms.find(atom => atom.parentId === foundModelComponent.id);
+      if (foundModelAtom !== undefined) {
+        await addAtomComponent(slotComp, foundModelAtom);
+        continue;
       }
-
+  
+      const foundModelMolecule = model.molecules.find(molecule => molecule.parentId === foundModelComponent.id);
+      if (foundModelMolecule !== undefined) {
+        await addMoleculeComponent(slotComp, foundModelMolecule);
+        continue;
+      }
+  
+      const foundModelOrganism = model.organisms.find(organism => organism.parentId === foundModelComponent.id);
       if (foundModelOrganism !== undefined) {
-        slotComp.slot = foundModelOrganism.value;
-        slotComp.component = await createComponent("organisms", foundModelOrganism.value)
-
-        if (slotComp.component.organisms) {
-            processOrganisms(this.model, slotComp.component, foundModelOrganism)
-        }
-
-        if (slotComp.component.molecules) {
-          processMolecules(this.model, slotComp.component,[foundModelOrganism])
-        }
-
-        if (slotComp.component.atoms) {
-          processAtoms(this.model, slotComp.component, foundModelSlotsForViewTemplate)
-          }
-
-        if (slotComp.component.functions){
-          await processFunction(this.model, slotComp.component, foundModelOrganism)
-        }
+        await addOrganismComponent(slotComp, foundModelOrganism);
+        continue;
       }
     }
-      return foundComponentSlotsForViewTemplate;
+    return foundComponentSlotsForViewTemplate;
   };
 
+  
+
+
+  // this.addComponentsInTemplateSlotConstructors = async () => {
+  //   const foundModelSlotsForViewTemplate = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
+  //   const foundComponentSlotsForViewTemplate = this.viewTemplate.slots;
+    
+  //   for (const slotComp of foundComponentSlotsForViewTemplate) {
+
+  //     const foundModelSlot =  foundModelSlotsForViewTemplate.find(slotModel => slotModel.value === slotComp.slot)
+  //     throwErrorIfUndefined(foundModelSlot)
+
+  //     const foundModelComponent = this.model.components.find(comp => comp.parentId === foundModelSlot.id)
+  //     throwErrorIfUndefined(foundModelComponent)
+
+  //     const foundModelAtom = this.model.atoms.find(atom => atom.parentId === foundModelComponent.id)
+  //     const foundModelMolecule = this.model.molecules.find(molecule => molecule.parentId === foundModelComponent.id)
+  //     const foundModelOrganism = this.model.organisms.find(organism => organism.parentId === foundModelComponent.id)
+
+  //     if (foundModelAtom !== undefined){
+  //       slotComp.slot = foundModelAtom.value;
+  //       slotComp.component = await createComponent("atoms", foundModelAtom.value)
+  //       if(slotComp.component){
+  //         assignAtomValue(this.model.atomValues, slotComp.component, [foundModelAtom], 0)
+  //         }
+  //       }
+
+  //     if (foundModelMolecule !== undefined){
+  //       slotComp.slot = foundModelMolecule.value;
+  //       slotComp.component = await createComponent("molecules", foundModelMolecule.value)
+
+  //       if (slotComp.component.atoms) {
+  //           processAtoms(this.model, slotComp.component, [foundModelMolecule])
+  //       }
+  //     }
+
+  //     if (foundModelOrganism !== undefined) {
+  //       slotComp.slot = foundModelOrganism.value;
+  //       slotComp.component = await createComponent("organisms", foundModelOrganism.value)
+
+  //       if (slotComp.component.organisms) {
+  //           processOrganisms(this.model, slotComp.component, foundModelOrganism)
+  //       }
+
+  //       if (slotComp.component.molecules) {
+  //         processMolecules(this.model, slotComp.component,[foundModelOrganism])
+  //       }
+
+  //       if (slotComp.component.atoms) {
+  //         processAtoms(this.model, slotComp.component, foundModelSlotsForViewTemplate)
+  //         }
+
+  //       if (slotComp.component.functions){
+  //         await processFunction(this.model, slotComp.component, foundModelOrganism)
+  //       }
+  //     }
+  //   }
+  //     return foundComponentSlotsForViewTemplate;
+  // };
+
+
+  
   this.addBindScriptToViewTemplate = async () => {
     this.viewTemplate.bindScript = async function() {
         for await (const slotComp of this.slots) {
@@ -180,8 +218,41 @@ function assignAtomValue(atomValuesModel, atomComp, foundModelAtoms, index) {
   }
 }
 
-function validate(obj) {
+function throwErrorIfUndefined(obj) {
   if (!obj) {
     throw new Error(`Object not found`);
+  }
+}
+
+const addAtomComponent = async (slotComp, foundModelAtom) => {
+  slotComp.slot = foundModelAtom.value;
+  slotComp.component = await createComponent("atoms", foundModelAtom.value);
+  if (slotComp.component) {
+    assignAtomValue(model.atomValues, slotComp.component, [foundModelAtom], 0);
+  }
+}
+
+const addMoleculeComponent = async (slotComp, foundModelMolecule) => {
+  slotComp.slot = foundModelMolecule.value;
+  slotComp.component = await createComponent("molecules", foundModelMolecule.value);
+  if (slotComp.component.atoms) {
+    processAtoms(model, slotComp.component, [foundModelMolecule]);
+  }
+}
+
+const addOrganismComponent = async (slotComp, foundModelOrganism) => {
+  slotComp.slot = foundModelOrganism.value;
+  slotComp.component = await createComponent("organisms", foundModelOrganism.value);
+  if (slotComp.component.organisms) {
+    processOrganisms(model, slotComp.component, foundModelOrganism);
+  }
+  if (slotComp.component.molecules) {
+    processMolecules(model, slotComp.component, [foundModelOrganism]);
+  }
+  if (slotComp.component.atoms) {
+    processAtoms(model, slotComp.component, foundModelSlotsForViewTemplate);
+  }
+  if (slotComp.component.functions) {
+    await processFunction(model, slotComp.component, foundModelOrganism);
   }
 }
