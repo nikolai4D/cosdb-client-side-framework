@@ -1,16 +1,15 @@
-import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
+//import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { View } from "./View.mjs";
 
 export async function Router(viewPath) {
   //validate and authenticate path
-  const newView = await apiCallGet(`/auth/${viewPath}`);
-  console.log("newView", newView);
+  //const newView = await apiCallGet(`/auth/${viewPath}`);
 
   //set browser history
-  window.history.pushState({ viewPath: newView.value }, "", newView.value);
+  //window.history.pushState({ viewPath: newView.value }, "", newView.value);
 
   //set view
-  await View(newView);
+  await View(viewPath);
 }
 
 // Listen for back or forward navigation
@@ -19,9 +18,9 @@ window.addEventListener("popstate", async (event) => {
     const viewPath = event.state.viewPath;
 
     //validate and authenticate path
-    const newView = await apiCallGet(`/auth/${viewPath}`);
+    //const newView = await apiCallGet(`/auth/${viewPath}`);
 
     //set view
-    await View(newView);
+    await View(viewPath);
   }
 });
