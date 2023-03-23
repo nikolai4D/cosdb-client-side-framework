@@ -49,64 +49,38 @@ export function Controller() {
 
   this.addComponentsInTemplateSlotConstructors = async () => {
 
-    // loop through slots in viewTemplate
-    for (let slot of this.viewTemplate.slots) {
-
-        // Filter the slots based on the viewTemplate's ID
+    for (const slot of this.viewTemplate.slots) {
       const slotModels = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
+      const specificSlot =  slotModels.find(slotModel => slotModel.value === slot.slot)
+      if (specificSlot) {
 
-      // get the slot from the model
-        let specificSlot =  slotModels.find(slotModel => slotModel.value === slot.slot)
-
-        // if the slot exists in the model
-        if (specificSlot) {
-
-          // get the component from the model with the slot id as parentId
-          let specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
-
-          // if the component exists in the model
+          const specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
           if (specificComponent) {
 
-            // find organism with the component id as parentId
             const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
-
-            // find molecule with the component id as parentId
             const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id)
-
-            // find atom with the component id as parentId
             const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
 
-
-            // if the organism exists in the model
             if (organismModel !== undefined) {
-              // set the slot of viewTemplate to the be the value of the organism
               slot.slot = organismModel.value;
-              // for that slot in viewTemplate, set component to be organism
               slot.component = await createComponent("organisms", organismModel.value)
 
               if (slot.component.functions){
                 await processFunction(this.model, slot.component, organismModel)
               }
 
-              // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
                 if (slot.component.organisms) {
                    processOrganisms(this.model, slot.component, organismModel)
               }
-
               if (slot.component.molecules) {
 
-                  for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
-
-                    let subSubSubComp = subCompMolecule.component
-                    let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
-
+                  for (const [index, subCompMolecule] of slot.component.molecules.entries()) {
+                    const subSubSubComp = subCompMolecule.component
+                    const subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
                     if (subSubSubCompModels.length > 1) console.log("more than one molecule")
-
                     if (subSubSubComp.functions) 
-
                     await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
-
                     if (subSubSubComp.atoms){
                       processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
                     }
@@ -120,11 +94,8 @@ export function Controller() {
             }
 
           if (moleculeModel !== undefined){
-
             slot.slot = moleculeModel.value;
             slot.component = await createComponent("molecules", moleculeModel.value)
-
-            // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
               if (slot.component.atoms) {
                 processAtoms(this.model, slot.component, [moleculeModel])
@@ -133,10 +104,8 @@ export function Controller() {
           }
 
           if (atomModel !== undefined){
-
             slot.slot = atomModel.value;
             slot.component = await createComponent("atoms", atomModel.value)
-
             if(slot.component){
               assignAtomValue(this.model.atomValues, slot.component, [atomModel], 0)
               }
@@ -148,9 +117,9 @@ export function Controller() {
   };
 
   this.addBindScriptToViewTemplate = async () => {
-    let component = this.viewTemplate;
+    const component = this.viewTemplate;
         component.bindScript = async function() {
-        for await (let slot of component.slots) {
+        for await (const slot of component.slots) {
           if (await slot.component)
             await component.fillSlot(slot.slot, slot.component.getElement())
       }
@@ -180,11 +149,11 @@ const createAction = async (file) => {
 }
 
 const processFunction  = async (model, component, componentModel) => {
-  let functionModels = model.functions.filter(func => func.parentId === componentModel.id);
+  const functionModels = model.functions.filter(func => func.parentId === componentModel.id);
 
-  for (let func of functionModels) {
-    let funcId = func.key.split(" ")[1]
-    let compFunc = component.functions.find(aFunc => aFunc.id == funcId)
+  for (const func of functionModels) {
+    const funcId = func.key.split(" ")[1]
+    const compFunc = component.functions.find(aFunc => aFunc.id == funcId)
     compFunc.function = func.value
     compFunc.functionCall = await createAction(func.value)
     compFunc.parameters = func.parameters;
@@ -192,9 +161,9 @@ const processFunction  = async (model, component, componentModel) => {
 }
 
   const processOrganisms = async (model, comp, organismModel) => {
-    for (let [index, subCompOrganism] of comp.organisms.entries()) {
-      let subSubComp = subCompOrganism.component
-      let subSubCompModels = model.organisms.filter(org => org.parentId === organismModel.id)
+    for (const [index, subCompOrganism] of comp.organisms.entries()) {
+      const subSubComp = subCompOrganism.component
+      const subSubCompModels = model.organisms.filter(org => org.parentId === organismModel.id)
 
       if (subSubComp.functions) processFunction(this.model, subSubComp, subSubCompModels[index])
       if (subSubComp.molecules) await processMolecules(this.model, subSubComp, subSubCompModels);
@@ -202,9 +171,9 @@ const processFunction  = async (model, component, componentModel) => {
     }
   };
 const processMolecules = async (model, subSubComp, subSubCompModels) => {
-  for (let [index, molecule] of subSubComp.molecules.entries()) {
-    let moleculeComponent = molecule.component;
-    let moleculeModels = model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
+  for (const [index, molecule] of subSubComp.molecules.entries()) {
+    const moleculeComponent = molecule.component;
+    const moleculeModels = model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
     if (moleculeComponent.functions) processFunction(model, moleculeComponent,subSubCompModels[index])
     if (moleculeComponent.atoms) await processAtoms(model, moleculeComponent, moleculeModels);
   }
@@ -212,9 +181,9 @@ const processMolecules = async (model, subSubComp, subSubCompModels) => {
 
 
 const processAtoms = async (model, moleculeComponent, moleculeModels) => {
-  for (let [index, atom] of moleculeComponent.atoms.entries()) {
-    let atomComponent = atom.component;
-    let atomModels = model.atoms.filter(at => at.parentId === moleculeModels[0].id);
+  for (const [index, atom] of moleculeComponent.atoms.entries()) {
+    const atomComponent = atom.component;
+    const atomModels = model.atoms.filter(at => at.parentId === moleculeModels[0].id);
 
     assignAtomValue(model.atomValues, atomComponent, atomModels, index)
   }
@@ -222,7 +191,7 @@ const processAtoms = async (model, moleculeComponent, moleculeModels) => {
 
 function assignAtomValue(atomValuesModel, atomComp, atomModels, index) {
   if (atomComp.value) {
-    let matchedAtomValue = atomValuesModel.find(at => at.parentId === atomModels[index].id);
+    const matchedAtomValue = atomValuesModel.find(at => at.parentId === atomModels[index].id);
     atomComp.value = [{ value: matchedAtomValue.value }];
   }
 }
