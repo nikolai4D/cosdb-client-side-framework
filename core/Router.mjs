@@ -6,9 +6,9 @@ export async function Router(viewPath) {
   //validate and authenticate path
 
   const newView = await apiCallGet(`/auth/${viewPath}`);
-  console.log("newView", newView);
+  console.log("newView", await newView);
 
-  window.location.pathname = await newView;
+  //window.location.pathname = await newView;
 
   //set browser history
 
