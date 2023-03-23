@@ -152,6 +152,7 @@ export function Controller() {
 }
 
 
+
 const createComponent = async (type, file) => {
   const pathToComponent = `../../components/${type}/${file}.mjs`;
   const Component = await importModuleFromFile(pathToComponent, file)
@@ -163,36 +164,6 @@ const createAction = async (file) => {
   const action = await importModuleFromFile(pathToAction, file);
   return action[file];
 };
-
-async function processComponents(model, components, parentModel, componentType) {
-  for (const [index, component] of components.entries()) {
-    const componentModels = model[componentType].filter((compModel) => compModel.parentId === parentModel.id);
-
-    if (component.functions) {
-      await processFunction(model, component, componentModels[index]);
-    }
-
-    if (component.molecules) {
-      await processMolecules(model, component, componentModels);
-    }
-
-    if (component.atoms) {
-      await processAtoms(model, component, componentModels);
-    }
-  }
-}
-
-async function processOrganisms(model, comp, organismModel) {
-  await processComponents(model, comp.organisms, organismModel, "organisms");
-}
-
-async function processMolecules(model, component, componentModels) {
-  await processComponents(model, component.molecules, componentModels[0], "molecules");
-}
-
-async function processAtoms(model, component, componentModels) {
-  await processComponents(model, component.atoms, componentModels[0], "atoms");
-}
 
 
 const processFunction = async (model, component, componentModel) => {
@@ -208,3 +179,48 @@ const processFunction = async (model, component, componentModel) => {
   };
 };
 
+const processOrganisms = async (model, comp, organismModel) => {
+  comp.organisms.forEach(async (subCompOrganism, index) => {
+    const { component: subSubComp } = subCompOrganism;
+    const subSubCompModels = model.organisms.filter((org) => org.parentId === organismModel.id);
+
+    if (subSubComp.functions) {
+      await processFunction(model, subSubComp, subSubCompModels[index]);
+    }
+
+    if (subSubComp.molecules) {
+      await processMolecules(model, subSubComp, subSubCompModels);
+    }
+  });
+};
+
+const processMolecules = async (model, subSubComp, subSubCompModels) => {
+  subSubComp.molecules.forEach(async (molecule, index) => {
+    const { component: moleculeComponent } = molecule;
+    const moleculeModels = model.molecules.filter((mol) => mol.parentId === subSubCompModels[0].id);
+
+    if (moleculeComponent.functions) {
+      await processFunction(model, moleculeComponent, subSubCompModels[index]);
+    }
+
+    if (moleculeComponent.atoms) {
+      await processAtoms(model, moleculeComponent, moleculeModels);
+    }
+  });
+};
+
+const processAtoms = async (model, moleculeComponent, moleculeModels) => {
+  moleculeComponent.atoms.forEach((atom, index) => {
+    const { component: atomComponent } = atom;
+    const atomModels = model.atoms.filter((at) => at.parentId === moleculeModels[0].id);
+
+    assignAtomValue(model.atomValues, atomComponent, atomModels, index);
+  });
+};
+
+function assignAtomValue(atomValuesModel, atomComp, atomModels, index) {
+  if (atomComp.value) {
+    const matchedAtomValue = atomValuesModel.find((at) => at.parentId === atomModels[index].id);
+    atomComp.value = [{ value: matchedAtomValue?.value }];
+  }
+}
