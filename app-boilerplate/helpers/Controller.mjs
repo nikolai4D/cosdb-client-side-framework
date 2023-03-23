@@ -214,14 +214,6 @@ export function Controller() {
                     await processFunction(subSubSubComp, subSubSubCompModels[index])
 
 
-                    // {
-                    //   let functionModels = this.model.functions.filter(func => func.parentId === subSubSubCompModels[index].id);
-
-                    //   for (let func of functionModels) {
-                    //     let action = await createAction(func.value)
-                    //     // action.execute()
-                    //   }
-                    // }
 
                     if (subSubSubComp.atoms){
 
@@ -237,20 +229,10 @@ export function Controller() {
                           let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index2].id)
 
                           subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
-
-
                         }
-
-
                         }
-
                     }
-                    
                   }
-
-
-
-
               }
 
               if (slot.component.atoms) {
@@ -290,30 +272,16 @@ export function Controller() {
             if(slot.component){
               if (slot.component.atoms) {
 
-                      for (let [index, subCompAtom] of slot.component.atoms.entries()) {
+                for (let [index, subCompAtom] of slot.component.atoms.entries()) {
 
-                        let subSubSubSubComp = subCompAtom.component
-                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === moleculeModel.id)
-
-                        if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
-      
-                        if (subSubSubSubComp.value) {
-
-                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index].id)
-
-                           subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
-
-
-                        }
-
-
-                        }
-
-                    }
-                    
-                  }
-
+                  let subSubSubSubComp = subCompAtom.component
+                  let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === moleculeModel.id)
+                  if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+                  assignAtomValue(this.model.atomsValues, subSubSubSubComp, subSubSubSubCompModels, index);
                 }
+              }
+            }
+          }
 
           if (atomModel){
 
@@ -326,16 +294,16 @@ export function Controller() {
             if(slot.component){
               if (slot.component.value) {
 
-                          let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModel.id)
+                let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModel.id)
 
-                          slot.component.value = [{value: atomValueModel.value}]
-
-                    }
-
-                  }
+                slot.component.value = [{value: atomValueModel.value}]
 
                 }
-        }
+
+              }
+
+            }
+          }
         }
       }
   };
@@ -343,24 +311,28 @@ export function Controller() {
   this.bindNewScripts = async () => {
     let component = this.childComponent;
 
-         component.bindScript = async function() {
-          for await (let slot of component.slots) {
-            if (await slot.component)
+        component.bindScript = async function() {
+        for await (let slot of component.slots) {
+          if (await slot.component)
             await component.fillSlot(slot.slot, slot.component.getElement())
-        }
       }
-    };
+    }
+  };
 
 
   this.template = async () => {
     this.childComponent = await this.getComponent();
     await this.getSlots();
     await this.bindNewScripts();
-
-     this.childComponent.model = this.model;
-
+    this.childComponent.model = this.model;
     return  this.childComponent ;
-
   }
 
 }
+function assignAtomValue(atomValuesModel, atomComp, atomModels, index) {
+  if (atomComp.value) {
+    let matchedAtomValue = atomValuesModel.find(at => at.parentId === atomModels[index].id);
+    atomComp.value = [{ value: matchedAtomValue.value }];
+  }
+}
+
