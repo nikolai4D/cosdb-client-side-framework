@@ -49,7 +49,7 @@ export function Controller() {
     return component;
   };
 
-  this.addCompViewTemplateSlots = async () => {
+  this.addComponentsInTemplateSlotConstructors = async () => {
 
     const createComponent = async (type, file) => {
       const pathToComponent = `../../components/${type}/${file}.mjs`;
