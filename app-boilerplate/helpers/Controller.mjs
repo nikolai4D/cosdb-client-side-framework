@@ -53,10 +53,14 @@ export function Controller() {
       const slotModels = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
 
       const specificSlot =  slotModels.find(slotModel => slotModel.value === slot.slot)
-      validate(specificSlot)
+      if (!specificSlot) {
+        throw new Error(`specificSlot not found for slotModels: ${slotModels}`);
+      }
 
       const specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
-      validate(specificComponent)
+      if (!specificComponent) {
+        throw new Error(`specificComponent not found for comp: ${comp}`);
+      }
 
       const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
       const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id)
@@ -65,14 +69,15 @@ export function Controller() {
       if (organismModel !== undefined) {
         slot.slot = organismModel.value;
         slot.component = await createComponent("organisms", organismModel.value)
-        validate(slot.component)
 
         if (slot.component.functions){
           await processFunction(this.model, slot.component, organismModel)
         }
 
-        if (slot.component.organisms) {
+        if(slot.component){
+          if (slot.component.organisms) {
               processOrganisms(this.model, slot.component, organismModel)
+        }
 
         if (slot.component.molecules) {
             for (const [index, subCompMolecule] of slot.component.molecules.entries()) {
@@ -96,15 +101,19 @@ export function Controller() {
     if (moleculeModel !== undefined){
       slot.slot = moleculeModel.value;
       slot.component = await createComponent("molecules", moleculeModel.value)
-      validate(slot.component)
+      if(slot.component){
+        if (slot.component.atoms) {
           processAtoms(this.model, slot.component, [moleculeModel])
+        }
+      }
     }
 
     if (atomModel !== undefined){
       slot.slot = atomModel.value;
       slot.component = await createComponent("atoms", atomModel.value)
-      validate(slot.component)
-      assignAtomValue(this.model.atomValues, slot.component, [atomModel], 0)
+      if(slot.component){
+        assignAtomValue(this.model.atomValues, slot.component, [atomModel], 0)
+        }
       }
     }
       return this.viewTemplate.slots;
@@ -187,11 +196,5 @@ function assignAtomValue(atomValuesModel, atomComp, atomModels, index) {
   if (atomComp.value) {
     const matchedAtomValue = atomValuesModel.find(at => at.parentId === atomModels[index].id);
     atomComp.value = [{ value: matchedAtomValue.value }];
-  }
-}
-
-function validate(object){
-  if (!object) {
-    throw new Error(`Object not found`);
   }
 }
