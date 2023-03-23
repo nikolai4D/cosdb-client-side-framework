@@ -25,12 +25,12 @@ export async function ViewTemplate_dummy2() {
 
   const divDOM1 = document.createElement("div");
   const h1Element1 = document.createElement("h1");
-  h1Element1.textContent = "1";
+  h1Element1.textContent = "1 dom";
   divDOM1.appendChild(h1Element1);
 
   const divDOM2 = document.createElement("div");
   const h1Element2 = document.createElement("h1");
-  h1Element2.textContent = "2";
+  h1Element2.textContent = "2 dom";
   divDOM1.appendChild(h1Element2);
 
   return await html2dom`
