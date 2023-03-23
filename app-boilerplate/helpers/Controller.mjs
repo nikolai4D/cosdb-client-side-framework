@@ -49,17 +49,8 @@ export function Controller() {
 
   this.addComponentsInTemplateSlotConstructors = async () => {
 
-    const createComponent = async (type, file) => {
-      const pathToComponent = `../../components/${type}/${file}.mjs`;
-      const Component = await importModuleFromFile(pathToComponent, file)
-      return new Component[file]();
-    }
 
-    const createAction = async (file) => {
-      const pathToAction = `../../data-mgmt/actions/${file}.mjs`;
-      const action = await importModuleFromFile(pathToAction, file)
-      return action[file];
-    }
+
 
     const processFunction = async (component, componentModel) => {
         let functionModels = this.model.functions.filter(func => func.parentId === componentModel.id);
@@ -271,4 +262,17 @@ function assignAtomValue(atomValuesModel, atomComp, atomModels, index) {
     let matchedAtomValue = atomValuesModel.find(at => at.parentId === atomModels[index].id);
     atomComp.value = [{ value: matchedAtomValue.value }];
   }
+}
+
+
+const createComponent = async (type, file) => {
+  const pathToComponent = `../../components/${type}/${file}.mjs`;
+  const Component = await importModuleFromFile(pathToComponent, file)
+  return new Component[file]();
+}
+
+const createAction = async (file) => {
+  const pathToAction = `../../data-mgmt/actions/${file}.mjs`;
+  const action = await importModuleFromFile(pathToAction, file)
+  return action[file];
 }
