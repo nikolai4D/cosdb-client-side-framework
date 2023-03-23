@@ -1,39 +1,19 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 
-export async function ViewTemplate(viewPath) {
-  console.log({ viewPath });
+export async function ViewTemplate(parentId) {
+  const type = "viewTemplate";
   //validate and authenticate path
-  const viewTemplates = await apiCallGet(`/read/viewTemplates`);
-  const id = newView.id;
-  const value = newView.value;
+  const viewTemplate = await apiCallGet(`/read/${type}s/${parentId}`);
+  console.log({ viewTemplate });
+  const id = viewTemplate.id;
+  const value = viewTemplate.value;
 
-  //set browser history
-  window.history.pushState({ viewPath: value }, "", value);
-  console.log("window.history", window.history);
-
-  //delete previous view
-  await deletePreviousView();
-
-  // Create a new view
-  const viewDiv = document.createElement("div");
-  viewDiv.classList.add("view");
-  viewDiv.setAttribute("id", id);
-
-  const viewContentDiv = await ViewTester2(value);
-  viewDiv.appendChild(viewContentDiv);
-
-  // Create a new viewTemplate
-  //const viewTemplateDiv = await ViewTemplate(id);
-  //viewDiv.appendChild(viewTemplateDiv);
+  // Create a new div from type
+  const div = document.createElement("div");
+  div.classList.add(type);
+  div.setAttribute("id", id);
+  div.innerHTML = value;
 
   // Append the view to the body
-  document.body.appendChild(viewDiv);
-}
-
-function deletePreviousView() {
-  const previousDiv = document.querySelector(".view");
-
-  if (previousDiv) {
-    previousDiv.remove();
-  }
+  document.body.appendChild(div);
 }
