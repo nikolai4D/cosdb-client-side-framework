@@ -26,6 +26,7 @@ export async function View(viewPath) {
 
   // Create a new viewTemplate
   const childNodes = await ViewTemplate(id);
+  console.log(childNodes, "childNodes");
   for (const childNode of childNodes) {
     div.appendChild(childNode);
   }
