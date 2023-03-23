@@ -7,8 +7,9 @@ export async function Router(viewPath) {
 
   console.log({ viewPath });
   const newView = await apiCallGet(`/auth/${viewPath}`);
+  const newPath = newView.viewPath;
 
-  console.log(newView.viewPath);
+  console.log(newPath, newView.viewPath);
 
   if (window.location.pathname !== newPath) {
     window.location.pathname = newPath;
