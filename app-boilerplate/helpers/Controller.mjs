@@ -34,11 +34,11 @@ export function Controller() {
     validate(viewTemplateComponent)
   
     // Instantiate the component
-    const viewTemplateCom = new viewTemplateComponent[file]();
+    const viewTemplateComp = new viewTemplateComponent[file]();
 
-    viewTemplateCom.id = foundModelViewTemplate.id;
+    viewTemplateComp.id = foundModelViewTemplate.id;
 
-    return viewTemplateCom;
+    return viewTemplateComp;
   
   };
 
