@@ -51,68 +51,71 @@ export function Controller() {
 
     for (const slot of this.viewTemplate.slots) {
       const slotModels = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
+      
       const specificSlot =  slotModels.find(slotModel => slotModel.value === slot.slot)
+      if (!specificSlot) {
+        throw new Error(`specificSlot not found for slotModel: ${slotModel}`);
+      }
 
-      if (specificSlot) {
-          const specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
+      const specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
+      if (!specificComponent) {
+        throw new Error(`specificComponent not found for comp: ${comp}`);
+      }
 
-          if (specificComponent) {
-            const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
-            const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id)
-            const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
+      const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
+      const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id)
+      const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
 
-            if (organismModel !== undefined) {
-              slot.slot = organismModel.value;
-              slot.component = await createComponent("organisms", organismModel.value)
+      if (organismModel !== undefined) {
+        slot.slot = organismModel.value;
+        slot.component = await createComponent("organisms", organismModel.value)
 
-              if (slot.component.functions){
-                await processFunction(this.model, slot.component, organismModel)
-              }
+        if (slot.component.functions){
+          await processFunction(this.model, slot.component, organismModel)
+        }
 
-              if(slot.component){
-                if (slot.component.organisms) {
-                   processOrganisms(this.model, slot.component, organismModel)
-              }
-              
-              if (slot.component.molecules) {
-                  for (const [index, subCompMolecule] of slot.component.molecules.entries()) {
-                    const subSubSubComp = subCompMolecule.component
-                    const subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
-                    if (subSubSubCompModels.length > 1) console.log("more than one molecule")
-                    if (subSubSubComp.functions) 
-                    await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
-                    if (subSubSubComp.atoms){
-                      processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
-                    }
-                  }
-              }
+        if(slot.component){
+          if (slot.component.organisms) {
+              processOrganisms(this.model, slot.component, organismModel)
+        }
 
-              if (slot.component.atoms) {
-                processAtoms(this.model, slot.component, slotModels)
-                }
+        if (slot.component.molecules) {
+            for (const [index, subCompMolecule] of slot.component.molecules.entries()) {
+              const subSubSubComp = subCompMolecule.component
+              const subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
+              if (subSubSubCompModels.length > 1) console.log("more than one molecule")
+              if (subSubSubComp.functions) 
+              await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
+              if (subSubSubComp.atoms){
+                processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
               }
             }
+        }
 
-          if (moleculeModel !== undefined){
-            slot.slot = moleculeModel.value;
-            slot.component = await createComponent("molecules", moleculeModel.value)
-            if(slot.component){
-              if (slot.component.atoms) {
-                processAtoms(this.model, slot.component, [moleculeModel])
-              }
-            }
-          }
-
-          if (atomModel !== undefined){
-            slot.slot = atomModel.value;
-            slot.component = await createComponent("atoms", atomModel.value)
-            if(slot.component){
-              assignAtomValue(this.model.atomValues, slot.component, [atomModel], 0)
-              }
-            }
+        if (slot.component.atoms) {
+          processAtoms(this.model, slot.component, slotModels)
           }
         }
       }
+
+    if (moleculeModel !== undefined){
+      slot.slot = moleculeModel.value;
+      slot.component = await createComponent("molecules", moleculeModel.value)
+      if(slot.component){
+        if (slot.component.atoms) {
+          processAtoms(this.model, slot.component, [moleculeModel])
+        }
+      }
+    }
+
+    if (atomModel !== undefined){
+      slot.slot = atomModel.value;
+      slot.component = await createComponent("atoms", atomModel.value)
+      if(slot.component){
+        assignAtomValue(this.model.atomValues, slot.component, [atomModel], 0)
+        }
+      }
+    }
       return this.viewTemplate.slots;
   };
 
