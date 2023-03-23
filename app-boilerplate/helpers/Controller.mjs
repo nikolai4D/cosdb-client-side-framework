@@ -107,7 +107,7 @@ export function Controller() {
     for (let slot of component.slots) {
 
       // Filter the slots based on the viewTemplate's ID
-      let slotModels = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
+      let slotModels = this.model.slots.filter(slot => slot.parentId === component.id);
       
       // get the slot from the model
         let specificSlot =  slotModels.find(slotModel => slotModel.value === slot.slot)
