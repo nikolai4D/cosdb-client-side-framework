@@ -165,12 +165,7 @@ export function Controller() {
   }
 }
 
-function assignAtomValue(atomValuesModel, atomComp, atomModels, index) {
-  if (atomComp.value) {
-    let matchedAtomValue = atomValuesModel.find(at => at.parentId === atomModels[index].id);
-    atomComp.value = [{ value: matchedAtomValue.value }];
-  }
-}
+
 
 const createComponent = async (type, file) => {
   const pathToComponent = `../../components/${type}/${file}.mjs`;
@@ -184,43 +179,57 @@ const createAction = async (file) => {
   return action[file];
 }
 
-const processFunction  = async (model, component, componentModel) => {
-  let functionModels = model.functions.filter(func => func.parentId === componentModel.id);
+const processFunction = async (model, component, componentModel) => {
+  const functionModels = model.functions.filter(func => func.parentId === componentModel.id);
 
-  for (let func of functionModels) {
-    let funcId = func.key.split(" ")[1]
-    let compFunc = component.functions.find(aFunc => aFunc.id == funcId)
-    compFunc.function = func.value
-    compFunc.functionCall = await createAction(func.value)
+  for (const func of functionModels) {
+    const funcId = func.key.split(" ")[1];
+    const compFunc = component.functions.find(aFunc => aFunc.id === funcId);
+
+    compFunc.function = func.value;
+    compFunc.functionCall = await createAction(func.value);
     compFunc.parameters = func.parameters;
-  }
-}
-
-  const processOrganisms = async (model, comp, organismModel) => {
-    for (let [index, subCompOrganism] of comp.organisms.entries()) {
-      let subSubComp = subCompOrganism.component
-      let subSubCompModels = model.organisms.filter(org => org.parentId === organismModel.id)
-
-      if (subSubComp.functions) processFunction(this.model, subSubComp, subSubCompModels[index])
-      if (subSubComp.molecules) await processMolecules(this.model, subSubComp, subSubCompModels);
-
-    }
-  };
-const processMolecules = async (model, subSubComp, subSubCompModels) => {
-  for (let [index, molecule] of subSubComp.molecules.entries()) {
-    let moleculeComponent = molecule.component;
-    let moleculeModels = model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
-    if (moleculeComponent.functions) processFunction(model, moleculeComponent,subSubCompModels[index])
-    if (moleculeComponent.atoms) await processAtoms(model, moleculeComponent, moleculeModels);
   }
 };
 
+const processOrganisms = async (model, comp, organismModel) => {
+  for (const [index, subCompOrganism] of comp.organisms.entries()) {
+    const subSubComp = subCompOrganism.component;
+    const subSubCompModels = model.organisms.filter(org => org.parentId === organismModel.id);
+
+    if (subSubComp.functions) {
+      await processFunction(model, subSubComp, subSubCompModels[index]);
+    }
+
+    if (subSubComp.molecules) {
+      await processMolecules(model, subSubComp, subSubCompModels);
+    }
+  }
+};
+
+const processMolecules = async (model, subSubComp, subSubCompModels) => {
+  for (const [index, molecule] of subSubComp.molecules.entries()) {
+    const moleculeComponent = molecule.component;
+    const moleculeModels = model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
+
+    if (moleculeComponent.functions) {
+      await processFunction(model, moleculeComponent, subSubCompModels[index]);
+    }
+
+    if (moleculeComponent.atoms) {
+      await processAtoms(model, moleculeComponent, moleculeModels);
+    }
+  }
+};
 
 const processAtoms = async (model, moleculeComponent, moleculeModels) => {
-  for (let [index, atom] of moleculeComponent.atoms.entries()) {
-    let atomComponent = atom.component;
-    let atomModels = model.atoms.filter(at => at.parentId === moleculeModels[0].id);
+  for (const [index, atom] of moleculeComponent.atoms.entries()) {
+    const atomComponent = atom.component;
+    const atomModels = model.atoms.filter(at => at.parentId === moleculeModels[0].id);
 
-    assignAtomValue(model.atomValues, atomComponent, atomModels, index)
+    if (atomComponent.value) {
+      const matchedAtomValue = model.atomValues.find(at => at.parentId === atomModels[index].id);
+      atomComponent.value = [{ value: matchedAtomValue?.value }];
+    }
   }
 };
