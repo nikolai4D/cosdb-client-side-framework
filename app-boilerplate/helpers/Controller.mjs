@@ -250,11 +250,10 @@ export function Controller() {
   };
 
   this.generateDomElements = async () => {
-    let component = this.viewTemplate;
-        component.bindScript = async function() {
-        for await (let slot of component.slots) {
+    this.viewTemplate.bindScript = async function() {
+        for await (let slot of this.viewTemplate.slots) {
           if (await slot.component)
-            await component.fillSlot(slot.slot, slot.component.getElement())
+            await this.viewTemplate.fillSlot(slot.slot, slot.component.getElement())
       }
     }
   };
