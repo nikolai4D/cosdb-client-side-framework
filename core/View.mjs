@@ -1,6 +1,6 @@
 import { Router } from "./Router.mjs";
 
-export async function View(viewPath) {
+export async function View(newView) {
   await deletePreviousView();
   // Create a new <div> element
   const divElement = document.createElement("div");
@@ -8,7 +8,7 @@ export async function View(viewPath) {
 
   // Create a new <h1> element
   const h1Element = document.createElement("h1");
-  h1Element.textContent = viewPath;
+  h1Element.textContent = newView.value;
   divElement.appendChild(h1Element);
 
   // Create a new <input> element

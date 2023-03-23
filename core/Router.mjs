@@ -5,13 +5,12 @@ export async function Router(viewPath) {
   //validate and authenticate path
   const newView = await apiCallGet(`/auth/${viewPath}`);
   console.log("newView", newView);
-  const newPath = newView.value;
 
   //set browser history
-  window.history.pushState({ viewPath: newPath }, "", newPath);
+  window.history.pushState({ viewPath: newView.value }, "", newView.value);
 
   //set view
-  await View(newPath);
+  await View(newView);
 }
 
 // Listen for back or forward navigation
@@ -21,9 +20,8 @@ window.addEventListener("popstate", async (event) => {
 
     //validate and authenticate path
     const newView = await apiCallGet(`/auth/${viewPath}`);
-    const newPath = newView.viewPath;
 
     //set view
-    await View(newPath);
+    await View(newView);
   }
 });
