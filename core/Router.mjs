@@ -1,6 +1,4 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
-//import model_views
-//import controller
 
 export async function Router(viewPath) {
   //validate and authenticate path
@@ -10,7 +8,7 @@ export async function Router(viewPath) {
   const newPath = newView.viewPath; // newView = {viewPath: "viewPath"}
 
   //set browser history
-  setPreviousViewToHistory(viewPath);
+  setPreviousViewToHistory(newPath);
 
   //create view
   deletePreviousView();
