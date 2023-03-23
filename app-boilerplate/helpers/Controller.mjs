@@ -84,27 +84,27 @@ export function Controller() {
             processOrganisms(this.model, slot.component, foundModelOrganism)
         }
 
-      if (slot.component.molecules) {
-          for (const [index, molecule] of slot.component.molecules.entries()) {
-            const moleculeComp = molecule.component
-            const foundModelMolecules = this.model.molecules.filter(mol => mol.parentId ===  foundModelOrganism.id)
-            if (moleculeComp.functions){
-              await processFunction(this.model, moleculeComp, foundModelMolecules[index])
+        if (slot.component.molecules) {
+            for (const [index, molecule] of slot.component.molecules.entries()) {
+              const moleculeComp = molecule.component
+              const foundModelMolecules = this.model.molecules.filter(mol => mol.parentId ===  foundModelOrganism.id)
+              if (moleculeComp.functions){
+                await processFunction(this.model, moleculeComp, foundModelMolecules[index])
+                }
+                if (moleculeComp.atoms){
+                processAtoms(this.model, moleculeComp, [foundModelMolecules[index]])
               }
-              if (moleculeComp.atoms){
-              processAtoms(this.model, moleculeComp, [foundModelMolecules[index]])
             }
-          }
-      }
-
-      if (slot.component.atoms) {
-        processAtoms(this.model, slot.component, foundModelSlotsForViewTemplate)
         }
 
-      if (slot.component.functions){
-        await processFunction(this.model, slot.component, foundModelOrganism)
+        if (slot.component.atoms) {
+          processAtoms(this.model, slot.component, foundModelSlotsForViewTemplate)
+          }
+
+        if (slot.component.functions){
+          await processFunction(this.model, slot.component, foundModelOrganism)
+        }
       }
-    }
     }
       return foundComponentSlotsForViewTemplate;
   };
