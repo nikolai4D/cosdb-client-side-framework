@@ -72,9 +72,10 @@ export function Controller() {
               const moleculeComp = molecule.component
               const foundModelMolecules = this.model.molecules.filter(mol => mol.parentId ===  foundModelOrganism.id)
               if (foundModelMolecules.length > 1) console.log("more than one molecule")
-              if (moleculeComp.functions) 
-              await processFunction(this.model, moleculeComp, foundModelMolecules[index])
-              if (moleculeComp.atoms){
+              if (moleculeComp.functions){
+                await processFunction(this.model, moleculeComp, foundModelMolecules[index])
+               }
+                if (moleculeComp.atoms){
                 processAtoms(this.model, moleculeComp, [foundModelMolecules[index]])
               }
             }
@@ -112,11 +113,10 @@ export function Controller() {
   };
 
   this.addBindScriptToViewTemplate = async () => {
-    const component = this.viewTemplate;
-        component.bindScript = async function() {
-        for await (const slot of component.slots) {
+    this.viewTemplate.bindScript = async function() {
+        for await (const slot of this.slots) {
           if (await slot.component)
-            await component.fillSlot(slot.slot, slot.component.getElement())
+            await this.fillSlot(slot.slot, slot.component.getElement())
       }
     }
   };
