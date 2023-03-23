@@ -252,7 +252,7 @@ export function Controller() {
   this.loadComponentsIntoDom = async () => {
       for await (let slot of this.viewTemplate.slots) {
         if (await slot.component)
-          await component.fillSlot(slot.slot, slot.component.getElement())
+          await this.viewTemplate.fillSlot(slot.slot, slot.component.getElement())
     }
   };
 
