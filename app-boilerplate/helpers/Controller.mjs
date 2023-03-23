@@ -62,7 +62,7 @@ export function Controller() {
         slotComp.slot = foundModelAtom.value;
         slotComp.component = await createComponent("atoms", foundModelAtom.value)
         if(slotComp.component){
-          assignAtomValue(this.model.atomValues, slot.component, [foundModelAtom], 0)
+          assignAtomValue(this.model.atomValues, slotComp.component, [foundModelAtom], 0)
           }
         }
 
