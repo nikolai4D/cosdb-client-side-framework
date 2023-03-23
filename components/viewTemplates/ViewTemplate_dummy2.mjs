@@ -11,22 +11,13 @@ export async function ViewTemplate_dummy2() {
     },
   ];
 
-  const divDOM1 = document.createElement("div");
-  const h1Element1 = document.createElement("h1");
-  h1Element1.textContent = "1 dom";
-  divDOM1.appendChild(h1Element1);
-
-  const divDOM2 = document.createElement("div");
-  const h2Element2 = document.createElement("h2");
-  h2Element2.textContent = "2 dom";
-  divDOM1.appendChild(h2Element2);
+  const slot = (slotName) => {
+    const foundSlot = this.slots.find((s) => s.slot === slotName);
+    return foundSlot ? foundSlot.content : "";
+  };
 
   return await html2dom`
-<div>${divDOM1}</div>
-<div>${divDOM2}</div>
-<div>${divDOM1}</div>
-<div>${divDOM2}</div>
-<div>${divDOM1}</div>
-<div>${divDOM2}</div>
+  <div>${slot("slot3")}</div>
+  <div>${slot("slot4")}</div>
 `;
 }

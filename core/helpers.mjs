@@ -33,8 +33,16 @@ export function html2dom(strings, ...values) {
   return container.childNodes;
 }
 
-export async function createComponent(type, file) {
+export async function createComponent(type, file, content = null) {
   const pathToComponent = `../../components/${type}s/${file}.mjs`;
   const Component = await importModuleFromFile(pathToComponent, file);
   return Component[file]();
+}
+
+export async function createViewTemplate(type, file, slots = []) {
+  const pathToComponent = `../../components/${type}s/${file}.mjs`;
+  const Component = await importModuleFromFile(pathToComponent, file);
+  const componentInstance = Component[file]();
+  componentInstance.slots = slots;
+  return componentInstance;
 }
