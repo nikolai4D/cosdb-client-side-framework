@@ -9,13 +9,13 @@ import { readModel } from "./readModel.mjs";
 export function Controller() {
   View.call(this);
 
-  this.childComponent = null;
+  this.viewTemplate = null;
 
   this.slotsFromModel = null;
 
   this.model = null;
 
-  this.getComponent = async function() {
+  this.getViewTemplate = async function() {
     this.model = await readModel();
   
     // Get the view title from the URL to find the corresponding view from the model
@@ -48,8 +48,6 @@ export function Controller() {
   
     return component;
   };
-
-  this.getComponents = async () => {}
 
   this.getSlots = async () => {
 
@@ -86,19 +84,7 @@ export function Controller() {
         let moleculeModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
     
         if (moleculeComponent.functions) {
-          // Perform necessary actions with moleculeComponent.functions
-
-          // let moleculeFunctions = molecule.functions;
-          // console.log(moleculeComponent)
-          // console.log(moleculeModels)
-          // console.log(subSubCompModels)
-
-          // let functionModels = this.model.functions.filter(func => func.parentId === subSubCompModels[0].id);
-
           processFunction(moleculeComponent,subSubCompModels[index])
-
-          // console.log(functionModels)
-
         }
     
         if (moleculeComponent.atoms) {
@@ -121,7 +107,7 @@ export function Controller() {
     };
 
     // get viewTemplate from model
-    let component = this.childComponent
+    let component = this.viewTemplate
 
     // loop through slots in viewTemplate
     for (let slot of component.slots) {
@@ -263,7 +249,7 @@ export function Controller() {
   };
 
   this.bindNewScripts = async () => {
-    let component = this.childComponent;
+    let component = this.viewTemplate;
         component.bindScript = async function() {
         for await (let slot of component.slots) {
           if (await slot.component)
@@ -272,11 +258,11 @@ export function Controller() {
     }
   };
   this.template = async () => {
-    this.childComponent = await this.getComponent();
+    this.viewTemplate = await this.getViewTemplate();
     await this.getSlots();
     await this.bindNewScripts();
-    this.childComponent.model = this.model;
-    return  this.childComponent ;
+    this.viewTemplate.model = this.model;
+    return  this.viewTemplate ;
   }
 }
 
