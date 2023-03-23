@@ -5,8 +5,10 @@ export async function apiCallGet(url) {
       "Content-Type": "application/json",
     },
   });
-  console.log(await response.json());
-  return await response.json();
+  const result = await response.json();
+  console.log(result);
+
+  return result;
 }
 
 export async function apiCallPost({ url, body }) {
@@ -19,6 +21,8 @@ export async function apiCallPost({ url, body }) {
     credentials: "include",
     body: JSON.stringify({ body }),
   });
-  console.log(await response.json());
-  return await response.json();
+  const result = await response.json();
+  console.log(result);
+
+  return result;
 }
