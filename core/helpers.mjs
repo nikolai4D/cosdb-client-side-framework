@@ -50,18 +50,9 @@ export async function createComponent(type, file, content = null) {
 export async function createViewTemplate(type, file, slots = []) {
   const pathToComponent = `../../components/${type}s/${file}.mjs`;
   const Component = await importModuleFromFile(pathToComponent, file);
-  const componentInstance = Component[file]();
 
-  Object.defineProperty(componentInstance, "slots", {
-    get() {
-      return slots;
-    },
-    set(value) {
-      slots = value;
-    },
-    enumerable: true,
-    configurable: true,
-  });
+  const componentInstance = new Component[file]();
+  const updatedComponentInstance = { ...componentInstance, slots };
 
-  return componentInstance;
+  return updatedComponentInstance;
 }
