@@ -5,9 +5,10 @@ import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 export async function Router(viewPath) {
   //validate and authenticate path
 
+  console.log({ viewPath });
   const newView = await apiCallGet(`/auth/${viewPath}`);
 
-  window.location.pathname = newView.viewPath;
+  //window.location.pathname = newView.viewPath;
 
   //set browser history
 
