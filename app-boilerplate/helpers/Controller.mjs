@@ -49,51 +49,6 @@ export function Controller() {
 
   this.addComponentsInTemplateSlotConstructors = async () => {
 
-
-    const processFunction  = async (model, component, componentModel) => {
-        let functionModels = model.functions.filter(func => func.parentId === componentModel.id);
-
-        for (let func of functionModels) {
-          let funcId = func.key.split(" ")[1]
-          let compFunc = component.functions.find(aFunc => aFunc.id == funcId)
-          compFunc.function = func.value
-          compFunc.functionCall = await createAction(func.value)
-          compFunc.parameters = func.parameters;
-
-        }
-
-    }
-
-
-    const processMolecules = async (subSubComp, subSubCompModels) => {
-      for (let [index, molecule] of subSubComp.molecules.entries()) {
-        let moleculeComponent = molecule.component;
-        let moleculeModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
-    
-        if (moleculeComponent.functions) {
-          processFunction(this.model, moleculeComponent,subSubCompModels[index])
-        }
-    
-        if (moleculeComponent.atoms) {
-          await processAtoms(moleculeComponent, moleculeModels);
-        }
-      }
-    };
-    
-    const processAtoms = async (moleculeComponent, moleculeModels) => {
-      for (let [index, atom] of moleculeComponent.atoms.entries()) {
-        let atomComponent = atom.component;
-        let atomModels = this.model.atoms.filter(at => at.parentId === moleculeModels[0].id);
-    
-        if (atomComponent.functions) {
-          // Perform necessary actions with atomComponent.functions
-        }
-    
-          assignAtomValue(this.model.atomValues, atomComponent, atomModels, index)
-      }
-    };
-
-
     // loop through slots in viewTemplate
     for (let slot of this.viewTemplate.slots) {
 
@@ -151,7 +106,7 @@ export function Controller() {
                     processFunction(this.model, subSubComp, subSubCompModels[index])
                   }
                   if (subSubComp.molecules) {
-                    await processMolecules(subSubComp, subSubCompModels);
+                    await processMolecules(this.model, subSubComp, subSubCompModels);
                   }
                 }
               }
@@ -273,3 +228,45 @@ const createAction = async (file) => {
   const action = await importModuleFromFile(pathToAction, file)
   return action[file];
 }
+
+const processFunction  = async (model, component, componentModel) => {
+  let functionModels = model.functions.filter(func => func.parentId === componentModel.id);
+
+  for (let func of functionModels) {
+    let funcId = func.key.split(" ")[1]
+    let compFunc = component.functions.find(aFunc => aFunc.id == funcId)
+    compFunc.function = func.value
+    compFunc.functionCall = await createAction(func.value)
+    compFunc.parameters = func.parameters;
+
+  }
+}
+
+const processMolecules = async (model, subSubComp, subSubCompModels) => {
+  for (let [index, molecule] of subSubComp.molecules.entries()) {
+    let moleculeComponent = molecule.component;
+    let moleculeModels = model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
+
+    if (moleculeComponent.functions) {
+      processFunction(model, moleculeComponent,subSubCompModels[index])
+    }
+
+    if (moleculeComponent.atoms) {
+      await processAtoms(model, moleculeComponent, moleculeModels);
+    }
+  }
+};
+
+
+const processAtoms = async (model, moleculeComponent, moleculeModels) => {
+  for (let [index, atom] of moleculeComponent.atoms.entries()) {
+    let atomComponent = atom.component;
+    let atomModels = model.atoms.filter(at => at.parentId === moleculeModels[0].id);
+
+    if (atomComponent.functions) {
+      // Perform necessary actions with atomComponent.functions
+    }
+
+      assignAtomValue(model.atomValues, atomComponent, atomModels, index)
+  }
+};
