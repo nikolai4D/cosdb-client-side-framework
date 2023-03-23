@@ -3,7 +3,6 @@ import { ViewTester2 } from "./ViewTester2.mjs";
 import { ViewTemplate } from "./ViewTemplate.mjs";
 
 export async function View(viewPath) {
-  console.log({ viewPath });
   //validate and authenticate path
   const newView = await apiCallGet(`/auth/${viewPath}`);
   const id = newView.id;
@@ -11,7 +10,6 @@ export async function View(viewPath) {
 
   //set browser history
   window.history.pushState({ viewPath: value }, "", value);
-  console.log("window.history", window.history);
 
   //delete previous view
   await deletePreviousView();
