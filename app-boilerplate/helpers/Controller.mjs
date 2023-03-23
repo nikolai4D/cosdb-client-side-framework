@@ -21,19 +21,22 @@ export function Controller() {
   
     // Find the view in the model using the path
     const view = this.model.views.find(view => view.value === path);
-    validate(view)
+    if (!view) {
+      throw new Error(`View not found for path: ${path}`);
+    }
   
     // Find the viewTemplate in the model using the view's ID as the parentId
     const viewTemplate = this.model.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id);
-    validate(viewTemplate)
-
+    if (!viewTemplate) {
+      throw new Error(`ViewTemplate not found for view ID: ${view.id}`);
+    }
+  
     // Get the name and path of the viewTemplate component file
     const file = viewTemplate.value;
     const pathToComponent = `../../components/viewTemplates/${file}.mjs`;
   
     // Import the viewTemplate component
     const viewTemplateComponent = await importModuleFromFile(pathToComponent, file);
-    validate(viewTemplateComponent)
   
     // Instantiate the component
     const viewTemplateCom = new viewTemplateComponent[file]();
@@ -52,29 +55,29 @@ export function Controller() {
       const specificSlot =  slotModels.find(slotModel => slotModel.value === slot.slot)
       validate(specificSlot)
 
-      const matchComponentModel = this.model.components.find(comp => comp.parentId === specificSlot.id)
-      validate(matchComponentModel)
+      const specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
+      validate(specificComponent)
 
-      const matchOrganismModel = this.model.organisms.find(organism => organism.parentId === matchComponentModel.id)
-      const matchMoleculeModel = this.model.molecules.find(molecule => molecule.parentId === matchComponentModel.id)
-      const atomModel = this.model.atoms.find(atom => atom.parentId === matchComponentModel.id)
+      const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
+      const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id)
+      const atomModel = this.model.atoms.find(atom => atom.parentId === specificComponent.id)
 
-      if (matchOrganismModel !== undefined) {
-        slot.slot = matchOrganismModel.value;
-        slot.component = await createComponent("organisms", matchOrganismModel.value)
+      if (organismModel !== undefined) {
+        slot.slot = organismModel.value;
+        slot.component = await createComponent("organisms", organismModel.value)
         validate(slot.component)
 
         if (slot.component.functions){
-          await processFunction(this.model, slot.component, matchOrganismModel)
+          await processFunction(this.model, slot.component, organismModel)
         }
 
         if (slot.component.organisms) {
-              processOrganisms(this.model, slot.component, matchOrganismModel)
+              processOrganisms(this.model, slot.component, organismModel)
 
         if (slot.component.molecules) {
             for (const [index, subCompMolecule] of slot.component.molecules.entries()) {
               const subSubSubComp = subCompMolecule.component
-              const subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  matchOrganismModel.id)
+              const subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
               if (subSubSubCompModels.length > 1) console.log("more than one molecule")
               if (subSubSubComp.functions) 
               await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
@@ -90,11 +93,11 @@ export function Controller() {
         }
       }
 
-    if (matchMoleculeModel !== undefined){
-      slot.slot = matchMoleculeModel.value;
-      slot.component = await createComponent("molecules", matchMoleculeModel.value)
+    if (moleculeModel !== undefined){
+      slot.slot = moleculeModel.value;
+      slot.component = await createComponent("molecules", moleculeModel.value)
       validate(slot.component)
-      processAtoms(this.model, slot.component, [matchMoleculeModel])
+          processAtoms(this.model, slot.component, [moleculeModel])
     }
 
     if (atomModel !== undefined){
