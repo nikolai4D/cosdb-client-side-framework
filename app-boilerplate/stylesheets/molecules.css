@@ -101,7 +101,6 @@
 }
 
 .molecule_icon_and_link > a:hover {
-    font-weight: bold;
     color:#999;
 
 }
@@ -112,7 +111,6 @@
    
 }
 .molecule_icon_and_link:hover {
-    font-weight: bold;
     color:#999;
 
 }
