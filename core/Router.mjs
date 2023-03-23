@@ -13,8 +13,7 @@ export async function Router(viewPath) {
   setPreviousViewToHistory(viewPath);
 
   //create view
-  deletePreviousDiv();
-
+  deletePreviousView();
   const newViewDiv = createView(newPath);
 
   //switch view
@@ -25,7 +24,7 @@ function setPreviousViewToHistory(viewPath) {
   window.history.pushState({ viewPath }, "", viewPath);
 }
 
-function deletePreviousDiv() {
+function deletePreviousView() {
   const previousDiv = document.querySelector("div");
 
   if (previousDiv) {
@@ -48,3 +47,15 @@ function createView(viewPath) {
 
   return divElement;
 }
+
+// Add event listener for popstate event
+window.addEventListener("popstate", async (event) => {
+  if (event.state && event.state.viewPath) {
+    const viewPath = event.state.viewPath;
+    deletePreviousDiv();
+    const newView = await apiCallGet(`/auth/${viewPath}`);
+    const newPath = newView.viewPath;
+    const newViewDiv = createView(newPath);
+    document.body.appendChild(newViewDiv);
+  }
+});
