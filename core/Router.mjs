@@ -3,17 +3,14 @@ import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 //import controller
 
 export async function Router(path) {
-  //validate path
-  const views = await apiCallGet("/read/views");
-  console.log(path);
-  const isValidPath = validatePath(path, views);
-  console.log(isValidPath);
-  //auth
+  //validate and authenticate path
+
+  const newView = await apiCallGet(`/auth/${path}`);
+
+  window.location.pathname = newView;
+
   //set browser history
+
   //create view
   //switch view
-}
-
-function validatePath(path, views) {
-  return views.some((view) => view.value === path);
 }
