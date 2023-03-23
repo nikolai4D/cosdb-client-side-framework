@@ -214,7 +214,7 @@ export function Controller() {
       
                         if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
 
-                        assignAtomValue(this.model.atomValues, subSubSubSubComp, [], 10)
+                        assignAtomValue(this.model.atomValues, subSubSubSubComp, subSubSubSubCompModels, index2)
 
 
 
