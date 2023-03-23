@@ -246,7 +246,7 @@ export function Controller() {
           }
         }
       }
-      return component.slots;
+      // return component.slots;
   };
 
   this.loadComponentsIntoDom = async () => {
@@ -258,7 +258,8 @@ export function Controller() {
 
   this.template = async () => {
     this.viewTemplate = await this.getViewTemplate();
-    this.viewTemplate.slots = await this.addComponentsInTemplateSlotConstructors();
+    // this.viewTemplate.slots = 
+    await this.addComponentsInTemplateSlotConstructors();
     this.viewTemplate.bindScript = await this.loadComponentsIntoDom();
     return this.viewTemplate ;
   }
