@@ -144,9 +144,9 @@ const createAction = async (file) => {
 }
 
 const processFunction  = async (model, component, componentModel) => {
-  const functionModels = model.functions.filter(func => func.parentId === componentModel.id);
+  const foundModelFunctions = model.functions.filter(func => func.parentId === componentModel.id);
 
-  for (const func of functionModels) {
+  for (const func of foundModelFunctions) {
     const funcId = func.key.split(" ")[1]
     const compFunc = component.functions.find(aFunc => aFunc.id == funcId)
     compFunc.function = func.value
@@ -156,20 +156,20 @@ const processFunction  = async (model, component, componentModel) => {
 }
 
   const processOrganisms = async (model, comp, foundModelOrganism) => {
-    for (const [index, subCompOrganism] of comp.organisms.entries()) {
-      const subSubComp = subCompOrganism.component
-      const subSubCompModels = model.organisms.filter(org => org.parentId === foundModelOrganism.id)
+    for (const [index, organism] of comp.organisms.entries()) {
+      const organismComponent = organism.component
+      const foundModelOrganisms = model.organisms.filter(org => org.parentId === foundModelOrganism.id)
 
-      if (subSubComp.functions) processFunction(this.model, subSubComp, subSubCompModels[index])
-      if (subSubComp.molecules) await processMolecules(this.model, subSubComp, subSubCompModels);
+      if (organismComponent.functions) processFunction(this.model, organismComponent, foundModelOrganisms[index])
+      if (organismComponent.molecules) await processMolecules(this.model, organismComponent, foundModelOrganisms);
 
     }
   };
-const processMolecules = async (model, subSubComp, subSubCompModels) => {
-  for (const [index, molecule] of subSubComp.molecules.entries()) {
+const processMolecules = async (model, comp, foundModelParent) => {
+  for (const [index, molecule] of comp.molecules.entries()) {
     const moleculeComponent = molecule.component;
-    const foundModelMolecules = model.molecules.filter(mol => mol.parentId === subSubCompModels[index].id);
-    if (moleculeComponent.functions) processFunction(model, moleculeComponent,subSubCompModels[index])
+    const foundModelMolecules = model.molecules.filter(mol => mol.parentId === foundModelParent[index].id);
+    if (moleculeComponent.functions) processFunction(model, moleculeComponent,foundModelParent[index])
     if (moleculeComponent.atoms) await processAtoms(model, moleculeComponent, foundModelMolecules);
   }
 };
