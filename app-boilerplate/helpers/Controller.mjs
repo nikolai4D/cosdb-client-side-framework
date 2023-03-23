@@ -259,7 +259,7 @@ export function Controller() {
   this.template = async () => {
     this.viewTemplate = await this.getViewTemplate();
     this.viewTemplate.slots = await this.addComponentsInTemplateSlotConstructors();
-    this.viewTemplate.bindScript = await this.generateDomElements;
+    this.viewTemplate.bindScript  = await this.generateDomElements();
     return this.viewTemplate ;
   }
 }
