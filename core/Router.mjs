@@ -7,7 +7,7 @@ export async function Router(viewPath) {
 
   const newView = await apiCallGet(`/auth/${viewPath}`);
 
-  window.location.pathname = await newView.viewPath;
+  window.location.pathname = newView.viewPath;
 
   //set browser history
 
