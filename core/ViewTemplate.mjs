@@ -14,6 +14,5 @@ export async function ViewTemplate(parentId) {
   div.setAttribute("id", id);
   div.innerHTML = value;
 
-  // Append the view to the body
-  document.body.appendChild(div);
+  return div;
 }
