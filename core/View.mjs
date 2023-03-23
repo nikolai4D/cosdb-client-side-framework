@@ -1,26 +1,64 @@
+import { Router } from "./Router.mjs";
 
-export function View() {
+export async function createView(viewPath) {
+  await deletePreviousView();
+  // Create a new <div> element
+  const divElement = document.createElement("div");
+  divElement.classList.add("view");
 
-    // As it is a constructor, View itself cannot be async, Async functions needed for a view should be wrapped into methods (like the setView method below).
+  // Create a new <h1> element
+  const h1Element = document.createElement("h1");
 
-    this.title= "default title"
-    this.template= null
-    
-    /**
-     * Called by router. In most cases, should not be overridden.
-     * @returns {Promise<void>}
-     */
-    this.setView= async function() {
+  // Create a new input field
+  const inputElement = document.createElement("input");
 
+  // Set the input type to text
+  inputElement.setAttribute("type", "text");
 
-        let awaitedTemplate = await this.template()
+  // Create a new button
+  const buttonElement = document.createElement("button");
 
-        if(!this.template) throw new Error("View template is not set")
-        if (!this.template.getElement) await document.body.append(await awaitedTemplate.getElement())
+  // Set the button text to "Go"
+  buttonElement.textContent = "Go";
 
-        else document.body.append(this.template.getElement())
+  // Add a click event listener to the button
+  buttonElement.addEventListener("click", async function (event) {
+    // Prevent the default behavior of the button (submitting a form)
+    event.preventDefault();
 
-        document.title = this.title
+    // Get the input value and set the window location to it
+    const inputValue = inputElement.value;
+    await Router(inputValue);
+  });
+
+  // Add a keydown event listener to the input field
+  inputElement.addEventListener("keydown", function (event) {
+    // Check if the pressed key is Enter
+    if (event.key === "Enter") {
+      // Programmatically trigger a click event on the button
+      buttonElement.click();
     }
+  });
 
+  // Set the text of the <h1> element to the input value
+  h1Element.textContent = viewPath;
+
+  // Append the <h1> element to the <div> element
+  divElement.appendChild(h1Element);
+
+  // Append the input field and button to the <div> element
+  divElement.appendChild(inputElement);
+  divElement.appendChild(buttonElement);
+
+  document.body.appendChild(divElement);
+
+  //   return divElement;
+}
+
+function deletePreviousView() {
+  const previousDiv = document.getElementsByClassName("view");
+
+  if (previousDiv) {
+    previousDiv.remove();
+  }
 }
