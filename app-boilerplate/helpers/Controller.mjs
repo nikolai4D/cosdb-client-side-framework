@@ -113,25 +113,21 @@ export function Controller() {
 
               if (slot.component.molecules) {
 
-                processMolecules(this.model, slot.component, [organismModel])
-                
+                  for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
 
+                    let subSubSubComp = subCompMolecule.component
+                    let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
 
-                  // for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
+                    if (subSubSubCompModels.length > 1) console.log("more than one molecule")
 
-                  //   let subSubSubComp = subCompMolecule.component
-                  //   let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
+                    if (subSubSubComp.functions) 
 
-                  //   if (subSubSubCompModels.length > 1) console.log("more than one molecule")
+                    await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
 
-                  //   if (subSubSubComp.functions) 
-
-                  //   await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
-
-                  //   if (subSubSubComp.atoms){
-                  //     processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
-                  //   }
-                  // }
+                    if (subSubSubComp.atoms){
+                      processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
+                    }
+                  }
               }
 
               if (slot.component.atoms) {
@@ -224,7 +220,7 @@ const processMolecules = async (model, subSubComp, subSubCompModels) => {
     let moleculeModels = model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
 
     if (moleculeComponent.functions) {
-      processFunction(model, moleculeComponent,subSubCompModels[0])
+      processFunction(model, moleculeComponent,subSubCompModels[index])
     }
 
     if (moleculeComponent.atoms) {
