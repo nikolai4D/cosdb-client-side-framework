@@ -113,36 +113,24 @@ export function Controller() {
 
               if (slot.component.molecules) {
 
-                  for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
-
-                    let subSubSubComp = subCompMolecule.component
-                    let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
-
-                    if (subSubSubCompModels.length > 1) console.log("more than one molecule")
-
-                    if (subSubSubComp.functions) 
-
-                    await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
+                processMolecules(this.model, slot.component, slotModels)
 
 
+                  // for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
 
-                    if (subSubSubComp.atoms){
+                  //   let subSubSubComp = subCompMolecule.component
+                  //   let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
 
-                      processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
+                  //   if (subSubSubCompModels.length > 1) console.log("more than one molecule")
 
+                  //   if (subSubSubComp.functions) 
 
-                      // for (let [index2, subCompAtom] of subSubSubComp.atoms.entries()) {
+                  //   await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
 
-                      //   let subSubSubSubComp = subCompAtom.component
-                      //   let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id)
-      
-                      //   if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
-
-                      //   assignAtomValue(this.model.atomValues, subSubSubSubComp, subSubSubSubCompModels, index2)
-
-                      //   }
-                    }
-                  }
+                  //   if (subSubSubComp.atoms){
+                  //     processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
+                  //   }
+                  // }
               }
 
               if (slot.component.atoms) {
