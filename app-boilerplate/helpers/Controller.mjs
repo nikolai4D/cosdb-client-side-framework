@@ -91,25 +91,9 @@ export function Controller() {
               // next step would be to decide if the organism contains other organisms, molecules or atoms
               if(slot.component){
                 if (slot.component.organisms) {
-
-                // for viewTempalate slot that has an organism, loop through its organisms
-                for (let [index, subCompOrganism] of slot.component.organisms.entries()) {
-
-
-                  let subSubComp = subCompOrganism.component
-                  let subSubCompModels = this.model.organisms.filter(org => org.parentId === organismModel.id)
-
-                  if (subSubCompModels.length > 1) console.log("more than one organism")
-
-                  if (subSubComp.functions) 
-                  {
-                    processFunction(this.model, subSubComp, subSubCompModels[index])
-                  }
-                  if (subSubComp.molecules) {
-                    await processMolecules(this.model, subSubComp, subSubCompModels);
-                  }
-                }
+                   processOrganisms(this.model, slot.component, organismModel)
               }
+
 
               if (slot.component.molecules) {
 
@@ -214,6 +198,25 @@ const processFunction  = async (model, component, componentModel) => {
   }
 }
 
+
+  const processOrganisms = async (model, comp, organismModel) => {
+
+      // for viewTempalate slot that has an organism, loop through its organisms
+      for (let [index, subCompOrganism] of comp.organisms.entries()) {
+        let subSubComp = subCompOrganism.component
+        let subSubCompModels = model.organisms.filter(org => org.parentId === organismModel.id)
+
+        if (subSubCompModels.length > 1) console.log("more than one organism")
+
+        if (subSubComp.functions) 
+        {
+          processFunction(this.model, subSubComp, subSubCompModels[index])
+        }
+        if (subSubComp.molecules) {
+          await processMolecules(this.model, subSubComp, subSubCompModels);
+        }
+      }
+  };
 const processMolecules = async (model, subSubComp, subSubCompModels) => {
   for (let [index, molecule] of subSubComp.molecules.entries()) {
     let moleculeComponent = molecule.component;
