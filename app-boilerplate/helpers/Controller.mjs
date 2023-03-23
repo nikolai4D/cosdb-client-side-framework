@@ -51,7 +51,7 @@ export function Controller() {
 
     for (const slot of this.viewTemplate.slots) {
       const slotModels = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
-      
+
       const specificSlot =  slotModels.find(slotModel => slotModel.value === slot.slot)
       if (!specificSlot) {
         throw new Error(`specificSlot not found for slotModel: ${slotModel}`);
@@ -176,7 +176,7 @@ const processFunction  = async (model, component, componentModel) => {
 const processMolecules = async (model, subSubComp, subSubCompModels) => {
   for (const [index, molecule] of subSubComp.molecules.entries()) {
     const moleculeComponent = molecule.component;
-    const moleculeModels = model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
+    const moleculeModels = model.molecules.filter(mol => mol.parentId === subSubCompModels[index].id);
     if (moleculeComponent.functions) processFunction(model, moleculeComponent,subSubCompModels[index])
     if (moleculeComponent.atoms) await processAtoms(model, moleculeComponent, moleculeModels);
   }
