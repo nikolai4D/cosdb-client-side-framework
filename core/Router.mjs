@@ -1,4 +1,4 @@
-import { apiCallGet } from "../data-mgm/actions/apiCalls.mjs";
+import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 //import model_views
 //import controller
 
