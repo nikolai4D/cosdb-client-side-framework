@@ -105,7 +105,8 @@
 }
 
 .molecule_icon_and_link:hover {
-    color: var(--grey-color)
+    /* color: var(--grey-color) */
+    color:#999
 }
 
 
