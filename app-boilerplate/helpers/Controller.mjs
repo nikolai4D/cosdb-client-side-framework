@@ -104,11 +104,9 @@ export function Controller() {
       }
     };
 
-    // get viewTemplate from model
-    let component = this.viewTemplate
 
     // loop through slots in viewTemplate
-    for (let slot of component.slots) {
+    for (let slot of this.viewTemplate.slots) {
 
         // Filter the slots based on the viewTemplate's ID
       const slotModels = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
@@ -247,7 +245,7 @@ export function Controller() {
           }
         }
       }
-      return component.slots;
+      return this.viewTemplate.slots;
   };
 
   this.addBindScriptToViewTemplate = async () => {
