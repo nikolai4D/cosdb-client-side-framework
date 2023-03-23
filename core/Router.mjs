@@ -52,13 +52,13 @@ function createView(viewPath) {
   buttonElement.textContent = "Go";
 
   // Add a click event listener to the button
-  buttonElement.addEventListener("click", function (event) {
+  buttonElement.addEventListener("click", async function (event) {
     // Prevent the default behavior of the button (submitting a form)
     event.preventDefault();
 
     // Get the input value and set the window location to it
     const inputValue = inputElement.value;
-    window.location.pathname = inputValue;
+    await Router(inputValue);
   });
 
   // Set the text of the <h1> element to the input value
