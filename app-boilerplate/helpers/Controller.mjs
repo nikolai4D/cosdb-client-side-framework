@@ -224,7 +224,7 @@ const processMolecules = async (model, subSubComp, subSubCompModels) => {
     let moleculeModels = model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
 
     if (moleculeComponent.functions) {
-      processFunction(model, moleculeComponent,subSubCompModels[index])
+      processFunction(model, moleculeComponent,subSubCompModels[0])
     }
 
     if (moleculeComponent.atoms) {
