@@ -49,7 +49,7 @@ export function Controller() {
     return component;
   };
 
-  this.replaceViewTemplateSlots = async () => {
+  this.addComponentsInTemplateSlotConstructors = async () => {
 
     const createComponent = async (type, file) => {
       const pathToComponent = `../../components/${type}/${file}.mjs`;
@@ -246,6 +246,7 @@ export function Controller() {
           }
         }
       }
+      return component.slots;
   };
 
   this.generateDomElements = async () => {
@@ -260,7 +261,7 @@ export function Controller() {
 
   this.template = async () => {
     this.viewTemplate = await this.getViewTemplate();
-    await this.replaceViewTemplateSlots();
+    this.viewTemplate.slots = await this.addComponentsInTemplateSlotConstructors();
     await this.generateDomElements();
     return this.viewTemplate ;
   }
