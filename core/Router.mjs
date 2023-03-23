@@ -2,7 +2,7 @@ import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 //import model_views
 //import controller
 
-async function Router(path) {
+export async function Router(path) {
   //validate path
   const views = await apiCallGet("/read/views");
   console.log(path);
