@@ -44,7 +44,11 @@ export function Controller() {
     this.slotsFromModel = this.model.slots.filter(slot => slot.parentId === viewTemplate.id);
   
     // Instantiate the component
-    return new viewTemplateComponent[file]();
+    const viewTemplateCom = new viewTemplateComponent[file]();
+
+    viewTemplateCom.id = viewTemplate.id;
+
+    return viewTemplateCom;
   
   };
 
