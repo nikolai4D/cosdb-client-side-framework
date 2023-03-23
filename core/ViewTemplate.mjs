@@ -9,6 +9,11 @@ export async function ViewTemplate(parentId) {
   const id = viewTemplate[0].id;
   const value = viewTemplate[0].value;
 
+  // Create a new div from type
+  const div = document.createElement("div");
+  div.classList.add(type);
+  div.setAttribute("id", id);
+
   // get the viewTemplate
 
   const slot1 = document.createElement("div");
@@ -29,5 +34,10 @@ export async function ViewTemplate(parentId) {
   const viewTemplateObject = await createViewTemplate(type, value, content);
   console.log(viewTemplateObject.slots, "viewTemplateObject.slots");
 
-  return viewTemplateObject.slots;
+  console.log(viewTemplateObject, "viewTemplateObject");
+  for (const childNode of viewTemplateObject) {
+    div.appendChild(childNode.slot);
+  }
+
+  return div;
 }
