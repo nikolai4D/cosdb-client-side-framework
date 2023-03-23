@@ -157,12 +157,14 @@ export function Controller() {
             if(slot.component){
               if (slot.component.atoms) {
 
-                for (let [index, subCompAtom] of slot.component.atoms.entries()) {
-                  let subSubSubSubComp = subCompAtom.component
-                  let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === moleculeModel.id)
-                  if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
-                  assignAtomValue(this.model.atomsValues, subSubSubSubComp, subSubSubSubCompModels, index);
-                }
+                processAtoms(this.model, slot.component, [moleculeModel])
+
+                // for (let [index, subCompAtom] of slot.component.atoms.entries()) {
+                //   let subSubSubSubComp = subCompAtom.component
+                //   let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === moleculeModel.id)
+                //   if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+                //   assignAtomValue(this.model.atomsValues, subSubSubSubComp, subSubSubSubCompModels, index);
+                // }
               }
             }
           }
