@@ -49,10 +49,10 @@ export function Controller() {
   
     for (const slotComp of foundComponentSlotsForViewTemplate) {
       const foundModelSlot = foundModelSlotsForViewTemplate.find(slotModel => slotModel.value === slotComp.slot);
-      validate(foundModelSlot);
+      throwErrorIfUndefined(foundModelSlot);
   
       const foundModelComponent = this.model.components.find(comp => comp.parentId === foundModelSlot.id);
-      validate(foundModelComponent);
+      throwErrorIfUndefined(foundModelComponent);
   
       const foundModelAtom = this.model.atoms.find(atom => atom.parentId === foundModelComponent.id);
       if (foundModelAtom !== undefined) {
