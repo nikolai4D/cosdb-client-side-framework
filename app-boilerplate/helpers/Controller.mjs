@@ -166,8 +166,14 @@ const processMolecules = async (model, comp, foundModelParent) => {
   for (const [index, molecule] of comp.molecules.entries()) {
     const moleculeComponent = molecule.component;
     console.log(foundModelParent, "foundModelParent")
-    const foundModelMolecules = model.molecules.filter(mol => mol.parentId === foundModelParent[index].id);
-    if (moleculeComponent.functions) processFunction(model, moleculeComponent,foundModelParent[index])
+    let parent = foundModelParent[0]
+
+    if (foundModelParent.length > 1) {
+      parent =  foundModelParent[index]
+    }
+
+    const foundModelMolecules = model.molecules.filter(mol => mol.parentId === parent.id);
+    if (moleculeComponent.functions) processFunction(model, moleculeComponent, parent)
     if (moleculeComponent.atoms) await processAtoms(model, moleculeComponent, [foundModelMolecules[index]]);
   }
 };
