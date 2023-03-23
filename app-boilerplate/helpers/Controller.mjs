@@ -112,25 +112,24 @@ export function Controller() {
               }
 
               if (slot.component.molecules) {
-                let moleculeModel = this.model.molecules.find(mol => mol.parentId === specificSlot.id)
-                processMolecules(this.model, slot.component, [organismModel])
+                
 
 
-                  // for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
+                  for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
 
-                  //   let subSubSubComp = subCompMolecule.component
-                  //   let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
+                    let subSubSubComp = subCompMolecule.component
+                    let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
 
-                  //   if (subSubSubCompModels.length > 1) console.log("more than one molecule")
+                    if (subSubSubCompModels.length > 1) console.log("more than one molecule")
 
-                  //   if (subSubSubComp.functions) 
+                    if (subSubSubComp.functions) 
 
-                  //   await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
+                    await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
 
-                  //   if (subSubSubComp.atoms){
-                  //     processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
-                  //   }
-                  // }
+                    if (subSubSubComp.atoms){
+                      processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
+                    }
+                  }
               }
 
               if (slot.component.atoms) {
