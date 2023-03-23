@@ -21,15 +21,10 @@ export function Controller() {
   
     // Find the view in the model using the path
     const view = this.model.views.find(view => view.value === path);
-    if (!view) {
-      throw new Error(`View not found for path: ${path}`);
-    }
-  
+    validate(view)
     // Find the viewTemplate in the model using the view's ID as the parentId
     const viewTemplate = this.model.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id);
-    if (!viewTemplate) {
-      throw new Error(`ViewTemplate not found for view ID: ${view.id}`);
-    }
+    validate(viewTemplate)
   
     // Get the name and path of the viewTemplate component file
     const file = viewTemplate.value;
@@ -37,6 +32,7 @@ export function Controller() {
   
     // Import the viewTemplate component
     const viewTemplateComponent = await importModuleFromFile(pathToComponent, file);
+    validate(viewTemplateComponent)
   
     // Instantiate the component
     const viewTemplateCom = new viewTemplateComponent[file]();
@@ -54,7 +50,7 @@ export function Controller() {
 
       const specificSlot =  slotModels.find(slotModel => slotModel.value === slot.slot)
       if (!specificSlot) {
-        throw new Error(`specificSlot not found for slotModels: ${slotModels}`);
+        throw new Error(`SpecificSlot not found`);
       }
 
       const specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
@@ -196,5 +192,11 @@ function assignAtomValue(atomValuesModel, atomComp, atomModels, index) {
   if (atomComp.value) {
     const matchedAtomValue = atomValuesModel.find(at => at.parentId === atomModels[index].id);
     atomComp.value = [{ value: matchedAtomValue.value }];
+  }
+}
+
+function validate(obj) {
+  if (!obj) {
+    throw new Error(`Object not found`);
   }
 }
