@@ -53,8 +53,14 @@ export async function createViewTemplate(type, file, slots = []) {
   const componentInstance = Component[file]();
 
   Object.defineProperty(componentInstance, "slots", {
-    value: slots,
-    writable: true,
+    get() {
+      return slots;
+    },
+    set(value) {
+      slots = value;
+    },
+    enumerable: true,
+    configurable: true,
   });
 
   return componentInstance;
