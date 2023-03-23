@@ -85,16 +85,18 @@ export function Controller() {
         }
 
         if (slot.component.molecules) {
-            for (const [index, molecule] of slot.component.molecules.entries()) {
-              const moleculeComp = molecule.component
-              const foundModelMolecules = this.model.molecules.filter(mol => mol.parentId ===  foundModelOrganism.id)
-              if (moleculeComp.functions){
-                await processFunction(this.model, moleculeComp, foundModelMolecules[index])
-                }
-                if (moleculeComp.atoms){
-                processAtoms(this.model, moleculeComp, [foundModelMolecules[index]])
-              }
-            }
+
+          processMolecules(this.model, slot.component,foundModelMolecules)
+            // for (const [index, molecule] of slot.component.molecules.entries()) {
+            //   const moleculeComp = molecule.component
+            //   const foundModelMolecules = this.model.molecules.filter(mol => mol.parentId ===  foundModelOrganism.id)
+            //   if (moleculeComp.functions){
+            //     await processFunction(this.model, moleculeComp, foundModelMolecules[index])
+            //     }
+            //     if (moleculeComp.atoms){
+            //     processAtoms(this.model, moleculeComp, [foundModelMolecules[index]])
+            //   }
+            // }
         }
 
         if (slot.component.atoms) {
