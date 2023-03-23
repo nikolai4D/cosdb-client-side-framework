@@ -44,29 +44,29 @@ export function Controller() {
 
 
   this.addComponentsInTemplateSlotConstructors = async () => {
-    const foundModelSlotsForViewTemplate = model.slots.filter(slot => slot.parentId === viewTemplate.id);
+    const foundModelSlotsForViewTemplate = this.model.slots.filter(slot => slot.parentId === viewTemplate.id);
     const foundComponentSlotsForViewTemplate = viewTemplate.slots;
   
     for (const slotComp of foundComponentSlotsForViewTemplate) {
       const foundModelSlot = foundModelSlotsForViewTemplate.find(slotModel => slotModel.value === slotComp.slot);
       validate(foundModelSlot);
   
-      const foundModelComponent = model.components.find(comp => comp.parentId === foundModelSlot.id);
+      const foundModelComponent = this.model.components.find(comp => comp.parentId === foundModelSlot.id);
       validate(foundModelComponent);
   
-      const foundModelAtom = model.atoms.find(atom => atom.parentId === foundModelComponent.id);
+      const foundModelAtom = this.model.atoms.find(atom => atom.parentId === foundModelComponent.id);
       if (foundModelAtom !== undefined) {
         await addAtomComponent(slotComp, foundModelAtom);
         continue;
       }
   
-      const foundModelMolecule = model.molecules.find(molecule => molecule.parentId === foundModelComponent.id);
+      const foundModelMolecule = this.model.molecules.find(molecule => molecule.parentId === foundModelComponent.id);
       if (foundModelMolecule !== undefined) {
         await addMoleculeComponent(slotComp, foundModelMolecule);
         continue;
       }
   
-      const foundModelOrganism = model.organisms.find(organism => organism.parentId === foundModelComponent.id);
+      const foundModelOrganism = this.model.organisms.find(organism => organism.parentId === foundModelComponent.id);
       if (foundModelOrganism !== undefined) {
         await addOrganismComponent(slotComp, foundModelOrganism);
         continue;
