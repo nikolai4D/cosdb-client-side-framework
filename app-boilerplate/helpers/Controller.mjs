@@ -89,7 +89,7 @@ export function Controller() {
                 //   await processFunction(model, subSubComp, subSubCompModels[index]);
                 // }
             
-                  await processMolecules(this.model, subSubComp, subSubCompModels);
+                  await processMolecules(this.model, slot.component, subSubCompModels);
                 // }
                 
 
