@@ -85,18 +85,7 @@ export function Controller() {
         }
 
         if (slot.component.molecules) {
-
           processMolecules(this.model, slot.component,[foundModelOrganism])
-            // for (const [index, molecule] of slot.component.molecules.entries()) {
-            //   const moleculeComp = molecule.component
-            //   const foundModelMolecules = this.model.molecules.filter(mol => mol.parentId ===  foundModelOrganism.id)
-            //   if (moleculeComp.functions){
-            //     await processFunction(this.model, moleculeComp, foundModelMolecules[index])
-            //     }
-            //     if (moleculeComp.atoms){
-            //     processAtoms(this.model, moleculeComp, [foundModelMolecules[index]])
-            //   }
-            // }
         }
 
         if (slot.component.atoms) {
@@ -165,13 +154,10 @@ const processFunction  = async (model, component, componentModel) => {
 const processMolecules = async (model, comp, foundModelParent) => {
   for (const [index, molecule] of comp.molecules.entries()) {
     const moleculeComponent = molecule.component;
-    console.log(foundModelParent, "foundModelParent")
     let parent = foundModelParent[0]
-
     if (foundModelParent.length > 1) {
       parent =  foundModelParent[index]
     }
-
     const foundModelMolecules = model.molecules.filter(mol => mol.parentId === parent.id);
     if (moleculeComponent.functions) processFunction(model, moleculeComponent, parent)
     if (moleculeComponent.atoms) await processAtoms(model, moleculeComponent, [foundModelMolecules[index]]);
