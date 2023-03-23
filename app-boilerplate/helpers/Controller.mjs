@@ -155,10 +155,10 @@ const processFunction  = async (model, component, componentModel) => {
   }
 }
 
-  const processOrganisms = async (model, comp, foundModelOrganism) => {
+  const processOrganisms = async (model, comp, foundModelParent) => {
     for (const [index, organism] of comp.organisms.entries()) {
       const organismComponent = organism.component
-      const foundModelOrganisms = model.organisms.filter(org => org.parentId === foundModelOrganism.id)
+      const foundModelOrganisms = model.organisms.filter(org => org.parentId === foundModelParent.id)
 
       if (organismComponent.functions) processFunction(this.model, organismComponent, foundModelOrganisms[index])
       if (organismComponent.molecules) await processMolecules(this.model, organismComponent, foundModelOrganisms);
@@ -178,7 +178,7 @@ const processMolecules = async (model, comp, foundModelParent) => {
 const processAtoms = async (model, moleculeComponent, foundModelMolecules) => {
   for (const [index, atom] of moleculeComponent.atoms.entries()) {
     const atomComponent = atom.component;
-    const foundModelAtoms = model.atoms.filter(at => at.parentId === foundModelMolecules[0].id);
+    const foundModelAtoms = model.atoms.filter(at => at.parentId === foundModelMolecules[index].id);
 
     assignAtomValue(model.atomValues, atomComponent, foundModelAtoms, index)
   }
