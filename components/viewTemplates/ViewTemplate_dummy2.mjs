@@ -1,7 +1,6 @@
-import { Component } from "../../core/Component.mjs";
 import { html2dom } from "../../core/helpers.mjs";
 
-export async function ViewTemplate_dummy2() {
+export function ViewTemplate_dummy2() {
   this.slots = [
     {
       slot: "slot3",
@@ -16,8 +15,33 @@ export async function ViewTemplate_dummy2() {
     return foundSlot ? foundSlot.content : "";
   };
 
-  return await html2dom`
-  <div>${slot("slot3")}</div>
-  <div>${slot("slot4")}</div>
-`;
+  this.render = async () => {
+    return await html2dom`
+      <div>${slot("slot3")}</div>
+      <div>${slot("slot4")}</div>
+    `;
+  };
 }
+
+// import { html2dom } from "../../core/helpers.mjs";
+
+// export async function ViewTemplate_dummy2() {
+//   this.slots = [
+//     {
+//       slot: "slot3",
+//     },
+//     {
+//       slot: "slot4",
+//     },
+//   ];
+
+//   const slot = (slotName) => {
+//     const foundSlot = this.slots.find((s) => s.slot === slotName);
+//     return foundSlot ? foundSlot.content : "";
+//   };
+
+//   return await html2dom`
+//   <div>${slot("slot3")}</div>
+//   <div>${slot("slot4")}</div>
+// `;
+// }
