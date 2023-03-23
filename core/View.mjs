@@ -1,6 +1,6 @@
 import { Router } from "./Router.mjs";
 
-export async function createView(viewPath) {
+export async function View(viewPath) {
   await deletePreviousView();
   // Create a new <div> element
   const divElement = document.createElement("div");
