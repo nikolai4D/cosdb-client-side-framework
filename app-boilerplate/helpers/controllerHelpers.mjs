@@ -21,20 +21,20 @@ export const addMoleculeComponent = async (slotComp, foundModelMolecule, model) 
 }
 
 export const addOrganismComponent = async (slotComp, foundModelOrganism, model) => {
-slotComp.slot = foundModelOrganism.value;
-slotComp.component = await createComponent("organisms", foundModelOrganism.value);
-if (slotComp.component.organisms) {
-    processOrganisms(model, slotComp.component, foundModelOrganism);
-}
-if (slotComp.component.molecules) {
-    processMolecules(model, slotComp.component, [foundModelOrganism]);
-}
-if (slotComp.component.atoms) {
-    processAtoms(model, slotComp.component, foundModelSlotsForViewTemplate);
-}
-if (slotComp.component.functions) {
-    await processFunction(model, slotComp.component, foundModelOrganism);
-}
+    slotComp.slot = foundModelOrganism.value;
+    slotComp.component = await createComponent("organisms", foundModelOrganism.value);
+    if (slotComp.component.organisms) {
+        processOrganisms(model, slotComp.component, foundModelOrganism);
+    }
+    if (slotComp.component.molecules) {
+        processMolecules(model, slotComp.component, [foundModelOrganism]);
+    }
+    if (slotComp.component.atoms) {
+        processAtoms(model, slotComp.component, foundModelSlotsForViewTemplate);
+    }
+    if (slotComp.component.functions) {
+        await processFunction(model, slotComp.component, foundModelOrganism);
+    }
 }
 
 export const createComponent = async (type, file) => {
