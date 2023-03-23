@@ -23,11 +23,11 @@ export function Controller() {
     const view = this.model.views.find(view => view.value === path);
     validate(view)
     // Find the viewTemplate in the model using the view's ID as the parentId
-    const viewTemplate = this.model.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id);
-    validate(viewTemplate)
+    const foundModelViewTemplate = this.model.viewTemplates.find(viewTemplate => viewTemplate.parentId === view.id);
+    validate(foundModelViewTemplate)
   
     // Get the name and path of the viewTemplate component file
-    const file = viewTemplate.value;
+    const file = foundModelViewTemplate.value;
     const pathToComponent = `../../components/viewTemplates/${file}.mjs`;
   
     // Import the viewTemplate component
@@ -37,7 +37,7 @@ export function Controller() {
     // Instantiate the component
     const viewTemplateCom = new viewTemplateComponent[file]();
 
-    viewTemplateCom.id = viewTemplate.id;
+    viewTemplateCom.id = foundModelViewTemplate.id;
 
     return viewTemplateCom;
   
@@ -46,31 +46,31 @@ export function Controller() {
   this.addComponentsInTemplateSlotConstructors = async () => {
 
     for (const slot of this.viewTemplate.slots) {
-      const slotModels = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
+      const modelSlots = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
 
-      const matchSlotModel =  slotModels.find(slotModel => slotModel.value === slot.slot)
-      validate(matchSlotModel)
+      const foundModelSlot =  modelSlots.find(slotModel => slotModel.value === slot.slot)
+      validate(foundModelSlot)
 
-      const matchComponentModel = this.model.components.find(comp => comp.parentId === matchSlotModel.id)
-      validate(matchComponentModel)
+      const foundModelComponent = this.model.components.find(comp => comp.parentId === foundModelSlot.id)
+      validate(foundModelComponent)
 
-      const matchOrganismModel = this.model.organisms.find(organism => organism.parentId === matchComponentModel.id)
-      const matchMoleculeModel = this.model.molecules.find(molecule => molecule.parentId === matchComponentModel.id)
-      const matchAtomModel = this.model.atoms.find(atom => atom.parentId === matchComponentModel.id)
+      const foundModelOrganism = this.model.organisms.find(organism => organism.parentId === foundModelComponent.id)
+      const foundModelMolecule = this.model.molecules.find(molecule => molecule.parentId === foundModelComponent.id)
+      const foundModelAtom = this.model.atoms.find(atom => atom.parentId === foundModelComponent.id)
 
-      if (matchOrganismModel !== undefined) {
-        slot.slot = matchOrganismModel.value;
-        slot.component = await createComponent("organisms", matchOrganismModel.value)
+      if (foundModelOrganism !== undefined) {
+        slot.slot = foundModelOrganism.value;
+        slot.component = await createComponent("organisms", foundModelOrganism.value)
 
         if(slot.component){
           if (slot.component.organisms) {
-              processOrganisms(this.model, slot.component, matchOrganismModel)
+              processOrganisms(this.model, slot.component, foundModelOrganism)
         }
 
         if (slot.component.molecules) {
             for (const [index, subCompMolecule] of slot.component.molecules.entries()) {
               const subSubSubComp = subCompMolecule.component
-              const subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  matchOrganismModel.id)
+              const subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  foundModelOrganism.id)
               if (subSubSubCompModels.length > 1) console.log("more than one molecule")
               if (subSubSubComp.functions) 
               await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
@@ -81,30 +81,30 @@ export function Controller() {
         }
 
         if (slot.component.atoms) {
-          processAtoms(this.model, slot.component, slotModels)
+          processAtoms(this.model, slot.component, modelSlots)
           }
         }
 
         if (slot.component.functions){
-          await processFunction(this.model, slot.component, matchOrganismModel)
+          await processFunction(this.model, slot.component, foundModelOrganism)
         }
       }
 
-    if (matchMoleculeModel !== undefined){
-      slot.slot = matchMoleculeModel.value;
-      slot.component = await createComponent("molecules", matchMoleculeModel.value)
+    if (foundModelMolecule !== undefined){
+      slot.slot = foundModelMolecule.value;
+      slot.component = await createComponent("molecules", foundModelMolecule.value)
       if(slot.component){
         if (slot.component.atoms) {
-          processAtoms(this.model, slot.component, [matchMoleculeModel])
+          processAtoms(this.model, slot.component, [foundModelMolecule])
         }
       }
     }
 
-    if (matchAtomModel !== undefined){
-      slot.slot = matchAtomModel.value;
-      slot.component = await createComponent("atoms", matchAtomModel.value)
+    if (foundModelAtom !== undefined){
+      slot.slot = foundModelAtom.value;
+      slot.component = await createComponent("atoms", foundModelAtom.value)
       if(slot.component){
-        assignAtomValue(this.model.atomValues, slot.component, [matchAtomModel], 0)
+        assignAtomValue(this.model.atomValues, slot.component, [foundModelAtom], 0)
         }
       }
     }
@@ -155,10 +155,10 @@ const processFunction  = async (model, component, componentModel) => {
   }
 }
 
-  const processOrganisms = async (model, comp, matchOrganismModel) => {
+  const processOrganisms = async (model, comp, foundModelOrganism) => {
     for (const [index, subCompOrganism] of comp.organisms.entries()) {
       const subSubComp = subCompOrganism.component
-      const subSubCompModels = model.organisms.filter(org => org.parentId === matchOrganismModel.id)
+      const subSubCompModels = model.organisms.filter(org => org.parentId === foundModelOrganism.id)
 
       if (subSubComp.functions) processFunction(this.model, subSubComp, subSubCompModels[index])
       if (subSubComp.molecules) await processMolecules(this.model, subSubComp, subSubCompModels);
@@ -168,25 +168,25 @@ const processFunction  = async (model, component, componentModel) => {
 const processMolecules = async (model, subSubComp, subSubCompModels) => {
   for (const [index, molecule] of subSubComp.molecules.entries()) {
     const moleculeComponent = molecule.component;
-    const matchMoleculeModels = model.molecules.filter(mol => mol.parentId === subSubCompModels[index].id);
+    const foundModelMolecules = model.molecules.filter(mol => mol.parentId === subSubCompModels[index].id);
     if (moleculeComponent.functions) processFunction(model, moleculeComponent,subSubCompModels[index])
-    if (moleculeComponent.atoms) await processAtoms(model, moleculeComponent, matchMoleculeModels);
+    if (moleculeComponent.atoms) await processAtoms(model, moleculeComponent, foundModelMolecules);
   }
 };
 
 
-const processAtoms = async (model, moleculeComponent, matchMoleculeModels) => {
+const processAtoms = async (model, moleculeComponent, foundModelMolecules) => {
   for (const [index, atom] of moleculeComponent.atoms.entries()) {
     const atomComponent = atom.component;
-    const matchAtomModels = model.atoms.filter(at => at.parentId === matchMoleculeModels[0].id);
+    const foundModelAtoms = model.atoms.filter(at => at.parentId === foundModelMolecules[0].id);
 
-    assignAtomValue(model.atomValues, atomComponent, matchAtomModels, index)
+    assignAtomValue(model.atomValues, atomComponent, foundModelAtoms, index)
   }
 };
 
-function assignAtomValue(atomValuesModel, atomComp, matchAtomModels, index) {
+function assignAtomValue(atomValuesModel, atomComp, foundModelAtoms, index) {
   if (atomComp.value) {
-    const matchedAtomValue = atomValuesModel.find(at => at.parentId === matchAtomModels[index].id);
+    const matchedAtomValue = atomValuesModel.find(at => at.parentId === foundModelAtoms[index].id);
     atomComp.value = [{ value: matchedAtomValue.value }];
   }
 }
