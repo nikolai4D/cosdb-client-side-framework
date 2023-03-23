@@ -81,33 +81,22 @@ export function Controller() {
               }
 
               if (slot.component.molecules) {
-                
 
-                const subSubCompModels = this.model.organisms.filter((org) => org.parentId === organismModel.id);
+                  for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
 
-                // if (subSubComp.functions) {
-                //   await processFunction(model, subSubComp, subSubCompModels[index]);
-                // }
-            
-                  await processMolecules(this.model, slot.component, subSubCompModels);
-                // }
-                
+                    let subSubSubComp = subCompMolecule.component
+                    let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
 
-                  // for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
+                    if (subSubSubCompModels.length > 1) console.log("more than one molecule")
 
-                  //   let subSubSubComp = subCompMolecule.component
-                  //   let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
+                    if (subSubSubComp.functions) 
 
-                  //   if (subSubSubCompModels.length > 1) console.log("more than one molecule")
+                    await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
 
-                  //   if (subSubSubComp.functions) 
-
-                  //   await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
-
-                  //   if (subSubSubComp.atoms){
-                  //     processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
-                  //   }
-                  // }
+                    if (subSubSubComp.atoms){
+                      processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
+                    }
+                  }
               }
 
               if (slot.component.atoms) {
