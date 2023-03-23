@@ -12,13 +12,9 @@ export function stringToHTMLElement(string) {
   return frame.firstElementChild;
 }
 
-
-export async function importModuleFromFile(
-  path,
-  filename
-) {
+export async function importModuleFromFile(path, filename) {
   const module = await import(`${path}`);
   return module;
 }
 
-export const slot =(name)=> `<div data-slot="${name}" class="slot"></div>`
+export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;

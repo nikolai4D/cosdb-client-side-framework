@@ -1,5 +1,6 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { ViewTester2 } from "./ViewTester2.mjs";
+import { ViewTemplate } from "./ViewTemplate.mjs";
 
 export async function View(viewPath) {
   console.log({ viewPath });
@@ -12,10 +13,13 @@ export async function View(viewPath) {
   window.history.pushState({ viewPath: value }, "", value);
   console.log("window.history", window.history);
 
+  //delete previous view
   await deletePreviousView();
+
   // Create a new view
   const viewDiv = document.createElement("div");
   viewDiv.classList.add("view");
+  viewDiv.setAttribute("id", id);
 
   const viewContentDiv = await ViewTester2(value);
   viewDiv.appendChild(viewContentDiv);
