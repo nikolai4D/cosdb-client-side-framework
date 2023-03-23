@@ -2,7 +2,6 @@ import { accordionInput } from "../types/accordionInput.mjs";
 import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
 export async function Organism(organism, organismBody) {
-  console.log("Organism");
   const organismDiv = document.createElement("div");
   organismDiv.classList.add(organism.customType);
 

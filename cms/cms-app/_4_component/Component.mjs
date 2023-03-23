@@ -1,6 +1,5 @@
 import { accordionDropdown } from "../types/accordionDropdown.mjs";
 import { componentValues } from "./componentValues.mjs";
-// import { action } from "../data-mgmt/State.mjs";
 
 export async function Component(component) {
   const ComponentDiv = document.createElement("div");
@@ -15,7 +14,7 @@ export async function Component(component) {
   const valueDisabled = component.valueDisabled;
 
   const bodyDiv = document.createElement("div");
-  const contentDiv = document.createElement("div"); //await ?;
+  const contentDiv = document.createElement("div");
   bodyDiv.appendChild(contentDiv);
 
   const ComponentAccordionDropdown = await accordionDropdown(

@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 package-lock.json
 
 data-mgmt/constants.mjs
 
 data-mgmt/constants.js
+=======
+package-lock.json
+>>>>>>> 81541f30aa13a911c294b923d0b11078d048f07e
