@@ -168,14 +168,14 @@ const createAction = async (file) => {
 const processFunction = async (model, component, componentModel) => {
   const functionModels = model.functions.filter((func) => func.parentId === componentModel.id);
 
-  functionModels.forEach((func) => {
+  for (const func of functionModels) {
     const [, funcId] = func.key.split(" ");
     const compFunc = component.functions.find((aFunc) => aFunc.id === funcId);
 
     compFunc.function = func.value;
     compFunc.functionCall = await createAction(func.value);
     compFunc.parameters = func.parameters;
-  });
+  };
 };
 
 const processOrganisms = async (model, comp, organismModel) => {
