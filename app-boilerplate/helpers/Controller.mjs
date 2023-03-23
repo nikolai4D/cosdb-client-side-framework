@@ -49,14 +49,10 @@ export function Controller() {
       const slotModels = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
 
       const specificSlot =  slotModels.find(slotModel => slotModel.value === slot.slot)
-      if (!specificSlot) {
-        throw new Error(`SpecificSlot not found`);
-      }
+      validate(specificSlot)
 
       const specificComponent = this.model.components.find(comp => comp.parentId === specificSlot.id)
-      if (!specificComponent) {
-        throw new Error(`specificComponent not found for comp: ${comp}`);
-      }
+      validate(specificComponent)
 
       const organismModel = this.model.organisms.find(organism => organism.parentId === specificComponent.id)
       const moleculeModel = this.model.molecules.find(molecule => molecule.parentId === specificComponent.id)
