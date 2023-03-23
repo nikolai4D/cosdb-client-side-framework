@@ -39,11 +39,37 @@ function createView(viewPath) {
   // Create a new <h1> element
   const h1Element = document.createElement("h1");
 
+  // Create a new input field
+  const inputElement = document.createElement("input");
+
+  // Set the input type to text
+  inputElement.setAttribute("type", "text");
+
+  // Create a new button
+  const buttonElement = document.createElement("button");
+
+  // Set the button text to "Go"
+  buttonElement.textContent = "Go";
+
+  // Add a click event listener to the button
+  buttonElement.addEventListener("click", function (event) {
+    // Prevent the default behavior of the button (submitting a form)
+    event.preventDefault();
+
+    // Get the input value and set the window location to it
+    const inputValue = inputElement.value;
+    window.location.pathname = inputValue;
+  });
+
   // Set the text of the <h1> element to the input value
   h1Element.textContent = viewPath;
 
   // Append the <h1> element to the <div> element
   divElement.appendChild(h1Element);
+
+  // Append the input field and button to the <div> element
+  divElement.appendChild(inputElement);
+  divElement.appendChild(buttonElement);
 
   return divElement;
 }
