@@ -81,21 +81,23 @@ export function Controller() {
 
 
     const processMolecules = async (subSubComp, subSubCompModels) => {
-      for (let molecule of subSubComp.molecules) {
+      for (let [index, molecule] of subSubComp.molecules.entries()) {
         let moleculeComponent = molecule.component;
         let moleculeModels = this.model.molecules.filter(mol => mol.parentId === subSubCompModels[0].id);
     
         if (moleculeComponent.functions) {
           // Perform necessary actions with moleculeComponent.functions
 
-          let moleculeFunctions = molecule.functions;
-          console.log(moleculeComponent)
-          console.log(moleculeModels)
-          console.log(subSubCompModels)
+          // let moleculeFunctions = molecule.functions;
+          // console.log(moleculeComponent)
+          // console.log(moleculeModels)
+          // console.log(subSubCompModels)
 
-          let functionModels = this.model.functions.filter(func => func.parentId === subSubCompModels[0].id);
+          // let functionModels = this.model.functions.filter(func => func.parentId === subSubCompModels[0].id);
 
-          console.log(functionModels)
+          processFunction(moleculeComponent,subSubCompModels[index])
+
+          // console.log(functionModels)
 
         }
     
@@ -147,7 +149,7 @@ export function Controller() {
 
 
             // if the organism exists in the model
-            if (organismModel) {
+            if (organismModel !== undefined) {
               // set the slot of viewTemplate to the be the value of the organism
               slot.slot = organismModel.value;
               // for that slot in viewTemplate, set component to be organism
@@ -172,22 +174,12 @@ export function Controller() {
 
                   if (subSubComp.functions) 
                   {
-                    let functionModels = this.model.functions.filter(func => func.parentId === subSubCompModels[index].id);
-
-                    for (let func of functionModels) {
-                      let action = await createAction(func.value)
-                      // action.execute()
-                    }
+                    processFunction(subSubComp, subSubCompModels[index])
                   }
-
-
-                  
                   if (subSubComp.molecules) {
                     await processMolecules(subSubComp, subSubCompModels);
                   }
-
-
-              }
+                }
               }
 
               if (slot.component.molecules) {
@@ -216,15 +208,6 @@ export function Controller() {
 
                         assignAtomValue(this.model.atomValues, subSubSubSubComp, subSubSubSubCompModels, index2)
 
-
-
-      
-                        // if (subSubSubSubComp.value) {
-
-                        //   let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index2].id)
-
-                        //   subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
-                        // }
                         }
                     }
                   }
@@ -246,7 +229,7 @@ export function Controller() {
               }
             }
 
-          if (moleculeModel){
+          if (moleculeModel !== undefined){
 
             slot.slot = moleculeModel.value;
             slot.component = await createComponent("molecules", moleculeModel.value)
@@ -265,7 +248,7 @@ export function Controller() {
             }
           }
 
-          if (atomModel){
+          if (atomModel !== undefined){
 
             slot.slot = atomModel.value;
             slot.component = await createComponent("atoms", atomModel.value)
