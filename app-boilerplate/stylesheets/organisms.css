@@ -84,7 +84,7 @@ nav > ul {
     display: grid;
     grid-auto-flow: row;
     grid-gap: 4rem;
-    height: 562px;
+    height: 70vh;
     width: 783px;
     margin: auto;
     margin-top: 50px;

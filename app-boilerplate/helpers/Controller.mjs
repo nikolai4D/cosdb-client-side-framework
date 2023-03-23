@@ -1,9 +1,6 @@
 
 
 import { View } from "../../core/View.mjs";
-import { ViewTemplate_dummy1 } from "../../components/viewTemplates/ViewTemplate_dummy1.mjs";
-import { ViewTemplate_dummy2 } from "../../components/viewTemplates/ViewTemplate_dummy2.mjs";
-import { State } from "../State.mjs";
 import { importModuleFromFile } from "../../core/helpers.mjs";
 import { readModel } from "./readModel.mjs";
 
@@ -11,7 +8,6 @@ import { readModel } from "./readModel.mjs";
 
 export function Controller() {
   View.call(this);
-
 
   this.childComponent = null;
 
@@ -70,17 +66,14 @@ export function Controller() {
     }
 
     const processFunction = async (component, componentModel) => {
-
-
-
         let functionModels = this.model.functions.filter(func => func.parentId === componentModel.id);
 
         for (let func of functionModels) {
           let funcId = func.key.split(" ")[1]
           let compFunc = component.functions.find(aFunc => aFunc.id == funcId)
           compFunc.function = func.value
-          compFunc.functionCall = await createAction(func.value);
-          console.log(compFunc)
+          compFunc.functionCall = await createAction(func.value)
+          compFunc.parameters = func.parameters;
 
         }
 

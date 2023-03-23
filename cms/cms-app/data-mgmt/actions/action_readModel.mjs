@@ -5,6 +5,4 @@ export async function action_readModel() {
   const model = await readModel();
 
   await mutation_initializeState(model);
-
-  //console.log("action_readModel: model:", model);
 }
