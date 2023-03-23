@@ -100,12 +100,11 @@
     cursor: pointer;
 }
 
-.molecule_icon_and_link > a:active {
+.molecule_icon_and_link > a:active, a:hover {
     font-weight: bold;
+    color:#999;
+
 }
-
-
-
 
 .molecule_icon_and_link > a {
     color: black;
