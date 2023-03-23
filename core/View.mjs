@@ -2,6 +2,7 @@ import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { ViewTester2 } from "./ViewTester2.mjs";
 
 export async function View(viewPath) {
+  console.log({ viewPath });
   //validate and authenticate path
   const newView = await apiCallGet(`/auth/${viewPath}`);
   const id = newView.id;
