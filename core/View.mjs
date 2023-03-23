@@ -56,7 +56,7 @@ export async function View(viewPath) {
 }
 
 function deletePreviousView() {
-  const previousDiv = document.getElementsByClassName("view");
+  const previousDiv = document.querySelector(".view");
 
   if (previousDiv) {
     previousDiv.remove();
