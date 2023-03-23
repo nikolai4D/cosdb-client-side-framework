@@ -29,5 +29,5 @@ export async function ViewTemplate(parentId) {
   const viewTemplateObject = await createViewTemplate(type, value, content);
   console.log(viewTemplateObject.slots, "viewTemplateObject.slots");
 
-  return viewTemplateObject;
+  return viewTemplateObject.slots;
 }
