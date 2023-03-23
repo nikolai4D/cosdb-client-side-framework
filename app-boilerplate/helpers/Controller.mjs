@@ -65,17 +65,16 @@ export function Controller() {
         if(slot.component){
           if (slot.component.organisms) {
               processOrganisms(this.model, slot.component, foundModelOrganism)
-        }
 
         if (slot.component.molecules) {
-            for (const [index, subCompMolecule] of slot.component.molecules.entries()) {
-              const subSubSubComp = subCompMolecule.component
-              const subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  foundModelOrganism.id)
-              if (subSubSubCompModels.length > 1) console.log("more than one molecule")
-              if (subSubSubComp.functions) 
-              await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
-              if (subSubSubComp.atoms){
-                processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
+            for (const [index, molecule] of slot.component.molecules.entries()) {
+              const moleculeComp = molecule.component
+              const foundModelMolecules = this.model.molecules.filter(mol => mol.parentId ===  foundModelOrganism.id)
+              if (foundModelMolecules.length > 1) console.log("more than one molecule")
+              if (moleculeComp.functions) 
+              await processFunction(this.model, moleculeComp, foundModelMolecules[index])
+              if (moleculeComp.atoms){
+                processAtoms(this.model, moleculeComp, [foundModelMolecules[index]])
               }
             }
         }
@@ -89,6 +88,7 @@ export function Controller() {
           await processFunction(this.model, slot.component, foundModelOrganism)
         }
       }
+    }
 
     if (foundModelMolecule !== undefined){
       slot.slot = foundModelMolecule.value;
