@@ -52,9 +52,10 @@ export async function createViewTemplate(type, file, slots = []) {
   const Component = await importModuleFromFile(pathToComponent, file);
   const componentInstance = Component[file]();
 
-  const updatedComponentInstance = Object.assign({}, componentInstance, {
-    slots,
+  Object.defineProperty(componentInstance, "slots", {
+    value: slots,
+    writable: true,
   });
 
-  return updatedComponentInstance;
+  return componentInstance;
 }
