@@ -128,16 +128,19 @@ export function Controller() {
 
                     if (subSubSubComp.atoms){
 
-                      for (let [index2, subCompAtom] of subSubSubComp.atoms.entries()) {
+                      processAtoms(this.model, subSubSubComp, subSubSubCompModels)
 
-                        let subSubSubSubComp = subCompAtom.component
-                        let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id)
+
+                      // for (let [index2, subCompAtom] of subSubSubComp.atoms.entries()) {
+
+                      //   let subSubSubSubComp = subCompAtom.component
+                      //   let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id)
       
-                        if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+                      //   if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
 
-                        assignAtomValue(this.model.atomValues, subSubSubSubComp, subSubSubSubCompModels, index2)
+                      //   assignAtomValue(this.model.atomValues, subSubSubSubComp, subSubSubSubCompModels, index2)
 
-                        }
+                      //   }
                     }
                   }
               }
@@ -156,15 +159,7 @@ export function Controller() {
             // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
               if (slot.component.atoms) {
-
                 processAtoms(this.model, slot.component, [moleculeModel])
-
-                // for (let [index, subCompAtom] of slot.component.atoms.entries()) {
-                //   let subSubSubSubComp = subCompAtom.component
-                //   let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === moleculeModel.id)
-                //   if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
-                //   assignAtomValue(this.model.atomsValues, subSubSubSubComp, subSubSubSubCompModels, index);
-                // }
               }
             }
           }
