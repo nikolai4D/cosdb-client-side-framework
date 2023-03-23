@@ -78,7 +78,7 @@ function createView(viewPath) {
 window.addEventListener("popstate", async (event) => {
   if (event.state && event.state.viewPath) {
     const viewPath = event.state.viewPath;
-    deletePreviousDiv();
+    deletePreviousView();
     const newView = await apiCallGet(`/auth/${viewPath}`);
     const newPath = newView.viewPath;
     const newViewDiv = createView(newPath);
