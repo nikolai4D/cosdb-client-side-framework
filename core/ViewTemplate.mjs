@@ -19,7 +19,7 @@ export async function ViewTemplate(parentId) {
 
   // get the viewTemplate
 
-  const viewTemplateObject = createComponent(type, value);
+  const viewTemplateObject = await createComponent(type, value);
 
   return viewTemplateObject;
 }
