@@ -114,10 +114,7 @@ export function Controller() {
           // Perform necessary actions with atomComponent.functions
         }
     
-        if (atomComponent.value) {
-          let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModels[index].id);
-          atomComponent.value = [{ value: atomValueModel.value }];
-        }
+          assignAtomValue(this.model.atomValues, atomComponent, atomModels, index)
       }
     };
 
@@ -216,13 +213,18 @@ export function Controller() {
                         let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === subSubSubCompModels[index].id)
       
                         if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
+
+                        assignAtomValue(this.model.atomValues, subSubSubSubComp, [], 10)
+
+
+
       
-                        if (subSubSubSubComp.value) {
+                        // if (subSubSubSubComp.value) {
 
-                          let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index2].id)
+                        //   let subSubSubSubSubCompModels = this.model.atomValues.find(at => at.parentId === subSubSubSubCompModels[index2].id)
 
-                          subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
-                        }
+                        //   subSubSubSubComp.value = [{value: subSubSubSubSubCompModels.value}]
+                        // }
                         }
                     }
                   }
@@ -238,27 +240,15 @@ export function Controller() {
 
                     if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
 
-                    if (subSubSubSubComp.value) {
-
-                      let subSubSubSubSubCompModels = this.model.atomValues.filter(at => at.parentId === subSubSubSubCompModels[0].id)
-
-                      subSubSubSubComp.value = [{value: subSubSubSubSubCompModels[index].value}]
-
-                    }
-
-
-                    }
-
+                    assignAtomValue(this.model.atomValues, subSubSubSubComp, subSubSubSubCompModels, index)
+                  }
+                }
               }
-          }
+            }
 
-          }
-          
           if (moleculeModel){
 
-            // set the slot of viewTemplate to the be the value of the organism
             slot.slot = moleculeModel.value;
-            // for that slot in viewTemplate, set component to be molecule
             slot.component = await createComponent("molecules", moleculeModel.value)
 
             // next step would be to decide if the molecule contains other molecules, molecules or atoms
@@ -266,7 +256,6 @@ export function Controller() {
               if (slot.component.atoms) {
 
                 for (let [index, subCompAtom] of slot.component.atoms.entries()) {
-
                   let subSubSubSubComp = subCompAtom.component
                   let subSubSubSubCompModels = this.model.atoms.filter(at => at.parentId === moleculeModel.id)
                   if (subSubSubSubComp.functions) console.log(subSubSubSubComp.constructorKey, subSubSubSubComp.functions)
@@ -278,23 +267,12 @@ export function Controller() {
 
           if (atomModel){
 
-            // set the slot of viewTemplate to the be the value of the organism
             slot.slot = atomModel.value;
-            // for that slot in viewTemplate, set component to be molecule
             slot.component = await createComponent("atoms", atomModel.value)
 
-            // next step would be to decide if the molecule contains other molecules, molecules or atoms
             if(slot.component){
-              if (slot.component.value) {
-
-                let atomValueModel = this.model.atomValues.find(at => at.parentId === atomModel.id)
-
-                slot.component.value = [{value: atomValueModel.value}]
-
-                }
-
+              assignAtomValue(this.model.atomValues, slot.component, [atomModel], 0)
               }
-
             }
           }
         }
@@ -303,7 +281,6 @@ export function Controller() {
 
   this.bindNewScripts = async () => {
     let component = this.childComponent;
-
         component.bindScript = async function() {
         for await (let slot of component.slots) {
           if (await slot.component)
@@ -311,8 +288,6 @@ export function Controller() {
       }
     }
   };
-
-
   this.template = async () => {
     this.childComponent = await this.getComponent();
     await this.getSlots();
@@ -320,12 +295,11 @@ export function Controller() {
     this.childComponent.model = this.model;
     return  this.childComponent ;
   }
-
 }
+
 function assignAtomValue(atomValuesModel, atomComp, atomModels, index) {
   if (atomComp.value) {
     let matchedAtomValue = atomValuesModel.find(at => at.parentId === atomModels[index].id);
     atomComp.value = [{ value: matchedAtomValue.value }];
   }
 }
-
