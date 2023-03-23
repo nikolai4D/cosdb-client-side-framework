@@ -112,8 +112,8 @@ export function Controller() {
               }
 
               if (slot.component.molecules) {
-
-                processMolecules(this.model, slot.component, slotModels)
+                let moleculeModel = this.model.molecules.find(mol => mol.parentId === specificSlot.id)
+                processMolecules(this.model, slot.component, [moleculeModel])
 
 
                   // for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
