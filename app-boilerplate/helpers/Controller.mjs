@@ -249,17 +249,20 @@ export function Controller() {
       return component.slots;
   };
 
-  this.generateDomElements = async function() {
-        for await (let slot of this.viewTemplate.slots) {
+  this.addBindScriptToViewTemplate = async () => {
+    let component = this.viewTemplate;
+        component.bindScript = async function() {
+        for await (let slot of component.slots) {
           if (await slot.component)
-            await this.viewTemplate.fillSlot(slot.slot, slot.component.getElement())
+            await component.fillSlot(slot.slot, slot.component.getElement())
       }
+    }
   };
 
   this.template = async () => {
     this.viewTemplate = await this.getViewTemplate();
     this.viewTemplate.slots = await this.addComponentsInTemplateSlotConstructors();
-    this.viewTemplate.bindScript  = await this.generateDomElements();
+    await this.addBindScriptToViewTemplate();
     return this.viewTemplate ;
   }
 }
