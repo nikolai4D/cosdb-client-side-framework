@@ -49,7 +49,7 @@ export function Controller() {
     return component;
   };
 
-  this.addComponentsInTemplateSlotConstructors = async () => {
+  this.addCompViewTemplateSlots = async () => {
 
     const createComponent = async (type, file) => {
       const pathToComponent = `../../components/${type}/${file}.mjs`;
@@ -246,21 +246,19 @@ export function Controller() {
           }
         }
       }
-      // return component.slots;
   };
 
-  this.loadComponentsIntoDom = async () => {
+  this.generateDomElements = async () => {
       for await (let slot of this.viewTemplate.slots) {
         if (await slot.component)
-          await this.viewTemplate.fillSlot(slot.slot, slot.component.getElement())
+          await component.fillSlot(slot.slot, slot.component.getElement())
     }
   };
 
   this.template = async () => {
     this.viewTemplate = await this.getViewTemplate();
-    // this.viewTemplate.slots = 
-    await this.addComponentsInTemplateSlotConstructors();
-    this.viewTemplate.bindScript = await this.loadComponentsIntoDom();
+    await this.addCompViewTemplateSlots();
+    this.viewTemplate.bindScript = await this.generateDomElements();
     return this.viewTemplate ;
   }
 }
