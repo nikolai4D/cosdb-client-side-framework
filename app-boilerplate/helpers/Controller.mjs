@@ -44,11 +44,12 @@ export function Controller() {
   };
 
   this.addComponentsInTemplateSlotConstructors = async () => {
-    const modelSlots = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
+    const foundModelSlotsForViewTemplate = this.model.slots.filter(slot => slot.parentId === this.viewTemplate.id);
+    const foundComponentSlotsForViewTemplate = this.viewTemplate.slots;
+    
+    for (const slot of foundComponentSlotsForViewTemplate) {
 
-    for (const slot of this.viewTemplate.slots) {
-
-      const foundModelSlot =  modelSlots.find(slotModel => slotModel.value === slot.slot)
+      const foundModelSlot =  foundModelSlotsForViewTemplate.find(slotModel => slotModel.value === slot.slot)
       validate(foundModelSlot)
 
       const foundModelComponent = this.model.components.find(comp => comp.parentId === foundModelSlot.id)
@@ -82,7 +83,7 @@ export function Controller() {
         }
 
         if (slot.component.atoms) {
-          processAtoms(this.model, slot.component, modelSlots)
+          processAtoms(this.model, slot.component, foundModelSlotsForViewTemplate)
           }
 
           if (slot.component.functions){
@@ -109,7 +110,7 @@ export function Controller() {
         }
       }
     }
-      return this.viewTemplate.slots;
+      return foundComponentSlotsForViewTemplate;
   };
 
   this.addBindScriptToViewTemplate = async () => {
