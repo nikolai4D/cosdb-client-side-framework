@@ -59,6 +59,15 @@ function createView(viewPath) {
     await Router(inputValue);
   });
 
+  // Add a keydown event listener to the input field
+  inputElement.addEventListener("keydown", function (event) {
+    // Check if the pressed key is Enter
+    if (event.key === "Enter") {
+      // Programmatically trigger a click event on the button
+      buttonElement.click();
+    }
+  });
+
   // Set the text of the <h1> element to the input value
   h1Element.textContent = viewPath;
 
