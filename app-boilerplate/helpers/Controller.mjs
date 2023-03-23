@@ -56,19 +56,19 @@ export function Controller() {
   
       const foundModelAtom = this.model.atoms.find(atom => atom.parentId === foundModelComponent.id);
       if (foundModelAtom !== undefined) {
-        await addAtomComponent(slotComp, foundModelAtom);
+        await addAtomComponent(slotComp, foundModelAtom, this.model);
         continue;
       }
   
       const foundModelMolecule = this.model.molecules.find(molecule => molecule.parentId === foundModelComponent.id);
       if (foundModelMolecule !== undefined) {
-        await addMoleculeComponent(slotComp, foundModelMolecule);
+        await addMoleculeComponent(slotComp, foundModelMolecule, this.model);
         continue;
       }
   
       const foundModelOrganism = this.model.organisms.find(organism => organism.parentId === foundModelComponent.id);
       if (foundModelOrganism !== undefined) {
-        await addOrganismComponent(slotComp, foundModelOrganism);
+        await addOrganismComponent(slotComp, foundModelOrganism, this.model);
         continue;
       }
     }
@@ -224,7 +224,7 @@ function throwErrorIfUndefined(obj) {
   }
 }
 
-const addAtomComponent = async (slotComp, foundModelAtom) => {
+const addAtomComponent = async (slotComp, foundModelAtom, model) => {
   slotComp.slot = foundModelAtom.value;
   slotComp.component = await createComponent("atoms", foundModelAtom.value);
   if (slotComp.component) {
@@ -232,7 +232,7 @@ const addAtomComponent = async (slotComp, foundModelAtom) => {
   }
 }
 
-const addMoleculeComponent = async (slotComp, foundModelMolecule) => {
+const addMoleculeComponent = async (slotComp, foundModelMolecule, model) => {
   slotComp.slot = foundModelMolecule.value;
   slotComp.component = await createComponent("molecules", foundModelMolecule.value);
   if (slotComp.component.atoms) {
@@ -240,7 +240,7 @@ const addMoleculeComponent = async (slotComp, foundModelMolecule) => {
   }
 }
 
-const addOrganismComponent = async (slotComp, foundModelOrganism) => {
+const addOrganismComponent = async (slotComp, foundModelOrganism, model) => {
   slotComp.slot = foundModelOrganism.value;
   slotComp.component = await createComponent("organisms", foundModelOrganism.value);
   if (slotComp.component.organisms) {
