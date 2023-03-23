@@ -102,6 +102,11 @@
     font-weight: bold;
 }
 
+.molecule_icon_and_link:hover {
+    font-weight: bold;
+}
+
+
 .molecule_icon_and_link > a {
     color: black;
     cursor: pointer;
