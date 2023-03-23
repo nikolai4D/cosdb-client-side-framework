@@ -39,20 +39,16 @@ export async function createComponent(type, file, content = null) {
   return Component[file]();
 }
 
-// export async function createViewTemplate(type, file, slots = []) {
-//   const pathToComponent = `../../components/${type}s/${file}.mjs`;
-//   const Component = await importModuleFromFile(pathToComponent, file);
-//   const componentInstance = new Component[file]();
-//   componentInstance.slots = slots;
-//   return componentInstance;
-// }
+async function importModuleFromFile2(path, filename) {
+  const module = await import(`${path}`);
+  const factoryFunction = module[filename];
+  return factoryFunction;
+}
 
 export async function createViewTemplate(type, file, slots = []) {
   const pathToComponent = `../../components/${type}s/${file}.mjs`;
-  const Component = await importModuleFromFile(pathToComponent, file);
-
-  const componentInstance = Component[file]();
-  const updatedComponentInstance = { ...componentInstance, slots };
-
-  return updatedComponentInstance;
+  const factoryFunction = await importModuleFromFile2(pathToComponent, file);
+  const componentInstance = factoryFunction();
+  componentInstance.slots = slots;
+  return componentInstance;
 }
