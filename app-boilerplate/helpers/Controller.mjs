@@ -81,22 +81,33 @@ export function Controller() {
               }
 
               if (slot.component.molecules) {
+                
 
-                  for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
+                const subSubCompModels = this.model.organisms.filter((org) => org.parentId === organismModel.id);
 
-                    let subSubSubComp = subCompMolecule.component
-                    let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
+                // if (subSubComp.functions) {
+                //   await processFunction(model, subSubComp, subSubCompModels[index]);
+                // }
+            
+                  await processMolecules(model, subSubComp, subSubCompModels);
+                // }
+                
 
-                    if (subSubSubCompModels.length > 1) console.log("more than one molecule")
+                  // for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
 
-                    if (subSubSubComp.functions) 
+                  //   let subSubSubComp = subCompMolecule.component
+                  //   let subSubSubCompModels = this.model.molecules.filter(mol => mol.parentId ===  organismModel.id)
 
-                    await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
+                  //   if (subSubSubCompModels.length > 1) console.log("more than one molecule")
 
-                    if (subSubSubComp.atoms){
-                      processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
-                    }
-                  }
+                  //   if (subSubSubComp.functions) 
+
+                  //   await processFunction(this.model, subSubSubComp, subSubSubCompModels[index])
+
+                  //   if (subSubSubComp.atoms){
+                  //     processAtoms(this.model, subSubSubComp, [subSubSubCompModels[index]])
+                  //   }
+                  // }
               }
 
               if (slot.component.atoms) {
@@ -142,6 +153,7 @@ export function Controller() {
       }
     }
   };
+  
 
   this.template = async () => {
     this.viewTemplate = await this.getViewTemplate();
