@@ -113,7 +113,7 @@ export function Controller() {
 
               if (slot.component.molecules) {
                 let moleculeModel = this.model.molecules.find(mol => mol.parentId === specificSlot.id)
-                processMolecules(this.model, slot.component, [moleculeModel])
+                processMolecules(this.model, slot.component, [organismModel])
 
 
                   // for (let [index, subCompMolecule] of slot.component.molecules.entries()) {
