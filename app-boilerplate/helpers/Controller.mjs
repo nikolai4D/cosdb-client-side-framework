@@ -70,10 +70,9 @@ export function Controller() {
       if (foundModelMolecule !== undefined){
         slot.slot = foundModelMolecule.value;
         slot.component = await createComponent("molecules", foundModelMolecule.value)
-        if(slot.component){
-          if (slot.component.atoms) {
+
+        if (slot.component.atoms) {
             processAtoms(this.model, slot.component, [foundModelMolecule])
-          }
         }
       }
 
@@ -89,7 +88,6 @@ export function Controller() {
           for (const [index, molecule] of slot.component.molecules.entries()) {
             const moleculeComp = molecule.component
             const foundModelMolecules = this.model.molecules.filter(mol => mol.parentId ===  foundModelOrganism.id)
-            if (foundModelMolecules.length > 1) console.log("more than one molecule")
             if (moleculeComp.functions){
               await processFunction(this.model, moleculeComp, foundModelMolecules[index])
               }
@@ -106,11 +104,7 @@ export function Controller() {
       if (slot.component.functions){
         await processFunction(this.model, slot.component, foundModelOrganism)
       }
-      
     }
-
-
-
     }
       return foundComponentSlotsForViewTemplate;
   };
@@ -131,8 +125,6 @@ export function Controller() {
     return this.viewTemplate ;
   }
 }
-
-
 
 const createComponent = async (type, file) => {
   const pathToComponent = `../../components/${type}/${file}.mjs`;
