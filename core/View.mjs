@@ -26,7 +26,7 @@ export async function View(viewPath) {
 
   // Create a new viewTemplate
   const childDiv = await ViewTemplate(id);
-  console.log({ childDiv });
+  console.log({ childDiv }, typeof childDiv);
   div.appendChild(childDiv);
 
   // Append the view to the body
