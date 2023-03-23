@@ -6,8 +6,6 @@ export async function apiCallGet(url) {
     },
   });
   const result = await response.json();
-  console.log(result);
-
   return result;
 }
 
@@ -22,7 +20,5 @@ export async function apiCallPost({ url, body }) {
     body: JSON.stringify({ body }),
   });
   const result = await response.json();
-  console.log(result);
-
   return result;
 }
