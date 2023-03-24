@@ -10,21 +10,21 @@ export function ViewTemplate_dummy2() {
     },
   ];
 
-  const getSlot = (slotName) => {
+  const getSlot = async (slotName) => {
     const slt = this.slots.find((s) => s.slot === slotName);
-    return slt ? slt.slot : "";
+    return slt ? await slt.slot : "";
   };
 
   const comp = async () => {
-    return await html2dom`
-        <div>${await getSlot("slot3")}</div>
-        <div>${await getSlot("slot4")}</div>
-        <div>TEXT</div>
+    return `
+    <div>${await getSlot("slot3")}</div>
+    <div>${await getSlot("slot4")}</div>
+    <div>TEXT</div>
     `;
   };
 
   this.render = async () => {
-    const dom = await comp();
+    const dom = await html2dom`${await comp()}`;
     return dom;
   };
 }
