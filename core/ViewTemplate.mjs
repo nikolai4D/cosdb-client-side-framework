@@ -31,7 +31,7 @@ export async function ViewTemplate(parentId) {
     { slot: "slot4", content: slot2 },
   ];
 
-  const viewTemplateObject = await createViewTemplate(type, value, content);
+  const viewTemplateObject = await createViewTemplate(type, value);
   console.log(viewTemplateObject);
   //   console.log(viewTemplateObject, "viewTemplateObject");
   //   const viewTemplateObjectSlots = viewTemplateObject.slots;
