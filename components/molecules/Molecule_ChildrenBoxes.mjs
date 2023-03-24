@@ -45,7 +45,7 @@ export function Molecule_ChildrenBoxes() {
 
         return `
             <div class="molecule_modal-proc-third-section">
-                ${slot(this.atoms[0])}
+                ${slot(this.atoms[0].atom)}
                 <div class="molecule_modal-proc-children"> 
                     ${this.atoms.slice(1).map((at) => slot(at.atom)).join("")}
                 </div>
