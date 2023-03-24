@@ -6,26 +6,17 @@ import { Molecule_TextWButton } from "../molecules/Molecule_TextWButton.mjs";
 export function Organism_ModalProcess() {
     Component.call(this)
 
-    // this.organisms = [
-    //     {
-    //         id: 1,
-    //         organism: "Organism_ModalProcessContent",
-    //         component: new Organism_ModalProcessContent()
-    //     }
-    // ];
-
-    this.molecules = [
+    this.organisms = [
         {
-            id:1,
-            molecule:"Molecule_TextWButton",
-            component: new Molecule_TextWButton()
+            id: 1,
+            organism: "Organism_ModalProcessContent",
+            component: new Organism_ModalProcessContent()
         }
-    ]
-    
+    ];
+
     this.modal = null;
 
     this.getHtml = function() {
-        // ${slot(this.organisms[0].organism)}
 
         return `
         <div id="modal-background" class="modal">
@@ -35,17 +26,16 @@ export function Organism_ModalProcess() {
                         <i class="bi bi-x"></i>
                     </div>
                 </div> 
-                ${slot(this.molecules[0].molecule)}
-            </div>
+                ${slot(this.organisms[0].organism)}
+                </div>
         </div>
         `
     }
 
     this.bindScript= async function() {
 
-        const {molecules} = this
-        // await this.fillSlot(organisms[0].organism, organisms[0].component.getElement())
-        await this.fillSlot(molecules[0].molecule, molecules[0].component.getElement())
+        const {organisms} = this
+        await this.fillSlot(organisms[0].organism, organisms[0].component.getElement())
 
         const mStyle = this.getElement().style
         mStyle.position = "absolute"
@@ -58,7 +48,7 @@ export function Organism_ModalProcess() {
         mStyle.justifyContent = "center"
         mStyle.alignItems = "center"
 
-        molecules[0].component.getElement().style.backgroundColor = "white"
+        organisms[0].component.getElement().style.backgroundColor = "white"
         // this.content.getElement()
 
         this.getElement().addEventListener("click", (e)=>{

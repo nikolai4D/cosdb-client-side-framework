@@ -4,37 +4,61 @@ import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 import { Molecule_List } from "./Molecule_List.mjs";
 import { Molecule_HeaderAndText } from "../molecules/Molecule_HeaderAndText.mjs"
 
-export function Molecule_InputOutput(model) {
+export function Organism_InputOutput() {
     Component.call(this)
+
+    this.molecules = [
+        {
+            id: 1,
+            molecule: "Molecule_List",
+            component: new Molecule_List()
+        }, 
+        {
+            id: 2,
+            molecule: "Molecule_HeaderAndText",
+            component: new Molecule_HeaderAndText()
+        },
+        {
+            id: 3,
+            molecule: "Molecule_List",
+            component: new Molecule_List()
+        }
+    ]
+
+    this.atoms = [
+        {
+            id: 1,
+            molecule: "Atom_Icon",
+            component: new Atom_Icon()
+        },
+        {
+            id: 2,
+            molecule: "Atom_Icon",
+            component: new Atom_Icon()
+        }
+    ]
 
     this.getHtml = function() {
 
         return `
             <div class="molecule_modal_in-output">
-                ${slot("box1")}
-                ${slot("icon1")}
-                ${slot("box2")}
-                ${slot("icon2")}
-                ${slot("box3")}
+                ${slot(this.molecules[0].molecule)}
+                ${slot(this.atoms[0].atom)}
+                ${slot(this.molecules[1].molecule)}
+                ${slot(this.atoms[1].atom)}
+                ${slot(this.molecules[2].molecule)}
             </div>
         `
     }
 
-    this.bindScript= function() {
-        let box1 = new Molecule_List(model.lists1)
-        this.fillSlot("box1", box1.getElement());
+    this.bindScript= async function() {
+        for (let mol of this.molecules) {
+            await this.fillSlot(mol.molecule, mol.component.getElement())
+          }
 
-        let icon1 = new Atom_Icon(model.atom_icon1)
-        this.fillSlot("icon1", icon1.getElement());
+          for (let at of this.atoms) {
+            await this.fillSlot(at.atom, at.component.getElement())
+          }
 
-        let box2 = new Molecule_HeaderAndText(model.molecule_headerAndText)
-        this.fillSlot("box2", box2.getElement());
-
-        let icon2 = new Atom_Icon(model.atom_icon2)
-        this.fillSlot("icon2", icon2.getElement());
-
-        let box3 = new Molecule_List(model.lists2)
-        this.fillSlot("box3", box3.getElement());
     }
-
 }

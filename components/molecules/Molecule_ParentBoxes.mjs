@@ -3,43 +3,65 @@ import {slot} from "../../../core/helpers.mjs";
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 
-export function Molecule_ParentBoxes(model) {
+export function Molecule_ParentBoxes() {
     Component.call(this)
+
+    this.atoms = [
+        {
+            id: 1,
+            molecule: "Atom_Heading4",
+            component: new Atom_Heading4()
+        },
+        {
+            id: 2,
+            molecule: "Atom_Icon",
+            component: new Atom_Icon()
+        },
+        {
+            id: 3,
+            molecule: "Atom_Heading4",
+            component: new Atom_Heading4()
+        },
+        {
+            id: 4,
+            molecule: "Atom_Icon",
+            component: new Atom_Icon()
+        },
+        {
+            id: 5,
+            molecule: "Atom_Heading4",
+            component: new Atom_Heading4()
+        },
+        {
+            id: 6,
+            molecule: "Atom_Icon",
+            component: new Atom_Icon()
+        }
+    ]
+
 
     this.getHtml = function() {
 
         return `
             <div class="molecule-modal-proc-first-section">
                 <div class="molecule_proc-parentboxes">
+                ${this.atoms.slice(0, -1).map((at) => slot(at.atom)).join("")}
+
                     ${slot("box1")}
                     ${slot("icon1")}
                     ${slot("box2")}
                     ${slot("icon2")}
                     ${slot("box3")}
                 </div>
-                ${slot("icon3")}
+                ${slot(this.atoms[-1].atom)}
             </div>
         `
     }
 
-    this.bindScript= function() {
-        let box1 = new Atom_Heading4(model.atom_heading4a)
-        this.fillSlot("box1", box1.getElement());
-
-        let icon1 = new Atom_Icon(model.atom_icon1)
-        this.fillSlot("icon1", icon1.getElement());
-
-        let box2 = new Atom_Heading4(model.atom_heading4b)
-        this.fillSlot("box2", box2.getElement());
-
-        let icon2 = new Atom_Icon(model.atom_icon2)
-        this.fillSlot("icon2", icon2.getElement());
-
-        let box3 = new Atom_Heading4(model.atom_heading4c)
-        this.fillSlot("box3", box3.getElement());
-
-        let icon3 = new Atom_Icon(model.atom_icon3)
-        this.fillSlot("icon3", icon3.getElement());
+    this.bindScript= async function() {
+        for (let at of this.atoms) {
+            await this.fillSlot(at.atom, at.component.getElement())
+          }
     }
 
 }
