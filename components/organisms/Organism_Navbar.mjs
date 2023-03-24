@@ -75,10 +75,12 @@ export function Organism_Navbar() {
     for (let mol of this.molecules) {
       // console.log(mol)
       for (let atom of mol.component.atoms) {
+        await (atom.component)
+
         if (window.location.pathname.slice(1) === atom.component.value[0].value.toLowerCase()){
-          await (atom.component)
-          atom.component.element.style.fontWeight = 'bold';
+         (await atom.component).element.style.fontWeight = 'bold';
         }
+
       }
     }
   }
