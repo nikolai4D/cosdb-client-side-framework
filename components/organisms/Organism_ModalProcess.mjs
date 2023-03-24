@@ -3,7 +3,7 @@ import {Component} from "../../../core/Component.mjs";
 // import { Organism_ModalProcessContent } from "./Organism_ModalProcessContent.mjs";
 import { Molecule_TextWButton } from "../molecules/Molecule_TextWButton.mjs";
 
-export function Organism_ModalProcess(model) {
+export function Organism_ModalProcess() {
     Component.call(this)
 
     // this.organisms = [
@@ -22,7 +22,6 @@ export function Organism_ModalProcess(model) {
         }
     ]
     
-    this.content = model.content;
     this.modal = null;
 
     this.getHtml = function() {
@@ -59,7 +58,7 @@ export function Organism_ModalProcess(model) {
         mStyle.justifyContent = "center"
         mStyle.alignItems = "center"
 
-        this.content.getElement().style.backgroundColor = "white"
+        // this.content.getElement().style.backgroundColor = "white"
 
         this.getElement().addEventListener("click", (e)=>{
             if(e.target === this.getElement()){
