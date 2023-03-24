@@ -42,7 +42,6 @@ export function Organism_ListAll() {
           ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
       </div>
-
     `;
   };
 
