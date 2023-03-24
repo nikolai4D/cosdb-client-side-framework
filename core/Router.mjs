@@ -46,11 +46,11 @@ Router.prototype.goTo = async function (
   let route = this.routes.find((r) => r.path === routeBase);
   console.log(await route)
 
-  if (!route) {
-    route = this.routes[0];
-    fullRoute = this.routes[0].path;
-    console.warn(`View ${routeBase} not found, using default view`);
-  }
+  // if (!route) {
+  //   route = this.routes[0];
+  //   fullRoute = this.routes[0].path;
+  //   console.warn(`View ${routeBase} not found, using default view`);
+  // }
 
   const createView = async (viewConstructor, params = []) => {
 
