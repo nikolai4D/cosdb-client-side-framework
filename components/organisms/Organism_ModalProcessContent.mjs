@@ -1,32 +1,49 @@
 import {Component} from "../../../core/Component.mjs";
 import {slot} from "../../../core/helpers.mjs";
-import { Molecule_ModalChildrenBoxes } from "../molecules/Molecule_ModalChildrenBoxes.mjs";
-import { Molecule_ModalInputProcOutput } from "../molecules/Molecule_ModalInputProcOutput.mjs";
-import { Molecule_ModalProParentBoxes } from "../molecules/Molecule_ModalProParentBoxes.mjs";
+import { Molecule_ChildrenBoxes } from "../molecules/Molecule_ChildrenBoxes.mjs";
+import { Organism_InputOutput } from "./Organism_InputOutput.mjs";
+import { Molecule_ParentBoxes } from "../molecules/Molecule_ParentBoxes.mjs";
 
 
-export function Organism_ModalProcessContent(model) {
+export function Organism_ModalProcessContent() {
     Component.call(this)
+
+    this.organisms = [
+        {
+            id: 1,
+            molecule: "Organism_InputOutput",
+            component: new Organism_InputOutput()
+        }, 
+    ]
+    this.molecules = [
+        {
+            id: 1,
+            molecule: "Molecule_ModalChildrenBoxes",
+            component: new Molecule_ChildrenBoxes()
+        }, 
+        {
+            id: 2,
+            molecule: "Molecule_ParentBoxes",
+            component: new Molecule_ParentBoxes()
+        }
+    ]
 
     this.getHtml = function() {
 
         return `
             <div class="organism_process-modal">
-                ${slot("parentBoxes")}
-                ${slot("inputProcOutput")}
-                ${slot("childrenBoxes")}
+                ${slot(this.molecules[0].molecule)}
+                ${slot(this.organisms[0].organism)}
+                ${slot(this.molecules[1].molecule)}
+
             </div>
-        ` 
+        `
     }
 
-    this.bindScript= function() {
-        let parentBoxes = new Molecule_ModalProParentBoxes(model.molecule_modalProcParentBoxes)
-        this.fillSlot("parentBoxes", parentBoxes.getElement());
-
-        let inputProcOutput = new Molecule_ModalInputProcOutput(model.molecule_modalInputProcOutput)
-        this.fillSlot("inputProcOutput", inputProcOutput.getElement());
-
-        let childrenBoxes = new Molecule_ModalChildrenBoxes(model.molecule_modalChildrenBoxes)
-        this.fillSlot("childrenBoxes", childrenBoxes.getElement());
+    this.bindScript= async function() {
+        for (let mol of this.molecules) {
+            await this.fillSlot(mol.molecule, mol.component.getElement())
+          }
     }
+
 }
