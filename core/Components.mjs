@@ -12,20 +12,20 @@ export async function Components(parentId) {
   for (const slot of Slots) {
     try {
       const comp = await apiCallGet(`/read/${componentType}s/${slot.id}`);
+
       if (comp.length > 0) {
-        console.log(comp, "comp");
         const compObj = {
-          id: comp.id,
+          id: comp[0].id,
           slot: slot.value,
-          content: comp.value,
+          content: comp[0].value,
         };
-        console.log(compObj, "compObj");
+
         componentsArray.push(compObj);
       }
     } catch (error) {
       console.log("no component found for slot ", slot.value);
     }
   }
-  console.log(componentsArray, "componentsArray");
+
   return componentsArray;
 }
