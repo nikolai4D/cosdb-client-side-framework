@@ -13,6 +13,7 @@ export async function Components(parentId) {
     try {
       const comp = await apiCallGet(`/read/${componentType}s/${slot.id}`);
       if (comp.length > 0) {
+        console.log(comp, "comp");
         componentsArray.push({
           id: comp.id,
           slot: slot.value,
