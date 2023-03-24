@@ -16,14 +16,19 @@ export function ViewTemplate_dummy2() {
   //     const foundSlot = this.slots.find((s) => s.slot === slotName);
   //     return foundSlot ? foundSlot.content : "";
   //   };
+
   const slot = (slotName) =>
     this.slots.find((slot) => slot.slot === slotName)?.content || "";
 
-  this.render = async () => {
+  const viewTemplate = async () => {
     return await html2dom`
-    <div><h1>${slot("slot3")}</h1></div>
-    <div><h3>${slot("slot4")}</h3></div>
-    <div><h5>${slot("slot3")}</h5></div>
-    <div><h5>TEXT2</h5></div>`;
+        <div><h1>${slot("slot3")}</h1></div>
+        <div><h3>${slot("slot4")}</h3></div>
+        <div><h5>${slot("slot3")}</h5></div>
+        <div><h5>TEXT</h5></div>`;
+  };
+
+  this.render = async () => {
+    return await viewTemplate();
   };
 }
