@@ -26,10 +26,7 @@ export async function ViewTemplate(parentId) {
   h2Element2.textContent = "2 dom 3";
   slot2.appendChild(h2Element2);
 
-  const content = [
-    { slot: "slot3", content: slot1 },
-    { slot: "slot4", content: slot2 },
-  ];
+  const content = [{ slot: "slot3", content: slot1 }];
 
   const viewTemplateObject = await createViewTemplate(type, value, content);
   const renderViewTemplate = await viewTemplateObject.render();

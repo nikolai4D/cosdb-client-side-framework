@@ -12,11 +12,6 @@ export function ViewTemplate_dummy2() {
     },
   ];
 
-  //   const slt = (slotName) => {
-  //     const foundSlot = this.slots.find((s) => s.slot === slotName);
-  //     return foundSlot ? foundSlot.content : "";
-  //   };
-
   const slot = (slotName) =>
     this.slots.find((slot) => slot.slot === slotName)?.content || "";
 
