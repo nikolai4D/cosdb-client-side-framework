@@ -11,10 +11,11 @@ export function Organism_ModalProcessContent() {
     this.organisms = [
         {
             id: 1,
-            molecule: "Organism_InputOutput",
+            organism: "Organism_InputOutput",
             component: new Organism_InputOutput()
         }, 
     ]
+
     this.molecules = [
         {
             id: 1,
