@@ -1,7 +1,7 @@
 import { Component } from "../../core/Component.mjs";
 
 
-export function Atom_ButtonNeutral() {
+export function Atom_ButtonNeutral(click = () => console.log("click")) {
   Component.call(this);
 
   this.value = [{ value: "placeholder" }];
@@ -11,6 +11,6 @@ export function Atom_ButtonNeutral() {
     }
 
     this.bindScript= function() {
-        this.element.addEventListener("click", () => console.log("click"))
+        this.element.addEventListener("click", click)
     }
 }

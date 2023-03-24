@@ -68,5 +68,11 @@ export function Organism_Navbar() {
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
+
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
+    }
+
+    this.getElement().querySelector().addEventListener("click", (e) => {})
   }
 }
