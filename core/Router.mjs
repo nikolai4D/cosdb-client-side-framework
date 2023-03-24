@@ -8,6 +8,7 @@ export function Router(routes) {
 }
 
 export function route(path, view) {
+  console.log(path, view)
   return {
     path,
     view,
