@@ -60,11 +60,8 @@ Router.prototype.goTo = async function (
   };
 
   async function switchView(currentView) {
-    // console.log(await previousView?.template(), "previuos")
-    if (previousView) {document.body.innerHTML = ""
-    //  (await previousView.template()).removeElement()
-      // (await previousView.template()).removeElement();
-
+    if (previousView) {
+      document.body.innerHTML = ""
     }
     if (pushState)
       history.pushState({ path: routeBase }, null, "../" + fullRoute); //History only store the route of the view
@@ -72,7 +69,5 @@ Router.prototype.goTo = async function (
   }
 
   this.currentView = await createView(route.view, params);
-
-  console.log({"test:": await this.currentView})
   await switchView(await this.currentView);
 };
