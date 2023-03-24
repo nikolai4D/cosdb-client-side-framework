@@ -352,10 +352,7 @@ export function Controller() {
 
      this.childComponent.model = this.model;
 
-     this.childComponent.removeElement= function() {
-      if(this.element) this.element.remove()
-  }
-
+     console.log(this.childComponent, "childcompoennt")
     return  this.childComponent ;
 
   }
