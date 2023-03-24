@@ -1,6 +1,6 @@
 import { html2dom } from "../../core/helpers.mjs";
 
-export async function ViewTemplate_dummy2() {
+export function ViewTemplate_dummy2() {
   this.slots = [
     {
       slot: "slot3",
@@ -10,7 +10,7 @@ export async function ViewTemplate_dummy2() {
     },
   ];
 
-  return await html2dom`
+  return html2dom`
       <div>${this.slots[0].slot}</div>
       <div>${this.slots[1].slot}</div>
       <div>TEXT</div>

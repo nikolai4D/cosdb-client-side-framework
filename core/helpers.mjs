@@ -19,7 +19,7 @@ export async function importModuleFromFile(path, filename) {
 
 export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 
-export function html2dom(strings, ...values) {
+export async function html2dom(strings, ...values) {
   const container = document.createElement("div");
 
   strings.forEach((string, index) => {
@@ -30,7 +30,7 @@ export function html2dom(strings, ...values) {
     }
   });
 
-  return container.childNodes;
+  return await container.childNodes;
 }
 
 export async function createComponent(type, file) {
