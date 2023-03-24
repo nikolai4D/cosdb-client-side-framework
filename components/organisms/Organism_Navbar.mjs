@@ -65,7 +65,7 @@ export function Organism_Navbar() {
 
   this.bindScript= async function() {
 
-    console.log(this.molecules)
+    console.log(await this.molecules)
 
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
