@@ -3,7 +3,7 @@ import { slot } from  "../../core/helpers.mjs";
 import { Molecule_Logo } from "../molecules/Molecule_Logo.mjs";
 import { Molecule_ListWIconLinks } from "../molecules/Molecule_ListWIconLinks.mjs";
 import { Molecule_TextWButton } from "../molecules/Molecule_TextWButton.mjs";
-// import { router } from "../../index.mjs"
+import { router } from "../../index.mjs"
 
 
 export function Organism_Navbar() {
