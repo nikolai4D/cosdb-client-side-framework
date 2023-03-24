@@ -13,11 +13,10 @@ export function ViewTemplate_dummy2() {
   ];
 
   const comp = async () => {
-    console.log(this.slots[0].content, "this.slots[0].content");
-    console.log(this.slots[1].content, "this.slots[1].content");
     return await html2dom`
         <div><h1>${this.slots[0].content}</h1></div>
         <div><h3>${this.slots[1].content}</h3></div>
+        <div><h5>${this.slots[1].content}</h5></div>
         <div><h5>TEXT</h5></div>`;
   };
 
