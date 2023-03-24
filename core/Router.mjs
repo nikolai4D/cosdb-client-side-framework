@@ -43,8 +43,7 @@ Router.prototype.goTo = async function (
   // let route = this.routes.find((r) => r.path === routeBase);
   let route = this.routes[0];
   
-  console.log(previousView,  window.location.pathname)
-  if (previousView && `/${previousView.path}` === window.location.pathname) return
+  if (previousView && previousView.path === splitRoute) return
 
   // if (!route) {
   //   route = this.routes[0];
