@@ -12,7 +12,7 @@ export function ViewTemplate_dummy2() {
 
   const slt = (slotName) => {
     const foundSlot = this.slots.find((s) => s.slot === slotName);
-    return foundSlot ? foundSlot.content : "";
+    return foundSlot ? foundSlot.slot : "";
   };
 
   return async () => {

@@ -14,7 +14,7 @@ export function stringToHTMLElement(string) {
 
 export async function importModuleFromFile(path, filename) {
   const module = await import(`${path}`);
-  return new module[filename]();
+  return module;
 }
 
 export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
@@ -42,7 +42,7 @@ export async function createComponent(type, file, content = null) {
 export async function createViewTemplate(type, file, slots = null) {
   const pathToComponent = `../../components/${type}s/${file}.mjs`;
   const Component = await importModuleFromFile(pathToComponent, file);
-  const componentInstance = Component[file]();
+  const componentInstance = new Component[file](slots);
 
   return componentInstance;
 }
