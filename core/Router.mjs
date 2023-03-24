@@ -8,7 +8,6 @@ export function Router(routes) {
 }
 
 export function route(path, view) {
-  console.log(path, view)
   return {
     path,
     view,
@@ -39,14 +38,10 @@ Router.prototype.goTo = async function (
   const routeBase = splitRoute[0];
   const routeParams = splitRoute.slice(1).filter((e) => e !== "");
 
-
-  console.log(splitRoute, routeBase, routeParams);
   let previousView = this.currentView;
 
   // let route = this.routes.find((r) => r.path === routeBase);
   let route = this.routes[0];
-
-  console.log(await route)
 
   // if (!route) {
   //   route = this.routes[0];
