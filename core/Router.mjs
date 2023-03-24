@@ -33,15 +33,12 @@ Router.prototype.goTo = async function (
   forceNewView = false,
   pushState = true
 ) {
-  console.log("goTo", fullRoute, params);
 
   const splitRoute = fullRoute.split("/");
   const routeBase = splitRoute[0];
   const routeParams = splitRoute.slice(1).filter((e) => e !== "");
 
   let previousView = this.currentView;
-
-  console.log("routeBase", routeBase);
 
   let route = this.routes.find((r) => r.path === routeBase);
 
