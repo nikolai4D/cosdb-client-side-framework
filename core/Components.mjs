@@ -23,6 +23,6 @@ export async function Components(parentId) {
       console.log("no component found for slot ", slot.value);
     }
   }
-
+  console.log(componentsArray, "componentsArray");
   return componentsArray;
 }
