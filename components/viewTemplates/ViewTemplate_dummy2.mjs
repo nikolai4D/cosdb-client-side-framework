@@ -26,10 +26,6 @@ export function ViewTemplate_dummy2() {
   };
 
   this.render = async () => {
-    const dom = await comp();
-    return dom;
+    return await comp();
   };
 }
-
-//  <div>${this.slots[0].slot}</div>
-// <div>${this.slots[1].slot}</div>
