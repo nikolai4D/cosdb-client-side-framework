@@ -15,8 +15,8 @@ export function ViewTemplate_dummy2() {
     return foundSlot ? foundSlot.content : "";
   };
 
-  this.render = async () => {
-    return await html2dom`
+  return async () => {
+    await html2dom`
       <div>${slot("slot3")}</div>
       <div>${slot("slot4")}</div>
       <div>TEXT</div>
