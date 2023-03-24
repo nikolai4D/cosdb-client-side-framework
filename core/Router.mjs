@@ -52,18 +52,15 @@ Router.prototype.goTo = async function (
   }
 
   const createView = async (viewConstructor, params = []) => {
-    console.log(routeParams, ...params)
 
-    console.log(viewConstructor)
     let view = await new viewConstructor(routeParams, ...params);
     view.path = fullRoute;
-
-    console.log(view)
 
     return view;
   };
 
   async function switchView(currentView) {
+    console.log(previousView, "previuos")
     if (previousView) await previousView.template().removeElement();
 
     if (pushState)
