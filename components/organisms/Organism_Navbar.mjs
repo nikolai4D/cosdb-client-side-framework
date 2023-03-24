@@ -68,7 +68,7 @@ export function Organism_Navbar() {
 
     for (let mol of this.molecules) {
       console.log(mol)
-      for (let atom of mol.atoms) {
+      for (let atom of mol.component.atoms) {
        console.log(atom)
       }
       await this.fillSlot(mol.molecule, mol.component.getElement())
