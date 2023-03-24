@@ -3,6 +3,7 @@ import { slot } from  "../../core/helpers.mjs";
 import { Molecule_Logo } from "../molecules/Molecule_Logo.mjs";
 import { Molecule_ListWIconLinks } from "../molecules/Molecule_ListWIconLinks.mjs";
 import { Molecule_TextWButton } from "../molecules/Molecule_TextWButton.mjs";
+import { router } from "../../app-boilerplate/index.mjs"
 
 
 export function Organism_Navbar() {
@@ -70,6 +71,7 @@ export function Organism_Navbar() {
       console.log(mol)
       for (let atom of mol.component.atoms) {
        console.log(atom)
+        atom = atom(async () => { await router.goTo(this.value[0].value)})
       }
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
