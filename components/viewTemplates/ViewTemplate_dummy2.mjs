@@ -1,17 +1,16 @@
 import { html2dom } from "../../core/helpers.mjs";
 
 export function ViewTemplate_dummy2(slots = null) {
+  this.slots = [
+    {
+      slot: "slot3",
+    },
+    {
+      slot: "slot4",
+    },
+  ];
   if (slots) {
     this.slots = slots;
-  } else {
-    this.slots = [
-      {
-        slot: "slot3",
-      },
-      {
-        slot: "slot4",
-      },
-    ];
   }
 
   const slt = (slotName) => {
