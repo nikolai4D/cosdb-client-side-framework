@@ -19,16 +19,37 @@ export async function importModuleFromFile(path, filename) {
 
 export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 
+// export async function html2dom(strings, ...values) {
+//   const container = document.createElement("div");
+
+//   strings.forEach((string, index) => {
+//     container.insertAdjacentHTML("beforeend", string);
+
+//     if (values[index] instanceof HTMLElement) {
+//       container.appendChild(values[index].cloneNode(true));
+//     }
+//   });
+
+//   return await container.childNodes;
+// }
+
 export async function html2dom(strings, ...values) {
   const container = document.createElement("div");
+  let interpolatedHTML = "";
 
   strings.forEach((string, index) => {
-    container.insertAdjacentHTML("beforeend", string);
+    interpolatedHTML += string;
 
-    if (values[index] instanceof HTMLElement) {
-      container.appendChild(values[index].cloneNode(true));
+    if (values[index] !== undefined) {
+      if (values[index] instanceof HTMLElement) {
+        interpolatedHTML += values[index].outerHTML;
+      } else {
+        interpolatedHTML += values[index];
+      }
     }
   });
+
+  container.innerHTML = interpolatedHTML;
 
   return await container.childNodes;
 }

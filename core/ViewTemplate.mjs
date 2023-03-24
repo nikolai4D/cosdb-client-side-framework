@@ -34,7 +34,10 @@ export async function ViewTemplate(parentId) {
   const viewTemplateObject = await createViewTemplate(type, value);
   const renderViewTemplate = await viewTemplateObject.render();
   console.log(renderViewTemplate);
-  for (const child of renderViewTemplate) {
+
+  const renderViewTemplateArray = Array.from(renderViewTemplate);
+
+  for (const child of renderViewTemplateArray) {
     console.log(child, "child");
     div.appendChild(child);
   }
