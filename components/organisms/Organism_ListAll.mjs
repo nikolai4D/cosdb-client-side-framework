@@ -36,7 +36,6 @@ export function Organism_ListAll() {
 
   this.getHtml = function () {
     return `
-    <div>
       <div class="organism_list-all-search">
         ${slot(this.molecules[0].molecule)}
         <div id="organism_all_lists" class="organism_list-all-search__lists">
@@ -44,7 +43,6 @@ export function Organism_ListAll() {
         </div>
       </div>
 
-      </div>
     `;
   };
 
