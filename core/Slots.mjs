@@ -11,7 +11,11 @@ export async function Slots(parentId) {
   for (const slot of Slots) {
     const id = slot.id;
     const value = slot.value;
-    SlotsArray.push({ id: id, slot: value, content: value + " content" });
+    SlotsArray.push({
+      id: id,
+      slot: value,
+      content: value + " content from model",
+    });
   }
 
   return SlotsArray;

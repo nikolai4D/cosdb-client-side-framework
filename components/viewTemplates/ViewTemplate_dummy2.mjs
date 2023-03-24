@@ -4,11 +4,11 @@ export function ViewTemplate_dummy2() {
   this.slots = [
     {
       slot: "slot3",
-      content: "slot3 content",
+      content: "slot3 content from template",
     },
     {
       slot: "slot4",
-      content: "slot4 content",
+      content: "slot4 content from template",
     },
   ];
 
