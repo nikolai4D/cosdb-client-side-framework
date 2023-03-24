@@ -77,9 +77,10 @@ export function Organism_Navbar() {
       // console.log(mol)
       for (let atom of mol.component.atoms) {
         if (window.location.pathname.slice(1) === atom.component.value[0].value.toLowerCase()){
+          await (atom.component)
           atom.component.element.style.fontWeight = 'bold';
         }
-        console.log(atom.component)
+        console.log(await atom.component)
 
       }
     }
