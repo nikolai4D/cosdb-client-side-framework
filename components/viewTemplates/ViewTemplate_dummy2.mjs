@@ -1,6 +1,6 @@
 import { html2dom } from "../../core/helpers.mjs";
 
-export function ViewTemplate_dummy2(setSlots = null) {
+export function ViewTemplate_dummy2() {
   this.slots = [
     {
       slot: "slot3",
@@ -9,9 +9,6 @@ export function ViewTemplate_dummy2(setSlots = null) {
       slot: "slot4",
     },
   ];
-  if (setSlots) {
-    this.slots = setSlots;
-  }
 
   const slt = (slotName) => {
     const foundSlot = this.slots.find((s) => s.slot === slotName);
