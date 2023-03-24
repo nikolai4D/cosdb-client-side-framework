@@ -39,6 +39,8 @@ Router.prototype.goTo = async function (
   const routeBase = splitRoute[0];
   const routeParams = splitRoute.slice(1).filter((e) => e !== "");
 
+
+  console.log(splitRoute, routeBase, routeParams);
   let previousView = this.currentView;
 
   let route = this.routes.find((r) => r.path === routeBase);
