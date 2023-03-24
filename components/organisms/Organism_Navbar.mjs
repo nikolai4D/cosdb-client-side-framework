@@ -71,7 +71,7 @@ export function Organism_Navbar() {
       console.log(mol)
       for (let atom of mol.component.atoms) {
        console.log(atom)
-        atom = atom(async () => { await router.goTo(this.value[0].value)})
+        atom = new atom(async () => { await router.goTo(this.value[0].value)})
       }
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
