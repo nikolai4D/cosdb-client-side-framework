@@ -9,27 +9,27 @@ export function Molecule_ParentBoxes() {
     this.atoms = [
         {
             id: 1,
-            molecule: "Atom_Heading4",
+            atom: "Atom_Heading4",
             component: new Atom_Heading4()
         },
         {
             id: 2,
-            molecule: "Atom_Icon",
+            atom: "Atom_Icon",
             component: new Atom_Icon()
         },
         {
             id: 3,
-            molecule: "Atom_Heading4",
+            atom: "Atom_Heading4",
             component: new Atom_Heading4()
         },
         {
             id: 4,
-            molecule: "Atom_Icon",
+            atom: "Atom_Icon",
             component: new Atom_Icon()
         },
         {
             id: 5,
-            molecule: "Atom_Heading4",
+            atom: "Atom_Heading4",
             component: new Atom_Heading4()
         }
     ]
@@ -40,8 +40,9 @@ export function Molecule_ParentBoxes() {
         return `
             <div class="molecule-modal-proc-first-section">
                 <div class="molecule_proc-parentboxes">
-                ${this.atoms.map((at) => slot(at.atom)).join("")}
+                ${this.atoms.map((at) => slot(at.atom)).slice(0,-1).join("")}
                 </div>
+                ${slot(this.atoms.slice(0,-1)[0].atom)}
             </div>
         `
     }
