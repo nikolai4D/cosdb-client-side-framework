@@ -3,7 +3,7 @@ import { slot } from  "../../core/helpers.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 
-export function Molecule_TextWithHeading() {
+export function Molecule_TextWHeading() {
   Component.call(this);
 
 
