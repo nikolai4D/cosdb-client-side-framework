@@ -14,11 +14,13 @@ export async function Components(parentId) {
       const comp = await apiCallGet(`/read/${componentType}s/${slot.id}`);
       if (comp.length > 0) {
         console.log(comp, "comp");
-        componentsArray.push({
+        const compObj = {
           id: comp.id,
           slot: slot.value,
           content: comp.value,
-        });
+        };
+        console.log(compObj, "compObj");
+        componentsArray.push(compObj);
       }
     } catch (error) {
       console.log("no component found for slot ", slot.value);
