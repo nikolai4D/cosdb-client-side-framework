@@ -1,10 +1,12 @@
 import { Component } from "../../core/Component.mjs";
 
 
-export function Atom_Link(click = () => console.log("click")) {
+export function Atom_Link() {
   Component.call(this);
 
   this.value = [{ value: "placeholder" }];
+
+  this.click = () => console.log("click")
 
   this.getHtml = function(){
     return `<a>
@@ -14,6 +16,6 @@ export function Atom_Link(click = () => console.log("click")) {
     }
 
     this.bindScript = function(){
-        this.element.addEventListener("click", click)
+        this.element.addEventListener("click", this.click)
     }
 }
