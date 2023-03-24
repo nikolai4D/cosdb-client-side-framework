@@ -21,9 +21,6 @@ export async function View(viewPath) {
   div.classList.add(type);
   div.setAttribute("id", id);
 
-  //   const viewContentDiv = await ViewTester2(value); //for testing - delete later
-  //   viewDiv.appendChild(viewContentDiv); //for testing - delete later
-
   // Create a new viewTemplate
   const divChild = await ViewTemplate(id);
   console.log(divChild, "divChild");
