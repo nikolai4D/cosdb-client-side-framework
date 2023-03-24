@@ -28,12 +28,12 @@ export function Organism_InputOutput() {
     this.atoms = [
         {
             id: 1,
-            molecule: "Atom_Icon",
+            atom: "Atom_Icon",
             component: new Atom_Icon()
         },
         {
             id: 2,
-            molecule: "Atom_Icon",
+            atom: "Atom_Icon",
             component: new Atom_Icon()
         }
     ]
