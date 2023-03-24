@@ -1,5 +1,4 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
-import { createComponent } from "./helpers.mjs";
 import { createViewTemplate } from "./helpers.mjs";
 
 export async function ViewTemplate(parentId) {
@@ -34,6 +33,7 @@ export async function ViewTemplate(parentId) {
 
   const viewTemplateObject = await createViewTemplate(type, value);
   const renderViewTemplate = await viewTemplateObject.render();
+  console.log(renderViewTemplate);
   for (const child of renderViewTemplate) {
     div.appendChild(child);
   }
