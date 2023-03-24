@@ -30,7 +30,7 @@ export function ViewTemplate_dummy2() {
     <div><h1>${slt("slot3")}</h1></div>
     <div><h3>${slt("slot4")}</h3></div>
     <div><h5>${slt("slot3")}</h5></div>
-    <div><h5>TEXT</h5></div>`;
+    <div><h5>TEXT2</h5></div>`;
   };
 }
 
