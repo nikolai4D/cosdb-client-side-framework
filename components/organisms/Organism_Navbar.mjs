@@ -79,8 +79,6 @@ export function Organism_Navbar() {
           await (atom.component)
           atom.component.element.style.fontWeight = 'bold';
         }
-        console.log(await atom.component)
-
       }
     }
   }
