@@ -5,6 +5,7 @@ import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearc
 import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { State } from "../../data-mgmt/state.mjs";
+import { Organism_ModalProcess } from "./Organism_ModalProcess.mjs";
 
 export function Organism_ListAll() {
   Component.call(this);
@@ -35,11 +36,15 @@ export function Organism_ListAll() {
 
   this.getHtml = function () {
     return `
+    <div>
       <div class="organism_list-all-search">
         ${slot(this.molecules[0].molecule)}
         <div id="organism_all_lists" class="organism_list-all-search__lists">
           ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
+      </div>
+      <div id="modal-processView"></div>
+
       </div>
     `;
   };
@@ -60,6 +65,20 @@ export function Organism_ListAll() {
       }
     }
     renderMolecules();
+
+    this.getElement().querySelector("#organism_all_lists").addEventListener("click", (e) => {    
+
+      const modalId = document.getElementById('modal-processView')
+      
+      modalId.innerHTML = `
+          <div>
+              ${slot("new-modal")}
+          </div>
+          `
+      this.modal = new Organism_ModalProcess()
+
+      this.fillSlot("new-modal", this.modal.getElement());
+  });
 
   };
 
