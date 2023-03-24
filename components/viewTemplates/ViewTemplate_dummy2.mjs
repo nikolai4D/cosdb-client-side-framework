@@ -1,8 +1,6 @@
-import { Component } from "../../core/Component.mjs";
 import { html2dom } from "../../core/helpers.mjs";
 
 export function ViewTemplate_dummy2() {
-  Component.call(this);
   this.slots = [
     {
       slot: "slot3",
@@ -12,15 +10,10 @@ export function ViewTemplate_dummy2() {
     },
   ];
 
-  const slt = (slotName) => {
-    const foundSlot = this.slots.find((s) => s.slot === slotName);
-    return foundSlot ? foundSlot.slot : "";
-  };
-
   return async () => {
     await html2dom`
-      <div>${slt("slot3")}</div>
-      <div>${slt("slot4")}</div>
+      <div>${this.slots[0].slot}</div>
+      <div>${this.slots[1].slot}</div>
       <div>TEXT</div>
     `;
   };
