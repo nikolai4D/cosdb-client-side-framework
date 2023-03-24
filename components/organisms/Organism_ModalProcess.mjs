@@ -1,7 +1,6 @@
 import {slot} from "../../../core/helpers.mjs";
 import {Component} from "../../../core/Component.mjs";
-// import { Organism_ModalProcessContent } from "./Organism_ModalProcessContent.mjs";
-import { Molecule_TextWButton } from "../molecules/Molecule_TextWButton.mjs";
+import { Organism_ModalProcessContent } from "./Organism_ModalProcessContent.mjs";
 
 export function Organism_ModalProcess() {
     Component.call(this)
