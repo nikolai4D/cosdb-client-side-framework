@@ -52,6 +52,9 @@ Router.prototype.goTo = async function (
   }
 
   const createView = async (viewConstructor, params = []) => {
+    console.log(routeParams, ...params)
+
+    console.log(viewConstructor)
     let view = await new viewConstructor(routeParams, ...params);
     view.path = fullRoute;
     return view;
