@@ -58,7 +58,7 @@ Router.prototype.goTo = async function (
   };
 
   async function switchView(currentView) {
-    if (previousView) await previousView.template.removeElement();
+    if (previousView && previousView.template) await previousView.template.removeElement();
 
     if (pushState)
       history.pushState({ path: routeBase }, null, "../" + fullRoute); //History only store the route of the view
