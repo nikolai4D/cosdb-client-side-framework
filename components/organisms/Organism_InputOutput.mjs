@@ -1,7 +1,7 @@
 import {Component} from "../../../core/Component.mjs";
 import {slot} from "../../../core/helpers.mjs";
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
-import { Molecule_List } from "./Molecule_List.mjs";
+import { Molecule_List } from "../molecules/Molecule_List.mjs";
 import { Molecule_HeaderAndText } from "../molecules/Molecule_HeaderAndText.mjs"
 
 export function Organism_InputOutput() {
