@@ -43,7 +43,9 @@ Router.prototype.goTo = async function (
   console.log(splitRoute, routeBase, routeParams);
   let previousView = this.currentView;
 
-  let route = this.routes.find((r) => r.path === routeBase);
+  // let route = this.routes.find((r) => r.path === routeBase);
+  let route = this.routes[0];
+
   console.log(await route)
 
   // if (!route) {
