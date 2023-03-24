@@ -125,8 +125,10 @@ export function Organism_ListAll() {
 
   const renderMolecules = () => {
     // Replacing placeholder DOM elements (slots are rendered at this point) with new molecule DOM elements 
-    this.element.lastElementChild.innerHTML = "";
-    const moleculesSlots = this.element.lastElementChild;
+
+   let content= document.getElementById("organism_all_lists")
+   content.innerHTML = ""
+   const moleculesSlots = content
 
     for (const [index, mol] of this.molecules.entries()) {
       if (index !== 0) moleculesSlots.appendChild(mol.component.getElement());
