@@ -11,11 +11,11 @@ export function ViewTemplate_dummy2() {
   ];
 
   const comp = async () => {
-    await html2dom`
-    <div>${this.slots[0].slot}</div>
-    <div>${this.slots[1].slot}</div>
-    <div>TEXT</div>
-  `;
+    return await html2dom`
+      <div>${this.slots[0].slot}</div>
+      <div>${this.slots[1].slot}</div>
+      <div>TEXT</div>
+    `;
   };
 
   this.render = async () => {
