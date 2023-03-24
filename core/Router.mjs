@@ -41,6 +41,7 @@ Router.prototype.goTo = async function (
   let previousView = this.currentView;
 
   let route = this.routes.find((r) => r.path === routeBase);
+  console.log(await route)
 
   if (!route) {
     route = this.routes[0];
