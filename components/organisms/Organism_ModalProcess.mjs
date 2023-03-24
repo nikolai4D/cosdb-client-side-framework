@@ -58,7 +58,8 @@ export function Organism_ModalProcess() {
         mStyle.justifyContent = "center"
         mStyle.alignItems = "center"
 
-        // this.content.getElement().style.backgroundColor = "white"
+        molecules[0].component.getElement().style.backgroundColor = "white"
+        // this.content.getElement()
 
         this.getElement().addEventListener("click", (e)=>{
             if(e.target === this.getElement()){
