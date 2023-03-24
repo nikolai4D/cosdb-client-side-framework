@@ -43,7 +43,7 @@ export async function createViewTemplate(type, file, slots = []) {
   const pathToComponent = `../../components/${type}s/${file}.mjs`;
   const Component = await importModuleFromFile(pathToComponent, file);
   const componentInstance = new Component[file]();
-  componentInstance.slots = slots;
+  //componentInstance.slots = slots;
   componentInstance.render();
   return componentInstance;
 }
