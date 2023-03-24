@@ -61,8 +61,8 @@ Router.prototype.goTo = async function (
 
   async function switchView(currentView) {
     // console.log(await previousView?.template(), "previuos")
-    if (previousView) {
-     (await previousView.template()).removeElement()
+    if (previousView) {document.body.innerHTML = ""
+    //  (await previousView.template()).removeElement()
       // (await previousView.template()).removeElement();
 
     }
