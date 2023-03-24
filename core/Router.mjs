@@ -72,5 +72,7 @@ Router.prototype.goTo = async function (
   }
 
   this.currentView = await createView(route.view, params);
+
+  console.log({"test:": this.currentView})
   await switchView(this.currentView);
 };
