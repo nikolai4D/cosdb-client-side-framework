@@ -30,7 +30,7 @@ export function Molecule_TextWHeading() {
     return `
 
         <div class="molecule_header-and-text">
-            ${this.atoms.slice(1).map(at => slot(at.atom)).join("")}
+            ${this.atoms.map(at => slot(at.atom)).join("")}
         </div>
     `;
   }
