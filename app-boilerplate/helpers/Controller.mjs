@@ -350,9 +350,7 @@ export function Controller() {
     await this.getSlots();
     await this.bindNewScripts();
 
-     this.childComponent.model = this.model;
-
-     console.log(this.childComponent, "childcompoennt")
+    this.childComponent.model = this.model;
     return  this.childComponent ;
 
   }
