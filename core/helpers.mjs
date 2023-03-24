@@ -44,6 +44,6 @@ export async function createViewTemplate(type, file, slots = []) {
   const Component = await importModuleFromFile(pathToComponent, file);
   const componentInstance = new Component[file]();
   //componentInstance.slots = slots;
-  componentInstance.render();
+
   return componentInstance;
 }
