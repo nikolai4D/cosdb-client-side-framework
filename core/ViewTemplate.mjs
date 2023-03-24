@@ -45,5 +45,5 @@ export async function ViewTemplate(parentId) {
   //   console.dir(div);
 
   //   return div;
-  return viewTemplateObject.render;
+  return viewTemplateObject.render();
 }
