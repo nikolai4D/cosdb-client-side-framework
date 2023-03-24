@@ -10,15 +10,15 @@ export function ViewTemplate_dummy2() {
     },
   ];
 
-  const getSlotContent = (slotName) => {
-    const slot = this.slots.find((s) => s.slot === slotName);
-    return slot ? slot.slot : "";
+  const getSlot = (slotName) => {
+    const slt = this.slots.find((s) => s.slot === slotName);
+    return slt ? slt.slot : "";
   };
 
   const comp = async () => {
     return await html2dom`
-        <div>${getSlotContent("slot3")}</div>
-        <div>${getSlotContent("slot4")}</div>
+        <div>${await getSlot("slot3")}</div>
+        <div>${await getSlot("slot4")}</div>
         <div>TEXT</div>
     `;
   };
