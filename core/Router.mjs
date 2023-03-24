@@ -62,8 +62,7 @@ Router.prototype.goTo = async function (
   async function switchView(currentView) {
     // console.log(await previousView?.template(), "previuos")
     if (previousView) {
-
-      console.log(await previousView.template(), "HEJSAN")
+     (await previousView.template()).removeElement()
       // (await previousView.template()).removeElement();
 
     }
