@@ -65,7 +65,7 @@ export function Organism_Navbar() {
   this.bindScript= async function() {
 
     for (let mol of this.molecules) {
-      // console.log(mol)
+      // console.log(mol)x
       for (let atom of mol.component.atoms) {
        atom.component.click = async () => { await router.goTo(atom.component.value[0].value.toLowerCase())}
       
@@ -76,7 +76,11 @@ export function Organism_Navbar() {
     for (let mol of this.molecules) {
       // console.log(mol)
       for (let atom of mol.component.atoms) {
+        if (window.location.pathname.slice(1) === atom.component.value[0].value.toLowerCase()){
+          atom.component.element.style.fontWeight = 'bold';
+        }
         console.log(atom.component)
+
       }
     }
   }
