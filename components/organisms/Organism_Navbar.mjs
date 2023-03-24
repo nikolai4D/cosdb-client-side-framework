@@ -80,8 +80,6 @@ export function Organism_Navbar() {
         if (window.location.pathname.slice(1) === atom.component.value[0].value.toLowerCase()){
          atom.component.element.style.fontWeight = 'bold';
         }
-        // await atom.component
-
       }
     }
   }
