@@ -1,7 +1,7 @@
 import {Component} from "../../../core/Component.mjs";
 import {slot} from "../../../core/helpers.mjs";
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
-import { Molecule_List } from "../molecules/Molecule_List.mjs";
+import { Molecule_ListWHeading } from "../molecules/Molecule_ListWHeading.mjs";
 import { Molecule_HeaderAndText } from "../molecules/Molecule_HeaderAndText.mjs"
 
 export function Organism_InputOutput() {
@@ -10,8 +10,8 @@ export function Organism_InputOutput() {
     this.molecules = [
         {
             id: 1,
-            molecule: "Molecule_List",
-            component: new Molecule_List()
+            molecule: "Molecule_ListWHeading",
+            component: new Molecule_ListWHeading()
         }, 
         {
             id: 2,
@@ -20,8 +20,8 @@ export function Organism_InputOutput() {
         },
         {
             id: 3,
-            molecule: "Molecule_List",
-            component: new Molecule_List()
+            molecule: "Molecule_ListWHeading",
+            component: new Molecule_ListWHeading()
         }
     ]
 
