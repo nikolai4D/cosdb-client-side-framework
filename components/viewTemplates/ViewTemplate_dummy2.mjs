@@ -18,5 +18,8 @@ export function ViewTemplate_dummy2() {
   `;
   };
 
-  return comp;
+  this.render = async () => {
+    const dom = await comp();
+    return dom;
+  };
 }
