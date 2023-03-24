@@ -110,10 +110,18 @@
     cursor: pointer;
    
 }
+
 .molecule_icon_and_link:hover {
     color:#999;
 
 }
+
+.molecule_icon_and_link:active {
+    color: black;
+    cursor: pointer;
+    font-weight: bold
+}
+
 .molecule_textWButton {
     display: flex;
    gap: 0.8rem;

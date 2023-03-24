@@ -66,7 +66,6 @@ export function Organism_Navbar() {
 
   this.bindScript= async function() {
 
-
     for (let mol of this.molecules) {
       // console.log(mol)
       for (let atom of mol.component.atoms) {
