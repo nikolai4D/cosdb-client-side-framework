@@ -32,15 +32,16 @@ export async function ViewTemplate(parentId) {
   ];
 
   const viewTemplateObject = await createViewTemplate(type, value, content);
-  console.log(viewTemplateObject, "viewTemplateObject");
-  const viewTemplateObjectSlots = viewTemplateObject.slots;
-  console.log(viewTemplateObjectSlots, "viewTemplateObjectSlots");
+  //   console.log(viewTemplateObject, "viewTemplateObject");
+  //   const viewTemplateObjectSlots = viewTemplateObject.slots;
+  //   console.log(viewTemplateObjectSlots, "viewTemplateObjectSlots");
 
-  for (const slot of viewTemplateObjectSlots) {
-    div.appendChild(slot.content);
-  }
+  //   for (const slot of viewTemplateObjectSlots) {
+  //     div.appendChild(slot.content);
+  //   }
 
-  console.dir(div);
+  //   console.dir(div);
 
-  return div;
+  //   return div;
+  return viewTemplateObject;
 }
