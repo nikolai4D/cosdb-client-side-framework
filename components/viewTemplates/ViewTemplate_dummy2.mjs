@@ -10,7 +10,7 @@ export function ViewTemplate_dummy2() {
     },
   ];
 
-  return async () => {
+  this.render = async () => {
     await html2dom`
       <div>${this.slots[0].slot}</div>
       <div>${this.slots[1].slot}</div>
