@@ -31,11 +31,6 @@ export function Molecule_ParentBoxes() {
             id: 5,
             molecule: "Atom_Heading4",
             component: new Atom_Heading4()
-        },
-        {
-            id: 6,
-            molecule: "Atom_Icon",
-            component: new Atom_Icon()
         }
     ]
 
@@ -45,9 +40,8 @@ export function Molecule_ParentBoxes() {
         return `
             <div class="molecule-modal-proc-first-section">
                 <div class="molecule_proc-parentboxes">
-                ${this.atoms.slice(0, -1).map((at) => slot(at.atom)).join("")}
+                ${this.atoms.map((at) => slot(at.atom)).join("")}
                 </div>
-                ${slot(this.atoms.slice(0,-1)[0].atom)}
             </div>
         `
     }
