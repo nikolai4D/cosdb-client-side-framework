@@ -14,7 +14,7 @@ export function stringToHTMLElement(string) {
 
 export async function importModuleFromFile(path, filename) {
   const module = await import(`${path}`);
-  return new module();
+  return new module[filename]();
 }
 
 export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
