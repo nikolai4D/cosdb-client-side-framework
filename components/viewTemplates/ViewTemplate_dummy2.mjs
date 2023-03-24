@@ -10,9 +10,13 @@ export function ViewTemplate_dummy2() {
     },
   ];
 
-  return html2dom`
-      <div>${this.slots[0].slot}</div>
-      <div>${this.slots[1].slot}</div>
-      <div>TEXT</div>
-    `;
+  const comp = async () => {
+    await html2dom`
+    <div>${this.slots[0].slot}</div>
+    <div>${this.slots[1].slot}</div>
+    <div>TEXT</div>
+  `;
+  };
+
+  return comp;
 }
