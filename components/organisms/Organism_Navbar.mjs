@@ -64,24 +64,24 @@ export function Organism_Navbar() {
 
   this.bindScript= async function() {
 
-    // for (let mol of this.molecules) {
-    //   for (let atom of mol.component.atoms) {
-    //    atom.component.click = async () => { await router.goTo(atom.component.value[0].value.toLowerCase())}
+    for (let mol of this.molecules) {
+      for (let atom of mol.component.atoms) {
+       atom.component.click = async () => { await router.goTo(atom.component.value[0].value.toLowerCase())}
       
-    //   }
-    //   await this.fillSlot(mol.molecule, mol.component.getElement())
-    // }
+      }
+      await this.fillSlot(mol.molecule, mol.component.getElement())
+    }
 
-    // for (let mol of this.molecules) {
-    //   // console.log(mol)
-    //   for (let atom of mol.component.atoms) {
-    //     if (window.location.pathname.slice(1) === atom.component.value[0].value.toLowerCase()){
-    //       await (atom.component)
-    //       atom.component.element.style.fontWeight = 'bold';
-    //     }
-    //     console.log(await atom.component)
+    for (let mol of this.molecules) {
+      // console.log(mol)
+      for (let atom of mol.component.atoms) {
+        if (window.location.pathname.slice(1) === atom.component.value[0].value.toLowerCase()){
+          await (atom.component)
+          atom.component.element.style.fontWeight = 'bold';
+        }
+        console.log(await atom.component)
 
-    //   }
-    // }
+      }
+    }
   }
 }
