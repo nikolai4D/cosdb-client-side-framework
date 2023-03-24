@@ -46,14 +46,8 @@ export function Molecule_ParentBoxes() {
             <div class="molecule-modal-proc-first-section">
                 <div class="molecule_proc-parentboxes">
                 ${this.atoms.slice(0, -1).map((at) => slot(at.atom)).join("")}
-
-                    ${slot("box1")}
-                    ${slot("icon1")}
-                    ${slot("box2")}
-                    ${slot("icon2")}
-                    ${slot("box3")}
                 </div>
-                ${slot(this.atoms[-1].atom)}
+                ${slot(this.atoms.slice(0,-1)[0].atom)}
             </div>
         `
     }
