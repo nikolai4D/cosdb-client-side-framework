@@ -65,5 +65,5 @@ export async function getMolecule(module, parentId) {
   //   }
 
   //   return divMolecule;
-  return renderMolecule;
+  return await renderMolecule;
 }

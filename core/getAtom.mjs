@@ -20,5 +20,5 @@ export async function getAtom(module, parentId) {
 
   const renderAtom = await atomObject.render();
 
-  return renderAtom;
+  return await renderAtom;
 }
