@@ -25,11 +25,12 @@ export async function getMolecule(module, parentId) {
   for (const atom of atoms) {
     const value = atom.value;
     const atomObject = await getAtom(value, moleculeId);
+    console.log(atomObject, "atomObject");
     const atomId = parseInt(atom.key.split(" ")[1]);
     atomsObject.push({
       id: atomId,
       value: value,
-      component: atomObject(),
+      component: atomObject,
     });
   }
 
