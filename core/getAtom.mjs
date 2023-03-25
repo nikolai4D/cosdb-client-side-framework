@@ -1,7 +1,7 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { createComponent } from "./helpers.mjs";
 
-export async function getAtom(module, parentId) {
+export async function getAtom(module, parentId, atomId = null) {
   //   const divAtom = document.createElement("div");
   //   divAtom.classList.add("atom");
   //   divAtom.setAttribute("id", parentId);
@@ -10,7 +10,12 @@ export async function getAtom(module, parentId) {
   const modelAtoms = await apiCallGet(`/read/atoms`);
   const modelAtomValues = await apiCallGet(`/read/atomValues`);
 
-  const atom = modelAtoms.filter((atom) => atom.parentId === parentId);
+  //const atom = modelAtoms.filter((atom) => atom.parentId === parentId);
+
+  const atom = atomId
+    ? modelAtoms.filter((atom) => atom.id === atomId)
+    : modelAtoms.filter((atom) => atom.parentId === parentId);
+
   const atomValue = modelAtomValues.filter(
     (atomValue) => atomValue.parentId === atom[0].id
   );

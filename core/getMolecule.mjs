@@ -10,7 +10,7 @@ export async function getMolecule(module, parentId) {
 
   const modelMolecules = await apiCallGet(`/read/molecules`);
   const modelAtoms = await apiCallGet(`/read/atoms`);
-  console.log(modelAtoms, "modelAtoms");
+
   const modelFunctions = await apiCallGet(`/read/functions`);
 
   const type = "molecule";
@@ -23,12 +23,11 @@ export async function getMolecule(module, parentId) {
   //atoms
   const atomsObject = [];
   const atoms = modelAtoms.filter((atom) => atom.parentId === molecule[0].id);
-  console.log(atoms, "atoms!!!!!!!!!!!!!!!!!!!");
+
   for (const atom of atoms) {
-    console.log(atom, "atom!!!!!!!");
     const value = atom.value;
-    const atomObject = await getAtom(value, moleculeId);
-    console.log(atomObject, "atomObject!!!!!!!");
+    const atomObject = await getAtom(value, moleculeId, atom.id);
+
     const atomId = parseInt(atom.key.split(" ")[1]);
     atomsObject.push({
       id: atomId,
@@ -57,10 +56,7 @@ export async function getMolecule(module, parentId) {
   moleculeObject.atoms = atomsObject;
   moleculeObject.functions = functionsObject;
 
-  console.log(moleculeObject, "moleculeObject");
-
   const renderMolecule = await moleculeObject.render();
-  console.log(renderMolecule, "renderMolecule");
 
   //   const renderMoleculeArray = Array.from(renderMolecule);
 
