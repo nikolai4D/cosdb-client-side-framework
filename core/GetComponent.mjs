@@ -30,21 +30,17 @@ export async function GetComponent(compName, compParentId) {
     //get the data
     const data = await getData(type, compParentId);
 
-    console.log(comp.value, "comp.value");
-    console.log(data, "data");
-
     comp.value = [{ value: data[0].atomValue }];
-
-    const renderComponent = await comp.render();
-
-    const renderComponentArray = Array.from(renderComponent);
-
-    for (const child of renderComponentArray) {
-      div.appendChild(child);
-    }
-
-    return div;
   }
+  const renderComponent = await comp.render();
+
+  const renderComponentArray = Array.from(renderComponent);
+
+  for (const child of renderComponentArray) {
+    div.appendChild(child);
+  }
+
+  return div;
 }
 
 async function getData(type, parentId) {
