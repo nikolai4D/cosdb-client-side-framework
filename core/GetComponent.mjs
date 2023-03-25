@@ -27,18 +27,20 @@ export async function GetComponent(compName, compParentId) {
     const compAndData = await createComponent(type, compName, compParentId);
     console.log(compAndData, "compAndData");
 
-    //component.value = content.value;
+    const component = compAndData.component;
+    const data = compAndData.data;
+    component.value = [{ value: data[0].atomValue }];
   }
 
-  //   const renderViewTemplate = await componentObject.render();
+  const renderComponent = await component.render();
 
-  //   const renderViewTemplateArray = Array.from(renderViewTemplate);
+  const renderComponentArray = Array.from(renderComponent);
 
-  //   for (const child of renderViewTemplateArray) {
-  //     div.appendChild(child);
-  //   }
+  for (const child of renderComponentArray) {
+    div.appendChild(child);
+  }
 
-  //   return div;
+  return div;
 }
 
 async function createComponent(type, file, compParentId) {

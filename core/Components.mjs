@@ -24,7 +24,8 @@ export async function Components(parentId) {
         const compObj = {
           id: comp[0].id,
           slot: slot.value,
-          content: comp[0].value,
+          //content: comp[0].value,
+          content: componentFromModule,
         };
 
         componentsArray.push(compObj);
