@@ -4,6 +4,7 @@ import { createComp } from "./helpers.mjs";
 
 export async function GetComponent(compName, compParentId) {
   let type;
+  console.log(compName, "compName", compParentId, "compParentId");
 
   if (compName.startsWith("Organism")) {
     type = "organism";
@@ -31,8 +32,10 @@ export async function GetComponent(compName, compParentId) {
     const data = compAndData.data;
     component.value = [{ value: data[0].atomValue }];
   }
+  console.log(component, "component");
 
   const renderComponent = await component.render();
+  console.log(renderComponent, "renderComponent");
 
   const renderComponentArray = Array.from(renderComponent);
 
