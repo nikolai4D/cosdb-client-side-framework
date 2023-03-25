@@ -36,8 +36,13 @@ export function Molecule_Dev1() {
   fn(1);
   fn(2);
 
-  const atom = (id) =>
-    this.atoms.find((atom) => atom.id === id)?.component.render() || "";
+  //   const atom = async (id) =>
+  //     this.atoms.find((atom) => atom.id === id)?.component.render() || "";
+
+  const atom = async (id) => {
+    const component = this.atoms.find((atom) => atom.id === id)?.component;
+    return component ? await component.render() : "";
+  };
 
   const molecule = async () => {
     return await html2dom`
