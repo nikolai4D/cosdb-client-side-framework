@@ -23,9 +23,10 @@ export async function getMolecule(module, parentId) {
   const atomsObject = [];
   const atoms = modelAtoms.filter((atom) => atom.parentId === molecule[0].id);
   for (const atom of atoms) {
+    console.log(atom, "atom!!!!!!!");
     const value = atom.value;
     const atomObject = await getAtom(value, moleculeId);
-    console.log(atomObject, "atomObject");
+    console.log(atomObject, "atomObject!!!!!!!");
     const atomId = parseInt(atom.key.split(" ")[1]);
     atomsObject.push({
       id: atomId,
