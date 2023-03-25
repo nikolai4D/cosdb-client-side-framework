@@ -4,9 +4,9 @@ import { getFunction } from "./getFunction.mjs";
 import { createComponent } from "./helpers.mjs";
 
 export async function getMolecule(module, parentId) {
-  const div = document.createElement("div");
-  div.classList.add("molecule");
-  div.setAttribute("id", parentId);
+  const divMolecule = document.createElement("div");
+  divMolecule.classList.add("molecule");
+  divMolecule.setAttribute("id", parentId);
 
   const modelMolecules = await apiCallGet(`/read/molecules`);
   const modelAtoms = await apiCallGet(`/read/atoms`);
@@ -51,11 +51,12 @@ export async function getMolecule(module, parentId) {
 
   const renderMolecule = await moleculeObject.render();
 
-  const renderMoleculeArray = Array.from(renderMolecule);
+  //   const renderMoleculeArray = Array.from(renderMolecule);
 
-  for (const child of renderMoleculeArray) {
-    div.appendChild(child);
-  }
+  //   for (const child of renderMoleculeArray) {
+  //     divMolecule.appendChild(child);
+  //   }
 
-  return div;
+  //   return divMolecule;
+  return renderMolecule;
 }
