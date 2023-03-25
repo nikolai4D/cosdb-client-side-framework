@@ -8,7 +8,7 @@ export async function getMolecule(module, parentId) {
   const modelAtoms = await apiCallGet(`/read/atoms`);
   const modelFunctions = await apiCallGet(`/read/functions`);
 
-  type = "molecule";
+  const type = "molecule";
 
   const molecule = modelMolecules.filter(
     (molecule) => molecule.parentId === parentId
