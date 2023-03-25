@@ -29,7 +29,7 @@ export async function getMolecule(module, parentId) {
     atomsObject.push({
       id: atomId,
       value: value,
-      component: await atomObject[0],
+      component: await atomObject.render(),
     });
   }
 
