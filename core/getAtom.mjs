@@ -2,6 +2,10 @@ import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { createComponent } from "./helpers.mjs";
 
 export async function getAtom(module, parentId) {
+  const div = document.createElement("div");
+  div.classList.add("atom");
+  div.setAttribute("id", parentId);
+
   const type = "atom";
   const modelAtoms = await apiCallGet(`/read/atoms`);
   const modelAtomValues = await apiCallGet(`/read/atomValues`);
@@ -16,5 +20,11 @@ export async function getAtom(module, parentId) {
 
   const renderAtom = await atomObject.render();
 
-  return renderAtom;
+  const renderAtomArray = Array.from(renderAtom);
+
+  for (const child of renderAtomArray) {
+    div.appendChild(child);
+  }
+
+  return div;
 }
