@@ -8,13 +8,11 @@ export async function GetComponent(compName, compParentId) {
   if (compName.startsWith("Organism")) {
     type = "organism";
     //get the module
-    const compAndData = await createComponent(type, compName, compParentId)
+    const compAndData = await createComponent(type, compName, compParentId);
 
     //component.organisms = content.organisms;
     //component.molecules = content.molecules;
     //component.functions = content.functions;
-
-    const componentObject = ;
   }
   if (compName.startsWith("Molecule")) {
     type = "molecule";
@@ -26,23 +24,21 @@ export async function GetComponent(compName, compParentId) {
   if (compName.startsWith("Atom")) {
     type = "atom";
     //get the module
-    const compAndData = await createComponent(type, compName, compParentId)
+    const compAndData = await createComponent(type, compName, compParentId);
     console.log(compAndData, "compAndData");
 
-
     //component.value = content.value;
-
   }
 
-//   const renderViewTemplate = await componentObject.render();
+  //   const renderViewTemplate = await componentObject.render();
 
-//   const renderViewTemplateArray = Array.from(renderViewTemplate);
+  //   const renderViewTemplateArray = Array.from(renderViewTemplate);
 
-//   for (const child of renderViewTemplateArray) {
-//     div.appendChild(child);
-//   }
+  //   for (const child of renderViewTemplateArray) {
+  //     div.appendChild(child);
+  //   }
 
-//   return div;
+  //   return div;
 }
 
 async function createComponent(type, file, compParentId) {
