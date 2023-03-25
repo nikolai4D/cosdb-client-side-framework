@@ -8,7 +8,8 @@ export async function GetComponent(compName, compParentId) {
   div.classList.add(type);
   div.setAttribute("id", compParentId);
 
-  console.log(compName, "compName", compParentId, "compParentId");
+  let comp;
+  let data;
 
   if (compName.startsWith("Organism")) {
     type = "organism";
@@ -28,9 +29,9 @@ export async function GetComponent(compName, compParentId) {
     type = "atom";
     //get the module
 
-    const comp = await createComp(type, compName);
+    comp = await createComp(type, compName);
     //get the data
-    const data = await getData(type, compParentId);
+    data = await getData(type, compParentId);
 
     console.log(comp, "comp");
     console.log(data, "data");
@@ -38,7 +39,7 @@ export async function GetComponent(compName, compParentId) {
     comp.value = await data[0].atomValue;
   }
   const renderComponent = await comp.render();
-  console.log(renderComponent, "renderComponent");
+
   const renderComponentArray = Array.from(renderComponent);
 
   for (const child of renderComponentArray) {
