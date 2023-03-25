@@ -22,7 +22,7 @@ export async function getMolecule(module, parentId) {
     const value = atom.value;
     const atomObject = await getAtom(value, moleculeId);
     const atomId = parseInt(atom.key.split(" ")[1]);
-    atomsObject.push({ id: atomId, value: value, component: atomObject });
+    atomsObject.push({ id: atomId, value: value, component: await atomObject });
   }
 
   //functions
@@ -34,7 +34,11 @@ export async function getMolecule(module, parentId) {
     const value = func.value;
     const funcObject = await getFunction(value, moleculeId);
     const funcId = parseInt(func.key.split(" ")[1]);
-    functionsObject.push({ id: funcId, value: value, function: funcObject });
+    functionsObject.push({
+      id: funcId,
+      value: value,
+      function: await funcObject,
+    });
   }
 
   const moleculeObject = await createComponent(type, module);
