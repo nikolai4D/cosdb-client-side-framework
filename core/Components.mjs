@@ -19,13 +19,12 @@ export async function Components(parentId) {
           comp[0].value,
           comp[0].id
         );
-        console.log(componentFromModule, "componentFromModule");
 
         const compObj = {
           id: comp[0].id,
           slot: slot.value,
           //content: comp[0].value,
-          content: componentFromModule,
+          content: await componentFromModule,
         };
 
         componentsArray.push(compObj);
