@@ -54,7 +54,7 @@ export async function getMolecule(module, parentId) {
   moleculeObject.atoms = atomsObject;
   moleculeObject.functions = functionsObject;
 
-  console.log(atomsObject, "atomsObject");
+  console.log(moleculeObject, "moleculeObject");
 
   const renderMolecule = await moleculeObject.render();
   console.log(renderMolecule, "renderMolecule");
