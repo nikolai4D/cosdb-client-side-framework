@@ -4,9 +4,9 @@ import { getFunction } from "./getFunction.mjs";
 import { createComponent } from "./helpers.mjs";
 
 export async function getMolecule(module, parentId) {
-  const divMolecule = document.createElement("div");
-  divMolecule.classList.add("molecule");
-  divMolecule.setAttribute("id", parentId);
+  //   const divMolecule = document.createElement("div");
+  //   divMolecule.classList.add("molecule");
+  //   divMolecule.setAttribute("id", parentId);
 
   const modelMolecules = await apiCallGet(`/read/molecules`);
   const modelAtoms = await apiCallGet(`/read/atoms`);
@@ -30,7 +30,7 @@ export async function getMolecule(module, parentId) {
     atomsObject.push({
       id: atomId,
       value: value,
-      component: atomObject,
+      component: await atomObject,
     });
   }
 
