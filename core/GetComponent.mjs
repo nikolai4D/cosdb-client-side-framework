@@ -4,6 +4,7 @@ import { createComp } from "./helpers.mjs";
 
 export async function GetComponent(compName, compParentId) {
   let type;
+  let comp;
   const div = document.createElement("div");
   div.classList.add("component");
   div.setAttribute("id", compParentId);
@@ -26,7 +27,7 @@ export async function GetComponent(compName, compParentId) {
     type = "atom";
     //get the module
 
-    const comp = await createComp(type, compName);
+    comp = await createComp(type, compName);
     //get the data
     const data = await getData(type, compParentId);
 
