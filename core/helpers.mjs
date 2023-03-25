@@ -19,30 +19,8 @@ export async function importModuleFromFile(path, filename) {
 
 export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 
-// export async function html2dom(strings, ...values) {
-//   const container = document.createElement("div");
-//   let interpolatedHTML = "";
-
-//   strings.forEach((string, index) => {
-//     interpolatedHTML += string;
-
-//     if (values[index] !== undefined) {
-//       if (values[index] instanceof HTMLElement) {
-//         interpolatedHTML += values[index].outerHTML;
-//       } else {
-//         interpolatedHTML += values[index];
-//       }
-//     }
-//   });
-
-//   container.innerHTML = interpolatedHTML;
-
-//   return await container.childNodes;
-// }
-
 export async function html2dom(strings, ...values) {
   const container = document.createElement("div");
-  const wrapper = document.createElement("div");
   let interpolatedHTML = "";
 
   strings.forEach((string, index) => {
@@ -59,13 +37,35 @@ export async function html2dom(strings, ...values) {
 
   container.innerHTML = interpolatedHTML;
 
-  // Wrap the content of the container with an extra div (wrapper)
-  while (container.firstChild) {
-    wrapper.appendChild(container.firstChild);
-  }
-
-  return wrapper; // Return the wrapper div instead of the NodeList
+  return await container.childNodes;
 }
+
+// export async function html2dom(strings, ...values) {
+//   const container = document.createElement("div");
+//   const wrapper = document.createElement("div");
+//   let interpolatedHTML = "";
+
+//   strings.forEach((string, index) => {
+//     interpolatedHTML += string;
+
+//     if (values[index] !== undefined) {
+//       if (values[index] instanceof HTMLElement) {
+//         interpolatedHTML += values[index].outerHTML;
+//       } else {
+//         interpolatedHTML += values[index];
+//       }
+//     }
+//   });
+
+//   container.innerHTML = interpolatedHTML;
+
+//   // Wrap the content of the container with an extra div (wrapper)
+//   while (container.firstChild) {
+//     wrapper.appendChild(container.firstChild);
+//   }
+
+//   return wrapper; // Return the wrapper div instead of the NodeList
+// }
 
 export async function createComponent(type, file) {
   const pathToComponent = `../../components/${type}s/${file}.mjs`;
