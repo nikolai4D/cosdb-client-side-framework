@@ -1,5 +1,5 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
-import { getAtom } from "./getAtom.mjs";
+import { getMolecule } from "./getMolecule.mjs";
 import { getFunction } from "./getFunction.mjs";
 import { createComponent } from "./helpers.mjs";
 
