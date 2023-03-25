@@ -8,9 +8,9 @@ export async function GetComponent(compName, compParentId) {
   console.log(modelData, "modelData");
   //   let type;
   //   let comp;
-  //   const div = document.createElement("div");
-  //   div.classList.add("component");
-  //   div.setAttribute("id", compParentId);
+  const div = document.createElement("div");
+  div.classList.add("component");
+  div.setAttribute("id", compParentId);
 
   //   if (compName.startsWith("Organism")) {
   //     type = "organism";
@@ -44,7 +44,7 @@ export async function GetComponent(compName, compParentId) {
   //     div.appendChild(child);
   //   }
 
-  //   return div;
+  return div;
 }
 
 // async function getData(type, parentId) {
