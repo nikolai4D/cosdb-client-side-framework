@@ -3,7 +3,7 @@ import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { createComp } from "./helpers.mjs";
 
 export async function GetComponent(compName, compParentId) {
-  const modelData = await apiCallGet(`/read/comp/${compParentId}`);
+  const modelData = await apiCallGet(`/readComponent/${compParentId}`);
   console.log(modelData, "modelData");
   //   let type;
   //   let comp;
@@ -43,15 +43,15 @@ export async function GetComponent(compName, compParentId) {
   //     div.appendChild(child);
   //   }
 
-  return div;
+  //   return div;
 }
 
-async function getData(type, parentId) {
-  const data = await apiCallGet(`/read/${type}s/${parentId}`);
-  if (type === "atom") {
-    const atomValueId = data[0].id;
-    const atomValeData = await apiCallGet(`/read/atomValues/${atomValueId}`);
-    data[0].atomValue = atomValeData[0].value;
-  }
-  return data;
-}
+// async function getData(type, parentId) {
+//   const data = await apiCallGet(`/read/${type}s/${parentId}`);
+//   if (type === "atom") {
+//     const atomValueId = data[0].id;
+//     const atomValeData = await apiCallGet(`/read/atomValues/${atomValueId}`);
+//     data[0].atomValue = atomValeData[0].value;
+//   }
+//   return data;
+// }
