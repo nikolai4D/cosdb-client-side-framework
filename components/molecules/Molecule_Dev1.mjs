@@ -36,14 +36,10 @@ export function Molecule_Dev1() {
   fn(1);
   fn(2);
 
-  //   const atom = async (id) =>
-  //     this.atoms.find((atom) => atom.id === id)?.component || "";
-
   const atom = async (id) => {
     const component = Array.from(
       this.atoms.find((atom) => atom.id === id)?.component
     );
-    //const renderedArray = Array.from(component);
     return component.map((elem) => elem.outerHTML).join("");
   };
 
