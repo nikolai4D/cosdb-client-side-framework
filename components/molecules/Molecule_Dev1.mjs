@@ -40,9 +40,11 @@ export function Molecule_Dev1() {
   //     this.atoms.find((atom) => atom.id === id)?.component || "";
 
   const atom = async (id) => {
-    const component = this.atoms.find((atom) => atom.id === id)?.component;
+    const component = Array.from(
+      this.atoms.find((atom) => atom.id === id)?.component
+    );
     //const renderedArray = Array.from(component);
-    return component[0].map((elem) => elem.outerHTML).join("");
+    return component.map((elem) => elem.outerHTML).join("");
   };
 
   const molecule = async () => {
