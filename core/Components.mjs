@@ -1,4 +1,5 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
+import { GetComponent } from "./GetComponent.mjs";
 
 export async function Components(parentId) {
   const slotType = "slot";
@@ -12,8 +13,14 @@ export async function Components(parentId) {
   for (const slot of Slots) {
     try {
       const comp = await apiCallGet(`/read/${componentType}s/${slot.id}`);
-
+      //comp[0].value is the component name to be read from /components
       if (comp.length > 0) {
+        const componentFromModule = await GetComponent(
+          comp[0].value,
+          comp[0].id
+        );
+        console.log(componentFromModule, "componentFromModule");
+
         const compObj = {
           id: comp[0].id,
           slot: slot.value,
