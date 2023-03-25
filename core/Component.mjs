@@ -143,9 +143,9 @@ export function Component(options = {}){
                     // const slotName = slot.attributes["data-slot"].value
                     this.fillSlot(key, this.subComponents[key].getElement());
                 }
-                else {
-                    console.warn("No subComponent found for slot: " + key)
-                }
+                // else {
+                //     console.warn("No subComponent found for slot: " + key)
+                // }
             } catch (e) {
                 console.error("Error while binding slot: ", key, slot,
                     "subComponents keys: ", Object.keys(this.subComponents),
