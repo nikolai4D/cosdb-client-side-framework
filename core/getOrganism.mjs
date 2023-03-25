@@ -4,7 +4,7 @@ import { getFunction } from "./getFunction.mjs";
 import { createComponent } from "./helpers.mjs";
 
 export async function getOrganism(module, parentId) {
-  const modelOrganims = await apiCallGet(`/read/organsims`);
+  const modelOrganims = await apiCallGet(`/read/organisms`);
   const modelMolecules = await apiCallGet(`/read/molecules`);
 
   const modelFunctions = await apiCallGet(`/read/functions`);
