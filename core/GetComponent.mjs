@@ -46,5 +46,11 @@ async function createComponent(type, file, compParentId) {
   const component = await createComp(type, file);
   //get data from model
   const data = await apiCallGet(`/read/${type}s/${compParentId}`);
+  if (type === "atom") {
+    const atomValueId = data[0].id;
+    const atomValeData = await apiCallGet(`/read/atomValues/${atomValueId}`);
+    data[0].atomValue = atomValeData[0].value;
+  }
+
   return { component, data };
 }
