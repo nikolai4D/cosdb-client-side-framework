@@ -37,13 +37,13 @@ export function Molecule_Dev1() {
   fn(2);
 
   const atom = (id) =>
-    this.atoms.find((atom) => atom.id === id)?.component || "";
+    this.atoms.find((atom) => atom.id === id)?.component.render() || "";
 
   const molecule = async () => {
     return await html2dom`
     <div class="molecule_dummy4">
-    <div>${atom(1)}</div>
-    <div>${atom(2)}</div>
+    <div>${await atom(1)}</div>
+    <div>${await atom(2)}</div>
   </div>`;
   };
 
