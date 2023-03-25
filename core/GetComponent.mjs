@@ -3,6 +3,7 @@ import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { createComp } from "./helpers.mjs";
 
 export async function GetComponent(compName, compParentId) {
+  console.log(compName, compParentId, "compName, compParentId");
   const modelData = await apiCallGet(`/readComponent/${compParentId}`);
   console.log(modelData, "modelData");
   //   let type;
