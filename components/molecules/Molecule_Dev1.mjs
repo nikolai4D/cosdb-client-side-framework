@@ -37,15 +37,12 @@ export function Molecule_Dev1() {
   fn(2);
 
   //   const atom = async (id) =>
-  //     this.atoms.find((atom) => atom.id === id)?.component.render() || "";
+  //     this.atoms.find((atom) => atom.id === id)?.component || "";
 
   const atom = async (id) => {
     const component = this.atoms.find((atom) => atom.id === id)?.component;
-    if (component) {
-      const renderedArray = Array.from(component);
-      return renderedArray.map((elem) => elem.outerHTML).join("");
-    }
-    return "";
+    //const renderedArray = Array.from(component);
+    return component[0].map((elem) => elem.outerHTML).join("");
   };
 
   const molecule = async () => {
