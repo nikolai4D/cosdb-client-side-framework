@@ -5,7 +5,7 @@ import { createComp } from "./helpers.mjs";
 export async function GetComponent(compName, compParentId) {
   let type;
   const div = document.createElement("div");
-  div.classList.add(type);
+  div.classList.add("component");
   div.setAttribute("id", compParentId);
 
   if (compName.startsWith("Organism")) {
