@@ -27,7 +27,7 @@ export async function getOrganism(module, parentId) {
 
   for (const molecule of molecules) {
     const value = molecule.value;
-    const moleculeObject = await getMolecule(value, moleculeId);
+    const moleculeObject = await getMolecule(value, organismId);
 
     const moleculeId = parseInt(molecule.key.split(" ")[1]);
     moleculesObject.push({
