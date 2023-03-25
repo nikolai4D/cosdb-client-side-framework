@@ -8,12 +8,12 @@ export function Organism_Dev1() {
   this.molecules = [
     {
       id: 1,
-      atom: "Molecule_Dev1",
+      molecule: "Molecule_Dev1",
       component: new Molecule_Dev1(),
     },
     {
       id: 2,
-      atom: "Molecule_Dev2",
+      molecule: "Molecule_Dev2",
       component: new Molecule_Dev2(),
     },
   ];
