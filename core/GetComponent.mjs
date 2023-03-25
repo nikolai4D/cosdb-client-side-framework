@@ -3,43 +3,45 @@ import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { createComp } from "./helpers.mjs";
 
 export async function GetComponent(compName, compParentId) {
-  let type;
-  let comp;
-  const div = document.createElement("div");
-  div.classList.add("component");
-  div.setAttribute("id", compParentId);
+  const modelData = await apiCallGet(`/read/comp/${compParentId}`);
+  console.log(modelData, "modelData");
+  //   let type;
+  //   let comp;
+  //   const div = document.createElement("div");
+  //   div.classList.add("component");
+  //   div.setAttribute("id", compParentId);
 
-  if (compName.startsWith("Organism")) {
-    type = "organism";
+  //   if (compName.startsWith("Organism")) {
+  //     type = "organism";
 
-    //component.organisms = content.organisms;
-    //component.molecules = content.molecules;
-    //component.functions = content.functions;
-  }
-  if (compName.startsWith("Molecule")) {
-    type = "molecule";
+  //     //component.organisms = content.organisms;
+  //     //component.molecules = content.molecules;
+  //     //component.functions = content.functions;
+  //   }
+  //   if (compName.startsWith("Molecule")) {
+  //     type = "molecule";
 
-    //component.molecules = content.molecules;
-    //component.atoms = content.atoms;
-    //component.functions = content.functions;
-  }
-  if (compName.startsWith("Atom")) {
-    type = "atom";
-    //get the module
+  //     //component.molecules = content.molecules;
+  //     //component.atoms = content.atoms;
+  //     //component.functions = content.functions;
+  //   }
+  //   if (compName.startsWith("Atom")) {
+  //     type = "atom";
+  //     //get the module
 
-    comp = await createComp(type, compName);
-    //get the data
-    const data = await getData(type, compParentId);
+  //     comp = await createComp(type, compName);
+  //     //get the data
+  //     const data = await getData(type, compParentId);
 
-    comp.value = [{ value: data[0].atomValue }];
-  }
-  const renderComponent = await comp.render();
+  //     comp.value = [{ value: data[0].atomValue }];
+  //   }
+  //   const renderComponent = await comp.render();
 
-  const renderComponentArray = Array.from(renderComponent);
+  //   const renderComponentArray = Array.from(renderComponent);
 
-  for (const child of renderComponentArray) {
-    div.appendChild(child);
-  }
+  //   for (const child of renderComponentArray) {
+  //     div.appendChild(child);
+  //   }
 
   return div;
 }
