@@ -33,7 +33,7 @@ export async function GetComponent(compName, compParentId) {
     console.log(comp.value, "comp.value");
     console.log(data, "data");
 
-    comp.value = [{ value: data.atomValue }];
+    comp.value = [{ value: data[0].atomValue }];
 
     const renderComponent = await comp.render();
 
