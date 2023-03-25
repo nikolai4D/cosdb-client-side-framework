@@ -3,7 +3,7 @@ import { getAtom } from "./getAtom.mjs";
 import { getFunction } from "./getFunction.mjs";
 import { createComponent } from "./helpers.mjs";
 
-export async function getMolecule(module, parentId) {
+export async function getMolecule(module, parentId, moleculeId = null) {
   const modelMolecules = await apiCallGet(`/read/molecules`);
   const modelAtoms = await apiCallGet(`/read/atoms`);
 
@@ -11,9 +11,14 @@ export async function getMolecule(module, parentId) {
 
   const type = "molecule";
 
-  const molecule = modelMolecules.filter(
-    (molecule) => molecule.parentId === parentId
-  );
+  //   const molecule = modelMolecules.filter(
+  //     (molecule) => molecule.parentId === parentId
+  //   );
+
+  const molecule = moleculeId
+    ? modelMolecules.filter((molecule) => molecule.id === atomId)
+    : modelMolecules.filter((molecule) => molecule.parentId === parentId);
+
   const moleculeId = molecule[0].id;
 
   //atoms
