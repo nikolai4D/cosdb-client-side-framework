@@ -66,6 +66,5 @@ export async function createComp(type, file) {
   const Component = await importModuleFromFile(pathToComponent, file);
 
   const component = new Component[file]();
-  console.log(component);
   return component;
 }
