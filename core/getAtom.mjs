@@ -19,6 +19,7 @@ export async function getAtom(module, parentId) {
   atomObject.value = [{ value: atomValue[0].value }];
 
   const renderAtom = await atomObject.render();
+  console.log(renderAtom, "renderAtom");
 
   return await renderAtom;
 }

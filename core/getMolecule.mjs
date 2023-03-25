@@ -30,7 +30,7 @@ export async function getMolecule(module, parentId) {
     atomsObject.push({
       id: atomId,
       value: value,
-      component: await new atomObject(),
+      component: await atomObject,
     });
   }
 
@@ -57,6 +57,7 @@ export async function getMolecule(module, parentId) {
   console.log(atomsObject, "atomsObject");
 
   const renderMolecule = await moleculeObject.render();
+  console.log(renderMolecule, "renderMolecule");
 
   //   const renderMoleculeArray = Array.from(renderMolecule);
 
