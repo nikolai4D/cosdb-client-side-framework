@@ -29,8 +29,10 @@ export async function GetComponent(compName, compParentId) {
     console.log(compAndData, "compAndData");
 
     const component = compAndData.component;
+    console.log(component, "component before asigning data");
     const data = compAndData.data;
     component.value = [{ value: data[0].atomValue }];
+    console.log(component, "component after asigning data");
   }
   console.log(component, "component");
 
