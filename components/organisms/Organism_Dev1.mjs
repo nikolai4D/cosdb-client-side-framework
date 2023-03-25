@@ -38,16 +38,25 @@ export function Organism_Dev1() {
   fn(1);
   fn(2);
 
-  const org = (id) =>
-    this.organisms.find((org) => org.id === id)?.component || "";
-  const molecule = (id) =>
-    this.molecules.find((mol) => mol.id === id)?.component || "";
+  const childOrganism = async (id) => {
+    const component = Array.from(
+      this.organisms.find((childOrg) => childOrg.id === id)?.component
+    );
+    return component.map((elem) => elem.outerHTML).join("");
+  };
+
+  const molecule = async (id) => {
+    const component = Array.from(
+      this.molecules.find((mol) => mol.id === id)?.component
+    );
+    return component.map((elem) => elem.outerHTML).join("");
+  };
 
   const organism = async () => {
     return await html2dom`
-    <div class="molecule_dummy4">
-    <div>${molecule(1)}</div>
-    <div>${molecule(2)}</div>
+    <div class="organism_dev1">
+    <div>${await molecule(1)}</div>
+    <div>${await molecule(2)}</div>
   </div>`;
   };
 

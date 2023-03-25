@@ -1,16 +1,63 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
+import { getAtom } from "./getAtom.mjs";
+import { getFunction } from "./getFunction.mjs";
+import { createComponent } from "./helpers.mjs";
 
 export async function getOrganism(module, parentId) {
-  const modelOrganisms = await apiCallGet(`/read/organisms`);
+  const modelOrganims = await apiCallGet(`/read/organsims`);
   const modelMolecules = await apiCallGet(`/read/molecules`);
-  const modelAtoms = await apiCallGet(`/read/atoms`);
-  const modelAtomValues = await apiCallGet(`/read/atomValues`);
+
   const modelFunctions = await apiCallGet(`/read/functions`);
 
-  type = "organism";
+  const type = "organism";
 
-  //component.organisms = content.organisms;
-  //component.molecules = content.molecules;
-  //component.functions = content.functions;
-  return comp;
+  const organism = modelOrganims.filter(
+    (organism) => organism.parentId === parentId
+  );
+  const organismId = organism[0].id;
+
+  //childOrganisms
+  //await getOrganism(module, moleculeId);
+
+  //molecules
+  const moleculesObject = [];
+  const molecules = modelMolecules.filter(
+    (molecule) => molecule.parentId === organismId
+  );
+
+  for (const molecule of molecules) {
+    const value = molecule.value;
+    const moleculeObject = await getMolecule(value, moleculeId);
+
+    const moleculeId = parseInt(molecule.key.split(" ")[1]);
+    moleculesObject.push({
+      id: moleculeId,
+      value: value,
+      component: moleculeObject,
+    });
+  }
+
+  //functions
+  const functionsObject = [];
+  const funcs = modelFunctions.filter(
+    (func) => func.parentId === molecule[0].id
+  );
+  for (const func of funcs) {
+    const value = func.value;
+    const funcObject = await getFunction(value, moleculeId);
+    const funcId = parseInt(func.key.split(" ")[1]);
+    functionsObject.push({
+      id: funcId,
+      value: value,
+      function: await funcObject,
+    });
+  }
+
+  const organismObject = await createComponent(type, module);
+  organismObject.molecules = moleculesObject;
+  moleculeObject.functions = functionsObject;
+
+  const renderOrganism = await organismObject.render();
+
+  return await renderOrganism;
 }
