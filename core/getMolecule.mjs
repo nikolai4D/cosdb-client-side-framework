@@ -26,7 +26,11 @@ export async function getMolecule(module, parentId) {
     const value = atom.value;
     const atomObject = await getAtom(value, moleculeId);
     const atomId = parseInt(atom.key.split(" ")[1]);
-    atomsObject.push({ id: atomId, value: value, component: await atomObject });
+    atomsObject.push({
+      id: atomId,
+      value: value,
+      component: await atomObject[0],
+    });
   }
 
   //functions
