@@ -1,58 +1,30 @@
-import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
+import { getOrganism } from "./getOrganism.mjs";
+import { getMolecule } from "./getMolecule.mjs";
+import { getAtom } from "./getAtom.mjs";
 
-import { createComp } from "./helpers.mjs";
-
-export async function GetComponent(compName, compParentId) {
-  console.log(compName, compParentId, "compName, compParentId");
-  const modelData = await apiCallGet(`/readComponent/${compParentId}`);
-  console.log(modelData, "modelData");
-  //   let type;
-  //   let comp;
+export async function getComponent(compName, compParentId) {
   const div = document.createElement("div");
   div.classList.add("component");
   div.setAttribute("id", compParentId);
+  let comp;
 
-  //   if (compName.startsWith("Organism")) {
-  //     type = "organism";
+  if (compName.startsWith("Organism")) {
+    comp = await getOrganism(compName, compParentId);
+  }
 
-  //     //component.organisms = content.organisms;
-  //     //component.molecules = content.molecules;
-  //     //component.functions = content.functions;
-  //   }
-  //   if (compName.startsWith("Molecule")) {
-  //     type = "molecule";
+  if (compName.startsWith("Molecule")) {
+    comp = await getMolecule(compName, compParentId);
+  }
 
-  //     //component.molecules = content.molecules;
-  //     //component.atoms = content.atoms;
-  //     //component.functions = content.functions;
-  //   }
-  //   if (compName.startsWith("Atom")) {
-  //     type = "atom";
-  //     //get the module
+  if (compName.startsWith("Atom")) {
+    comp = await getAtom(compName, compParentId);
+  }
 
-  //     comp = await createComp(type, compName);
-  //     //get the data
-  //     const data = await getData(type, compParentId);
+  const renderComponentArray = Array.from(comp);
 
-  //     comp.value = [{ value: data[0].atomValue }];
-  //   }
-  //   const renderComponent = await comp.render();
-
-  //   const renderComponentArray = Array.from(renderComponent);
-
-  //   for (const child of renderComponentArray) {
-  //     div.appendChild(child);
-  //   }
+  for (const child of renderComponentArray) {
+    div.appendChild(child);
+  }
 
   return div;
 }
-
-// async function getData(type, parentId) {
-//   const data = await apiCallGet(`/read/${type}s/${parentId}`);
-//   if (type === "atom") {
-//     const atomValueId = data[0].id;
-//     const atomValeData = await apiCallGet(`/read/atomValues/${atomValueId}`);
-//     data[0].atomValue = atomValeData[0].value;
-//   }
-//   return data;
-// }

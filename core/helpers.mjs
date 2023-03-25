@@ -60,11 +60,3 @@ export async function createViewTemplate(type, file, slots = null) {
 
   return viewTemplateComp;
 }
-
-export async function createComp(type, file) {
-  const pathToComponent = `../../components/${type}s/${file}.mjs`;
-  const Component = await importModuleFromFile(pathToComponent, file);
-
-  const component = new Component[file]();
-  return component;
-}
