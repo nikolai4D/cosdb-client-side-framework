@@ -30,7 +30,7 @@ export async function Components(parentId) {
         componentsArray.push(compObj);
       }
     } catch (error) {
-      console.log("no component found for slot ", slot.value);
+      console.log(errer, "no component found for slot ", slot.value);
     }
   }
 

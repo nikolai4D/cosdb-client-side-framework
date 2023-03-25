@@ -23,18 +23,25 @@ export async function GetComponent(compName, compParentId) {
   if (compName.startsWith("Atom")) {
     type = "atom";
     //get the module
-    const comp = await createComp(type, compName);
-    //get the data
-    //const data = await getData(type, compParentId);
+    try {
+      const comp = await createComp(type, compName);
+      //get the data
+      //const data = await getData(type, compParentId);
 
-    console.log(comp, "comp");
-    //console.log(data, "data");
+      console.log(comp, "comp");
+      //console.log(data, "data");
 
-    //comp.value = data[0].atomValue;
+      //comp.value = data[0].atomValue;
+    } catch (error) {
+      console.log(error, "1");
+    }
   }
-
-  const renderComponent = await comp.render();
-  console.log(renderComponent, "renderComponent");
+  try {
+    const renderComponent = await comp.render();
+    console.log(renderComponent, "renderComponent");
+  } catch (error) {
+    console.log(error, "1");
+  }
 
   const renderComponentArray = Array.from(renderComponent);
 
