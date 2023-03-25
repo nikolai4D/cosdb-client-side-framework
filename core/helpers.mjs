@@ -49,6 +49,15 @@ export async function createComponent(type, file) {
   return component;
 }
 
+export async function createAction(parameters, file) {
+  const pathToAction = `../../data-mgmt/actions/${file}.mjs`;
+  const Action = await importModuleFromFile(pathToAction, file);
+
+  const action = new Action[file](parameters);
+  console.log(action);
+  return action;
+}
+
 export async function createViewTemplate(type, file, slots = null) {
   const pathToComponent = `../../components/${type}s/${file}.mjs`;
   const viewTemplateComponent = await importModuleFromFile(
