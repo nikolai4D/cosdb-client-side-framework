@@ -25,12 +25,12 @@ export async function GetComponent(compName, compParentId) {
     //get the module
     const comp = await createComp(type, compName);
     //get the data
-    const data = await getData(type, compParentId);
+    //const data = await getData(type, compParentId);
 
     console.log(comp, "comp");
-    console.log(data, "data");
+    //console.log(data, "data");
 
-    comp.value = data[0].atomValue;
+    //comp.value = data[0].atomValue;
   }
 
   const renderComponent = await comp.render();
