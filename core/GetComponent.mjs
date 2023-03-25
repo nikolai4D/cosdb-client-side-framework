@@ -4,6 +4,10 @@ import { createComp } from "./helpers.mjs";
 
 export async function GetComponent(compName, compParentId) {
   let type;
+  const div = document.createElement("div");
+  div.classList.add(type);
+  div.setAttribute("id", compParentId);
+
   console.log(compName, "compName", compParentId, "compParentId");
 
   if (compName.startsWith("Organism")) {
