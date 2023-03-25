@@ -41,6 +41,7 @@ export function Molecule_Dev1() {
 
   const atom = async (id) => {
     const component = this.atoms.find((atom) => atom.id === id)?.component;
+    console.log(component, "component");
     return component ? await component.render() : "";
   };
 
