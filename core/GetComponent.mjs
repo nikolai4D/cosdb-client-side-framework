@@ -32,32 +32,31 @@ export async function GetComponent(compName, compParentId) {
       //console.log(data, "data");
 
       //comp.value = data[0].atomValue;
+      try {
+        const renderComponent = await comp.render();
+        console.log(renderComponent, "renderComponent");
+        const renderComponentArray = Array.from(renderComponent);
+
+        for (const child of renderComponentArray) {
+          div.appendChild(child);
+        }
+
+        return div;
+      } catch (error) {
+        console.log(error, "2");
+      }
     } catch (error) {
       console.log(error, "1");
     }
   }
-  try {
-    const renderComponent = await comp.render();
-    console.log(renderComponent, "renderComponent");
-  } catch (error) {
-    console.log(error, "1");
-  }
-
-  const renderComponentArray = Array.from(renderComponent);
-
-  for (const child of renderComponentArray) {
-    div.appendChild(child);
-  }
-
-  return div;
 }
 
-async function getData(type, parentId) {
-  const data = await apiCallGet(`/read/${type}s/${parentId}`);
-  if (type === "atom") {
-    const atomValueId = data[0].id;
-    const atomValeData = await apiCallGet(`/read/atomValues/${atomValueId}`);
-    data[0].atomValue = atomValeData[0].value;
-  }
-  return data;
-}
+// async function getData(type, parentId) {
+//   const data = await apiCallGet(`/read/${type}s/${parentId}`);
+//   if (type === "atom") {
+//     const atomValueId = data[0].id;
+//     const atomValeData = await apiCallGet(`/read/atomValues/${atomValueId}`);
+//     data[0].atomValue = atomValeData[0].value;
+//   }
+//   return data;
+// }
