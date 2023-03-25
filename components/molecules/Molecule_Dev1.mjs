@@ -42,8 +42,7 @@ export function Molecule_Dev1() {
   const atom = async (id) => {
     const component = this.atoms.find((atom) => atom.id === id)?.component;
     if (component) {
-      const rendered = await component.render();
-      const renderedArray = Array.from(rendered);
+      const renderedArray = Array.from(component);
       return renderedArray.map((elem) => elem.outerHTML).join("");
     }
     return "";
