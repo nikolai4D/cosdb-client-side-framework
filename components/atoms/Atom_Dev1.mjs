@@ -13,6 +13,8 @@ export function Atom_Dev1() {
     <h1>${atom()}</h1>`;
   };
 
+  return component;
+
   //   this.render = async () => {
   //     return await component();
   //   };
