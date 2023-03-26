@@ -45,9 +45,7 @@ export function Organism_ListAll() {
   };
 
   this.bindScript = async function () {
-    for (let mol of this.molecules) {
-      await this.fillSlot(mol.molecule, mol.component.getElement())
-    }
+
     let data = null;
 
     for (const func of this.functions) {
@@ -60,6 +58,10 @@ export function Organism_ListAll() {
       }
     }
     // changeData(data)
+
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
+    }
 
     updateMolecules(data);
     renderMolecules();
