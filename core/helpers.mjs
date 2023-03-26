@@ -47,7 +47,7 @@ export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 export async function html2dom(strings, ...values) {
   console.log("html2dom", "strings:", strings, "values:", values);
   const container = document.createDocumentFragment();
-  const wrapper = document.createElement("div"); // Create a wrapper element
+  const wrapper = document.createElement("div");
 
   for (const [index, string] of strings.entries()) {
     const tempDiv = document.createElement("div");
@@ -66,8 +66,10 @@ export async function html2dom(strings, ...values) {
     }
   }
 
-  wrapper.appendChild(container); // Append the DocumentFragment to the wrapper element
-  return wrapper; // Return the wrapper element
+  wrapper.appendChild(container);
+
+  // Return the only child element when there's one child, otherwise return the wrapper element
+  return wrapper.children.length === 1 ? wrapper.children[0] : wrapper;
 }
 
 //3rd
