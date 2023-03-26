@@ -29,13 +29,13 @@ export async function getViewTemplate(parentId) {
 
   console.log("renderViewTemplate 3", renderViewTemplate); //3
 
-  //const renderViewTemplateArray = Array.from(renderViewTemplate);
-  //
-  //   for (const child of renderViewTemplateArray) {
-  //     div.appendChild(child);
-  //   }
-  //
-  div.appendChild(renderViewTemplate);
+  const renderViewTemplateArray = Array.from(renderViewTemplate);
+
+  for (const child of renderViewTemplateArray) {
+    div.appendChild(child);
+  }
+
+  // div.appendChild(renderViewTemplate);
 
   return div;
 }
