@@ -118,6 +118,12 @@ nav > ul {
     margin: 2em;
 }
 
+.organism_heading_lists_w_footer__lists {
+    display: grid;
+    justify-items: center;
+}
+
+
 .organism_form_4_dropdowns {
     display: grid;
     grid-template-columns: min-content;
