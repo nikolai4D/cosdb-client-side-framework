@@ -46,7 +46,13 @@ export function html2dom(strings, ...values) {
   for (let i = 0; i < strings.length; i++) {
     container.appendChild(document.createTextNode(strings[i]));
     if (values[i]) {
-      container.appendChild(values[i]);
+      if (values[i] instanceof HTMLElement) {
+        container.appendChild(values[i]);
+      } else if (typeof values[i] === "string") {
+        container.appendChild(document.createTextNode(values[i]));
+      } else {
+        console.error(`Invalid value: ${values[i]}`);
+      }
     }
   }
 
