@@ -86,7 +86,7 @@ export function Organism_ListAll() {
             console.log(filteredData, "filteredData")
 
           }
-          router.goTo(window.location.pathname.slice(1))
+          // router.goTo(window.location.pathname.slice(1))
 
         }
       }
