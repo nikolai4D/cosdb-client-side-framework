@@ -65,8 +65,8 @@ export function Organism_Dev3() {
     return componentArray.map((elem) => elem.outerHTML).join("");
   };
 
-  const component = async () => {
-    return await `
+  const organism = async () => {
+    return await html2dom`
     <div class="organism_dev2">
     <div>${await childOrganism(1)}</div>
     <div>${await molecule(1)}</div>
@@ -78,49 +78,7 @@ export function Organism_Dev3() {
   </div>`;
   };
 
-  const generateComponent = async () => {
-    const generatedComponent = await component();
-    return await html2dom(generatedComponent);
-  };
-
   this.render = async () => {
-    return await generateComponent();
+    return await organism();
   };
 }
-
-//   const organism = async () => {
-//     return await html2dom`
-//     <div class="organism_dev2">
-//     <div>${await childOrganism(1)}</div>
-//     <div>${await molecule(1)}</div>
-//     <div>${await molecule(2)}</div>
-//     <div>${await childOrganism(2)}</div>
-//     <div>${await molecule(1)}</div>
-//     <div>${await molecule(2)}</div>
-//     <div>${await childOrganism(2)}</div>
-//   </div>`;
-//   };
-
-//   this.render = async () => {
-//     return await organism();
-//   };
-// }
-
-//   const renderOrganismContent = async () => {
-//     return `
-//       <div class="organism_dev2">
-//         <div>${await childOrganism(1)}</div>
-//         <div>${await molecule(1)}</div>
-//         <div>${await molecule(2)}</div>
-//         <div>${await childOrganism(2)}</div>
-//         <div>${await molecule(1)}</div>
-//         <div>${await molecule(2)}</div>
-//         <div>${await childOrganism(2)}</div>
-//       </div>`;
-//   };
-
-//   this.render = async () => {
-//     const content = await renderOrganismContent();
-//     return html2dom(content);
-//   };
-// }
