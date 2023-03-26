@@ -88,7 +88,6 @@ this.getHtml = function() {
       await this.fillSlot(atom.atom, atom.component.getElement())
     }
 
-    
   }
 }
 
