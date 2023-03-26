@@ -81,8 +81,19 @@ export async function getOrganism(module, parentId, orgId = null) {
     }
   };
 
-  const renderOrganism = await organismObject.render();
-  organismObject.updateChildOrganisms(); // Update child organisms after rendering
+  //   const renderOrganism = await organismObject.render();
+  //   organismObject.updateChildOrganisms(); // Update child organisms after rendering
+
+  let renderOrganism;
+  if (typeof organismObject.render === "function") {
+    renderOrganism = await organismObject.render();
+    organismObject.updateChildOrganisms(); // Update child organisms after rendering
+  } else {
+    console.error(
+      "Render is not a function in organismObject:",
+      organismObject
+    );
+  }
 
   return await renderOrganism;
 }
