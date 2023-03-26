@@ -19,28 +19,7 @@ export async function importModuleFromFile(path, filename) {
 
 export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 
-// export async function html2dom(strings, ...values) {
-//   const container = document.createElement("div");
-//   let interpolatedHTML = "";
-
-//   for (const [index, string] of strings.entries()) {
-//     interpolatedHTML += string;
-
-//     if (values[index] !== undefined) {
-//       if (values[index] instanceof HTMLElement) {
-//         interpolatedHTML += values[index].outerHTML;
-//       } else {
-//         interpolatedHTML += values[index];
-//       }
-//     }
-//   }
-
-//   container.innerHTML = interpolatedHTML;
-
-//   return await container.childNodes;
-// }
-
-export function html2dom(strings, ...values) {
+export async function html2dom(strings, ...values) {
   const container = document.createElement("div");
   let interpolatedHTML = "";
 
@@ -58,13 +37,34 @@ export function html2dom(strings, ...values) {
 
   container.innerHTML = interpolatedHTML;
 
-  const wrapper = document.createElement("div");
-  while (container.firstChild) {
-    wrapper.appendChild(container.firstChild);
-  }
-
-  return wrapper;
+  return await container.childNodes;
 }
+
+// export function html2dom(strings, ...values) {
+//   const container = document.createElement("div");
+//   let interpolatedHTML = "";
+
+//   for (const [index, string] of strings.entries()) {
+//     interpolatedHTML += string;
+
+//     if (values[index] !== undefined) {
+//       if (values[index] instanceof HTMLElement) {
+//         interpolatedHTML += values[index].outerHTML;
+//       } else {
+//         interpolatedHTML += values[index];
+//       }
+//     }
+//   }
+
+//   container.innerHTML = interpolatedHTML;
+
+//   const wrapper = document.createElement("div");
+//   while (container.firstChild) {
+//     wrapper.appendChild(container.firstChild);
+//   }
+
+//   return wrapper;
+// }
 
 export async function createComponent(type, file) {
   const pathToComponent = `../../components/${type}s/${file}.mjs`;

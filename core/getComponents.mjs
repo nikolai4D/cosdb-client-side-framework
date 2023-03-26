@@ -23,7 +23,7 @@ export async function getComponents(parentId) {
           id: comp[0].id,
           slot: slot.value,
           //content: comp[0].value,
-          content: await componentFromModule,
+          content: componentFromModule,
         };
 
         componentsArray.push(compObj);
