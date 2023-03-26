@@ -19,6 +19,7 @@ export async function getComponent(compName, compParentId) {
   if (compName.startsWith("Atom")) {
     comp = await getAtom(compName, compParentId);
   }
+  console.log("comp from getComponent", comp);
 
   const renderComponentArray = Array.from(comp);
 

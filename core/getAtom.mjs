@@ -20,7 +20,7 @@ export async function getAtom(module, parentId, atomId = null) {
   console.log("atomObject", atomObject);
 
   const renderAtom = await atomObject.render();
-  console.log("renderAtom  !!!!!!!!!!!!!!!!!!!!!", renderAtom);
+  console.log("renderAtom", renderAtom);
 
   return await renderAtom;
 }
