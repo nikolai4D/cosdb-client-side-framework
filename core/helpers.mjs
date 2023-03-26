@@ -95,14 +95,13 @@ export async function createAction(parameters = null, file) {
   return action;
 }
 
-export async function createViewTemplate(type, file, slots = null) {
+export async function createViewTemplate(type, file) {
   const pathToComponent = `../../components/${type}s/${file}.mjs`;
   const viewTemplateComponent = await importModuleFromFile(
     pathToComponent,
     file
   );
   const viewTemplateComp = new viewTemplateComponent[file]();
-  viewTemplateComp.slots = slots;
 
   return viewTemplateComp;
 }
