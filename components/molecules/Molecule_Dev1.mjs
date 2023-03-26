@@ -39,8 +39,8 @@ export function Molecule_Dev1() {
   const molecule = async () => {
     return await html2dom`
     <div class="molecule_dummy4">
-    <div>${this.atom(1)}</div>
-    <div>${this.atom(2)}</div>
+    <div>${await this.atom(1)}</div>
+    <div>${await this.atom(2)}</div>
     </div>`;
   };
 
