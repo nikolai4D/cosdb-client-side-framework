@@ -30,8 +30,8 @@ export function Molecule_SearchWButton() {
 this.getHtml = function() {
   return `
         <div>
+            ${slot(this.atoms[0].atom)}
             ${slot(this.atoms[1].atom)}
-            ${slot(this.atoms[2].atom)}
         </div>
 
 `;
