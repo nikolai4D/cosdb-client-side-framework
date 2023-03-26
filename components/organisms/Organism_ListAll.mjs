@@ -90,7 +90,7 @@ export function Organism_ListAll() {
             //   // return  item.title.toLowerCase().includes(e.target.value.toLowerCase())
             // })
             // console.log(filteredData)
-            filteredData.filter( (item) => item.title.length > 0)
+            filteredData = filteredData.filter( (item) => item.title.length > 0)
             console.log(filteredData)
       }
     }
