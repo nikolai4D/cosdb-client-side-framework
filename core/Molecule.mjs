@@ -9,6 +9,6 @@ export function Molecule() {
     const component = Array.from(
       this.atoms.find((atom) => atom.id === id)?.component
     );
-    return this.component.map((elem) => elem.outerHTML).join("");
+    return component.map((elem) => elem.outerHTML).join("");
   };
 }
