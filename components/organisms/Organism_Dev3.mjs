@@ -52,17 +52,17 @@ export function Organism_Dev3() {
   fn(2);
 
   const childOrganism = async (id) => {
-    const component = Array.from(
-      this.organisms.find((childOrg) => childOrg.id === id)?.component
-    );
-    return component.map((elem) => elem.outerHTML).join("");
+    const component = this.organisms.find(
+      (childOrg) => childOrg.id === id
+    )?.component;
+    const componentArray = component ? Array.from(component) : [];
+    return componentArray.map((elem) => elem.outerHTML).join("");
   };
 
   const molecule = async (id) => {
-    const component = Array.from(
-      this.molecules.find((mol) => mol.id === id)?.component
-    );
-    return component.map((elem) => elem.outerHTML).join("");
+    const component = this.molecules.find((mol) => mol.id === id)?.component;
+    const componentArray = component ? Array.from(component) : [];
+    return componentArray.map((elem) => elem.outerHTML).join("");
   };
 
   const organism = async () => {
@@ -71,6 +71,7 @@ export function Organism_Dev3() {
     <div>${await childOrganism(1)}</div>
     <div>${await molecule(1)}</div>
     <div>${await molecule(2)}</div>
+    <div>${await childOrganism(2)}</div>
   </div>`;
   };
 
