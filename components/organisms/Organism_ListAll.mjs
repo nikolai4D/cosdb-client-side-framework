@@ -71,10 +71,9 @@ export function Organism_ListAll() {
   const changeData = (data) => {
     for (let mol of this.molecules) {
       for (let atom of mol.component.atoms) {
-       atom.component.oninput =  (e) => { 
-
-        console.log(data)
-       }
+       atom.component.oninput =  (e) => { console.log("HELLO", data, e.target.value)
+      
+      }
 
       }
     }
