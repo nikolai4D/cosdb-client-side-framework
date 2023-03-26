@@ -82,6 +82,7 @@ export function Organism_ListAll() {
                 return {letter: item.letter, title: theTitle}
               })
             filteredData = filteredData.filter( (item) => item.title.length > 0)
+            console.log(filteredData, "filteredData")
           }
         }
       }
