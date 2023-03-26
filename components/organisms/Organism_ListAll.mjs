@@ -72,30 +72,25 @@ export function Organism_ListAll() {
   const changeData = async (data, filteredData) => {
     for (let mol of this.molecules) {
       for (let atom of mol.component.atoms) {
-       atom.component.oninput = async (e) => { 
-        if (e.target.value === "") { filteredData = [...data] }
-          else 
-          {
+
+        atom.component.oninput = async (e) => {
+          if (e.target.value === "") { filteredData = [...data] }
+          else {
             filteredData = [...data].map(item =>
-               { 
+                {
                 let theTitle = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
-                return {letter: item.letter, title: theTitle}
+                return {
+                  letter: item.letter, title: theTitle
+                }
               })
             filteredData = filteredData.filter( (item) => item.title.length > 0)
-            console.log(filteredData, "filteredData")
-
           }
           updateMolecules(filteredData);
           renderMolecules();
+          }
         }
       }
     }
-
-
-  
-    
-
-  }
 
   const createMolecule = (MoleculeClass, id) => {
     const molecule = new MoleculeClass();
@@ -119,9 +114,6 @@ export function Organism_ListAll() {
   };
   
   const updateMolecules = (data) => {
-    // const indexOfComp = this.molecules.findIndex(
-    //   (obj) => obj.component.constructorKey === new Molecule_ListWHeading().constructorKey
-    // );
   
     const newMolecules = data.map((molecule, index) => {
       const newMolecule = createMolecule(Molecule_ListWHeading, index + 1);
@@ -137,7 +129,6 @@ export function Organism_ListAll() {
       return newMolecule;
     });
     this.molecules= [...newMolecules]
-    // this.molecules.splice(indexOfComp, 1, ...newMolecules);
   };
 
   const renderMolecules = () => {
@@ -149,7 +140,5 @@ export function Organism_ListAll() {
       moleculesSlots.appendChild(mol.component.getElement());
 
     }
-    console.log("hello")
-
   };
 }
