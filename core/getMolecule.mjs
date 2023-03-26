@@ -11,10 +11,6 @@ export async function getMolecule(module, parentId, molId = null) {
 
   const type = "molecule";
 
-  //   const molecule = modelMolecules.filter(
-  //     (molecule) => molecule.parentId === parentId
-  //   );
-
   const molecule = molId
     ? modelMolecules.filter((molecule) => molecule.id === molId)
     : modelMolecules.filter((molecule) => molecule.parentId === parentId);

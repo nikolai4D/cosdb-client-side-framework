@@ -40,39 +40,12 @@ export async function html2dom(strings, ...values) {
   return await container.childNodes;
 }
 
-// export async function html2dom(strings, ...values) {
-//   const container = document.createElement("div");
-//   const wrapper = document.createElement("div");
-//   let interpolatedHTML = "";
-
-//   strings.forEach((string, index) => {
-//     interpolatedHTML += string;
-
-//     if (values[index] !== undefined) {
-//       if (values[index] instanceof HTMLElement) {
-//         interpolatedHTML += values[index].outerHTML;
-//       } else {
-//         interpolatedHTML += values[index];
-//       }
-//     }
-//   });
-
-//   container.innerHTML = interpolatedHTML;
-
-//   // Wrap the content of the container with an extra div (wrapper)
-//   while (container.firstChild) {
-//     wrapper.appendChild(container.firstChild);
-//   }
-
-//   return wrapper; // Return the wrapper div instead of the NodeList
-// }
-
 export async function createComponent(type, file) {
   const pathToComponent = `../../components/${type}s/${file}.mjs`;
   const Component = await importModuleFromFile(pathToComponent, file);
 
   const component = new Component[file]();
-  console.log(component);
+
   return component;
 }
 
@@ -81,7 +54,7 @@ export async function createAction(parameters = null, file) {
   const Action = await importModuleFromFile(pathToAction, file);
 
   const action = new Action[file](parameters);
-  console.log(action);
+
   return action;
 }
 

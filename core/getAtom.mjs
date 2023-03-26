@@ -2,15 +2,9 @@ import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { createComponent } from "./helpers.mjs";
 
 export async function getAtom(module, parentId, atomId = null) {
-  //   const divAtom = document.createElement("div");
-  //   divAtom.classList.add("atom");
-  //   divAtom.setAttribute("id", parentId);
-
   const type = "atom";
   const modelAtoms = await apiCallGet(`/read/atoms`);
   const modelAtomValues = await apiCallGet(`/read/atomValues`);
-
-  //const atom = modelAtoms.filter((atom) => atom.parentId === parentId);
 
   const atom = atomId
     ? modelAtoms.filter((atom) => atom.id === atomId)
@@ -24,7 +18,6 @@ export async function getAtom(module, parentId, atomId = null) {
   atomObject.value = [{ value: atomValue[0].value }];
 
   const renderAtom = await atomObject.render();
-  console.log(renderAtom, "renderAtom");
 
   return await renderAtom;
 }
