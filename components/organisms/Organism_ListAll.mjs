@@ -76,9 +76,10 @@ export function Organism_ListAll() {
         if (e.target.value === "") { filteredData = [...data] }
           else 
           {
-            filteredData.map(item => 
+            filteredData = filteredData.map(item => 
                             item.title = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
           )
+          console.log(filteredData)
             // filteredData = data.forEach( (item) => {
             //   item.title = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
             //   // return  item.title.toLowerCase().includes(e.target.value.toLowerCase())
