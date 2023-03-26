@@ -86,9 +86,9 @@ export function Organism_ListAll() {
 
           }
           // router.goTo(window.location.pathname.slice(1))
-          for (let mol of this.molecules) {
-            await this.fillSlot(mol.molecule, mol.component.getElement())
-          }
+          // for (let mol of this.molecules) {
+          //   await this.fillSlot(mol.molecule, mol.component.getElement())
+          // }
 
           updateMolecules(filteredData);
           renderMolecules();
