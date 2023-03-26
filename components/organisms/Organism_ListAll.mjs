@@ -147,6 +147,7 @@ export function Organism_ListAll() {
       if (index !== 0) moleculesSlots.appendChild(mol.component.getElement());
 
     }
+    console.log("hello")
+
   };
-  console.log("hello")
 }
