@@ -57,15 +57,27 @@ export function Organism_ListAll() {
         data = State[type];
       }
     }
-    // changeData(data)
+    changeData(data)
 
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
-
+  
+    
     updateMolecules(data);
     renderMolecules();
   };
+
+  const changeData = (data) => {
+    for (let mol of this.molecules) {
+      for (let atom of mol.component.atoms) {
+       atom.component.oninput =  (e) => { console.log("HELLO", e.target.value)}
+
+      }
+    }
+
+  }
+  
 
   const createMolecule = (MoleculeClass, id) => {
     const molecule = new MoleculeClass();
