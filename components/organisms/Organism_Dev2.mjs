@@ -68,6 +68,8 @@ export function Organism_Dev2() {
   </div>`;
   };
 
+  console.log("childOrganism(1)", childOrganism(1));
+
   this.render = async () => {
     return await organism();
   };
