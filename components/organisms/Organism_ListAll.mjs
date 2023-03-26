@@ -75,21 +75,26 @@ export function Organism_ListAll() {
        atom.component.oninput =  (e) => { 
         if (e.target.value === "") { filteredData = [...data] }
           else 
-          { 
-            filteredData.map(item =>
-            
+          {
+            filteredData = filteredData.map(item =>
                { 
                 let theTitle = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
-                // if (theTitle.length > 0)
-                // newFilteredData.push({letter: item.letter, title: theTitle})
                 return {letter: item.letter, title: theTitle}
-                }
+              //               {letter: item.letter,
+              //               title: item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
+              // }
+                          }
             )
-            // filteredData = filteredData.filter(item => item.title.length > 0)
-            console.log(filteredData)
-
-        }
+          console.log(filteredData)
+            // filteredData = data.forEach( (item) => {
+            //   item.title = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
+            //   // return  item.title.toLowerCase().includes(e.target.value.toLowerCase())
+            // })
+            // console.log(filteredData)
       }
+    }
+
+
       }
     }
   }
