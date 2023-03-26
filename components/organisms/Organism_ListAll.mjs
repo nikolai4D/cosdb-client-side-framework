@@ -70,7 +70,7 @@ export function Organism_ListAll() {
       for (let atom of mol.component.atoms) {
         if (atom.atom === "Atom_Input") {
           console.log(atom, "atom")
-       atom.component.oninput = async (e) => { console.log("HELLOOO", e.target.value)}
+       atom.component.oninput =  (e) => { console.log("HELLOOO", e.target.value)}
       }
      }
       // await this.fillSlot(mol.molecule, mol.component.getElement())
