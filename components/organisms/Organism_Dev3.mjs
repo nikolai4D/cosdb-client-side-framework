@@ -31,9 +31,6 @@ export function Organism_Dev3() {
     },
   ];
 
-  console.log("organisms:", this.organisms);
-  console.log("molecules:", this.molecules);
-
   this.functions = [
     {
       id: 1,

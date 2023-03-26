@@ -22,6 +22,16 @@ export async function getOrganism(module, parentId, orgId = null) {
 
   const organismId = organism[0].id;
 
+  console.log(
+    orgId,
+    "orgId",
+    parentId,
+    "parentId",
+    module,
+    "module",
+    organismId
+  );
+
   //childOrganisms
   const childOrganisms = modelChildOrganisms.filter(
     (organism) => organism.parentId === organismId
