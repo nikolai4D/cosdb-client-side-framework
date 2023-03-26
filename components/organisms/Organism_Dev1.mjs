@@ -7,15 +7,15 @@ export function Organism_Dev1() {
 
   this.molecules = [
     {
-      id: 1,
-      molecule: "Molecule_Dev1",
-      component: new Molecule_Dev1(),
-    },
-    {
-      id: 2,
-      molecule: "Molecule_Dev2",
-      component: new Molecule_Dev2(),
-    },
+    //   id: 1,
+    //   molecule: "Molecule_Dev1",
+    //   component: new Molecule_Dev1(),
+    // },
+    // {
+    //   id: 2,
+    //   molecule: "Molecule_Dev2",
+    //   component: new Molecule_Dev2(),
+    // },
   ];
 
   this.functions = [
