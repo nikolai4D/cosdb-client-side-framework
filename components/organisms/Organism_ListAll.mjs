@@ -72,10 +72,11 @@ export function Organism_ListAll() {
   const changeData = (data, filteredData) => {
     for (let mol of this.molecules) {
       for (let atom of mol.component.atoms) {
+        let newFilteredData = []
        atom.component.oninput =  (e) => { 
         if (e.target.value === "") { filteredData = [...data] }
           else 
-          { newFilteredData = []
+          { 
             filteredData.forEach(item =>
             
                { 
