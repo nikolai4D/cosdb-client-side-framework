@@ -4,16 +4,16 @@ import { Atom } from "../../core/Atom.mjs";
 export function Atom_Dev1() {
   Atom.call(this);
 
-  this.value = [{ value: "placeholder" }];
+  //this.value = [{ value: "placeholder" }];
 
-  const atom = () => this.value[0].value;
+  //const atom = () => this.value[0].value;
 
   const component = async () => {
     return await html2dom`
     <h1>${atom()}</h1>`;
   };
 
-  this.render = async () => {
-    return await component();
-  };
+  //   this.render = async () => {
+  //     return await component();
+  //   };
 }
