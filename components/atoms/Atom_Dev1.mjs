@@ -7,6 +7,7 @@ export function Atom_Dev1() {
   //this.value = [{ value: "placeholder" }];
 
   //const atom = () => this.value[0].value;
+  const atom = Atom.atom();
 
   const component = async () => {
     return await html2dom`
