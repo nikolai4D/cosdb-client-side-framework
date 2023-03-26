@@ -22,8 +22,10 @@ export async function getViewTemplate(parentId) {
   const viewTemplateObject = await createViewTemplate(type, value, components);
   const renderViewTemplate = await viewTemplateObject.render();
 
-  const renderViewTemplateArray = Array.from(renderViewTemplate);
+  console.log("renderViewTemplate", renderViewTemplate);
 
+  //const renderViewTemplateArray = Array.from(renderViewTemplate);
+  //
   //   for (const child of renderViewTemplateArray) {
   //     div.appendChild(child);
   //   }
