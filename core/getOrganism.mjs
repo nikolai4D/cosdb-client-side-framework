@@ -96,7 +96,7 @@ export async function getOrganism(module, parentId, orgId = null) {
   const renderOrganism = await organismObject.render();
   //   organismObject.updateChildOrganisms(); // Update child organisms after rendering
 
-  console.log(renderOrganism, "renderOrganism  !!!!!!!!!!!!!!!!!!!!!");
+  console.log("renderOrganism  !!!!!!!!!!!!!!!!!!!!!", renderOrganism);
 
   return await renderOrganism;
 }
