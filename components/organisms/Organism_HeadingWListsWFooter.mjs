@@ -81,13 +81,13 @@ this.getHtml = function() {
 }
 
   this.bindScript = async function() {
-
-    for (let atom of this.atoms) {
-      await this.fillSlot(atom.atom, atom.component.getElement())
-    }
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
+    for (let atom of this.atoms) {
+      await this.fillSlot(atom.atom, atom.component.getElement())
+    }
+
     
   }
 }
