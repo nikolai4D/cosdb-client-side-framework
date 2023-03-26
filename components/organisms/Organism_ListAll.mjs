@@ -146,7 +146,7 @@ export function Organism_ListAll() {
     const moleculesSlots = this.element.lastElementChild;
 
     for (const [index, mol] of this.molecules.entries()) {
-      if (index !== 0) moleculesSlots.appendChild(mol.component.getElement());
+      moleculesSlots.appendChild(mol.component.getElement());
 
     }
     console.log("hello")
