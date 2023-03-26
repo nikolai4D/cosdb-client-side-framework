@@ -85,11 +85,6 @@ export function Organism_ListAll() {
             console.log(filteredData, "filteredData")
 
           }
-          // router.goTo(window.location.pathname.slice(1))
-          // for (let mol of this.molecules) {
-          //   await this.fillSlot(mol.molecule, mol.component.getElement())
-          // }
-
           updateMolecules(filteredData);
           renderMolecules();
         }
@@ -124,9 +119,9 @@ export function Organism_ListAll() {
   };
   
   const updateMolecules = (data) => {
-    const indexOfComp = this.molecules.findIndex(
-      (obj) => obj.component.constructorKey === new Molecule_ListWHeading().constructorKey
-    );
+    // const indexOfComp = this.molecules.findIndex(
+    //   (obj) => obj.component.constructorKey === new Molecule_ListWHeading().constructorKey
+    // );
   
     const newMolecules = data.map((molecule, index) => {
       const newMolecule = createMolecule(Molecule_ListWHeading, index + 1);
@@ -141,8 +136,8 @@ export function Organism_ListAll() {
   
       return newMolecule;
     });
-  
-    this.molecules.splice(indexOfComp, 1, ...newMolecules);
+    this.molecules= [...newMolecules]
+    // this.molecules.splice(indexOfComp, 1, ...newMolecules);
   };
 
   const renderMolecules = () => {
