@@ -68,12 +68,12 @@ export const processOrganisms = async (model, comp, foundModelParent) => {
     for (const [index, organism] of comp.organisms.entries()) {
         const organismComponent = organism.component
         const foundModelOrganisms = model.organisms.filter(org => org.parentId === foundModelParent.id)
-        console.log(this.model)
-        if (organismComponent.molecules) await processMolecules(this.model, organismComponent, foundModelOrganisms);
-        if (organismComponent.organisms) await processOrganisms(this.model, organismComponent, foundModelOrganisms[index]);
+        console.log(model)
+        if (organismComponent.molecules) await processMolecules(model, organismComponent, foundModelOrganisms);
+        if (organismComponent.organisms) await processOrganisms(model, organismComponent, foundModelOrganisms[index]);
          if (organismComponent){
             if(foundModelOrganisms[index]){
-             if (organismComponent.functions) {await processFunction(this.model, organismComponent, foundModelOrganisms[index])}
+             if (organismComponent.functions) {await processFunction(model, organismComponent, foundModelOrganisms[index])}
             }
     }
     }
