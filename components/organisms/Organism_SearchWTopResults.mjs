@@ -26,9 +26,13 @@ export function Organism_SearchWTopResults() {
 
         return `
             <div class="grid">
-                <div class="grid-placement__c2-2r3">
+                <div class="organism_heading_lists_w_footer">
+                <div class="organism_heading_lists_w_footer__search">
                     ${slot(this.molecules[0].molecule)}
+                    </div>
+                    <div class="organism_heading_lists_w_footer__lists">
                     ${slot(this.organisms[0].organism)}
+                    </div>
                 </div>
             </div>
         `
