@@ -72,20 +72,18 @@ export function Organism_ListAll() {
   const changeData = (data, filteredData) => {
     for (let mol of this.molecules) {
       for (let atom of mol.component.atoms) {
-        let newFilteredData = []
        atom.component.oninput =  (e) => { 
         if (e.target.value === "") { filteredData = [...data] }
           else 
           { 
+            let newFilteredData = []
             filteredData.forEach(item =>
             
                { 
-
                 let theTitle = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
-
                 if (theTitle.length > 0)
                 newFilteredData.push({letter: item.letter, title: theTitle})
-                          }
+                }
             )
             console.log(newFilteredData)
         }
