@@ -73,7 +73,6 @@ export function Organism_Navbar() {
     }
 
     for (let mol of this.molecules) {
-      // console.log(mol)
       for (let atom of mol.component.atoms) {
         await atom.component
 
