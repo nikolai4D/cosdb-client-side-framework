@@ -70,10 +70,16 @@ nav > ul {
     justify-content: center;
     gap: 37px;
 }
-.organism_heading_lists_w_footer{
+.organism_search_w_top_results{
 
     justify-self: center;
     align-self: center;
+
+}
+
+
+
+.organism_heading_lists_w_footer {
 
 }
 
