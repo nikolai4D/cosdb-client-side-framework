@@ -35,6 +35,8 @@ export async function getViewTemplate(parentId) {
     div.appendChild(child);
   }
 
+  console.log("div from getViewTemplate", div); //4
+
   // div.appendChild(renderViewTemplate);
 
   return div;

@@ -26,7 +26,7 @@ export async function getComponent(compName, compParentId) {
   for (const child of renderComponentArray) {
     div.appendChild(child);
   }
-
+  console.log("div from getComponent", div);
   //div.appendChild(comp);
 
   return div;
