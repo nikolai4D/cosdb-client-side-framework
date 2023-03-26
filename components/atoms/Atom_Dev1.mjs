@@ -8,12 +8,12 @@ export function Atom_Dev1() {
 
   //const atom = () => this.value[0].value;
 
-  this.component = async () => {
+  const component = async () => {
     return await html2dom`
     <h1>${atom()}</h1>`;
   };
 
-  //   this.render = async () => {
-  //     return await component();
-  //   };
+  this.render = async () => {
+    return await component();
+  };
 }
