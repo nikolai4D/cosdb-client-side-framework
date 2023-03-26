@@ -31,6 +31,9 @@ export function Organism_Dev3() {
     },
   ];
 
+  console.log("organisms:", this.organisms);
+  console.log("molecules:", this.molecules);
+
   this.functions = [
     {
       id: 1,
@@ -55,20 +58,14 @@ export function Organism_Dev3() {
     const component = this.organisms.find(
       (childOrg) => childOrg.id === id
     )?.component;
-    if (component) {
-      const renderedComponent = await component.render();
-      return renderedComponent.outerHTML;
-    }
-    return "";
+    const componentArray = component ? Array.from(component) : [];
+    return componentArray.map((elem) => elem.outerHTML).join("");
   };
 
   const molecule = async (id) => {
     const component = this.molecules.find((mol) => mol.id === id)?.component;
-    if (component) {
-      const renderedComponent = await component.render();
-      return renderedComponent.outerHTML;
-    }
-    return "";
+    const componentArray = component ? Array.from(component) : [];
+    return componentArray.map((elem) => elem.outerHTML).join("");
   };
 
   const organism = async () => {
