@@ -82,8 +82,6 @@ export function Organism_ListAll() {
 
       }
     }
-
-  }
   
 
   const createMolecule = (MoleculeClass, id) => {
