@@ -44,8 +44,6 @@ export function Molecule_Dev1() {
     </div>`;
   };
 
-  console.log(this.atom(1), "this.atom(1)");
-
   this.render = async () => {
     return await molecule();
   };
