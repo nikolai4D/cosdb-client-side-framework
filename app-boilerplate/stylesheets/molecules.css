@@ -6,7 +6,9 @@
 }
 
 .molecule_list__footer {
-
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .molecule_header-and-text {
