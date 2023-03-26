@@ -55,9 +55,10 @@ export function Organism_ListAll() {
         await func.functionCall({type, url});
         await State[type];
         data = State[type];
+        let filteredData = [...State[type]]
       }
     }
-    changeData(data)
+    changeData(data, filteredData)
 
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
@@ -68,10 +69,14 @@ export function Organism_ListAll() {
     renderMolecules();
   };
 
-  const changeData = (data) => {
+  const changeData = (data, filteredData) => {
     for (let mol of this.molecules) {
       for (let atom of mol.component.atoms) {
-       atom.component.oninput =  (e) => { console.log("HELLO", data, e.target.value)
+       atom.component.oninput =  (e) => { 
+        if (e.target.value === "") console.log("EMTPY VALUE")
+          else 
+          console.log("FILTER BY VALUE :", e.target.value)
+        }
       
       }
 
