@@ -8,6 +8,9 @@ export function Atom_Dev1() {
     const comp = await html2dom`
           <button>${await this.atom()}</button>`;
     console.log(comp);
+    comp.addEventListener("click", () => {
+      console.log("clicked");
+    });
     return comp;
   };
 
