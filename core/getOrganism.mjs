@@ -12,25 +12,15 @@ export async function getOrganism(module, parentId, orgId = null) {
 
   const type = "organism";
 
-  const organism = modelOrganisms.filter(
-    (organism) => organism.parentId === parentId
-  );
+  //   const organism = modelOrganisms.filter(
+  //     (organism) => organism.parentId === parentId
+  //   );
 
-  //   const organism = orgId
-  //     ? modelOrganisms.filter((organism) => organism.id === orgId)
-  //     : modelOrganisms.filter((organism) => organism.parentId === parentId);
+  const organism = orgId
+    ? modelOrganisms.filter((organism) => organism.id === orgId)
+    : modelOrganisms.filter((organism) => organism.parentId === parentId);
 
   const organismId = organism[0].id;
-
-  console.log(
-    orgId,
-    "orgId",
-    parentId,
-    "parentId",
-    module,
-    "module",
-    organismId
-  );
 
   //childOrganisms
   const childOrganisms = modelChildOrganisms.filter(
@@ -38,11 +28,16 @@ export async function getOrganism(module, parentId, orgId = null) {
   );
   const childOrganismsObjects = [];
   if (childOrganisms.length > 0) {
-    for (const childOrganism of childOrganisms) {
-      const childModule = childOrganism.value;
-      const childOrganismObject = await getOrganism(childModule, organismId);
-      childOrganismsObjects.push(childOrganismObject);
-    }
+    console.log("childOrganisms", childOrganisms);
+    // for (const childOrganism of childOrganisms) {
+    //   const childModule = childOrganism.value;
+    //   const childOrganismObject = await getOrganism(
+    //     childModule,
+    //     organismId,
+    //     childOrganism.id
+    //   );
+    //   childOrganismsObjects.push(childOrganismObject);
+    // }
   }
 
   //molecules
