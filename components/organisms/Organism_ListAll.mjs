@@ -45,9 +45,7 @@ export function Organism_ListAll() {
   };
 
   this.bindScript = async function () {
-    for (let mol of this.molecules) {
-      await this.fillSlot(mol.molecule, mol.component.getElement())
-    }
+
     for (const func of this.functions) {
       if (func.functionCall) {
         let type = window.location.pathname.slice(1)
@@ -60,6 +58,10 @@ export function Organism_ListAll() {
 
         updateMolecules(data);
       }
+      
+    }
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
     }
     renderMolecules();
 
@@ -70,7 +72,7 @@ export function Organism_ListAll() {
       for (let atom of mol.component.atoms) {
         if (atom.atom === "Atom_Input") {
           console.log(atom, "atom")
-       atom.component.oninput =  (e) => { console.log("HELLOOO", e.target.value)}
+       atom.component.oninput = (e) => { console.log("HELLOOO", e.target.value)}
       }
      }
       // await this.fillSlot(mol.molecule, mol.component.getElement())
