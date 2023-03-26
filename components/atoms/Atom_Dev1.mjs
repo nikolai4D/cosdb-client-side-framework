@@ -11,6 +11,9 @@ export function Atom_Dev1() {
     comp.addEventListener("click", () => {
       console.log("clicked");
     });
+
+    console.log(comp);
+
     return comp;
   };
 
