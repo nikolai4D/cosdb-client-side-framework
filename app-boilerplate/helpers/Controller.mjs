@@ -67,7 +67,7 @@ export function Controller() {
   
       const foundModelOrganism = this.model.organisms.find(organism => organism.parentId === foundModelComponent.id);
       if (foundModelOrganism !== undefined) {
-        await addOrganismComponent(slotComp, foundModelOrganism, this.model);
+        await addOrganismComponent(slotComp,foundModelSlotsForViewTemplate, foundModelOrganism, this.model);
         continue;
       }
     }
