@@ -40,7 +40,7 @@ export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 //   return await container.childNodes;
 // }
 
-export async function html2dom(strings, ...values) {
+export function html2dom(strings, ...values) {
   const container = document.createElement("div");
   let interpolatedHTML = "";
 
@@ -63,7 +63,7 @@ export async function html2dom(strings, ...values) {
     wrapper.appendChild(container.firstChild);
   }
 
-  return await wrapper;
+  return wrapper;
 }
 
 export async function createComponent(type, file) {
