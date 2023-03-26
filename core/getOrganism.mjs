@@ -20,6 +20,8 @@ export async function getOrganism(module, parentId, orgId = null) {
     ? modelOrganisms.filter((organism) => organism.id === orgId)
     : modelOrganisms.filter((organism) => organism.parentId === parentId);
 
+  console.log("organism", organism, "module", module);
+
   const organismId = organism[0].id;
 
   //childOrganisms
@@ -73,6 +75,7 @@ export async function getOrganism(module, parentId, orgId = null) {
   }
 
   const organismObject = await createComponent(type, module);
+  console.log("organismObject", organismObject);
   //organismObject.organisms = childOrganismsObjects;
   organismObject.molecules = moleculesObject;
   organismObject.functions = functionsObject;
