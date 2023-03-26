@@ -32,6 +32,7 @@ export async function getOrganism(module, parentId, orgId = null) {
   if (childOrganisms.length > 0) {
     console.log("childOrganisms", childOrganisms);
     for (const childOrganism of childOrganisms) {
+      console.log(childOrganism, "childOrganism");
       const childModule = childOrganism.value;
       const childOrganismObject = await getOrganism(
         childModule,
