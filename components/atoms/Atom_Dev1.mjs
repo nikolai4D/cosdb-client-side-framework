@@ -9,13 +9,13 @@ export function Atom_Dev1() {
   const atom = async () => this.value[0].value;
 
   const component = async () => {
-    return await html2dom`
+    const comp = await html2dom`
     <button>${await atom()}</button>`;
+    comp.addEventListener("click", () => {
+      "clicked";
+    });
+    return comp;
   };
-
-  component().addEventListener("click", () => {
-    console.log("clicked");
-  });
 
   this.render = async () => {
     return await component();
