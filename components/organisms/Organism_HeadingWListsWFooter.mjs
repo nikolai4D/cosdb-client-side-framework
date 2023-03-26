@@ -25,9 +25,9 @@ export function Organism_HeadingWListsWFooter() {
       component: new Atom_Text1()
     },
     {
-        id: 4,
-        atom: "Atom_Text1",
-        component: new Atom_Text1()
+      id: 4,
+      atom: "Atom_Text1",
+      component: new Atom_Text1()
     }
   ]
 
@@ -81,11 +81,12 @@ this.getHtml = function() {
 }
 
   this.bindScript = async function() {
-    for (let mol of this.molecules) {
-      await this.fillSlot(mol.molecule, mol.component.getElement())
-    }
     for (let atom of this.atoms) {
       await this.fillSlot(atom.atom, atom.component.getElement())
+    }
+    
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
     }
 
   }
