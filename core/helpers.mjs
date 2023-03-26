@@ -42,6 +42,7 @@ export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 // }
 
 export function html2dom(strings, ...values) {
+  console.log("html2dom", "strings:", strings, "values:", values);
   const container = document.createElement("div");
 
   for (let i = 0; i < strings.length; i++) {
