@@ -118,7 +118,7 @@ nav > ul {
     margin: 2em;
 }
 
-.organism_heading_lists_w_footer__lists {
+.organism_heading_lists_w_footer__lists > div{
     display: grid;
     justify-items: center;
 }
