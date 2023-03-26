@@ -45,6 +45,10 @@ export function Organism_ListAll() {
   };
 
   this.bindScript = async function () {
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
+    }
+    let data = null;
 
     for (const func of this.functions) {
       if (func.functionCall) {
@@ -52,29 +56,14 @@ export function Organism_ListAll() {
         let url = func.parameters;
         await func.functionCall({type, url});
         await State[type];
-        const data = State[type];
-
-        changeData(data)
-        updateMolecules(data);
+        data = State[type];
       }
     }
+    // changeData(data)
 
-    for (let mol of this.molecules) {
-      await this.fillSlot(mol.molecule, mol.component.getElement())
-    }
+    updateMolecules(data);
     renderMolecules();
   };
-
-  const changeData = async (data) => {
-    for (let mol of this.molecules) {
-      for (let atom of mol.component.atoms) {
-        if (atom.atom === "Atom_Input") {
-          console.log(atom, "atom")
-       atom.component.oninput = (e) => { console.log("HELLOOO", e.target.value)}
-      }
-     }
-    }
-  }
 
   const createMolecule = (MoleculeClass, id) => {
     const molecule = new MoleculeClass();
@@ -121,12 +110,12 @@ export function Organism_ListAll() {
 
   const renderMolecules = () => {
     // Replacing placeholder DOM elements (slots are rendered at this point) with new molecule DOM elements 
-    // this.element.lastElementChild.innerHTML = "";
-    // const moleculesSlots = this.element.lastElementChild;
+    this.element.lastElementChild.innerHTML = "";
+    const moleculesSlots = this.element.lastElementChild;
 
-    // for (const [index, mol] of this.molecules.entries()) {
-    //   if (index !== 0) moleculesSlots.appendChild(mol.component.getElement());
+    for (const [index, mol] of this.molecules.entries()) {
+      if (index !== 0) moleculesSlots.appendChild(mol.component.getElement());
 
-    // }
+    }
   };
 }
