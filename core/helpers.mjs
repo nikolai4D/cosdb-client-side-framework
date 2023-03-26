@@ -37,8 +37,7 @@ export async function html2dom(strings, ...values) {
 
   container.innerHTML = interpolatedHTML;
 
-  //   return await container.childNodes;
-  return await container;
+  return await container.childNodes;
 }
 
 // export function html2dom(strings, ...values) {
