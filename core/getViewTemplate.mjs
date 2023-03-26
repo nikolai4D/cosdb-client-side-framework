@@ -24,10 +24,11 @@ export async function getViewTemplate(parentId) {
 
   const renderViewTemplateArray = Array.from(renderViewTemplate);
 
-  for (const child of renderViewTemplateArray) {
-    div.appendChild(child);
-  }
+  //   for (const child of renderViewTemplateArray) {
+  //     div.appendChild(child);
+  //   }
   //
+  div.appendChild(renderViewTemplate);
 
   return div;
 }
