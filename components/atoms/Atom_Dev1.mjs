@@ -21,7 +21,7 @@ export function Atom_Dev1() {
   this.render = async () => {
     const comp = await component();
     console.log("comp", comp);
-  
+
     for (const node of comp) {
       if (node.nodeName.toLowerCase() === "button") {
         node.addEventListener("click", () => {
@@ -29,7 +29,7 @@ export function Atom_Dev1() {
         });
       }
     }
-  
+
     return comp;
   };
-  
+}
