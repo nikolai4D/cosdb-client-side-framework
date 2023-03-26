@@ -21,10 +21,6 @@ export function Molecule_ListWHeading() {
     }
   ]
 
-  this.functions = [
-    { id: 1, function: "placeholder" },
-    { id: 2, function: "placeholder" },
-  ];
 
   this.getHtml = function(){
 
