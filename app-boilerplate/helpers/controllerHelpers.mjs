@@ -22,7 +22,7 @@ export const addMoleculeComponent = async (slotComp, foundModelMolecule, model) 
     }
 }
 
-export const addOrganismComponent = async (slotComp, foundModelOrganism, model) => {
+export const addOrganismComponent = async (slotComp, foundModelSlotsForViewTemplate, foundModelOrganism, model) => {
     slotComp.slot = foundModelOrganism.value;
     slotComp.component = await createComponent("organisms", foundModelOrganism.value);
     if (slotComp.component.organisms) {
