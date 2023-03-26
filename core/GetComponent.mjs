@@ -20,11 +20,13 @@ export async function getComponent(compName, compParentId) {
     comp = await getAtom(compName, compParentId);
   }
 
-  const renderComponentArray = Array.from(comp);
+  //   const renderComponentArray = Array.from(comp);
 
-  for (const child of renderComponentArray) {
-    div.appendChild(child);
-  }
+  //   for (const child of renderComponentArray) {
+  //     div.appendChild(child);
+  //   }
+
+  div.appendChild(comp);
 
   return div;
 }
