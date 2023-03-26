@@ -62,7 +62,7 @@ export function Organism_Dev2() {
   const organism = async () => {
     return await html2dom`
     <div class="organism_dev2">
-    <div>${childOrganism(1)}</div>
+    <div>${await childOrganism(1)}</div>
     <div>${await molecule(1)}</div>
     <div>${await molecule(2)}</div>
   </div>`;

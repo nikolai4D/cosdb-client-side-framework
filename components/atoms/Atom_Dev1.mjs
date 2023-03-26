@@ -9,17 +9,17 @@ export function Atom_Dev1() {
   const atom = async () => this.value[0].value;
 
   const component = async () => {
-    return await html2dom`
+    const content = await html2dom`
     <h1>${await atom()}</h1>`;
+    content.addEventListener("click", () => {
+      console.log();
+    });
+    return content;
   };
 
-  const comp = component();
-
-  comp.addEventListener("click", () => {
-    //
-  });
+  //??? component() is now a DOM Element, how do I add an eventlistner here ????
 
   this.render = async () => {
-    return await comp;
+    return await component();
   };
 }
