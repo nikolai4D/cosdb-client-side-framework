@@ -38,7 +38,7 @@ export function Organism_ListAll() {
       <div class="organism_list-all-search">
         ${slot(this.molecules[0].molecule)}
         <div id="organism_all_lists" class="organism_list-all-search__lists">
-          ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
+          ${this.molecules.slice(1).map((mol) => slot(mol.molecu  le)).join("")}
         </div>
       </div>
     `;
@@ -71,7 +71,10 @@ export function Organism_ListAll() {
   const changeData = (data) => {
     for (let mol of this.molecules) {
       for (let atom of mol.component.atoms) {
-       atom.component.oninput =  (e) => { console.log("HELLO", e.target.value)}
+       atom.component.oninput =  (e) => { 
+
+        console.log(data)
+       }
 
       }
     }
