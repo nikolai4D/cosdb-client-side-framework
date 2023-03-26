@@ -10,9 +10,9 @@ export function Atom_Dev1() {
 
   const component = async () => {
     const content = await html2dom`
-    <h1>${await atom()}</h1>`;
+    <button>${await atom()}</button>`;
     content.addEventListener("click", () => {
-      console.log();
+      console.log("clicked button");
     });
     return content;
   };
