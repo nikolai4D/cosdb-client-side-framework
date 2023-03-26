@@ -20,8 +20,10 @@ export function Molecule_Heading2() {
 
 this.getHtml = function() {
   return `
-          ${slot(this.atoms[0].atom)}
-`;
+          <div>
+            ${slot(this.atoms[0].atom)}
+          </div>
+          `;
 }
 
   this.bindScript = async function() {
