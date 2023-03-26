@@ -9,13 +9,27 @@ export function Organism() {
     const component = this.organisms.find(
       (childOrg) => childOrg.id === id
     )?.component;
-    const componentArray = component ? Array.from(component) : [];
-    return componentArray.map((elem) => elem.outerHTML).join("");
+
+    return component;
   };
 
   this.molecule = async (id) => {
     const component = this.molecules.find((mol) => mol.id === id)?.component;
-    const componentArray = component ? Array.from(component) : [];
-    return componentArray.map((elem) => elem.outerHTML).join("");
+    return component;
   };
 }
+
+// this.childOrganism = (id) => {
+//     const component = this.organisms.find(
+//       (childOrg) => childOrg.id === id
+//     )?.component;
+//     const componentArray = component ? Array.from(component) : [];
+//     return componentArray.map((elem) => elem.outerHTML).join("");
+//   };
+
+//   this.molecule = async (id) => {
+//     const component = this.molecules.find((mol) => mol.id === id)?.component;
+//     const componentArray = component ? Array.from(component) : [];
+//     return componentArray.map((elem) => elem.outerHTML).join("");
+//   };
+// }
