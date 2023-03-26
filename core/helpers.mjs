@@ -23,7 +23,19 @@ export async function html2dom(strings, ...values) {
   const container = document.createElement("div");
   let interpolatedHTML = "";
 
-  strings.forEach((string, index) => {
+  //   strings.forEach((string, index) => {
+  //     interpolatedHTML += string;
+
+  //     if (values[index] !== undefined) {
+  //       if (values[index] instanceof HTMLElement) {
+  //         interpolatedHTML += values[index].outerHTML;
+  //       } else {
+  //         interpolatedHTML += values[index];
+  //       }
+  //     }
+  //   });
+
+  for (const [index, string] of strings.entries()) {
     interpolatedHTML += string;
 
     if (values[index] !== undefined) {
@@ -33,7 +45,7 @@ export async function html2dom(strings, ...values) {
         interpolatedHTML += values[index];
       }
     }
-  });
+  }
 
   container.innerHTML = interpolatedHTML;
 
