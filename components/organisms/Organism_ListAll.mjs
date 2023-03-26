@@ -38,7 +38,7 @@ export function Organism_ListAll() {
       <div class="organism_list-all-search">
         ${slot(this.molecules[0].molecule)}
         <div id="organism_all_lists" class="organism_list-all-search__lists">
-          ${this.molecules.slice(1).map((mol) => slot(mol.molecu  le)).join("")}
+          ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
       </div>
     `;
