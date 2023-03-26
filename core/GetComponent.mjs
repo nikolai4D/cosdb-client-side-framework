@@ -21,13 +21,13 @@ export async function getComponent(compName, compParentId) {
   }
   console.log("comp from getComponent", comp);
 
-  const renderComponentArray = Array.from(comp);
+  //   const renderComponentArray = Array.from(comp);
 
-  for (const child of renderComponentArray) {
-    div.appendChild(child);
-  }
-  console.log("div from getComponent", div);
-  //   div.appendChild(comp);
+  //   for (const child of renderComponentArray) {
+  //     div.appendChild(child);
+  //   }
+  //   console.log("div from getComponent", div);
+  div.appendChild(comp);
 
   return div;
 }
