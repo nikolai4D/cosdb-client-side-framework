@@ -11,8 +11,9 @@ export function Atom_Dev1() {
   const component = async () => {
     const comp = await html2dom`
     <button>${await atom()}</button>`;
-    comp.addEventListener("click", () => {
-      "clicked";
+    const button = comp.querySelector("button");
+    button.addEventListener("click", () => {
+      console.log("clicked");
     });
     return comp;
   };
