@@ -50,7 +50,9 @@ export function html2dom(strings, ...values) {
     container.appendChild(document.createTextNode(string));
     if (values[i]) {
       let value = null;
-      if (values[i] instanceof HTMLElement) {
+      if (Array.isArray(values[i])) {
+        value = values[i].map((elem) => elem.cloneNode(true));
+      } else if (values[i] instanceof HTMLElement) {
         value = values[i];
       } else if (typeof values[i] === "string") {
         value = document.createTextNode(values[i].trim());
@@ -58,7 +60,11 @@ export function html2dom(strings, ...values) {
         console.error(`Invalid value: ${values[i]}`);
       }
       if (value) {
-        container.appendChild(value);
+        if (Array.isArray(value)) {
+          value.forEach((elem) => container.appendChild(elem));
+        } else {
+          container.appendChild(value);
+        }
       }
     }
   }
