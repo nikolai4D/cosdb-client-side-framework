@@ -6,6 +6,7 @@ import { createComponent } from "./helpers.mjs";
 export async function getOrganism(module, parentId, orgId = null) {
   console.log(orgId, "orgId", parentId, "parentId", module, "module");
   const modelOrganisms = await apiCallGet(`/read/organisms`);
+  const modelChildOrganisms = await apiCallGet(`/read/organisms`);
   const modelMolecules = await apiCallGet(`/read/molecules`);
   const modelFunctions = await apiCallGet(`/read/functions`);
 
@@ -22,18 +23,20 @@ export async function getOrganism(module, parentId, orgId = null) {
   const organismId = organism[0].id;
 
   //childOrganisms
-  const childOrganisms = modelOrganisms.filter(
+  const childOrganisms = modelChildOrganisms.filter(
     (organism) => organism.parentId === organismId
   );
   const childOrganismsObjects = [];
-  for (const childOrganism of childOrganisms) {
-    const childModule = childOrganism.value;
-    const childOrganismObject = await getOrganism(
-      childModule,
-      organismId,
-      childOrganism.id
-    );
-    childOrganismsObjects.push(childOrganismObject);
+  if (childOrganisms.length > 0) {
+    for (const childOrganism of childOrganisms) {
+      const childModule = childOrganism.value;
+      const childOrganismObject = await getOrganism(
+        childModule,
+        organismId,
+        childOrganism.id
+      );
+      childOrganismsObjects.push(childOrganismObject);
+    }
   }
 
   //molecules
