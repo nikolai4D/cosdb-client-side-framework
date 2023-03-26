@@ -69,6 +69,7 @@ export function Organism_ListAll() {
     for (let mol of this.molecules) {
       for (let atom of mol.component.atoms) {
         if (atom.atom === "Atom_Input") {
+          console.log(atom, "atom")
        atom.component.oninput = async (e) => { console.log("HELLOOO", e.target.value)}
       }
      }
