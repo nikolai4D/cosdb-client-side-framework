@@ -6,16 +6,16 @@ import { html2dom } from "../../core/helpers.mjs";
 
 export function Organism_Dev3() {
   this.organisms = [
-    {
-      id: 1,
-      organism: "Organism_Dev1",
-      component: new Organism_Dev1(),
-    },
-    {
-      id: 2,
-      organism: "Organism_Dev2",
-      component: new Organism_Dev2(),
-    },
+    // {
+    //   id: 1,
+    //   organism: "Organism_Dev1",
+    //   component: new Organism_Dev1(),
+    // },
+    // {
+    //   id: 2,
+    //   organism: "Organism_Dev2",
+    //   component: new Organism_Dev2(),
+    // },
   ];
 
   this.molecules = [
