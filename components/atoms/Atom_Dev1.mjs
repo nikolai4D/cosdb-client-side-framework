@@ -1,5 +1,5 @@
 import { html2dom } from "../../core/helpers.mjs";
-import { Atom } from "./Atom.mjs";
+import { Atom } from "../../core/Atom.mjs";
 
 export function Atom_Dev1() {
   Atom.call(this);
