@@ -77,6 +77,7 @@ export function Organism_ListAll() {
           else 
           {
             filteredData = filteredData.map(item => 
+                            item.letter,
                             item.title = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
           )
           console.log(filteredData)
