@@ -12,7 +12,7 @@ export function ViewTemplate_dev() {
 
   const component = async () => {
     return await html2dom`
-        <div>${this.slot("slot1")}</div>`;
+        <div>${await this.slot("slot1")}</div>`;
   };
 
   this.render = async () => {
