@@ -60,8 +60,18 @@ export async function html2dom(strings, ...values) {
       if (values[index] instanceof HTMLElement) {
         container.appendChild(values[index]);
       } else {
+        // Create a temporary element for inserting the text node
+        const tempElement = document.createElement("div");
         const textNode = document.createTextNode(values[index]);
-        container.appendChild(textNode);
+        tempElement.appendChild(textNode);
+        container.appendChild(tempElement);
+
+        // Move the text node to the correct position
+        tempElement.parentNode.insertBefore(
+          tempElement.firstChild,
+          tempElement
+        );
+        tempElement.parentNode.removeChild(tempElement);
       }
     }
   }
