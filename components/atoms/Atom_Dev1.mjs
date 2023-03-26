@@ -7,10 +7,10 @@ export function Atom_Dev1() {
   const component = async () => {
     const comp = await html2dom`
           <button>${await this.atom()}</button>`;
-    console.log(comp);
-    comp.addEventListener("click", () => {
+
+    comp.onclick = () => {
       console.log("clicked");
-    });
+    };
 
     console.log(comp);
 
