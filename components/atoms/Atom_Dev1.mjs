@@ -8,27 +8,32 @@ export function Atom_Dev1() {
 
   const atom = async () => this.value[0].value;
 
-  const component = async () => {
-    return await html2dom`
-    <button>${await atom()}</button>`;
-  };
+  //   const component = async () => {
+  //     return await html2dom`
+  //     <button>${await atom()}</button>`;
+  //   };
 
   //   this.render = async () => {
   //     return await component();
   //   };
   // }
 
+  const component = async () => {
+    const nodes = await html2dom`
+      <button>${await atom()}</button>`;
+    const container = document.createElement("div");
+    nodes.forEach((node) => container.appendChild(node));
+    return container;
+  };
+
   this.render = async () => {
     const comp = await component();
     console.log("comp", comp);
 
-    for (const node of comp) {
-      if (node.nodeName.toLowerCase() === "button") {
-        node.addEventListener("click", () => {
-          console.log("clicked");
-        });
-      }
-    }
+    const button = comp.querySelector("button");
+    button.addEventListener("click", () => {
+      console.log("clicked");
+    });
 
     return comp;
   };
