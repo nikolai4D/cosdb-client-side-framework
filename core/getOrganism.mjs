@@ -31,15 +31,15 @@ export async function getOrganism(module, parentId, orgId = null) {
   const childOrganismsObjects = [];
   if (childOrganisms.length > 0) {
     console.log("childOrganisms", childOrganisms);
-    // for (const childOrganism of childOrganisms) {
-    //   const childModule = childOrganism.value;
-    //   const childOrganismObject = await getOrganism(
-    //     childModule,
-    //     organismId,
-    //     childOrganism.id
-    //   );
-    //   childOrganismsObjects.push(childOrganismObject);
-    // }
+    for (const childOrganism of childOrganisms) {
+      const childModule = childOrganism.value;
+      const childOrganismObject = await getOrganism(
+        childModule,
+        organismId,
+        childOrganism.id
+      );
+      childOrganismsObjects.push(childOrganismObject);
+    }
   }
 
   //molecules
@@ -76,10 +76,9 @@ export async function getOrganism(module, parentId, orgId = null) {
 
   const organismObject = await createComponent(type, module);
   console.log("organismObject", organismObject);
-  //organismObject.organisms = childOrganismsObjects;
+  organismObject.organisms = childOrganismsObjects;
   organismObject.molecules = moleculesObject;
   organismObject.functions = functionsObject;
-  organismObject.organisms = childOrganismsObjects;
 
   //   organismObject.updateChildOrganisms = () => {
   //     if (childOrganismsObjects.length > 0) {
