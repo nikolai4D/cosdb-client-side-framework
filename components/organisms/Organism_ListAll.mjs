@@ -55,7 +55,7 @@ export function Organism_ListAll() {
         await func.functionCall({type, url});
         await State[type];
         data = State[type];
-        let filteredData = [...State[type]]
+        filteredData = [...State[type]]
       }
     }
     changeData(data, filteredData)
@@ -73,11 +73,14 @@ export function Organism_ListAll() {
     for (let mol of this.molecules) {
       for (let atom of mol.component.atoms) {
        atom.component.oninput =  (e) => { 
-        if (e.target.value === "") console.log("EMTPY VALUE")
+        if (e.target.value === "") { filteredData = [...data] }
           else 
-          console.log("FILTER BY VALUE :", e.target.value)
+          {
+            filteredData = data.filter((item) => {
+              return item.title.toLowerCase().includes(e.target.value.toLowerCase())
+            })
+          }
         }
-      
       }
 
       }
