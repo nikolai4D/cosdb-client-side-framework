@@ -17,7 +17,6 @@ import { getConstructors } from "../functions/getConstructors.mjs";
 
 export async function readExistingModel() {
   const readModel = await action_readModel();
-  console.log("readExistingModel: readModel:", readModel);
 
   // add views from state
 
@@ -26,11 +25,6 @@ export async function readExistingModel() {
 
     const existingViewTemplate = State.viewTemplates.find(
       (viewTemplate) => viewTemplate.parentId === view.id
-    );
-
-    console.log(
-      "readExistingModel: existingViewTemplate:",
-      existingViewTemplate
     );
 
     const ViewTemplateExistingDiv = await ViewTemplate(existingViewTemplate);
@@ -66,7 +60,6 @@ export async function readExistingModel() {
       viewTemplateBody.appendChild(slotDiv);
 
       const componentBody = await getAccordionBody(componentId);
-      console.log("readExistingModel: componentBody:", componentBody);
 
       // add organisms from state
       await createOrganism(componentId, componentBody);
@@ -183,10 +176,7 @@ async function getComponentFunctions(
 }
 
 async function createFunctionsEl(componentFunctions, id, body, parentBody) {
-  console.log("readExistingModel: componentFunctions:", componentFunctions);
   for (const compFn of componentFunctions) {
-    console.log("readExistingModel: compFn:", compFn);
-    // const [[key, value]] = Object.entries(compFn);
     const key = "function " + compFn.id;
     const value = compFn.function;
     const parentId = id;
@@ -196,9 +186,14 @@ async function createFunctionsEl(componentFunctions, id, body, parentBody) {
     const existingFn = State.functions.find(
       (fn) => fn.parentId === parentId && fn.key === key
     );
-    console.log("readExistingModel: existingFn:", existingFn);
 
     if (existingFn) {
+      if (
+        typeof existingFn.parameters === "object" ||
+        Array.isArray(existingFn.parameters)
+      ) {
+        existingFn.parameters = JSON.stringify(existingFn.parameters);
+      }
       functionSlot = await Function(existingFn, body);
     } else {
       functionSlot = await Function(await newFunction(parentId, key), body);

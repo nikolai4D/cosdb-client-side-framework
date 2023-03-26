@@ -9,14 +9,6 @@ import { newFunction } from "../_8_function/newFunction.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
 export async function createOrganism(componentBody, id, selectedValue) {
-  console.log(
-    "componentBody",
-    componentBody,
-    "id",
-    id,
-    "selectedValue",
-    selectedValue
-  );
   const subComponentBody = document.createElement("div");
   const newOrg = await newOrganism("organism", selectedValue, id);
   const organismSlot = await Organism(newOrg, subComponentBody);
@@ -99,8 +91,6 @@ async function createSubOrganism(subComponentBody, id, selectedValue) {
 
 async function createSubOrganismsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
-    console.log("comp", comp);
-    // const [[key, value]] = Object.entries(comp);
     const key = "organism " + comp.id;
     const value = comp.organism;
 
@@ -125,8 +115,6 @@ async function createSubOrganismsEl(subComps, id, compBody, parentBody) {
 
 async function createSubMoleculesEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
-    console.log("comp", comp);
-    // const [[key, value]] = Object.entries(comp);
     const key = "molecule " + comp.id;
     const value = comp.molecule;
     const parentId = id;
@@ -149,8 +137,6 @@ async function createSubMoleculesEl(subComps, id, compBody, parentBody) {
 
 async function createFunctionsEl(subComps, id, compBody, parentBody) {
   for (const comp of subComps) {
-    console.log("comp", comp);
-    // const [[key, value]] = Object.entries(comp);
     const key = "function " + comp.id;
     const value = comp.function;
     const parentId = id;
