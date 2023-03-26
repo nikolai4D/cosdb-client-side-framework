@@ -69,16 +69,21 @@ import { getMolecule } from "./getMolecule.mjs";
 import { getFunction } from "./getFunction.mjs";
 import { createComponent } from "./helpers.mjs";
 
-export async function getOrganism(module, parentId) {
+export async function getOrganism(module, parentId, orgId = null)) {
   const modelOrganisms = await apiCallGet(`/read/organisms`);
   const modelMolecules = await apiCallGet(`/read/molecules`);
   const modelFunctions = await apiCallGet(`/read/functions`);
 
   const type = "organism";
 
-  const organism = modelOrganisms.filter(
-    (organism) => organism.parentId === parentId
-  );
+//   const organism = modelOrganisms.filter(
+//     (organism) => organism.parentId === parentId
+//   );
+
+    const organism = orgId
+      ? modelOrganisms.filter((organism) => organism.id === orgId)
+      : modelOrganisms.filter((organism) => organism.parentId === parentId);
+
   const organismId = organism[0].id;
 
   //childOrganisms
@@ -87,7 +92,8 @@ export async function getOrganism(module, parentId) {
   );
   const childOrganismsObjects = [];
   for (const childOrganism of childOrganisms) {
-    const childOrganismObject = await getOrganism(module, childOrganism.id);
+    const childModule = childOrganism.value;
+    const childOrganismObject = await getOrganism(childModule, organismId , childOrganism.id);
     childOrganismsObjects.push(childOrganismObject);
   }
 
