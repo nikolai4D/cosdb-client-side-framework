@@ -9,15 +9,11 @@ export function Atom_Dev1() {
   const atom = async () => this.value[0].value;
 
   const component = async () => {
-    await html2dom`
+    return await html2dom`
     <button>${await atom()}</button>`;
   };
 
   this.render = async () => {
-    const comp = await component();
-    comp.addEventListener("click", () => {
-      console.log("clicked");
-    });
-    return comp;
+    return await component();
   };
 }
