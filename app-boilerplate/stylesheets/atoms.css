@@ -24,31 +24,35 @@
 .atom_button-neutral{
   background-color: var(--white-color);
   padding: 1em;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 6px;
 }
 
 .atom_button-neutral:hover{
   background-color: var(--custom-color-1);
-  border: 1px solid var(--custom-color-1);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 6px;
 }
 
 
 .atom_button-positive{
     background-color: var(--grey-color);
     padding: 1em;
-    border: 1px solid var(--grey-color);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 6px;
 }
 
 .atom_button-positive:hover{
     background-color: var(--custom-color-2);
-    border: 1px solid var(--custom-color-2);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 6px;
 }
 
 .atom_button-grey{
   padding: 1rem 2rem;
   background-color: 1px solid var(--grey-color);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 6px;
   border: 0;
 }
@@ -56,7 +60,7 @@
 
 .atom_input {
     padding: 0.8rem 1rem;
-    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     border-radius: 6px;
 
 }
