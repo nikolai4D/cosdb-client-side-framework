@@ -4,7 +4,7 @@ import { getFunction } from "./getFunction.mjs";
 import { createComponent } from "./helpers.mjs";
 
 export async function getOrganism(module, parentId, orgId = null) {
-  console.log(orgId, "orgId", parentId, "parentId", module, "module");
+  //   console.log(orgId, "orgId", parentId, "parentId", module, "module");
   const modelOrganisms = await apiCallGet(`/read/organisms`);
   const modelChildOrganisms = await apiCallGet(`/read/organisms`);
   const modelMolecules = await apiCallGet(`/read/molecules`);
@@ -59,12 +59,10 @@ export async function getOrganism(module, parentId, orgId = null) {
 
   //functions
   const functionsObject = [];
-  const funcs = modelFunctions.filter(
-    (func) => func.parentId === molecule[0].id
-  );
+  const funcs = modelFunctions.filter((func) => func.parentId === organismId);
   for (const func of funcs) {
     const value = func.value;
-    const funcObject = await getFunction(value, moleculeId);
+    const funcObject = await getFunction(value, organismId);
     const funcId = parseInt(func.key.split(" ")[1]);
     functionsObject.push({
       id: funcId,
@@ -84,19 +82,10 @@ export async function getOrganism(module, parentId, orgId = null) {
     }
   };
 
-  //   const renderOrganism = await organismObject.render();
-  //   organismObject.updateChildOrganisms(); // Update child organisms after rendering
+  const renderOrganism = await organismObject.render();
+  organismObject.updateChildOrganisms(); // Update child organisms after rendering
 
-  let renderOrganism;
-  if (typeof organismObject.render === "function") {
-    renderOrganism = await organismObject.render();
-    organismObject.updateChildOrganisms(); // Update child organisms after rendering
-  } else {
-    console.error(
-      "Render is not a function in organismObject:",
-      organismObject
-    );
-  }
+  console.log(renderOrganism, "renderOrganism  !!!!!!!!!!!!!!!!!!!!!");
 
   return await renderOrganism;
 }

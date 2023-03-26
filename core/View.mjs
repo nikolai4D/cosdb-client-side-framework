@@ -1,6 +1,5 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
-import { ViewTemplate } from "./ViewTemplate.mjs";
-//import { ViewTester2 } from "./ViewTester2.mjs"; //for testing - delete later
+import { getViewTemplate } from "./getViewTemplate.mjs";
 
 export async function View(viewPath) {
   const type = "view";
@@ -22,7 +21,7 @@ export async function View(viewPath) {
   div.setAttribute("id", id);
 
   // Create a new viewTemplate
-  const divChild = await ViewTemplate(id);
+  const divChild = await getViewTemplate(id);
 
   div.appendChild(divChild);
 

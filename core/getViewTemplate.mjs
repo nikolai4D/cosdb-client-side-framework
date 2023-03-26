@@ -3,7 +3,7 @@ import { createViewTemplate } from "./helpers.mjs";
 import { Components } from "./Components.mjs";
 import { createComponent } from "./helpers.mjs";
 
-export async function ViewTemplate(parentId) {
+export async function getViewTemplate(parentId) {
   const type = "viewTemplate";
   //validate and authenticate path
   const viewTemplate = await apiCallGet(`/read/${type}s/${parentId}`);
