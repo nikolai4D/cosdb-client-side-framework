@@ -55,16 +55,14 @@ export function Organism_ListAll() {
         const data = State[type];
 
         changeData(data)
-
         updateMolecules(data);
       }
-      
     }
+
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
     renderMolecules();
-
   };
 
   const changeData = async (data) => {
@@ -75,8 +73,6 @@ export function Organism_ListAll() {
        atom.component.oninput = (e) => { console.log("HELLOOO", e.target.value)}
       }
      }
-      // await this.fillSlot(mol.molecule, mol.component.getElement())
-      // await this.fillSlot(mol.molecule, mol.component.getElement())
     }
   }
 
@@ -125,12 +121,12 @@ export function Organism_ListAll() {
 
   const renderMolecules = () => {
     // Replacing placeholder DOM elements (slots are rendered at this point) with new molecule DOM elements 
-    this.element.lastElementChild.innerHTML = "";
-    const moleculesSlots = this.element.lastElementChild;
+    // this.element.lastElementChild.innerHTML = "";
+    // const moleculesSlots = this.element.lastElementChild;
 
-    for (const [index, mol] of this.molecules.entries()) {
-      if (index !== 0) moleculesSlots.appendChild(mol.component.getElement());
+    // for (const [index, mol] of this.molecules.entries()) {
+    //   if (index !== 0) moleculesSlots.appendChild(mol.component.getElement());
 
-    }
+    // }
   };
 }
