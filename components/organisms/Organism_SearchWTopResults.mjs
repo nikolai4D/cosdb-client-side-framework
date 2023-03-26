@@ -17,9 +17,9 @@ export function Organism_SearchWTopResults() {
     this.organisms = [
         {
             id: 1,
-            molecule: "Organism_HeadingWListsWFooter",
+            organism: "Organism_HeadingWListsWFooter",
             component: new Organism_HeadingWListsWFooter()
-        }, 
+        }
     ]
 
     this.getHtml = function() {
