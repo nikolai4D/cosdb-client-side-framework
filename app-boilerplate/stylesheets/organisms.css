@@ -117,7 +117,7 @@ nav > ul {
 }
 
 .organism_list-all-search__lists::-webkit-scrollbar-thumb {
-    background: #666666
+    background: var(--grey-color);
 }
 
 .organism_two-fields-one-dropdown-one-picture {
