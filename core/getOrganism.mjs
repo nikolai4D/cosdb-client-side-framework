@@ -12,13 +12,13 @@ export async function getOrganism(module, parentId, orgId = null) {
 
   const type = "organism";
 
-  //   const organism = modelOrganisms.filter(
-  //     (organism) => organism.parentId === parentId
-  //   );
+  const organism = modelOrganisms.filter(
+    (organism) => organism.parentId === parentId
+  );
 
-  const organism = orgId
-    ? modelOrganisms.filter((organism) => organism.id === orgId)
-    : modelOrganisms.filter((organism) => organism.parentId === parentId);
+  //   const organism = orgId
+  //     ? modelOrganisms.filter((organism) => organism.id === orgId)
+  //     : modelOrganisms.filter((organism) => organism.parentId === parentId);
 
   const organismId = organism[0].id;
 
@@ -40,11 +40,7 @@ export async function getOrganism(module, parentId, orgId = null) {
   if (childOrganisms.length > 0) {
     for (const childOrganism of childOrganisms) {
       const childModule = childOrganism.value;
-      const childOrganismObject = await getOrganism(
-        childModule,
-        organismId,
-        childOrganism.id
-      );
+      const childOrganismObject = await getOrganism(childModule, organismId);
       childOrganismsObjects.push(childOrganismObject);
     }
   }
