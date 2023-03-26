@@ -45,7 +45,7 @@ export function Organism_Dev2() {
   fn(1);
   fn(2);
 
-  const childOrganism = async (id) => {
+  const childOrganism = (id) => {
     const component = this.organisms.find(
       (childOrg) => childOrg.id === id
     )?.component;
@@ -62,7 +62,7 @@ export function Organism_Dev2() {
   const organism = async () => {
     return await html2dom`
     <div class="organism_dev2">
-    <div>${await childOrganism(1)}</div>
+    <div>${childOrganism(1)}</div>
     <div>${await molecule(1)}</div>
     <div>${await molecule(2)}</div>
   </div>`;
