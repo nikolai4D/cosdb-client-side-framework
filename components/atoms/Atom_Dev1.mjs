@@ -9,16 +9,15 @@ export function Atom_Dev1() {
   const atom = async () => this.value[0].value;
 
   const component = async () => {
-    const comp = await html2dom`
+    await html2dom`
     <button>${await atom()}</button>`;
-    const button = comp.querySelector("button");
-    button.addEventListener("click", () => {
-      console.log("clicked");
-    });
-    return comp;
   };
 
   this.render = async () => {
-    return await component();
+    const comp = await component();
+    comp.addEventListener("click", () => {
+      console.log("clicked");
+    });
+    return comp;
   };
 }
