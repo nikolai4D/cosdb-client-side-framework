@@ -77,10 +77,10 @@ export function Organism_ListAll() {
           else 
           {
             filteredData = data.filter( (item) => {
-              console.log(item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase())))
-              // await item
+              item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
               // return  item.title.toLowerCase().includes(e.target.value.toLowerCase())
             })
+            console.log(filteredData)
           }
         }
       }
