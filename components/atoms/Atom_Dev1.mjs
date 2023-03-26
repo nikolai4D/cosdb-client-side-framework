@@ -21,10 +21,15 @@ export function Atom_Dev1() {
   this.render = async () => {
     const comp = await component();
     console.log("comp", comp);
-    const button = comp.querySelector("button");
-    button.addEventListener("click", () => {
-      console.log("clicked");
-    });
+  
+    for (const node of comp) {
+      if (node.nodeName.toLowerCase() === "button") {
+        node.addEventListener("click", () => {
+          console.log("clicked");
+        });
+      }
+    }
+  
     return comp;
   };
-}
+  
