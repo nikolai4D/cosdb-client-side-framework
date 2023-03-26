@@ -107,6 +107,9 @@ nav > ul {
     grid-auto-flow: row;
     grid-gap: 2rem;
     overflow: auto;
+    border: 1px solid lightgray;
+    padding: 2em;
+    border-radius: 6px;
 }
 
 .organism_list-all-search__lists::-webkit-scrollbar {
