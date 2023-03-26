@@ -46,7 +46,7 @@ export function Organism_ListAll() {
 
   this.bindScript = async function () {
 
-    let data = null;
+    let data, filteredData = null
 
     for (const func of this.functions) {
       if (func.functionCall) {
