@@ -20,7 +20,7 @@ export async function importModuleFromFile(path, filename) {
 export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 
 export async function html2dom(strings, ...values) {
-    console.log("html2dom", "strings:", strings, "values:", values)
+  console.log("html2dom", "strings:", strings, "values:", values);
   const container = document.createElement("div");
   let interpolatedHTML = "";
 
@@ -39,19 +39,6 @@ export async function html2dom(strings, ...values) {
   container.innerHTML = interpolatedHTML;
 
   return await container.childNodes;
-}
-
-
-
-  if (container.children.length > 1) {
-    const wrapper = document.createElement("div");
-    Array.from(container.childNodes).forEach((node) => {
-      wrapper.appendChild(node);
-    });
-    return wrapper;
-  } else {
-    return container.firstChild;
-  }
 }
 
 export async function createComponent(type, file) {
