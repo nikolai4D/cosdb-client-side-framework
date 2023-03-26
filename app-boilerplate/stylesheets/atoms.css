@@ -24,13 +24,15 @@
 .atom_button-neutral{
   background-color: var(--white-color);
   padding: 1em;
-  border: 1px solid black;
+  border: 1px solid var(--grey-color);
   border-radius: 6px;
+  transition: 0.05s;
 }
 
 .atom_button-neutral:hover{
   background-color: var(--custom-color-1);
-  border: 1px solid var(--custom-color-1);
+  border: 1px solid var(--grey-color);
+  border-radius: 6px;
 }
 
 
@@ -39,25 +41,29 @@
     padding: 1em;
     border: 1px solid var(--grey-color);
     border-radius: 6px;
-}
+    transition: 0.05s;
+  }
 
 .atom_button-positive:hover{
     background-color: var(--custom-color-2);
-    border: 1px solid var(--custom-color-2);
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
 }
 
 .atom_button-grey{
   padding: 1rem 2rem;
   background-color: 1px solid var(--grey-color);
+  border: 1px solid var(--grey-color);
   border-radius: 6px;
-  border: 0;
+  transition: 0.05s;
 }
 
 
 .atom_input {
-    padding: 0.8rem 1rem;
-    border: 1px solid black;
-    border-radius: 6px;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--grey-color);
+  border-radius: 6px;
+
 
 }
 

@@ -1,3 +1,5 @@
+@import "colors.css";
+
 .molecule_logo {
     display: flex;
     padding: 1em;
@@ -79,6 +81,12 @@
     column-gap: 3rem;
 }
 
+
+.molecule_list {
+    row-gap: 3rem;
+}
+
+
 .molecule_text_and_btn {
     display: flex;
     justify-content: center;
@@ -98,14 +106,20 @@
     cursor: pointer;
 }
 
-.molecule_icon_and_link > a:active {
-    font-weight: bold;
+.molecule_icon_and_link > a:hover {
+    color:#999;
+
 }
 
 .molecule_icon_and_link > a {
     color: black;
     cursor: pointer;
    
+}
+
+.molecule_icon_and_link:hover {
+    color:#999;
+
 }
 
 .molecule_textWButton {

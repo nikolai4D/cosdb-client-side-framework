@@ -33,7 +33,6 @@ Router.prototype.goTo = async function (
   forceNewView = false,
   pushState = true
 ) {
-  console.log("goTo", fullRoute, params);
 
   const splitRoute = fullRoute.split("/");
   const routeBase = splitRoute[0];
@@ -41,30 +40,34 @@ Router.prototype.goTo = async function (
 
   let previousView = this.currentView;
 
-  console.log("routeBase", routeBase);
+  // let route = this.routes.find((r) => r.path === routeBase);
+  let route = this.routes[0];
+  
+  if (previousView && previousView.path === routeBase) return
 
-  let route = this.routes.find((r) => r.path === routeBase);
-
-  if (!route) {
-    route = this.routes[0];
-    fullRoute = this.routes[0].path;
-    console.warn(`View ${routeBase} not found, using default view`);
-  }
+  // if (!route) {
+  //   route = this.routes[0];
+  //   fullRoute = this.routes[0].path;
+  //   console.warn(`View ${routeBase} not found, using default view`);
+  // }
 
   const createView = async (viewConstructor, params = []) => {
+
     let view = await new viewConstructor(routeParams, ...params);
     view.path = fullRoute;
+
     return view;
   };
 
   async function switchView(currentView) {
-    if (previousView) await previousView.template.removeElement();
-
+    if (previousView) {
+      document.body.innerHTML = ""
+    }
     if (pushState)
       history.pushState({ path: routeBase }, null, "../" + fullRoute); //History only store the route of the view
     await currentView.setView();
   }
 
   this.currentView = await createView(route.view, params);
-  await switchView(this.currentView);
+  await switchView(await this.currentView);
 };

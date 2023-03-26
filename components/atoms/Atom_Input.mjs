@@ -6,7 +6,13 @@ export function Atom_Input() {
 
   this.value = [{ value: "placeholder" }];
 
+  this.oninput = (e) => console.log(e.target.value)
+
   this.getHtml = function(){
     return `<input class="atom_input" type="text" placeholder="${this.value[0].value}">`;
     }
+
+  this.bindScript= function() {
+      this.element.addEventListener("input", this.oninput)
+  }
 }

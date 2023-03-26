@@ -6,6 +6,8 @@ export function Atom_Link() {
 
   this.value = [{ value: "placeholder" }];
 
+  this.click = () => console.log("click")
+
   this.getHtml = function(){
     return `<a>
                 ${this.value[0].value}
@@ -14,6 +16,6 @@ export function Atom_Link() {
     }
 
     this.bindScript = function(){
-        this.element.addEventListener("click", () => console.log("click"))
+        this.element.addEventListener("click", this.click)
     }
 }
