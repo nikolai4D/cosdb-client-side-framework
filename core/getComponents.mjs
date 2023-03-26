@@ -1,7 +1,7 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { getComponent } from "./getComponent.mjs";
 
-export async function Components(parentId) {
+export async function getComponents(parentId) {
   const slotType = "slot";
   const componentType = "component";
   //get slots
