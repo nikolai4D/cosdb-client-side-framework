@@ -77,7 +77,14 @@
 
 .molecule_list > ul {
     column-gap: 3rem;
+    row-gap: 3rem;
 }
+
+
+/* .molecule_list {
+    column-gap: 3rem;
+}
+ */
 
 .molecule_text_and_btn {
     display: flex;
