@@ -19,28 +19,59 @@ export async function importModuleFromFile(path, filename) {
 
 export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 
+//1st
+// export async function html2dom(strings, ...values) {
+//   console.log("html2dom", "strings:", strings, "values:", values);
+//   const container = document.createElement("div");
+//   let interpolatedHTML = "";
+
+//   for (const [index, string] of strings.entries()) {
+//     interpolatedHTML += string;
+
+//     if (values[index] !== undefined) {
+//       if (values[index] instanceof HTMLElement) {
+//         interpolatedHTML += values[index].outerHTML;
+//       } else {
+//         interpolatedHTML += values[index];
+//       }
+//     }
+//   }
+
+//   container.innerHTML = interpolatedHTML;
+
+//   return await container;
+//   //   return await container.childNodes
+// }
+
+//2nd
 export async function html2dom(strings, ...values) {
   console.log("html2dom", "strings:", strings, "values:", values);
-  const container = document.createElement("div");
-  let interpolatedHTML = "";
+  const container = document.createDocumentFragment(); // Change to DocumentFragment
+  let currentIndex = 0;
 
   for (const [index, string] of strings.entries()) {
-    interpolatedHTML += string;
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = string;
+    while (tempDiv.firstChild) {
+      container.appendChild(tempDiv.firstChild);
+    }
 
     if (values[index] !== undefined) {
       if (values[index] instanceof HTMLElement) {
-        interpolatedHTML += values[index].outerHTML;
+        container.appendChild(values[index]); // Directly append HTMLElement
       } else {
-        interpolatedHTML += values[index];
+        const textNode = document.createTextNode(values[index]);
+        container.appendChild(textNode);
       }
     }
+
+    currentIndex += 1;
   }
 
-  container.innerHTML = interpolatedHTML;
-
   return await container;
-  //   return await container.childNodes
 }
+
+//3rd
 
 // export async function html2dom(strings, ...values) {
 //   console.log("html2dom", "strings:", strings, "values:", values);
