@@ -4,7 +4,6 @@ import { getFunction } from "./getFunction.mjs";
 import { createComponent } from "./helpers.mjs";
 
 export async function getOrganism(module, parentId, orgId = null) {
-  //   console.log(orgId, "orgId", parentId, "parentId", module, "module");
   const modelOrganisms = await apiCallGet(`/read/organisms`);
   const modelChildOrganisms = await apiCallGet(`/read/organisms`);
   const modelMolecules = await apiCallGet(`/read/molecules`);
@@ -12,15 +11,9 @@ export async function getOrganism(module, parentId, orgId = null) {
 
   const type = "organism";
 
-  //   const organism = modelOrganisms.filter(
-  //     (organism) => organism.parentId === parentId
-  //   );
-
   const organism = orgId
     ? modelOrganisms.filter((organism) => organism.id === orgId)
     : modelOrganisms.filter((organism) => organism.parentId === parentId);
-
-  console.log("organism", organism, "module", module);
 
   const organismId = organism[0].id;
 
@@ -30,9 +23,7 @@ export async function getOrganism(module, parentId, orgId = null) {
   );
   const childOrganismsObjects = [];
   if (childOrganisms.length > 0) {
-    console.log("childOrganisms", childOrganisms);
     for (const childOrganism of childOrganisms) {
-      console.log(childOrganism, "childOrganism");
       const childOrgId = parseInt(childOrganism.key.split(" ")[1]);
       const childModule = childOrganism.value;
       const childOrganismObject = await getOrganism(
@@ -81,21 +72,12 @@ export async function getOrganism(module, parentId, orgId = null) {
   }
 
   const organismObject = await createComponent(type, module);
-  console.log("organismObject", organismObject);
+
   organismObject.organisms = childOrganismsObjects;
   organismObject.molecules = moleculesObject;
   organismObject.functions = functionsObject;
 
-  //   organismObject.updateChildOrganisms = () => {
-  //     if (childOrganismsObjects.length > 0) {
-  //       organismObject.organisms = childOrganismsObjects;
-  //     }
-  //   };
-
   const renderOrganism = await organismObject.render();
-  //   organismObject.updateChildOrganisms(); // Update child organisms after rendering
-
-  console.log("renderOrganism  !!!!!!!!!!!!!!!!!!!!!", renderOrganism);
 
   return await renderOrganism;
 }

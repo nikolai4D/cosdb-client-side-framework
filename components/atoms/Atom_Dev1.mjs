@@ -13,7 +13,13 @@ export function Atom_Dev1() {
     <h1>${await atom()}</h1>`;
   };
 
+  const comp = component();
+
+  comp.addEventListener("click", () => {
+    //
+  });
+
   this.render = async () => {
-    return await component();
+    return await comp;
   };
 }
