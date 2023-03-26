@@ -19,25 +19,38 @@ export async function importModuleFromFile(path, filename) {
 
 export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 
-export async function html2dom(strings, ...values) {
+// export async function html2dom(strings, ...values) {
+//   const container = document.createElement("div");
+//   let interpolatedHTML = "";
+
+//   for (const [index, string] of strings.entries()) {
+//     interpolatedHTML += string;
+
+//     if (values[index] !== undefined) {
+//       if (values[index] instanceof HTMLElement) {
+//         interpolatedHTML += values[index].outerHTML;
+//       } else {
+//         interpolatedHTML += values[index];
+//       }
+//     }
+//   }
+
+//   container.innerHTML = interpolatedHTML;
+
+//   return await container.childNodes;
+// }
+
+export function html2dom(strings, ...values) {
   const container = document.createElement("div");
-  let interpolatedHTML = "";
 
-  for (const [index, string] of strings.entries()) {
-    interpolatedHTML += string;
-
-    if (values[index] !== undefined) {
-      if (values[index] instanceof HTMLElement) {
-        interpolatedHTML += values[index].outerHTML;
-      } else {
-        interpolatedHTML += values[index];
-      }
+  for (let i = 0; i < strings.length; i++) {
+    container.appendChild(document.createTextNode(strings[i]));
+    if (values[i]) {
+      container.appendChild(values[i]);
     }
   }
 
-  container.innerHTML = interpolatedHTML;
-
-  return await container.childNodes;
+  return container.childNodes;
 }
 
 export async function createComponent(type, file) {
