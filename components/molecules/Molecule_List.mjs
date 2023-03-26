@@ -18,6 +18,16 @@ export function Molecule_List() {
     }
   ]
 
+  this.functions = [
+    {
+      id: 1,
+      function: "placeholder",
+    },
+    {
+      id: 2,
+      function: "placeholder",
+    },
+  ];
 
   this.getHtml = function(){
 

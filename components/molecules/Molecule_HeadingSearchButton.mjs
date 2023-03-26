@@ -26,6 +26,16 @@ export function Molecule_HeadingSearchButton() {
     },
   ]
 
+  this.functions = [
+    {
+      id: 1,
+      function: "placeholder",
+    },
+    {
+      id: 2,
+      function: "placeholder",
+    },
+  ];
 
 this.getHtml = function() {
   return `

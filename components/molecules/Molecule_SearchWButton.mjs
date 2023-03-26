@@ -31,6 +31,17 @@ this.getHtml = function() {
 `;
 }
 
+this.functions = [
+    {
+      id: 1,
+      function: "placeholder",
+    },
+    {
+      id: 2,
+      function: "placeholder",
+    },
+  ];
+
   this.bindScript = async function() {
     for (let atom of this.atoms) {
       await this.fillSlot(atom.atom, atom.component.getElement())
