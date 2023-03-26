@@ -5,8 +5,10 @@ export function Atom_Dev1() {
   Atom.call(this);
 
   const component = async () => {
-    return await html2dom`
+    const comp = await html2dom`
           <button>${await this.atom()}</button>`;
+    console.log(comp);
+    return comp;
   };
 
   this.render = async () => {
