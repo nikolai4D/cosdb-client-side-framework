@@ -33,17 +33,8 @@ export function Molecule_Dev1() {
     },
   ];
 
-  //   const fn = (id) =>
-  //     this.functions.find((fn) => fn.id === id)?.function() || "";
   this.fn(1);
   this.fn(2);
-
-  //   const atom = async (id) => {
-  //     const component = Array.from(
-  //       this.atoms.find((atom) => atom.id === id)?.component
-  //     );
-  //     return component.map((elem) => elem.outerHTML).join("");
-  //   };
 
   const molecule = async () => {
     return await html2dom`

@@ -36,24 +36,8 @@ export function Organism_Dev1() {
     },
   ];
 
-  //   const fn = (id) =>
-  //     this.functions.find((fn) => fn.id === id)?.function() || "";
   this.fn(1);
   this.fn(2);
-
-  //   const childOrganism = async (id) => {
-  //     const component = this.organisms.find(
-  //       (childOrg) => childOrg.id === id
-  //     )?.component;
-  //     const componentArray = component ? Array.from(component) : [];
-  //     return componentArray.map((elem) => elem.outerHTML).join("");
-  //   };
-
-  //   const molecule = async (id) => {
-  //     const component = this.molecules.find((mol) => mol.id === id)?.component;
-  //     const componentArray = component ? Array.from(component) : [];
-  //     return componentArray.map((elem) => elem.outerHTML).join("");
-  //   };
 
   const organism = async () => {
     return await html2dom`
