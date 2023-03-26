@@ -46,39 +46,55 @@ export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 //2nd
 export async function html2dom(strings, ...values) {
   console.log("html2dom", "strings:", strings, "values:", values);
-  const container = document.createDocumentFragment();
-  const wrapper = document.createElement("div");
+  const container = document.createElement("div");
+  const placeholders = [];
+
+  let interpolatedHTML = "";
 
   for (const [index, string] of strings.entries()) {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = string;
-
-    while (tempDiv.firstChild) {
-      container.appendChild(tempDiv.firstChild);
-    }
+    interpolatedHTML += string;
 
     if (values[index] !== undefined) {
+      const placeholderId = `placeholder-${index}`;
+      placeholders.push(placeholderId);
+      interpolatedHTML += `<!--${placeholderId}-->`;
+    }
+  }
+
+  container.innerHTML = interpolatedHTML;
+
+  for (const [index, placeholderId] of placeholders.entries()) {
+    const commentNode = findCommentNode(container, placeholderId);
+    if (commentNode) {
       if (values[index] instanceof HTMLElement) {
-        container.appendChild(values[index]);
+        commentNode.parentNode.replaceChild(values[index], commentNode);
       } else {
-        // Create a placeholder element
-        const placeholder = document.createElement("placeholder");
-        container.appendChild(placeholder);
-
-        // Insert the text node before the placeholder
         const textNode = document.createTextNode(values[index]);
-        container.insertBefore(textNode, placeholder);
-
-        // Remove the placeholder element
-        container.removeChild(placeholder);
+        commentNode.parentNode.replaceChild(textNode, commentNode);
       }
     }
   }
 
-  wrapper.appendChild(container);
-
   // Return the only child element when there's one child, otherwise return the wrapper element
-  return wrapper.children.length === 1 ? wrapper.children[0] : wrapper;
+  return container.children.length === 1 ? container.children[0] : container;
+}
+
+function findCommentNode(element, commentText) {
+  for (const node of element.childNodes) {
+    if (
+      node.nodeType === Node.COMMENT_NODE &&
+      node.textContent.trim() === commentText
+    ) {
+      return node;
+    }
+
+    if (node.childNodes.length > 0) {
+      const result = findCommentNode(node, commentText);
+      if (result) return result;
+    }
+  }
+
+  return null;
 }
 
 //3rd
