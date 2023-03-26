@@ -70,8 +70,9 @@ export const processOrganisms = async (model, comp, foundModelParent) => {
         if (organismComponent){
             if(foundModelOrganisms[index]){
         if (organismComponent.functions) processFunction(this.model, organismComponent, foundModelOrganisms[index])
+            }
         if (organismComponent.molecules) await processMolecules(this.model, organismComponent, foundModelOrganisms);
-        }
+        
     }
     }
 };
