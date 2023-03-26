@@ -1,5 +1,5 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
-import { createViewTemplate } from "./helpers.mjs";
+import { createComponent } from "./helpers.mjs";
 import { getComponents } from "./getComponents.mjs";
 
 export async function getViewTemplate(parentId) {
@@ -20,7 +20,7 @@ export async function getViewTemplate(parentId) {
   const components = await getComponents(id);
   console.log("components", components);
 
-  const viewTemplateObject = await createViewTemplate(type, value);
+  const viewTemplateObject = await createComponent(type, value);
 
   viewTemplateObject.slots = components;
 
