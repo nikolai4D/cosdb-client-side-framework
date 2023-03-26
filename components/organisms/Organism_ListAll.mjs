@@ -5,6 +5,7 @@ import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearc
 import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { State } from "../../data-mgmt/state.mjs";
+import { Organism_ModalProcess } from "./Organism_ModalProcess.mjs";
 
 export function Organism_ListAll() {
   Component.call(this);
@@ -40,6 +41,8 @@ export function Organism_ListAll() {
         <div id="organism_all_lists" class="organism_list-all-search__lists">
           ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
+        <div id="modal-processView"></div>
+
       </div>
     `;
   };
@@ -66,6 +69,21 @@ export function Organism_ListAll() {
 
     updateMolecules(data);
     renderMolecules();
+    
+    this.getElement().querySelector("#organism_all_lists").addEventListener("click", (e) => {    
+
+      const modalId = document.getElementById('modal-processView')
+      
+      modalId.innerHTML = `
+          <div>
+              ${slot("new-modal")}
+          </div>
+          `
+      this.modal = new Organism_ModalProcess()
+
+      this.fillSlot("new-modal", this.modal.getElement());
+  });
+
   };
 
   const changeData = async (data, filteredData) => {
@@ -132,8 +150,10 @@ export function Organism_ListAll() {
 
   const renderMolecules = () => {
     // Replacing placeholder DOM elements (slots are rendered at this point) with new molecule DOM elements 
-    this.element.lastElementChild.innerHTML = "";
-    const moleculesSlots = this.element.lastElementChild;
+
+   let content= document.getElementById("organism_all_lists")
+   content.innerHTML = ""
+   const moleculesSlots = content
 
     for (const  mol of this.molecules) {
       moleculesSlots.appendChild(mol.component.getElement());

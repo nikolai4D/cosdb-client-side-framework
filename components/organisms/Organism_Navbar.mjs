@@ -3,6 +3,7 @@ import { slot } from  "../../core/helpers.mjs";
 import { Molecule_Logo } from "../molecules/Molecule_Logo.mjs";
 import { Molecule_ListWIconLinks } from "../molecules/Molecule_ListWIconLinks.mjs";
 import { Molecule_TextWButton } from "../molecules/Molecule_TextWButton.mjs";
+import { router } from "../../index.mjs"
 
 
 export function Organism_Navbar() {
@@ -58,15 +59,27 @@ export function Organism_Navbar() {
         <div id="user-modal"></div>
     </div>
 
-
-   
         `;
       }
 
   this.bindScript= async function() {
 
     for (let mol of this.molecules) {
+      for (let atom of mol.component.atoms) {
+       atom.component.click = async () => { await router.goTo(atom.component.value[0].value.toLowerCase())}
+      
+      }
       await this.fillSlot(mol.molecule, mol.component.getElement())
+    }
+
+    for (let mol of this.molecules) {
+      for (let atom of mol.component.atoms) {
+        await atom.component
+
+        if (window.location.pathname.slice(1) === atom.component.value[0].value.toLowerCase()){
+         atom.component.element.style.fontWeight = 'bold';
+        }
+      }
     }
   }
 }
