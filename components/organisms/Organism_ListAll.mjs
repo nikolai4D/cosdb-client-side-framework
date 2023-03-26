@@ -76,23 +76,28 @@ export function Organism_ListAll() {
         if (e.target.value === "") { filteredData = [...data] }
           else 
           {
-            filteredData = filteredData.map(item => 
-                            item.letter,
-                            item.title = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
-          )
+            filteredData = filteredData.map(item =>
+               { 
+                theTitle = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
+                return {letter: item.letter, title: theTitle}
+              //               {letter: item.letter,
+              //               title: item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
+              // }
+                          }
+            )
           console.log(filteredData)
             // filteredData = data.forEach( (item) => {
             //   item.title = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
             //   // return  item.title.toLowerCase().includes(e.target.value.toLowerCase())
             // })
             // console.log(filteredData)
-          }
-        }
       }
+    }
+
 
       }
     }
-  
+  }
 
   const createMolecule = (MoleculeClass, id) => {
     const molecule = new MoleculeClass();
