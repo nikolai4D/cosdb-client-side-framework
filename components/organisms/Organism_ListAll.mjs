@@ -85,6 +85,7 @@ export function Organism_ListAll() {
                 return {letter: item.letter, title: theTitle}
                 }
             )
+            console.log(filteredData)
         }
       }
       }
