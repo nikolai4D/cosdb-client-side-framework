@@ -11,9 +11,14 @@ export function ViewTemplate_dev() {
   ];
 
   const component = async () => {
-    return await html2dom`
-        <div>${await this.slot("slot1")}</div>`;
+    const comp = document.createElement("div");
+    comp.appendChild(await this.slot("slot1"));
+    return comp;
   };
+
+  //     await html2dom`
+  //         <div>${await this.slot("slot1")}</div>`;
+  //   };
 
   this.render = async () => {
     return await component();
