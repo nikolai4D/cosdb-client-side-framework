@@ -86,6 +86,7 @@ export function Organism_ListAll() {
                 }
             )
             console.log(filteredData)
+            filteredData = filteredData.filter(item => item.title.length > 0)
         }
       }
       }
