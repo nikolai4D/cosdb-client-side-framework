@@ -42,14 +42,20 @@ export function Organism_Dev1() {
     const component = this.organisms.find(
       (childOrg) => childOrg.id === id
     )?.component;
-    const componentArray = component ? Array.from(component) : [];
-    return componentArray.map((elem) => elem.outerHTML).join("");
+    if (component) {
+      const renderedComponent = await component.render();
+      return renderedComponent.outerHTML;
+    }
+    return "";
   };
 
   const molecule = async (id) => {
     const component = this.molecules.find((mol) => mol.id === id)?.component;
-    const componentArray = component ? Array.from(component) : [];
-    return componentArray.map((elem) => elem.outerHTML).join("");
+    if (component) {
+      const renderedComponent = await component.render();
+      return renderedComponent.outerHTML;
+    }
+    return "";
   };
 
   const organism = async () => {
