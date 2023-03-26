@@ -13,7 +13,18 @@ export function Atom_Dev1() {
     <button>${await atom()}</button>`;
   };
 
+  //   this.render = async () => {
+  //     return await component();
+  //   };
+  // }
+
   this.render = async () => {
-    return await component();
+    const comp = await component();
+    console.log("comp", comp);
+    const button = comp.querySelector("button");
+    button.addEventListener("click", () => {
+      console.log("clicked");
+    });
+    return comp;
   };
 }
