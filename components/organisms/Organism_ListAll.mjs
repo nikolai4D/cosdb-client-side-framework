@@ -85,12 +85,12 @@ export function Organism_ListAll() {
               // }
                           }
             )
-          console.log(filteredData)
             // filteredData = data.forEach( (item) => {
             //   item.title = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
             //   // return  item.title.toLowerCase().includes(e.target.value.toLowerCase())
             // })
             // console.log(filteredData)
+            filteredData.filter( (item) => item.title.length > 0)
       }
     }
 
