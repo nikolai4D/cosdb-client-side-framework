@@ -5,6 +5,7 @@ import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearc
 import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { State } from "../../data-mgmt/state.mjs";
+import { router } from "../../index.mjs"
 
 export function Organism_ListAll() {
   Component.call(this);
@@ -83,7 +84,10 @@ export function Organism_ListAll() {
               })
             filteredData = filteredData.filter( (item) => item.title.length > 0)
             console.log(filteredData, "filteredData")
+
           }
+          router.goTo(window.location.pathname.slice(1))
+
         }
       }
     }
