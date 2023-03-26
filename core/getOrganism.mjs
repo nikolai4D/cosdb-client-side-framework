@@ -76,16 +76,34 @@ export async function getOrganism(module, parentId, orgId = null) {
   organismObject.molecules = moleculesObject;
   organismObject.functions = functionsObject;
 
-  organismObject.updateChildOrganisms = () => {
-    if (childOrganismsObjects.length > 0) {
-      organismObject.organisms = childOrganismsObjects;
+  //   organismObject.updateChildOrganisms = () => {
+  //     if (childOrganismsObjects.length > 0) {
+  //       organismObject.organisms = childOrganismsObjects;
+  //     }
+  //   };
+
+  //   const renderOrganism = await organismObject.render();
+  //   organismObject.updateChildOrganisms(); // Update child organisms after rendering
+
+  //   console.log(renderOrganism, "renderOrganism  !!!!!!!!!!!!!!!!!!!!!");
+
+  //   return await renderOrganism;
+  // }
+
+  if (childOrganismsObjects.length > 0) {
+    organismObject.organisms = [];
+    for (const childOrganism of childOrganismsObjects) {
+      const childModule = childOrganism.module;
+      const childOrganismObject = await getOrganism(
+        childModule,
+        organismId,
+        childOrganism.id
+      );
+      organismObject.organisms.push(childOrganismObject);
     }
-  };
+  }
 
   const renderOrganism = await organismObject.render();
-  organismObject.updateChildOrganisms(); // Update child organisms after rendering
-
-  console.log(renderOrganism, "renderOrganism  !!!!!!!!!!!!!!!!!!!!!");
 
   return await renderOrganism;
 }
