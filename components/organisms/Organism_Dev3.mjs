@@ -72,6 +72,9 @@ export function Organism_Dev3() {
     <div>${await molecule(1)}</div>
     <div>${await molecule(2)}</div>
     <div>${await childOrganism(2)}</div>
+    <div>${await molecule(1)}</div>
+    <div>${await molecule(2)}</div>
+    <div>${await childOrganism(2)}</div>
   </div>`;
   };
 
