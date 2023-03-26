@@ -84,16 +84,11 @@ export function Organism_ListAll() {
 
                 if (theTitle.length > 0)
                 newFilteredData.push({letter: item.letter, title: theTitle})
-
                           }
             )
-
             console.log(newFilteredData)
-
+        }
       }
-    }
-
-
       }
     }
   }
