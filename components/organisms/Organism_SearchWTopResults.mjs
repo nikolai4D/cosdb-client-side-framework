@@ -3,7 +3,7 @@ import {slot} from "../../../core/helpers.mjs";
 import { Molecule_SearchWButton } from "../molecules/Molecule_SearchWButton.mjs";
 import { Molecule_HeadingWListsWFooter } from "../molecules/Molecule_HeadingWListsWFooter.mjs"
 
-export function Organism_InputOutput() {
+export function Organism_SearchWTopResults() {
     Component.call(this)
 
     this.molecules = [
