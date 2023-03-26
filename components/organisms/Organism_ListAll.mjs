@@ -61,13 +61,18 @@ export function Organism_ListAll() {
     }
     changeData(data, filteredData)
 
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
+    }
 
+    updateMolecules(data);
+    renderMolecules();
   };
 
   const changeData = async (data, filteredData) => {
     for (let mol of this.molecules) {
       for (let atom of mol.component.atoms) {
-       atom.component.oninput =  (e) => { 
+       atom.component.oninput = async (e) => { 
         if (e.target.value === "") { filteredData = [...data] }
           else 
           {
@@ -81,18 +86,20 @@ export function Organism_ListAll() {
 
           }
           // router.goTo(window.location.pathname.slice(1))
+          for (let mol of this.molecules) {
+            await this.fillSlot(mol.molecule, mol.component.getElement())
+          }
 
+          updateMolecules(filteredData);
+          renderMolecules();
         }
       }
     }
 
-    for (let mol of this.molecules) {
-      await this.fillSlot(mol.molecule, mol.component.getElement())
-    }
+
   
     
-    updateMolecules(data);
-    renderMolecules();
+
   }
 
   const createMolecule = (MoleculeClass, id) => {
