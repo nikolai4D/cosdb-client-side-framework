@@ -46,8 +46,8 @@ export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 //2nd
 export async function html2dom(strings, ...values) {
   console.log("html2dom", "strings:", strings, "values:", values);
-  const container = document.createDocumentFragment(); // Change to DocumentFragment
-  let currentIndex = 0;
+  const container = document.createDocumentFragment();
+  const wrapper = document.createElement("div"); // Create a wrapper element
 
   for (const [index, string] of strings.entries()) {
     const tempDiv = document.createElement("div");
@@ -58,17 +58,16 @@ export async function html2dom(strings, ...values) {
 
     if (values[index] !== undefined) {
       if (values[index] instanceof HTMLElement) {
-        container.appendChild(values[index]); // Directly append HTMLElement
+        container.appendChild(values[index]);
       } else {
         const textNode = document.createTextNode(values[index]);
         container.appendChild(textNode);
       }
     }
-
-    currentIndex += 1;
   }
 
-  return await container;
+  wrapper.appendChild(container); // Append the DocumentFragment to the wrapper element
+  return wrapper; // Return the wrapper element
 }
 
 //3rd
