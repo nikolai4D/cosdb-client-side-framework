@@ -1,52 +1,34 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from "../../core/helpers.mjs";
-import { Atom_Heading2 } from "../atoms/Atom_Heading2.mjs";
-import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
-import { Molecule_List } from "../molecules/Molecule_List.mjs";
+import { Molecule_Heading2 } from "../molecules/Molecule_Heading2.mjs";
+import { Molecule_ListWFooter } from "../molecules/Molecule_ListWFooter.mjs";
 
 
 export function Organism_HeadingWListsWFooter() {
   Component.call(this);
   
-  this.atoms = [
-    {
-      id: 1,
-      atom: "Atom_Heading2",
-      component: new Atom_Heading2()
-    },
-    {
-      id: 2,
-      atom: "Atom_Text1",
-      component: new Atom_Text1()
-    },
-    {
-      id: 3,
-      atom: "Atom_Text1",
-      component: new Atom_Text1()
-    },
-    {
-      id: 4,
-      atom: "Atom_Text1",
-      component: new Atom_Text1()
-    }
-  ]
 
 
   this.molecules = [
     {
       id: 1,
-      molecule: "Molecule_List",
-      component: new Molecule_List()
+      atom: "Molecule_Heading2",
+      component: new Molecule_Heading2()
     },
     {
         id: 2,
-        molecule: "Molecule_List",
-        component: new Molecule_List()
+        molecule: "Molecule_ListWFooter",
+        component: new Molecule_ListWFooter()
     },
     {
         id: 3,
-        molecule: "Molecule_List",
-        component: new Molecule_List()
+        molecule: "Molecule_ListWFooter",
+        component: new Molecule_ListWFooter()
+    },
+    {
+      id: 4,
+      molecule: "Molecule_ListWFooter",
+      component: new Molecule_ListWFooter()
     },
   ]
 
@@ -60,19 +42,16 @@ export function Organism_HeadingWListsWFooter() {
 this.getHtml = function() {
   return `
         <div class="organism_heading_lists_w_footer">
-          ${slot(this.atoms[0].atom)}
+        ${slot(this.molecules[0].molecule)}
             <div class="organism_heading_lists_w_footer__lists">
                 <div>
-                    ${slot(this.molecules[0].molecule)}
-                    ${slot(this.atoms[1].atom)}
-                </div>
-                <div>
                     ${slot(this.molecules[1].molecule)}
-                    ${slot(this.atoms[2].atom)}
                 </div>
                 <div>
                     ${slot(this.molecules[2].molecule)}
-                    ${slot(this.atoms[3].atom)}
+                </div>
+                <div>
+                    ${slot(this.molecules[3].molecule)}
                 </div>
             </div>
         </div>
