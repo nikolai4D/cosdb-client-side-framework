@@ -54,6 +54,7 @@ export async function html2dom(strings, ...values) {
 
 export async function createComponent(type, file) {
   const pathToComponent = `../../components/${type}s/${file}.mjs`;
+  console.log("pathToComponent", pathToComponent);
   const Component = await importModuleFromFile(pathToComponent, file);
 
   const component = new Component[file]();
