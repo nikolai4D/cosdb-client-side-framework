@@ -68,9 +68,11 @@ export const processOrganisms = async (model, comp, foundModelParent) => {
         const organismComponent = organism.component
         const foundModelOrganisms = model.organisms.filter(org => org.parentId === foundModelParent.id)
         if (organismComponent){
+            if(foundModelOrganisms[index]){
         if (organismComponent.functions) processFunction(this.model, organismComponent, foundModelOrganisms[index])
         if (organismComponent.molecules) await processMolecules(this.model, organismComponent, foundModelOrganisms);
         }
+    }
     }
 };
 
