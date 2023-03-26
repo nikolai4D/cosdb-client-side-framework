@@ -24,7 +24,6 @@
 .atom_button-neutral{
   background-color: var(--white-color);
   padding: 1em;
-  /* border: 1px solid black; */
   border: 1px solid var(--grey-color);
   border-radius: 6px;
   transition: 0.05s;
@@ -47,8 +46,8 @@
 
 .atom_button-positive:hover{
     background-color: var(--custom-color-2);
-  border: 1px solid var(--grey-color);
-      border-radius: 6px;
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
 }
 
 .atom_button-grey{
