@@ -1,7 +1,7 @@
 export function Atom() {
   this.value = [{ value: "placeholder" }];
 
-  this.atom = () => {
+  Atom.prototype.atom = () => {
     return this.value[0].value;
   };
 }
