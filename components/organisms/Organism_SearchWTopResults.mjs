@@ -26,11 +26,11 @@ export function Organism_SearchWTopResults() {
 
         return `
             <div class="grid">
-                <div class="organism_heading_lists_w_footer">
-                <div class="organism_heading_lists_w_footer__search">
+                <div class="organism_search_w_top_results">
+                <div class="organism_search_w_top_results__search">
                     ${slot(this.molecules[0].molecule)}
                     </div>
-                    <div class="organism_heading_lists_w_footer__lists">
+                    <div class="organism_search_w_top_results__lists">
                     ${slot(this.organisms[0].organism)}
                     </div>
                 </div>

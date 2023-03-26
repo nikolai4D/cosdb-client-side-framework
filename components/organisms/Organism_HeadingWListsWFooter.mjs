@@ -59,9 +59,9 @@ export function Organism_HeadingWListsWFooter() {
 
 this.getHtml = function() {
   return `
-        <div>
+        <div class="organism_heading_lists_w_footer">
           ${slot(this.atoms[0].atom)}
-            <div>
+            <div class="organism_heading_lists_w_footer__lists>
                 <div>
                     ${slot(this.molecules[0].molecule)}
                     ${slot(this.atoms[1].atom)}
