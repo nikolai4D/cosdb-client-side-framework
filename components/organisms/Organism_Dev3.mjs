@@ -51,8 +51,8 @@ export function Organism_Dev3() {
   this.fn(1);
   this.fn(2);
 
-  const organism = async () => {
-    return await html2dom`
+  const component = async () => {
+    const comp = await html2dom`
     <div class="organism_dev2">
     <div>${await this.childOrganism(1)}</div>
     <div>${await this.molecule(1)}</div>
@@ -62,9 +62,10 @@ export function Organism_Dev3() {
     <div>${await this.molecule(2)}</div>
     <div>${await this.childOrganism(2)}</div>
   </div>`;
+    return comp;
   };
 
   this.render = async () => {
-    return await organism();
+    return await component();
   };
 }

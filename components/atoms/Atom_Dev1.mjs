@@ -5,16 +5,11 @@ export function Atom_Dev1() {
   Atom.call(this);
 
   const component = async () => {
-    const atom = await this.atom();
     const comp = await html2dom`
-          <button>${atom}</button>`;
-
+          <button>${await this.atom()}</button>`;
     comp.onclick = () => {
-      test(atom);
+      test(this.atom());
     };
-
-    console.log(comp);
-
     return comp;
   };
 

@@ -36,15 +36,16 @@ export function Molecule_Dev1() {
   this.fn(1);
   this.fn(2);
 
-  const molecule = async () => {
-    return await html2dom`
+  const component = async () => {
+    const comp = await html2dom`
     <div class="molecule_dummy4">
     <div>${await this.atom(1)}</div>
     <div>${await this.atom(2)}</div>
     </div>`;
+    return comp;
   };
 
   this.render = async () => {
-    return await molecule();
+    return await component();
   };
 }
