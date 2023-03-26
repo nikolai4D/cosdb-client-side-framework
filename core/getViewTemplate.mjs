@@ -18,6 +18,7 @@ export async function getViewTemplate(parentId) {
   // get the viewTemplate
 
   const components = await getComponents(id);
+  console.log("components", components);
 
   const viewTemplateObject = await createViewTemplate(type, value, components);
   const renderViewTemplate = await viewTemplateObject.render();
