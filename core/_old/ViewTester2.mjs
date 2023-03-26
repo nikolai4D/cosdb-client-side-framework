@@ -1,4 +1,4 @@
-import { Router } from "./Router.mjs";
+import { Router } from "../Router.mjs";
 
 export async function ViewTester2(newView) {
   // Create a new <div> element
