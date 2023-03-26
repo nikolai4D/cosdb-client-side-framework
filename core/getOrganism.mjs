@@ -70,6 +70,7 @@ import { getFunction } from "./getFunction.mjs";
 import { createComponent } from "./helpers.mjs";
 
 export async function getOrganism(module, parentId, orgId = null) {
+  console.log(orgId, "orgId", parentId, "parentId", module, "module");
   const modelOrganisms = await apiCallGet(`/read/organisms`);
   const modelMolecules = await apiCallGet(`/read/molecules`);
   const modelFunctions = await apiCallGet(`/read/functions`);
