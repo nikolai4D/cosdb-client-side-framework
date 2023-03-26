@@ -19,26 +19,58 @@ export async function importModuleFromFile(path, filename) {
 
 export const slot = (name) => `<div data-slot="${name}" class="slot"></div>`;
 
-export async function html2dom(strings, ...values) {
-  console.log("html2dom", "strings:", strings, "values:", values);
+// export async function html2dom(strings, ...values) {
+//   console.log("html2dom", "strings:", strings, "values:", values);
+//   const container = document.createElement("div");
+//   let interpolatedHTML = "";
+
+//   for (const [index, string] of strings.entries()) {
+//     interpolatedHTML += string;
+
+//     if (values[index] !== undefined) {
+//       if (values[index] instanceof HTMLElement) {
+//         interpolatedHTML += values[index].outerHTML;
+//       } else {
+//         interpolatedHTML += values[index];
+//       }
+//     }
+//   }
+
+//   container.innerHTML = interpolatedHTML;
+
+//   return await container.childNodes;
+// }
+
+export function html2dom(strings, ...values) {
   const container = document.createElement("div");
-  let interpolatedHTML = "";
 
-  for (const [index, string] of strings.entries()) {
-    interpolatedHTML += string;
-
-    if (values[index] !== undefined) {
-      if (values[index] instanceof HTMLElement) {
-        interpolatedHTML += values[index].outerHTML;
+  for (let i = 0; i < strings.length; i++) {
+    const string = strings[i].trim();
+    container.appendChild(document.createTextNode(string));
+    if (values[i]) {
+      let value = null;
+      if (values[i] instanceof HTMLElement) {
+        value = values[i];
+      } else if (typeof values[i] === "string") {
+        value = document.createTextNode(values[i].trim());
       } else {
-        interpolatedHTML += values[index];
+        console.error(`Invalid value: ${values[i]}`);
+      }
+      if (value) {
+        container.appendChild(value);
       }
     }
   }
 
-  container.innerHTML = interpolatedHTML;
-
-  return await container.childNodes;
+  if (container.children.length > 1) {
+    const wrapper = document.createElement("div");
+    Array.from(container.childNodes).forEach((node) => {
+      wrapper.appendChild(node);
+    });
+    return wrapper;
+  } else {
+    return container.firstChild;
+  }
 }
 
 export async function createComponent(type, file) {
