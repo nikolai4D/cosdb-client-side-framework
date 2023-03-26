@@ -78,7 +78,7 @@ export function Organism_ListAll() {
           {
             filteredData = data.filter(async (item) => {
               await item
-              return await item.title.toLowerCase().includes(e.target.value.toLowerCase())
+              return  item.title.toLowerCase().includes(e.target.value.toLowerCase())
             })
           }
         }
