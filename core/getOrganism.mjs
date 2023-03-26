@@ -33,13 +33,18 @@ export async function getOrganism(module, parentId, orgId = null) {
     console.log("childOrganisms", childOrganisms);
     for (const childOrganism of childOrganisms) {
       console.log(childOrganism, "childOrganism");
+      const childOrgId = parseInt(childOrganism.key.split(" ")[1]);
       const childModule = childOrganism.value;
       const childOrganismObject = await getOrganism(
         childModule,
         organismId,
         childOrganism.id
       );
-      childOrganismsObjects.push(childOrganismObject);
+      childOrganismsObjects.push({
+        id: childOrgId,
+        organism: childModule,
+        component: childOrganismObject,
+      });
     }
   }
 
@@ -56,7 +61,7 @@ export async function getOrganism(module, parentId, orgId = null) {
     const moleculeId = parseInt(molecule.key.split(" ")[1]);
     moleculesObject.push({
       id: moleculeId,
-      value: value,
+      molecule: value,
       component: moleculeObject,
     });
   }
