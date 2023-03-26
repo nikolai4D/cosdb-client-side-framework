@@ -73,16 +73,50 @@ nav > ul {
 .organism_search_w_top_results{
 
     justify-self: center;
+    justify-self: center;
     align-self: center;
+    width: 600px;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    justify-items: center;
+    display: grid;
+  }
 
+.organism_search_w_top_results__lists{
+    align-items: center;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+}
+
+.organism_search_w_top_results__lists > div{
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    display: grid;
 }
 
 
 
 .organism_heading_lists_w_footer {
-
+    margin-top: 4em;
 }
 
+.organism_heading_lists_w_footer > h4 {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.organism_heading_lists_w_footer__lists {
+    display: flex;
+    margin: 2em;
+}
 
 .organism_form_4_dropdowns {
     display: grid;
