@@ -12,19 +12,19 @@ export function Organism_HeadingWListsWFooter() {
   this.molecules = [
     {
       id: 1,
-      atom: "Molecule_Heading2",
+      molecule: "Molecule_Heading2",
       component: new Molecule_Heading2()
     },
     {
-        id: 2,
-        molecule: "Molecule_ListWFooter",
-        component: new Molecule_ListWFooter()
-    },
-    {
-        id: 3,
-        molecule: "Molecule_ListWFooter",
-        component: new Molecule_ListWFooter()
-    },
+      id: 2,
+      molecule: "Molecule_ListWFooter",
+      component: new Molecule_ListWFooter()
+  },
+  {
+      id: 3,
+      molecule: "Molecule_ListWFooter",
+      component: new Molecule_ListWFooter()
+  },
     {
       id: 4,
       molecule: "Molecule_ListWFooter",
@@ -60,10 +60,7 @@ this.getHtml = function() {
 }
 
   this.bindScript = async function() {
-    for (let atom of this.atoms) {
-      await this.fillSlot(atom.atom, atom.component.getElement())
-    }
-    
+
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
