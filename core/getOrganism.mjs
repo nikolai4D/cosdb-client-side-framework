@@ -71,15 +71,18 @@ export async function getOrganism(module, parentId, orgId = null) {
   }
 
   const organismObject = await createComponent(type, module);
-  organismObject.organisms = childOrganismsObjects;
+  //organismObject.organisms = childOrganismsObjects;
   organismObject.molecules = moleculesObject;
   organismObject.functions = functionsObject;
 
-  //   if (childOrganismsObjects.length > 0) {
-  //     organismObject.organisms = childOrganismsObjects; // Assign the child organisms only if there are any
-  //   }
+  organismObject.updateChildOrganisms = () => {
+    if (childOrganismsObjects.length > 0) {
+      organismObject.organisms = childOrganismsObjects;
+    }
+  };
 
   const renderOrganism = await organismObject.render();
+  organismObject.updateChildOrganisms(); // Update child organisms after rendering
 
   return await renderOrganism;
 }
