@@ -52,6 +52,7 @@ export async function html2dom(strings, ...values) {
   for (const [index, string] of strings.entries()) {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = string;
+
     while (tempDiv.firstChild) {
       container.appendChild(tempDiv.firstChild);
     }
@@ -60,18 +61,16 @@ export async function html2dom(strings, ...values) {
       if (values[index] instanceof HTMLElement) {
         container.appendChild(values[index]);
       } else {
-        // Create a temporary element for inserting the text node
-        const tempElement = document.createElement("div");
-        const textNode = document.createTextNode(values[index]);
-        tempElement.appendChild(textNode);
-        container.appendChild(tempElement);
+        // Create a placeholder element
+        const placeholder = document.createElement("placeholder");
+        container.appendChild(placeholder);
 
-        // Move the text node to the correct position
-        tempElement.parentNode.insertBefore(
-          tempElement.firstChild,
-          tempElement
-        );
-        tempElement.parentNode.removeChild(tempElement);
+        // Insert the text node before the placeholder
+        const textNode = document.createTextNode(values[index]);
+        container.insertBefore(textNode, placeholder);
+
+        // Remove the placeholder element
+        container.removeChild(placeholder);
       }
     }
   }
