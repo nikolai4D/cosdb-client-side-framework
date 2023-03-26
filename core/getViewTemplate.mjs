@@ -1,7 +1,6 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { createViewTemplate } from "./helpers.mjs";
 import { Components } from "./Components.mjs";
-import { createComponent } from "./helpers.mjs";
 
 export async function getViewTemplate(parentId) {
   const type = "viewTemplate";
