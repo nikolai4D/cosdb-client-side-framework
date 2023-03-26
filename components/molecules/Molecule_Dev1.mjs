@@ -41,8 +41,10 @@ export function Molecule_Dev1() {
     <div class="molecule_dummy4">
     <div>${await this.atom(1)}</div>
     <div>${await this.atom(2)}</div>
-  </div>`;
+    </div>`;
   };
+
+  console.log(this.atom(1), "this.atom(1)");
 
   this.render = async () => {
     return await molecule();
