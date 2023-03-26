@@ -61,16 +61,10 @@ export function Organism_ListAll() {
     }
     changeData(data, filteredData)
 
-    for (let mol of this.molecules) {
-      await this.fillSlot(mol.molecule, mol.component.getElement())
-    }
-  
-    
-    updateMolecules(data);
-    renderMolecules();
+
   };
 
-  const changeData = (data, filteredData) => {
+  const changeData = async (data, filteredData) => {
     for (let mol of this.molecules) {
       for (let atom of mol.component.atoms) {
        atom.component.oninput =  (e) => { 
@@ -91,6 +85,14 @@ export function Organism_ListAll() {
         }
       }
     }
+
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
+    }
+  
+    
+    updateMolecules(data);
+    renderMolecules();
   }
 
   const createMolecule = (MoleculeClass, id) => {
