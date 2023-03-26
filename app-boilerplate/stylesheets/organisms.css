@@ -88,6 +88,7 @@ nav > ul {
     width: 783px;
     margin: auto;
     margin-top: 50px;
+    align-content: start;
 }
 
 .organism_list-all-search__top {
