@@ -56,8 +56,10 @@ export async function createComponent(type, file) {
   const pathToComponent = `../../components/${type}s/${file}.mjs`;
   console.log("pathToComponent", pathToComponent);
   const Component = await importModuleFromFile(pathToComponent, file);
+  console.log("Component", Component);
 
   const component = new Component[file]();
+  console.log("component", component);
 
   return component;
 }
