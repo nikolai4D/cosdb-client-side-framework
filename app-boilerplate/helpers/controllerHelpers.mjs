@@ -36,7 +36,6 @@ export const addOrganismComponent = async (slotComp, foundModelSlotsForViewTempl
     }
     if (slotComp.component.functions) {
         await processFunction(model, slotComp.component, foundModelOrganism);
-        console.log(slotComp.component)
     }
 }
 
