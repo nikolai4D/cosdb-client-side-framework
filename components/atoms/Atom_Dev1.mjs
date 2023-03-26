@@ -10,7 +10,7 @@ export function Atom_Dev1() {
 
   const component = async () => {
     return await html2dom`
-      <button>${await atom()}</button>`;
+      <button>${await this.atom()}</button>`;
   };
 
   this.render = async () => {
