@@ -1,8 +1,11 @@
 import { Molecule_Dev1 } from "../molecules/Molecule_Dev1.mjs";
 import { Molecule_Dev2 } from "../molecules/Molecule_Dev2.mjs";
 import { html2dom } from "../../core/helpers.mjs";
+import { Organism } from "../../core/Organism.mjs";
 
 export function Organism_Dev1() {
+  Organism.call(this);
+
   this.organisms = [];
 
   this.molecules = [
@@ -33,24 +36,24 @@ export function Organism_Dev1() {
     },
   ];
 
-  const fn = (id) =>
-    this.functions.find((fn) => fn.id === id)?.function() || "";
-  fn(1);
-  fn(2);
+  //   const fn = (id) =>
+  //     this.functions.find((fn) => fn.id === id)?.function() || "";
+  this.fn(1);
+  this.fn(2);
 
-  const childOrganism = async (id) => {
-    const component = this.organisms.find(
-      (childOrg) => childOrg.id === id
-    )?.component;
-    const componentArray = component ? Array.from(component) : [];
-    return componentArray.map((elem) => elem.outerHTML).join("");
-  };
+  //   const childOrganism = async (id) => {
+  //     const component = this.organisms.find(
+  //       (childOrg) => childOrg.id === id
+  //     )?.component;
+  //     const componentArray = component ? Array.from(component) : [];
+  //     return componentArray.map((elem) => elem.outerHTML).join("");
+  //   };
 
-  const molecule = async (id) => {
-    const component = this.molecules.find((mol) => mol.id === id)?.component;
-    const componentArray = component ? Array.from(component) : [];
-    return componentArray.map((elem) => elem.outerHTML).join("");
-  };
+  //   const molecule = async (id) => {
+  //     const component = this.molecules.find((mol) => mol.id === id)?.component;
+  //     const componentArray = component ? Array.from(component) : [];
+  //     return componentArray.map((elem) => elem.outerHTML).join("");
+  //   };
 
   const organism = async () => {
     return await html2dom`
