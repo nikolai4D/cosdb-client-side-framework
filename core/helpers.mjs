@@ -56,7 +56,15 @@ export function html2dom(strings, ...values) {
     }
   }
 
-  return container.childNodes;
+  if (container.children.length > 1) {
+    const wrapper = document.createElement("div");
+    Array.from(container.childNodes).forEach((node) => {
+      wrapper.appendChild(node);
+    });
+    return wrapper;
+  } else {
+    return container.firstChild;
+  }
 }
 
 export async function createComponent(type, file) {
