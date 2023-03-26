@@ -5,7 +5,7 @@ import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 import { Molecule_List } from "../molecules/Molecule_List.mjs";
 
 
-export function Molecule_HeadingWListsWFooter() {
+export function Organism_HeadingWListsWFooter() {
   Component.call(this);
   
   this.atoms = [
@@ -85,6 +85,10 @@ this.getHtml = function() {
     for (let atom of this.atoms) {
       await this.fillSlot(atom.atom, atom.component.getElement())
     }
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
+    }
+    
   }
 }
 

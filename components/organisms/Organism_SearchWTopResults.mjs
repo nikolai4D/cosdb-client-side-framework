@@ -1,7 +1,7 @@
 import {Component} from "../../../core/Component.mjs";
 import {slot} from "../../../core/helpers.mjs";
 import { Molecule_SearchWButton } from "../molecules/Molecule_SearchWButton.mjs";
-import { Molecule_HeadingWListsWFooter } from "../molecules/Molecule_HeadingWListsWFooter.mjs"
+import { Organism_HeadingWListsWFooter } from "./Organism_HeadingWListsWFooter.mjs"
 
 export function Organism_SearchWTopResults() {
     Component.call(this)
@@ -11,12 +11,15 @@ export function Organism_SearchWTopResults() {
             id: 1,
             molecule: "Molecule_SearchWButton",
             component: new Molecule_SearchWButton()
-        }, 
+        }
+    ]
+
+    this.organisms = [
         {
-            id: 2,
-            molecule: "Molecule_HeadingWListsWFooter",
-            component: new Molecule_HeadingWListsWFooter()
-        },
+            id: 1,
+            molecule: "Organism_HeadingWListsWFooter",
+            component: new Organism_HeadingWListsWFooter()
+        }, 
     ]
 
     this.getHtml = function() {
@@ -25,7 +28,7 @@ export function Organism_SearchWTopResults() {
             <div class="grid">
                 <div class="grid-placement__c2-2r3">
                     ${slot(this.molecules[0].molecule)}
-                    ${slot(this.molecules[1].molecule)}
+                    ${slot(this.organisms[0].organism)}
                 </div>
             </div>
         `
@@ -35,5 +38,8 @@ export function Organism_SearchWTopResults() {
         for (let mol of this.molecules) {
             await this.fillSlot(mol.molecule, mol.component.getElement())
           }
+        for (let org of this.organisms) {
+        await this.fillSlot(org.organism, org.component.getElement())
+        }
     }
 }
