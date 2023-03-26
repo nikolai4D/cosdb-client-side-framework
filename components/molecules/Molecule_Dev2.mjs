@@ -20,13 +20,13 @@ export function Molecule_Dev2() {
     {
       id: 1,
       function: function placeholder1() {
-        console.log("placeholder1");
+        //console.log("placeholder1");
       },
     },
     {
       id: 2,
       function: function placeholder2() {
-        console.log("placeholder2");
+        //console.log("placeholder2");
       },
     },
   ];

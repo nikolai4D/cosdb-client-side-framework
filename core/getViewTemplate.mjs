@@ -6,7 +6,7 @@ export async function getViewTemplate(parentId) {
   const type = "viewTemplate";
   //validate and authenticate path
   const viewTemplate = await apiCallGet(`/read/${type}s/${parentId}`);
-  console.log(viewTemplate);
+
   const id = viewTemplate[0].id;
   const value = viewTemplate[0].value;
 
