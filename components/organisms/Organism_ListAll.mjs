@@ -180,6 +180,9 @@ export function Organism_ListAll() {
 
     for (let org of this.organisms) {
       let elementsArray = that.element
+
+      let allLists = that.element.querySelector("#organism_all_lists").children
+      console.log(allLists, "allLists");
       console.log(elementsArray, "elementsArray");
       org.component.parent = elementsArray;
 
@@ -187,7 +190,6 @@ export function Organism_ListAll() {
       }
 
     //  org.component.parent = that.element;
-    //   let allLists = that.element.querySelector("#organism_all_lists").children
     //   let allListObjects = []
     //   for(let child of allLists){
     //   //   // console.log(child.children[1].children, "childnode")
