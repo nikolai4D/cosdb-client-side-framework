@@ -81,6 +81,9 @@ export function Organism_ListAll() {
     let that = this;
     for (let org of this.organisms) {
       org.component.parent = that.element;
+      let elementsArray = that.element.querySelectorAll("li");
+      console.log(elementsArray, "elementsArray");
+
       await this.fillSlot(org.organism, org.component.getElement())
     }
 
