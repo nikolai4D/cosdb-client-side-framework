@@ -35,7 +35,8 @@ export function Organism_ModalProcessPrep() {
 
   this.bindScript = async function () {
 
-    const component = this.organisms[0].component.getElement()
+    const modalComponent = this.organisms[0].component
+    const modalElement = modalComponent.getElement()
 
     let elementsToAddModalTo = this.parent
     if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
@@ -51,10 +52,10 @@ export function Organism_ModalProcessPrep() {
                 `
 
             getModalContent(component)
-            this.fillSlot("new-modal", component);
+            this.fillSlot("new-modal", modalElement);
         })
     }
-}
+    }
 }
 
 const getModalContent = (component) => {
