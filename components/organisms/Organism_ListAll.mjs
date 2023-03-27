@@ -174,9 +174,9 @@ export function Organism_ListAll() {
       moleculesSlots.appendChild(mol.component.getElement());
     }
     
-    for (let org of this.organisms) {
-      await this.fillSlot(org.organism, org.component.getElement())
-    }
+    // for (let org of this.organisms) {
+    //   await this.fillSlot(org.organism, org.component.getElement())
+    // }
     
     let that = this;
 
