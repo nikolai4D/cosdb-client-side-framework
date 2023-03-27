@@ -43,17 +43,35 @@ export function Organism_ModalProcessPrep() {
 
     if (elementsArray.length === 0) elementsArray = [document.getElementById("organism_all_lists")]
 
-    elementsArray.forEach(element => {
+       for(let child of this.parent){
+        child.children[1].children.forEach(element => {
         element.addEventListener("click", (e) => {
 
-      const modalId = document.getElementById('modal-processView')
-
-      modalId.innerHTML = `
-          <div>
-              ${slot("new-modal")}
-          </div>
-          `
-      this.fillSlot("new-modal", component);
+            const modalId = document.getElementById('modal-processView')
+      
+            modalId.innerHTML = `
+                <div>
+                    ${slot("new-modal")}
+                </div>
+                `
+            this.fillSlot("new-modal", component);
         })})
+      //   // console.log(child.children[1].children, "childnode")
+        // allListObjects.push(...child.children[1].children)
+      }
+
+
+    // elementsArray.forEach(element => {
+    //     element.addEventListener("click", (e) => {
+
+    //   const modalId = document.getElementById('modal-processView')
+
+    //   modalId.innerHTML = `
+    //       <div>
+    //           ${slot("new-modal")}
+    //       </div>
+    //       `
+    //   this.fillSlot("new-modal", component);
+    //     })})
 }
 }
