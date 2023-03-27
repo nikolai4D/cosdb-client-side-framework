@@ -56,7 +56,7 @@ export function Organism_ModalProcessPrep() {
                 `
 
             let molecule = getModalContent(modalComponent)
-            modifyMolecule(molecule)
+            modifyMolecule(molecule, this)
 
             this.fillSlot("new-modal", modalElement);
         })
@@ -81,9 +81,10 @@ const getModalContent = (component) => {
     return {moleculeLeft, moleculeMiddle, moleculeRight}
 }
 
-const modifyMolecule = (molecule) => {
+const modifyMolecule = (molecule, that) => {
     const {moleculeLeft, moleculeMiddle, moleculeRight} = molecule
-    console.log(molecule)
+    console.log(molecule, that)
+    
     // moleculeLeft.functions[0].function = "placeholder"
     // moleculeMiddle.functions[0].function = "placeholder"
     // moleculeRight.functions[0].function = "placeholder"
