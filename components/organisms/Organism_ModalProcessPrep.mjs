@@ -26,9 +26,9 @@ export function Organism_ModalProcessPrep() {
 
   this.parent = [];
 
-  this.moleculeLeft = null;
-  this.moleculeMiddle = null;
-  this.moleculeRight = null;
+  this.moleculeLeft = {header: null, body: null};
+  this.moleculeMiddle = {header: null, body: null};
+  this.moleculeRight = {header: null, body: null};
 
   this.getHtml = function () {
     return `
@@ -67,8 +67,16 @@ export function Organism_ModalProcessPrep() {
 const getModalContent = (component) => {
     const organismToModify = component.organisms[0].component.organisms[0].component
     const moleculeLeft = organismToModify.molecules[0].component
+    const moleculeLeftHeader = moleculeLeft.atoms[0]
+    const moleculeLeftBody = moleculeLeft.atoms[1]
+
     const moleculeMiddle = organismToModify.molecules[1].component
+    const moleculeMiddleHeader = moleculeMiddle.atoms[0]
+    const moleculeMiddleBody = moleculeMiddle.atoms[1]
+
     const moleculeRight = organismToModify.molecules[2].component
+    const moleculeRightHeader = moleculeRight.atoms[0]
+    const moleculeRightBody = moleculeRight.atoms[1]
 
     return {moleculeLeft, moleculeMiddle, moleculeRight}
 }
