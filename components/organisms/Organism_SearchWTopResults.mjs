@@ -1,7 +1,7 @@
 import {Component} from "../../../core/Component.mjs";
 import {slot} from "../../../core/helpers.mjs";
 import { Molecule_SearchWButton } from "../molecules/Molecule_SearchWButton.mjs";
-import { Organism_HeadingWListsWFooter } from "./Organism_HeadingWListsWFooter.mjs"
+import { Organism_HeadingWLists } from "./Organism_HeadingWLists.mjs"
 
 export function Organism_SearchWTopResults() {
     Component.call(this)
@@ -17,8 +17,8 @@ export function Organism_SearchWTopResults() {
     this.organisms = [
         {
             id: 1,
-            organism: "Organism_HeadingWListsWFooter",
-            component: new Organism_HeadingWListsWFooter()
+            organism: "Organism_HeadingWLists",
+            component: new Organism_HeadingWLists()
         }
     ]
 
