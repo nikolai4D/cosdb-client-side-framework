@@ -100,8 +100,7 @@ export function Organism_ListAll() {
           }
         }
       }
-      
-    }
+  }
 
   const createMolecule = (MoleculeClass, id) => {
     const molecule = new MoleculeClass();
@@ -153,7 +152,10 @@ export function Organism_ListAll() {
       moleculesSlots.appendChild(mol.component.getElement());
     }
     console.log(moleculesSlots)
+    for (const child of moleculesSlots.children) {
+      console.log(child)
 
+    }
     for (let org of this.organisms) {
       org.component.parent = moleculesSlots.children[0].children[1]
 
