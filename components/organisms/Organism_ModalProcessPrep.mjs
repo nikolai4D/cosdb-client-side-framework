@@ -45,18 +45,21 @@ export function Organism_ModalProcessPrep() {
 
        for(let child of this.parent.children){
         console.log(child)
-        child.children[1].children.forEach(element => {
-        element.addEventListener("click", (e) => {
+        console.log(        child.children[1].children
+            )
+        
+        // .forEach(element => {
+        // element.addEventListener("click", (e) => {
 
-            const modalId = document.getElementById('modal-processView')
+        //     const modalId = document.getElementById('modal-processView')
       
-            modalId.innerHTML = `
-                <div>
-                    ${slot("new-modal")}
-                </div>
-                `
-            this.fillSlot("new-modal", component);
-        })})
+        //     modalId.innerHTML = `
+        //         <div>
+        //             ${slot("new-modal")}
+        //         </div>
+        //         `
+        //     this.fillSlot("new-modal", component);
+        // })})
       //   // console.log(child.children[1].children, "childnode")
         // allListObjects.push(...child.children[1].children)
       }
