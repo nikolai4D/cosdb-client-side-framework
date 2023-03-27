@@ -34,7 +34,8 @@ export function Organism_ModalProcessPrep() {
   this.bindScript = async function () {
 
     let component = this.organisms[0].component.getElement()
-    component.querySelector("#organism_all_lists").addEventListener("click", (e) => {
+    
+    document.getElementById("#organism_all_lists").addEventListener("click", (e) => {
 
       const modalId = document.getElementById('modal-processView')
 
