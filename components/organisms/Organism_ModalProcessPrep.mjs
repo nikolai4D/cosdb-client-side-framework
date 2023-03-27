@@ -40,7 +40,10 @@ export function Organism_ModalProcessPrep() {
     let elementsArray = this.parent
     console.log(elementsArray, "elementsArray");
 
-    document.getElementById("organism_all_lists").addEventListener("click", (e) => {
+    if (elementsArray.length === 0) elementsArray = [document.getElementById("organism_all_lists")]
+
+    elementsArray.forEach(element => {
+        element.addEventListener("click", (e) => {
 
       const modalId = document.getElementById('modal-processView')
 
@@ -50,8 +53,6 @@ export function Organism_ModalProcessPrep() {
           </div>
           `
       this.fillSlot("new-modal", component);
-  });
-
-  };
-
+        })})
+}
 }
