@@ -80,7 +80,7 @@ export function Organism_ListAll() {
     renderMolecules();
     let that = this;
     for (let org of this.organisms) {
-      org.parent = that.element;
+      org.component.parent = that.element;
       await this.fillSlot(org.organism, org.component.getElement())
     }
 
