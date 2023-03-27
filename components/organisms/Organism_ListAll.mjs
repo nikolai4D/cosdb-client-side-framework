@@ -186,7 +186,7 @@ export function Organism_ListAll() {
            let allListObjects = []
       for(let child of allLists){
       //   // console.log(child.children[1].children, "childnode")
-        allListObjects.push(...child.children[1].children)
+        console.log(child.children[1].children)
       }
 
       console.log(allLists, "allLists");
