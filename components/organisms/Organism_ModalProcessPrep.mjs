@@ -37,11 +37,7 @@ export function Organism_ModalProcessPrep() {
 
     console.log(this.parent, "parent")
     let component = this.organisms[0].component.getElement()
-    // let elementsArray =[];
 
-    // if (elementsArray.length === 0) elementsArray = [document.getElementById("organism_all_lists")]
-
-    // for (let element of elementsArray) {
     this.parent.addEventListener("click", (e) => {
         const modalId = document.getElementById('modal-processView')
 
@@ -52,56 +48,5 @@ export function Organism_ModalProcessPrep() {
             `
         this.fillSlot("new-modal", component);
     })
-
-
-        // }
-
-    //    for(let child of this.parent.children){
-    //     for (let element of child.children[1].children)
-    //     {
-    //         element.addEventListener("click", (e) => {
-    //             const modalId = document.getElementById('modal-processView')
-          
-    //             modalId.innerHTML = `
-    //                 <div>
-    //                     ${slot("new-modal")}
-    //                 </div>
-    //                 `
-    //             this.fillSlot("new-modal", component);
-    //         })
-    //     }
-        // console.log(child)
-        // console.log(        
-            // )
-        
-        // .forEach(element => {
-        // element.addEventListener("click", (e) => {
-
-        //     const modalId = document.getElementById('modal-processView')
-      
-        //     modalId.innerHTML = `
-        //         <div>
-        //             ${slot("new-modal")}
-        //         </div>
-        //         `
-        //     this.fillSlot("new-modal", component);
-        // })})
-      //   // console.log(child.children[1].children, "childnode")
-        // allListObjects.push(...child.children[1].children)
-      }
-
-
-    // elementsArray.forEach(element => {
-    //     element.addEventListener("click", (e) => {
-
-    //   const modalId = document.getElementById('modal-processView')
-
-    //   modalId.innerHTML = `
-    //       <div>
-    //           ${slot("new-modal")}
-    //       </div>
-    //       `
-    //   this.fillSlot("new-modal", component);
-    //     })})
-// }
+    }
 }
