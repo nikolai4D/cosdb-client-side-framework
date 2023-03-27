@@ -179,6 +179,10 @@ export function Organism_ListAll() {
     let that = this;
 
     for (let org of this.organisms) {
+      let elementsArray = that.element.querySelectorAll("li");
+      console.log(elementsArray, "elementsArray");
+      org.component.parent = elementsArray;
+      
        this.fillSlot(org.organism, org.component.getElement())
       }
 
@@ -193,9 +197,7 @@ export function Organism_ListAll() {
       // console.log(org.component.parent, "org.component.parent");
       // console.log(allLists, "allLists");
 
-      // let elementsArray = that.element.querySelectorAll("li");
-      // console.log(elementsArray, "elementsArray");
-      // org.component.parent = elementsArray;
+
 
 
   };
