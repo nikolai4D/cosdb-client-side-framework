@@ -1,10 +1,10 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from "../../core/helpers.mjs";
 import { Molecule_Heading2 } from "../molecules/Molecule_Heading2.mjs";
-import { Molecule_ListWFooter } from "../molecules/Molecule_ListWFooter.mjs";
+import { Molecule_List } from "../molecules/Molecule_List.mjs";
 
 
-export function Organism_HeadingWListsWFooter() {
+export function Organism_HeadingWLists() {
   Component.call(this);
   
 
@@ -17,18 +17,18 @@ export function Organism_HeadingWListsWFooter() {
     },
     {
       id: 2,
-      molecule: "Molecule_ListWFooter",
-      component: new Molecule_ListWFooter()
+      molecule: "Molecule_List",
+      component: new Molecule_List()
   },
   {
       id: 3,
-      molecule: "Molecule_ListWFooter",
-      component: new Molecule_ListWFooter()
+      molecule: "Molecule_List",
+      component: new Molecule_List()
   },
     {
       id: 4,
-      molecule: "Molecule_ListWFooter",
-      component: new Molecule_ListWFooter()
+      molecule: "Molecule_List",
+      component: new Molecule_List()
     },
   ]
 
