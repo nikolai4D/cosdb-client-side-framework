@@ -35,13 +35,13 @@ export function Organism_ModalProcessPrep() {
 
   this.bindScript = async function () {
 
-    let component = this.organisms[0].component.getElement()
+    const component = this.organisms[0].component.getElement()
 
-    let elementToAddModalTo = this.parent
-    if (!Array.isArray(elementToAddModalTo)) elementToAddModalTo = [elementToAddModalTo]
+    let elementsToAddModalTo = this.parent
+    if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
     
-    for (let li of this.parent) {
-        li.addEventListener("click", (e) => {
+    for (const element of elementsToAddModalTo) {
+        element.addEventListener("click", (e) => {
             const modalId = document.getElementById('modal-processView')
 
             modalId.innerHTML = `
