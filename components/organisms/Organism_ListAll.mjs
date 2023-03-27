@@ -141,7 +141,7 @@ export function Organism_ListAll() {
     this.molecules= [...newMolecules]
   };
 
-  const renderMolecules = () => {
+  const renderMolecules = async () => {
     // Replacing placeholder DOM elements (slots are rendered at this point) with new molecule DOM elements 
 
    let content= document.getElementById("organism_all_lists")
@@ -153,9 +153,9 @@ export function Organism_ListAll() {
     }
     // console.log(moleculesSlots)
     for (const child of moleculesSlots.children) {
-      console.log(child.children[1].children)
+      // console.log(child.children[1].children)
       for (const li of child.children[1].children){
-        // console.log(li)
+        console.log(await li)
       }
     }
 
