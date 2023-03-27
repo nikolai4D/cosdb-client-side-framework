@@ -80,6 +80,8 @@ export function Organism_ListAll() {
     renderMolecules();
     let that = this;
     for (let org of this.organisms) {
+      await this.fillSlot(org.organism, org.component.getElement())
+
       // org.component.parent = that.element;
       let allLists = that.element.querySelector("#organism_all_lists").children
       let allListObjects = []
@@ -94,7 +96,6 @@ export function Organism_ListAll() {
       // let elementsArray = that.element.querySelectorAll("li");
       // console.log(elementsArray, "elementsArray");
 
-      await this.fillSlot(org.organism, org.component.getElement())
     }
 
   };
