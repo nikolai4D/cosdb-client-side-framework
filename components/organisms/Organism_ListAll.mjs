@@ -83,19 +83,19 @@ export function Organism_ListAll() {
       await this.fillSlot(org.organism, org.component.getElement())
 
       // org.component.parent = that.element;
-      let allLists = that.element.querySelector("#organism_all_lists").children
-      let allListObjects = []
-      for(let child of allLists){
-        // console.log(child.children[1].children, "childnode")
-        allListObjects.push(...child.children[1].children)
-      }
+      // let allLists = that.element.querySelector("#organism_all_lists").children
+      // let allListObjects = []
+      // for(let child of allLists){
+      //   // console.log(child.children[1].children, "childnode")
+      //   allListObjects.push(...child.children[1].children)
+      // }
       // org.component.parent = allListObjects
       // console.log(org.component.parent, "org.component.parent");
-      console.log(allLists, "allLists");
+      // console.log(allLists, "allLists");
 
-      let elementsArray = that.element.querySelectorAll("li");
-      console.log(elementsArray, "elementsArray");
-      org.component.parent = await elementsArray;
+      // let elementsArray = that.element.querySelectorAll("li");
+      // console.log(elementsArray, "elementsArray");
+      // org.component.parent = await elementsArray;
 
     }
 
