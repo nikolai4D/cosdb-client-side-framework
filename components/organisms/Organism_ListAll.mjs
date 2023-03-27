@@ -81,8 +81,8 @@ export function Organism_ListAll() {
     let that = this;
     for (let org of this.organisms) {
       org.component.parent = that.element;
-      let allLists = that.element.querySelector("#organism_all_lists").children[0]
-      for(let child in allLists){
+      let allLists = that.element.querySelector("#organism_all_lists").children
+      for(let child of allLists){
         console.log(child, "childnode")
       }
       console.log(org.component.parent, "org.component.parent");
