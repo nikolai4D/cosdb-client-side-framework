@@ -91,9 +91,6 @@
 }
 
 .modal-process-section {
-  background-color: white;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
 }
 
 .modal-process-upper-section {
@@ -105,8 +102,8 @@
 }
 
 .modal-process-inner-wrap {
-  border: none !important;
-  width: 1045px !important;
+  width: 1045px;
+  background: white;
 }
 
 .modal-organisation-upper-section {
