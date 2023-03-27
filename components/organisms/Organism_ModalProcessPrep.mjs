@@ -37,8 +37,8 @@ export function Organism_ModalProcessPrep() {
 
     let component = this.organisms[0].component.getElement()
     console.log(this.parent);
-    let elementsArray = this.parent
-    // let elementsArray =[];
+    // let elementsArray = this.parent
+    let elementsArray =[];
     console.log(elementsArray, "elementsArray");
 
     if (elementsArray.length === 0) elementsArray = [document.getElementById("organism_all_lists")]
