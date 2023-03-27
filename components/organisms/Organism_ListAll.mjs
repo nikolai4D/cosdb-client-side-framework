@@ -75,30 +75,8 @@ export function Organism_ListAll() {
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
-
     updateMolecules(data);
     await renderMolecules();
-    let that = this;
-    // for (let org of this.organisms) {
-      // await this.fillSlot(org.organism, org.component.getElement())
-
-      // org.component.parent = that.element;
-      // let allLists = that.element.querySelector("#organism_all_lists").children
-      // let allListObjects = []
-      // for(let child of allLists){
-      //   // console.log(child.children[1].children, "childnode")
-      //   allListObjects.push(...child.children[1].children)
-      // }
-      // org.component.parent = allListObjects
-      // console.log(org.component.parent, "org.component.parent");
-      // console.log(allLists, "allLists");
-
-      // let elementsArray = that.element.querySelectorAll("li");
-      // console.log(elementsArray, "elementsArray");
-      // org.component.parent = await elementsArray;
-
-    // }
-
   };
 
   const changeData = async (data, filteredData) => {
@@ -176,28 +154,10 @@ export function Organism_ListAll() {
     }
     console.log(moleculesSlots)
 
-    
-    let that = this;
-
     for (let org of this.organisms) {
       org.component.parent = moleculesSlots
 
        this.fillSlot(org.organism, org.component.getElement())
       }
-
-    //  org.component.parent = that.element;
-    //   let allLists = that.element.querySelector("#organism_all_lists").children
-    //   let allListObjects = []
-    //   for(let child of allLists){
-    //   //   // console.log(child.children[1].children, "childnode")
-    //     allListObjects.push(...child.children[1].children)
-    //   }
-    //   org.component.parent = allListObjects
-      // console.log(org.component.parent, "org.component.parent");
-      // console.log(allLists, "allLists");
-
-
-
-
   };
 }
