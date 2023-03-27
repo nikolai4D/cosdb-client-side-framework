@@ -156,13 +156,15 @@ export function Organism_ListAll() {
       // console.log(child.children[1].children)
       for await (const li of child.children[1].children){
         console.log(await li)
+        for (let org of this.organisms) {
+          // org.component.parent = moleculesSlots.children[0].children[1]
+          org.component.parent = await li
+    
+           this.fillSlot(org.organism, org.component.getElement())
+          }
       }
     }
 
-    for (let org of this.organisms) {
-      org.component.parent = moleculesSlots.children[0].children[1]
 
-       this.fillSlot(org.organism, org.component.getElement())
-      }
   };
 }
