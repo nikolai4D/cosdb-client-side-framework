@@ -158,7 +158,7 @@ export function Organism_ListAll() {
       // console.log(child.children[1].children)
       for await (const li of child.children[1].children){
         console.log(await li)
-        anArray = await li
+        anArray.push(await li)
 
       }
     }
