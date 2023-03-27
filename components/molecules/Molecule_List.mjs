@@ -10,11 +10,6 @@ export function Molecule_List() {
       id: 1,
       atom: "Atom_ListItem",
       component:  new Atom_ListItem()
-    },
-    {
-      id: 2,
-      atom: "Atom_ListItem",
-      component: new Atom_ListItem()
     }
   ]
 
