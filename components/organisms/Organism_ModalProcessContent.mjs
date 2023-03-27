@@ -19,7 +19,7 @@ export function Organism_ModalProcessContent() {
     this.molecules = [
         {
             id: 1,
-            molecule: "Molecule_ModalChildrenBoxes",
+            molecule: "Molecule_ChildrenBoxes",
             component: new Molecule_ChildrenBoxes()
         }, 
         {
