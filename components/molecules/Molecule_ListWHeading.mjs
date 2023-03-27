@@ -62,21 +62,27 @@ export function Molecule_ListWHeading() {
           //  for(let child of elementsArray){
           //   for (let element of child.children[1].children)
           //   {
+
+          const notYetRendered = document.querySelector('[data-slot="new-modal"]');
             component.addEventListener("click", (e) => {
-                    const modalId = document.getElementById('modal-processView')
-                  console.log("hello")
-                    modalId.innerHTML = `
-                        <div>
-                            ${slot("new-modal")}
-                        </div>
-                        `
-                    this.fillSlot("new-modal", component);
+
+              notYetRendered.getElementById("new-modal").addEventListener("DOMContentLoaded", function() {
+
+                const modalId = document.getElementById('modal-processView')
+                modalId.innerHTML = `
+                    <div>
+                        ${slot("new-modal")}
+                    </div>
+                    `
+                this.fillSlot("new-modal", );
+
+                // Your code here
+              });
+
                 })
             // }
           // }
 
-
-          
         await this.fillSlot(atom.atom, atom.component.getElement())
       }
 
