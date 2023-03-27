@@ -59,6 +59,6 @@ export function Organism_ModalProcessPrep() {
 }
 
 const getModalContent = (component) => {
-    console.log(component)
+    console.log(component.organisms[0].component)
 
 }
