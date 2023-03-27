@@ -1,5 +1,6 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
-import { createComponent } from "./helpers.mjs";
+// import { createComponent } from "./helpers.mjs";
+import { createComponent } from "./helpers/createComponent.mjs";
 
 export async function getAtom(module, parentId, atomId = null) {
   const type = "atom";

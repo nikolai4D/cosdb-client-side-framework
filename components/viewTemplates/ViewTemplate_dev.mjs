@@ -1,4 +1,4 @@
-import { html2dom } from "../../core/helpers.mjs";
+// import { html2dom } from "../../core/helpers.mjs";
 import { ViewTemplate } from "../../core/ViewTemplate.mjs";
 
 export function ViewTemplate_dev() {

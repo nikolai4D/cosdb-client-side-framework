@@ -1,7 +1,8 @@
 import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { getMolecule } from "./getMolecule.mjs";
 import { getFunction } from "./getFunction.mjs";
-import { createComponent } from "./helpers.mjs";
+// import { createComponent } from "./helpers.mjs";
+import { createComponent } from "./helpers/createComponent.mjs";
 
 export async function getOrganism(module, parentId, orgId = null) {
   const modelOrganisms = await apiCallGet(`/read/organisms`);

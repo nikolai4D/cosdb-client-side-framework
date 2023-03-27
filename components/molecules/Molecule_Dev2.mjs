@@ -1,6 +1,7 @@
 import { Atom_Dev1 } from "../atoms/Atom_Dev1.mjs";
 import { Atom_Dev2 } from "../atoms/Atom_Dev2.mjs";
-import { html2dom } from "../../core/helpers.mjs";
+//import { html2dom } from "../../core/helpers.mjs";
+import { html2dom } from "../../core/helpers/html2dom.mjs";
 import { Molecule } from "../../core/Molecule.mjs";
 
 export function Molecule_Dev2() {

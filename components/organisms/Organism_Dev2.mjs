@@ -1,7 +1,8 @@
 import { Molecule_Dev1 } from "../molecules/Molecule_Dev1.mjs";
 import { Molecule_Dev2 } from "../molecules/Molecule_Dev2.mjs";
 import { Organism_Dev1 } from "../organisms/Organism_Dev1.mjs";
-import { html2dom } from "../../core/helpers.mjs";
+//import { html2dom } from "../../core/helpers.mjs";
+import { html2dom } from "../../core/helpers/html2dom.mjs";
 import { Organism } from "../../core/Organism.mjs";
 
 export function Organism_Dev2() {
