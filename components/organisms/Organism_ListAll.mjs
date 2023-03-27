@@ -89,12 +89,13 @@ export function Organism_ListAll() {
         // console.log(child.children[1].children, "childnode")
         allListObjects.push(...child.children[1].children)
       }
-      org.component.parent = allListObjects
+      // org.component.parent = allListObjects
       // console.log(org.component.parent, "org.component.parent");
       console.log(allLists, "allLists");
 
       let elementsArray = that.element.querySelectorAll("li");
-      console.log(elementsArray, "elementsArray");
+      // console.log(elementsArray, "elementsArray");
+      org.component.parent = elementsArray;
 
     }
 
