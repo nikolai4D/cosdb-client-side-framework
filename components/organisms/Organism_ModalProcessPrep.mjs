@@ -36,23 +36,25 @@ export function Organism_ModalProcessPrep() {
   this.bindScript = async function () {
 
     console.log(this.parent, "parent")
-    let component = this.organisms[0].component.getElement()
-    let elementsArray =[];
+    // let component = this.organisms[0].component.getElement()
+    // let elementsArray =[];
 
-    if (elementsArray.length === 0) elementsArray = [document.getElementById("organism_all_lists")]
+    // if (elementsArray.length === 0) elementsArray = [document.getElementById("organism_all_lists")]
 
-    for (let element of elementsArray) {
-        element.addEventListener("click", (e) => {
-                const modalId = document.getElementById('modal-processView')
+    // for (let element of elementsArray) {
+        this.parent.addEventListener("click", (e) => {
+            const modalId = document.getElementById('modal-processView')
 
-                modalId.innerHTML = `
-                    <div>
-                        ${slot("new-modal")}
-                    </div>
-                    `
-                this.fillSlot("new-modal", component);
-            })
-        }
+            modalId.innerHTML = `
+                <div>
+                    ${slot("new-modal")}
+                </div>
+                `
+            this.fillSlot("new-modal", component);
+        })
+
+
+        // }
 
     //    for(let child of this.parent.children){
     //     for (let element of child.children[1].children)
