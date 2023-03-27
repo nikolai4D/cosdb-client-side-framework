@@ -2,7 +2,7 @@ import { Component } from "../../core/Component.mjs";
 import { slot } from "../../core/helpers.mjs";
 import { Organism_ModalProcess } from "./Organism_ModalProcess.mjs";
 
-export function Organism_ModalProcessPrep(parent) {
+export function Organism_ModalProcessPrep() {
   Component.call(this);
 
   this.organisms = [
@@ -24,6 +24,8 @@ export function Organism_ModalProcessPrep(parent) {
     },
   ];
 
+  this.parent = null;
+
   this.getHtml = function () {
     return `
         <div id="modal-processView"></div>
@@ -35,7 +37,7 @@ export function Organism_ModalProcessPrep(parent) {
 
     let component = this.organisms[0].component.getElement()
 
-    console.log(await this.parent)
+    console.log(this.parent)
     
 //     document.getElementById("#organism_all_lists").addEventListener("click", (e) => {
 
