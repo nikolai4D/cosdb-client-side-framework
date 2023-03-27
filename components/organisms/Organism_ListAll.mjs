@@ -175,9 +175,9 @@ export function Organism_ListAll() {
     }
     
     for (let org of this.organisms) {
-      await this.fillSlot(org.organism, org.component.getElement())
+      this.fillSlot(org.organism, org.component.getElement())
     }
-    
+
     let that = this;
 
 
