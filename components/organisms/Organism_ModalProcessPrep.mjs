@@ -51,7 +51,7 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-            getModalContent(component)
+            getModalContent(modalComponent)
             this.fillSlot("new-modal", modalElement);
         })
     }
