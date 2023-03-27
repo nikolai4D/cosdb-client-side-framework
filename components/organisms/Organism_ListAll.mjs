@@ -79,8 +79,7 @@ export function Organism_ListAll() {
     updateMolecules(data);
     await renderMolecules();
     let that = this;
-    for (let org of this.organisms) {
-      await this.fillSlot(org.organism, org.component.getElement())
+
 
       // org.component.parent = that.element;
       // let allLists = that.element.querySelector("#organism_all_lists").children
@@ -173,9 +172,14 @@ export function Organism_ListAll() {
 
     for (const  mol of this.molecules) {
       moleculesSlots.appendChild(mol.component.getElement());
-
     }
+    
+    for (let org of this.organisms) {
+      await this.fillSlot(org.organism, org.component.getElement())
+    }
+    
     let that = this;
+
 
     //  org.component.parent = that.element;
     //   let allLists = that.element.querySelector("#organism_all_lists").children
