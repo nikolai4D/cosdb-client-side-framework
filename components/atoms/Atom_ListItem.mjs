@@ -14,7 +14,7 @@ export function Atom_ListItem() {
     }
 
   this.bindScript = () => {
-    let component = atom.component.getElement()
+    let component = this.element.getElement()
     let elementsArray =[];
 
     // if (elementsArray.length === 0) elementsArray = [document.getElementById("organism_all_lists")]
