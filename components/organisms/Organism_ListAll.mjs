@@ -161,6 +161,7 @@ export function Organism_ListAll() {
 
     for (let org of this.organisms) {
       org.component.parent = await anArray;
+      let moleculeLeft = { header: "hello", body: "heeello"}
       this.fillSlot(org.organism, org.component.getElement())
     }
   };
