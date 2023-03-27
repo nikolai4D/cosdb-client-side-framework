@@ -319,8 +319,9 @@
 }
 
 .molecule_modal_in-output > div:nth-child(1n){
-    border: 1px solid black;
     padding: 2em;
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;    padding: 2em;
 }
 
 .molecule_modal_in-output > div > ul {
