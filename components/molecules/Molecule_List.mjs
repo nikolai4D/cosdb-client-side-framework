@@ -37,6 +37,29 @@ export function Molecule_List() {
 
 
       for (let atom of this.atoms) {
+
+        let component = atom.component.getElement()
+        let elementsArray =[];
+    
+        if (elementsArray.length === 0) elementsArray = [document.getElementById("organism_all_lists")]
+           for(let child of this.parent.children){
+            for (let element of child.children[1].children)
+            {
+                element.addEventListener("click", (e) => {
+                    const modalId = document.getElementById('modal-processView')
+              
+                    modalId.innerHTML = `
+                        <div>
+                            ${slot("new-modal")}
+                        </div>
+                        `
+                    this.fillSlot("new-modal", component);
+                })
+            }
+          }
+
+
+
         await this.fillSlot(atom.atom, atom.component.getElement())
       }
 
