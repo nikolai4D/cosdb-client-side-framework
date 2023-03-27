@@ -2,6 +2,7 @@ import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
+import { Organism_ModalProcess } from "../organisms/Organism_ModalProcess.mjs"
 
 export function Molecule_ListWHeading() {
   Component.call(this);
@@ -70,7 +71,7 @@ export function Molecule_ListWHeading() {
                             ${slot("new-modal")}
                         </div>
                         `
-                    this.fillSlot("new-modal", component);
+                    this.fillSlot("new-modal", new Organism_ModalProcess().getElement());
                 })
             // }
           // }
