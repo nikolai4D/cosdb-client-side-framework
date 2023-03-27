@@ -35,7 +35,7 @@ export function Organism_ModalProcessPrep(parent) {
 
     let component = this.organisms[0].component.getElement()
 
-    console.log(this.parent)
+    console.log(await this.parent)
     
 //     document.getElementById("#organism_all_lists").addEventListener("click", (e) => {
 
