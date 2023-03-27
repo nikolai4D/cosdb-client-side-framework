@@ -33,7 +33,8 @@ export function Organism_ModalProcessPrep() {
 
   this.bindScript = async function () {
 
-    this.getElement().querySelector("#organism_all_lists").addEventListener("click", (e) => {
+    let component = this.organisms[0].component.getElement()
+    component.querySelector("#organism_all_lists").addEventListener("click", (e) => {
 
       const modalId = document.getElementById('modal-processView')
 
@@ -42,7 +43,7 @@ export function Organism_ModalProcessPrep() {
               ${slot("new-modal")}
           </div>
           `
-      this.fillSlot("new-modal", this.organisms[0].component.getElement());
+      this.fillSlot("new-modal", component);
   });
 
   };
