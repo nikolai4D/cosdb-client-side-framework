@@ -55,7 +55,7 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-            getModalContent(modalComponent, that)
+            getModalContent(modalComponent, this)
             // modifyMolecule(molecule, this)
 
             this.fillSlot("new-modal", modalElement);
