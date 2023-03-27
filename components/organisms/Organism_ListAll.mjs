@@ -155,8 +155,7 @@ export function Organism_ListAll() {
     console.log(moleculesSlots)
 
     for (let org of this.organisms) {
-      org.component.parent = moleculesSlots
-      console.log(moleculesSlots.children[0].children[1])
+      org.component.parent = moleculesSlots.children[0].children[1]
 
        this.fillSlot(org.organism, org.component.getElement())
       }
