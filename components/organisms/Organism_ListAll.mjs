@@ -151,9 +151,12 @@ export function Organism_ListAll() {
     for (const  mol of this.molecules) {
       moleculesSlots.appendChild(mol.component.getElement());
     }
-    console.log(moleculesSlots)
+    // console.log(moleculesSlots)
     for (const child of moleculesSlots.children) {
-      console.log(child.children[1])
+      // console.log(child.children[1])
+      for (const li of child.children[1]){
+        console.log(li)
+      }
 
     }
     for (let org of this.organisms) {
