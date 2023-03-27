@@ -179,10 +179,10 @@ export function Organism_ListAll() {
     let that = this;
 
     for (let org of this.organisms) {
-      let elementsArray = that.element.querySelectorAll("li");
+      let elementsArray = that.element
       console.log(elementsArray, "elementsArray");
       org.component.parent = elementsArray;
-      
+
        this.fillSlot(org.organism, org.component.getElement())
       }
 
