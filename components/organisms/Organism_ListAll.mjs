@@ -94,7 +94,7 @@ export function Organism_ListAll() {
       console.log(allLists, "allLists");
 
       let elementsArray = that.element.querySelectorAll("li");
-      // console.log(elementsArray, "elementsArray");
+      console.log(elementsArray, "elementsArray");
       org.component.parent = elementsArray;
 
     }
