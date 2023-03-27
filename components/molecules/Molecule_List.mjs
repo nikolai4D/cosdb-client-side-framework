@@ -41,13 +41,13 @@ export function Molecule_List() {
         let component = atom.component.getElement()
         let elementsArray =[];
     
-        if (elementsArray.length === 0) elementsArray = [document.getElementById("organism_all_lists")]
-           for(let child of this.parent.children){
-            for (let element of child.children[1].children)
-            {
+        // if (elementsArray.length === 0) elementsArray = [document.getElementById("organism_all_lists")]
+          //  for(let child of elementsArray){
+          //   for (let element of child.children[1].children)
+          //   {
                 element.addEventListener("click", (e) => {
                     const modalId = document.getElementById('modal-processView')
-              
+                  console.log("hello")
                     modalId.innerHTML = `
                         <div>
                             ${slot("new-modal")}
@@ -55,8 +55,8 @@ export function Molecule_List() {
                         `
                     this.fillSlot("new-modal", component);
                 })
-            }
-          }
+            // }
+          // }
 
 
 
