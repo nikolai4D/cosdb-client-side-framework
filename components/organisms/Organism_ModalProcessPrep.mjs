@@ -35,7 +35,7 @@ export function Organism_ModalProcessPrep() {
 
   this.bindScript = async function () {
 
-    // let component = this.organisms[0].component.getElement()
+    let component = this.organisms[0].component.getElement()
     // console.log(org.component.parent, "org.component.parent");
     let elementsArray = this.parent.querySelectorAll("li");
     console.log(elementsArray, "elementsArray");
