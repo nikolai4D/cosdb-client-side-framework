@@ -65,20 +65,22 @@ export function Organism_ModalProcessPrep() {
 }
 
 const getModalContent = (component, that) => {
-    const organismToModify = component.organisms[0].component.organisms[0].component
-    const moleculeLeft = organismToModify.molecules[0].component
-    const moleculeLeftHeader = moleculeLeft.atoms[0]
-    const moleculeLeftBody = moleculeLeft.atoms[1]
+    let organismToModify = component.organisms[0].component.organisms[0].component
+    let moleculeLeft = organismToModify.molecules[0].component
+    let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
+    let moleculeLeftBody = moleculeLeft.atoms[1].component.value[0].value
 
-    const moleculeMiddle = organismToModify.molecules[1].component
-    const moleculeMiddleHeader = moleculeMiddle.atoms[0]
-    const moleculeMiddleBody = moleculeMiddle.atoms[1]
+    let moleculeMiddle = organismToModify.molecules[1].component
+    let moleculeMiddleHeader = moleculeMiddle.atoms[0].component.value[0].value
+    let moleculeMiddleBody = moleculeMiddle.atoms[1].component.value[0].value
 
-    const moleculeRight = organismToModify.molecules[2].component
-    const moleculeRightHeader = moleculeRight.atoms[0]
-    const moleculeRightBody = moleculeRight.atoms[1]
+    let moleculeRight = organismToModify.molecules[2].component
+    let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
+    let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
 
-    that.moleculeLeft.header ? moleculeLeft.atoms[0]
+    that.moleculeLeft.header ? moleculeLeftHeader = that.moleculeLeft.header : moleculeLeftHeader = moleculeLeftHeader
+
+
 
 
 
