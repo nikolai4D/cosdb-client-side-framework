@@ -153,8 +153,8 @@ export function Organism_ListAll() {
     }
     // console.log(moleculesSlots)
     for (const child of moleculesSlots.children) {
-      // console.log(child.children[1].children)
-      for (const li of child.children[1]){
+      console.log(child.children)
+      for (const li of child.children[1].children){
         console.log(li)
       }
     }
