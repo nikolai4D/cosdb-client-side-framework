@@ -78,7 +78,12 @@ const getModalContent = (component, that) => {
     let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
     let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
 
-    that.moleculeLeft.header ? moleculeLeftHeader = that.moleculeLeft.header : moleculeLeftHeader = moleculeLeftHeader
+    that.moleculeLeft.header ? moleculeLeftHeader = that.moleculeLeft.header : null;
+    that.moleculeLeft.body ? moleculeLeftBody = that.moleculeLeft.body : null;
+    that.moleculeMiddle.header ? moleculeMiddleHeader = that.moleculeMiddle.header : null;
+    that.moleculeMiddle.body ? moleculeMiddleBody = that.moleculeMiddle.body : null;
+    that.moleculeRight.header ? moleculeRightHeader = that.moleculeRight.header : null;
+    that.moleculeRight.body ? moleculeRightBody = that.moleculeRight.body : null;
 
 
 
