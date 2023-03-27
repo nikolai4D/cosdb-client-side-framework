@@ -55,8 +55,8 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-            let molecule = getModalContent(modalComponent)
-            modifyMolecule(molecule, this)
+            getModalContent(modalComponent, that)
+            // modifyMolecule(molecule, this)
 
             this.fillSlot("new-modal", modalElement);
         })
@@ -64,7 +64,7 @@ export function Organism_ModalProcessPrep() {
     }
 }
 
-const getModalContent = (component) => {
+const getModalContent = (component, that) => {
     const organismToModify = component.organisms[0].component.organisms[0].component
     const moleculeLeft = organismToModify.molecules[0].component
     const moleculeLeftHeader = moleculeLeft.atoms[0]
@@ -78,14 +78,18 @@ const getModalContent = (component) => {
     const moleculeRightHeader = moleculeRight.atoms[0]
     const moleculeRightBody = moleculeRight.atoms[1]
 
-    return {moleculeLeft, moleculeMiddle, moleculeRight}
+    that.moleculeLeft.header ? moleculeLeft.atoms[0]
+
+
+
+    // return {moleculeLeft, moleculeMiddle, moleculeRight}
 }
 
-const modifyMolecule = (molecule, that) => {
-    const {moleculeLeft, moleculeMiddle, moleculeRight} = molecule
-    console.log(molecule, that)
+// const modifyMolecule = (molecule, ) => {
+//     const {moleculeLeft, moleculeMiddle, moleculeRight} = molecule
+//     console.log(molecule, that)
     
-    // moleculeLeft.functions[0].function = "placeholder"
-    // moleculeMiddle.functions[0].function = "placeholder"
-    // moleculeRight.functions[0].function = "placeholder"
-}
+//     // moleculeLeft.functions[0].function = "placeholder"
+//     // moleculeMiddle.functions[0].function = "placeholder"
+//     // moleculeRight.functions[0].function = "placeholder"
+// }
