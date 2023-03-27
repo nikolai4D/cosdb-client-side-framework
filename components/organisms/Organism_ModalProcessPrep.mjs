@@ -34,23 +34,15 @@ export function Organism_ModalProcessPrep() {
   
 
   this.bindScript = async function () {
-
     let component = this.organisms[0].component.getElement()
-    console.log(this.parent);
-    // let elementsArray = this.parent
     let elementsArray =[];
-    // console.log(elementsArray, "elementsArray");
 
     if (elementsArray.length === 0) elementsArray = [document.getElementById("organism_all_lists")]
 
-       for(let child of this.parent.children){
-
-        for (let element of child.children[1].children)
-        {
-            element.addEventListener("click", (e) => {
-
+    for (let element of elementsArray) {
+        element.addEventListener("click", (e) => {
                 const modalId = document.getElementById('modal-processView')
-          
+
                 modalId.innerHTML = `
                     <div>
                         ${slot("new-modal")}
@@ -59,6 +51,21 @@ export function Organism_ModalProcessPrep() {
                 this.fillSlot("new-modal", component);
             })
         }
+
+    //    for(let child of this.parent.children){
+    //     for (let element of child.children[1].children)
+    //     {
+    //         element.addEventListener("click", (e) => {
+    //             const modalId = document.getElementById('modal-processView')
+          
+    //             modalId.innerHTML = `
+    //                 <div>
+    //                     ${slot("new-modal")}
+    //                 </div>
+    //                 `
+    //             this.fillSlot("new-modal", component);
+    //         })
+    //     }
         // console.log(child)
         // console.log(        
             // )
@@ -92,5 +99,5 @@ export function Organism_ModalProcessPrep() {
     //       `
     //   this.fillSlot("new-modal", component);
     //     })})
-}
+// }
 }
