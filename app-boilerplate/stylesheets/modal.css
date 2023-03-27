@@ -3,10 +3,11 @@
 }
 
 .modal-container {
-  width: 497px;
+  width: 800px;
   box-shadow: 5px 15px 5px rgba(0, 0, 0, 0.04);
   border: 1px solid #c6c7c8;
   border-radius: 12px;
+  background: white;
 }
 
 .model-container-second {
@@ -102,8 +103,6 @@
 }
 
 .modal-process-inner-wrap {
-  width: 1045px;
-  background: white;
 }
 
 .modal-organisation-upper-section {

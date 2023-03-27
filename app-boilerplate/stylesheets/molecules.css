@@ -306,8 +306,8 @@
 .molecule_modal_in-output {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    margin: 3em;
+    justify-content: space-around;
 }
 
 .molecule_modal_in-output > .molecule_header-and-text {
@@ -321,7 +321,7 @@
 .molecule_modal_in-output > div:nth-child(1n){
     padding: 2em;
     border: 1px solid var(--grey-color);
-    border-radius: 6px;    padding: 2em;
+    border-radius: 6px;  
 }
 
 .molecule_modal_in-output > div > ul {
