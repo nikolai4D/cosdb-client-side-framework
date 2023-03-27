@@ -178,6 +178,9 @@ export function Organism_ListAll() {
     
     let that = this;
 
+    for (let org of this.organisms) {
+       this.fillSlot(org.organism, org.component.getElement())
+      }
 
     //  org.component.parent = that.element;
     //   let allLists = that.element.querySelector("#organism_all_lists").children
