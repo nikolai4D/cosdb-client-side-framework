@@ -26,6 +26,10 @@ export function Organism_ModalProcessPrep() {
 
   this.parent = [];
 
+  this.moleculeLeft = null;
+  this.moleculeMiddle = null;
+  this.moleculeRight = null;
+
   this.getHtml = function () {
     return `
         <div id="modal-processView"></div>
@@ -51,7 +55,9 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-            getModalContent(modalComponent)
+            let molecule = getModalContent(modalComponent)
+            modifyMolecule(molecule)
+
             this.fillSlot("new-modal", modalElement);
         })
     }
@@ -59,6 +65,18 @@ export function Organism_ModalProcessPrep() {
 }
 
 const getModalContent = (component) => {
-    console.log(component.organisms[0].component.organisms[0])
+    const organismToModify = component.organisms[0].component.organisms[0].component
+    const moleculeLeft = organismToModify.molecules[0].component
+    const moleculeMiddle = organismToModify.molecules[1].component
+    const moleculeRight = organismToModify.molecules[2].component
 
+    return {moleculeLeft, moleculeMiddle, moleculeRight}
+}
+
+const modifyMolecule = (molecule) => {
+    const {moleculeLeft, moleculeMiddle, moleculeRight} = molecule
+    console.log(molecule)
+    // moleculeLeft.functions[0].function = "placeholder"
+    // moleculeMiddle.functions[0].function = "placeholder"
+    // moleculeRight.functions[0].function = "placeholder"
 }
