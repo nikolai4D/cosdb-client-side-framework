@@ -153,7 +153,7 @@ export function Organism_ListAll() {
     }
     console.log(moleculesSlots)
     for (const child of moleculesSlots.children) {
-      console.log(child)
+      console.log(child.children[1])
 
     }
     for (let org of this.organisms) {
