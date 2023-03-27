@@ -182,15 +182,21 @@ export function Organism_ListAll() {
       let elementsArray = that.element
 
       let allLists = that.element.querySelector("#organism_all_lists").children
-
-           let allListObjects = []
+      
+      let docFragment = document.createDocumentFragment();
+          //  let allListObjects = []
       for(let child of allLists){
+        for (let subchild of child.children[1].children){
+          docFragment.appendChild(subchild)
+        }
       //   // console.log(child.children[1].children, "childnode")
         console.log(child.children[1].children)
       }
 
       // console.log(allLists, "allLists");
       // console.log(elementsArray, "elementsArray");
+            console.log(docFragment, "docFragment");
+
       org.component.parent = allListObjects;
 
        this.fillSlot(org.organism, org.component.getElement())
