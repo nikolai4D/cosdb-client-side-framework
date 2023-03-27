@@ -175,6 +175,7 @@ export function Organism_ListAll() {
       moleculesSlots.appendChild(mol.component.getElement());
     }
     console.log(moleculesSlots.querySelectorAll("li"), "moleculesSlots.querySelectorAll(li)")
+     org.component.parent = moleculesSlots
 
     
     let that = this;
