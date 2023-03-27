@@ -173,6 +173,8 @@ export function Organism_ListAll() {
 
     for (const  mol of this.molecules) {
       moleculesSlots.appendChild(mol.component.getElement());
+
+      console.log(moleculesSlots, "moleculslots")
     }
     
     
@@ -197,7 +199,7 @@ export function Organism_ListAll() {
       // console.log(elementsArray, "elementsArray");
             console.log(docFragment, "docFragment");
 
-      org.component.parent = allListObjects;
+      org.component.parent = docFragment;
 
        this.fillSlot(org.organism, org.component.getElement())
       }
