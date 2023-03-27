@@ -44,6 +44,7 @@ export function Organism_ModalProcessPrep() {
     if (elementsArray.length === 0) elementsArray = [document.getElementById("organism_all_lists")]
 
        for(let child of this.parent.children){
+        console.log(child)
         child.children[1].children.forEach(element => {
         element.addEventListener("click", (e) => {
 
