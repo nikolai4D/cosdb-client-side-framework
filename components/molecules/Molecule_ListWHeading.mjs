@@ -46,6 +46,7 @@ export function Molecule_ListWHeading() {
             ${this.atoms.slice(1).map(at => slot(at.atom)).join("")}
 
             </ul>
+            <div id="modal-processView" class="modal"></div>
         </div>
   `;
   }
