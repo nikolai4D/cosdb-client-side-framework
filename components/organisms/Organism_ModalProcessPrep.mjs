@@ -39,7 +39,7 @@ export function Organism_ModalProcessPrep() {
 
     console.log(this.parent)
     
-    this.parent.querySelector("#organism_all_lists").addEventListener("click", (e) => {
+    document.getElementById("organism_all_lists").addEventListener("click", (e) => {
 
       const modalId = document.getElementById('modal-processView')
 
