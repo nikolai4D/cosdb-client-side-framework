@@ -28,7 +28,7 @@ export function Molecule_List() {
 
     return `
             <ul class="molecule_list__list">
-            ${this.atom.map(at => slot(at.atom)).join("")}
+            ${this.atoms.map(at => slot(at.atom)).join("")}
             </ul>
   `;
   }
