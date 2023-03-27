@@ -79,7 +79,8 @@ export function Organism_ListAll() {
     updateMolecules(data);
     await renderMolecules();
     let that = this;
-
+    for (let org of this.organisms) {
+      await this.fillSlot(org.organism, org.component.getElement())
 
       // org.component.parent = that.element;
       // let allLists = that.element.querySelector("#organism_all_lists").children
@@ -163,7 +164,7 @@ export function Organism_ListAll() {
     this.molecules= [...newMolecules]
   };
 
-  const renderMolecules = async () => {
+  const renderMolecules = () => {
     // Replacing placeholder DOM elements (slots are rendered at this point) with new molecule DOM elements 
 
    let content= document.getElementById("organism_all_lists")
@@ -174,9 +175,6 @@ export function Organism_ListAll() {
       moleculesSlots.appendChild(mol.component.getElement());
     }
     
-    // for (let org of this.organisms) {
-    //   await this.fillSlot(org.organism, org.component.getElement())
-    // }
     
     let that = this;
 
@@ -196,4 +194,6 @@ export function Organism_ListAll() {
       // console.log(elementsArray, "elementsArray");
       // org.component.parent = elementsArray;
 
+
+  };
 }
