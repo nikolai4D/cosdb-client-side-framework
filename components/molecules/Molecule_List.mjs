@@ -45,7 +45,7 @@ export function Molecule_List() {
           //  for(let child of elementsArray){
           //   for (let element of child.children[1].children)
           //   {
-                element.addEventListener("click", (e) => {
+            component.addEventListener("click", (e) => {
                     const modalId = document.getElementById('modal-processView')
                   console.log("hello")
                     modalId.innerHTML = `
