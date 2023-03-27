@@ -181,10 +181,10 @@ export function Organism_ListAll() {
     for (let org of this.organisms) {
       let elementsArray = that.element
 
-      let allLists = that.element.querySelectorAll("li")
+      let allLists = that.element.querySelector("#organism_all_lists").children
       console.log(allLists, "allLists");
       console.log(elementsArray, "elementsArray");
-      org.component.parent = elementsArray;
+      org.component.parent = allLists;
 
        this.fillSlot(org.organism, org.component.getElement())
       }
