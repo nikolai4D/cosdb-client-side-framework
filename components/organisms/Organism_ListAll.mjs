@@ -78,7 +78,9 @@ export function Organism_ListAll() {
 
     updateMolecules(data);
     renderMolecules();
+    let that = this;
     for (let org of this.organisms) {
+      org.parent = that.element;
       await this.fillSlot(org.organism, org.component.getElement())
     }
 
@@ -105,6 +107,7 @@ export function Organism_ListAll() {
           }
         }
       }
+      
     }
 
   const createMolecule = (MoleculeClass, id) => {
