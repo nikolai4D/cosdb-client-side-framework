@@ -149,10 +149,10 @@ export function Organism_ListAll() {
    const moleculesSlots = content
 
     for (const  mol of this.molecules) {
-      moleculesSlots.appendChild(mol.component.getElement());
+      await moleculesSlots.appendChild(mol.component.getElement());
     }
     // console.log(moleculesSlots)
-    for (const child of moleculesSlots.children) {
+    for await (const child of moleculesSlots.children) {
       // console.log(child.children[1].children)
       for await (const li of child.children[1].children){
         console.log(await li)
