@@ -39,17 +39,17 @@ export function Organism_ModalProcessPrep() {
 
     console.log(this.parent)
     
-//     document.getElementById("#organism_all_lists").addEventListener("click", (e) => {
+    this.parent.querySelector("#organism_all_lists").addEventListener("click", (e) => {
 
-//       const modalId = document.getElementById('modal-processView')
+      const modalId = document.getElementById('modal-processView')
 
-//       modalId.innerHTML = `
-//           <div>
-//               ${slot("new-modal")}
-//           </div>
-//           `
-//       this.fillSlot("new-modal", component);
-//   });
+      modalId.innerHTML = `
+          <div>
+              ${slot("new-modal")}
+          </div>
+          `
+      this.fillSlot("new-modal", component);
+  });
 
   };
 
