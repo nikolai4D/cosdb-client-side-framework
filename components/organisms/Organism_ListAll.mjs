@@ -197,7 +197,7 @@ export function Organism_ListAll() {
 
       // console.log(allLists, "allLists");
       // console.log(elementsArray, "elementsArray");
-            console.log(docFragment, "docFragment");
+            // console.log(docFragment, "docFragment");
 
       org.component.parent = docFragment;
 
