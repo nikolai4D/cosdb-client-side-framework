@@ -157,11 +157,6 @@ export function Organism_ListAll() {
     for (let org of this.organisms) {
       org.component.parent = moleculesSlots
 
-      window.addEventListener("DOMContentLoaded", () => {
-      
-      console.log("loaded")
-      });
-
        this.fillSlot(org.organism, org.component.getElement())
       }
   };
