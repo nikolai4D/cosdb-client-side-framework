@@ -49,8 +49,15 @@ export function Organism_ModalProcessPrep() {
                     ${slot("new-modal")}
                 </div>
                 `
+
+            getModalContent(component)
             this.fillSlot("new-modal", component);
         })
     }
 }
+}
+
+const getModalContent = (component) => {
+    console.log(component)
+
 }
