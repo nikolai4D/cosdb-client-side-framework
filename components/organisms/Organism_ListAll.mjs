@@ -189,8 +189,8 @@ export function Organism_ListAll() {
         console.log(child.children[1].children)
       }
 
-      console.log(allLists, "allLists");
-      console.log(elementsArray, "elementsArray");
+      // console.log(allLists, "allLists");
+      // console.log(elementsArray, "elementsArray");
       org.component.parent = allListObjects;
 
        this.fillSlot(org.organism, org.component.getElement())
