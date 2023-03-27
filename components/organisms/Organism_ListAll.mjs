@@ -173,38 +173,17 @@ export function Organism_ListAll() {
 
     for (const  mol of this.molecules) {
       moleculesSlots.appendChild(mol.component.getElement());
-
-      console.log(moleculesSlots, "moleculslots")
     }
     
     
     let that = this;
 
     for (let org of this.organisms) {
-      let elementsArray = that.element
-
-      let allLists = that.element.querySelector("#organism_all_lists").children
-      
-      let docFragment = document.createDocumentFragment();
-          //  let allListObjects = []
-      for(let child of allLists){
-        for (let subchild of child.children[1].children){
-          docFragment.appendChild(subchild)
-        }
-      //   // console.log(child.children[1].children, "childnode")
-        console.log(child.children[1].children)
-      }
-
-      // console.log(allLists, "allLists");
-      // console.log(elementsArray, "elementsArray");
-            // console.log(docFragment, "docFragment");
-
-      org.component.parent = docFragment;
-
        this.fillSlot(org.organism, org.component.getElement())
       }
 
     //  org.component.parent = that.element;
+    //   let allLists = that.element.querySelector("#organism_all_lists").children
     //   let allListObjects = []
     //   for(let child of allLists){
     //   //   // console.log(child.children[1].children, "childnode")
