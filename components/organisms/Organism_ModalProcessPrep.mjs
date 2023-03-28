@@ -79,6 +79,7 @@ const getModalContent = async (component, that) => {
     let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
 
     console.log({moleculeLeft, moleculeMiddle, moleculeRight, moleculeLeftHeader, moleculeLeftBody, moleculeMiddleHeader, moleculeMiddleBody, moleculeRight, moleculeRightHeader, moleculeRightBody})
+    console.log(that.moleculeLeft, that.moleculeMiddle, that.moleculeRight)
 
     that.moleculeLeft.header ? moleculeLeftHeader = that.moleculeLeft.header : null;
     that.moleculeLeft.body ? moleculeLeftBody = that.moleculeLeft.body : null;
