@@ -64,7 +64,7 @@ export function Organism_ModalProcessPrep() {
     }
 }
 
-const getModalContent = (component, that) => {
+const getModalContent = async (component, that) => {
     let organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeLeft = organismToModify.molecules[0].component
     let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
@@ -78,6 +78,8 @@ const getModalContent = (component, that) => {
     let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
     let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
 
+    console.log({moleculeLeft, moleculeMiddle, moleculeRight, moleculeLeftHeader, moleculeLeftBody, moleculeMiddleHeader, moleculeMiddleBody, moleculeRight, moleculeRightHeader, moleculeRightBody})
+
     that.moleculeLeft.header ? moleculeLeftHeader = that.moleculeLeft.header : null;
     that.moleculeLeft.body ? moleculeLeftBody = that.moleculeLeft.body : null;
     that.moleculeMiddle.header ? moleculeMiddleHeader = that.moleculeMiddle.header : null;
@@ -85,9 +87,7 @@ const getModalContent = (component, that) => {
     that.moleculeRight.header ? moleculeRightHeader = that.moleculeRight.header : null;
     that.moleculeRight.body ? moleculeRightBody = that.moleculeRight.body : null;
 
-
-
-
+    
 
     // return {moleculeLeft, moleculeMiddle, moleculeRight}
 }
