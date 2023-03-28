@@ -37,7 +37,7 @@ export function Organism_ModalProcessPrep() {
   };
   
 
-  this.bindScript = async function () {
+  this.bindScript =  function () {
 
     const modalComponent = this.organisms[0].component
     const modalElement = modalComponent.getElement()
@@ -64,7 +64,7 @@ export function Organism_ModalProcessPrep() {
     }
 }
 
-const getModalContent = async (component, that) => {
+const getModalContent = (component, that) => {
     let organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeLeft = organismToModify.molecules[0].component
     let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
