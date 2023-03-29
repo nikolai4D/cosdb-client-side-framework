@@ -37,10 +37,9 @@ export function Organism_ModalProcessPrep() {
   };
   
 
-  this.bindScript =  function () {
+  this.bindScript = function () {
 
     const modalComponent = this.organisms[0].component
-    const modalElement = modalComponent.getElement()
 
     let elementsToAddModalTo = this.parent
     if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
@@ -57,6 +56,7 @@ export function Organism_ModalProcessPrep() {
 
             getModalContent(modalComponent, this)
             // modifyMolecule(molecule, this)
+            const modalElement = modalComponent.getElement()
 
             this.fillSlot("new-modal", modalElement);
         })
@@ -81,7 +81,7 @@ const getModalContent = (component, that) => {
     console.log({moleculeLeft, moleculeMiddle, moleculeRight, moleculeLeftHeader, moleculeLeftBody, moleculeMiddleHeader, moleculeMiddleBody, moleculeRight, moleculeRightHeader, moleculeRightBody})
     console.log(that.moleculeLeft, that.moleculeMiddle, that.moleculeRight)
 
-    that.moleculeLeft.header ? moleculeLeftHeader = that.moleculeLeft.header : null;
+    that.moleculeLeft.header ? moleculeLeftHeader = that.moleculeLeft.header : moleculeLeftHeader = moleculeLeftHeader;
     that.moleculeLeft.body ? moleculeLeftBody = that.moleculeLeft.body : null;
     that.moleculeMiddle.header ? moleculeMiddleHeader = that.moleculeMiddle.header : null;
     that.moleculeMiddle.body ? moleculeMiddleBody = that.moleculeMiddle.body : null;
