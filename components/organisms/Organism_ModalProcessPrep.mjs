@@ -26,9 +26,9 @@ export function Organism_ModalProcessPrep() {
 
   this.parent = [];
 
-  this.moleculeLeft = {header: null, body: null};
-  this.moleculeMiddle = {header: null, body: null};
-  this.moleculeRight = {header: null, body: null};
+//   this.moleculeLeft = {header: null, body: null};
+//   this.moleculeMiddle = {header: null, body: null};
+//   this.moleculeRight = {header: null, body: null};
 
   this.getHtml = function () {
     return `
@@ -39,7 +39,7 @@ export function Organism_ModalProcessPrep() {
 
   this.bindScript = async function () {
 
-    const modalComponent = this.organisms[0].component
+    let modalComponent = this.organisms[0].component
 
     let elementsToAddModalTo = this.parent
     if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
@@ -54,7 +54,7 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-           await getModalContent(modalComponent, this)
+           modalComponent = await getModalContent(modalComponent, this)
             // modifyMolecule(molecule, this)
             const modalElement = await modalComponent.getElement()
             console.log(modalElement, "modalelement")
@@ -65,34 +65,35 @@ export function Organism_ModalProcessPrep() {
 }
 
 const getModalContent = async (component, that) => {
-    let organismToModify = component.organisms[0].component.organisms[0].component
-    let moleculeLeft = organismToModify.molecules[0].component
-    let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
-    let moleculeLeftBody = moleculeLeft.atoms[1].component.value[0].value
+    // let organismToModify = component.organisms[0].component.organisms[0].component
+    // let moleculeLeft = organismToModify.molecules[0].component
+    // let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
+    // let moleculeLeftBody = moleculeLeft.atoms[1].component.value[0].value
 
-    let moleculeMiddle = organismToModify.molecules[1].component
-    let moleculeMiddleHeader = moleculeMiddle.atoms[0].component.value[0].value
-    let moleculeMiddleBody = moleculeMiddle.atoms[1].component.value[0].value
+    // let moleculeMiddle = organismToModify.molecules[1].component
+    // let moleculeMiddleHeader = moleculeMiddle.atoms[0].component.value[0].value
+    // let moleculeMiddleBody = moleculeMiddle.atoms[1].component.value[0].value
 
-    let moleculeRight = organismToModify.molecules[2].component
-    let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
-    let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
+    // let moleculeRight = organismToModify.molecules[2].component
+    // let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
+    // let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
 
-    console.log({moleculeLeft, moleculeMiddle, moleculeRight, moleculeLeftHeader, moleculeLeftBody, moleculeMiddleHeader, moleculeMiddleBody, moleculeRight, moleculeRightHeader, moleculeRightBody})
-    console.log(that.moleculeLeft, that.moleculeMiddle, that.moleculeRight)
+    // console.log({moleculeLeft, moleculeMiddle, moleculeRight, moleculeLeftHeader, moleculeLeftBody, moleculeMiddleHeader, moleculeMiddleBody, moleculeRight, moleculeRightHeader, moleculeRightBody})
+    // console.log(that.moleculeLeft, that.moleculeMiddle, that.moleculeRight)
 
-    that.moleculeLeft.header ? moleculeLeftHeader = that.moleculeLeft.header : moleculeLeftHeader = moleculeLeftHeader;
-    that.moleculeLeft.body ? moleculeLeftBody = that.moleculeLeft.body : null;
-    that.moleculeMiddle.header ? moleculeMiddleHeader = that.moleculeMiddle.header : null;
-    that.moleculeMiddle.body ? moleculeMiddleBody = that.moleculeMiddle.body : null;
-    that.moleculeRight.header ? moleculeRightHeader = that.moleculeRight.header : null;
-    that.moleculeRight.body ? moleculeRightBody = that.moleculeRight.body : null;
+    // that.moleculeLeft.header ? moleculeLeftHeader = that.moleculeLeft.header : moleculeLeftHeader = moleculeLeftHeader;
+    // that.moleculeLeft.body ? moleculeLeftBody = that.moleculeLeft.body : null;
+    // that.moleculeMiddle.header ? moleculeMiddleHeader = that.moleculeMiddle.header : null;
+    // that.moleculeMiddle.body ? moleculeMiddleBody = that.moleculeMiddle.body : null;
+    // that.moleculeRight.header ? moleculeRightHeader = that.moleculeRight.header : null;
+    // that.moleculeRight.body ? moleculeRightBody = that.moleculeRight.body : null;
 
     
-    console.log({moleculeLeft, moleculeMiddle, moleculeRight, moleculeLeftHeader, moleculeLeftBody, moleculeMiddleHeader, moleculeMiddleBody, moleculeRight, moleculeRightHeader, moleculeRightBody})
-    console.log(that.moleculeLeft, that.moleculeMiddle, that.moleculeRight)
+    // console.log({moleculeLeft, moleculeMiddle, moleculeRight, moleculeLeftHeader, moleculeLeftBody, moleculeMiddleHeader, moleculeMiddleBody, moleculeRight, moleculeRightHeader, moleculeRightBody})
+    // console.log(that.moleculeLeft, that.moleculeMiddle, that.moleculeRight)
 
     // return {moleculeLeft, moleculeMiddle, moleculeRight}
+    return component
 }
 
 // const modifyMolecule = (molecule, ) => {
