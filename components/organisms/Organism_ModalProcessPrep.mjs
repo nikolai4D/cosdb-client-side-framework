@@ -54,7 +54,21 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-           modalComponent = await getModalContent(modalComponent, this)
+        //    modalComponent = await getModalContent(modalComponent, this)
+
+           let organismToModify = component.organisms[0].component.organisms[0].component
+           let moleculeLeft = organismToModify.molecules[0].component
+           let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
+           let moleculeLeftBody = moleculeLeft.atoms[1].component.value[0].value
+       
+           let moleculeMiddle = organismToModify.molecules[1].component
+           let moleculeMiddleHeader = moleculeMiddle.atoms[0].component.value[0].value
+           let moleculeMiddleBody = moleculeMiddle.atoms[1].component.value[0].value
+       
+           let moleculeRight = organismToModify.molecules[2].component
+           let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
+           let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
+           moleculeLeftBody = "Hello"
             // modifyMolecule(molecule, this)
             const modalElement = await modalComponent.getElement()
             console.log(modalElement, "modalelement")
@@ -77,6 +91,7 @@ async function getModalContent (component, that){
     let moleculeRight = organismToModify.molecules[2].component
     let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
     let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
+    moleculeLeftBody = "Hello"
 
     console.log({moleculeLeft, moleculeMiddle, moleculeRight, moleculeLeftHeader, moleculeLeftBody, moleculeMiddleHeader, moleculeMiddleBody, moleculeRight, moleculeRightHeader, moleculeRightBody})
     // console.log(that.moleculeLeft, that.moleculeMiddle, that.moleculeRight)
@@ -93,7 +108,6 @@ async function getModalContent (component, that){
     // console.log(that.moleculeLeft, that.moleculeMiddle, that.moleculeRight)
 
     // return {moleculeLeft, moleculeMiddle, moleculeRight}
-     moleculeLeftBody = "Hello"
     return await component
 }
 
