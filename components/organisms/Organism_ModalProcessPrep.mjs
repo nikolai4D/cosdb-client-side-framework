@@ -39,7 +39,7 @@ export function Organism_ModalProcessPrep() {
 
   this.bindScript = async function () {
 
-    let modalComponent = this.organisms[0].component
+    let component = this.organisms[0].component
 
     let elementsToAddModalTo = this.parent
     if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
@@ -70,7 +70,7 @@ export function Organism_ModalProcessPrep() {
            let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
            moleculeLeftBody = "Hello"
             // modifyMolecule(molecule, this)
-            const modalElement = await modalComponent.getElement()
+            const modalElement = await component.getElement()
             console.log(modalElement, "modalelement")
             this.fillSlot("new-modal", modalElement);
         })
