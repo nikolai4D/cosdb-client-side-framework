@@ -68,7 +68,7 @@ export function Organism_ModalProcessPrep() {
            let moleculeRight = organismToModify.molecules[2].component
            let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
            let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
-           moleculeLeftBody = "Hello"
+           moleculeLeft.atoms[1].component.value[0].value = "Hello"
             // modifyMolecule(molecule, this)
             const modalElement = await component.getElement()
             console.log(this.organisms[0].component, "component")
