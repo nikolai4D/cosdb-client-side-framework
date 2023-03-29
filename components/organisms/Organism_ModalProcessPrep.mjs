@@ -96,9 +96,12 @@ async function getModalContent (component, that){
     // let moleculeMiddleBody = moleculeMiddle.atoms[1].component.value[0].value
     moleculeMiddle.atoms[1].component.value[0].value = "middle2"
 
+    organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeRight = organismToModify.molecules[2].component
-    let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
-    let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
+    // let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
+    moleculeRight.atoms[0].component.value[0].value = "rightheader"
+    // let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
+    moleculeRight.atoms[1].component.value[0].value = "rightbody"
     // moleculeLeftBody = "Hello"
 
     // console.log({moleculeLeft, moleculeMiddle, moleculeRight, moleculeLeftHeader, moleculeMiddleHeader, moleculeMiddleBody, moleculeRight, moleculeRightHeader, moleculeRightBody})
