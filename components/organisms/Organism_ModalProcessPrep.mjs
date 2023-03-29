@@ -39,7 +39,7 @@ export function Organism_ModalProcessPrep() {
 
   this.bindScript = async function () {
 
-    let component = this.organisms[0].component
+    let modalComponent = this.organisms[0].component
 
     let elementsToAddModalTo = this.parent
     if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
@@ -54,21 +54,22 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-        //    modalComponent = await getModalContent(modalComponent, this)
+           modalComponent = await getModalContent(modalComponent, this)
 
-           let organismToModify = this.organisms[0].component.organisms[0].component.organisms[0].component
-           let moleculeLeft = organismToModify.molecules[0].component
-           let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
-           let moleculeLeftBody = moleculeLeft.atoms[1].component.value[0].value
+        //    let organismToModify = this.organisms[0].component.organisms[0].component.organisms[0].component
+        //    let moleculeLeft = organismToModify.molecules[0].component
+        //    let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
+        //    let moleculeLeftBody = moleculeLeft.atoms[1].component.value[0].value
        
-           let moleculeMiddle = organismToModify.molecules[1].component
-           let moleculeMiddleHeader = moleculeMiddle.atoms[0].component.value[0].value
-           let moleculeMiddleBody = moleculeMiddle.atoms[1].component.value[0].value
+        //    let moleculeMiddle = organismToModify.molecules[1].component
+        //    let moleculeMiddleHeader = moleculeMiddle.atoms[0].component.value[0].value
+        //    let moleculeMiddleBody = moleculeMiddle.atoms[1].component.value[0].value
        
-           let moleculeRight = organismToModify.molecules[2].component
-           let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
-           let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
-           moleculeLeft.atoms[1].component.value[0].value = "Hello"
+        //    let moleculeRight = organismToModify.molecules[2].component
+        //    let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
+        //    let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
+        //    //moleculeLeftBody
+        //    moleculeLeft.atoms[1].component.value[0].value = "Hello"
             // modifyMolecule(molecule, this)
             const modalElement = await component.getElement()
             console.log(this.organisms[0].component, "component")
