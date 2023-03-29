@@ -37,15 +37,15 @@ export function Organism_ModalProcessPrep() {
   };
   
 
-  this.bindScript = function () {
+  this.bindScript = async function () {
 
     const modalComponent = this.organisms[0].component
 
     let elementsToAddModalTo = this.parent
     if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
     
-    for (const element of elementsToAddModalTo) {
-        element.addEventListener("click", (e) => {
+    for await (const element of elementsToAddModalTo) {
+        element.addEventListener("click", async (e) => {
             const modalId = document.getElementById('modal-processView')
 
             modalId.innerHTML = `
@@ -54,9 +54,9 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-            getModalContent(modalComponent, this)
+           await getModalContent(modalComponent, this)
             // modifyMolecule(molecule, this)
-            const modalElement = modalComponent.getElement()
+            const modalElement = await modalComponent.getElement()
 
             this.fillSlot("new-modal", modalElement);
         })
@@ -64,7 +64,7 @@ export function Organism_ModalProcessPrep() {
     }
 }
 
-const getModalContent = (component, that) => {
+const getModalContent = async (component, that) => {
     let organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeLeft = organismToModify.molecules[0].component
     let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
