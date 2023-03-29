@@ -57,7 +57,7 @@ export function Organism_ModalProcessPrep() {
            await getModalContent(modalComponent, this)
             // modifyMolecule(molecule, this)
             const modalElement = await modalComponent.getElement()
-
+            console.log(modalElement, "modalelement")
             this.fillSlot("new-modal", modalElement);
         })
     }
