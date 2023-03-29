@@ -84,20 +84,23 @@ export function Organism_ModalProcessPrep() {
 async function getModalContent (component, that){
     let organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeLeft = organismToModify.molecules[0].component
-    let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
+    // let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
+    moleculeLeft.atoms[0].component.value[0].value = "header"
     // let moleculeLeftBody = moleculeLeft.atoms[1].component.value[0].value
     moleculeLeft.atoms[1].component.value[0].value = "heeello"
 
     let moleculeMiddle = organismToModify.molecules[1].component
-    let moleculeMiddleHeader = moleculeMiddle.atoms[0].component.value[0].value
-    let moleculeMiddleBody = moleculeMiddle.atoms[1].component.value[0].value
+    // let moleculeMiddleHeader = moleculeMiddle.atoms[0].component.value[0].value
+    moleculeMiddle.atoms[0].component.value[0].value = "middle"
+    // let moleculeMiddleBody = moleculeMiddle.atoms[1].component.value[0].value
+    moleculeMiddle.atoms[1].component.value[0].value = "middle2"
 
     let moleculeRight = organismToModify.molecules[2].component
     let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
     let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
     // moleculeLeftBody = "Hello"
 
-    console.log({moleculeLeft, moleculeMiddle, moleculeRight, moleculeLeftHeader, moleculeMiddleHeader, moleculeMiddleBody, moleculeRight, moleculeRightHeader, moleculeRightBody})
+    // console.log({moleculeLeft, moleculeMiddle, moleculeRight, moleculeLeftHeader, moleculeMiddleHeader, moleculeMiddleBody, moleculeRight, moleculeRightHeader, moleculeRightBody})
     // console.log(that.moleculeLeft, that.moleculeMiddle, that.moleculeRight)
 
     // that.moleculeLeft.header ? moleculeLeftHeader = that.moleculeLeft.header : moleculeLeftHeader = moleculeLeftHeader;
