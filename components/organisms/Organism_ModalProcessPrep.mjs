@@ -93,8 +93,8 @@ const getModalContent = async (component, that) => {
     // console.log(that.moleculeLeft, that.moleculeMiddle, that.moleculeRight)
 
     // return {moleculeLeft, moleculeMiddle, moleculeRight}
-    moleculeLeftBody = "Hello"
-    return component
+     moleculeLeftBody = "Hello"
+    return await component
 }
 
 // const modifyMolecule = (molecule, ) => {
