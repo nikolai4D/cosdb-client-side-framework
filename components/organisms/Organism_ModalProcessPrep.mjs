@@ -71,6 +71,8 @@ export function Organism_ModalProcessPrep() {
            moleculeLeftBody = "Hello"
             // modifyMolecule(molecule, this)
             const modalElement = await component.getElement()
+            console.log(this.organisms[0].component, "component")
+
             console.log(modalElement, "modalelement")
             this.fillSlot("new-modal", modalElement);
         })
