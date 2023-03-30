@@ -56,7 +56,7 @@ export async function getMolecule(module, parentId, molId = null) {
 
   const renderMolecule = await moleculeObject.render();
 
-  console.log("!!!!!!!! renderMolecule", renderMolecule);
+  //console.log("!!!!!!!! renderMolecule", renderMolecule);
 
   return await renderMolecule;
 }
