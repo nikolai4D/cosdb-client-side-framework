@@ -95,6 +95,7 @@ async function getModalContent (component, that, element, e){
     moleculeRight.atoms[1].component.value[0].value = that.moleculeRight.body ?? moleculeRight.atoms[1].component.value[0].value;
 
     console.log(moleculeMiddle.atoms[1].component.value[0].value)
+    console.log(organismToModify)
     }
     else {
       let middleTextElement = e.getElementById("user-text")
