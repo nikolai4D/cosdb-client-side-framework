@@ -3,7 +3,7 @@ import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { html2dom } from "../../core/helpers/html2dom.mjs";
 import { Molecule } from "../../core/Molecule.mjs";
 
-export function Molecule_ListWHeading2(data = {}) {
+export function Molecule_ListWHeading2(data = null) {
   Molecule.call(this);
   this.atoms = [
     {
