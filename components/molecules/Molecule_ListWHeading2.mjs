@@ -42,6 +42,6 @@ const list = [
 
 const listItems = async (list) => {
   for (const item of list) {
-    await this.atom(2);
+    new Atom_ListItem2();
   }
 };
