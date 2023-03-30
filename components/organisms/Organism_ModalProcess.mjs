@@ -48,7 +48,7 @@ export function Organism_ModalProcess() {
 
         thisElement.querySelector(".bi-x").addEventListener("click", (e) => {
             document.querySelector('#modal-background').remove()
-            this.remove()
+            that.remove()
 
         });
     }
