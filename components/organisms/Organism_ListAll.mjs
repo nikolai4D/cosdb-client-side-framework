@@ -188,7 +188,7 @@ export function Organism_ListAll() {
       
 
     //   this.fillSlot(org.organism, org.component.getElement())
-    // }
+    }
 
 
 
