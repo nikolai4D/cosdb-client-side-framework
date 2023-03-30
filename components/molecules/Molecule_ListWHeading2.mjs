@@ -35,26 +35,11 @@ export function Molecule_ListWHeading2(data = null) {
     let items = [];
     for (let item of list) {
       console.log(await this.atom(2));
-      items.push(await this.atom(2));
+      items.push(await new this.atom(2).render());
     }
 
-    // const items = await Promise.all(
-    //   list.map(async () => {
-    //     console.log(await this.atom(2));
-    //     return await this.atom(2);
-    //   })
-    // );
     return items;
   };
-
-  //   const listItems = async (list) => {
-  //     const items = await Promise.all(
-  //       list.map(async (item) => {
-  //         return await this.atom(2).toString(item);
-  //       })
-  //     );
-  //     return items.join(" ");
-  //   };
 
   const component = async () => {
     console.log(await listItems(list));
