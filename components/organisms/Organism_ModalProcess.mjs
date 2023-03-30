@@ -18,7 +18,7 @@ export function Organism_ModalProcess() {
     this.getHtml = function() {
 
         return `
-        <div id="modal-background" class="modal modal-background">
+        <div id="modal-background" class="modal organism_modalBackground">
             <div class="modal-container modal-process-inner-wrap">
                 <div class="modal-process-section">
                     <div class="modal-process-upper-section">
