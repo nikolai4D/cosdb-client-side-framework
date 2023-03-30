@@ -63,7 +63,7 @@ export function Organism_ModalProcessPrep() {
           
             console.log(modalElement)
 
-            this.fillSlot("new-modal", await modalElement);
+            this.fillSlot("new-modal", modalElement);
         })
     }
   }
