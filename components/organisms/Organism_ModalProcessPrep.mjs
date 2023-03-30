@@ -45,7 +45,7 @@ export function Organism_ModalProcessPrep() {
     console.log("HELLO")
     for await (const element of elementsToAddModalTo) {
         element.addEventListener("click", async (e) => {
-          let modalComponent = this.organisms[0].component
+          let modalComponent = await this.organisms[0].component
 
             const modalId = await document.getElementById('modal-processView')
 
