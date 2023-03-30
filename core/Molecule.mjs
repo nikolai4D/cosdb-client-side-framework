@@ -6,10 +6,11 @@ export function Molecule() {
   };
 
   this.atom = function (id) {
-    const component = this.atoms.find((atom) => atom.id === id)?.component;
+    const component = () =>
+      this.atoms.find((atom) => atom.id === id)?.component;
 
     // return component.map((elem) => elem.outerHTML).join("");
-    return component;
+    return new component();
   };
 }
 
