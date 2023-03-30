@@ -50,7 +50,7 @@ export function Organism_ModalProcessPrep() {
             const modalId = document.getElementById('modal-processView')
 
             modalId.innerHTML = `
-                <div>
+                <div class="test">
                     ${slot("new-modal")}
                 </div>
                 `
@@ -64,7 +64,7 @@ export function Organism_ModalProcessPrep() {
             this.fillSlot("new-modal", modalElement);
         })
     }
-    }
+  }
 }
 
 async function getModalContent (component, that, element, e){
