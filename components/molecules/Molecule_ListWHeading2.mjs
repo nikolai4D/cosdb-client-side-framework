@@ -47,7 +47,7 @@ export function Molecule_ListWHeading2(data = null) {
     const comp = await html2dom`
     <div class="molecule_list">
     <div>${await this.atom(1)}</div>
-    <div><ul>${await listItems(list)}</ul></div>
+    <ul>${await listItems(list)}</ul>
     </div>`;
 
     return comp;
