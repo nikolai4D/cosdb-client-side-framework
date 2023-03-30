@@ -20,6 +20,21 @@ export function Molecule_ListWHeading2(data = null) {
 
   this.functions = [];
 
+  const list = [
+    { title: "list item 1" },
+    { title: "list item 2" },
+    { title: "list item 3" },
+  ];
+
+  const listItems = async (list) => {
+    const items = await Promise.all(
+      list.map(async () => {
+        return await this.atom(2);
+      })
+    );
+    return items.join("");
+  };
+
   const component = async () => {
     const comp = await html2dom`
     <div class="molecule_list">
@@ -33,17 +48,3 @@ export function Molecule_ListWHeading2(data = null) {
     return await component();
   };
 }
-
-const list = [
-  { title: "list item 1" },
-  { title: "list item 2" },
-  { title: "list item 3" },
-];
-
-const listItems = async (list) => {
-  return await list
-    .map(async (item) => {
-      return await this.atom(2);
-    })
-    .join("");
-};
