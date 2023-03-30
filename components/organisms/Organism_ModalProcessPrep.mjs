@@ -55,11 +55,9 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-           let modalComponent2 = await getModalContent(modalComponent, this, element, e.target)
+           modalComponent = await getModalContent(modalComponent, this, element, e.target)
 
-           console.log(modalComponent2)
-
-            const modalElement = await modalComponent2.getElement()
+            const modalElement = await modalComponent.getElement()
           
             console.log(modalElement)
 
@@ -96,8 +94,7 @@ async function getModalContent (component, that, element, e){
     moleculeRight.atoms[0].component.value[0].value = that.moleculeRight.header ?? moleculeRight.atoms[0].component.value[0].value;
     moleculeRight.atoms[1].component.value[0].value = that.moleculeRight.body ?? moleculeRight.atoms[1].component.value[0].value;
 
-    console.log(moleculeMiddle.atoms[1].component.value[0].value)
-    console.log(organismToModify)
+    console.log(moleculeLeft.atoms[1].component.value[0].value)
     }
     else {
       let middleTextElement = e.getElementById("user-text")
