@@ -45,6 +45,7 @@ export function Molecule_ListWHeading2(data = null) {
       liElements.push(await html2dom`<li>${li}</li>`);
     }
     console.log(liElements);
+    console.log(this.atoms);
 
     return liElements.join("");
   };
