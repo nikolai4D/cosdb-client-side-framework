@@ -6,11 +6,15 @@ export function Molecule() {
   };
 
   this.atom = function (id) {
-    const component = () =>
-      this.atoms.find((atom) => atom.id === id)?.component;
+    function Component() {
+      // constructor function for the component
+    }
 
-    // return component.map((elem) => elem.outerHTML).join("");
-    return new component();
+    const component = this.atoms.find((atom) => atom.id === id)?.component;
+    const comp = new Component();
+    comp.component = component;
+
+    return comp;
   };
 }
 
@@ -19,5 +23,12 @@ export function Molecule() {
 //     const container = document.createElement("div");
 //     container.appendChild(component);
 //     return container;
+//   };
+// }
+
+// this.atom = function (id) {
+//     const component = this.atoms.find((atom) => atom.id === id)?.component;
+
+//     return component;
 //   };
 // }
