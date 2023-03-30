@@ -41,7 +41,7 @@ export function Molecule_ListWHeading2(data = null) {
         return await this.atom(2).toString(item);
       })
     );
-    return items.join("");
+    return items.join(" ");
   };
 
   const component = async () => {
