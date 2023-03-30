@@ -5,9 +5,8 @@ export function Molecule() {
     return this.functions.find((fn) => fn.id === id)?.function() || "";
   };
 
-  this.atom = async function (id) {
-    const component = await this.atoms.find((atom) => atom.id === id)
-      ?.component;
+  this.atom = function (id) {
+    const component = this.atoms.find((atom) => atom.id === id)?.component;
 
     // return component.map((elem) => elem.outerHTML).join("");
     return component;
