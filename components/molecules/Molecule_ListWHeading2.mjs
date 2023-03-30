@@ -41,7 +41,10 @@ const list = [
 ];
 
 const listItems = async (list) => {
-  for (const item of list) {
-    new Atom_ListItem2();
-  }
+  const items = await Promise.all(
+    list.map(async (item) => {
+      return await this.atom(2, item);
+    })
+  );
+  return items.join("");
 };
