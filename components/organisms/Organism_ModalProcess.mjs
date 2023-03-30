@@ -38,6 +38,12 @@ export function Organism_ModalProcess() {
         
         let thisElement = this.getElement()
 
+        thisElement.addEventListener("load", (e)=>{
+            
+            console.log("hello!!")
+        })
+
+
         thisElement.addEventListener("click", (e)=>{
             if(e.target === thisElement){
                 console.log(e.target)
