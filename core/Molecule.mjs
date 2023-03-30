@@ -5,8 +5,6 @@ export function Molecule() {
     return this.functions.find((fn) => fn.id === id)?.function() || "";
   };
 
-  c;
-
   this.atom = function (id) {
     const component = this.atoms.find((atom) => atom.id === id)?.component;
     function Component() {
