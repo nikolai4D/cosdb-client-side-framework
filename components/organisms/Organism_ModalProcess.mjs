@@ -62,8 +62,4 @@ export function Organism_ModalProcess() {
             document.querySelector('#modal-background').remove()
         });
     }
-
-    this.show= function() {
-        document.body.append(this.getElement())
-    }
 }
