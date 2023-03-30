@@ -87,23 +87,23 @@ async function getModalContent (component, that, element){
     let organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeLeft = organismToModify.molecules[0].component
     // let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
-    moleculeLeft.atoms[0].component.value[0].value = "header"
+    // moleculeLeft.atoms[0].component.value[0].value = "header"
     // let moleculeLeftBody = moleculeLeft.atoms[1].component.value[0].value
-    moleculeLeft.atoms[1].component.value[0].value = "heeello"
+    // moleculeLeft.atoms[1].component.value[0].value = "heeello"
 
     organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeMiddle = organismToModify.molecules[1].component
     // let moleculeMiddleHeader = moleculeMiddle.atoms[0].component.value[0].value
-    moleculeMiddle.atoms[0].component.value[0].value = "middle"
+    // moleculeMiddle.atoms[0].component.value[0].value = "middle"
     // let moleculeMiddleBody = moleculeMiddle.atoms[1].component.value[0].value
-    moleculeMiddle.atoms[1].component.value[0].value = "middle2"
+    // moleculeMiddle.atoms[1].component.value[0].value = "middle2"
 
     organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeRight = organismToModify.molecules[2].component
     // let moleculeRightHeader = moleculeRight.atoms[0].component.value[0].value
-    moleculeRight.atoms[0].component.value[0].value = "rightheader"
+    // moleculeRight.atoms[0].component.value[0].value = "rightheader"
     // let moleculeRightBody = moleculeRight.atoms[1].component.value[0].value
-    moleculeRight.atoms[1].component.value[0].value = "rightbody"
+    // moleculeRight.atoms[1].component.value[0].value = "rightbody"
     // moleculeLeftBody = "Hello"
 
     // console.log({moleculeLeft, moleculeMiddle, moleculeRight, moleculeLeftHeader, moleculeMiddleHeader, moleculeMiddleBody, moleculeRight, moleculeRightHeader, moleculeRightBody})
