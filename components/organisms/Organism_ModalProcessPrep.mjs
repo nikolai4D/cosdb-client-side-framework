@@ -55,9 +55,9 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-           modalComponent = await getModalContent(modalComponent, this, element, e.target)
+           let modalComponent2 = await getModalContent(modalComponent, this, element, e.target)
 
-            const modalElement = await modalComponent.getElement()
+            const modalElement = await modalComponent2.getElement()
           
             console.log(modalElement)
 
