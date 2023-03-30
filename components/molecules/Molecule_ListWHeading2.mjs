@@ -41,7 +41,7 @@ const list = [
 ];
 
 const listItems = (list) => {
-  return list.map((item) => {
-    return `<li>${item.title}</li>`;
+  return list.map(async (item) => {
+    return await this.atom(2);
   });
 };
