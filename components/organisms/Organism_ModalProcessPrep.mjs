@@ -55,7 +55,7 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-          //  modalComponent = await getModalContent(modalComponent, this, element, e.target)
+           modalComponent = await getModalContent(modalComponent, this, element, e.target)
 
             const modalElement = await modalComponent.getElement()
           
@@ -67,40 +67,40 @@ export function Organism_ModalProcessPrep() {
   }
 }
 
-// async function getModalContent (component, that, element, e){
+async function getModalContent (component, that, element, e){
 
-//   console.log(e)
-//     let organismToModify = component.organisms[0].component.organisms[0].component
-//     let moleculeLeft = organismToModify.molecules[0].component
-
-
-//     organismToModify = component.organisms[0].component.organisms[0].component
-//     let moleculeMiddle = organismToModify.molecules[1].component
-
-//     organismToModify = component.organisms[0].component.organisms[0].component
-//     let moleculeRight = organismToModify.molecules[2].component
+  console.log(e)
+    let organismToModify = component.organisms[0].component.organisms[0].component
+    let moleculeLeft = organismToModify.molecules[0].component
 
 
-//     that.moleculeMiddle.body = null;
-//     that.moleculeMiddle.body = element.innerHTML
+    organismToModify = component.organisms[0].component.organisms[0].component
+    let moleculeMiddle = organismToModify.molecules[1].component
 
-//   console.log(that.moleculeMiddle.body)
+    organismToModify = component.organisms[0].component.organisms[0].component
+    let moleculeRight = organismToModify.molecules[2].component
 
-//     if (!e.hasAttribute("getElementById")) {
-//     moleculeLeft.atoms[0].component.value[0].value = that.moleculeLeft.header ?? moleculeLeft.atoms[0].component.value[0].value;
-//     moleculeLeft.atoms[1].component.value[0].value = that.moleculeLeft.body ?? moleculeLeft.atoms[1].component.value[0].value;
-//     moleculeMiddle.atoms[0].component.value[0].value = that.moleculeMiddle.header ?? moleculeMiddle.atoms[0].component.value[0].value;
-//     moleculeMiddle.atoms[1].component.value[0].value = that.moleculeMiddle.body ?? moleculeMiddle.atoms[1].component.value[0].value;
-//     moleculeRight.atoms[0].component.value[0].value = that.moleculeRight.header ?? moleculeRight.atoms[0].component.value[0].value;
-//     moleculeRight.atoms[1].component.value[0].value = that.moleculeRight.body ?? moleculeRight.atoms[1].component.value[0].value;
 
-//     console.log(moleculeLeft.atoms[1].component.value[0].value)
-//     }
-//     else {
-//       let middleTextElement = e.getElementById("user-text")
-//       console.log(middleTextElement)
-//     }
+    that.moleculeMiddle.body = null;
+    that.moleculeMiddle.body = element.innerHTML
 
-//     return await component
-// }
+  console.log(that.moleculeMiddle.body)
+
+    if (!e.hasAttribute("getElementById")) {
+    moleculeLeft.atoms[0].component.value[0].value = that.moleculeLeft.header ?? moleculeLeft.atoms[0].component.value[0].value;
+    moleculeLeft.atoms[1].component.value[0].value = that.moleculeLeft.body ?? moleculeLeft.atoms[1].component.value[0].value;
+    moleculeMiddle.atoms[0].component.value[0].value = that.moleculeMiddle.header ?? moleculeMiddle.atoms[0].component.value[0].value;
+    moleculeMiddle.atoms[1].component.value[0].value = that.moleculeMiddle.body ?? moleculeMiddle.atoms[1].component.value[0].value;
+    moleculeRight.atoms[0].component.value[0].value = that.moleculeRight.header ?? moleculeRight.atoms[0].component.value[0].value;
+    moleculeRight.atoms[1].component.value[0].value = that.moleculeRight.body ?? moleculeRight.atoms[1].component.value[0].value;
+
+    console.log(moleculeLeft.atoms[1].component.value[0].value)
+    }
+    else {
+      let middleTextElement = e.getElementById("user-text")
+      console.log(middleTextElement)
+    }
+
+    return await component
+}
 
