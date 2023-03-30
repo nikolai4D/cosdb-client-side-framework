@@ -44,17 +44,12 @@ export function Organism_InputOutput() {
 
         return `
             <div class="molecule_modal_in-output">
-                <div>
-                    ${slot(this.molecules[0].molecule)}
-                </div>
-                    ${slot(this.atoms[0].atom)}
-                <div>
-                    ${slot(this.molecules[1].molecule)}
-                </div>
-                    ${slot(this.atoms[1].atom)}
-                <div>
-                    ${slot(this.molecules[2].molecule)}
-                </div>
+            <div>
+                ${slot(this.molecules[0].molecule)}
+                ${slot(this.atoms[0].atom)}
+                ${slot(this.molecules[1].molecule)}
+                ${slot(this.atoms[1].atom)}
+                ${slot(this.molecules[2].molecule)}
             </div>
         `
     }
