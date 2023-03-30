@@ -26,9 +26,9 @@ export function Organism_ModalProcessPrep() {
 
   this.parent = [];
 
-//   this.moleculeLeft = {header: null, body: null};
-//   this.moleculeMiddle = {header: null, body: null};
-//   this.moleculeRight = {header: null, body: null};
+  this.moleculeLeft = {header: null, body: null};
+  this.moleculeMiddle = {header: null, body: null};
+  this.moleculeRight = {header: null, body: null};
 
   this.getHtml = function () {
     return `
