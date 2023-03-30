@@ -4,6 +4,7 @@ import { Atom } from "../../core/Atom.mjs";
 
 export function Atom_Heading4(data = "H4 data placeholder") {
   Atom.call(this);
+  console.log(async () => await this.atom());
 
   const component = async () => {
     const comp = await html2dom`
