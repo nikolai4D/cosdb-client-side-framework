@@ -55,7 +55,7 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-           modalComponent = await getModalContent(modalComponent, this, element.innerHTML)
+           modalComponent = await getModalContent(modalComponent, this, element)
 
             const modalElement = await modalComponent.getElement()
           
@@ -82,7 +82,7 @@ async function getModalContent (component, that, element){
 
 
     that.moleculeMiddle.body = null;
-    that.moleculeMiddle.body = element
+    that.moleculeMiddle.body = element.innerHTML
 
 
 
