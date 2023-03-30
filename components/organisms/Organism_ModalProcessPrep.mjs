@@ -37,33 +37,19 @@ export function Organism_ModalProcessPrep() {
   };
   
 
-  this.bindScript = async function () {
+  this.bindScript = function () {
 
+    for (const element of elementsToAddModalTo) {
+        element.addEventListener("click", (e) => {
 
-    let elementsToAddModalTo = this.parent
-    if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
-    console.log("HELLO")
-    for await (const element of elementsToAddModalTo) {
-        element.addEventListener("click", async (e) => {
+            const modalId =  document.getElementById('modal-processView')
 
-            const modalId = await document.getElementById('modal-processView')
+            // replaces content of modal with content of clicked element
+             getModalContent(this.organisms[0].component, this, element, e.target)
 
-          //  modalId.innerHTML = `
-          //       <div class="test">
-          //           ${slot("new-modal")}
-          //       </div>
-          //       `
+             const modalElement =  this.organisms[0].component.getElement()
 
-             await getModalContent(this.organisms[0].component, this, element, e.target)
-            //  debugger
-            console.log(this.organisms[0].component)
-            const modalElement = await this.organisms[0].component.getElement()
-
-            // let cloned = modalElement.cloneNode(true)
-            console.log(modalElement)
-              modalId.appendChild(modalElement)
-
-            // await this.fillSlot("new-modal", await modalElement);
+            modalId.appendChild(modalElement)
         })
     }
   }
@@ -106,3 +92,6 @@ async function getModalContent (component, that, element, e){
     return await component
 }
 
+let elementsToAddModalTo = this.parent
+if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
+console.log("HELLO")
