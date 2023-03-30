@@ -7,12 +7,10 @@ export function Molecule() {
 
   this.atom = function (id) {
     function Component() {
-      // constructor function for the component
+      return this.atoms.find((atom) => atom.id === id)?.component;
     }
 
-    const component = this.atoms.find((atom) => atom.id === id)?.component;
     const comp = new Component();
-    comp.component = component;
 
     return comp;
   };
