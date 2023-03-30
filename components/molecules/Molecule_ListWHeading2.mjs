@@ -39,13 +39,11 @@ export function Molecule_ListWHeading2(data = null) {
       liElements.push(await this.atom(tempId));
     }
     console.log(liElements);
-    console.log(this.atoms);
+    console.log("this.atoms", this.atoms);
 
     return liElements.join("");
   };
   const component = async () => {
-    console.log(await listItems(list));
-
     const comp = await html2dom`
     <div class="molecule_list">
     <div>${await this.atom(1)}</div>
