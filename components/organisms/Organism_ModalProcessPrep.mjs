@@ -55,7 +55,7 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-           modalComponent = await getModalContent(modalComponent, this, element)
+           modalComponent = await getModalContent(modalComponent, this, element, e)
 
             const modalElement = await modalComponent.getElement()
           
@@ -67,9 +67,9 @@ export function Organism_ModalProcessPrep() {
     }
 }
 
-async function getModalContent (component, that, element){
+async function getModalContent (component, that, element, e){
 
-  console.log(element)
+  console.log(e)
     let organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeLeft = organismToModify.molecules[0].component
 
@@ -86,7 +86,7 @@ async function getModalContent (component, that, element){
 
 
 
-    if (!element.hasAttribute("getElementById")) {
+    if (!e.hasAttribute("getElementById")) {
     moleculeLeft.atoms[0].component.value[0].value = that.moleculeLeft.header ?? moleculeLeft.atoms[0].component.value[0].value;
     moleculeLeft.atoms[1].component.value[0].value = that.moleculeLeft.body ?? moleculeLeft.atoms[1].component.value[0].value;
     moleculeMiddle.atoms[0].component.value[0].value = that.moleculeMiddle.header ?? moleculeMiddle.atoms[0].component.value[0].value;
@@ -95,7 +95,7 @@ async function getModalContent (component, that, element){
     moleculeRight.atoms[1].component.value[0].value = that.moleculeRight.body ?? moleculeRight.atoms[1].component.value[0].value;
     }
     else {
-      let middleTextElement = element.getElementById("user-text")
+      let middleTextElement = e.getElementById("user-text")
       console.log(middleTextElement)
     }
 
