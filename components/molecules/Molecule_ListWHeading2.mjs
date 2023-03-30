@@ -33,6 +33,7 @@ export function Molecule_ListWHeading2(data = null) {
         return await this.atom(2);
       })
     );
+    console.log(listItems);
     return items;
   };
 
@@ -49,13 +50,7 @@ export function Molecule_ListWHeading2(data = null) {
     const comp = await html2dom`
     <div class="molecule_list">
     <div>${await this.atom(1)}</div>
-    <ul>${
-      (await this.atom(2)) <
-      br >
-      (await this.atom(2)) <
-      br >
-      (await this.atom(2))
-    }
+    <ul>${listItems[0]}
         </ul>
     </div>`;
     return comp;
