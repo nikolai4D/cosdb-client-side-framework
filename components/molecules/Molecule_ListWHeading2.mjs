@@ -32,7 +32,7 @@ export function Molecule_ListWHeading2(data = null) {
         return await this.atom(2);
       })
     );
-    return items;
+    return items.join("");
   };
 
   //   const listItems = async (list) => {
