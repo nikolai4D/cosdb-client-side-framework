@@ -36,17 +36,18 @@ export function Organism_ModalProcess() {
         const {organisms} = this
         let organismElement = organisms[0].component.getElement()
         await this.fillSlot(organisms[0].organism, organismElement)
-        console.log(this.getElement())
+        let thisElement = this.getElement()
+        console.log(thisElement)
 
-        this.getElement().addEventListener("click", (e)=>{
-            if(e.target === this.getElement()){
+        thisElement.addEventListener("click", (e)=>{
+            if(e.target === thisElement){
                 console.log(e.target)
-                this.getElement().remove()
+                thisElement.remove()
 
             }
         })
 
-        this.getElement().querySelector(".bi-x").addEventListener("click", (e) => {
+        thisElement.querySelector(".bi-x").addEventListener("click", (e) => {
             document.querySelector('#modal-background').remove()
         });
     }
