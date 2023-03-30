@@ -30,7 +30,7 @@ export function Molecule_ListWHeading2(data = null) {
     let items = [];
     for (let item of list) {
       const tempId = this.atoms.length + 1;
-      this.atoms.push({ id: tempId, component: await this.atom(2) });
+      this.atoms.push({ id: tempId, component: await new this.atom(2) });
       items.push(tempId);
     }
 
