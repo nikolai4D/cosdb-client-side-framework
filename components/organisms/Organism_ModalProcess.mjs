@@ -38,22 +38,22 @@ export function Organism_ModalProcess() {
         
         let thisElement = this.getElement()
 
-        thisElement.addEventListener("load", (e)=>{
+        // thisElement.addEventListener("load", (e)=>{
             
-            console.log("hello!!!!!!!!!!!!!!!!!!")
-        })
+        //     console.log("hello!!!!!!!!!!!!!!!!!!")
+        // })
 
 
-        thisElement.addEventListener("click", (e)=>{
-            if(e.target === thisElement){
-                console.log(e.target)
-                thisElement.remove()
+        // thisElement.addEventListener("click", (e)=>{
+        //     if(e.target === thisElement){
+        //         console.log(e.target)
+        //         thisElement.remove()
 
-            }
-        })
+        //     }
+        // })
 
-        thisElement.querySelector(".bi-x").addEventListener("click", (e) => {
-            document.querySelector('#modal-background').remove()
-        });
+        // thisElement.querySelector(".bi-x").addEventListener("click", (e) => {
+        //     document.querySelector('#modal-background').remove()
+        // });
     }
 }
