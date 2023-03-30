@@ -40,7 +40,7 @@ export function Organism_ModalProcess() {
 
         thisElement.addEventListener("load", (e)=>{
             
-            console.log("hello!!")
+            console.log("hello!!!!!!!!!!!!!!!!!!")
         })
 
 
