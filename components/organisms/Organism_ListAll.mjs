@@ -5,7 +5,7 @@ import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearc
 import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { State } from "../../data-mgmt/state.mjs";
-import { Organism_ModalProcess } from "./Organism_ModalProcess.mjs";
+import { Organism_ModalProcessPrep } from "./Organism_ModalProcessPrep.mjs";
 
 export function Organism_ListAll() {
   Component.call(this);
@@ -26,8 +26,8 @@ export function Organism_ListAll() {
   this.organisms = [
     {
       id: 1,
-      organism: "Organism_ModalProcess",
-      component: new Organism_ModalProcess(),
+      organism: "Organism_ModalProcessPrep",
+      component: new Organism_ModalProcessPrep(),
     },
   ];
 
@@ -49,7 +49,7 @@ export function Organism_ListAll() {
         <div id="organism_all_lists" class="organism_list-all-search__lists">
           ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
-        <div id="modal-processView"></div>
+        ${slot(this.organisms[0].organism)}
 
       </div>
     `;
@@ -155,66 +155,15 @@ export function Organism_ListAll() {
     }
     for await (const child of moleculesSlots.children) {
       for await (const li of child.children[1].children){
-        li.addEventListener("click", async (e) => {
-
-
-          // for await (const element of elementsToAddModalTo) {
-            // element.addEventListener("click", async (e) => {
-    
-                const modalId = document.getElementById('modal-processView')
-    
-                modalId.innerHTML = `
-                    <div class="test">
-                        ${slot("new-modal")}
-                    </div>
-                    `
-    
-              //  modalComponent = await getModalContent(modalComponent, this, element, e.target)
-    
-              //   const modalElement = await modalComponent.getElement()
-              
-              //   console.log(modalElement)
-    
-                this.fillSlot("new-modal", this.organisms[0].component.getElement());
-            })
-        }
-
-  };
-}
-    // for (let org of this.organisms) {
-    //   org.component.parent = await anArray;
-    //   org.component.moleculeLeft = { header: "hello", body: "heeello"}
-
-      
-
-    //   this.fillSlot(org.organism, org.component.getElement())
+        anArray.push(await li)
+      }
     }
 
+    for (let org of this.organisms) {
+      org.component.parent = await anArray;
+      org.component.moleculeLeft = { header: "hello", body: "heeello"}
 
-
-
-    // let modalComponent = this.organisms[0].component
-
-    // let elementsToAddModalTo = this.parent
-    // if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
-
-    // for await (const element of elementsToAddModalTo) {
-    //     element.addEventListener("click", async (e) => {
-
-    //         const modalId = document.getElementById('modal-processView')
-
-    //         modalId.innerHTML = `
-    //             <div class="test">
-    //                 ${slot("new-modal")}
-    //             </div>
-    //             `
-
-    //        modalComponent = await getModalContent(modalComponent, this, element, e.target)
-
-    //         const modalElement = await modalComponent.getElement()
-          
-    //         console.log(modalElement)
-
-    //         this.fillSlot("new-modal", modalElement);
-    //     })
-    // }
+      this.fillSlot(org.organism, org.component.getElement())
+    }
+  };
+}

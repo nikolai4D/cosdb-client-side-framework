@@ -32,7 +32,7 @@ export function Organism_ModalProcessPrep() {
 
   this.getHtml = function () {
     return `
-        <div></div>
+        <div id="modal-processView"></div>
     `;
   };
   
@@ -41,35 +41,35 @@ export function Organism_ModalProcessPrep() {
 
     let modalComponent = this.organisms[0].component
 
-    // let elementsToAddModalTo = this.parent
-    // if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
+    let elementsToAddModalTo = this.parent
+    if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
+    console.log("HELLO")
+    for await (const element of elementsToAddModalTo) {
+        element.addEventListener("click", async (e) => {
 
-    // for await (const element of elementsToAddModalTo) {
-    //     element.addEventListener("click", async (e) => {
+            const modalId = document.getElementById('modal-processView')
 
-            // const modalId = document.getElementById('modal-processView')
+            modalId.innerHTML = `
+                <div class="test">
+                    ${slot("new-modal")}
+                </div>
+                `
 
-            // modalId.innerHTML = `
-            //     <div class="test">
-            //         ${slot("new-modal")}
-            //     </div>
-            //     `
-
-           modalComponent = await getModalContent(modalComponent, this)
+           modalComponent = await getModalContent(modalComponent, this, element, e.target)
 
             const modalElement = await modalComponent.getElement()
           
             console.log(modalElement)
 
-            // this.fillSlot("new-modal", modalElement);
-        // })
-    // }
+            this.fillSlot("new-modal", modalElement);
+        })
+    }
   }
 }
 
-async function getModalContent (component, that){
+async function getModalContent (component, that, element, e){
 
-  // console.log(e)
+  console.log(e)
     let organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeLeft = organismToModify.molecules[0].component
 
@@ -82,11 +82,11 @@ async function getModalContent (component, that){
 
 
     that.moleculeMiddle.body = null;
-    // that.moleculeMiddle.body = element.innerHTML
+    that.moleculeMiddle.body = element.innerHTML
 
   console.log(that.moleculeMiddle.body)
 
-    // if (!e.hasAttribute("getElementById")) {
+    if (!e.hasAttribute("getElementById")) {
     moleculeLeft.atoms[0].component.value[0].value = that.moleculeLeft.header ?? moleculeLeft.atoms[0].component.value[0].value;
     moleculeLeft.atoms[1].component.value[0].value = that.moleculeLeft.body ?? moleculeLeft.atoms[1].component.value[0].value;
     moleculeMiddle.atoms[0].component.value[0].value = that.moleculeMiddle.header ?? moleculeMiddle.atoms[0].component.value[0].value;
@@ -95,13 +95,12 @@ async function getModalContent (component, that){
     moleculeRight.atoms[1].component.value[0].value = that.moleculeRight.body ?? moleculeRight.atoms[1].component.value[0].value;
 
     console.log(moleculeLeft.atoms[1].component.value[0].value)
-    // }
-    // else {
-    //   let middleTextElement = e.getElementById("user-text")
-    //   console.log(middleTextElement)
-    // }
+    }
+    else {
+      let middleTextElement = e.getElementById("user-text")
+      console.log(middleTextElement)
+    }
 
     return await component
 }
-
 
