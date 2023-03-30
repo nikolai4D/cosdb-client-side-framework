@@ -43,7 +43,7 @@ const list = [
 const listItems = async (list) => {
   const items = await Promise.all(
     list.map(async (item) => {
-      return await this.atom(2, item);
+      return await this.atom(2);
     })
   );
   return items.join("");
