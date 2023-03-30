@@ -44,7 +44,6 @@ export function Organism_InputOutput() {
 
         return `
             <div class="molecule_modal_in-output">
-            <div>
                 ${slot(this.molecules[0].molecule)}
                 ${slot(this.atoms[0].atom)}
                 ${slot(this.molecules[1].molecule)}
