@@ -55,8 +55,8 @@ export function Organism_ModalProcessPrep() {
                 `
 
              await getModalContent(this.organisms[0].component, this, element, e.target)
-
-            debugger
+             debugger
+            console.log(this.organisms[0].component)
             const modalElement = await this.organisms[0].component.getElement()
           
             console.log(modalElement)
