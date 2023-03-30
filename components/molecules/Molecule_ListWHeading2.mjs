@@ -26,13 +26,22 @@ export function Molecule_ListWHeading2(data = null) {
     { title: "list item 3" },
   ];
 
+  //   const listItems = async (list) => {
+  //     const items = await Promise.all(
+  //       list.map(async () => {
+  //         return await this.atom(2);
+  //       })
+  //     );
+  //     return items;
+  //   };
+
   const listItems = async (list) => {
     const items = await Promise.all(
-      list.map(async () => {
-        return await this.atom(2);
+      list.map(async (item) => {
+        return await this.atom(2).toString(item);
       })
     );
-    return items;
+    return items.join("");
   };
 
   const component = async () => {
