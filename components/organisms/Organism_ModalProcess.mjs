@@ -31,6 +31,7 @@ export function Organism_ModalProcess() {
 
     this.bindScript= async function() {
 
+        let that = this
         const {component, organism} = this.organisms[0]
         const organismElement = component.getElement()
         console.log(component, "component")
@@ -41,7 +42,7 @@ export function Organism_ModalProcess() {
         thisElement.addEventListener("click", (e)=>{
             if(e.target === thisElement){
                 thisElement.remove()
-                this.remove()
+                that.remove()
             }
         })
 
