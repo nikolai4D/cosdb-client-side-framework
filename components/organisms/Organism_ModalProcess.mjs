@@ -37,7 +37,7 @@ export function Organism_ModalProcess() {
         let organismElement = organisms[0].component.getElement()
         await this.fillSlot(organisms[0].organism, organismElement)
 
-        const mStyle = organismElement.style
+        const mStyle = this.getElement().style
         mStyle.position = "absolute"
         mStyle.width = "100vw"
         mStyle.height = "100vh"
@@ -51,19 +51,19 @@ export function Organism_ModalProcess() {
         organismElement.style.backgroundColor = "white"
         // this.content.getElement()
 
-        organismElement.addEventListener("click", (e)=>{
-            if(e.target === organismElement){
+        this.getElement().addEventListener("click", (e)=>{
+            if(e.target === this.getElement()){
                 console.log(e.target)
-                organismElement.remove()
+                this.getElement().remove()
             }
         })
 
-        organismElement.querySelector(".bi-x").addEventListener("click", (e) => {
+        this.getElement().querySelector(".bi-x").addEventListener("click", (e) => {
             document.querySelector('#modal-background').remove()
         });
     }
 
     this.show= function() {
-        document.body.append(organismElement)
+        document.body.append(this.getElement())
     }
 }
