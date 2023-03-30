@@ -38,15 +38,23 @@ export function Organism_InputOutput() {
         }
     ]
 
+    
+
     this.getHtml = function() {
 
         return `
             <div class="molecule_modal_in-output">
-                ${slot(this.molecules[0].molecule)}
-                ${slot(this.atoms[0].atom)}
-                ${slot(this.molecules[1].molecule)}
-                ${slot(this.atoms[1].atom)}
-                ${slot(this.molecules[2].molecule)}
+                <div>
+                    ${slot(this.molecules[0].molecule)}
+                </div>
+                    ${slot(this.atoms[0].atom)}
+                <div>
+                    ${slot(this.molecules[1].molecule)}
+                </div>
+                    ${slot(this.atoms[1].atom)}
+                <div>
+                    ${slot(this.molecules[2].molecule)}
+                </div>
             </div>
         `
     }
