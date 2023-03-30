@@ -1,6 +1,6 @@
 import {slot} from "../../../core/helpers.mjs";
 import {Component} from "../../../core/Component.mjs";
-import { Organism_ModalProcessContent } from "./Organism_ModalProcessContent.mjs";
+import { Organism_InputOutput } from "./Organism_InputOutput.mjs";
 
 export function Organism_ModalProcess() {
     Component.call(this)
@@ -8,14 +8,16 @@ export function Organism_ModalProcess() {
     this.organisms = [
         {
             id: 1,
-            organism: "Organism_ModalProcessContent",
-            component: new Organism_ModalProcessContent()
+            organism: "Organism_InputOutput",
+            component: new Organism_InputOutput()
         }
     ];
 
     this.getHtml = function() {
 
         return `
+        <div class="organism_process-modal">
+
         <div id="modal-background" class="modal organism_modalBackground">
             <div class="modal-container modal-process-inner-wrap">
                 <div class="modal-process-section">
@@ -25,6 +27,7 @@ export function Organism_ModalProcess() {
                 </div> 
                 ${slot(this.organisms[0].organism)}
                 </div>
+        </div>
         </div>
         `
     }
