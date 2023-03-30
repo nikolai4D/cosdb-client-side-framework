@@ -7,7 +7,7 @@ export function Atom_ListItem2(data = "list data placeholder") {
 
   const component = async () => {
     const comp = await html2dom`
-    <li "class="${await this.atom()}">${data}</li>`;
+    <li class="${await this.atom()}">${data}</li>`;
     return comp;
   };
 
