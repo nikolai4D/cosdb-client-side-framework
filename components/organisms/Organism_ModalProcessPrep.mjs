@@ -84,7 +84,7 @@ async function getModalContent (component, that, element, e){
     that.moleculeMiddle.body = null;
     that.moleculeMiddle.body = element.innerHTML
 
-
+  console.log(that.moleculeMiddle.body)
 
     if (!e.hasAttribute("getElementById")) {
     moleculeLeft.atoms[0].component.value[0].value = that.moleculeLeft.header ?? moleculeLeft.atoms[0].component.value[0].value;
