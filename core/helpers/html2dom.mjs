@@ -1,4 +1,5 @@
 export async function html2dom(strings, ...values) {
+  console.log("values", values);
   const container = document.createElement("div");
   const placeholders = [];
 
