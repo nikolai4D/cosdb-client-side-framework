@@ -26,11 +26,12 @@ export function Molecule_ListWHeading2(data = null) {
     { title: "list item 3" },
   ];
 
-  const listItems = list
-    .map((item) => {
-      return `<li class="molecule_list__list_item">${item.title}</li>`;
-    })
-    .join("");
+  const listItems = (list) =>
+    list
+      .map((item) => {
+        return `<li class="molecule_list__list_item">${item.title}</li>`;
+      })
+      .join("");
 
   const component = async () => {
     const comp = await html2dom`
