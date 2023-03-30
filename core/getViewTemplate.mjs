@@ -19,16 +19,16 @@ export async function getViewTemplate(parentId) {
   // get the viewTemplate
 
   const components = await getComponents(id);
-  console.log("components", components);
+  //console.log("components", components);
 
   const viewTemplateObject = await createComponent(type, value);
 
   viewTemplateObject.slots = components;
-  console.log("viewTemplateObject 1", viewTemplateObject); //1
+  // console.log("viewTemplateObject 1", viewTemplateObject); //1
 
   const renderViewTemplate = await viewTemplateObject.render(); //2
 
-  console.log("renderViewTemplate 3", renderViewTemplate); //3
+  //console.log("renderViewTemplate 3", renderViewTemplate); //3
 
   //   const renderViewTemplateArray = Array.from(renderViewTemplate);
 
