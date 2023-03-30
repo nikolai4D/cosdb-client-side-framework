@@ -4,17 +4,10 @@ export function Molecule() {
   this.fn = function (id) {
     return this.functions.find((fn) => fn.id === id)?.function() || "";
   };
-
   this.atom = function (id) {
-    const atoms = this.atoms;
-    //const component = this.atoms.find((atom) => atom.id === id)?.component;
-    function Component(atoms, id) {
-      return atoms.find((atom) => atom.id === id)?.component;
-    }
+    const component = this.atoms.find((atom) => atom.id === id)?.component;
 
-    const comp = new Component(atoms, id);
-
-    return comp;
+    return component;
   };
 }
 
