@@ -16,6 +16,11 @@ export function Molecule_ListWHeading2(data = null) {
       atom: "Atom_ListItem2",
       component: new Atom_ListItem2(),
     },
+    {
+      id: 3,
+      atom: "Atom_Heading4",
+      component: new Atom_Heading4(),
+    },
   ];
 
   this.functions = [];
@@ -30,7 +35,7 @@ export function Molecule_ListWHeading2(data = null) {
     let items = [];
     for (let item of list) {
       console.log(await this.atom(2));
-      items.push(await this.atom(2).render());
+      items.push(await this.atom(2));
     }
 
     // const items = await Promise.all(
@@ -60,8 +65,10 @@ export function Molecule_ListWHeading2(data = null) {
     <div><ul>${(await listItems(list))[0]}</ul></div>
     <div><ul>${(await listItems(list))[1]}</ul></div>
     <div><ul>${(await listItems(list))[2]}</ul></div>
+    </div>
+    
+    <div>${await this.atom(3)}</div>`;
 
-    </div>`;
     return comp;
   };
 
