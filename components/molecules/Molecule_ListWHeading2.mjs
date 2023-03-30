@@ -41,7 +41,9 @@ const list = [
 ];
 
 const listItems = async (list) => {
-  return await list.map(async (item) => {
-    return await this.atom(2);
-  });
+  return await list
+    .map(async (item) => {
+      return await this.atom(2);
+    })
+    .join("");
 };
