@@ -46,7 +46,7 @@ export function Molecule_ListWHeading2(data = null) {
   //   };
 
   const component = async () => {
-    console.log(listItems(list));
+    console.log(await listItems(list));
 
     const comp = await html2dom`
     <div class="molecule_list">
