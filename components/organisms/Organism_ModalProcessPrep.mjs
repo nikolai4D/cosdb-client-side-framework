@@ -43,7 +43,7 @@ export function Organism_ModalProcessPrep() {
 
     let elementsToAddModalTo = this.parent
     if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
-    
+    console.log("HELLO")
     for await (const element of elementsToAddModalTo) {
         element.addEventListener("click", async (e) => {
 
