@@ -37,29 +37,36 @@ export function Organism_ModalProcessPrep() {
   };
   
 
-  this.bindScript = function () {
+  this.bindScript =  function () {
+
+
     let elementsToAddModalTo = this.parent
     if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
     console.log("HELLO")
-    for (const element of elementsToAddModalTo) {
-        element.addEventListener("click", (e) => {
+    for  (const element of elementsToAddModalTo) {
+        element.addEventListener("click",  (e) => {
 
             const modalId =  document.getElementById('modal-processView')
 
-            // replaces content of modal with content of clicked element
-             getModalContent(this.organisms[0].component, this, element, e.target)
+           modalId.innerHTML = `
+                <div class="test">
+                    ${slot("new-modal")}
+                </div>
+                `
 
-             const modalElement =  this.organisms[0].component.getElement()
+              getModalContent(this.organisms[0].component, this, element, e.target)
+            console.log(this.organisms[0].component)
+            const modalElement =  this.organisms[0].component.getElement()
+          
+            console.log(modalElement)
 
-            modalId.appendChild(modalElement)
-
-            this.organisms[0].component.bindScript();
+             this.fillSlot("new-modal",  modalElement);
         })
     }
   }
 }
 
-async function getModalContent (component, that, element, e){
+ function getModalContent (component, that, element, e){
 
   console.log(e)
     let organismToModify = component.organisms[0].component.organisms[0].component
@@ -93,6 +100,6 @@ async function getModalContent (component, that, element, e){
       console.log(middleTextElement)
     }
 
-    return await component
+    return component
 }
 
