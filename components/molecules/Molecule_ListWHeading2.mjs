@@ -50,7 +50,7 @@ export function Molecule_ListWHeading2(data = null) {
     <div>${await this.atom(1)}</div>
     <div>${list
       .map(async (item) => {
-        return await this.atom(2).toString(item);
+        return await this.atom(2);
       })
       .join("")}</div>
     </div>`;
