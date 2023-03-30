@@ -38,7 +38,9 @@ export function Organism_ModalProcessPrep() {
   
 
   this.bindScript = function () {
-
+    let elementsToAddModalTo = this.parent
+    if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
+    console.log("HELLO")
     for (const element of elementsToAddModalTo) {
         element.addEventListener("click", (e) => {
 
@@ -94,6 +96,3 @@ async function getModalContent (component, that, element, e){
     return await component
 }
 
-let elementsToAddModalTo = this.parent
-if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
-console.log("HELLO")
