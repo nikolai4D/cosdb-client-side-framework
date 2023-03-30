@@ -40,8 +40,11 @@ const list = [
   { title: "list item 3" },
 ];
 
-const listItems = (list) => {
-  return list.map(async (item) => {
-    return await this.atom(2);
-  });
+const listItems = async (list) => {
+  const items = await Promise.all(
+    list.map(async (item) => {
+      return await this.atom(2);
+    })
+  );
+  return `${items.join("")}`;
 };
