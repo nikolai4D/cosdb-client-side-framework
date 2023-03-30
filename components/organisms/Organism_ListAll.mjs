@@ -178,10 +178,9 @@ export function Organism_ListAll() {
                 this.fillSlot("new-modal", this.organisms[0].component.getElement());
             })
         }
-        // anArray.push(await li)
-      // })
-    // }
 
+  };
+}
     // for (let org of this.organisms) {
     //   org.component.parent = await anArray;
     //   org.component.moleculeLeft = { header: "hello", body: "heeello"}
@@ -190,8 +189,7 @@ export function Organism_ListAll() {
 
     //   this.fillSlot(org.organism, org.component.getElement())
     // }
-  };
-}
+
 
 
 
