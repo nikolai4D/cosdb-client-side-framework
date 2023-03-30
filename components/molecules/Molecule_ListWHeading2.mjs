@@ -41,7 +41,7 @@ export function Molecule_ListWHeading2(data = null) {
     console.log(liElements);
     console.log("this.atoms", this.atoms);
 
-    return liElements.join("");
+    return liElements;
   };
   const component = async () => {
     const comp = await html2dom`
