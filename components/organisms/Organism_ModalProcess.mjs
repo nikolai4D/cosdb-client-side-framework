@@ -42,14 +42,11 @@ export function Organism_ModalProcess() {
         thisElement.addEventListener("click", (e)=>{
             if(e.target === thisElement){
                 thisElement.remove()
-                that.remove()
             }
         })
 
         thisElement.querySelector(".bi-x").addEventListener("click", (e) => {
             document.querySelector('#modal-background').remove()
-            that.remove()
-
         });
     }
 }

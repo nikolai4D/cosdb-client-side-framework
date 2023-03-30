@@ -54,9 +54,11 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-              getModalContent(this.organisms[0].component, this, element, e.target)
-            console.log(this.organisms[0].component)
-            const modalElement =  this.organisms[0].component.getElement()
+            let component = new Organism_ModalProcess()
+
+              getModalContent(component, this, element, e.target)
+            console.log(component)
+            const modalElement =  component.getElement()
           
             console.log(modalElement)
 
