@@ -35,7 +35,7 @@ export function Organism_ModalProcess() {
 
         const {organisms} = this
         let organismElement = organisms[0].component.getElement()
-        await this.fillSlot(organisms[0].organism, organisms[0].component.getElement())
+        await this.fillSlot(organisms[0].organism, organismElement.getElement())
 
         const mStyle = organismElement.style
         mStyle.position = "absolute"
