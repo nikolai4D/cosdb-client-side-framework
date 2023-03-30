@@ -38,7 +38,7 @@ export function Organism_ModalProcess() {
         
         let thisElement = this.getElement()
 
-        thisElement.addEventListener("DOMContentLoaded", (e)=>{
+        thisElement.onload(()=>{
             
             console.log("hello!!!!!!!!!!!!!!!!!!")
         })
