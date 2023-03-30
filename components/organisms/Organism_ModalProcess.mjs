@@ -52,6 +52,7 @@ export function Organism_ModalProcess() {
 
         this.getElement().addEventListener("click", (e)=>{
             if(e.target === this.getElement()){
+                console.log(e.target)
                 this.getElement().remove()
             }
         })
