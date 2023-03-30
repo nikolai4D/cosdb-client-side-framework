@@ -32,20 +32,20 @@ export function Molecule_ListWHeading2(data = null) {
   ];
 
   const listItems = async (list) => {
-    let items = []
+    let items = [];
     for (let item of list) {
       const tempId = this.atoms.length + 1;
       this.atoms.push({ id: tempId, component: await this.atom(2) });
-      items.push(tempId)
+      items.push(tempId);
     }
-  
-    const liElements = []
+
+    const liElements = [];
     for (let tempId of items) {
       const li = await this.atom(tempId);
       liElements.push(await html2dom`<li>${li}</li>`);
     }
-  
-    return liElements.join(""));
+
+    return liElements.join("");
   };
   const component = async () => {
     console.log(await listItems(list));
@@ -53,10 +53,8 @@ export function Molecule_ListWHeading2(data = null) {
     const comp = await html2dom`
     <div class="molecule_list">
     <div>${await this.atom(1)}</div>
-    <div><ul>${(await liElements)}</ul></div>
-    </div>
-    <div>${await this.atom(3)}</div>
-
+    <div><ul>${await liElements}</ul></div>
+    </div>`;
 
     return comp;
   };
