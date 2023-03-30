@@ -16,8 +16,6 @@ export function Organism_ModalProcess() {
     this.getHtml = function() {
 
         return `
-        <div class="organism_process-modal">
-
         <div id="modal-background" class="modal organism_modalBackground">
             <div class="modal-container modal-process-inner-wrap">
                 <div class="modal-process-section">
@@ -27,7 +25,6 @@ export function Organism_ModalProcess() {
                 </div> 
                 ${slot(this.organisms[0].organism)}
                 </div>
-        </div>
         </div>
         `
     }
