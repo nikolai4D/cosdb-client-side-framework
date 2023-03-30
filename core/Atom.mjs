@@ -3,7 +3,7 @@ export function Atom() {
 
   this.value = [{ value: "placeholder" }];
 
-  this.atom = async function () {
+  this.atom = function () {
     return this.value[0].value;
   };
 }
