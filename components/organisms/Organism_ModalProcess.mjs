@@ -38,6 +38,11 @@ export function Organism_ModalProcess() {
         
         let thisElement = this.getElement()
 
+        window.addEventListener("DOMContentLoaded", (e)=>{
+            
+            console.log("hello!!!!!!!!!!!!!!!!!!")
+        })
+
 
         thisElement.addEventListener("click", (e)=>{
             if(e.target === thisElement){
@@ -50,12 +55,5 @@ export function Organism_ModalProcess() {
         thisElement.querySelector(".bi-x").addEventListener("click", (e) => {
             document.querySelector('#modal-background').remove()
         });
-
-
-        thisElement.onload(()=>{
-            
-            console.log("hello!!!!!!!!!!!!!!!!!!")
-        })
-
     }
 }
