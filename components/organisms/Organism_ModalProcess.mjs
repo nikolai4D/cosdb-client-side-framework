@@ -40,6 +40,7 @@ export function Organism_ModalProcess() {
         await this.fillSlot(organism, organismElement)
         
         let thisElement = this.getElement()
+    console.log(thisElement, "thisElement")
 
         window.addEventListener("DOMContentLoaded", (e)=>{
             
