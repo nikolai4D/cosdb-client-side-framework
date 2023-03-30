@@ -22,8 +22,8 @@ export function Molecule_ListWHeading2(data = null) {
 
   const list = [
     { title: "list item 1" },
-    { title: "list item 2" },
-    { title: "list item 3" },
+    // { title: "list item 2" },
+    // { title: "list item 3" },
   ];
 
   const listItems = async (list) => {
