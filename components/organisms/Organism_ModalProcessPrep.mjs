@@ -50,6 +50,8 @@ export function Organism_ModalProcessPrep() {
              const modalElement =  this.organisms[0].component.getElement()
 
             modalId.appendChild(modalElement)
+
+            this.organisms[0].component.bindScript();
         })
     }
   }
