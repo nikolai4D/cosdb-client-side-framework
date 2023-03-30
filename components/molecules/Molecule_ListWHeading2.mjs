@@ -48,9 +48,11 @@ export function Molecule_ListWHeading2(data = null) {
     const comp = await html2dom`
     <div class="molecule_list">
     <div>${await this.atom(1)}</div>
-    <div>${list.map(async (item) => {
-      return await this.atom(2).toString(item);
-    })}</div>
+    <div>${list
+      .map(async (item) => {
+        return await this.atom(2).toString(item);
+      })
+      .join("")}</div>
     </div>`;
     return comp;
   };
