@@ -60,5 +60,4 @@ export function Molecule_ListWHeading2(data = null) {
   };
 }
 
-//
-<div>${await listItems(list)}</div>;
+//<div>${await listItems(list)}</div>;
