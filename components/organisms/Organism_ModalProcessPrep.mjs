@@ -84,15 +84,20 @@ async function getModalContent (component, that, element){
     that.moleculeMiddle.body = null;
     that.moleculeMiddle.body = element
 
-    let middleTextElement = element.getElementById("user-text")
-    console.log(middleTextElement)
+
+
+    if (!element.hasAttribute("getElementById")) {
     moleculeLeft.atoms[0].component.value[0].value = that.moleculeLeft.header ?? moleculeLeft.atoms[0].component.value[0].value;
     moleculeLeft.atoms[1].component.value[0].value = that.moleculeLeft.body ?? moleculeLeft.atoms[1].component.value[0].value;
     moleculeMiddle.atoms[0].component.value[0].value = that.moleculeMiddle.header ?? moleculeMiddle.atoms[0].component.value[0].value;
     moleculeMiddle.atoms[1].component.value[0].value = that.moleculeMiddle.body ?? moleculeMiddle.atoms[1].component.value[0].value;
     moleculeRight.atoms[0].component.value[0].value = that.moleculeRight.header ?? moleculeRight.atoms[0].component.value[0].value;
     moleculeRight.atoms[1].component.value[0].value = that.moleculeRight.body ?? moleculeRight.atoms[1].component.value[0].value;
-
+    }
+    else {
+      let middleTextElement = element.getElementById("user-text")
+      console.log(middleTextElement)
+    }
 
     return await component
 }
