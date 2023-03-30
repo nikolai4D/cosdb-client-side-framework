@@ -26,15 +26,15 @@ export function Molecule_ListWHeading2(data = null) {
     { title: "list item 3" },
   ];
 
-  //   const listItems = async (list) => {
-  //     const items = await Promise.all(
-  //       list.map(async () => {
-  //         console.log(await this.atom(2));
-  //         return await this.atom(2);
-  //       })
-  //     );
-  //     return items;
-  //   };
+  const listItems = async (list) => {
+    const items = await Promise.all(
+      list.map(async () => {
+        console.log(await this.atom(2));
+        return await this.atom(2);
+      })
+    );
+    return items;
+  };
 
   //   const listItems = async (list) => {
   //     const items = await Promise.all(
@@ -49,7 +49,7 @@ export function Molecule_ListWHeading2(data = null) {
     const comp = await html2dom`
     <div class="molecule_list">
     <div>${await this.atom(1)}</div>
-    <ul>${await this.atom(2)}</ul>
+    <ul>${(await this.atom(2), await this.atom(2), await this.atom(2))}</ul>
     </div>`;
     return comp;
   };
