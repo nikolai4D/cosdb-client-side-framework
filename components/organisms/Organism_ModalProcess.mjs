@@ -1,6 +1,6 @@
 import {slot} from "../../../core/helpers.mjs";
 import {Component} from "../../../core/Component.mjs";
-import { Organism_InputOutput } from "./Organism_InputOutput.mjs";
+import { Organism_ModalProcessContent } from "./Organism_ModalProcessContent.mjs";
 
 export function Organism_ModalProcess() {
     Component.call(this)
@@ -8,8 +8,8 @@ export function Organism_ModalProcess() {
     this.organisms = [
         {
             id: 1,
-            organism: "Organism_InputOutput",
-            component: new Organism_InputOutput()
+            organism: "Organism_ModalProcessContent",
+            component: new Organism_ModalProcessContent()
         }
     ];
 
@@ -40,7 +40,6 @@ export function Organism_ModalProcess() {
         await this.fillSlot(organism, organismElement)
         
         let thisElement = this.getElement()
-    console.log(thisElement, "thisElement")
 
         window.addEventListener("DOMContentLoaded", (e)=>{
             
