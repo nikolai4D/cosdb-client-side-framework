@@ -38,24 +38,17 @@ export function Organism_ModalProcess() {
         
         let thisElement = this.getElement()
 
-        // window.addEventListener("DOMContentLoaded", (e)=>{
-            
-        //     console.log("hello!!!!!!!!!!!!!!!!!!")
-        // })
-
-
         thisElement.addEventListener("click", (e)=>{
-            console.log("hello!!!!!!!!!!!!!!!!!!")
-
             if(e.target === thisElement){
-                console.log(e.target)
                 thisElement.remove()
-
+                this.remove()
             }
         })
 
         thisElement.querySelector(".bi-x").addEventListener("click", (e) => {
             document.querySelector('#modal-background').remove()
+            this.remove()
+
         });
     }
 }
