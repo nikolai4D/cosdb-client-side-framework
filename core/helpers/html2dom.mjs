@@ -16,6 +16,7 @@ export async function html2dom(strings, ...valuesIn) {
       interpolatedHTML += `<!--${placeholderId}-->`;
     }
   }
+  console.log("placeholders: ", placeholders);
 
   container.innerHTML = interpolatedHTML;
 
