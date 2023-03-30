@@ -20,34 +20,34 @@ export function Molecule_ListWHeading2(data = null) {
 
   this.functions = [];
 
-  const list = [
-    { title: "list item 1" },
-    // { title: "list item 2" },
-    // { title: "list item 3" },
-  ];
+  //   const list = [
+  //     { title: "list item 1" },
+  //     // { title: "list item 2" },
+  //     // { title: "list item 3" },
+  //   ];
 
-  const listItems = async (list) => {
-    let items = [];
-    for (let item of list) {
-      const tempId = this.atoms.length + 1;
-      this.atoms.push({ id: tempId, component: await this.atom(2) });
-      items.push(tempId);
-    }
+  //   const listItems = async (list) => {
+  //     let items = [];
+  //     for (let item of list) {
+  //       const tempId = this.atoms.length + 1;
+  //       this.atoms.push({ id: tempId, component: await this.atom(2) });
+  //       items.push(tempId);
+  //     }
 
-    const liElements = [];
-    for (let tempId of items) {
-      liElements.push(await this.atom(tempId));
-    }
-    console.log(liElements);
-    console.log("this.atoms", this.atoms);
+  //     const liElements = [];
+  //     for (let tempId of items) {
+  //       liElements.push(await this.atom(tempId));
+  //     }
+  //     console.log(liElements);
+  //     console.log("this.atoms", this.atoms);
 
-    return liElements;
-  };
+  //     return liElements;
+  //   };
   const component = async () => {
     const comp = await html2dom`
     <div class="molecule_list">
     <div>${await this.atom(1)}</div>
-    <ul>${await listItems(list)}</ul>
+    <ul>${await this.atom(2)}</ul>
     </div>`;
 
     return comp;
