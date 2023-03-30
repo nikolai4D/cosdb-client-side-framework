@@ -46,7 +46,6 @@ export function Organism_ModalProcessPrep() {
     
     for await (const element of elementsToAddModalTo) {
         element.addEventListener("click", async (e) => {
-          console.log(element.innerHTML)
 
             const modalId = document.getElementById('modal-processView')
 
@@ -59,9 +58,9 @@ export function Organism_ModalProcessPrep() {
            modalComponent = await getModalContent(modalComponent, this, element.innerHTML)
 
             const modalElement = await modalComponent.getElement()
-            console.log(this.organisms[0].component, "component")
+          
+            console.log(modalElement)
 
-            console.log(modalElement, "modalelement")
             this.fillSlot("new-modal", modalElement);
         })
     }
