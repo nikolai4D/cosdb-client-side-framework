@@ -34,8 +34,7 @@ export function Organism_ModalProcess() {
     this.bindScript= async function() {
 
         const {organisms} = this
-        let organismElement = organisms[0].component.getElement()
-        await this.fillSlot(organisms[0].organism, organismElement)
+        await this.fillSlot(organisms[0].organism, organisms[0].component.getElement())
 
         const mStyle = this.getElement().style
         mStyle.position = "absolute"
@@ -48,11 +47,11 @@ export function Organism_ModalProcess() {
         mStyle.justifyContent = "center"
         mStyle.alignItems = "center"
 
-        organismElement.style.backgroundColor = "white"
-        
+        organisms[0].component.getElement().style.backgroundColor = "white"
+        // this.content.getElement()
+
         this.getElement().addEventListener("click", (e)=>{
             if(e.target === this.getElement()){
-                console.log(e.target)
                 this.getElement().remove()
             }
         })
@@ -60,5 +59,9 @@ export function Organism_ModalProcess() {
         this.getElement().querySelector(".bi-x").addEventListener("click", (e) => {
             document.querySelector('#modal-background').remove()
         });
+    }
+
+    this.show= function() {
+        document.body.append(this.getElement())
     }
 }
