@@ -27,10 +27,12 @@ export function Molecule_ListWHeading2(data = null) {
   ];
 
   const listItems = async (list) => {
-    const items = list.map(async () => {
-      console.log(await this.atom(2));
-      return await this.atom(2);
-    });
+    const items = await Promise.all(
+      list.map(async () => {
+        console.log(await this.atom(2));
+        return await this.atom(2);
+      })
+    );
     return items;
   };
 
