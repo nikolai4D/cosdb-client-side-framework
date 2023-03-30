@@ -38,12 +38,11 @@ export function Organism_ModalProcess() {
         await this.fillSlot(organisms[0].organism, organismElement)
         console.log(this.getElement())
 
-        organismElement.style.backgroundColor = "white"
-
         this.getElement().addEventListener("click", (e)=>{
             if(e.target === this.getElement()){
                 console.log(e.target)
                 this.getElement().remove()
+
             }
         })
 
