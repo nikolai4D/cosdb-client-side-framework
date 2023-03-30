@@ -48,11 +48,11 @@ export function Organism_ModalProcessPrep() {
 
             const modalId = await document.getElementById('modal-processView')
 
-           modalId.innerHTML = `
-                <div class="test">
-                    ${slot("new-modal")}
-                </div>
-                `
+          //  modalId.innerHTML = `
+          //       <div class="test">
+          //           ${slot("new-modal")}
+          //       </div>
+          //       `
 
              await getModalContent(this.organisms[0].component, this, element, e.target)
              debugger
@@ -60,6 +60,7 @@ export function Organism_ModalProcessPrep() {
             const modalElement = await this.organisms[0].component.getElement()
           
             console.log(modalElement)
+            modalId.appendChild(modalElement)
 
             // await this.fillSlot("new-modal", await modalElement);
         })
