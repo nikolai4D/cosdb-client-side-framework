@@ -84,6 +84,7 @@ export function Organism_ModalProcessPrep() {
 async function getModalContent (component, that, element){
 
   console.log(element)
+  that.moleculeMiddle.body = element.innerHTML;
     let organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeLeft = organismToModify.molecules[0].component
     // let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
