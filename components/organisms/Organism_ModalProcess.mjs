@@ -13,8 +13,6 @@ export function Organism_ModalProcess() {
         }
     ];
 
-    this.modal = null;
-
     this.getHtml = function() {
 
         return `
@@ -33,11 +31,11 @@ export function Organism_ModalProcess() {
 
     this.bindScript= async function() {
 
-        const {organisms} = this
-        let organismElement = organisms[0].component.getElement()
-        await this.fillSlot(organisms[0].organism, organismElement)
+        const {component, organism} = this.organisms[0]
+        const organismElement = component.getElement()
+        await this.fillSlot(organism, organismElement)
+        
         let thisElement = this.getElement()
-        console.log(thisElement)
 
         thisElement.addEventListener("click", (e)=>{
             if(e.target === thisElement){
