@@ -41,8 +41,7 @@ export function Molecule_ListWHeading2(data = null) {
 
     const liElements = [];
     for (let tempId of items) {
-      const li = await this.atom(tempId);
-      liElements.push(await html2dom`<li>${li}</li>`);
+      liElements.push(await this.atom(tempId));
     }
     console.log(liElements);
     console.log(this.atoms);
