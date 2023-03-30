@@ -47,9 +47,9 @@ export function Organism_ModalProcessPrep() {
         element.addEventListener("click", async (e) => {
           let modalComponent = this.organisms[0].component
 
-            const modalId = document.getElementById('modal-processView')
+            const modalId = await document.getElementById('modal-processView')
 
-            modalId.innerHTML = `
+            await modalId.innerHTML = `
                 <div class="test">
                     ${slot("new-modal")}
                 </div>
@@ -61,7 +61,7 @@ export function Organism_ModalProcessPrep() {
           
             console.log(modalElement)
 
-            this.fillSlot("new-modal", modalElement);
+            await this.fillSlot("new-modal", await modalElement);
         })
     }
   }
