@@ -37,16 +37,6 @@ export function Organism_ModalProcess() {
         let organismElement = organisms[0].component.getElement()
         await this.fillSlot(organisms[0].organism, organismElement)
         console.log(this.getElement())
-        const mStyle = this.getElement().style
-        mStyle.position = "absolute"
-        mStyle.width = "100vw"
-        mStyle.height = "100vh"
-        mStyle.top = "0px"
-        mStyle.left = "0px"
-        mStyle.backgroundColor = "rgba(0,0,0,0.5)"
-        mStyle.display = "flex"
-        mStyle.justifyContent = "center"
-        mStyle.alignItems = "center"
 
         organismElement.style.backgroundColor = "white"
 
