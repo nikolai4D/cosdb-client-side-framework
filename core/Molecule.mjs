@@ -6,12 +6,13 @@ export function Molecule() {
   };
 
   this.atom = function (id) {
-    const component = this.atoms.find((atom) => atom.id === id)?.component;
-    function Component() {
-      return component;
+    const atoms = this.atoms;
+    //const component = this.atoms.find((atom) => atom.id === id)?.component;
+    function Component(atoms, id) {
+      return atoms.find((atom) => atom.id === id)?.component;
     }
 
-    const comp = new Component();
+    const comp = new Component(atoms, id);
 
     return comp;
   };
