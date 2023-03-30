@@ -35,7 +35,7 @@ export function Molecule_ListWHeading2(data = null) {
     let items = [];
     for (let item of list) {
       console.log(await this.atom(2));
-      items.push(new (await this.atom(2))());
+      items.push(await this.atom(2));
     }
 
     return items;
