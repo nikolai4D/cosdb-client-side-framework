@@ -54,7 +54,7 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-           modalComponent = await getModalContent(modalComponent, this)
+           modalComponent = await getModalContent(modalComponent, this, e)
 
         //    let organismToModify = this.organisms[0].component.organisms[0].component.organisms[0].component
         //    let moleculeLeft = organismToModify.molecules[0].component
@@ -81,7 +81,9 @@ export function Organism_ModalProcessPrep() {
     }
 }
 
-async function getModalContent (component, that){
+async function getModalContent (component, that, e){
+
+  console.log(e)
     let organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeLeft = organismToModify.molecules[0].component
     // let moleculeLeftHeader = moleculeLeft.atoms[0].component.value[0].value
