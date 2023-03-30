@@ -35,7 +35,7 @@ export async function getOrganism(module, parentId, orgId = null) {
       childOrganismsObjects.push({
         id: childOrgId,
         organism: childModule,
-        component: new childOrganismObject(),
+        component: childOrganismObject,
       });
     }
   }
@@ -54,7 +54,7 @@ export async function getOrganism(module, parentId, orgId = null) {
     moleculesObject.push({
       id: moleculeId,
       molecule: value,
-      component: new moleculeObject(),
+      component: moleculeObject,
     });
   }
 
@@ -68,7 +68,7 @@ export async function getOrganism(module, parentId, orgId = null) {
     functionsObject.push({
       id: funcId,
       value: value,
-      function: new funcObject(),
+      function: funcObject,
     });
   }
 

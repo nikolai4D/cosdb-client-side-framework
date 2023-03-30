@@ -30,7 +30,7 @@ export async function getMolecule(module, parentId, molId = null) {
     atomsObject.push({
       id: atomId,
       value: value,
-      component: new atomObject(),
+      component: atomObject,
     });
   }
 
@@ -46,7 +46,7 @@ export async function getMolecule(module, parentId, molId = null) {
     functionsObject.push({
       id: funcId,
       value: value,
-      function: new funcObject(),
+      function: funcObject,
     });
   }
 
