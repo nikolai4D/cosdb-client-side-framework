@@ -58,9 +58,11 @@ export function Organism_ModalProcessPrep() {
             //  debugger
             console.log(this.organisms[0].component)
             const modalElement = await this.organisms[0].component.getElement()
+
+            
           
             console.log(modalElement)
-            modalId.appendChild(modalElement)
+            modalId.appendChild(modalElement.cloneNode(true))
 
             // await this.fillSlot("new-modal", await modalElement);
         })
