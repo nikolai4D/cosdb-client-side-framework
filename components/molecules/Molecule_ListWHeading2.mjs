@@ -16,11 +16,6 @@ export function Molecule_ListWHeading2(data = null) {
       atom: "Atom_ListItem2",
       component: new Atom_ListItem2(),
     },
-    {
-      id: 3,
-      atom: "Atom_Heading4",
-      component: new Atom_Heading4(),
-    },
   ];
 
   this.functions = [];
