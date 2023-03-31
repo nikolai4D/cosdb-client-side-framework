@@ -28,7 +28,7 @@ export async function getComponent(compName, compParentId) {
   //     div.appendChild(child);
   //   }
   //   console.log("div from getComponent", div);
-  div.appendChild(comp.render());
+  div.appendChild(new comp.render());
 
   return div;
 }
