@@ -168,6 +168,7 @@ export function Organism_ListAll() {
       let newOrg = new Organism_ModalProcessPrep()
       newOrg.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value = [{value:"test"}]
 
+      console.log(newOrg.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms)
       newOrg.parent = await anArray;
 
       let slotContent= document.getElementById("modal-slot")
