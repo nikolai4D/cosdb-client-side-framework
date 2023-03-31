@@ -177,12 +177,12 @@ export function Organism_ListAll() {
     
     // for (let org of this.organisms) {
       let org = new Organism_ModalProcessPrep()
-      org.component.parent = await anArray;
-      org.component.moleculeLeft = { header: "hello", body: "heeello"}
+      org.parent = await anArray;
+      org.moleculeLeft = { header: "hello", body: "heeello"}
 
       let slotContent= document.getElementById("modal-slot")
       slotContent.innerHTML = ""
-      slotContent.appendChild(org.component.getElement());
+      slotContent.appendChild(org.getElement());
 
 
 
