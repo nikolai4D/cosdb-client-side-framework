@@ -193,6 +193,6 @@ export function Organism_ListAll() {
   //  console.log(document.querySelectorAll([`data-slot="Organism_ModalProcessPrep"`]))
 
       // this.fillSlot(org.organism, org.component.getElement())
-    }
+    // }
   };
 }
