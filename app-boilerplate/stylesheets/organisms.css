@@ -64,10 +64,12 @@
 }
 
 nav {
+    background-color: #ECECEC;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     width: 100vw;
-    height: 75px;
+    height: 5em;
+    align-content: center;
 }
 
 
@@ -78,7 +80,6 @@ nav > ul > div > a {
 
 nav > ul {
     display: flex;
-    padding: 1em;
     justify-content: center;
     gap: 37px;
 }
@@ -326,10 +327,7 @@ nav > ul {
 
 .organism_user-navbar {
     display: flex;
-    height: 40px;
     align-items: center;
-    gap: 40px;
-    padding-top: 20px;
     justify-content: right;
     padding-right: 1em;
 }
