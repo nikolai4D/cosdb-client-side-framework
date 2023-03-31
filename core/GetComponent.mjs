@@ -18,7 +18,6 @@ export async function getComponent(compName, compParentId) {
 
   if (compName.startsWith("Atom")) {
     comp = await getAtom(compName, compParentId);
-    console.log("atom comp from getComponent", comp);
   }
   //console.log("comp from getComponent", comp);
 
@@ -28,7 +27,7 @@ export async function getComponent(compName, compParentId) {
   //     div.appendChild(child);
   //   }
   //   console.log("div from getComponent", div);
-  div.appendChild(new comp.render());
+  div.appendChild(comp);
 
   return div;
 }
