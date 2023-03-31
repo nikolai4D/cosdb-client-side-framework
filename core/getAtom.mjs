@@ -24,7 +24,7 @@ export async function getAtom(module, parentId, atomId = null) {
   //console.log("renderAtom", renderAtom);
 
   async function component(data = null) {
-    const component = await atomObject(data);
+    const component = await atomObject;
     return component;
   }
 
