@@ -49,8 +49,9 @@ export function Organism_ListAll() {
         <div id="organism_all_lists" class="organism_list-all-search__lists">
           ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
+        <div>
         ${slot(this.organisms[0].organism)}
-
+        </div>
       </div>
     `;
   };
