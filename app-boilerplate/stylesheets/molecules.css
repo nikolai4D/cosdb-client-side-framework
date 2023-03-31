@@ -1,7 +1,7 @@
 @import "colors.css";
 
 .molecule_logo {
-    display: flex;
+    display: block ruby;
     padding: 1em;
 }
 
