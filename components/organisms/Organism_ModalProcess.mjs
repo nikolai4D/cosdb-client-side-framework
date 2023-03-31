@@ -31,10 +31,8 @@ export function Organism_ModalProcess() {
 
     this.bindScript= async function() {
 
-        let that = this
         const {component, organism} = this.organisms[0]
         const organismElement = component.getElement()
-        console.log(component, "component")
         await this.fillSlot(organism, organismElement)
         
         let thisElement = this.getElement()
