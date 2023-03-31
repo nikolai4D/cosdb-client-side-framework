@@ -162,11 +162,14 @@ export function Organism_ListAll() {
       }
     }
 
-    console.log(this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component)
+    console.log(this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms)
     
     // for (let org of this.organisms) {
       let newOrg = new Organism_ModalProcessPrep()
       newOrg.moleculeLeft.header = "test"
+      newOrg.moleculeLeft.header = "test"
+      newOrg.moleculeLeft.header = "test"
+
 
       console.log(newOrg.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms)
       newOrg.parent = await anArray;
