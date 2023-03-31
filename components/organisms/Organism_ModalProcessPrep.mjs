@@ -88,7 +88,8 @@ export function Organism_ModalProcessPrep() {
     moleculeRight.atoms[0].component.value[0].value = that.moleculeRight.header ?? moleculeRight.atoms[0].component.value[0].value;
     moleculeRight.atoms[1].component.value[0].value = that.moleculeRight.body ?? moleculeRight.atoms[1].component.value[0].value;
 
-    
+    console.log(moleculeMiddle.atoms[1].component.value[0].value)
+
     return component
 }
 
