@@ -168,11 +168,11 @@ export function Organism_ListAll() {
       let newOrg = new Organism_ModalProcessPrep()
       newOrg.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value = "test"
 
-      this.organisms[0].component.parent = await anArray;
+      newOrg.parent = await anArray;
 
       let slotContent= document.getElementById("modal-slot")
       slotContent.innerHTML = ""
-      slotContent.appendChild(this.organisms[0].component.getElement());
+      slotContent.appendChild(newOrg.getElement());
 
     // }
   };
