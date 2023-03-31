@@ -79,7 +79,7 @@ export function Organism_ListAll() {
     updateMolecules(data);
     await renderMolecules();
 
-    for (let org of this.organisms) {
+    // for (let org of this.organisms) {
       // org.component.parent = await anArray;
   //     org.component.moleculeLeft = { header: "hello", body: "heeello"}
 
@@ -89,8 +89,8 @@ export function Organism_ListAll() {
 
   //  console.log(document.querySelectorAll([`data-slot="Organism_ModalProcessPrep"`]))
 
-      this.fillSlot(org.organism, org.component.getElement())
-    }
+      // this.fillSlot(org.organism, org.component.getElement())
+    // }
 
   };
 
@@ -174,10 +174,16 @@ export function Organism_ListAll() {
         anArray.push(await li)
       }
     }
-
+    
     for (let org of this.organisms) {
       org.component.parent = await anArray;
       org.component.moleculeLeft = { header: "hello", body: "heeello"}
+
+      let slotContent= document.getElementById("modal-slots")
+      slotContent.innerHTML = ""
+      slotContent.appendChild(org.component.getElement());
+
+
 
 
   //  let modalSlot= document.getElementById("modal-slot")
