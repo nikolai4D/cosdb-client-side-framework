@@ -175,13 +175,14 @@ export function Organism_ListAll() {
       }
     }
     
-    for (let org of this.organisms) {
+    // for (let org of this.organisms) {
+      let org = new Organism_ModalProcessPrep()
       org.component.parent = await anArray;
       org.component.moleculeLeft = { header: "hello", body: "heeello"}
 
       let slotContent= document.getElementById("modal-slot")
       slotContent.innerHTML = ""
-      slotContent.appendChild(new Organism_ModalProcessPrep().getElement());
+      slotContent.appendChild(org.component.getElement());
 
 
 
