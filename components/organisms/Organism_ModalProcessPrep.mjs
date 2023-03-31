@@ -56,7 +56,6 @@ export function Organism_ModalProcessPrep() {
             let component = new Organism_ModalProcess()
 
               getModalContent(component, this, element)
-            console.log(component)
             const modalElement =  component.getElement()
           
              this.fillSlot("new-modal",  modalElement);
