@@ -80,7 +80,7 @@ export function Organism_ListAll() {
     await renderMolecules();
 
     for (let org of this.organisms) {
-      org.component.parent = await anArray;
+      // org.component.parent = await anArray;
   //     org.component.moleculeLeft = { header: "hello", body: "heeello"}
 
 
