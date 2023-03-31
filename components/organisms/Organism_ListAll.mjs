@@ -162,11 +162,11 @@ export function Organism_ListAll() {
       }
     }
 
-    console.log(this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms)
+    console.log(this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].value[0].value)
     
     // for (let org of this.organisms) {
       let newOrg = new Organism_ModalProcessPrep()
-      newOrg.moleculeLeft.header = "test"
+      newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].value[0].value
       newOrg.moleculeMiddle.header = "test"
       newOrg.moleculeRight.header = "test"
 
