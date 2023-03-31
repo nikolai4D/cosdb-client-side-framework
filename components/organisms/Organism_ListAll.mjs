@@ -181,7 +181,7 @@ export function Organism_ListAll() {
 
       let slotContent= document.getElementById("modal-slot")
       slotContent.innerHTML = ""
-      slotContent.appendChild(org.component.getElement());
+      slotContent.appendChild(new Organism_ModalProcessPrep().getElement());
 
 
 
