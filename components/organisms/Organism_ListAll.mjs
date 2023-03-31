@@ -174,7 +174,7 @@ export function Organism_ListAll() {
       newOrg.moleculeMiddle.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[1].component.value[0].value
       newOrg.moleculeRight.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[1].component.value[0].value
 
-      console.log(newOrg.moleculeMiddle.header)
+      console.log(newOrg.moleculeMiddle.body)
       newOrg.parent = await anArray;
 
       let slotContent= document.getElementById("modal-slot")
