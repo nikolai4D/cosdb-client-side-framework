@@ -42,7 +42,6 @@ export function Organism_ModalProcessPrep() {
 
     let elementsToAddModalTo = this.parent
     if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
-    console.log("HELLO")
     for  (const element of elementsToAddModalTo) {
         element.addEventListener("click",  (e) => {
 
@@ -56,21 +55,18 @@ export function Organism_ModalProcessPrep() {
 
             let component = new Organism_ModalProcess()
 
-              getModalContent(component, this, element, e.target)
+              getModalContent(component, this, element)
             console.log(component)
             const modalElement =  component.getElement()
           
-            console.log(modalElement)
-
              this.fillSlot("new-modal",  modalElement);
         })
     }
   }
 }
 
- function getModalContent (component, that, element, e){
+ function getModalContent (component, that, element){
 
-  console.log(e)
     let organismToModify = component.organisms[0].component.organisms[0].component
     let moleculeLeft = organismToModify.molecules[0].component
 
@@ -85,9 +81,7 @@ export function Organism_ModalProcessPrep() {
     that.moleculeMiddle.body = null;
     that.moleculeMiddle.body = element.innerHTML
 
-  console.log(that.moleculeMiddle.body)
 
-    if (!e.hasAttribute("getElementById")) {
     moleculeLeft.atoms[0].component.value[0].value = that.moleculeLeft.header ?? moleculeLeft.atoms[0].component.value[0].value;
     moleculeLeft.atoms[1].component.value[0].value = that.moleculeLeft.body ?? moleculeLeft.atoms[1].component.value[0].value;
     moleculeMiddle.atoms[0].component.value[0].value = that.moleculeMiddle.header ?? moleculeMiddle.atoms[0].component.value[0].value;
@@ -95,13 +89,7 @@ export function Organism_ModalProcessPrep() {
     moleculeRight.atoms[0].component.value[0].value = that.moleculeRight.header ?? moleculeRight.atoms[0].component.value[0].value;
     moleculeRight.atoms[1].component.value[0].value = that.moleculeRight.body ?? moleculeRight.atoms[1].component.value[0].value;
 
-    console.log(moleculeLeft.atoms[1].component.value[0].value)
-    }
-    else {
-      let middleTextElement = e.getElementById("user-text")
-      console.log(middleTextElement)
-    }
-
+    
     return component
 }
 
