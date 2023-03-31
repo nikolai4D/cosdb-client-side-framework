@@ -69,6 +69,8 @@ export function Organism_ListAll() {
         await State[type];
         data = State[type];
         filteredData = [...State[type]]
+
+        console.log(data)
       }
     }
     changeData(data, filteredData)
