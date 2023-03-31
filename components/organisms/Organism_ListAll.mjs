@@ -165,12 +165,14 @@ export function Organism_ListAll() {
     console.log(this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component)
     
     // for (let org of this.organisms) {
-      let org = new Organism_ModalProcessPrep()
-      org.parent = await anArray;
+      let newOrg = new Organism_ModalProcessPrep()
+      newOrg.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value = "test"
+
+      this.organisms[0].component.parent = await anArray;
 
       let slotContent= document.getElementById("modal-slot")
       slotContent.innerHTML = ""
-      slotContent.appendChild(org.getElement());
+      slotContent.appendChild(this.organisms[0].component.getElement());
 
     // }
   };
