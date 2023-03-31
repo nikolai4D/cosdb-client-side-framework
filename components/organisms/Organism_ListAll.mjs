@@ -161,14 +161,12 @@ export function Organism_ListAll() {
         anArray.push(await li)
       }
     }
-
-    console.log(this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value)
     
     // for (let org of this.organisms) {
       let newOrg = new Organism_ModalProcessPrep()
-      newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0]
-      newOrg.moleculeMiddle.header = "test"
-      newOrg.moleculeRight.header = "test"
+      newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
+      newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
+      newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value
 
 
       console.log(newOrg.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms)
