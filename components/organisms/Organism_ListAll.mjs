@@ -49,7 +49,7 @@ export function Organism_ListAll() {
         <div id="organism_all_lists" class="organism_list-all-search__lists">
           ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
-        <div>
+        <div id="modal-slot">
         ${slot(this.organisms[0].organism)}
         </div>
       </div>
@@ -163,6 +163,10 @@ export function Organism_ListAll() {
     for (let org of this.organisms) {
       org.component.parent = await anArray;
       org.component.moleculeLeft = { header: "hello", body: "heeello"}
+
+
+   let modalSlot= document.getElementById("modal-slot")
+   console.log(modalSlot)
 
       this.fillSlot(org.organism, org.component.getElement())
     }
