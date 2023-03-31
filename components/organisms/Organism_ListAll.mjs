@@ -166,7 +166,7 @@ export function Organism_ListAll() {
     
     // for (let org of this.organisms) {
       let newOrg = new Organism_ModalProcessPrep()
-      newOrg.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value = "test"
+      newOrg.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value = [{value:"test"}]
 
       newOrg.parent = await anArray;
 
