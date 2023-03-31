@@ -322,6 +322,7 @@
     padding: 2em;
     border: 1px solid var(--grey-color);
     border-radius: 6px;  
+    background-color: aliceblue;
 }
 
 .molecule_modal_in-output > div > ul {
@@ -331,7 +332,7 @@
 }
 
 .molecule_modal_in-output > div:nth-last-child(3){
-    background-color: #CCCCCC;
+    background-color: #ECECEC;
     border: none !important;
     width: 400px;
     height: 266px;
