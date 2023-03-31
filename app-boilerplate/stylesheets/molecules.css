@@ -322,7 +322,7 @@
     padding: 2em;
     border: 1px solid var(--grey-color);
     border-radius: 6px;  
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     width: 400px;
     height: 266px;
 }
