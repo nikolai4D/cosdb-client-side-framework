@@ -167,8 +167,8 @@ export function Organism_ListAll() {
     // for (let org of this.organisms) {
       let newOrg = new Organism_ModalProcessPrep()
       newOrg.moleculeLeft.header = "test"
-      newOrg.moleculeLeft.header = "test"
-      newOrg.moleculeLeft.header = "test"
+      newOrg.moleculeMiddle.header = "test"
+      newOrg.moleculeRight.header = "test"
 
 
       console.log(newOrg.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms)
