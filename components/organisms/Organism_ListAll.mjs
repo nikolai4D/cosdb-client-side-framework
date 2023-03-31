@@ -179,7 +179,7 @@ export function Organism_ListAll() {
       org.component.parent = await anArray;
       org.component.moleculeLeft = { header: "hello", body: "heeello"}
 
-      let slotContent= document.getElementById("modal-slots")
+      let slotContent= document.getElementById("modal-slot")
       slotContent.innerHTML = ""
       slotContent.appendChild(org.component.getElement());
 
