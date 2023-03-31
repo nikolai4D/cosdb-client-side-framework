@@ -149,7 +149,7 @@ nav > ul {
     display: grid;
     grid-auto-flow: row;
     grid-gap: 4rem;
-    height: 70vh;
+    height: 85vh;
     width: 783px;
     margin: auto;
     margin-top: 50px;
@@ -371,7 +371,7 @@ nav > ul {
 }
 
 .organism_process-modal {
-    background-color: white;
+    /* background-color: white; */
 }
 
 
