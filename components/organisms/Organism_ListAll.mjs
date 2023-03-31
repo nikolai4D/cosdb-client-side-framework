@@ -168,6 +168,8 @@ export function Organism_ListAll() {
    let modalSlot= document.getElementById("modal-slot")
    console.log(modalSlot)
 
+   console.log(document.querySelector(["data-slot=Organism_ModalProcessPrep"]))
+
       this.fillSlot(org.organism, org.component.getElement())
     }
   };
