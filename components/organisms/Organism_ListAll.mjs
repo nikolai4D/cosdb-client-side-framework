@@ -162,7 +162,7 @@ export function Organism_ListAll() {
       }
     }
 
-    console.log(this.organisms[0].component.organisms[0].component.organisms[0].component)
+    console.log(this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component)
     
     // for (let org of this.organisms) {
       let org = new Organism_ModalProcessPrep()
