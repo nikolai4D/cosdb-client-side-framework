@@ -168,8 +168,6 @@ export function Organism_ListAll() {
       newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
       newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value
 
-
-      console.log(newOrg.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms)
       newOrg.parent = await anArray;
 
       let slotContent= document.getElementById("modal-slot")
