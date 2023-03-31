@@ -89,7 +89,7 @@ export function Organism_ModalProcessPrep() {
     moleculeRight.atoms[1].component.value[0].value = that.moleculeRight.body ?? moleculeRight.atoms[1].component.value[0].value;
 
     const moleculeMiddleBody = moleculeMiddle.atoms[1].component.value[0].value
-    if (moleculeMiddleBody.contains("Erhållit beställning för start byggnationsprocess (D) (0.1.1)"))
+    if (moleculeMiddleBody.includes("Erhållit beställning för start byggnationsprocess (D) (0.1.1)"))
     {
       moleculeLeft.atoms[1].component.value[0].value = "Beställning"
       moleculeRight.atoms[1].component.value[0].value = "-"
