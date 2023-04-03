@@ -173,6 +173,10 @@
   
   .delete-view-button {
     margin-left: 10px;
+    border: none;
+    border-radius: 0;
+    color: #fff;
+    background-color: transparent;
   }
   
   .function {
@@ -182,10 +186,14 @@
     border-radius: 10px;
   }
   
+  input:disabled,
+  select:disabled {
+    color: #000;
+  }
+  
   input,
   select {
     border: none;
     border-radius: 0;
   }
-  
   
