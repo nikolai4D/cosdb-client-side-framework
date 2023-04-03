@@ -46,20 +46,22 @@
     margin-bottom: 10px;
     margin-top: 10px;
     list-style: none;
+    padding-left: 200px;
   }
   
   .accordion > .accordion-header {
     padding-left: 20px;
     cursor: pointer;
     position: relative;
+    display: flex;
+    align-items: center;
   }
   
   .accordion > .accordion-header:before {
     content: '';
     position: absolute;
     top: 50%;
-    left: 0;
-    margin-left: -10px;
+    left: -30px;
     border-left: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     width: 10px;
@@ -71,9 +73,7 @@
     content: '';
     position: absolute;
     top: 50%;
-    left: 0;
-    margin-left: -10px;
-    border-left: 1px solid #ccc;
+    left: -20px;
     border-top: 1px solid #ccc;
     width: 10px;
     height: 50%;
@@ -93,11 +93,13 @@
   .createViewButton {
     padding: 10px;
     margin-bottom: 10px;
+    margin-left: 200px;
   }
   
   .createSaveButton {
     padding: 10px;
     margin-bottom: 10px;
+    margin-left: 200px;
   }
   
   .delete-view-button {
@@ -109,5 +111,6 @@
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px;
+    margin-left: 200px;
   }
   
