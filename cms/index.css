@@ -41,7 +41,6 @@
     margin-top: 10px;
     padding: 10px;
   } */
-
   .accordion {
     margin-bottom: 10px;
     margin-top: 10px;
@@ -53,6 +52,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    margin-left: 20px;
   }
   
   .accordion > .accordion-header::before,
@@ -81,19 +81,31 @@
     border-right: 5px solid #ccc;
   }
   
-  .accordion > .accordion-header.accordion-level-2::before {
-    background-color: #f4a261;
+  .accordion > .accordion-header.accordion-parent.accordion-level-2::before {
+    left: -30px;
+    width: 0;
+    height: 0;
+    margin-right: 10px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid #f4a261;
   }
   
-  .accordion > .accordion-header.accordion-level-3::before {
-    background-color: #2a9d8f;
+  .accordion > .accordion-header.accordion-parent.accordion-level-3::before {
+    left: -40px;
+    width: 0;
+    height: 0;
+    margin-right: 10px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid #2a9d8f;
   }
   
   .accordion > .accordion-header::after {
     content: '';
     left: -15px;
     width: 1px;
-    height: 100%;
+    height: calc(100% + 10px);
     background-color: #ccc;
   }
   
