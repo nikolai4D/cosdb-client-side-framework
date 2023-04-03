@@ -45,9 +45,9 @@
     margin-top: 10px;
     padding: 10px;
   }  */
+
   .accordion {
     border: none;
-    border-radius: 5px;
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 10px;
@@ -56,73 +56,58 @@
   
   .accordion > .accordion-header {
     background-color: #845ec2;
+    color: #fff;
     padding: 10px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    color: #fff;
+    border-radius: 5px 5px 0 0;
   }
   
   .accordion > .accordion-body {
     display: none;
     padding: 10px;
-    background-color: #bba3d0;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    background-color: #d1c4e9;
+    border-radius: 0 0 5px 5px;
   }
   
-  .accordion > .open {
-    display: block;
-  }
-  
-  .accordion-header-view > .accordion-header {
+  .accordion > .open > .accordion-header {
     background-color: #d65db1;
   }
   
-  .accordion-header-view > .accordion-body {
-    background-color: #e8b4d9;
+  .accordion > .open > .accordion-body {
+    display: block;
+    background-color: #f3e5f5;
   }
   
-  .accordion-header-viewTemplate > .accordion-header {
+  .accordion-header-view {
     background-color: #ff6f91;
+    color: #fff;
   }
   
-  .accordion-header-viewTemplate > .accordion-body {
-    background-color: #ffb3bd;
-  }
-  
-  .accordion-header-slot > .accordion-header {
+  .accordion-header-viewTemplate {
     background-color: #ff9671;
+    color: #fff;
   }
   
-  .accordion-header-slot > .accordion-body {
-    background-color: #ffd6b6;
-  }
-  
-  .accordion-header-component > .accordion-header {
+  .accordion-header-slot {
     background-color: #ffc75f;
+    color: #fff;
   }
   
-  .accordion-header-component > .accordion-body {
-    background-color: #ffe9cc;
-  }
-  
-  .accordion-header-organism > .accordion-header {
+  .accordion-header-component {
     background-color: #f9f871;
+    color: #000;
   }
   
-  .accordion-header-organism > .accordion-body {
-    background-color: #fdfdc7;
+  .accordion-header-organism {
+    background-color: #845ec2;
+    color: #fff;
   }
   
-  .accordion-header-molecule > .accordion-header {
-    background-color: #97d38d;
-  }
-  
-  .accordion-header-molecule > .accordion-body {
-    background-color: #d8f0d1;
+  .accordion-header-molecule {
+    background-color: #d65db1;
+    color: #fff;
   }
   
   .createViewButton {
@@ -143,9 +128,9 @@
   
   .function {
     border: none;
-    border-radius: 5px;
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px;
+    border-radius: 5px;
   }
   
