@@ -47,7 +47,7 @@
   }  */
 
   .accordion {
-    border: 1px solid #ccc;
+    border: none;
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 10px;
@@ -132,6 +132,7 @@
     margin-right: 10px;
     background-color: #6176c1;
     color: #fff;
+    border: none;
     border-radius: 8px;
     cursor: pointer;
   }
@@ -150,7 +151,8 @@
   }
   
   .function {
-    border: 1px solid #ccc;
+    border: none;
+    border-radius: 8px;
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px;
