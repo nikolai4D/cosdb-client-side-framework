@@ -44,88 +44,60 @@
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px;
-  } */
-  
-
-  .accordion {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+  }
+   */
+/* Colors */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --info-color: #17a2b8;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
   }
   
-  .accordion > .accordion-header {
-    background-color: #eee;
+  /* Custom Types */
+  [customtype="accordion"] {
+    border: 1px solid var(--secondary-color);
+    margin: 10px;
+  }
+  
+  [customtype="accordion"] > [customtype="accordion-header"] {
+    background-color: var(--light-color);
     padding: 10px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
   }
   
-  .accordion > .accordion-body {
+  [customtype="accordion"] > [customtype="accordion-body"] {
     display: none;
     padding: 10px;
   }
   
-  .accordion > .open {
+  [customtype="accordion"] > .open {
     display: block;
   }
   
-  .createViewButton {
+  [customtype="createViewButton"] {
     padding: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  
-  .createSaveButton {
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #4CAF50;
-    color: white;
+    margin: 10px;
+    background-color: var(--success-color);
+    color: var(--light-color);
     border: none;
     border-radius: 5px;
   }
   
-  .delete-view-button {
-    margin-left: 10px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 5px;
+  [customtype="createSaveButton"] {
     padding: 10px;
-  }
-  
-  .function {
-    border: 1px solid #ccc;
     margin-bottom: 10px;
-    margin-top: 10px;
-    padding: 10px;
-  }
-  
-  /* Custom styles */
-  :root {
-    --primary-color: #1a936f;
-    --secondary-color: #e6e6e6;
-    --text-color: #333;
-  }
-  
-  body {
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-  }
-  
-  .accordion > .accordion-header {
     background-color: var(--primary-color);
-    color: white;
-  }
-  
-  .createViewButton {
-    background-color: var(--primary-color);
-    color: white;
+    color: var(--light-color);
     border: none;
     border-radius: 5px;
   }
   
+  [customtype="
   
