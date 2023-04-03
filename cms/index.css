@@ -45,9 +45,9 @@
     margin-top: 10px;
     padding: 10px;
   }  */
-
   .accordion {
-    border: 1px solid #ccc;
+    border: none;
+    border-radius: 5px;
     margin-bottom: 10px;
     margin-top: 10px;
     margin-left: 10px;
@@ -55,74 +55,74 @@
   }
   
   .accordion > .accordion-header {
-    background-color: #eee;
+    background-color: #845ec2;
     padding: 10px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-  }
-  
-  .accordion > .accordion-header-view {
-    background-color: #845ec2;
-    border: 2px solid #5e3f91;
-  }
-  
-  .accordion > .accordion-header-viewTemplate {
-    background-color: #d65db1;
-    border: 2px solid #a13a80;
-  }
-  
-  .accordion > .accordion-header-slot {
-    background-color: #ff6f91;
-    border: 2px solid #b55778;
-  }
-  
-  .accordion > .accordion-header-component {
-    background-color: #ff9671;
-    border: 2px solid #c57655;
-  }
-  
-  .accordion > .accordion-header-organism {
-    background-color: #ffc75f;
-    border: 2px solid #b08b4f;
-  }
-  
-  .accordion > .accordion-header-molecule {
-    background-color: #f9f871;
-    border: 2px solid #b5ad4f;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: #fff;
   }
   
   .accordion > .accordion-body {
-    background-color: #eee;
+    display: none;
     padding: 10px;
-  }
-  
-  .accordion > .accordion-body-view {
-    background-color: #e1cfe8;
-  }
-  
-  .accordion > .accordion-body-viewTemplate {
-    background-color: #f1cde5;
-  }
-  
-  .accordion > .accordion-body-slot {
-    background-color: #ffd4d7;
-  }
-  
-  .accordion > .accordion-body-component {
-    background-color: #ffd1b7;
-  }
-  
-  .accordion > .accordion-body-organism {
-    background-color: #ffe8b8;
-  }
-  
-  .accordion > .accordion-body-molecule {
-    background-color: #f7f7c6;
+    background-color: #bba3d0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
   
   .accordion > .open {
     display: block;
+  }
+  
+  .accordion-header-view > .accordion-header {
+    background-color: #d65db1;
+  }
+  
+  .accordion-header-view > .accordion-body {
+    background-color: #e8b4d9;
+  }
+  
+  .accordion-header-viewTemplate > .accordion-header {
+    background-color: #ff6f91;
+  }
+  
+  .accordion-header-viewTemplate > .accordion-body {
+    background-color: #ffb3bd;
+  }
+  
+  .accordion-header-slot > .accordion-header {
+    background-color: #ff9671;
+  }
+  
+  .accordion-header-slot > .accordion-body {
+    background-color: #ffd6b6;
+  }
+  
+  .accordion-header-component > .accordion-header {
+    background-color: #ffc75f;
+  }
+  
+  .accordion-header-component > .accordion-body {
+    background-color: #ffe9cc;
+  }
+  
+  .accordion-header-organism > .accordion-header {
+    background-color: #f9f871;
+  }
+  
+  .accordion-header-organism > .accordion-body {
+    background-color: #fdfdc7;
+  }
+  
+  .accordion-header-molecule > .accordion-header {
+    background-color: #97d38d;
+  }
+  
+  .accordion-header-molecule > .accordion-body {
+    background-color: #d8f0d1;
   }
   
   .createViewButton {
@@ -142,7 +142,8 @@
   }
   
   .function {
-    border: 1px solid #ccc;
+    border: none;
+    border-radius: 5px;
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px;
