@@ -1,4 +1,4 @@
-/* .accordion {
+.accordion {
     border: 1px solid #ccc;
     margin-bottom: 10px;
     margin-top: 10px;
@@ -44,83 +44,4 @@
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px;
-  } */
-  .accordion {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  
-  .accordion > .accordion-header {
-    background-color: #eee;
-    padding: 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .accordion > .accordion-body {
-    display: none;
-    padding: 10px;
-  }
-  
-  .accordion > .open {
-    display: block;
-  }
-  
-  .createViewButton {
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
-  .createSaveButton {
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .delete-view-button {
-    margin-left: 10px;
-  }
-  
-  [customtype="function"] {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding: 10px;
-  }
-
-  [customtype="view"] > .accordion-header {
-    background-color: #ffd700;
-  }
-
-  [customtype="viewTemplate"] > .accordion-header {
-    background-color: #ffb6c1;
-  }
-
-  [customtype="slot"] > .accordion-header {
-    background-color: #add8e6;
-  }
-
-  [customtype="component"] > .accordion-header {
-    background-color: #90ee90;
-  }
-
-  [customtype="organism"] > .accordion-header {
-    background-color: #87ceeb;
-  }
-
-  [customtype="molecule"] > .accordion-header {
-    background-color: #ee82ee;
-  }
-
-  [customtype="atom"] > .accordion-header {
-    background-color: #f0e68c;
-  }
-
-  [customtype="functionParameters"] > .accordion-header {
-    background-color: #d3d3d3;
-  }
+  } 

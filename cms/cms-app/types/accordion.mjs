@@ -10,7 +10,7 @@ export async function accordion(
   parentId
 ) {
   const accordion = document.createElement("div");
-  accordion.classList.add("accordion");
+  accordion.classList.add("accordion" + "-" + customType);
 
   const bodyId = "accordion-body-" + id;
 
