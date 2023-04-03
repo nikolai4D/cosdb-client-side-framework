@@ -1,4 +1,4 @@
-.accordion {
+/* .accordion {
     border: 1px solid #ccc;
     margin-bottom: 10px;
     margin-top: 10px;
@@ -40,4 +40,60 @@
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px;
+  } */
+
+  .accordion {
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
+  
+  .accordion > .accordion-header {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .accordion > .accordion-header::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-right: 10px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+  
+  .accordion > .accordion-header.accordion-parent::before {
+    border-right: 5px solid #ccc;
+  }
+  
+  .accordion > .accordion-body {
+    display: none;
+    padding: 10px;
+  }
+  
+  .accordion > .open {
+    display: block;
+  }
+  
+  .createViewButton {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .createSaveButton {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .delete-view-button {
+    margin-left: 10px;
+  }
+  
+  .function {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+  }
+  
