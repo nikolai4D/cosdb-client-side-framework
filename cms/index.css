@@ -45,34 +45,6 @@
     margin-top: 10px;
     padding: 10px;
   } */
-  
-  /* Define colors for each custom type */
-[customtype="view"] {
-    background-color: #ffd3b6;
-  }
-  [customtype="viewTemplate"] {
-    background-color: #b6ffd3;
-  }
-  [customtype="slot"] {
-    background-color: #ffdbb6;
-  }
-  [customtype="component"] {
-    background-color: #b6d3ff;
-  }
-  [customtype="organism"] {
-    background-color: #d3b6ff;
-  }
-  [customtype="molecule"] {
-    background-color: #d3ffb6;
-  }
-  [customtype="atom"] {
-    background-color: #ffb6d3;
-  }
-  [customtype="function"] {
-    background-color: #b6d3ff;
-  }
-  
-  /* Accordion styles */
   .accordion {
     border: 1px solid #ccc;
     margin-bottom: 10px;
@@ -98,43 +70,57 @@
     display: block;
   }
   
-  /* Button styles */
-  [customtype="view"].createViewButton,
-  [customtype="viewTemplate"].createViewButton,
-  [customtype="slot"].createViewButton,
-  [customtype="component"].createViewButton,
-  [customtype="organism"].createViewButton,
-  [customtype="molecule"].createViewButton,
-  [customtype="atom"].createViewButton,
-  [customtype="function"].createViewButton {
+  .createViewButton {
     padding: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
   }
-  
+
   .createSaveButton {
     padding: 10px;
     margin-bottom: 10px;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    background-color: #333;
   }
   
   .delete-view-button {
     margin-left: 10px;
   }
   
-  /* Function styles */
   [customtype="function"] {
     border: 1px solid #ccc;
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px;
   }
-  
+
+  [customtype="view"] > .accordion-header {
+    background-color: #ffd700;
+  }
+
+  [customtype="viewTemplate"] > .accordion-header {
+    background-color: #ffb6c1;
+  }
+
+  [customtype="slot"] > .accordion-header {
+    background-color: #add8e6;
+  }
+
+  [customtype="component"] > .accordion-header {
+    background-color: #90ee90;
+  }
+
+  [customtype="organism"] > .accordion-header {
+    background-color: #87ceeb;
+  }
+
+  [customtype="molecule"] > .accordion-header {
+    background-color: #ee82ee;
+  }
+
+  [customtype="atom"] > .accordion-header {
+    background-color: #f0e68c;
+  }
+
+  [customtype="functionParameters"] > .accordion-header {
+    background-color: #d3d3d3;
+  }
