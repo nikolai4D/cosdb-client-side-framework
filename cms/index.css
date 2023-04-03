@@ -61,6 +61,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    background-color: #000;
   }
   
   .accordion > .accordion-header::before {
@@ -68,7 +69,6 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #ccc;
   }
   
   .accordion > .accordion-header.accordion-parent::before {
@@ -78,35 +78,23 @@
     margin-right: 10px;
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-right: 5px solid #ccc;
+    border-right: 5px solid #000;
   }
   
   .accordion > .accordion-header.accordion-parent.accordion-level-2::before {
     left: -30px;
-    width: 0;
-    height: 0;
-    margin-right: 10px;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-right: 5px solid #f4a261;
+    border-right-color: #f4a261;
   }
   
   .accordion > .accordion-header.accordion-parent.accordion-level-3::before {
     left: -40px;
-    width: 0;
-    height: 0;
-    margin-right: 10px;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-right: 5px solid #2a9d8f;
+    border-right-color: #2a9d8f;
   }
   
   .accordion > .accordion-header::after {
-    content: '';
     left: -15px;
     width: 1px;
     height: calc(100% + 10px);
-    background-color: #ccc;
   }
   
   .accordion > .accordion-header:last-child::after {
