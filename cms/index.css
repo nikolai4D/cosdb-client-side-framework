@@ -53,73 +53,84 @@
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
-  }
-  
-  .accordion > .accordion-header {
-    background-color: #eee;
+    }
+    
+    .accordion > .accordion-header-view {
+    background-color: #F6B352;
     padding: 10px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-  }
-  
-  .accordion > .accordion-body {
+    }
+    
+    .accordion > .accordion-header-viewTemplate {
+    background-color: #9BC53D;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    }
+    
+    .accordion > .accordion-header-slot {
+    background-color: #4B4E6D;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    }
+    
+    .accordion > .accordion-header-component {
+    background-color: #F18F01;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    }
+    
+    .accordion > .accordion-header-organism {
+    background-color: #2EC4B6;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    }
+    
+    .accordion > .accordion-header-molecule {
+    background-color: #FFC312;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    }
+    
+    .accordion > .accordion-body {
     display: none;
     padding: 10px;
-  }
-  
-  .accordion > .accordion-view > .accordion-header {
-    background-color: #ffddcc;
-  }
-  
-  .accordion > .accordion-viewTemplate > .accordion-header {
-    background-color: #ccffdd;
-  }
-  
-  .accordion > .accordion-slot > .accordion-header {
-    background-color: #ddccff;
-  }
-  
-  .accordion > .accordion-component > .accordion-header {
-    background-color: #ffeecc;
-  }
-  
-  .accordion > .accordion-organism > .accordion-header {
-    background-color: #ccffee;
-  }
-  
-  .accordion > .accordion-molecule > .accordion-header {
-    background-color: #ffccdd;
-  }
-  
-  .accordion > .accordion-atom > .accordion-header {
-    background-color: #ccddff;
-  }
-  
-  .accordion > .open {
+    }
+    
+    .accordion > .open {
     display: block;
-  }
-  
-  .createViewButton {
+    }
+    
+    .createViewButton {
     padding: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
     margin-right: 10px;
-  }
-  
-  .createSaveButton {
+    }
+    
+    .createSaveButton {
     padding: 10px;
     margin-bottom: 10px;
-  }
-  
-  .delete-view-button {
+    }
+    
+    .delete-view-button {
     margin-left: 10px;
-  }
-  
-  .function {
+    }
+    
+    .function {
     border: 1px solid #ccc;
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px;
-  }
-  
+    }
