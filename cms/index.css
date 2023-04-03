@@ -51,53 +51,84 @@
     --primary-color: #007bff;
     --secondary-color: #6c757d;
     --success-color: #28a745;
-    --info-color: #17a2b8;
-    --warning-color: #ffc107;
     --danger-color: #dc3545;
-    --light-color: #f8f9fa;
-    --dark-color: #343a40;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
   }
   
-  /* Custom Types */
-  [customtype="accordion"] {
+  .accordion {
     border: 1px solid var(--secondary-color);
     margin: 10px;
   }
   
-  [customtype="accordion"] > [customtype="accordion-header"] {
-    background-color: var(--light-color);
+  .accordion > .accordion-header {
+    background-color: var(--secondary-color);
+    color: #fff;
     padding: 10px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
   }
   
-  [customtype="accordion"] > [customtype="accordion-body"] {
-    display: none;
-    padding: 10px;
+  .accordion > .accordion-header.active {
+    background-color: var(--primary-color);
   }
   
-  [customtype="accordion"] > .open {
+  .accordion > .accordion-body {
+    display: none;
+    padding: 10px;
+    border-top: 1px solid var(--secondary-color);
+  }
+  
+  .accordion > .accordion-body p {
+    margin: 0;
+  }
+  
+  .accordion > .open {
     display: block;
   }
   
-  [customtype="createViewButton"] {
+  .createViewButton {
     padding: 10px;
     margin: 10px;
     background-color: var(--success-color);
-    color: var(--light-color);
+    color: #fff;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
   }
   
-  [customtype="createSaveButton"] {
+  .createSaveButton {
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px 10px 10px 0;
     background-color: var(--primary-color);
-    color: var(--light-color);
+    color: #fff;
     border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .delete-view-button {
+    margin-left: 10px;
+    background-color: var(--danger-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .function {
+    border: 1px solid var(--secondary-color);
+    margin: 10px;
+    padding: 10px;
     border-radius: 5px;
   }
   
-  [customtype="
+  .function p {
+    margin: 0;
+  }
+  
+  .function h2 {
+    margin-top: 0;
+  }
   
