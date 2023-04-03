@@ -17,6 +17,7 @@ export async function accordion(
 
   const headerAccordion = document.createElement("div");
   headerAccordion.classList.add("accordion-header");
+  headerAccordion.classList.add("accordion-header" + "-" + customType);
   headerAccordion.appendChild(await headerContent);
 
   // Append delete button to inner accordion header
