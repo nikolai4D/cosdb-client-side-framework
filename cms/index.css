@@ -45,81 +45,45 @@
     margin-top: 10px;
     padding: 10px;
   }  */
-
   .accordion {
-    border: none;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin: 10px;
+    border-radius: 10px;
   }
   
   .accordion > .accordion-header {
     background-color: #845ec2;
-    color: #fff;
+    color: white;
     padding: 10px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    border-radius: 5px 5px 0 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .accordion > .accordion-header.open {
+    background-color: #d65db1;
   }
   
   .accordion > .accordion-body {
     display: none;
     padding: 10px;
-    background-color: #d1c4e9;
-    border-radius: 0 0 5px 5px;
-  }
-  
-  .accordion > .open > .accordion-header {
-    background-color: #d65db1;
+    background-color: #f0e9ff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
   
   .accordion > .open > .accordion-body {
     display: block;
-    background-color: #f3e5f5;
   }
   
-  .accordion-header-view {
-    background-color: #ff6f91;
-    color: #fff;
-  }
-  
-  .accordion-header-viewTemplate {
-    background-color: #ff9671;
-    color: #fff;
-  }
-  
-  .accordion-header-slot {
-    background-color: #ffc75f;
-    color: #fff;
-  }
-  
-  .accordion-header-component {
-    background-color: #f9f871;
-    color: #000;
-  }
-  
-  .accordion-header-organism {
-    background-color: #845ec2;
-    color: #fff;
-  }
-  
-  .accordion-header-molecule {
-    background-color: #d65db1;
-    color: #fff;
-  }
-  
-  .createViewButton {
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  
+  .createViewButton,
   .createSaveButton {
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #ff6f91;
+    color: white;
   }
   
   .delete-view-button {
@@ -127,10 +91,9 @@
   }
   
   .function {
-    border: none;
-    margin-bottom: 10px;
-    margin-top: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #ffc75f;
     padding: 10px;
-    border-radius: 5px;
   }
   
