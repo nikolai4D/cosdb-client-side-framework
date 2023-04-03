@@ -1,7 +1,8 @@
-/* .accordion {
+.accordion {
     border: 1px solid #ccc;
     margin-bottom: 10px;
     margin-top: 10px;
+    margin-left: 10px;
   }
   
   .accordion > .accordion-header {
@@ -40,79 +41,4 @@
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px;
-  } */
-
-  .accordion {
-    margin-bottom: 10px;
-    margin-top: 10px;
-    list-style: none;
-    font-family: Arial, sans-serif;
   }
-  
-  .accordion > .accordion-header {
-    padding-left: 20px;
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .accordion > .accordion-header:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -20px;
-    border-left: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    width: 10px;
-    height: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .accordion > .accordion-header:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: -10px;
-    border-top: 1px solid #ccc;
-    width: 10px;
-    height: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .accordion > .accordion-body {
-    display: none;
-    padding: 10px;
-    padding-left: 40px;
-    margin-left: 200px;
-  }
-  
-  .accordion > .open {
-    display: block;
-  }
-  
-  .createViewButton {
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-left: 200px;
-  }
-  
-  .createSaveButton {
-    padding: 10px;
-    margin-bottom: 10px;
-    margin-left: 200px;
-  }
-  
-  .delete-view-button {
-    margin-left: 10px;
-  }
-  
-  .function {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding: 10px;
-    margin-left: 200px;
-  }
-  
-  
