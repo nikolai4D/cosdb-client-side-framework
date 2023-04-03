@@ -68,7 +68,6 @@
     left: -20px;
     width: 10px;
     height: 10px;
-    border-radius: 50%;
   }
   
   .accordion > .accordion-header.accordion-parent::before {
@@ -79,16 +78,6 @@
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
     border-right: 5px solid #000;
-  }
-  
-  .accordion > .accordion-header.accordion-parent.accordion-level-2::before {
-    left: -30px;
-    border-right-color: #f4a261;
-  }
-  
-  .accordion > .accordion-header.accordion-parent.accordion-level-3::before {
-    left: -40px;
-    border-right-color: #2a9d8f;
   }
   
   .accordion > .accordion-header::after {
@@ -108,20 +97,6 @@
   
   .accordion > .open {
     display: block;
-  }
-  
-  .createViewButton {
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .createSaveButton {
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .delete-view-button {
-    margin-left: 10px;
   }
   
   .function {
