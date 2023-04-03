@@ -47,7 +47,7 @@
   }  */
 
   :root {
-    --view-color: #ff708f;
+    --view-color: #ffffff;
     --viewTemplate-color: #ab5bd6;
     --slot-color: #0085ff;
     --component-color: #00d5ff;
@@ -81,8 +81,8 @@
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);  
 }
     .accordion > .accordion-header:hover {
-
-        opacity:0.5;
+        opacity: 0.8;
+        transition: 0.1s;
     } 
   .accordion > .accordion-body {
     display: none;
