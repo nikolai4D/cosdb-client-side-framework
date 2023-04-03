@@ -52,20 +52,53 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    position: relative;
+  }
+  
+  .accordion > .accordion-header::before,
+  .accordion > .accordion-header::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
   
   .accordion > .accordion-header::before {
+    left: -20px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+  }
+  
+  .accordion > .accordion-header.accordion-parent::before {
     content: '';
-    display: inline-block;
     width: 0;
     height: 0;
     margin-right: 10px;
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
+    border-right: 5px solid #ccc;
   }
   
-  .accordion > .accordion-header.accordion-parent::before {
-    border-right: 5px solid #ccc;
+  .accordion > .accordion-header.accordion-level-2::before {
+    background-color: #f4a261;
+  }
+  
+  .accordion > .accordion-header.accordion-level-3::before {
+    background-color: #2a9d8f;
+  }
+  
+  .accordion > .accordion-header::after {
+    content: '';
+    left: -15px;
+    width: 1px;
+    height: 100%;
+    background-color: #ccc;
+  }
+  
+  .accordion > .accordion-header:last-child::after {
+    display: none;
   }
   
   .accordion > .accordion-body {
