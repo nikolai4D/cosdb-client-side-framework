@@ -44,6 +44,7 @@ export async function accordion(
 
   const bodyEl = document.createElement("div");
   bodyEl.classList.add("accordion-body");
+  bodyEl.classList.add("accordion-body" + "-" + customType);
   bodyEl.id = bodyId;
 
   bodyEl.appendChild(await bodyContent);
