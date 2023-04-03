@@ -65,7 +65,7 @@
   .accordion {
     border: none;
     margin: 10px;
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion > .accordion-header {
@@ -73,13 +73,13 @@
     cursor: pointer;
     display: flex;
     justify-content: space-between;
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion > .accordion-body {
     display: none;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion > .open {
@@ -89,67 +89,67 @@
   .accordion-header-view {
     background-color: var(--pink);
     color: #fff;
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion-header-viewTemplate {
     background-color: var(--purple);
     color: #fff;
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion-header-slot {
     background-color: var(--blue);
     color: #fff;
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion-header-component {
     background-color: var(--cyan);
     color: #fff;
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion-header-organism {
     background-color: var(--teal);
     color: #fff;
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion-header-molecule {
     background-color: var(--green);
     color: #fff;
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion-body-view {
     background-color: var(--light-pink);
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion-body-viewTemplate {
     background-color: var(--light-purple);
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion-body-slot {
     background-color: var(--light-blue);
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion-body-component {
     background-color: var(--light-cyan);
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion-body-organism {
     background-color: var(--light-teal);
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .accordion-body-molecule {
     background-color: var(--light-green);
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .createViewButton {
@@ -183,7 +183,7 @@
     border: none;
     margin: 10px;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   input:disabled,
