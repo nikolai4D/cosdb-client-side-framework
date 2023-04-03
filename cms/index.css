@@ -45,3 +45,72 @@
     margin-top: 10px;
     padding: 10px;
   } 
+
+
+
+
+.accordion-header-view {
+  background-color: #ff6f91;
+  color: #fff;
+}
+
+.accordion-header-viewTemplate {
+  background-color: #ff9671;
+  color: #fff;
+}
+
+.accordion-header-slot {
+  background-color: #ffc75f;
+  color: #fff;
+}
+
+.accordion-header-component {
+  background-color: #f9f871;
+  color: #000;
+}
+
+.accordion-header-organism {
+  background-color: #845ec2;
+  color: #fff;
+}
+
+.accordion-header-molecule {
+  background-color: #d65db1;
+  color: #fff;
+}
+
+.accordion-body-view {
+  background-color: #ffdfc8;
+  color: #000;
+  border-radius: 5px;
+}
+
+.accordion-body-viewTemplate {
+  background-color: #ffd3b6;
+  color: #000;
+  border-radius: 5px;
+}
+
+.accordion-body-slot {
+  background-color: #ffe6b3;
+  color: #000;
+  border-radius: 5px;
+}
+
+.accordion-body-component {
+  background-color: #f8f8c9;
+  color: #000;
+  border-radius: 5px;
+}
+
+.accordion-body-organism {
+  background-color: #a8a5ff;
+  color: #000;
+  border-radius: 5px;
+}
+
+.accordion-body-molecule {
+  background-color: #d8a1c4;
+  color: #000;
+  border-radius: 5px;
+}
