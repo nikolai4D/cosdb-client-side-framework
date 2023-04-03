@@ -82,8 +82,8 @@
     color: #3c3c3c;
 }
     .accordion > .accordion-header:hover {
-        opacity: 0.8;
-        transition: 0.1s;
+    filter:brightness(97%);
+    transition: 0.1s;
     } 
   .accordion > .accordion-body {
     display: none;
