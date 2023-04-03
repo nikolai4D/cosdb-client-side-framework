@@ -47,13 +47,13 @@
   }  */
 
   :root {
-    --view-color: #fafafa;
-    --viewTemplate-color: #f5f5f5;
-    --slot-color: #0085ff;
-    --component-color: #e5e5e5;
-    --organism-color: #2de7b0;
-    --molecule-color: #d4d4d4;
-    --atom-color: #a3a3a3;
+    --view-color: #eff6ff;
+    --viewTemplate-color: #dbeafe;
+    --slot-color: #bfdbfe;
+    --component-color: #93c5fd;
+    --organism-color: #60a5fa;
+    --molecule-color: #3b82f6;
+    --atom-color: #2563eb;
     --light-view-color: #ffadbf;
     --light-viewTemplate-color: #d29bf1;
     --light-slot-color: #77b9ff;
