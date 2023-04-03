@@ -64,6 +64,11 @@
     --blue: #0558b1;
     --dark-blue: #004999;
   }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+  }
   
   .accordion {
     border: none;
