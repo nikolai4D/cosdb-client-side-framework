@@ -29,7 +29,7 @@ export function Molecule_ListWHeading2(data = null) {
 
   const compDatas = async (compData2) =>
     await Promise.all(
-      compData.map(async (item) => {
+      compData2.map(async (item) => {
         return await this.atom(2, item.title);
       })
     );
