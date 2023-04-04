@@ -2,8 +2,8 @@ import { Component } from "../../core/Component.mjs";
 import { slot } from "../../core/helpers.mjs";
 import { Molecule_Card } from "../molecules/Molecule_Card.mjs";
 import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearchButton.mjs";
-import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
-import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
+import { Atom_Image } from "../atoms/Atom_Image.mjs";
+import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 import { State } from "../../data-mgmt/state.mjs";
 import { Organism_ModalProcessPrep } from "./Organism_ModalProcessPrep.mjs";
 
@@ -134,11 +134,11 @@ export function Organism_ListAllCards() {
     const newMolecules = data.map((molecule, index) => {
       const newMolecule = createMolecule(Molecule_Card, index + 1);
   
-      const headingAtom = createAtom(Atom_Heading4, molecule.letter, 1);
+      const headingAtom = createAtom(Atom_Image, "placeholder", 1);
       newMolecule.component.atoms = [headingAtom];
   
       molecule.title.forEach((item, index2) => {
-        const listItemAtom = createAtom(Atom_ListItem, item, index2);
+        const listItemAtom = createAtom(Atom_Text1, item, index2);
         newMolecule.component.atoms.push(listItemAtom);
       });
   
