@@ -74,11 +74,19 @@ export async function getOrganism(module, parentId, orgId = null) {
 
   const organismObject = await createComponent(type, module);
 
-  organismObject.organisms = childOrganismsObjects;
-  organismObject.molecules = moleculesObject;
-  organismObject.functions = functionsObject;
+  //   organismObject.organisms = childOrganismsObjects;
+  //   organismObject.molecules = moleculesObject;
+  //   organismObject.functions = functionsObject;
 
-  const renderOrganism = await organismObject.render();
+  //   const renderOrganism = await organismObject.render();
 
-  return await renderOrganism;
+  //   return await renderOrganism;
+  // }
+
+  return {
+    comp: organismObject,
+    organisms: childOrganismsObjects,
+    molecules: moleculesObject,
+    functions: functionsObject,
+  };
 }

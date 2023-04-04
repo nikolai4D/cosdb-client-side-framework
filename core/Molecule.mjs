@@ -16,18 +16,3 @@ export function Molecule() {
     return renderComp;
   };
 }
-
-//   this.atom = async function (id) {
-//     const component = this.atoms.find((atom) => atom.id === id)?.component;
-//     const container = document.createElement("div");
-//     container.appendChild(component);
-//     return container;
-//   };
-// }
-
-// this.atom = function (id) {
-//     const component = this.atoms.find((atom) => atom.id === id)?.component;
-
-//     return component;
-//   };
-// }

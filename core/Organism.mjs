@@ -5,31 +5,17 @@ export function Organism() {
     return this.functions.find((fn) => fn.id === id)?.function() || "";
   };
 
-  this.childOrganism = (id) => {
-    const component = this.organisms.find(
-      (childOrg) => childOrg.id === id
-    )?.component;
-
-    return component;
+  this.childOrganism = async (id, data) => {
+    const component = this.organisms.find((mol) => mol.id === id)?.component;
+    const comp = component.comp;
+    const renderComp = await comp.render(data);
+    return renderComp;
   };
 
-  this.molecule = async (id) => {
+  this.molecule = async (id, data) => {
     const component = this.molecules.find((mol) => mol.id === id)?.component;
-    return component;
+    const comp = component.comp;
+    const renderComp = await comp.render(data);
+    return renderComp;
   };
 }
-
-// this.childOrganism = (id) => {
-//     const component = this.organisms.find(
-//       (childOrg) => childOrg.id === id
-//     )?.component;
-//     const componentArray = component ? Array.from(component) : [];
-//     return componentArray.map((elem) => elem.outerHTML).join("");
-//   };
-
-//   this.molecule = async (id) => {
-//     const component = this.molecules.find((mol) => mol.id === id)?.component;
-//     const componentArray = component ? Array.from(component) : [];
-//     return componentArray.map((elem) => elem.outerHTML).join("");
-//   };
-// }

@@ -9,7 +9,14 @@ export async function getComponent(compName, compParentId) {
   let comp;
 
   if (compName.startsWith("Organism")) {
-    comp = await getOrganism(compName, compParentId);
+    const getComp = await getOrganism(compName, compParentId);
+    const compChildOrganisms = getComp.organisms;
+    const compMolecules = getComp.molecules;
+    const compFunctions = getComp.functions;
+    comp = getComp.comp;
+    comp.organisms = compChildOrganisms;
+    comp.molecules = compMolecules;
+    comp.functions = compFunctions;
   }
 
   if (compName.startsWith("Molecule")) {
