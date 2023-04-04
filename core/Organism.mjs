@@ -14,6 +14,7 @@ export function Organism() {
 
   this.molecule = async (id, data) => {
     const component = this.molecules.find((mol) => mol.id === id)?.component;
+    console.log(component);
     const comp = component.comp;
     const renderComp = await comp.render(data);
     return renderComp;
