@@ -35,7 +35,9 @@ export function Molecule_Card() {
     return `
      <div id="mol-img-text" class="molecule_image-and-text">
         ${slot(this.atoms[0].atom)}
+        <div class="molecule_card-text">
         ${slot(this.atoms[1].atom)}
+        </div>
     </div>
   `;
   }
