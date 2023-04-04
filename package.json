@@ -16,5 +16,8 @@
     "bugs": {
         "url": "https://github.com/nikolai4D/cosdb-client-side-framework/issues"
     },
-    "homepage": "https://github.com/nikolai4D/cosdb-client-side-framework#readme"
+    "homepage": "https://github.com/nikolai4D/cosdb-client-side-framework#readme",
+    "dependencies": {
+        "bootstrap-icons": "^1.10.4"
+    }
 }

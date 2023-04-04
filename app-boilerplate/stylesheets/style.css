@@ -6,6 +6,7 @@
 @import "molecules.css";
 @import "atoms.css";
 @import "modal.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
 
 
 html, body {
