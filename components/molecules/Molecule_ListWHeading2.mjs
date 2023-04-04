@@ -34,7 +34,7 @@ export function Molecule_ListWHeading2(data = null) {
       })
     );
 
-  const component = async (compData) => {
+  const component = async (compData = "compData placeholder") => {
     const comp = await createElement(
       "div",
       { className: "Molecule_ListWHeading2" },
