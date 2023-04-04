@@ -13,7 +13,12 @@ export async function getComponent(compName, compParentId) {
   }
 
   if (compName.startsWith("Molecule")) {
-    comp = await getMolecule(compName, compParentId);
+    const getComp = await getMolecule(compName, compParentId);
+    const compAtoms = getComp.atoms;
+    const compFunctions = getComp.functions;
+    comp = getComp.comp;
+    comp.atoms = compAtoms;
+    comp.functions = compFunctions;
   }
 
   if (compName.startsWith("Atom")) {

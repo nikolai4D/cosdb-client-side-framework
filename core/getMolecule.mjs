@@ -51,12 +51,16 @@ export async function getMolecule(module, parentId, molId = null) {
   }
 
   const moleculeObject = await createComponent(type, module);
-  moleculeObject.atoms = atomsObject;
-  moleculeObject.functions = functionsObject;
+  //   moleculeObject.atoms = atomsObject;
+  //   moleculeObject.functions = functionsObject;
 
-  const renderMolecule = await moleculeObject.render();
+  //   const renderMolecule = await moleculeObject.render();
 
-  //console.log("!!!!!!!! renderMolecule", renderMolecule);
+  //   return await renderMolecule;
 
-  return await renderMolecule;
+  return {
+    comp: moleculeObject,
+    atoms: atomsObject,
+    functions: functionsObject,
+  };
 }

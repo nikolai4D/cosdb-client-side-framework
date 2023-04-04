@@ -4,10 +4,15 @@ export function Molecule() {
   this.fn = function (id) {
     return this.functions.find((fn) => fn.id === id)?.function() || "";
   };
-  this.atom = function (id) {
+  this.atom = async function (id) {
     const component = this.atoms.find((atom) => atom.id === id)?.component;
 
-    return component;
+    const comp = component.comp;
+    const compValue = component.value;
+    comp.value = [{ value: compValue[0].value }];
+
+    const renderComp = await comp.render();
+    return renderComp;
   };
 }
 
