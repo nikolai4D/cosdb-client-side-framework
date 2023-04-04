@@ -62,7 +62,7 @@
     width: 40%;
 }
 
-.molecule_image-and-text > p {
+.molecule_image-and-text > .molecule_card-text {
     padding: 0.5em;
 }
 
