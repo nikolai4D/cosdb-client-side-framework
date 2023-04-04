@@ -13,12 +13,10 @@ export function Organism_ModalProcess() {
         }
     ];
 
-    this.modal = null;
-
     this.getHtml = function() {
 
         return `
-        <div id="modal-background" class="modal">
+        <div id="modal-background" class="modal organism_modalBackground">
             <div class="modal-container modal-process-inner-wrap">
                 <div class="modal-process-section">
                     <div class="modal-process-upper-section">
@@ -33,35 +31,20 @@ export function Organism_ModalProcess() {
 
     this.bindScript= async function() {
 
-        const {organisms} = this
-        await this.fillSlot(organisms[0].organism, organisms[0].component.getElement())
+        const {component, organism} = this.organisms[0]
+        const organismElement = component.getElement()
+        await this.fillSlot(organism, organismElement)
+        
+        let thisElement = this.getElement()
 
-        const mStyle = this.getElement().style
-        mStyle.position = "absolute"
-        mStyle.width = "100vw"
-        mStyle.height = "100vh"
-        mStyle.top = "0px"
-        mStyle.left = "0px"
-        mStyle.backgroundColor = "rgba(0,0,0,0.5)"
-        mStyle.display = "flex"
-        mStyle.justifyContent = "center"
-        mStyle.alignItems = "center"
-
-        organisms[0].component.getElement().style.backgroundColor = "white"
-        // this.content.getElement()
-
-        this.getElement().addEventListener("click", (e)=>{
-            if(e.target === this.getElement()){
-                this.getElement().remove()
+        thisElement.addEventListener("click", (e)=>{
+            if(e.target === thisElement){
+                thisElement.remove()
             }
         })
 
-        this.getElement().querySelector(".bi-x").addEventListener("click", (e) => {
+        thisElement.querySelector(".bi-x").addEventListener("click", (e) => {
             document.querySelector('#modal-background').remove()
         });
-    }
-
-    this.show= function() {
-        document.body.append(this.getElement())
     }
 }

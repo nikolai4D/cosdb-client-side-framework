@@ -1,18 +1,23 @@
 @import "colors.css";
 
 .molecule_logo {
-    display: flex;
+    display: block ruby;
     padding: 1em;
+}
+
+.molecule_list__footer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .molecule_header-and-text {
     /* padding: 3em; */
-    margin: 0.5rem;
+    margin: 30px;
     display: grid;
     grid-template-columns: auto auto;
     width: max-content;
     align-items: center;
-    grid-gap: 0.5rem;
 }
 
 .molecule_login-or-signup {
@@ -300,8 +305,9 @@
 .molecule_modal_in-output {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    margin: 3em;
+    justify-content: space-around;
+    margin: 0px 30px 0px 30px;
 }
 
 .molecule_modal_in-output > .molecule_header-and-text {
@@ -313,8 +319,12 @@
 }
 
 .molecule_modal_in-output > div:nth-child(1n){
-    border: 1px solid black;
     padding: 2em;
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;  
+    /* background-color: aliceblue; */
+    width: 400px;
+    height: 266px;
 }
 
 .molecule_modal_in-output > div > ul {
@@ -324,10 +334,10 @@
 }
 
 .molecule_modal_in-output > div:nth-last-child(3){
-    background-color: #CCCCCC;
-    border: none !important;
-    width: 400px;
+    background-color: #ECECEC;
+    width: 700px;
     height: 266px;
+    
 }
 
 .molecule_modal_in-output > i:nth-child(1n) {

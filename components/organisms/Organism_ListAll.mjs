@@ -5,7 +5,7 @@ import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearc
 import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { State } from "../../data-mgmt/state.mjs";
-import { Organism_ModalProcess } from "./Organism_ModalProcess.mjs";
+import { Organism_ModalProcessPrep } from "./Organism_ModalProcessPrep.mjs";
 
 export function Organism_ListAll() {
   Component.call(this);
@@ -20,6 +20,14 @@ export function Organism_ListAll() {
       id: 2,
       molecule: "Molecule_ListWHeading",
       component: new Molecule_ListWHeading(),
+    },
+  ];
+
+  this.organisms = [
+    {
+      id: 1,
+      organism: "Organism_ModalProcessPrep",
+      component: new Organism_ModalProcessPrep(),
     },
   ];
 
@@ -41,11 +49,13 @@ export function Organism_ListAll() {
         <div id="organism_all_lists" class="organism_list-all-search__lists">
           ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
-        <div id="modal-processView"></div>
-
+        <div id="modal-slot">
+        ${slot(this.organisms[0].organism)}
+        </div>
       </div>
     `;
   };
+  
 
   this.bindScript = async function () {
 
@@ -59,6 +69,8 @@ export function Organism_ListAll() {
         await State[type];
         data = State[type];
         filteredData = [...State[type]]
+
+        console.log(data)
       }
     }
     changeData(data, filteredData)
@@ -66,23 +78,8 @@ export function Organism_ListAll() {
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
-
     updateMolecules(data);
-    renderMolecules();
-    
-    this.getElement().querySelector("#organism_all_lists").addEventListener("click", (e) => {    
-
-      const modalId = document.getElementById('modal-processView')
-      
-      modalId.innerHTML = `
-          <div>
-              ${slot("new-modal")}
-          </div>
-          `
-      this.modal = new Organism_ModalProcess()
-
-      this.fillSlot("new-modal", this.modal.getElement());
-  });
+    await renderMolecules();
 
   };
 
@@ -107,7 +104,8 @@ export function Organism_ListAll() {
           }
         }
       }
-    }
+      
+  }
 
   const createMolecule = (MoleculeClass, id) => {
     const molecule = new MoleculeClass();
@@ -148,16 +146,40 @@ export function Organism_ListAll() {
     this.molecules= [...newMolecules]
   };
 
-  const renderMolecules = () => {
+  const renderMolecules = async () => {
     // Replacing placeholder DOM elements (slots are rendered at this point) with new molecule DOM elements 
 
    let content= document.getElementById("organism_all_lists")
    content.innerHTML = ""
    const moleculesSlots = content
 
-    for (const  mol of this.molecules) {
-      moleculesSlots.appendChild(mol.component.getElement());
+   const anArray = []
 
+    for (const  mol of this.molecules) {
+      await moleculesSlots.appendChild(mol.component.getElement());
     }
+    for await (const child of moleculesSlots.children) {
+      for await (const li of child.children[1].children){
+        anArray.push(await li)
+      }
+    }
+    
+    // for (let org of this.organisms) {
+      let newOrg = new Organism_ModalProcessPrep()
+      newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
+      newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
+      newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value
+
+      newOrg.moleculeLeft.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[1].component.value[0].value
+      newOrg.moleculeMiddle.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[1].component.value[0].value
+      newOrg.moleculeRight.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[1].component.value[0].value
+
+      newOrg.parent = await anArray;
+
+      let slotContent= document.getElementById("modal-slot")
+      slotContent.innerHTML = ""
+      slotContent.appendChild(newOrg.getElement());
+
+    // }
   };
 }

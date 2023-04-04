@@ -10,20 +10,25 @@ export function Molecule_List() {
       id: 1,
       atom: "Atom_ListItem",
       component:  new Atom_ListItem()
-    },
-    {
-      id: 2,
-      atom: "Atom_ListItem",
-      component: new Atom_ListItem()
     }
   ]
 
+  this.functions = [
+    {
+      id: 1,
+      function: "placeholder",
+    },
+    {
+      id: 2,
+      function: "placeholder",
+    },
+  ];
 
   this.getHtml = function(){
 
     return `
             <ul class="molecule_list__list">
-            ${this.atoms.slice(1).map(at => slot(at.atom)).join("")}
+            ${this.atoms.map(at => slot(at.atom)).join("")}
             </ul>
   `;
   }
@@ -32,6 +37,10 @@ export function Molecule_List() {
 
 
       for (let atom of this.atoms) {
+
+
+
+
         await this.fillSlot(atom.atom, atom.component.getElement())
       }
 

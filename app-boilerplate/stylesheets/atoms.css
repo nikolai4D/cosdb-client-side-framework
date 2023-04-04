@@ -1,5 +1,8 @@
 @import "colors.css";
 
+li  {
+  list-style-type: none
+}
 .atom_icon{
     font-size: 1.1rem;
 }

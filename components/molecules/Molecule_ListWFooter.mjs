@@ -1,9 +1,9 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
-import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
+import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
 
-export function Molecule_ListWHeading() {
+export function Molecule_ListWFooter() {
   Component.call(this);
 
   this.data={}
@@ -11,8 +11,8 @@ export function Molecule_ListWHeading() {
   this.atoms = [
     {
       id: 1,
-      atom: "Atom_Heading4",
-      component:  new Atom_Heading4()
+      atom: "Atom_Text1",
+      component:  new Atom_Text1()
     },
     {
       id: 2,
@@ -32,20 +32,18 @@ export function Molecule_ListWHeading() {
     },
   ];
 
-
+  
   this.getHtml = function(){
 
     return `
 
         <div class="molecule_list">
-            <div>
-              ${slot(this.atoms[0].atom)}
-            </div>
             <ul class="molecule_list__list">
-
-            ${this.atoms.slice(1).map(at => slot(at.atom)).join("")}
-
+                ${this.atoms.slice(1).map(at => slot(at.atom)).join("")}
             </ul>
+            <div class="molecule_list__footer">
+                ${slot(this.atoms[0].atom)}
+          </div>
         </div>
   `;
   }
@@ -54,10 +52,6 @@ export function Molecule_ListWHeading() {
 
 
       for (let atom of this.atoms) {
-
-
-
-          
         await this.fillSlot(atom.atom, atom.component.getElement())
       }
 
