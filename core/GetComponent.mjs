@@ -17,10 +17,9 @@ export async function getComponent(compName, compParentId) {
   }
 
   if (compName.startsWith("Atom")) {
-    getComp = await getAtom(compName, compParentId);
-    const comp = getComp.comp;
+    const getComp = await getAtom(compName, compParentId);
     const compValue = getComp.value;
-
+    comp = getComp.comp;
     comp.value = [{ value: compValue[0].value }];
   }
   const renderComp = await comp.render();
