@@ -19,7 +19,7 @@ export function Atom_ListItem2() {
     return comp;
   };
 
-  this.render = async (data = "list data placeholder") => {
+  this.render = async (data = "data placeholder") => {
     return await component(data);
   };
 }
