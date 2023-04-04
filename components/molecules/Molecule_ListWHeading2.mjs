@@ -1,11 +1,12 @@
 import { Atom_ListItem2 } from "../atoms/Atom_ListItem2.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
-import { html2dom } from "../../core/helpers/html2dom.mjs";
 import { Molecule } from "../../core/Molecule.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
 
-export function Molecule_ListWHeading2(data = null) {
+export function Molecule_ListWHeading2() {
   Molecule.call(this);
+
+  // sub components
   this.atoms = [
     {
       id: 1,
@@ -21,18 +22,7 @@ export function Molecule_ListWHeading2(data = null) {
 
   this.functions = [];
 
-  const compData2 = [
-    { title: "title1" },
-    { title: "title2" },
-    { title: "title3" },
-  ];
-
-  const compDatas = async (compData2) =>
-    await Promise.all(
-      compData2.map(async (item) => {
-        return await this.atom(2, item.title);
-      })
-    );
+  //build component
 
   const component = async (compData = "compData placeholder") => {
     const comp = await createElement(
@@ -47,7 +37,22 @@ export function Molecule_ListWHeading2(data = null) {
     return comp;
   };
 
+  //render component
   this.render = async (data = "data placeholder") => {
     return await component(data);
   };
 }
+
+//add component specific functions here
+const compData2 = [
+  { title: "title1" },
+  { title: "title2" },
+  { title: "title3" },
+];
+
+const compDatas = async (compData2) =>
+  await Promise.all(
+    compData2.map(async (item) => {
+      return await this.atom(2, item.title);
+    })
+  );
