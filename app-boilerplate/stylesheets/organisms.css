@@ -29,13 +29,9 @@
 
 .organism_buttonFilledcards {
     grid-area: 2 / 1 / 2 / 1;
-    overflow-y: scroll;
-    height: 430px;
     display: flex;
     gap: 46px;
     flex-wrap: wrap;
-    width: 933px;
-    padding: 0 1em;
 }
 
 .organism_modalBackground { 
