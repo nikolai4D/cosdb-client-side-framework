@@ -43,10 +43,12 @@
     align-items: center;
     padding: 30px;
     /* gap: 20px; */
-    border: solid 1px black;
     width: 8rem;
     height: 8rem;
-    background-color: #CCCCCC;
+    background-color: var(--grey-color);
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+
 }
 
 .molecule_paginator {
