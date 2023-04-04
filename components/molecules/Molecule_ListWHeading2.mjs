@@ -21,25 +21,25 @@ export function Molecule_ListWHeading2(data = null) {
 
   this.functions = [];
 
-  const compData = [
+  const compData2 = [
     { title: "title1" },
     { title: "title2" },
     { title: "title3" },
   ];
 
-  const compDatas = async (compData) =>
+  const compDatas = async (compData2) =>
     await Promise.all(
       compData.map(async (item) => {
         return await this.atom(2, item.title);
       })
     );
 
-  const component = async () => {
+  const component = async (compData) => {
     const comp = await createElement(
       "div",
       { className: "Molecule_ListWHeading2" },
-      await createElement("div", {}, await this.atom(1, "Header")),
-      await createElement("ul", {}, ...(await compDatas(compData)))
+      await createElement("div", {}, await this.atom(1, compData)),
+      await createElement("ul", {}, ...(await compDatas(compData2)))
     );
 
     //add event listener to the comp here
@@ -47,7 +47,7 @@ export function Molecule_ListWHeading2(data = null) {
     return comp;
   };
 
-  this.render = async () => {
-    return await component();
+  this.render = async (data = "data placeholder") => {
+    return await component(data);
   };
 }
