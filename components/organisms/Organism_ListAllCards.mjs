@@ -150,7 +150,7 @@ export function Organism_ListAllCards() {
   const renderMolecules = async () => {
     // Replacing placeholder DOM elements (slots are rendered at this point) with new molecule DOM elements 
 
-   let content= document.getElementById("organism_all_lists")
+   let content= document.getElementById("org-cards-container")
    content.innerHTML = ""
    const moleculesSlots = content
 
