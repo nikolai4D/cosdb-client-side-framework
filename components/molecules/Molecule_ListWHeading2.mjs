@@ -41,18 +41,18 @@ export function Molecule_ListWHeading2() {
   this.render = async (data = "data placeholder") => {
     return await component(data);
   };
+
+  //add component specific functions here
+  const compData2 = [
+    { title: "title1" },
+    { title: "title2" },
+    { title: "title3" },
+  ];
+
+  const compDatas = async (compData2) =>
+    await Promise.all(
+      compData2.map(async (item) => {
+        return await this.atom(2, item.title);
+      })
+    );
 }
-
-//add component specific functions here
-const compData2 = [
-  { title: "title1" },
-  { title: "title2" },
-  { title: "title3" },
-];
-
-const compDatas = async (compData2) =>
-  await Promise.all(
-    compData2.map(async (item) => {
-      return await this.atom(2, item.title);
-    })
-  );

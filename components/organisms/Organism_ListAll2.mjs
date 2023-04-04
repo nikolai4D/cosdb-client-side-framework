@@ -42,6 +42,6 @@ export function Organism_ListAll2() {
   this.render = async () => {
     return await component();
   };
-}
 
-//add component specific functions here
+  //add component specific functions here
+}
