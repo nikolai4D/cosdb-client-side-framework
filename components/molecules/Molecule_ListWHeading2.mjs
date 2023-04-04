@@ -27,12 +27,12 @@ export function Molecule_ListWHeading2(data = null) {
     { title: "title3" },
   ];
 
-  const compDatas = Promise.all(
-    compData.map(async (item) => {
-      return await this.atom(2, item.title);
-    })
-  );
-  console.log(compDatas);
+  const compDatas = async () =>
+    await Promise.all(
+      compData.map(async (item) => {
+        return await this.atom(2, item.title);
+      })
+    );
 
   const component = async () => {
     // const comp = await html2dom`
@@ -44,8 +44,8 @@ export function Molecule_ListWHeading2(data = null) {
     const comp = await createElement(
       "div",
       { className: "Molecule_ListWHeading2" },
-      createElement("div", {}, await this.atom(1, "Header")),
-      createElement("ul", {}, compDatas)
+      await createElement("div", {}, await this.atom(1, "Header")),
+      await createElement("ul", {}, await compDatas())
     );
 
     return comp;
