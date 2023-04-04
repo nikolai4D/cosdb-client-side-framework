@@ -3,7 +3,7 @@ import { html2dom } from "../../core/helpers/html2dom.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
 import { Atom } from "../../core/Atom.mjs";
 
-export function Atom_ListItem2(data = "list data placeholder") {
+export function Atom_ListItem2() {
   Atom.call(this);
 
   const component = async (compData) => {
@@ -19,7 +19,7 @@ export function Atom_ListItem2(data = "list data placeholder") {
     return comp;
   };
 
-  this.render = async (data) => {
+  this.render = async (data = "list data placeholder") => {
     return await component(data);
   };
 }
