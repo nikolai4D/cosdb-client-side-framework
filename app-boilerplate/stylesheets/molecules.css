@@ -39,20 +39,24 @@
 .molecule_image-and-text {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* padding: 30px; */
-    /* gap: 20px; */
     width: 200px;
-    height: 250px;
-    background-color: var(--grey-color);
-    border: 1px solid var(--grey-color);
-    border-radius: 6px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
 
 }
 
 .molecule_image-and-text > img {
     max-width: 100%;
+    min-height: 250px;
+    min-width: 200px;
+    border-radius: 5px 5px 0 0;
+    max-height: 250px;
+    height: auto;
+    width: 40%;
+}
+
+.molecule_image-and-text > p {
+    padding: 0.5em;
 }
 
 .molecule_paginator {
