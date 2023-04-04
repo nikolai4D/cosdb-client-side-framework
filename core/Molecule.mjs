@@ -12,7 +12,7 @@ export function Molecule() {
     comp.value = [{ value: compValue[0].value }];
     console.log(comp, data);
 
-    const renderComp = await comp.render();
+    const renderComp = await comp.render(data);
     return renderComp;
   };
 }
