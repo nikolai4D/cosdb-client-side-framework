@@ -38,7 +38,7 @@ export function Molecule_ListWHeading2(data = null) {
       "div",
       { className: "Molecule_ListWHeading2" },
       createElement("div", {}, await this.atom(1, "Header")),
-      createElement("ul", {}, await this.atom(2))
+      createElement("ul", {}, await this.atom(2, "testdata"))
     );
 
     return comp;

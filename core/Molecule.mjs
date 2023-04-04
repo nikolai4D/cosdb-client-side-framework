@@ -10,8 +10,9 @@ export function Molecule() {
     const comp = component.comp;
     const compValue = component.value;
     comp.value = [{ value: compValue[0].value }];
+    console.log(comp);
 
-    const renderComp = await comp(data).render();
+    const renderComp = await comp.render();
     return renderComp;
   };
 }
