@@ -41,7 +41,7 @@ export function Molecule_ListWHeading2(data = null) {
     // <ul>${await this.atom(2)}</ul>
     // </div>`;
 
-    console.log(await compDatas);
+    console.log(await compDatas(compData), "compDatas(compData)");
     const comp = await createElement(
       "div",
       { className: "Molecule_ListWHeading2" },
