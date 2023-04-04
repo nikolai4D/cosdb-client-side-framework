@@ -27,7 +27,7 @@ export function Molecule_ListWHeading2(data = null) {
     { title: "title3" },
   ];
 
-  const compDatas = async () =>
+  const compDatas = async (compData) =>
     await Promise.all(
       compData.map(async (item) => {
         return await this.atom(2, item.title);
@@ -46,7 +46,7 @@ export function Molecule_ListWHeading2(data = null) {
       "div",
       { className: "Molecule_ListWHeading2" },
       await createElement("div", {}, await this.atom(1, "Header")),
-      await createElement("ul", {}, null)
+      await createElement("ul", {}, await compDatas(compData)
     );
 
     return comp;
