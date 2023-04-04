@@ -46,7 +46,8 @@ export function Organism_ListAllCards() {
     return `
       <div class="organism_list-all-search">
         ${slot(this.molecules[0].molecule)}
-        <div id="organism_all_lists" class="organism_list-all-search__lists">
+        <div  id="org-cards-container" class="organism_buttonFilledcards">
+        
           ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
         <div id="modal-slot">
