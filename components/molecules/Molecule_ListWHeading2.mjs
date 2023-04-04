@@ -34,8 +34,6 @@ export function Molecule_ListWHeading2(data = null) {
       })
     );
 
-console.log(await compDatas)
-
   const component = async () => {
     // const comp = await html2dom`
     // <div class="molecule_list">
@@ -43,11 +41,12 @@ console.log(await compDatas)
     // <ul>${await this.atom(2)}</ul>
     // </div>`;
 
+    console.log(await compDatas);
     const comp = await createElement(
       "div",
       { className: "Molecule_ListWHeading2" },
       await createElement("div", {}, await this.atom(1, "Header")),
-      await createElement("ul", {},)
+      await createElement("ul", {}, null)
     );
 
     return comp;
