@@ -1,4 +1,5 @@
 // import { html2dom } from "../../core/helpers.mjs";
+import { createElement } from "../../core/helpers/createElement.mjs";
 import { ViewTemplate } from "../../core/ViewTemplate.mjs";
 
 export function ViewTemplate_dev() {
@@ -11,8 +12,9 @@ export function ViewTemplate_dev() {
   ];
 
   const component = async () => {
-    const comp = document.createElement("div");
-    comp.appendChild(await this.slot("slot1"));
+    // const comp = document.createElement("div");
+    // comp.appendChild(await this.slot("slot1"));
+    const comp = await createElement("div", {}, await this.slot("slot1"));
     return comp;
   };
 
