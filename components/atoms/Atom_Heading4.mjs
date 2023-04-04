@@ -4,16 +4,16 @@ import { createElement } from "../../core/helpers/createElement.mjs";
 export function Atom_Heading4() {
   Atom.call(this);
 
-  const component = async (compData) => {
+  const component = async () => {
     const comp = await createElement(
       "h4",
       { class: await this.atom() },
-      compData
+      await this.atom()
     );
     return comp;
   };
 
-  this.render = async (data = "H4 data placeholder") => {
-    return await component(data);
+  this.render = async () => {
+    return await component();
   };
 }

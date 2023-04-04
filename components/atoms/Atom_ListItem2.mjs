@@ -7,10 +7,6 @@ export function Atom_ListItem2() {
   Atom.call(this);
 
   const component = async (compData) => {
-    // const comp = await html2dom`
-    //   <li class="${await this.atom()}">${data}</li>`;
-    // return comp;
-
     const comp = await createElement(
       "li",
       { class: await this.atom() },

@@ -28,8 +28,8 @@ export function Molecule_ListWHeading2() {
     const comp = await createElement(
       "div",
       { className: "Molecule_ListWHeading2" },
-      await createElement("div", {}, await this.atom(1, compData)),
-      await createElement("ul", {}, ...(await compDatas(compData2)))
+      await createElement("div", {}, await this.atom(1, null)),
+      await createElement("ul", {}, ...(await compDatas(compData)))
     );
 
     //add event listener to the comp here
@@ -43,15 +43,15 @@ export function Molecule_ListWHeading2() {
   };
 
   //add component specific functions here
-  const compData2 = [
-    { title: "title1" },
-    { title: "title2" },
-    { title: "title3" },
-  ];
+  //   const compData2 = [
+  //     { title: "title1" },
+  //     { title: "title2" },
+  //     { title: "title3" },
+  //   ];
 
-  const compDatas = async (compData2) =>
+  const compDatas = async (arrayOfData) =>
     await Promise.all(
-      compData2.map(async (item) => {
+      arrayOfData.map(async (item) => {
         return await this.atom(2, item.title);
       })
     );

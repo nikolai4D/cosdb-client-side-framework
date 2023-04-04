@@ -29,7 +29,7 @@ export function Organism_ListAll2() {
     const comp = await createElement(
       "div",
       { className: "Organism_ListAll2" },
-      await createElement("div", {}, await this.molecule(1, "Header2"))
+      await createElement("div", {}, await this.molecule(1, compData))
     );
 
     //add event listener to the comp here
@@ -44,4 +44,9 @@ export function Organism_ListAll2() {
   };
 
   //add component specific functions here
+  const compData = [
+    { title: "title1" },
+    { title: "title2" },
+    { title: "title3" },
+  ];
 }
