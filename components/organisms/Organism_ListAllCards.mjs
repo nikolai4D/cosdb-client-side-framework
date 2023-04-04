@@ -134,7 +134,7 @@ export function Organism_ListAllCards() {
     const newMolecules = data.map((molecule, index) => {
       const newMolecule = createMolecule(Molecule_Card, index + 1);
   
-      const headingAtom = createAtom(Atom_Image, "placeholder", 1);
+      const headingAtom = createAtom(Atom_Image, `assets/images/${index+1}.jpg`, 1);
       newMolecule.component.atoms = [headingAtom];
   
       molecule.title.forEach((item, index2) => {
