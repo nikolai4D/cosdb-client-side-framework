@@ -34,6 +34,7 @@ export async function getComponent(compName, compParentId) {
     comp = getComp.comp;
     comp.value = [{ value: compValue[0].value }];
   }
+  console.log(comp);
   const renderComp = await comp.render();
 
   div.appendChild(renderComp);
