@@ -131,7 +131,7 @@ export function Organism_ListAllWIcons() {
     const newMolecules = data.map((molecule, index) => {
       const newMolecule = createMolecule(Molecule_ListWHeading, index + 1);
   
-      const headingAtom = createAtom(Atom_Heading4, molecule.letter, 1);
+      const headingAtom = createAtom(Atom_Heading4,"", 1);
       newMolecule.component.atoms = [headingAtom];
   
       molecule.title.forEach((item, index2) => {
