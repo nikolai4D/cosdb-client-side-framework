@@ -40,11 +40,11 @@ export async function transformer_groupByFirstLetter(theArray) {
   
 }
 
-const grouped = theArray.reduce((acc, str) => {
-  const firstLetter = str.title[0].toUpperCase();
-  if (!acc[firstLetter]) {
-    acc[firstLetter] = [];
-  }
-  acc[firstLetter].push(str);
-  return acc;
-}, {});
+// const grouped = theArray.reduce((acc, str) => {
+//   const firstLetter = str.title[0].toUpperCase();
+//   if (!acc[firstLetter]) {
+//     acc[firstLetter] = [];
+//   }
+//   acc[firstLetter].push(str);
+//   return acc;
+// }, {});
