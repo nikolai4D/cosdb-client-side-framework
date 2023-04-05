@@ -14,7 +14,9 @@ export async function transformer_groupByFirstLetter(theArray) {
         const sortedGrouped = Object.entries(grouped)
           .sort(([a], [b]) => a.localeCompare(b.title, "sv"))
           .map(([letter, title]) => ({ letter, title }));
-      
+        
+        console.log(sortedGrouped)
+
         return sortedGrouped;
   
 }
