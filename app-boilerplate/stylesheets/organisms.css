@@ -148,6 +148,7 @@ nav > ul {
     height: 85vh;
     width: 783px;
     margin: auto;
+      margin-top: auto;
     margin-top: 50px;
     align-content: start;
 }
@@ -167,13 +168,10 @@ nav > ul {
 .organism_list-all-search__lists {
     display: grid;
     grid-auto-flow: row;
-    grid-gap: 4rem;
-    height: 85vh;
-    width: 783px;
-    margin: auto;
-      margin-top: auto;
-    margin-top: 50px;
-    align-content: start;
+    grid-gap: 2rem;
+    overflow: auto;
+    padding: 2em;
+    border-radius: 6px;
 }
 
 .organism_list-all-search__lists::-webkit-scrollbar {
