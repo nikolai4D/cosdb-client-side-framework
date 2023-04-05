@@ -97,7 +97,6 @@ export function Organism_ListAllWIcons() {
               })
             filteredData = filteredData.filter( (item) => item.title.length > 0)
           }
-          console.log(filteredData)
           updateMolecules(filteredData);
           renderMolecules();
           }
@@ -128,7 +127,8 @@ export function Organism_ListAllWIcons() {
   };
   
   const updateMolecules = (data) => {
-  
+    console.log(data)
+
     const newMolecules = data.map((molecule, index) => {
       const newMolecule = createMolecule(Molecule_List, index + 1);
   
