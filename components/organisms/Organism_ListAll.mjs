@@ -90,7 +90,7 @@ export function Organism_ListAll() {
           else {
             filteredData = [...data].map(item =>
                 {
-                let theTitle = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
+                let theTitle = item.title.filter( (titl) => titl.title.toLowerCase().includes(e.target.value.toLowerCase()))
                 return {
                   letter: item.letter, title: theTitle
                 }
@@ -135,7 +135,7 @@ export function Organism_ListAll() {
       newMolecule.component.atoms = [headingAtom];
   
       molecule.title.forEach((item, index2) => {
-        const listItemAtom = createAtom(Atom_ListItem, item, index2);
+        const listItemAtom = createAtom(Atom_ListItem, item.title, index2);
         newMolecule.component.atoms.push(listItemAtom);
       });
   
