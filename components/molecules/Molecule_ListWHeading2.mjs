@@ -48,14 +48,9 @@ export function Molecule_ListWHeading2() {
   };
 
   //add component specific functions here
-  //   const compData2 = [
-  //     { title: "title1" },
-  //     { title: "title2" },
-  //     { title: "title3" },
-  //   ];
 
   const compDatas = async (arrayOfData) => {
-    console.log(arrayOfData, "!!!!!!!!!!!!");
+    console.log(arrayOfData, "arrayOfData!!!!!!!!!!!!");
     await Promise.all(
       arrayOfData.map(async (item) => {
         return await this.atom(2, item.title);
