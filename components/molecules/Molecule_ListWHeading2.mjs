@@ -24,7 +24,7 @@ export function Molecule_ListWHeading2() {
 
   //build component
 
-  const component = async (compData) => {
+  const component = async (compData = [{ title: "title1" }]) => {
     const comp = await createElement(
       "div",
       { className: "Molecule_ListWHeading2" },
@@ -49,7 +49,7 @@ export function Molecule_ListWHeading2() {
   //     { title: "title3" },
   //   ];
 
-  const compDatas = async (arrayOfData = [{ title: "title1" }]) =>
+  const compDatas = async (arrayOfData) =>
     await Promise.all(
       arrayOfData.map(async (item) => {
         return await this.atom(2, item.title);
