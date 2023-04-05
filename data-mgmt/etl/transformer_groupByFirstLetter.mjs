@@ -17,6 +17,9 @@ export async function transformer_groupByFirstLetter(theArray) {
         }
         
         console.log(sortedGrouped)
+
+        sortedGrouped.sort((a, b) => a.letter.localeCompare(b.letter, "sv"));
+
         return sortedGrouped;        
   
 }
