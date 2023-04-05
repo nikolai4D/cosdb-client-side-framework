@@ -204,6 +204,9 @@ nav > ul {
     border-radius: 6px;
 }
 
+.organism_list-all-search-icons__lists > .molecule_list > ul {
+    
+}
 
 .organism_two-fields-one-dropdown-one-picture {
     display: grid;
