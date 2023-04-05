@@ -27,11 +27,13 @@ export function Molecule_ListWHeading2() {
   const component = async (
     compData = [{ title: "title1" }, { title: "title2" }]
   ) => {
+    const ulCompInput = await compDatas(compData);
+    console.log(ulCompInput, "!!!!!!!!!!!!");
     const comp = await createElement(
       "div",
       { className: "Molecule_ListWHeading2" },
       await createElement("div", {}, await this.atom(1, null)),
-      await createElement("ul", {}, ...(await compDatas(compData)))
+      await createElement("ul", {}, ...ulCompInput)
     );
 
     //add event listener to the comp here
