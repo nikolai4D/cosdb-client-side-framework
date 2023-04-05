@@ -76,6 +76,7 @@ export function Organism_ListAllWIcons() {
     for (let mol of this.molecules) {
       await this.fillSlot(mol.molecule, mol.component.getElement())
     }
+    console.log(data)
     updateMolecules(data);
     await renderMolecules();
 
@@ -127,7 +128,6 @@ export function Organism_ListAllWIcons() {
   };
   
   const updateMolecules = (data) => {
-    console.log(data)
 
     const newMolecules = data.map((molecule, index) => {
       const newMolecule = createMolecule(Molecule_List, index + 1);
