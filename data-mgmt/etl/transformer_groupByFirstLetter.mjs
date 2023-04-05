@@ -13,7 +13,7 @@ export async function transformer_groupByFirstLetter(theArray) {
 
         for (const [key, items] of Object.entries(grouped)) {
           const sortedItems = items.sort((a, b) => a.title.localeCompare(b.title, "sv"));
-          sortedGrouped.push({ letter: key, title: sortedItems });
+          sortedGrouped.push({ letter: key, titles: sortedItems });
         }
         
         console.log(sortedGrouped)
