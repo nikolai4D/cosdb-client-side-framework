@@ -136,7 +136,7 @@ export function Organism_ListAllCards() {
       newMolecule.component.atoms = [headingAtom];
   
       molecule.title.forEach((item, index2) => {
-        const listItemAtom = createAtom(Atom_Text1, item, index2);
+        const listItemAtom = createAtom(Atom_Text1, item.title, index2);
         newMolecule.component.atoms.push(listItemAtom);
       });
   
