@@ -3,8 +3,6 @@ import { mutation_setAllListData } from '../mutations/mutation_setAllListData.mj
 
 export async function action_getAllListData({type, url}) {
 
-      console.log(url)
       const data =  await apiCallPost({url: "api/getListData", body: url});
-      console.log(data)
       mutation_setAllListData({type, data})
 }
