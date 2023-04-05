@@ -44,7 +44,7 @@ export function Organism_ListAllWIcons() {
 
   this.getHtml = function () {
     return `
-      <div class="organism_list-all-search-icon">
+      <div class="organism_list-all-search">
         ${slot(this.molecules[0].molecule)}
         <div id="organism_all_lists" class="organism_list-all-search__lists-icon">
           ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
