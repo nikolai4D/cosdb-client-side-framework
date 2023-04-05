@@ -88,14 +88,6 @@
     justify-items: center;
 }
 
-.molecule_list__list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2rem;
-    margin: 0;
-}
 
 .molecule_list__list li {
     cursor: pointer;
