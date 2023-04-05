@@ -1,6 +1,6 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from "../../core/helpers.mjs";
-import { Molecule_List } from "../molecules/Molecule_List.mjs";
+import { Molecule_ListWHeading } from "../molecules/Molecule_ListWHeading.mjs";
 import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearchButton.mjs";
 import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
@@ -18,8 +18,8 @@ export function Organism_ListAllWIcons() {
     },
     {
       id: 2,
-      molecule: "Molecule_List",
-      component: new Molecule_List(),
+      molecule: "Molecule_ListWHeading",
+      component: new Molecule_ListWHeading(),
     },
   ];
 
@@ -129,7 +129,10 @@ export function Organism_ListAllWIcons() {
   const updateMolecules = (data) => {
   
     const newMolecules = data.map((molecule, index) => {
-      const newMolecule = createMolecule(Molecule_List, index + 1);
+      const newMolecule = createMolecule(Molecule_ListWHeading, index + 1);
+  
+      const headingAtom = createAtom(Atom_Heading4,"", 1);
+      newMolecule.component.atoms = [headingAtom];
   
       molecule.title.forEach((item, index2) => {
         const listItemAtom = createAtom(Atom_ListItem, item.title, index2);
