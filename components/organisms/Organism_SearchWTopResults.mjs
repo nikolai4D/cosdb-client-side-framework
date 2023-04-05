@@ -43,8 +43,9 @@ export function Organism_SearchWTopResults() {
 
     for (let mol of this.molecules) {
         for (let atom of mol.component.atoms) {
-         atom.component.click = async () => { console.log("clicked")}
-        
+         atom.component.oninput = async (e) => {
+            console.log(e.target.value)
+            }
         }
         await this.fillSlot(mol.molecule, mol.component.getElement())
       }
