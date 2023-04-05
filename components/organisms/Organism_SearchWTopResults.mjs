@@ -39,9 +39,20 @@ export function Organism_SearchWTopResults() {
     }
 
     this.bindScript= async function() {
-        for (let mol of this.molecules) {
-            await this.fillSlot(mol.molecule, mol.component.getElement())
-          }
+
+
+    for (let mol of this.molecules) {
+        for (let atom of mol.component.atoms) {
+         atom.component.click = async () => { console.log("clicked")}
+        
+        }
+        await this.fillSlot(mol.molecule, mol.component.getElement())
+      }
+
+      
+        // for (let mol of this.molecules) {
+        //     await this.fillSlot(mol.molecule, mol.component.getElement())
+        //   }
         for (let org of this.organisms) {
         await this.fillSlot(org.organism, org.component.getElement())
         }
