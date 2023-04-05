@@ -9,15 +9,15 @@ export async function transformer_groupByFirstLetter(theArray) {
           return acc;
         }, {});
 
-        const sortedGrouped = {};
+        const sortedGrouped = [];
 
         for (const [key, items] of Object.entries(grouped)) {
-          sortedGrouped[key] = items.sort((a, b) => a.title.localeCompare(b.title, "sv"));
+          const sortedItems = items.sort((a, b) => a.title.localeCompare(b.title, "sv"));
+          sortedGrouped.push({ letter: key, title: sortedItems });
         }
-
-        console.log(sortedGrouped);
-
-        return sortedGrouped;
+        
+        console.log(sortedGrouped)
+        return sortedGrouped;        
   
 }
 
