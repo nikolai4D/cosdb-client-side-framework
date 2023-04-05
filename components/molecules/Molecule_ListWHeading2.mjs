@@ -51,10 +51,12 @@ export function Molecule_ListWHeading2() {
   //     { title: "title3" },
   //   ];
 
-  const compDatas = async (arrayOfData) =>
+  const compDatas = async (arrayOfData) => {
+    console.log(arrayOfData);
     await Promise.all(
       arrayOfData.map(async (item) => {
         return await this.atom(2, item.title);
       })
     );
+  };
 }
