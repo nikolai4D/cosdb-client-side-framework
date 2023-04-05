@@ -91,7 +91,7 @@ export function Organism_ListAllCards() {
           else {
             filteredData = [...data].map(item =>
                 {
-                let theTitle = item.title.filter( (titl) => titl.toLowerCase().includes(e.target.value.toLowerCase()))
+                let theTitle = item.title.filter( (titl) => titl.title.toLowerCase().includes(e.target.value.toLowerCase()))
                 return {
                   letter: item.letter, title: theTitle
                 }
