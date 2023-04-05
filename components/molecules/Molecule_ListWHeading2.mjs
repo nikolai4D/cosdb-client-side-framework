@@ -28,7 +28,8 @@ export function Molecule_ListWHeading2() {
     compData = [{ title: "title1" }, { title: "title2" }]
   ) => {
     const ulCompInput = await compDatas(compData);
-    console.log(ulCompInput, "!!!!!!!!!!!!");
+    console.log(compData, "compData!!!!!!!!!!!!");
+    console.log(ulCompInput, "ulCompInput!!!!!!!!!!!!");
     const comp = await createElement(
       "div",
       { className: "Molecule_ListWHeading2" },
