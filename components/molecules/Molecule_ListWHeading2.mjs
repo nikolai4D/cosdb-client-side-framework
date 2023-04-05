@@ -27,7 +27,7 @@ export function Molecule_ListWHeading2() {
   const component = async (
     compData = [{ title: "title1" }, { title: "title2" }]
   ) => {
-    console.log(compData);
+    console.log(...(await compDatas(compData)));
     const comp = await createElement(
       "div",
       { className: "Molecule_ListWHeading2" },
