@@ -9,15 +9,17 @@ export async function transformer_groupByFirstLetter(theArray) {
           return acc;
         }, {});
         console.log(grouped)
-
-        console.log(JSON.stringify(grouped))
       
-        const sortedGrouped = Object.entries(grouped)
-          .sort(([a], [b]) => a.localeCompare(b, "sv"))
-          .map(([letter, title]) => ({ letter, title }));
+        const flattenedGrouped = Object.values(grouped).flat();
+
+        const sortedGrouped = flattenedGrouped
+          .sort((a, b) => a.title.localeCompare(b.title, "sv"));
         
-        console.log(sortedGrouped)
+          console.log(sortedGrouped)
+
 
         return sortedGrouped;
+        
   
 }
+
