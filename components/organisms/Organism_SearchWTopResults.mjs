@@ -39,7 +39,7 @@ export function Organism_SearchWTopResults() {
     }
 
     this.bindScript= async function() {
-
+    const anArray = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh"]
 
     for (let mol of this.molecules) {
         for (let atom of mol.component.atoms) {
