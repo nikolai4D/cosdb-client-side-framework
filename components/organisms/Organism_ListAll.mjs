@@ -90,12 +90,12 @@ export function Organism_ListAll() {
           else {
             filteredData = [...data].map(item =>
                 {
-                let theTitle = item.titles.filter( (titl) => titl.title.toLowerCase().includes(e.target.value.toLowerCase()))
+                let theTitle = item.title.filter( (titl) => titl.title.toLowerCase().includes(e.target.value.toLowerCase()))
                 return {
-                  letter: item.letter, titles: theTitle
+                  letter: item.letter, title: theTitle
                 }
               })
-            filteredData = filteredData.filter( (item) => item.titles.length > 0)
+            filteredData = filteredData.filter( (item) => item.title.length > 0)
           }
           updateMolecules(filteredData);
           renderMolecules();
