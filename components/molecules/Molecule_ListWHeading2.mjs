@@ -24,9 +24,7 @@ export function Molecule_ListWHeading2() {
 
   //build component
 
-  const component = async (
-    compData = [{ title: "title1" }, { title: "title2" }]
-  ) => {
+  const component = async (compData) => {
     const comp = await createElement(
       "div",
       { className: "Molecule_ListWHeading2" },
@@ -40,7 +38,7 @@ export function Molecule_ListWHeading2() {
   };
 
   //render component
-  this.render = async (data = "data placeholder") => {
+  this.render = async (data = [{ title: "title1" }, { title: "title2" }]) => {
     return await component(data);
   };
 
