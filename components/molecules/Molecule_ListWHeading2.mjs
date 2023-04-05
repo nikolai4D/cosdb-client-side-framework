@@ -53,7 +53,7 @@ export function Molecule_ListWHeading2() {
   //   ];
 
   const compDatas = async (arrayOfData) => {
-    console.log(arrayOfData);
+    console.log(arrayOfData, "!!!!!!!!!!!!");
     await Promise.all(
       arrayOfData.map(async (item) => {
         return await this.atom(2, item.title);
