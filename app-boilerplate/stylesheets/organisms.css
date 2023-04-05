@@ -176,7 +176,12 @@ nav > ul {
 
 .organism_list-all-search__lists > .molecule_list > ul {
 
-
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 0;    
 }
 
 .organism_list-all-search__lists::-webkit-scrollbar {
