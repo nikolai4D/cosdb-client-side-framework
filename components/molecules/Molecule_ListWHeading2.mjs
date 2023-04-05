@@ -24,7 +24,7 @@ export function Molecule_ListWHeading2() {
 
   //build component
 
-  const component = async (compData = "compData placeholder") => {
+  const component = async (compData) => {
     const comp = await createElement(
       "div",
       { className: "Molecule_ListWHeading2" },
