@@ -69,8 +69,6 @@ export function Organism_ListAllWIcons() {
         await State[type];
         data = State[type];
         filteredData = [...State[type]]
-
-        console.log(data)
       }
     }
     changeData(data, filteredData)

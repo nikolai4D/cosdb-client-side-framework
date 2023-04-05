@@ -70,8 +70,6 @@ export function Organism_ListAllCards() {
         await State[type];
         data = State[type];
         filteredData = [...State[type]]
-
-        console.log(data)
       }
     }
     changeData(data, filteredData)
