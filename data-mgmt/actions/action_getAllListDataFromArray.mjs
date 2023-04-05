@@ -4,6 +4,7 @@ import { mutation_setAllListData } from '../mutations/mutation_setAllListData.mj
 export async function action_getAllListDataFromArray({type, urls}) {
 
     let data = []
+    console.log(urls)
     for (const url of urls){
       data.push(...await apiCallPost({url: "api/getListData", body: url}))
     }
