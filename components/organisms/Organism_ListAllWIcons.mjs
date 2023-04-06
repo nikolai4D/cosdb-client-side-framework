@@ -1,8 +1,8 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from "../../core/helpers.mjs";
-import { Molecule_ListWHeading } from "../molecules/Molecule_ListWHeading.mjs";
+import { Molecule_HeadingWText } from "../molecules/Molecule_HeadingWText.mjs";
 import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearchButton.mjs";
-import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
+import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { State } from "../../data-mgmt/state.mjs";
 import { Organism_ModalProcessPrep } from "./Organism_ModalProcessPrep.mjs";
@@ -18,8 +18,8 @@ export function Organism_ListAllWIcons() {
     },
     {
       id: 2,
-      molecule: "Molecule_ListWHeading",
-      component: new Molecule_ListWHeading(),
+      molecule: "Molecule_HeadingWText",
+      component: new Molecule_HeadingWText(),
     },
   ];
 
@@ -132,9 +132,9 @@ export function Organism_ListAllWIcons() {
     data.forEach((molecule, index) => {
 
       molecule.title.forEach((item, index2) => {
-        const newMolecule = createMolecule(Molecule_ListWHeading, index + 1);
+        const newMolecule = createMolecule(Molecule_HeadingWText, index + 1);
         const headingAtom = createAtom(Atom_Heading4,item.title, 1);
-        const listItemAtom = createAtom(Atom_ListItem, "test", index2);
+        const listItemAtom = createAtom(Atom_Text1, "test", index2);
         newMolecule.component.atoms = [];
         newMolecule.component.atoms.push(headingAtom);
         newMolecule.component.atoms.push(listItemAtom);
@@ -155,27 +155,27 @@ export function Organism_ListAllWIcons() {
     for (const  mol of this.molecules) {
       await moleculesSlots.appendChild(mol.component.getElement());
     }
-    for await (const child of moleculesSlots.children) {
-      for await (const li of child.children[1].children){
-        anArray.push(await li)
-      }
-    }
+    // for await (const child of moleculesSlots.children) {
+    //   for await (const li of child.children[1].children){
+    //     anArray.push(await li)
+    //   }
+    // }
     
     // for (let org of this.organisms) {
-      let newOrg = new Organism_ModalProcessPrep()
-      newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
-      newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
-      newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value
+    //   let newOrg = new Organism_ModalProcessPrep()
+    //   newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
+    //   newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
+    //   newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value
 
-      newOrg.moleculeLeft.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[1].component.value[0].value
-      newOrg.moleculeMiddle.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[1].component.value[0].value
-      newOrg.moleculeRight.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[1].component.value[0].value
+    //   newOrg.moleculeLeft.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[1].component.value[0].value
+    //   newOrg.moleculeMiddle.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[1].component.value[0].value
+    //   newOrg.moleculeRight.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[1].component.value[0].value
 
-      newOrg.parent = await anArray;
+    //   newOrg.parent = await anArray;
 
-      let slotContent= document.getElementById("modal-slot")
-      slotContent.innerHTML = ""
-      slotContent.appendChild(newOrg.getElement());
+    //   let slotContent= document.getElementById("modal-slot")
+    //   slotContent.innerHTML = ""
+    //   slotContent.appendChild(newOrg.getElement());
 
     // }
   };
