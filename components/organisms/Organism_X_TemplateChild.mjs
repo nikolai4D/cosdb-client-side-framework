@@ -1,7 +1,7 @@
 //import core
 import { createElement } from "../../core/helpers/createElement.mjs";
 import { Organism } from "../../core/Organism.mjs";
-//import components
+//import sub components
 import { Molecule_X_Template } from "../molecules/Molecule_X_Template.mjs";
 
 export function Organism_X_TemplateChild() {
@@ -26,7 +26,6 @@ export function Organism_X_TemplateChild() {
   ];
 
   //build component
-
   const component = async (
     compData = [{ title: "Organism_TemplateChild placeholder data" }]
   ) => {
@@ -42,7 +41,6 @@ export function Organism_X_TemplateChild() {
   };
 
   //render component
-
   this.render = async (data) => {
     return await component(data);
   };

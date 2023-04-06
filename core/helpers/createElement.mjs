@@ -2,7 +2,7 @@ export function createElement(tag, attributes = {}, ...children) {
   const element = document.createElement(tag);
 
   for (const [key, value] of Object.entries(attributes)) {
-    if (key === "className") {
+    if (key === "className" || key === "class") {
       const classes = value.split(" ");
       for (const className of classes) {
         element.classList.add(className);

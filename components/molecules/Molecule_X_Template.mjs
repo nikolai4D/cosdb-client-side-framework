@@ -1,7 +1,7 @@
 //import core
 import { Molecule } from "../../core/Molecule.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
-//import components
+//import sub components
 import { Atom_X_Template } from "../atoms/Atom_X_Template.mjs";
 
 export function Molecule_X_Template() {
@@ -24,7 +24,6 @@ export function Molecule_X_Template() {
   ];
 
   //build component
-
   const component = async (
     compData = [{ title: "placeholder 1" }, { title: "placeholder 2" }]
   ) => {

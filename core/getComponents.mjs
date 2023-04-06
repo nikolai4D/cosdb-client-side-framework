@@ -12,7 +12,6 @@ export async function getComponents(parentId) {
   for (const slot of Slots) {
     try {
       const comp = await apiCallGet(`/read/${componentType}s/${slot.id}`);
-      //comp[0].value is the component name to be read from /components
       if (comp.length > 0) {
         const componentFromModule = await getComponent(
           comp[0].value,
@@ -22,7 +21,6 @@ export async function getComponents(parentId) {
         const compObj = {
           id: comp[0].id,
           slot: slot.value,
-          //content: comp[0].value,
           content: componentFromModule,
         };
 

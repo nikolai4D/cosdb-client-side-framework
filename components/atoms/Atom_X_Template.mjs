@@ -12,6 +12,7 @@ export function Atom_X_Template() {
       { class: await this.atom() },
       compData
     );
+    //add event listeners here
     return comp;
   };
 
