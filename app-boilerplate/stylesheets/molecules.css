@@ -26,6 +26,13 @@
     font-size:smaller;
 }
 
+.molecule_card-text__desc > p {
+    margin: 0;
+    margin-left: 0.5em
+}
+
+
+
 .molecule_header-and-text {
     /* padding: 3em; */
     margin: 30px;
