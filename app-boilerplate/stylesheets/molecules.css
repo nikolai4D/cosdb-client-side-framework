@@ -12,7 +12,7 @@
 
 
 
-.molecule_logo:hover {
+.molecule_logo > i:hover, h4:hover {
     color: var(--custom-color-1);
     transition: 50ms;
 }
