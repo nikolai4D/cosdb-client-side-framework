@@ -115,7 +115,6 @@
     cursor: pointer;
     padding: 0.5em;
     border-radius: 5px;
-    border: 1px lightgray dashed;
 }
 
 .molecule_list__list > li:hover {
