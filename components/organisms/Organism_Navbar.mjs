@@ -43,7 +43,7 @@ export function Organism_Navbar() {
     return `
 
 
-        <div class="my-nav">
+        <div class="organism_navbar">
 
             <div class="organism_navbar-logo">
                 ${slot(this.molecules[0].molecule)}
@@ -51,7 +51,7 @@ export function Organism_Navbar() {
 
             ${slot(this.molecules[1].molecule)}
 
-            <div class="organism_user-navbar">
+            <div class="organism_navbar-user">
                 ${slot(this.molecules[2].molecule)}
             </div>
         </div>
