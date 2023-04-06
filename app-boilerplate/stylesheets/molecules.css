@@ -3,10 +3,10 @@
 .molecule_logo {
     display: block ruby;
     margin-left: 1em;
+    cursor: default;
 }
 
 .organism_navbar-logo > .molecule_logo {
-    cursor: default;
     transition: 0.05s;
 }
 
