@@ -8,13 +8,12 @@
     display: block ruby;
     cursor: default;
     padding: 1em;
-    transition: 100ms
+    transition: 100ms;
 
 }
 
 .organism_navbar-logo > .molecule_logo:hover {
     color: var(--custom-color-1);
-    transition: 50ms;
 }
 
 .molecule_list__footer {
