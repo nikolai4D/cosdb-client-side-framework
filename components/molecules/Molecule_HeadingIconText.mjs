@@ -15,7 +15,6 @@ export function Molecule_HeadingIconText() {
       atom: "Atom_Heading4",
       component:  new Atom_Heading4()
     },
-        
     {
       id: 2,
       atom: "Atom_Icon",

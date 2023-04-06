@@ -138,9 +138,9 @@ export function Organism_ListAllWIcons() {
         const headingAtom = createAtom(Atom_Heading4,item.title, 1);
         const iconAtom = createAtom(Atom_Icon, "bi bi-book", index2);
         const listItemAtom = createAtom(Atom_Text1, description, index2);
-        newMolecule.component.atoms = [];
-        newMolecule.component.atoms.push(headingAtom);
+        newMolecule.component.atoms = [];        
         newMolecule.component.atoms.push(iconAtom);
+        newMolecule.component.atoms.push(headingAtom);
         newMolecule.component.atoms.push(listItemAtom);
         newMolecules.push(newMolecule)
       });
