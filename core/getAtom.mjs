@@ -16,10 +16,6 @@ export async function getAtom(module, parentId, atomId = null) {
   );
 
   const atomObject = await createComponent(type, module);
-  //   atomObject.value = [{ value: atomValue[0].value }];
 
-  //   const renderAtom = await atomObject.render();
-
-  //   return await renderAtom;
   return { comp: atomObject, value: atomValue };
 }

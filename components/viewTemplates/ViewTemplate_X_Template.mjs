@@ -14,10 +14,11 @@ export function ViewTemplate_X_Template() {
   ];
 
   //build component
-
   const component = async () => {
     const comp = await createElement("div", {}, await this.slot("slot1"));
+
     //add event listener to the comp here
+
     return comp;
   };
 

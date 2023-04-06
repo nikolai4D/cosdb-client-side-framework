@@ -6,7 +6,7 @@ export function Organism() {
   };
 
   this.childOrganism = async (id, data) => {
-    const component = this.organisms.find((mol) => mol.id === id)?.component;
+    const component = this.organisms.find((org) => org.id === id)?.component;
     const comp = component.comp;
     const compChildOrganisms = component.organisms;
     const compMolecules = component.molecules;
