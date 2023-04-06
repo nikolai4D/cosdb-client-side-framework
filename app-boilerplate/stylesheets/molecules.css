@@ -441,14 +441,18 @@
     padding: 26px;
 }
 
-
-
-
-.molecule_list__header_icon {
+.molecule_headingIconText {
+    
+}
+.molecule_headingIconText__header_icon {
     display:flex
 }
 
-.molecule_list__header_icon > i{
+.molecule_headingIconText__header_icon {
+    display:flex
+}
+
+.molecule_headingIconText__header_icon > i{
     margin-right: 1em
 }
 

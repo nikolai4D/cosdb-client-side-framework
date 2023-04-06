@@ -43,8 +43,8 @@ export function Molecule_HeadingIconText() {
 
     return `
 
-        <div class="molecule_list">
-            <div class="molecule_list__header_icon">
+        <div class="molecule_headingIconText">
+            <div class="molecule_headingIconText__header_icon">
               ${slot(this.atoms[0].atom)}
               ${slot(this.atoms[1].atom)}
             </div>
