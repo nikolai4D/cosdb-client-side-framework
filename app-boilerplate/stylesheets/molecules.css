@@ -443,3 +443,12 @@
 
 
 
+
+.molecule_list__header_icon {
+    display:flex
+}
+
+.molecule_list__header_icon > i{
+    padding: 1em
+}
+
