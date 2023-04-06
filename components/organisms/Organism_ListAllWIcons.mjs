@@ -144,7 +144,7 @@ export function Organism_ListAllWIcons() {
       });
   
     });
-    this.molecules= [...newMolecules]
+    this.molecules= [newMolecules]
     console.log(newMolecules)
   };
 
