@@ -2,9 +2,9 @@
 import { createElement } from "../../core/helpers/createElement.mjs";
 import { Organism } from "../../core/Organism.mjs";
 //import components
-import { Molecule_Template } from "../molecules/Molecule_X_Template.mjs";
+import { Molecule_X_Template } from "../molecules/Molecule_X_Template.mjs";
 
-export function Organism_TemplateChild() {
+export function Organism_X_TemplateChild() {
   Organism.call(this);
 
   // sub components
@@ -13,8 +13,8 @@ export function Organism_TemplateChild() {
   this.molecules = [
     {
       id: 1,
-      molecule: "Molecule_Template",
-      component: new Molecule_Template(),
+      molecule: "Molecule_X_Template",
+      component: new Molecule_X_Template(),
     },
   ];
 

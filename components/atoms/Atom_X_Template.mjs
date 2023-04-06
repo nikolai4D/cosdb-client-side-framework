@@ -2,7 +2,7 @@
 import { createElement } from "../../core/helpers/createElement.mjs";
 import { Atom } from "../../core/Atom.mjs";
 
-export function Atom_ListItem() {
+export function Atom_X_Template() {
   Atom.call(this);
 
   //build component

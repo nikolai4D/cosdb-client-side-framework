@@ -2,17 +2,17 @@
 import { Molecule } from "../../core/Molecule.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
 //import components
-import { Atom_Template } from "../atoms/Atom_X_Template.mjs";
+import { Atom_X_Template } from "../atoms/Atom_X_Template.mjs";
 
-export function Molecule_Template() {
+export function Molecule_X_Template() {
   Molecule.call(this);
 
   // sub components
   this.atoms = [
     {
       id: 1,
-      atom: "Atom_Template",
-      component: new Atom_Template(),
+      atom: "Atom_X_Template",
+      component: new Atom_X_Template(),
     },
   ];
 
