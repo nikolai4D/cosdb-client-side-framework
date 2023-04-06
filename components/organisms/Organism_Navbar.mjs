@@ -16,16 +16,16 @@ export function Organism_Navbar() {
       molecule: "Molecule_Logo",
       component: new Molecule_Logo(),
     },
-    {
-      id: 2,
-      molecule: "Molecule_List-Icon-Link",
-      component: "new Molecule_X_Template(),",
-    },
-    {
-      id: 3,
-      molecule: "Molecule_Text-Button",
-      component: "new Molecule_X_Template(),",
-    },
+    // {
+    //   id: 2,
+    //   molecule: "Molecule_List-Icon-Link",
+    //   component: "new Molecule_X_Template(),",
+    // },
+    // {
+    //   id: 3,
+    //   molecule: "Molecule_Text-Button",
+    //   component: "new Molecule_X_Template(),",
+    // },
   ];
 
   this.functions = [
