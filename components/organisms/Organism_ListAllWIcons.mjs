@@ -145,6 +145,7 @@ export function Organism_ListAllWIcons() {
   
     });
     this.molecules= [...newMolecules]
+    console.log(newMolecules)
   };
 
   const renderMolecules = async () => {
