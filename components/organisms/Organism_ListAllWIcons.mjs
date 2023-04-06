@@ -130,9 +130,6 @@ export function Organism_ListAllWIcons() {
     const newMolecules = []
     
     data.forEach((molecule, index) => {
-  
-    //   const headingAtom = createAtom(Atom_Heading4,"", 1);
-    //   newMolecule.component.atoms = [headingAtom];
 
       molecule.title.forEach((item, index2) => {
         const newMolecule = createMolecule(Molecule_ListWHeading, index + 1);
@@ -146,7 +143,6 @@ export function Organism_ListAllWIcons() {
   
     });
     this.molecules= [...newMolecules]
-    console.log(newMolecules)
   };
 
   const renderMolecules = async () => {
@@ -155,12 +151,8 @@ export function Organism_ListAllWIcons() {
    let content= document.getElementById("organism_all_lists")
    content.innerHTML = ""
    const moleculesSlots = content
-
    const anArray = []
-   console.log(this.molecules)
-
     for (const  mol of this.molecules) {
-        console.log(mol)
       await moleculesSlots.appendChild(mol.component.getElement());
     }
     for await (const child of moleculesSlots.children) {
