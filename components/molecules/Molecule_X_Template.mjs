@@ -2,7 +2,7 @@
 import { Molecule } from "../../core/Molecule.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
 //import components
-import { Atom_Template } from "../atoms/_Atom_Template.mjs";
+import { Atom_Template } from "../atoms/Atom_X_Template.mjs";
 
 export function Molecule_Template() {
   Molecule.call(this);

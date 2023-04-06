@@ -2,8 +2,8 @@
 import { createElement } from "../../core/helpers/createElement.mjs";
 import { Organism } from "../../core/Organism.mjs";
 //import components
-import { Molecule_Template } from "../molecules/_Molecule_Template.mjs";
-import { Organism_TemplateChild } from "./_Organism_TemplateChild.mjs";
+import { Molecule_Template } from "../molecules/Molecule_X_Template.mjs";
+import { Organism_TemplateChild } from "./Organism_X_TemplateChild.mjs";
 
 export function Organism_TemplateParent() {
   Organism.call(this);
