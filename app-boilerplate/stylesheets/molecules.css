@@ -443,7 +443,8 @@
 
 .molecule_headingIconText {
     padding:1em;
-    
+    border-bottom: 1px lightgray solid;
+    padding-top: 2em;
 }
 .molecule_headingIconText__header_icon {
     display:flex
