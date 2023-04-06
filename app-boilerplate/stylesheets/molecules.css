@@ -482,6 +482,8 @@
     background:rgb(247, 247, 246);
     border-radius:6px;
     cursor: pointer;
+    border-bottom: 1px lightgray solid;
+
 
 }
 
