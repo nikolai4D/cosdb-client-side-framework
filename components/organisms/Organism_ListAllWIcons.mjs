@@ -156,8 +156,10 @@ export function Organism_ListAllWIcons() {
    const moleculesSlots = content
 
    const anArray = []
+   console.log(this.molecules)
 
     for (const  mol of this.molecules) {
+        console.log(mol)
       await moleculesSlots.appendChild(mol.component.getElement());
     }
     for await (const child of moleculesSlots.children) {
