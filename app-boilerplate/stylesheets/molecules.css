@@ -446,6 +446,12 @@
     border-bottom: 1px lightgray solid;
     padding-top: 2em;
 }
+
+.molecule_headingIconText:hover {
+background:blue;
+
+}
+
 .molecule_headingIconText__header_icon {
     display:flex
 }
