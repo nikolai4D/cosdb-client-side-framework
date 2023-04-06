@@ -14,7 +14,7 @@
     cursor: default;
 }
 
-.organism_navbar .molecule_logo i:hover {
+.organism_navbar > .molecule_logo > i:hover {
     color: var(--custom-color-1);
     transition: 50ms;
 }
