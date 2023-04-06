@@ -360,7 +360,7 @@
     justify-content: end !important;
 }
 
-.organism_navbar-user {
+.organism_navbar-textButton {
     display: flex;
     align-items: center;
     justify-content: right;

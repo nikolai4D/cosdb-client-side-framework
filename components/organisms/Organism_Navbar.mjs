@@ -51,7 +51,7 @@ export function Organism_Navbar() {
             
             ${slot(this.molecules[1].molecule)}
 
-            <div class="organism_navbar-user">
+            <div class="organism_navbar-textButton">
                 ${slot(this.molecules[2].molecule)}
             </div>
         </div>
