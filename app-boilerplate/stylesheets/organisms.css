@@ -64,7 +64,7 @@
     justify-self: center;
 }
 
-.my-nav {
+.organism_navbar{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     width: 100vw;
@@ -74,11 +74,11 @@
 
 
 
-.my-nav > ul > div > a {
+.organism_navbar > ul > div > a {
     color: black;
 }
 
-.my-nav > ul {
+.organism_navbar > ul {
     display: flex;
     justify-content: center;
     gap: 37px;
@@ -361,7 +361,7 @@
     justify-content: end !important;
 }
 
-.organism_user-navbar {
+.organism_navbar-user {
     display: flex;
     align-items: center;
     justify-content: right;
