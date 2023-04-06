@@ -4,12 +4,12 @@
     display: block ruby;
     padding: 1em;
 }
-.organism_navbar .molecule_logo  i {
+.organism_navbar > .molecule_logo  > i {
     display: block ruby;
     cursor: default;
 }
 
-.organism_navbar .molecule_logo  h4 {
+.organism_navbar > .molecule_logo  > h4 {
     display: block ruby;
     cursor: default;
 }
