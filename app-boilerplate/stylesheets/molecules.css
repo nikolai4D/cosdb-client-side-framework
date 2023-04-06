@@ -2,14 +2,12 @@
 
 .molecule_logo {
     display: block ruby;
-    padding: 1em;
+    margin-left: 1em;
 }
-.organism_navbar-logo > .molecule_logo {
-    display: block ruby;
-    cursor: default;
-    padding: 1em;
-    transition: 0.05s;
 
+.organism_navbar-logo > .molecule_logo {
+    cursor: default;
+    transition: 0.05s;
 }
 
 .organism_navbar-logo > .molecule_logo:hover {
