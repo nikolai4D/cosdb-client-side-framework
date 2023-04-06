@@ -140,9 +140,9 @@ export function Organism_ListAllWIcons() {
         const listItemAtom = createAtom(Atom_ListItem, "test", index2);
         newMolecule.component.atoms.push(headingAtom);
         newMolecule.component.atoms.push(listItemAtom);
+        
       });
   
-      return newMolecule;
     });
     this.molecules= [...newMolecules]
   };
