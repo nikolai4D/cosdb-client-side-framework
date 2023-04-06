@@ -30,7 +30,7 @@
 .organism_buttonFilledcards {
     grid-area: 2 / 1 / 2 / 1;
     display: flex;
-    gap: 43px;
+    gap: 42px;
     flex-wrap: wrap;
     padding: 3em;
     background: white;
