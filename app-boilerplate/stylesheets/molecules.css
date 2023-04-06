@@ -4,22 +4,14 @@
     display: block ruby;
     padding: 1em;
 }
-.organism_navbar-logo > .molecule_logo  > i {
+.organism_navbar-logo > .molecule_logo {
     display: block ruby;
     cursor: default;
+    padding: 1em;
+
 }
 
-.organism_navbar-logo > .molecule_logo  > h4 {
-    display: block ruby;
-    cursor: default;
-}
-
-.organism_navbar-logo > .molecule_logo > i:hover {
-    color: var(--custom-color-1);
-    transition: 50ms;
-}
-
-.organism_navbar-logo > .molecule_logo > h4:hover {
+.organism_navbar-logo > .molecule_logo:hover {
     color: var(--custom-color-1);
     transition: 50ms;
 }
