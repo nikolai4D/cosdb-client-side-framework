@@ -442,6 +442,7 @@
 }
 
 .molecule_headingIconText {
+    padding:1em;
     
 }
 .molecule_headingIconText__header_icon {
@@ -457,5 +458,5 @@
 }
 
 .molecule_headingIconText__text {
-    
+    padding: 1em;
 }
