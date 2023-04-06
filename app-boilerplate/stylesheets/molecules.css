@@ -3,8 +3,14 @@
 .molecule_logo {
     display: block ruby;
     padding: 1em;
+}
+.molecule_logo > i, h4 {
+    display: block ruby;
+    padding: 1em;
     cursor: none;
 }
+
+
 
 .molecule_logo:hover {
     color: var(--custom-color-1);
