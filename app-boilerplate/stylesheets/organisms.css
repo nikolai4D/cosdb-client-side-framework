@@ -176,6 +176,8 @@ nav > ul {
     padding: 2em;
     border-radius: 6px;
     background-color: white;
+    border:1px solid var(--grey-color);
+
 }
 
 .organism_list-all-search__lists > .molecule_list > ul {
@@ -214,6 +216,7 @@ nav > ul {
     padding: 2em;
     border-radius: 6px;
     background-color: white;
+    border:1px solid var(--grey-color);
 }
 
 .organism_list-all-search-icons__lists > .molecule_list > ul {
