@@ -3,6 +3,8 @@ import { slot } from "../../core/helpers.mjs";
 import { Molecule_Card } from "../molecules/Molecule_Card.mjs";
 import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearchButton.mjs";
 import { Atom_Image } from "../atoms/Atom_Image.mjs";
+import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
+
 import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 import { State } from "../../data-mgmt/state.mjs";
 import { Organism_ModalProcessPrep } from "./Organism_ModalProcessPrep.mjs";
@@ -137,7 +139,11 @@ export function Organism_ListAllCards() {
   
       molecule.title.forEach((item, index2) => {
         const listItemAtom = createAtom(Atom_Text1, item.title, index2);
+        const iconAtom = createAtom(Atom_Icon, "bi bi-calendar-week", index2);
+        const descAtom = createAtom(Atom_Text1, "Aug 2023 - Ongoing", index2);
         newMolecule.component.atoms.push(listItemAtom);
+        newMolecule.component.atoms.push(iconAtom);
+        newMolecule.component.atoms.push(descAtom);
       });
   
       return newMolecule;
