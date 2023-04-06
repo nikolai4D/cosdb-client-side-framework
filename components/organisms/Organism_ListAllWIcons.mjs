@@ -4,7 +4,7 @@ import { Molecule_HeadingIconText } from "../molecules/Molecule_HeadingIconText.
 import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearchButton.mjs";
 import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
-import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
+import { Atom_Heading2 } from "../atoms/Atom_Heading2.mjs";
 import { State } from "../../data-mgmt/state.mjs";
 import { Organism_ModalProcessPrep } from "./Organism_ModalProcessPrep.mjs";
 
@@ -135,7 +135,7 @@ export function Organism_ListAllWIcons() {
 
       molecule.title.forEach((item, index2) => {
         const newMolecule = createMolecule(Molecule_HeadingIconText, index + 1);
-        const headingAtom = createAtom(Atom_Heading4,item.title, 1);
+        const headingAtom = createAtom(Atom_Heading2,item.title, 1);
         const iconAtom = createAtom(Atom_Icon, "bi bi-book", index2);
         const listItemAtom = createAtom(Atom_Text1, description, index2);
         newMolecule.component.atoms = [];        
