@@ -19,7 +19,7 @@
     transition: 50ms;
 }
 
-.organism_navbar .molecule_logo h4:hover {
+.organism_navbar > .molecule_logo > h4:hover {
     color: var(--custom-color-1);
     transition: 50ms;
 }
