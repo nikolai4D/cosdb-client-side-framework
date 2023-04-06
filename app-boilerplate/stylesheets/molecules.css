@@ -448,7 +448,8 @@
 }
 
 .molecule_headingIconText:hover {
-background: lightgray;
+background:rgb(247, 247, 246);
+border-radius:6px;
 
 }
 
