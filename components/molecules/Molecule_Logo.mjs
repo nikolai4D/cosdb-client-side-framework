@@ -36,8 +36,8 @@ export function Molecule_Logo() {
     const comp = await createElement(
       "div",
       { className: "Molecule_Logo" },
-      await atom(1, "icon"),
-      await atom(2, "Urban Cloud")
+      await this.atom(1, "icon"),
+      await this.atom(2, "Urban Cloud")
     );
     //add event listener to the comp here
 

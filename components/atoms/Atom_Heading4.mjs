@@ -10,7 +10,7 @@ export function Atom_Heading4() {
     const comp = await createElement(
       "h4",
       { class: "Atom_Heading4" },
-      compData
+      await this.atom()
     );
     //add event listeners here
     return comp;
