@@ -20,6 +20,12 @@
     align-content: center;
 }
 
+.molecule_card-text__desc {
+    display: flex;
+    color: rgb(113, 113, 113);
+    font-size:smaller;
+}
+
 .molecule_header-and-text {
     /* padding: 3em; */
     margin: 30px;
