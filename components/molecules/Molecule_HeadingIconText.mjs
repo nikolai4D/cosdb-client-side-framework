@@ -2,6 +2,7 @@ import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
+import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 
 export function Molecule_HeadingIconText() {
   Component.call(this);
@@ -22,8 +23,8 @@ export function Molecule_HeadingIconText() {
     },
     {
       id: 2,
-      atom: "Atom_Icon",
-      component: new Atom_Icon()
+      atom: "Atom_Text1",
+      component: new Atom_Text1()
     }
   ]
 
