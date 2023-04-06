@@ -4,7 +4,7 @@ import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 
-export function Molecule_HeadingIconText() {
+export function Molecule_HeadingTextIconText() {
   Component.call(this);
 
   this.data={}
@@ -17,14 +17,19 @@ export function Molecule_HeadingIconText() {
     },
     {
       id: 2,
+      atom: "Atom_Text1",
+      component: new Atom_Text1()
+    },
+    {
+      id: 3,
       atom: "Atom_Icon",
       component: new Atom_Icon()
     },
     {
-      id: 2,
+      id: 4,
       atom: "Atom_Text1",
       component: new Atom_Text1()
-    }
+    },
   ]
 
   this.functions = [
@@ -46,10 +51,13 @@ export function Molecule_HeadingIconText() {
         <div class="molecule_headingIconText">
             <div class="molecule_headingIconText__header_icon">
               ${slot(this.atoms[0].atom)}
-              ${slot(this.atoms[1].atom)}
             </div>
             <div class="molecule_headingIconText__text">
+              ${slot(this.atoms[1].atom)}
+            </div>
+            <div class="molecule_headingIconText__iconText">
               ${slot(this.atoms[2].atom)}
+              ${slot(this.atoms[3].atom)}
             </div>
         </div>
   `;

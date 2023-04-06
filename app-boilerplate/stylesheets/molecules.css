@@ -454,17 +454,7 @@
 
 }
 
-.molecule_headingIconText__header_icon {
-    display:flex
-}
-
-.molecule_headingIconText__header_icon {
-    display:flex
-}
-
-.molecule_headingIconText__header_icon > i{
-    margin-right: 1em
-}
-
-.molecule_headingIconText__text {
+.molecule_headingIconText__iconText{
+    margin-top: 1em;
+    color:grey;
 }

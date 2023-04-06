@@ -130,18 +130,23 @@ export function Organism_ListAllWIcons() {
   const updateMolecules = (data) => {
     const newMolecules = []
     const description = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rutrum malesuada est, non varius elit tristique sit amet. Ut vel hendrerit nibh. In a pharetra magna. Praesent sit amet mauris lectus.`
-    
+    const icon = `bi bi-book`
+    const iconText = `Information`
+
     data.forEach((molecule, index) => {
 
       molecule.title.forEach((item, index2) => {
         const newMolecule = createMolecule(Molecule_HeadingIconText, index + 1);
         const headingAtom = createAtom(Atom_Heading4,item.title, 1);
-        const iconAtom = createAtom(Atom_Icon, "bi bi-book", index2);
         const listItemAtom = createAtom(Atom_Text1, description, index2);
+        const iconAtom = createAtom(Atom_Icon, icon, index2);
+        const iconTextAtom = createAtom(Atom_Text1, iconText, index2);
         newMolecule.component.atoms = [];        
-        newMolecule.component.atoms.push(iconAtom);
         newMolecule.component.atoms.push(headingAtom);
         newMolecule.component.atoms.push(listItemAtom);
+        newMolecule.component.atoms.push(iconAtom);
+        newMolecule.component.atoms.push(iconTextAtom);
+
         newMolecules.push(newMolecule)
       });
   
