@@ -3,6 +3,7 @@ import { createElement } from "../../core/helpers/createElement.mjs";
 import { Organism } from "../../core/Organism.mjs";
 //import sub components
 import { Molecule_Logo } from "../molecules/Molecule_Logo.mjs";
+import { Molecule_Text_Button } from "../molecules/Molecule_Text_Button.mjs";
 
 export function Organism_Navbar() {
   Organism.call(this);
@@ -21,11 +22,11 @@ export function Organism_Navbar() {
     //   molecule: "Molecule_List-Icon-Link",
     //   component: "new Molecule_X_Template(),",
     // },
-    // {
-    //   id: 3,
-    //   molecule: "Molecule_Text-Button",
-    //   component: "new Molecule_X_Template(),",
-    // },
+    {
+      id: 3,
+      molecule: "Molecule_Text_Button",
+      component: new Molecule_Text_Button(),
+    },
   ];
 
   this.functions = [
@@ -42,9 +43,9 @@ export function Organism_Navbar() {
     const comp = await createElement(
       "nav",
       { className: "Organism_Navbar" },
-      await createElement("div", {}, await this.molecule(1, null))
+      await createElement("div", {}, await this.molecule(1, null)),
       //   await createElement("ul", {}, await this.molecule(2, null)),
-      //   await createElement("div", {}, await this.molecule(3, null))
+      await createElement("div", {}, await this.molecule(3, null))
     );
 
     //add event listener to the comp here
