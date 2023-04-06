@@ -479,10 +479,11 @@
 }
 
 .molecule_headingIconText:hover {
-    background:rgb(247, 247, 246);
+    /* background:rgb(247, 247, 246); */
+    background: var(--grey-color);
     border-radius:6px;
     cursor: pointer;
-    border-bottom: 1px lightgray solid;
+    /* border-bottom: 1px lightgray dashed; */
 
 
 }
