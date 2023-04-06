@@ -8,6 +8,7 @@
     display: block ruby;
     cursor: default;
     padding: 1em;
+    transition: 100ms
 
 }
 
