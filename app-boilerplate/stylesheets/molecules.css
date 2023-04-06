@@ -7,7 +7,7 @@
 .organism_navbar > .molecule_logo > i, h4 {
     display: block ruby;
     padding: 1em;
-    cursor: none;
+    cursor: default;
 }
 
 
