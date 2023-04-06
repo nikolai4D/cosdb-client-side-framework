@@ -127,8 +127,9 @@ export function Organism_ListAllWIcons() {
   };
   
   const updateMolecules = (data) => {
-    const newMoleculesArray = []
-    const newMolecules = data.forEach((molecule, index) => {
+    const newMolecules = []
+    
+    data.forEach((molecule, index) => {
   
     //   const headingAtom = createAtom(Atom_Heading4,"", 1);
     //   newMolecule.component.atoms = [headingAtom];
@@ -139,11 +140,11 @@ export function Organism_ListAllWIcons() {
         const listItemAtom = createAtom(Atom_ListItem, "test", index2);
         newMolecule.component.atoms.push(headingAtom);
         newMolecule.component.atoms.push(listItemAtom);
-        newMoleculesArray.push(newMolecule)
+        newMolecules.push(newMolecule)
       });
   
     });
-    this.molecules= [...newMoleculesArray]
+    this.molecules= [...newMolecules]
   };
 
   const renderMolecules = async () => {
