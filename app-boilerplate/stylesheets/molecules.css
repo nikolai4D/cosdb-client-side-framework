@@ -4,22 +4,22 @@
     display: block ruby;
     padding: 1em;
 }
-.organism_navbar > .molecule_logo  > i {
+.organism_navbar-logo > .molecule_logo  > i {
     display: block ruby;
     cursor: default;
 }
 
-.organism_navbar > .molecule_logo  > h4 {
+.organism_navbar-logo > .molecule_logo  > h4 {
     display: block ruby;
     cursor: default;
 }
 
-.organism_navbar > .molecule_logo > i:hover {
+.organism_navbar-logo > .molecule_logo > i:hover {
     color: var(--custom-color-1);
     transition: 50ms;
 }
 
-.organism_navbar > .molecule_logo > h4:hover {
+.organism_navbar-logo > .molecule_logo > h4:hover {
     color: var(--custom-color-1);
     transition: 50ms;
 }
