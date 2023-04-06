@@ -119,8 +119,7 @@
 
 .molecule_list__list > li:hover {
     /* background: rgb(247, 247, 246) */
-    background: var(--grey-color);
-
+    background: #ECECEC;
 }
 
 .molecule_list > ul {
