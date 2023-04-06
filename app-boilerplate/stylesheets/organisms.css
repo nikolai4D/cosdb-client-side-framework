@@ -214,6 +214,7 @@ nav > ul {
     padding: 2em;
     border-radius: 6px;
     background-color: white;
+    padding-top: 1em;
 }
 
 .organism_list-all-search-icons__lists > .molecule_list > ul {
