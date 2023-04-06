@@ -1,12 +1,19 @@
 import { createElement } from "../../core/helpers/createElement.mjs";
 import { Molecule_ListWHeading2 } from "../molecules/Molecule_ListWHeading2.mjs";
+import { Organism_ListAll2 } from "./Organism_ListAll2.mjs";
 import { Organism } from "../../core/Organism.mjs";
 
-export function Organism_ListAll2() {
+export function Organism_ListAll3() {
   Organism.call(this);
 
   // sub components
-  this.organisms = [];
+  this.organisms = [
+    {
+      id: 1,
+      molecule: "Organism_ListAll2",
+      component: new Organism_ListAll2(),
+    },
+  ];
 
   this.molecules = [
     {
@@ -25,13 +32,12 @@ export function Organism_ListAll2() {
 
   //build component
 
-  const component = async (
-    compData = [{ title: "Organism_ListAll2 placeholder data" }]
-  ) => {
+  const component = async () => {
     const comp = await createElement(
       "div",
       { className: "Organism_ListAll2" },
-      await createElement("div", {}, await this.molecule(1, compData))
+      await createElement("div", {}, await this.molecule(1, compData)),
+      await createElement("div", {}, await this.childOrganism(1, compData))
     );
 
     //add event listener to the comp here
@@ -41,9 +47,14 @@ export function Organism_ListAll2() {
 
   //render component
 
-  this.render = async (data) => {
-    return await component(data);
+  this.render = async () => {
+    return await component();
   };
 
   //add component specific functions here
+  const compData = [
+    { title: "title1" },
+    { title: "title2" },
+    { title: "title3" },
+  ];
 }
