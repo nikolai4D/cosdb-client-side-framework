@@ -35,6 +35,8 @@
     padding: 3em;
     background: white;
     border-radius: 6px;
+    border:1px solid var(--grey-color);
+
 }
 
 .organism_modalBackground { 
