@@ -64,7 +64,7 @@
     justify-self: center;
 }
 
-nav {
+.my-nav {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     width: 100vw;
@@ -74,11 +74,11 @@ nav {
 
 
 
-nav > ul > div > a {
+.my-nav > ul > div > a {
     color: black;
 }
 
-nav > ul {
+.my-nav > ul {
     display: flex;
     justify-content: center;
     gap: 37px;
