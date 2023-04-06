@@ -455,6 +455,14 @@
 }
 
 .molecule_headingIconText__iconText{
+    display:flex;
     margin-top: 1em;
     color:grey;
+    align-items: center;
+
+}
+
+.molecule_headingIconText__iconText > i{
+    margin-right:1em;
+
 }
