@@ -91,6 +91,9 @@
 
 .molecule_list__list li {
     cursor: pointer;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: 1px lightgray dashed;
 }
 
 .molecule_list > ul {
@@ -100,6 +103,9 @@
 
 .molecule_list {
     row-gap: 3rem;
+    border-bottom: 1px lightgray dashed;
+    padding: 1em;
+    border-radius: 6px;
 }
 
 
