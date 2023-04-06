@@ -1,8 +1,10 @@
+//import core
 import { createElement } from "../../core/helpers/createElement.mjs";
-import { Molecule_ListWHeading2 } from "../molecules/Molecule_ListWHeading2.mjs";
 import { Organism } from "../../core/Organism.mjs";
+//import components
+import { Molecule_Template } from "../molecules/_Molecule_Template.mjs";
 
-export function Organism_ListAll2() {
+export function Organism_TemplateChild() {
   Organism.call(this);
 
   // sub components
@@ -11,8 +13,8 @@ export function Organism_ListAll2() {
   this.molecules = [
     {
       id: 1,
-      molecule: "Molecule_ListWHeading2",
-      component: new Molecule_ListWHeading2(),
+      molecule: "Molecule_Template",
+      component: new Molecule_Template(),
     },
   ];
 
@@ -26,11 +28,11 @@ export function Organism_ListAll2() {
   //build component
 
   const component = async (
-    compData = [{ title: "Organism_ListAll2 placeholder data" }]
+    compData = [{ title: "Organism_TemplateChild placeholder data" }]
   ) => {
     const comp = await createElement(
       "div",
-      { className: "Organism_ListAll2" },
+      { className: "Organism_TemplateChild" },
       await createElement("div", {}, await this.molecule(1, compData))
     );
 

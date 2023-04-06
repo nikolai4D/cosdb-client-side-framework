@@ -1,7 +1,8 @@
+//import core
 import { createElement } from "../../core/helpers/createElement.mjs";
 import { ViewTemplate } from "../../core/ViewTemplate.mjs";
 
-export function ViewTemplate_dev() {
+export function ViewTemplate_TemplateSlot() {
   ViewTemplate.call(this);
 
   // sub components

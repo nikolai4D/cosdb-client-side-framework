@@ -1,5 +1,6 @@
-import { Atom } from "../../core/Atom.mjs";
-import { createElement } from "../../core/helpers/createElement.mjs";
+//import core
+import { Atom } from "../../../core/Atom.mjs";
+import { createElement } from "../../../core/helpers/createElement.mjs";
 
 export function Atom_Heading4() {
   Atom.call(this);

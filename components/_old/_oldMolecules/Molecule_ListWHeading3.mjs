@@ -1,9 +1,9 @@
-import { Atom_ListItem2 } from "../atoms/Atom_ListItem2.mjs";
-import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
-import { Molecule } from "../../core/Molecule.mjs";
-import { createElement } from "../../core/helpers/createElement.mjs";
+import { Atom_ListItem2 } from "../../atoms/Atom_ListItem.mjs";
+import { Atom_Heading4 } from "../../atoms/Atom_Heading4.mjs";
+import { Molecule } from "../../../core/Molecule.mjs";
+import { createElement } from "../../../core/helpers/createElement.mjs";
 
-export function Molecule_ListWHeading2() {
+export function Molecule_ListWHeading3() {
   Molecule.call(this);
 
   // sub components

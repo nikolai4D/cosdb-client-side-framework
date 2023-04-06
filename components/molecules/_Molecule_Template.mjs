@@ -1,36 +1,36 @@
-import { Atom_ListItem2 } from "../atoms/Atom_ListItem2.mjs";
-import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
+//import core
 import { Molecule } from "../../core/Molecule.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
+//import components
+import { Atom_Template } from "../atoms/_Atom_Template.mjs";
 
-export function Molecule_ListWHeading3() {
+export function Molecule_Template() {
   Molecule.call(this);
 
   // sub components
   this.atoms = [
     {
       id: 1,
-      atom: "Atom_Heading4",
-      component: new Atom_Heading4(),
-    },
-    {
-      id: 2,
-      atom: "Atom_ListItem2",
-      component: new Atom_ListItem2(),
+      atom: "Atom_Template",
+      component: new Atom_Template(),
     },
   ];
 
-  this.functions = [];
+  this.functions = [
+    {
+      id: 1,
+      function: "placeholder",
+    },
+  ];
 
   //build component
 
   const component = async (
-    compData = [{ title: "title1" }, { title: "title2" }]
+    compData = [{ title: "placeholder 1" }, { title: "placeholder 2" }]
   ) => {
     const comp = await createElement(
       "div",
-      { className: "Molecule_ListWHeading2" },
-      await createElement("div", {}, await this.atom(1, null)),
+      { className: "Molecule_Template" },
       await createElement("ul", {}, ...(await compDatas(compData)))
     );
 
@@ -48,7 +48,7 @@ export function Molecule_ListWHeading3() {
   const compDatas = async (arrayOfData) => {
     return await Promise.all(
       arrayOfData.map(async (item) => {
-        return await this.atom(2, item.title);
+        return await this.atom(1, item.title);
       })
     );
   };

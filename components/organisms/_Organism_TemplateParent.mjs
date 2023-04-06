@@ -1,25 +1,27 @@
+//import core
 import { createElement } from "../../core/helpers/createElement.mjs";
-import { Molecule_ListWHeading2 } from "../molecules/Molecule_ListWHeading2.mjs";
-import { Organism_ListAll2 } from "./Organism_ListAll2.mjs";
 import { Organism } from "../../core/Organism.mjs";
+//import components
+import { Molecule_Template } from "../molecules/_Molecule_Template.mjs";
+import { Organism_TemplateChild } from "./_Organism_TemplateChild.mjs";
 
-export function Organism_ListAll3() {
+export function Organism_TemplateParent() {
   Organism.call(this);
 
   // sub components
   this.organisms = [
     {
       id: 1,
-      organism: "Organism_ListAll2",
-      component: new Organism_ListAll2(),
+      organism: "Organism_TemplateChild",
+      component: new Organism_TemplateChild(),
     },
   ];
 
   this.molecules = [
     {
       id: 1,
-      molecule: "Molecule_ListWHeading2",
-      component: new Molecule_ListWHeading2(),
+      molecule: "Molecule_Template",
+      component: new Molecule_Template(),
     },
   ];
 
@@ -35,7 +37,7 @@ export function Organism_ListAll3() {
   const component = async () => {
     const comp = await createElement(
       "div",
-      { className: "Organism_ListAll2" },
+      { className: "Organism_TemplateParent" },
       await createElement("div", {}, await this.molecule(1, compData)),
       await createElement("div", {}, await this.childOrganism(1, compData))
     );
@@ -47,12 +49,13 @@ export function Organism_ListAll3() {
 
   //render component
 
-  this.render = async () => {
-    return await component();
+  this.render = async (data) => {
+    return await component(data);
   };
 
   //add component specific functions here
   const compData = [
+    //placeholder data, set this data from State instead!
     { title: "title1" },
     { title: "title2" },
     { title: "title3" },
