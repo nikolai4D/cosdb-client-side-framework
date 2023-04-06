@@ -73,11 +73,11 @@
 }
 
 
-.organism_navbar > .organism_listiconlinks > div > a {
+.organism_navbar > ul > div > a {
     color: black;
 }
 
-.organism_navbar > .organism_listiconlinks {
+.organism_navbar > ul {
     display: flex;
     justify-content: center;
     gap: 37px;
