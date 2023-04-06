@@ -96,6 +96,10 @@
     border: 1px lightgray dashed;
 }
 
+.molecule_list__list > li:hover {
+    background: #f5f5f5;
+}
+
 .molecule_list > ul {
     column-gap: 3rem;
 }
