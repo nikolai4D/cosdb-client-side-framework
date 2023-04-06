@@ -29,23 +29,16 @@ export function Organism_Navbar() {
     },
   ];
 
-  this.functions = [
-    {
-      id: 1,
-      function: "placeholder",
-    },
-  ];
+  this.functions = [];
 
   //build component
-  const component = async (
-    compData = [{ title: "Organism_TemplateChild placeholder data" }]
-  ) => {
+  const component = async () => {
     const comp = await createElement(
       "nav",
       { className: "Organism_Navbar" },
-      await createElement("div", {}, await this.molecule(1, null)),
+      await createElement("div", {}, await this.molecule(1, "")),
       //   await createElement("ul", {}, await this.molecule(2, null)),
-      await createElement("div", {}, await this.molecule(3, null))
+      await createElement("div", {}, await this.molecule(3, ""))
     );
 
     //add event listener to the comp here
