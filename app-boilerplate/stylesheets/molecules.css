@@ -3,6 +3,12 @@
 .molecule_logo {
     display: block ruby;
     padding: 1em;
+    cursor: none;
+}
+
+.molecule_logo:hover {
+    color: var(--custom-color-1);
+    transition: 50ms;
 }
 
 .molecule_list__footer {
