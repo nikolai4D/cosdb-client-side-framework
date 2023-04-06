@@ -40,7 +40,7 @@ li  {
 
 
 .atom_button-positive{
-    background-color: var(--grey-color);
+    /* background-color: var(--grey-color); */
     padding: 1em;
     border: 1px solid var(--grey-color);
     border-radius: 6px;
