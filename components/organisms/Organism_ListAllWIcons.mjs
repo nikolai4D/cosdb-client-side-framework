@@ -131,11 +131,13 @@ export function Organism_ListAllWIcons() {
     const newMolecules = data.map((molecule, index) => {
       const newMolecule = createMolecule(Molecule_ListWHeading, index + 1);
   
-      const headingAtom = createAtom(Atom_Heading4,"", 1);
-      newMolecule.component.atoms = [headingAtom];
+    //   const headingAtom = createAtom(Atom_Heading4,"", 1);
+    //   newMolecule.component.atoms = [headingAtom];
   
       molecule.title.forEach((item, index2) => {
-        const listItemAtom = createAtom(Atom_ListItem, item.title, index2);
+        const headingAtom = createAtom(Atom_Heading4,item.title, 1);
+        const listItemAtom = createAtom(Atom_ListItem, "test", index2);
+        newMolecule.component.atoms.push(headingAtom);
         newMolecule.component.atoms.push(listItemAtom);
       });
   

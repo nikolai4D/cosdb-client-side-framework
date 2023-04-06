@@ -39,8 +39,5 @@ export function Molecule_List() {
 
         await this.fillSlot(atom.atom, atom.component.getElement())
       }
-
-
   }
-
 }
