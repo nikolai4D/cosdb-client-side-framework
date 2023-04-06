@@ -10,7 +10,7 @@ export function Organism_ListAll3() {
   this.organisms = [
     {
       id: 1,
-      molecule: "Organism_ListAll2",
+      organism: "Organism_ListAll2",
       component: new Organism_ListAll2(),
     },
   ];
