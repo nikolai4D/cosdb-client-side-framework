@@ -1,7 +1,7 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from  "../../core/helpers.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
-import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
+import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 
 export function Molecule_HeadingIconText() {
   Component.call(this);
@@ -14,10 +14,16 @@ export function Molecule_HeadingIconText() {
       atom: "Atom_Heading4",
       component:  new Atom_Heading4()
     },
+        
     {
       id: 2,
-      atom: "Atom_Text1",
-      component: new Atom_Text1()
+      atom: "Atom_Icon",
+      component: new Atom_Icon()
+    },
+    {
+      id: 2,
+      atom: "Atom_Icon",
+      component: new Atom_Icon()
     }
   ]
 
@@ -40,8 +46,9 @@ export function Molecule_HeadingIconText() {
         <div class="molecule_list">
             <div>
               ${slot(this.atoms[0].atom)}
+              ${slot(this.atoms[1].atom)}
             </div>
-            ${slot(this.atoms[1].atom)}
+            ${slot(this.atoms[2].atom)}
         </div>
   `;
   }
