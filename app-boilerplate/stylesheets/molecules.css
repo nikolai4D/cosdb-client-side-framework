@@ -21,7 +21,7 @@
     cursor: pointer;
 }
 
-.molecule_icon_navitem__navitems__navitem:hover {
+.molecule_icon_navitem__navitems__navitem {
     display: flex;
     gap: 1em;
 }
