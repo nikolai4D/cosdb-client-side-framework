@@ -25,20 +25,24 @@ export function Molecule_Icon_NavItem() {
   this.functions = [
     {
       id: 1,
-      function: "placeholder",
+      function: "getNavItems",
+    },
+    {
+      id: 2,
+      function: "routeToView",
     },
   ];
 
   //build component
   const component = async () => {
-    console.log(await listItems());
+    console.log(await navItems());
     const comp = await createElement(
       "div",
       { className: "Molecule_Template" },
       await createElement(
         "ul",
         {},
-        ...(await listItemsWithIcons(await listItems()))
+        ...(await navItemsWithIcons(await navItems()))
       )
     );
     //add event listener to the comp here
@@ -54,10 +58,10 @@ export function Molecule_Icon_NavItem() {
   //add component specific functions here
 
   //get menu items from await this.fn(1)
-  const listItems = async () => await this.fn(1);
+  const navItems = async () => await this.fn(1);
 
   //loopa varje item och sätt in i Atom_ListItem
-  const listItemsWithIcons = async (arrayOfData) => {
+  const navItemsWithIcons = async (arrayOfData) => {
     return await Promise.all(
       arrayOfData.map(async (item) => {
         const navItem = await createElement(
@@ -67,7 +71,8 @@ export function Molecule_Icon_NavItem() {
           await this.atom(2, item.title)
         );
         navItem.addEventListener("click", async () => {
-          console.log(item.title);
+          console.log("routing to: ", item.title);
+          await this.fn(2, item.title);
         });
         return navItem;
       })
