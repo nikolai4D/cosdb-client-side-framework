@@ -41,7 +41,7 @@ export function Organism_Navbar() {
         { class: "organism_navbar__logo" },
         await this.molecule(1, "")
       ),
-      //   await createElement("ul", {}, await this.molecule(2, null)),
+      await createElement("ul", {}, null),
       await createElement(
         "div",
         { class: "organism_navbar__text_button" },
