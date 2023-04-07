@@ -1,17 +1,11 @@
-import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
-// import { createAction } from "./helpers.mjs";
-import { createAction } from "./helpers/createAction.mjs";
+import { importModuleFromFile } from "./importModuleFromFile.mjs";
 
-export async function getFunction(module, parentId) {
-  console.log("getFunction", module, parentId);
-  const modelFunction = await apiCallGet(`/read/functions`);
-  console.log("modelFunction", modelFunction);
+export async function getFunction(file) {
+  const pathToFunc = `../../../data-mgmt/actions/${file}.mjs`;
 
-  const func = modelFunction.filter((fn) => fn.parentId === parentId);
-  const parameters = func.parameters;
+  const Func = await importModuleFromFile(pathToFunc, file);
 
-  const funcObject = await createAction(parameters, module);
-  console.log(funcObject);
+  const funcObject = Func[file];
 
   return funcObject;
 }
