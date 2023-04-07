@@ -14,6 +14,8 @@ export function createElement(tag, attributes = {}, ...children) {
     }
   }
 
+  console.log(children, "children");
+
   for (const child of children) {
     console.log(child);
     if (typeof child === "string") {
