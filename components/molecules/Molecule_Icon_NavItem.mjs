@@ -60,12 +60,16 @@ export function Molecule_Icon_NavItem() {
   const listItemsWithIcons = async (arrayOfData) => {
     return await Promise.all(
       arrayOfData.map(async (item) => {
-        return await createElement(
+        const navItem = await createElement(
           "div",
           {},
           await this.atom(1, item.icon),
           await this.atom(2, item.title)
         );
+        navItem.addEventListener("click", async () => {
+          console.log(item.title);
+        });
+        return navItem;
       })
     );
   };
