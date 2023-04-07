@@ -11,11 +11,6 @@ export async function getViewTemplate(parentId) {
   const id = viewTemplate[0].id;
   const value = viewTemplate[0].value;
 
-  // Create a new div from type
-  //   const div = document.createElement("div");
-  //   div.classList.add(type);
-  //   div.setAttribute("id", id);
-
   // get the viewTemplate
 
   const components = await getComponents(id);
@@ -23,10 +18,7 @@ export async function getViewTemplate(parentId) {
   viewTemplateObject.slots = components;
   const renderViewTemplate = await viewTemplateObject.render();
 
-  //   div.appendChild(renderViewTemplate);
-
-  //   return div;
-
+  // Create a new div from type
   const viewTemplateDiv = await await createElement(
     "div",
     { className: type, id: id },
