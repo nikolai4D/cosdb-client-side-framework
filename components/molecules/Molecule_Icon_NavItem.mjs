@@ -70,11 +70,12 @@ export function Molecule_Icon_NavItem() {
           await this.atom(1, item.icon),
           await this.atom(2, item.title)
         );
+        const currentView = window.location.pathname.slice(1);
+
         navItem.addEventListener("click", async () => {
           const newView = item.route.toLowerCase();
           console.log("newView: ", newView);
 
-          const currentView = window.location.pathname.slice(1);
           if (currentView !== newView) {
             console.log("route to view: ", newView);
             await this.fn(2, newView);
@@ -82,6 +83,10 @@ export function Molecule_Icon_NavItem() {
             console.log("already in view: ", newView);
           }
         });
+        if (currentView !== item.title.toLowerCase()) {
+          console.log(navItem, "BOLD");
+        }
+
         return navItem;
       })
     );
