@@ -1,9 +1,22 @@
+@import "colors.css";
+
+
 .atom-icon {
     font-size: 1.1rem;
-
 }
-
 
 .atom_heading4 {
 
 }
+
+.atom_buttonneutral {
+    background-color: var(--white-color);
+    padding: 1em;
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    transition: 0.05s;
+}
+
+.atom_buttonneutral:hover{
+    background-color: var(--custom-color-1);
+  }
