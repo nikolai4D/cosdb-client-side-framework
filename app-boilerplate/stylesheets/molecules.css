@@ -4,10 +4,7 @@
 }
 
 .molecule_text_button {
-    /* display: grid;
     align-items: center;
-    grid-auto-flow: column;
-    grid-gap: 1em; */
     display: flex;
     justify-content: center;
     gap: 1em;
