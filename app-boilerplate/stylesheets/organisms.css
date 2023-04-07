@@ -10,6 +10,7 @@
 
 .organism_navbar__logo{
     transition: 0.05s;
+    width: fit-content;
 }
 
 .organism_navbar__logo:hover {
