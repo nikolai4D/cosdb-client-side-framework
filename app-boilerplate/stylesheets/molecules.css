@@ -5,4 +5,5 @@
 
 .molecule_text_button {
     display: flex;
+    align-items: center;
 }

@@ -2,6 +2,8 @@
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     align-content: center;
+    padding: 1em;
+    align-items: center;
 }
 
 .organism_navbar__logo{
