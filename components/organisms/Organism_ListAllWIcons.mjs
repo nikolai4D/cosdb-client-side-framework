@@ -136,6 +136,7 @@ export function Organism_ListAllWIcons() {
     data.forEach((molecule, index) => {
 
       molecule.title.forEach((item, index2) => {
+        console.log(item)
         const newMolecule = createMolecule(Molecule_HeadingTextIconText, index + 1);
         const headingAtom = createAtom(Atom_Heading4,item.title, 1);
         const listItemAtom = createAtom(Atom_Text1, description, index2);
