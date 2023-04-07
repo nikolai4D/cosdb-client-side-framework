@@ -18,4 +18,5 @@
 
 .molecule_icon_navitem__navitems:hover {
     cursor: pointer;
+    font-weight: 400;
 }
