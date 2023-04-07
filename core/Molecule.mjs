@@ -5,8 +5,13 @@ export function Molecule() {
     const fn = this.functions.find((fn) => fn.id === id);
     if (fn) {
       console.log(fn);
-
-      return await fn.function(fn.parameters);
+      if (data) {
+        return await fn.function(data);
+      } else if (fn.parameters !== "") {
+        return await fn.function(fn.parameters);
+      } else {
+        return await fn.function();
+      }
     } else {
       return "";
     }
