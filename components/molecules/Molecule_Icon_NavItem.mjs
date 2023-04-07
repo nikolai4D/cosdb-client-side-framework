@@ -41,7 +41,7 @@ export function Molecule_Icon_NavItem() {
       { class: "molecule_icon_navitem" },
       await createElement(
         "ul",
-        {},
+        { class: "molecule_icon_navitem__navitems" },
         ...(await navItemsWithIcons(await navItems()))
       )
     );
