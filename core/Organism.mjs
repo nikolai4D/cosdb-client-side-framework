@@ -1,7 +1,7 @@
 export function Organism() {
   this.title = "Organism";
 
-  this.fn = async function (id) {
+  this.fn = function (id) {
     // const fn = this.functions.find((fn) => fn.id === id)?.function();
     // if (fn) {
     //   console.log(fn);
