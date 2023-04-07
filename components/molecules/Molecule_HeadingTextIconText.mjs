@@ -7,7 +7,8 @@ import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 export function Molecule_HeadingTextIconText() {
   Component.call(this);
 
-  this.data={}
+  this.id = ""
+  this.parentId = ""
 
   this.atoms = [
     {
@@ -48,7 +49,7 @@ export function Molecule_HeadingTextIconText() {
 
     return `
 
-        <div class="molecule_headingIconText">
+        <div class="molecule_headingIconText" data-id="${this.id}" data-parentId="${this.parentId}">
             <div class="molecule_headingIconText__header_icon">
               ${slot(this.atoms[0].atom)}
             </div>
