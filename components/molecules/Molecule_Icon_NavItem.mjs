@@ -38,7 +38,7 @@ export function Molecule_Icon_NavItem() {
     console.log(await navItems());
     const comp = await createElement(
       "div",
-      { className: "Molecule_Template" },
+      { class: "molecule_icon_navitem" },
       await createElement(
         "ul",
         {},
