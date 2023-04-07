@@ -2,14 +2,14 @@ export function Organism() {
   this.title = "Organism";
 
   this.fn = async function (id) {
-    const fn = this.functions.find((fn) => fn.id === id)?.function();
-    if (fn) {
-      console.log(fn);
-      return await fn();
-    } else {
-      return "";
-    }
-    //return this.functions.find((fn) => fn.id === id)?.function() || "";
+    // const fn = this.functions.find((fn) => fn.id === id)?.function();
+    // if (fn) {
+    //   console.log(fn);
+    //   return await fn();
+    // } else {
+    //   return "";
+    // }
+    return this.functions.find((fn) => fn.id === id)?.function() || "";
   };
 
   this.childOrganism = async (id, data) => {
