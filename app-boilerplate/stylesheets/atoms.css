@@ -14,6 +14,7 @@
     border: 1px solid var(--grey-color);
     border-radius: 6px;
     transition: 0.05s;
+    cursor: pointer;
 }
 
 .atom_buttonneutral:hover{
