@@ -1,8 +1,15 @@
 export function Organism() {
   this.title = "Organism";
 
-  this.fn = function (id) {
-    return this.functions.find((fn) => fn.id === id)?.function() || "";
+  this.fn = async function (id) {
+    const fn = this.functions.find((fn) => fn.id === id)?.function();
+    if (fn) {
+      console.log(fn.parameters);
+      return await fn(fn.parameters);
+    } else {
+      return "";
+    }
+    //return this.functions.find((fn) => fn.id === id)?.function() || "";
   };
 
   this.childOrganism = async (id, data) => {
