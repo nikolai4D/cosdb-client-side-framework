@@ -66,7 +66,7 @@ export function Molecule_Icon_NavItem() {
       arrayOfData.map(async (item) => {
         const navItem = await createElement(
           "div",
-          {},
+          { class: "molecule_icon_navitem__navitems__navitem" },
           await this.atom(1, item.icon),
           await this.atom(2, item.title)
         );
