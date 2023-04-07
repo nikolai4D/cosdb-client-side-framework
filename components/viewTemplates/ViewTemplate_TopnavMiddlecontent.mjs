@@ -9,11 +9,11 @@ export function ViewTemplate_TopnavMiddlecontent() {
   this.slots = [
     {
       slot: "topNav",
-      content: "topNav content",
+      content: null,
     },
     {
       slot: "middleContent",
-      content: "middleContent",
+      content: null,
     },
   ];
 
