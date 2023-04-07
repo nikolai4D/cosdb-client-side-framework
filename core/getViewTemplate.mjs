@@ -21,10 +21,8 @@ export async function getViewTemplate(parentId) {
 
   const viewTemplateObject = await createComponent(type, value);
 
-  if (components.length > 0) {
-    viewTemplateObject.slots = components;
-  }
-  //   viewTemplateObject.slots = components;
+  console.log(components, "components");
+  viewTemplateObject.slots = components;
 
   const renderViewTemplate = await viewTemplateObject.render();
 
