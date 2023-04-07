@@ -475,9 +475,8 @@
 }
 
 .molecule_headingIconText {
-    padding:1em;
+    padding:2em;
     border-bottom: 1px lightgray dashed;
-    padding-top: 2em;
 }
 
 .molecule_headingIconText:hover {
