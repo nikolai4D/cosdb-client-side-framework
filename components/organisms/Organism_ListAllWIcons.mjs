@@ -136,7 +136,7 @@ export function Organism_ListAllWIcons() {
     data.forEach((molecule, index) => {
 
       molecule.title.forEach((item, index2) => {
-        console.log(item)
+        // console.log(item)
         const newMolecule = createMolecule(Molecule_HeadingTextIconText, index + 1);
         newMolecule.id = item.id;
         newMolecule.parentId = item.parentId;
