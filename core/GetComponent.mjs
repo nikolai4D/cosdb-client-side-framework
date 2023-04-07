@@ -1,11 +1,12 @@
+import { createElement } from "./helpers/createElement.mjs";
 import { getOrganism } from "./getOrganism.mjs";
 import { getMolecule } from "./getMolecule.mjs";
 import { getAtom } from "./getAtom.mjs";
 
 export async function getComponent(compName, compParentId) {
-  const div = document.createElement("div");
-  div.classList.add("component");
-  div.setAttribute("id", compParentId);
+  //   const div = document.createElement("div");
+  //   div.classList.add("component");
+  //   div.setAttribute("id", compParentId);
   let comp;
 
   if (compName.startsWith("Organism")) {
@@ -37,7 +38,14 @@ export async function getComponent(compName, compParentId) {
   console.log(comp);
   const renderComp = await comp.render();
 
-  div.appendChild(renderComp);
+  //   div.appendChild(renderComp);
 
-  return div;
+  //   return div;
+
+  const component = await createElement(
+    "div",
+    { class: "component", id: compParentId },
+    renderComp
+  );
+  return component;
 }

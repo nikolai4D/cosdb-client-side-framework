@@ -6,15 +6,12 @@ export async function getComponents(parentId) {
   const componentType = "component";
   //get slots
   const Slots = await apiCallGet(`/read/${slotType}s/${parentId}`);
-  console.log(Slots, "slots found for parent ");
-
   const componentsArray = [];
 
   for (const slot of Slots) {
-    console.log(slot, "slot");
     try {
       const comp = await apiCallGet(`/read/${componentType}s/${slot.id}`);
-      console.log(comp, "component found for slot ");
+
       if (comp.length > 0) {
         const componentFromModule = await getComponent(
           comp[0].value,
