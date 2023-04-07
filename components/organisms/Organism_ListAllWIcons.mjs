@@ -140,7 +140,8 @@ export function Organism_ListAllWIcons() {
         const newMolecule = createMolecule(Molecule_HeadingTextIconText, index + 1);
         newMolecule.id = item.id;
         newMolecule.parentId = item.parentId;
-        
+        console.log(newMolecule)
+
         const headingAtom = createAtom(Atom_Heading4,item.title, 1);
         const listItemAtom = createAtom(Atom_Text1, description, index2);
         const iconAtom = createAtom(Atom_Icon, icon, index2);
