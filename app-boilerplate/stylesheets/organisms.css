@@ -9,5 +9,6 @@
 }
 
 .organism_navbar__text_button{
-
+    display: flex;
+    justify-content: right;
 }
