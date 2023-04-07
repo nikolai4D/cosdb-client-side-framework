@@ -71,7 +71,7 @@ export function Molecule_Icon_NavItem() {
           await this.atom(2, item.title)
         );
         navItem.addEventListener("click", async () => {
-          const newView = item.title.toLowerCase();
+          const newView = item.route.toLowerCase();
           console.log("newView: ", newView);
 
           const currentView = window.location.pathname.slice(1);
