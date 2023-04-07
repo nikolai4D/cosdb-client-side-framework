@@ -7,7 +7,7 @@ export async function createAction(parameters = null, file) {
   const Action = await importModuleFromFile(pathToAction, file);
   console.log("Action", Action);
 
-  const action = new Action[file]();
+  const action = Action[file]();
   console.log("action", action);
 
   return action;
