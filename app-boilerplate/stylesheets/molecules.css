@@ -2,3 +2,7 @@
     display: block ruby;
     cursor: default;
 }
+
+.molecule_text_button {
+    display: flex;
+}

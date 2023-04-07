@@ -28,7 +28,7 @@ export function Molecule_Text_Button() {
   const component = async () => {
     const comp = await createElement(
       "div",
-      { className: "Molecule_Text_Button" },
+      { class: "molecule_text_button" },
       await this.atom(1, ""),
       await this.atom(2, "")
     );
