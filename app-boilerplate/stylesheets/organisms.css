@@ -1,5 +1,7 @@
 .organism_navbar{
-
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-content: center;
 }
 
 .organism_navbar__logo{
