@@ -1,3 +1,5 @@
+@import "colors.css";
+
 .organism_navbar{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -7,8 +9,13 @@
 }
 
 .organism_navbar__logo{
-
+    transition: 0.05s;
 }
+
+.organism_navbar__logo:hover {
+    color: var(--custom-color-1);
+}
+
 
 .organism_navbar__text_button{
     display: flex;
