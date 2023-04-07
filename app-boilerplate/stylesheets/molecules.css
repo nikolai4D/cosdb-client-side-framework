@@ -18,5 +18,4 @@
 
 .molecule_icon_navitem__navitems:hover {
     cursor: pointer;
-    color: var(--grey-color);
 }
