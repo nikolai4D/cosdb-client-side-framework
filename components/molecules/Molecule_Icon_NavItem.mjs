@@ -83,8 +83,8 @@ export function Molecule_Icon_NavItem() {
             console.log("already in view: ", newView);
           }
         });
+
         if (currentView === item.title.toLowerCase()) {
-          console.log(navItem, currentView, item.title.toLowerCase(), "BOLD");
           navItem.style.fontWeight = "bold";
         }
 
