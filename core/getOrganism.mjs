@@ -64,13 +64,13 @@ export async function getOrganism(module, parentId, orgId = null) {
   for (const func of funcs) {
     const value = func.value;
     console.log(func);
-    const parameters = func.parameters;
+    // const parameters = func.parameters;
     const funcObject = await getFunction(value, organismId);
     const funcId = parseInt(func.key.split(" ")[1]);
     functionsObject.push({
       id: funcId,
       value: value,
-      parameters: parameters,
+      //parameters: parameters,
       function: funcObject,
     });
   }

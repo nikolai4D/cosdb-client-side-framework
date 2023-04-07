@@ -4,8 +4,8 @@ export function Organism() {
   this.fn = async function (id) {
     const fn = this.functions.find((fn) => fn.id === id)?.function();
     if (fn) {
-      console.log(fn.parameters);
-      return await fn(fn.parameters);
+      console.log(fn);
+      return await fn();
     } else {
       return "";
     }
