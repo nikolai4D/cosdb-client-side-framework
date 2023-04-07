@@ -1,11 +1,4 @@
 .molecule_logo {
     display: block ruby;
-    margin-left: 1em;
     cursor: default;
-}
-.organism_navbar-logo > .molecule_logo {
-    transition: 0.05s;
-}
-.organism_navbar-logo > .molecule_logo:hover {
-    color: var(--custom-color-1);
 }

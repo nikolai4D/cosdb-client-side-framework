@@ -9,7 +9,7 @@ export function Atom_Heading4() {
   const component = async (compData) => {
     const comp = await createElement(
       "h4",
-      { class: "Atom_Heading4" },
+      { class: "atom_heading4" },
       await this.atom()
     );
     //add event listeners here

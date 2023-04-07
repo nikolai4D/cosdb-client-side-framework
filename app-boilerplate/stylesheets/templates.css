@@ -1,32 +1,23 @@
-.template_start {
+.viewTemplate_topnav_middlecontent {
+
+}
+
+.viewTemplate_topnav_middlecontent__topNav {
     display: grid;
-    height: 100vh;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
+    width: 100vw;
+    height: 5em;
+    align-content: center;
 }
 
-.template_login {
+.viewTemplate_topnav_middlecontent__middlecontent {
     display: grid;
-    height: 100vh;
-    grid-template-rows: auto 1fr;
-}
-
-.template_signup {
-    display: grid;
-    height: 100vh;
-    grid-template-rows: auto 1fr;
-}
-
-.template_loggedin {
-
-}
-
-.template_process {
-    margin: 88px 162px;
-    display: flex;
-    justify-content: center;
-}
-
-.template_projects {
-    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 4rem;
+    height: 85vh;
+    width: 783px;
+    margin: auto;
+    margin-top: auto;
+    margin-top: 50px;
+    align-content: start;
 }

@@ -35,7 +35,7 @@ export function Molecule_Logo() {
   ) => {
     const comp = await createElement(
       "div",
-      { className: "Molecule_Logo" },
+      { className: "molecule_logo" },
       await this.atom(1, "icon"),
       await this.atom(2, "Urban Cloud")
     );
