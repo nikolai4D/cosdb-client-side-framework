@@ -15,3 +15,7 @@
     justify-content: center;
     gap: 1em;
 }
+
+.molecule_icon_navitem__navitems:hover {
+    cursor: pointer;
+}
