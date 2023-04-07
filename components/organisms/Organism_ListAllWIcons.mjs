@@ -129,23 +129,36 @@ export function Organism_ListAllWIcons() {
   
   const updateMolecules = (data) => {
     const newMolecules = []
-    const description = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rutrum malesuada est, non varius elit tristique sit amet. Ut vel hendrerit nibh. In a pharetra magna. Praesent sit amet mauris lectus.`
-    const icon = `bi bi-book`
-    const iconText = `Information`
+    let description = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rutrum malesuada est, non varius elit tristique sit amet. Ut vel hendrerit nibh. In a pharetra magna. Praesent sit amet mauris lectus.`
+    let icon = `bi bi-book`
+    let iconText = `Information`
 
     data.forEach((molecule, index) => {
 
       molecule.title.forEach((item, index2) => {
-        // console.log(item)
+
         const newMolecule = createMolecule(Molecule_HeadingTextIconText, index + 1);
         newMolecule.id = item.id;
         newMolecule.parentId = item.parentId;
         console.log(newMolecule)
 
+        const project = {icon: "bi bi-list-check", id: "co_bad02214-dd2a-47dd-96b6-d62c15d6ba4d", title: "Project"}
+        const process = {icon: "bi bi-arrow-right-square", id: "co_140ca73c-1275-4fa5-8e74-fa71e845afe3", title: "Process"}
+        const information  = {icon: "bi bi-book", id: "co_616678d1-9b3d-4d65-ad00-8ddd24620d31", title: "Information"}
+        const organisation  = {icon: "bi bi-people", id: "co_e981293e-fcb3-40f0-90c3-315d652d6920", title: "Organisation"}
+
+        for (const anItem of [project, process, information, organisation]) {
+            if (anItem.id === item.parentId) {
+                iconText = anItem.title
+                icon = anItem.icon
+            }
+        }
+
         const headingAtom = createAtom(Atom_Heading4,item.title, 1);
         const listItemAtom = createAtom(Atom_Text1, description, index2);
         const iconAtom = createAtom(Atom_Icon, icon, index2);
         const iconTextAtom = createAtom(Atom_Text1, iconText, index2);
+
         newMolecule.component.atoms = [];        
         newMolecule.component.atoms.push(headingAtom);
         newMolecule.component.atoms.push(listItemAtom);
