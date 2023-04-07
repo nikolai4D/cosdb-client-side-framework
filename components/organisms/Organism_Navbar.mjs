@@ -35,10 +35,18 @@ export function Organism_Navbar() {
   const component = async () => {
     const comp = await createElement(
       "nav",
-      { class: "Organism_Navbar" },
-      await createElement("div", {}, await this.molecule(1, "")),
+      { class: "organism_navbar" },
+      await createElement(
+        "div",
+        { class: "organism_navbar__logo" },
+        await this.molecule(1, "")
+      ),
       //   await createElement("ul", {}, await this.molecule(2, null)),
-      await createElement("div", {}, await this.molecule(3, ""))
+      await createElement(
+        "div",
+        { class: "organism_navbar__text_button" },
+        await this.molecule(3, "")
+      )
     );
 
     //add event listener to the comp here
