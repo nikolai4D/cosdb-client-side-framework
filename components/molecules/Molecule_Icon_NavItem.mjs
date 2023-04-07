@@ -85,6 +85,7 @@ export function Molecule_Icon_NavItem() {
         });
         if (currentView !== item.title.toLowerCase()) {
           console.log(navItem, "BOLD");
+          navItem.classList.add("bold");
         }
 
         return navItem;
