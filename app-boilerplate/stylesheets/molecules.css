@@ -1,9 +1,14 @@
 .molecule_logo {
-    display: block ruby;
+    display: grid;
+    align-items: center;
+    grid-auto-flow: column;
+    grid-gap: 1em;
     cursor: default;
 }
 
 .molecule_text_button {
-    display: flex;
+    display: grid;
     align-items: center;
+    grid-auto-flow: column;
+    grid-gap: 1em;
 }
