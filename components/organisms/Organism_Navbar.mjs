@@ -3,7 +3,7 @@ import { createElement } from "../../core/helpers/createElement.mjs";
 import { Organism } from "../../core/Organism.mjs";
 //import sub components
 import { Molecule_Logo } from "../molecules/Molecule_Logo.mjs";
-import { Molecule_Icon_ListItem } from "../molecules/Molecule_Icon_ListItem.mjs";
+import { Molecule_Icon_NavItem } from "../molecules/Molecule_Icon_NavItem.mjs";
 import { Molecule_Text_Button } from "../molecules/Molecule_Text_Button.mjs";
 
 export function Organism_Navbar() {
@@ -20,8 +20,8 @@ export function Organism_Navbar() {
     },
     {
       id: 2,
-      molecule: "Molecule_Icon_ListItem",
-      component: new Molecule_Icon_ListItem(),
+      molecule: "Molecule_Icon_NavItem",
+      component: new Molecule_Icon_NavItem(),
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ export function Organism_Navbar() {
       ),
       await createElement(
         "div",
-        { class: "organism_navbar__icon_listitem" },
+        { class: "organism_navbar__icon_navitem" },
         await this.molecule(2, "")
       ),
       await createElement(

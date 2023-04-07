@@ -3,9 +3,9 @@ import { Molecule } from "../../core/Molecule.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
 //import sub components
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
-import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
+import { Atom_NavItem } from "../atoms/Atom_NavItem.mjs";
 
-export function Molecule_Icon_ListItem() {
+export function Molecule_Icon_NavItem() {
   Molecule.call(this);
 
   // sub components
@@ -17,8 +17,8 @@ export function Molecule_Icon_ListItem() {
     },
     {
       id: 2,
-      atom: "Atom_ListItem",
-      component: new Atom_ListItem(),
+      atom: "Atom_NavItem",
+      component: new Atom_NavItem(),
     },
   ];
 
