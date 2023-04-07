@@ -71,8 +71,14 @@ export function Molecule_Icon_NavItem() {
           await this.atom(2, item.title)
         );
         navItem.addEventListener("click", async () => {
-          console.log("routing to: ", item.title);
-          await this.fn(2, item.title);
+          const newView = item.title.toLowerCase();
+
+          const currentView = window.location.pathname.slice(1);
+          if (currentView !== newView) {
+            await this.fn(2, newView);
+          } else {
+            console.log("already in view: ", newView);
+          }
         });
         return navItem;
       })
