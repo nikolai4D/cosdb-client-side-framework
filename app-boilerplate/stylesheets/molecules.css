@@ -1,8 +1,5 @@
 .molecule_logo {
-    display: grid;
-    align-items: center;
-    grid-auto-flow: column;
-    grid-gap: 1em;
+    display: block ruby;
     cursor: default;
 }
 
