@@ -16,12 +16,14 @@ export function createElement(tag, attributes = {}, ...children) {
 
   console.log(children, "children");
 
-  for (const child of children) {
-    console.log(child);
-    if (typeof child === "string") {
-      element.appendChild(document.createTextNode(child));
-    } else {
-      element.appendChild(child);
+  if (children[0] !== null) {
+    for (const child of children) {
+      console.log(child);
+      if (typeof child === "string") {
+        element.appendChild(document.createTextNode(child));
+      } else {
+        element.appendChild(child);
+      }
     }
   }
 
