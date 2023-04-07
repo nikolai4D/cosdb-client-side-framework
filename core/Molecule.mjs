@@ -1,8 +1,14 @@
 export function Molecule() {
   this.title = "Molecule";
 
-  this.fn = function (id) {
-    return this.functions.find((fn) => fn.id === id)?.function() || "";
+  this.fn = async function (id) {
+    const fn = this.functions.find((fn) => fn.id === id)?.function();
+    if (fn) {
+      return await fn();
+    } else {
+      return "";
+    }
+    //return this.functions.find((fn) => fn.id === id)?.function() || "";
   };
   this.atom = async function (id, data) {
     const component = this.atoms.find((atom) => atom.id === id)?.component;
