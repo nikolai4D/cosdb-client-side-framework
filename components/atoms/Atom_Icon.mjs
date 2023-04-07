@@ -9,7 +9,7 @@ export function Atom_Icon() {
   const component = async (compData) => {
     const comp = await createElement(
       "i",
-      { class: `${await this.atom()} Atom_Icon` },
+      { class: `${await this.atom()} atom_icon` },
       ""
     );
     //add event listeners here

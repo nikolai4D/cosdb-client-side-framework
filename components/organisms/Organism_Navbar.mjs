@@ -35,7 +35,7 @@ export function Organism_Navbar() {
   const component = async () => {
     const comp = await createElement(
       "nav",
-      { className: "Organism_Navbar" },
+      { class: "Organism_Navbar" },
       await createElement("div", {}, await this.molecule(1, "")),
       //   await createElement("ul", {}, await this.molecule(2, null)),
       await createElement("div", {}, await this.molecule(3, ""))
