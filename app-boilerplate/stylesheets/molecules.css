@@ -492,9 +492,13 @@
 
 .molecule_headingIconText__iconText{
     display:flex;
-    margin-top: 1em;
     color:grey;
     align-items: center;
+
+}
+
+.molecule_headingIconText__text{
+    padding:1em;
 
 }
 
