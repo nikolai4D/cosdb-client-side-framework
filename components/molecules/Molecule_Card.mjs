@@ -14,17 +14,17 @@ export function Molecule_Card() {
       component:  new Atom_Image()
     },
     {
-        id: 1,
+        id: 2,
         atom: "Atom_Text1",
         component:  new Atom_Text1()
     },
     {
-      id: 1,
+      id: 3,
       atom: "Atom_Icon",
       component:  new Atom_Icon()
     },
     {
-      id: 1,
+      id: 4,
       atom: "Atom_Text1",
       component:  new Atom_Text1()
     },
