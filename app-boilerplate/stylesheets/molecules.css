@@ -500,8 +500,7 @@
     display:flex;
     color:grey;
     align-items: center;
-    margin-left:1em;
-
+    gap: 0.5em;
 }
 
 .molecule_headingIconText__text{

@@ -80,8 +80,9 @@
 .organism_navbar > ul {
     display: flex;
     justify-content: center;
-    gap: 37px;
+    gap: 1.5em;
 }
+
 .organism_search_w_top_results{
 
     justify-self: center;
