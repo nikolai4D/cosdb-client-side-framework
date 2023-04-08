@@ -2,17 +2,23 @@
 import { Molecule } from "../../core/Molecule.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
 //import sub components
-import { Atom_X_Template } from "../atoms/Atom_X_Template.mjs";
+import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
+import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
 
-export function Molecule_X_Template() {
+export function Molecule_Heading_List() {
   Molecule.call(this);
 
   // sub components
   this.atoms = [
     {
       id: 1,
-      atom: "Atom_X_Template",
-      component: new Atom_X_Template(),
+      atom: "Atom_Heading4",
+      component: new Atom_Heading4(),
+    },
+    {
+      id: 2,
+      atom: "Atom_ListItem",
+      component: new Atom_ListItem(),
     },
   ];
 
@@ -25,12 +31,16 @@ export function Molecule_X_Template() {
 
   //build component
   const component = async (
-    compData = [{ title: "placeholder 1" }, { title: "placeholder 2" }]
+    compData = {
+      header: "header",
+      content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
+    }
   ) => {
     const comp = await createElement(
       "div",
-      { class: "Molecule_Template" },
-      await createElement("ul", {}, ...(await compDatas(compData)))
+      { class: "molecule_template" },
+      await this.atom(1, compData.header),
+      await createElement("ul", {}, ...(await compDatas(compData.content)))
     );
 
     //add event listener to the comp here
@@ -47,7 +57,7 @@ export function Molecule_X_Template() {
   const compDatas = async (arrayOfData) => {
     return await Promise.all(
       arrayOfData.map(async (item) => {
-        return await this.atom(1, item.title);
+        return await this.atom(2, item.title);
       })
     );
   };

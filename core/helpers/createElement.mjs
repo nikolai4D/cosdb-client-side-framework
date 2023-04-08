@@ -9,6 +9,8 @@ export function createElement(tag, attributes = {}, ...children) {
       }
     } else if (key === "id") {
       element.id = value;
+    } else if (key === "type") {
+      element.type = value;
     } else {
       element.setAttribute(key, value);
     }
