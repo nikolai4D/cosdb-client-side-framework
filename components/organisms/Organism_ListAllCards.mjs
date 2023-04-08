@@ -139,11 +139,11 @@ export function Organism_ListAllCards() {
   
       molecule.title.forEach((item, index2) => {
         const listItemAtom = createAtom(Atom_Text1, item.title, index2);
-        const iconAtom = createAtom(Atom_Icon, "bi bi-calendar-week", index2);
-        const descAtom = createAtom(Atom_Text1, "Aug 2023 - Ongoing", index2);
+        // const iconAtom = createAtom(Atom_Icon, "bi bi-calendar-week", index2);
+        // const descAtom = createAtom(Atom_Text1, "Aug 2023 - Ongoing", index2);
         newMolecule.component.atoms.push(listItemAtom);
-        newMolecule.component.atoms.push(iconAtom);
-        newMolecule.component.atoms.push(descAtom);
+        // newMolecule.component.atoms.push(iconAtom);
+        // newMolecule.component.atoms.push(descAtom);
       });
   
       return newMolecule;
