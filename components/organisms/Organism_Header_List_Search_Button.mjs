@@ -66,8 +66,8 @@ export function Organism_Header_List_Search_Button() {
   };
 
   //add component specific functions here
-  const listItem = (data = {
+  const listItem = {
     header: "header",
     content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
-  });
+  };
 }
