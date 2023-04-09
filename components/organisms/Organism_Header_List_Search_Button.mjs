@@ -66,7 +66,7 @@ export function Organism_Header_List_Search_Button() {
       await createElement(
         "div",
         { class: "molecule_heading_list" },
-        ...(await listItems(await listItemsData(State.items)))
+        ...(await listItems(await State.items))
         // await this.molecule(2, listItem)
       ),
       await createElement(
