@@ -13,7 +13,7 @@ export function Molecule() {
         return await fn.function();
       }
     } else {
-      return "";
+      return null;
     }
     // return this.functions.find((fn) => fn.id === id)?.function() || "";
   };
