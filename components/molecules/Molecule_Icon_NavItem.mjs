@@ -34,7 +34,8 @@ export function Molecule_Icon_NavItem() {
   ];
 
   //build component
-  const component = async () => {
+  const component = async (componentData) => {
+    console.log(componentData);
     console.log(await navItems());
     const comp = await createElement(
       "div",
