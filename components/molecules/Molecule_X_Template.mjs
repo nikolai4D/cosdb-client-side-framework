@@ -30,7 +30,7 @@ export function Molecule_X_Template() {
     const comp = await createElement(
       "div",
       { class: "Molecule_Template" },
-      await createElement("ul", {}, ...(await compDatas(compData)))
+      await createElement("ul", {}, ...(await items(compData)))
     );
 
     //add event listener to the comp here
@@ -44,7 +44,7 @@ export function Molecule_X_Template() {
   };
 
   //add component specific functions here
-  const compDatas = async (arrayOfData) => {
+  const items = async (arrayOfData) => {
     return await Promise.all(
       arrayOfData.map(async (item) => {
         return await this.atom(1, item.title);

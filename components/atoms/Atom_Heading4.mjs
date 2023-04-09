@@ -7,17 +7,16 @@ export function Atom_Heading4() {
 
   //build component
   const component = async (compData) => {
-    const comp = await createElement(
-      "h4",
-      { class: "atom_heading4" },
-      await this.atom()
-    );
+    const comp = await createElement("h4", {
+      class: `${await this.atom()} atom_heading4`,
+      compData,
+    });
     //add event listeners here
     return comp;
   };
 
   //render component
-  this.render = async (data = "data placeholder") => {
+  this.render = async (data = "Atom_Heading4 placeholder") => {
     return await component(data);
   };
 
