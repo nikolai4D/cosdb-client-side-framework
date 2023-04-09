@@ -73,9 +73,9 @@ export function Organism_ListAll() {
     }
     changeData(data, filteredData)
 
-    for (let mol of this.molecules) {
-      await this.fillSlot(mol.molecule, mol.component.getElement())
-    }
+    // for (let mol of this.molecules) {
+    //   await this.fillSlot(mol.molecule, mol.component.getElement())
+    // }
     updateMolecules(data);
     await renderMolecules();
 
@@ -160,7 +160,7 @@ export function Organism_ListAll() {
         anArray.push(await li)
       }
     }
-    
+
     // for (let org of this.organisms) {
       let newOrg = new Organism_ModalPrep()
       newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
