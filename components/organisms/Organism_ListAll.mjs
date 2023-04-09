@@ -157,9 +157,8 @@ export function Organism_ListAll() {
       await moleculesSlots.appendChild(mol.component.getElement());
     }
     for await (const child of moleculesSlots.children) {
-      for await (const li of child.children[1].children){
-        anArray.push(await li)
-      }
+      console.log(child, "child")
+      anArray.push(await child)
     }
     
     // for (let org of this.organisms) {
