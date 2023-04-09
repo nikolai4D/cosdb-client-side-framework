@@ -11,7 +11,7 @@ export async function getComponents(parentId) {
 
   if (Slots.length > 0) {
     for (const slot of Slots) {
-      let comp;
+      let comp = null;
       try {
         comp = await apiCallGet(`/read/${componentType}s/${slot.id}`);
       } catch (error) {
