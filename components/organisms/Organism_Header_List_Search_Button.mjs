@@ -5,6 +5,8 @@ import { Organism } from "../../core/Organism.mjs";
 import { Molecule_Heading_List } from "../molecules/Molecule_Heading_List.mjs";
 import { Molecule_Heading_Input_Button } from "../molecules/Molecule_Heading_Input_Button.mjs";
 import { Organism_Modal } from "./Organism_Modal.mjs";
+//import state
+import { State } from "../../data-mgmt/State.mjs";
 
 export function Organism_Header_List_Search_Button() {
   Organism.call(this);
@@ -31,10 +33,28 @@ export function Organism_Header_List_Search_Button() {
     },
   ];
 
-  this.functions = [{ id: 1, function: "getListItems" }];
+  this.functions = [
+    {
+      id: 1,
+      function: () =>
+        (State.items = [
+          {
+            header: "header1",
+            content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
+          },
+          {
+            header: "header2",
+            content: [{ title: "placeholder 3" }, { title: "placeholder 4" }],
+          },
+        ]),
+    },
+  ];
+
+  this.fn(1);
 
   //build component
   const component = async () => {
+    console.log("State.items", State.items);
     const comp = await createElement(
       "div",
       { className: "organism_header_list_search_button" },
@@ -46,7 +66,7 @@ export function Organism_Header_List_Search_Button() {
       await createElement(
         "div",
         { class: "molecule_heading_list" },
-        ...(await listItems(await listItemsData()))
+        ...(await listItems(await listItemsData(State.items)))
         // await this.molecule(2, listItem)
       ),
       await createElement(
@@ -68,20 +88,20 @@ export function Organism_Header_List_Search_Button() {
 
   //add component specific functions here
 
-  const listItemsData = async () => {
-    return (
-      (await this.fn(1)) || [
-        {
-          header: "header1",
-          content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
-        },
-        {
-          header: "header2",
-          content: [{ title: "placeholder 3" }, { title: "placeholder 4" }],
-        },
-      ]
-    );
-  };
+  //   const listItemsData = async () => {
+  //     return (
+  //       (await this.fn(1)) || [
+  //         {
+  //           header: "header1",
+  //           content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
+  //         },
+  //         {
+  //           header: "header2",
+  //           content: [{ title: "placeholder 3" }, { title: "placeholder 4" }],
+  //         },
+  //       ]
+  //     );
+  //   };
   const listItems = async (arrayOfData) => {
     return await Promise.all(
       arrayOfData.map(async (item) => {
