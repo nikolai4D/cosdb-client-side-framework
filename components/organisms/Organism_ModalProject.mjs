@@ -2,7 +2,7 @@ import {slot} from "../../../core/helpers.mjs";
 import {Component} from "../../../core/Component.mjs";
 import { Organism_ModalProjectContent } from "./Organism_ModalProjectContent.mjs";
 
-export function Organism_ModalProcess() {
+export function Organism_ModalProject() {
     Component.call(this)
 
     this.organisms = [
