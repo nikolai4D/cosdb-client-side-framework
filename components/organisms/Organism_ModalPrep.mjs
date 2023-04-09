@@ -46,7 +46,7 @@ export function Organism_ModalPrep() {
             const modalId =  document.getElementById('modal-processView')
 
            modalId.innerHTML = `
-                <div class="test">
+                <div>
                     ${slot("new-modal")}
                 </div>
                 `
