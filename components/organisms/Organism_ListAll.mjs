@@ -73,9 +73,9 @@ export function Organism_ListAll() {
     }
     changeData(data, filteredData)
 
-    // for (let mol of this.molecules) {
-    //   await this.fillSlot(mol.molecule, mol.component.getElement())
-    // }
+    for (let mol of this.molecules) {
+      await this.fillSlot(mol.molecule, mol.component.getElement())
+    }
     updateMolecules(data);
     await renderMolecules();
 
