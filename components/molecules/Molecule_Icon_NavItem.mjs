@@ -64,6 +64,7 @@ export function Molecule_Icon_NavItem() {
   const navItemsWithIcons = async (
     arrayOfData = [{ icon: "icon", title: "title" }]
   ) => {
+    console.log("arrayOfData: ", arrayOfData);
     return await Promise.all(
       arrayOfData.map(async (item) => {
         const navItem = await createElement(
