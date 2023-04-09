@@ -159,11 +159,9 @@
 }
 
 .organism_list-all-search__top {
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: 2rem;
+    display: flex;
     justify-content: space-between;
-    justify-items: center;
+    align-items: center;
 }
 
 .organism_list-all-search__top > h2{
