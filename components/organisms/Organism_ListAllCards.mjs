@@ -170,13 +170,13 @@ export function Organism_ListAllCards() {
     
     // for (let org of this.organisms) {
       let newOrg = new Organism_ModalProcessPrep()
-      newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
-      newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
-      newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value
+      // newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
+      // newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
+      // newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value
 
-      newOrg.moleculeLeft.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[1].component.value[0].value
-      newOrg.moleculeMiddle.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[1].component.value[0].value
-      newOrg.moleculeRight.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[1].component.value[0].value
+      // newOrg.moleculeLeft.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[1].component.value[0].value
+      // newOrg.moleculeMiddle.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[1].component.value[0].value
+      // newOrg.moleculeRight.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[1].component.value[0].value
 
       newOrg.parent = await anArray;
 
