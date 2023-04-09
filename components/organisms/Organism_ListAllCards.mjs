@@ -165,6 +165,7 @@ export function Organism_ListAllCards() {
     }
     for await (const child of moleculesSlots.children) {
       for await (const li of child.children[1].children){
+        console.log(li, "li")
         anArray.push(await li)
       }
     }
