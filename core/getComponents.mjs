@@ -18,7 +18,7 @@ export async function getComponents(parentId) {
         console.log("no component found for slot ", slot.value);
       }
 
-      if (comp.length > 0) {
+      if (comp) {
         console.log(comp);
         const componentFromModule = await getComponent(
           comp[0].value,
