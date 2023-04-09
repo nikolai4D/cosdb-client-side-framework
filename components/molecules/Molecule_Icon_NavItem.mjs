@@ -34,8 +34,8 @@ export function Molecule_Icon_NavItem() {
   ];
 
   //build component
-  const component = async (componentData) => {
-    console.log(componentData);
+  const component = async (compData) => {
+    console.log(compData);
     console.log(await navItems());
     const comp = await createElement(
       "div",
@@ -59,12 +59,14 @@ export function Molecule_Icon_NavItem() {
   //add component specific functions here
 
   //get menu items from await this.fn(1)
-  const navItems = async () => await this.fn(1);
+  const navItems = async () => {
+    return (
+      (await this.fn(1)) || [{ icon: "icon", title: "title", route: "route" }]
+    );
+  };
 
   //loopa varje item och sätt in i Atom_ListItem
-  const navItemsWithIcons = async (
-    arrayOfData = [{ icon: "icon", title: "title" }]
-  ) => {
+  const navItemsWithIcons = async (arrayOfData) => {
     console.log("arrayOfData: ", arrayOfData);
     return await Promise.all(
       arrayOfData.map(async (item) => {
