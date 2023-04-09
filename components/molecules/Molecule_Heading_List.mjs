@@ -30,12 +30,7 @@ export function Molecule_Heading_List() {
   ];
 
   //build component
-  const component = async (
-    compData = {
-      header: "header",
-      content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
-    }
-  ) => {
+  const component = async (compData) => {
     const comp = await createElement(
       "div",
       { class: "molecule_template" },
@@ -49,7 +44,12 @@ export function Molecule_Heading_List() {
   };
 
   //render component
-  this.render = async (data) => {
+  this.render = async (
+    data = {
+      header: "header",
+      content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
+    }
+  ) => {
     return await component(data);
   };
 
