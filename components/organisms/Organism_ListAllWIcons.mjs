@@ -6,7 +6,7 @@ import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { State } from "../../data-mgmt/state.mjs";
-import { Organism_ModalPrep } from "./Organism_ModalProjectPrep.mjs";
+import { Organism_ModalPrep } from "./Organism_ModalPrep.mjs";
 
 export function Organism_ListAllWIcons() {
   Component.call(this);
