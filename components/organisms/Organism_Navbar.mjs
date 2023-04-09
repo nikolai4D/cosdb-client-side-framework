@@ -40,17 +40,17 @@ export function Organism_Navbar() {
       await createElement(
         "div",
         { class: "organism_navbar__logo" },
-        await this.molecule(1, "")
+        await this.molecule(1, null)
       ),
       await createElement(
         "div",
         { class: "organism_navbar__icon_navitem" },
-        await this.molecule(2, "")
+        await this.molecule(2, null)
       ),
       await createElement(
         "div",
         { class: "organism_navbar__text_button" },
-        await this.molecule(3, "")
+        await this.molecule(3, null)
       )
     );
 
