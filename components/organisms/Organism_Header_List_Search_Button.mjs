@@ -31,7 +31,7 @@ export function Organism_Header_List_Search_Button() {
     },
   ];
 
-  this.functions = [];
+  this.functions = [{ id: 1, function: "getListItems" }];
 
   //build component
   const component = async () => {
@@ -46,7 +46,8 @@ export function Organism_Header_List_Search_Button() {
       await createElement(
         "div",
         { class: "molecule_heading_list" },
-        await this.molecule(2, listItem)
+        ...(await listItems(await listItemsData()))
+        // await this.molecule(2, listItem)
       ),
       await createElement(
         "div",
@@ -66,8 +67,26 @@ export function Organism_Header_List_Search_Button() {
   };
 
   //add component specific functions here
-  const listItem = {
-    header: "header",
-    content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
+
+  const listItemsData = async () => {
+    return (
+      (await this.fn(1)) || [
+        {
+          header: "header1",
+          content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
+        },
+        {
+          header: "header2",
+          content: [{ title: "placeholder 3" }, { title: "placeholder 4" }],
+        },
+      ]
+    );
+  };
+  const listItems = async (arrayOfData) => {
+    return await Promise.all(
+      arrayOfData.map(async (item) => {
+        return await this.molecule(2, item);
+      })
+    );
   };
 }
