@@ -16,10 +16,10 @@ export function Organism_Modal() {
     this.getHtml = function() {
 
         return `
-        <div id="modal-background" class="modal organism_modalBackground">
-            <div class="modal-container modal-process-inner-wrap">
-                <div class="modal-process-section">
-                    <div class="modal-process-upper-section">
+        <div id="modal-background" class="modal organism_modal_background">
+            <div class="modal-container modal-inner-wrap">
+                <div class="modal-section">
+                    <div class="modal-upper-section">
                         <i class="bi bi-x"></i>
                     </div>
                 </div> 

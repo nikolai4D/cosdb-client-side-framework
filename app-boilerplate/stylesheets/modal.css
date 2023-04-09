@@ -91,10 +91,9 @@
   margin: 0 41px 0 72px;
 }
 
-.modal-process-section {
-}
 
-.modal-process-upper-section {
+
+.modal-upper-section {
   display: flex;
   justify-content: end;
   font-size: x-large;
@@ -102,7 +101,7 @@
   padding-right: 0.2em;
 }
 
-.modal-process-inner-wrap {
+.modal-inner-wrap {
 }
 
 .modal-organisation-upper-section {

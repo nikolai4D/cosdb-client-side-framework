@@ -50,7 +50,7 @@ export function Organism_ListAll() {
           ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
         <div id="modal-slot">
-        ${slot(this.organisms[0].organism)}
+          ${slot(this.organisms[0].organism)}
         </div>
       </div>
     `;
@@ -102,7 +102,6 @@ export function Organism_ListAll() {
           }
         }
       }
-      
   }
 
   const createMolecule = (MoleculeClass, id) => {

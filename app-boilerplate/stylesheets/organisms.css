@@ -39,7 +39,7 @@
 
 }
 
-.organism_modalBackground { 
+.organism_modal_background { 
     position:absolute;
     width:100vw;
     height:100vh;
@@ -399,10 +399,6 @@
 
 .organism_user-modal > .upper-section > .input-fields > .molecule_text_and_dropdown > .dropdown > .dropdown-content{
     min-width: 218px !important;
-}
-
-.organism_process-modal {
-    /* background-color: white; */
 }
 
 

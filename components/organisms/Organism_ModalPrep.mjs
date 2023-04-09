@@ -32,7 +32,7 @@ export function Organism_ModalPrep() {
 
   this.getHtml = function () {
     return `
-        <div id="modal-processView"></div>
+        <div id="modal-view"></div>
     `;
   };
 
@@ -43,7 +43,7 @@ export function Organism_ModalPrep() {
     for  (const element of elementsToAddModalTo) {
         element.addEventListener("click",  (e) => {
 
-            const modalId =  document.getElementById('modal-processView')
+            const modalId =  document.getElementById('modal-view')
 
            modalId.innerHTML = `
                 <div>
