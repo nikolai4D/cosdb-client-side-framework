@@ -140,7 +140,6 @@ export function Organism_ListAllWIcons() {
         const newMolecule = createMolecule(Molecule_HeadingTextIconText, index + 1);
         newMolecule.id = item.id;
         newMolecule.parentId = item.parentId;
-        console.log(newMolecule)
 
         const project = {icon: "bi bi-list-check", id: "co_bad02214-dd2a-47dd-96b6-d62c15d6ba4d", title: "Project"}
         const process = {icon: "bi bi-arrow-right-square", id: "co_140ca73c-1275-4fa5-8e74-fa71e845afe3", title: "Process"}
@@ -182,11 +181,10 @@ export function Organism_ListAllWIcons() {
     for (const  mol of this.molecules) {
       await moleculesSlots.appendChild(mol.component.getElement());
     }
-    // for await (const child of moleculesSlots.children) {
-    //   for await (const li of child.children[1].children){
-    //     anArray.push(await li)
-    //   }
-    // }
+    for await (const child of moleculesSlots.children) {
+        console.log(child, "child")
+        anArray.push(await child)
+      }
     
     // for (let org of this.organisms) {
     //   let newOrg = new Organism_ModalPrep()
