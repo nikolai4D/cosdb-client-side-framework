@@ -1,15 +1,15 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from "../../core/helpers.mjs";
-import { Organism_ModalProcess } from "./Organism_ModalProcess.mjs";
+import { Organism_ModalProject } from "./Organism_ModalProject.mjs";
 
-export function Organism_ModalProcessPrep() {
+export function Organism_ModalProjectPrep() {
   Component.call(this);
 
   this.organisms = [
     {
         id: 1,
-        organism: "Organism_ModalProcess",
-        component: new Organism_ModalProcess()
+        organism: "Organism_ModalProject",
+        component: new Organism_ModalProject()
     }
     ]
 
@@ -32,18 +32,20 @@ export function Organism_ModalProcessPrep() {
 
   this.getHtml = function () {
     return `
-        <div id="modal-processView"></div>
+        <div id="modal-projectView"></div>
     `;
   };
+  
 
   this.bindScript =  function () {
+
 
     let elementsToAddModalTo = this.parent
     if (!Array.isArray(elementsToAddModalTo)) elementsToAddModalTo = [elementsToAddModalTo]
     for  (const element of elementsToAddModalTo) {
         element.addEventListener("click",  (e) => {
 
-            const modalId =  document.getElementById('modal-processView')
+            const modalId =  document.getElementById('modal-projectView')
 
            modalId.innerHTML = `
                 <div class="test">
@@ -51,7 +53,7 @@ export function Organism_ModalProcessPrep() {
                 </div>
                 `
 
-            let component = new Organism_ModalProcess()
+            let component = new Organism_ModalProject()
 
               getModalContent(component, this, element)
             const modalElement =  component.getElement()
@@ -87,7 +89,7 @@ export function Organism_ModalProcessPrep() {
     moleculeRight.atoms[1].component.value[0].value = that.moleculeRight.body ?? moleculeRight.atoms[1].component.value[0].value;
 
     const moleculeMiddleBody = moleculeMiddle.atoms[1].component.value[0].value
-    if (moleculeMiddleBody.includes("Erhållit beställning för start byggnationsprocess (D) (0.1.1)"))
+    if (moleculeMiddleBody.includes("Erhållit beställning för start byggnationsproject (D) (0.1.1)"))
     {
       moleculeLeft.atoms[1].component.value[0].value = "Beställning"
       moleculeRight.atoms[1].component.value[0].value = "-"
