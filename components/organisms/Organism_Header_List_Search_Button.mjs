@@ -46,7 +46,7 @@ export function Organism_Header_List_Search_Button() {
       await createElement(
         "div",
         { class: "molecule_heading_list" },
-        await this.molecule(2, null)
+        await this.molecule(2, listItem)
       ),
       await createElement(
         "div",
@@ -66,4 +66,8 @@ export function Organism_Header_List_Search_Button() {
   };
 
   //add component specific functions here
+  const listItem = (data = {
+    header: "header",
+    content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
+  });
 }

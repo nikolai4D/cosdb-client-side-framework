@@ -35,7 +35,7 @@ export function Molecule_Heading_List() {
       "div",
       { class: "molecule_template" },
       await this.atom(1, compData.header),
-      await createElement("ul", {}, ...(await compDatas(compData.content)))
+      await createElement("ul", {}, ...(await listItems(compData.content)))
     );
 
     //add event listener to the comp here
@@ -54,7 +54,7 @@ export function Molecule_Heading_List() {
   };
 
   //add component specific functions here
-  const compDatas = async (arrayOfData) => {
+  const listItems = async (arrayOfData) => {
     return await Promise.all(
       arrayOfData.map(async (item) => {
         return await this.atom(2, item.title);
