@@ -6,7 +6,7 @@ import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { State } from "../../data-mgmt/state.mjs";
-import { Organism_ModalProcessPrep } from "./Organism_ModalProjectPrep.mjs";
+import { Organism_ModalPrep } from "./Organism_ModalProjectPrep.mjs";
 
 export function Organism_ListAllWIcons() {
   Component.call(this);
@@ -27,8 +27,8 @@ export function Organism_ListAllWIcons() {
   this.organisms = [
     {
       id: 1,
-      organism: "Organism_ModalProcessPrep",
-      component: new Organism_ModalProcessPrep(),
+      organism: "Organism_ModalPrep",
+      component: new Organism_ModalPrep(),
     },
   ];
 
@@ -189,7 +189,7 @@ export function Organism_ListAllWIcons() {
     // }
     
     // for (let org of this.organisms) {
-    //   let newOrg = new Organism_ModalProcessPrep()
+    //   let newOrg = new Organism_ModalPrep()
     //   newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
     //   newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
     //   newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value

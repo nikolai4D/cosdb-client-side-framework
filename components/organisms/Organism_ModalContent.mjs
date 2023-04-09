@@ -5,7 +5,7 @@ import { Organism_InputOutput } from "./Organism_InputOutput.mjs";
 import { Molecule_ParentBoxes } from "../molecules/Molecule_ParentBoxes.mjs";
 
 
-export function Organism_ModalProcessContent() {
+export function Organism_ModalContent() {
     Component.call(this)
 
     this.organisms = [

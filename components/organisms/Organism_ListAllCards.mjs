@@ -7,7 +7,7 @@ import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 
 import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 import { State } from "../../data-mgmt/state.mjs";
-import { Organism_ModalProjectPrep } from "./Organism_ModalProjectPrep.mjs";
+import { Organism_ModalPrep } from "./Organism_ModalPrep.mjs";
 
 export function Organism_ListAllCards() {
   Component.call(this);
@@ -28,8 +28,8 @@ export function Organism_ListAllCards() {
   this.organisms = [
     {
       id: 1,
-      organism: "Organism_ModalProjectPrep",
-      component: new Organism_ModalProjectPrep(),
+      organism: "Organism_ModalPrep",
+      component: new Organism_ModalPrep(),
     },
   ];
 
@@ -169,7 +169,7 @@ export function Organism_ListAllCards() {
     }
     
     // for (let org of this.organisms) {
-      let newOrg = new Organism_ModalProjectPrep()
+      let newOrg = new Organism_ModalPrep()
       // newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
       // newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
       // newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value

@@ -1,15 +1,15 @@
 import {slot} from "../../../core/helpers.mjs";
 import {Component} from "../../../core/Component.mjs";
-import { Organism_ModalProcessContent } from "./Organism_ModalProcessContent.mjs";
+import { Organism_ModalContent } from "./Organism_ModalContent.mjs";
 
-export function Organism_ModalProcess() {
+export function Organism_Modal() {
     Component.call(this)
 
     this.organisms = [
         {
             id: 1,
-            organism: "Organism_ModalProcessContent",
-            component: new Organism_ModalProcessContent()
+            organism: "Organism_ModalContent",
+            component: new Organism_ModalContent()
         }
     ];
 
