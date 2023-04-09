@@ -22,15 +22,11 @@ export function Molecule_Heading_List() {
     },
   ];
 
-  this.functions = [
-    {
-      id: 1,
-      function: "placeholder",
-    },
-  ];
+  this.functions = [];
 
   //build component
   const component = async (compData) => {
+    console.log("compData", compData);
     const comp = await createElement(
       "div",
       { class: "molecule_template" },
