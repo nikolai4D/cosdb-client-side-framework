@@ -7,6 +7,7 @@ export async function getComponents(parentId) {
   //get slots
   const Slots = await apiCallGet(`/read/${slotType}s/${parentId}`);
   const componentsArray = [];
+  console.log("Slots", Slots);
 
   for (const slot of Slots) {
     try {
