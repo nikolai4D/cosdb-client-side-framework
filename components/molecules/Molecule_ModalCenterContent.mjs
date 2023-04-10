@@ -31,12 +31,12 @@ export function Molecule_ModalCenterContent() {
         await createElement(
           "div",
           { class: "molecule_modalcentercontent__leftarrows__toparrow" },
-          this.atom(3, null)
+          await this.atom(3, null)
         ),
         await createElement(
           "div",
           { class: "molecule_modalcentercontent__leftarrows__bottomarrow" },
-          this.atom(3, null)
+          await this.atom(3, null)
         )
       ),
       await createElement(
@@ -45,9 +45,9 @@ export function Molecule_ModalCenterContent() {
         await createElement(
           "div",
           { class: "molecule_modalcentercontent__content__header" },
-          this.atom(4, compData.parentNode),
-          this.atom(1, null),
-          this.atom(2, null)
+          await this.atom(4, compData.parentNode),
+          await this.atom(1, null),
+          await this.atom(2, null)
         ),
         await createElement(
           "div",
@@ -61,12 +61,12 @@ export function Molecule_ModalCenterContent() {
         await createElement(
           "div",
           { class: "molecule_modalcentercontent__rightarrows__toparrow" },
-          this.atom(3, null)
+          await this.atom(3, null)
         ),
         await createElement(
           "div",
           { class: "molecule_modalcentercontent__rightarrows__bottomarrow" },
-          this.atom(3, null)
+          await this.atom(3, null)
         )
       )
     );
