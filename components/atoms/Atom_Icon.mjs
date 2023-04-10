@@ -10,7 +10,7 @@ export function Atom_Icon() {
     const comp = await createElement(
       "i",
       { class: `${await this.atom()} atom_icon ${compData}` },
-      compData
+      ""
     );
     //add event listeners here
     return comp;
