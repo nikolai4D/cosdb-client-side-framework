@@ -28,5 +28,7 @@
     gap: 0.5em;
 }
 
-
-
+.molecule_heading_input_button {
+    display: flex;
+justify-content: space-between;
+}
