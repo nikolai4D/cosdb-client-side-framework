@@ -66,7 +66,7 @@ export function Organism_Header_List_Search_Button() {
       if (e.target.tagName === "BUTTON") {
         console.log("button clicked");
         await openModal("click on button");
-      
+      }
     });
 
     const headingList = await createElement(
