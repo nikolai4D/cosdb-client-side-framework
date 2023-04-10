@@ -77,7 +77,7 @@ export function Organism_Header_List_Search_Button() {
 
     const modal = await createElement(
       "div",
-      { class: "modal" },
+      { class: "organism_modal", id: "organism_modal" },
       await this.childOrganism(1, null)
     );
 
@@ -90,6 +90,8 @@ export function Organism_Header_List_Search_Button() {
     );
 
     //add event listener to the comp here
+
+    comp.addEventListener("click", closeModal);
 
     return comp;
   };
@@ -138,5 +140,13 @@ export function Organism_Header_List_Search_Button() {
     existingModal.innerHTML = "";
     const updatedModal = await this.childOrganism(1, data);
     existingModal.append(updatedModal);
+    existingModal.style.display = "block"; // Show the modal
+  };
+
+  const closeModal = (e) => {
+    const modal = document.getElementById("organism_modal");
+    if (e.target !== modal) {
+      modal.style.display = "none"; // Hide the modal
+    }
   };
 }
