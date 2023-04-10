@@ -30,12 +30,7 @@ export function Organism_ModalConnections() {
     },
   ];
 
-  this.functions = [
-    {
-      id: 1,
-      function: "placeholder",
-    },
-  ];
+  this.functions = [];
 
   //build component
   const component = async (compData) => {
