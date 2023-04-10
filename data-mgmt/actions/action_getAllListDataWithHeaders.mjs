@@ -1,22 +1,21 @@
 import { apiCallGet } from "./apiCalls.mjs";
 import { State } from "../State.mjs";
+import { transformer_trimAllElements } from "../etl/transfomer_trimAllElements.mjs";
+import { transformer_groupByFirstLetter } from "../etl/transformer_groupByFirstLetter.mjs";
+import { mutation_setAllListData } from "../mutations/mutation_setAllListData.mjs";
 
 export async function action_getAllListDataWithHeaders({
   type = "type",
   parentIds = [],
 }) {
-  console.log(type, parentIds);
   //for each parent id, get the list data
 
   const listData = [];
 
   for (const parentId of parentIds) {
-    console.log(parentId);
     const url = `api/${type}/${parentId}`;
-    console.log(url);
     try {
       const data = await apiCallGet(url);
-      console.log(data);
 
       if (Array.isArray(data)) {
         listData.push(...data);
@@ -28,17 +27,18 @@ export async function action_getAllListDataWithHeaders({
     }
   }
 
-  //transform data with header and content with array of titles
+  //transform data with header and content with array of title
+
   const structuredData = listData
     .reduce((accumulator, currentValue) => {
       const letter = currentValue.title[0].toUpperCase();
       const group = accumulator.find((item) => item.header === letter);
       if (group) {
-        group.content.push({ title: currentValue.title, id: currentValue.id });
+        group.content.push(currentValue);
       } else {
         accumulator.push({
           header: letter,
-          content: [{ title: currentValue.title, id: currentValue.id }],
+          content: [currentValue],
         });
       }
       return accumulator;
