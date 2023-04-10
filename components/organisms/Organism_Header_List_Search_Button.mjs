@@ -51,8 +51,6 @@ export function Organism_Header_List_Search_Button() {
     },
   ];
 
-  this.fn(1);
-
   //build component
   const component = async () => {
     console.log("State.items", State.items);
@@ -88,6 +86,7 @@ export function Organism_Header_List_Search_Button() {
   };
 
   const listItems = async (arrayOfData) => {
+    await this.fn(1);
     return await Promise.all(
       arrayOfData.map(async (item) => {
         return await this.molecule(2, item);
