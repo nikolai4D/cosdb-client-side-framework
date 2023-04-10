@@ -1,11 +1,11 @@
-export async function transformer_groupByFirstLetter(theArray) {
+export async function transformer_groupByFirstLetter(objectsArray) {
 
-        const grouped = theArray.reduce((acc, str) => {
-          const firstLetter = str.title[0].toUpperCase();
+        const grouped = objectsArray.reduce((acc, obj) => {
+          const firstLetter = obj.title[0].toUpperCase();
           if (!acc[firstLetter]) {
             acc[firstLetter] = [];
           }
-          acc[firstLetter].push(str);
+          acc[firstLetter].push(obj);
           return acc;
         }, {});
 
@@ -15,12 +15,9 @@ export async function transformer_groupByFirstLetter(theArray) {
           const sortedItems = items.sort((a, b) => a.title.localeCompare(b.title, "sv"));
           sortedGrouped.push({ letter: key, title: sortedItems });
         }
-        
-        console.log(sortedGrouped)
 
         sortedGrouped.sort((a, b) => a.letter.localeCompare(b.letter, "sv"));
-
-        return sortedGrouped;        
+        return sortedGrouped;
   
 }
 
