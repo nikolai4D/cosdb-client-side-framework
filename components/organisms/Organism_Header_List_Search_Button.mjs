@@ -60,13 +60,13 @@ export function Organism_Header_List_Search_Button() {
     );
     headingInputButton.addEventListener("input", async (e) => {
       console.log("input change");
-      await this.render(e.target.value);
+      await updateListItems(e.target.value);
     });
+
     const headingList = await createElement(
       "div",
-      { class: "molecule_heading_list" },
+      { class: "molecule_heading_list", id: "listItems" },
       ...(await listItems(compData))
-      // await this.molecule(2, listItem)
     );
 
     const modal = await createElement(
@@ -118,6 +118,12 @@ export function Organism_Header_List_Search_Button() {
       })
     );
   };
+
+  async function updateListItems(filter) {
+    const listItems = document.getElementById("listItems");
+    listItems.innerHTML = "";
+    listItems.append(...(await listItems(filter)));
+  }
 }
 
 // const comp = await createElement(
