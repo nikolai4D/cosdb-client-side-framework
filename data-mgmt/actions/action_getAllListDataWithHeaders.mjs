@@ -36,5 +36,6 @@ export async function action_getAllListDataWithHeaders({
   }, []);
 
   //set state
-  State.items = structuredData;
+  State.items = await structuredData;
+  console.log(State);
 }
