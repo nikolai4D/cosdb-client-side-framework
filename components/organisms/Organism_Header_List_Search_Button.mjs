@@ -75,12 +75,18 @@ export function Organism_Header_List_Search_Button() {
       ...(await listItems(compData))
     );
 
-    const modal = await createElement(
+    const modal = await createElement("div", {
+      class: "organism_modal",
+      id: "organism_modal",
+    });
+    modal.addEventListener("click", closeModal);
+
+    const modalContent = await createElement(
       "div",
-      { class: "organism_modal organism_modal_content", id: "organism_modal" },
+      { class: "organism_modal_content", id: "organism_modal_content" },
       await this.childOrganism(1, null)
     );
-    modal.addEventListener("click", closeModal);
+    modal.appendChild(modalContent);
 
     const comp = await createElement(
       "div",
@@ -137,11 +143,13 @@ export function Organism_Header_List_Search_Button() {
   }
 
   const openModal = async (data) => {
-    const existingModal = document.querySelector(".organism_modal");
-    existingModal.innerHTML = "";
+    const existingModalContent = document.getElementById(
+      "organism_modal_content"
+    );
+    existingModalContent.innerHTML = "";
     const updatedModal = await this.childOrganism(1, data);
-    existingModal.append(updatedModal);
-    existingModal.style.display = "block"; // Show the modal
+    existingModalContent.append(updatedModal);
+    document.getElementById("organism_modal").style.display = "block"; // Show the modal
   };
 
   const closeModal = (e) => {
