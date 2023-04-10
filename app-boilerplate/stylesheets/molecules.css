@@ -52,3 +52,23 @@
     gap: 2rem;
     margin: 0px;
 }
+
+.molecule_heading__list__list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 0px;
+}
+
+.molecule_heading_list__list > li {
+    list-style-type: none;
+    cursor: pointer;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+.molecule_heading_list__list > li:hover {
+    background: rgb(236, 236, 236);
+  }
