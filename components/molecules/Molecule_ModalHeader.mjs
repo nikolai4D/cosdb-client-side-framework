@@ -31,12 +31,12 @@ export function Molecule_ModalHeader() {
       await createElement(
         "div",
         { class: "molecule_modalheader__back" },
-        this.atom(1, "")
+        this.atom(1, "bi bi-arrow-left")
       ),
       await createElement(
         "div",
         { class: "molecule_modalheader__close" },
-        this.atom(2, "")
+        this.atom(2, "bi bi-arrow-left")
       )
     );
 
