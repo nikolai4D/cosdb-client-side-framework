@@ -82,11 +82,11 @@ export function Organism_Header_List_Search_Button() {
 
   //render component
   this.render = async (data = null) => {
+    await this.fn(1);
     return await component(data);
   };
 
   const listItems = async (arrayOfData) => {
-    await this.fn(1);
     return await Promise.all(
       arrayOfData.map(async (item) => {
         return await this.molecule(2, item);

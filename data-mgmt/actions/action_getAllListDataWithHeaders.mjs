@@ -29,16 +29,18 @@ export async function action_getAllListDataWithHeaders({
   }
 
   //transform data with header and content with array of titles
-  const structuredData = listData.reduce((accumulator, currentValue) => {
-    const letter = currentValue.title[0].toUpperCase();
-    const group = accumulator.find((item) => item.header === letter);
-    if (group) {
-      group.content.push(currentValue.title);
-    } else {
-      accumulator.push({ header: letter, content: [currentValue.title] });
-    }
-    return accumulator;
-  }, []);
+  const structuredData = listData
+    .reduce((accumulator, currentValue) => {
+      const letter = currentValue.title[0].toUpperCase();
+      const group = accumulator.find((item) => item.header === letter);
+      if (group) {
+        group.content.push(currentValue.title);
+      } else {
+        accumulator.push({ header: letter, content: [currentValue.title] });
+      }
+      return accumulator;
+    }, [])
+    .sort((a, b) => a.header.localeCompare(b.header));
 
   //set state
   State.items = await structuredData;
