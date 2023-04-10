@@ -2,14 +2,14 @@
 import { createElement } from "../../core/helpers/createElement.mjs";
 import { Atom } from "../../core/Atom.mjs";
 
-export function Atom_ListItem() {
+export function Atom_ListItemBold() {
   Atom.call(this);
 
   //build component
   const component = async (compData) => {
     const comp = await createElement(
       "li",
-      { class: `${await this.atom()} atom_listitem` },
+      { class: `${await this.atom()} atom_listitembold` },
       compData
     );
     //add event listeners here
