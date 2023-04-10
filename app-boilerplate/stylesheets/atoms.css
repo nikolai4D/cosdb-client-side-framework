@@ -21,17 +21,17 @@
     background-color: var(--custom-color-1);
   }
 
-.atom_buttonpositive {
-background-color: var(--white-color);
-padding: 1em;
-border: 1px solid var(--grey-color);
-border-radius: 6px;
-transition: 0.05s;
-cursor: pointer;
-}
+  .atom_button-positive{
+    padding: 1em;
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    transition: 0.05s;
+  }
 
-.atom_buttonpositive:hover{
-background-color: var(--custom-color-2);
+.atom_button-positive:hover{
+    background-color: var(--custom-color-2);
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
 }
 
 .atom_input { 
