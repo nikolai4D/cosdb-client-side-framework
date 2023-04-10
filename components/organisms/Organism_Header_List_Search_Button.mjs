@@ -89,7 +89,7 @@ export function Organism_Header_List_Search_Button() {
   };
 
   //render component
-  this.render = async (data = null) => {
+  this.render = async (data = "") => {
     await this.fn(1);
     return await component(data);
   };
