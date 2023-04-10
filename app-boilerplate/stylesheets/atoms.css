@@ -20,3 +20,23 @@
 .atom_buttonneutral:hover{
     background-color: var(--custom-color-1);
   }
+
+  .atom_buttonpositive{
+    padding: 1em;
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    transition: 0.05s;
+  }
+
+.atom_buttonpositive:hover{
+    background-color: var(--custom-color-2);
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+}
+
+.atom_input { 
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--grey-color);
+  border-radius: 6px;
+
+}

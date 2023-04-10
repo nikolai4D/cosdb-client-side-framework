@@ -5,6 +5,7 @@
 .viewtemplate_topnav_middlecontent__topnav {
     width: 100vw;
     height: 5em;
+    line-height: 0.9em;
 }
 
 .viewtemplate_topnav_middlecontent__middlecontent {
@@ -13,7 +14,7 @@
     grid-gap: 4rem;
     height: 85vh;
     width: 783px;
-    margin: auto;
-    margin-top: auto;
+    margin: 50px auto auto;
     align-content: start;
+
 }

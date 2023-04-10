@@ -55,7 +55,7 @@ export function Organism_Header_List_Search_Button() {
   const component = async (compData) => {
     const headingInputButton = await createElement(
       "div",
-      { class: "molecule_heading_input_button" },
+      { class: "organism_heading_input_button" },
       await this.molecule(1, null)
     );
     headingInputButton.addEventListener("input", async (e) => {
@@ -71,7 +71,7 @@ export function Organism_Header_List_Search_Button() {
 
     const headingList = await createElement(
       "div",
-      { class: "molecule_heading_list", id: "listItems" },
+      { class: "organism_heading_list", id: "listItems" },
       ...(await listItems(compData))
     );
     headingList.addEventListener("click", async (e) => {
