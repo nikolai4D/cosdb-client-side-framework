@@ -53,8 +53,6 @@ export function Organism_Header_List_Search_Button() {
 
   //build component
   const component = async () => {
-    const updatedState = await State.items;
-
     const comp = await createElement(
       "div",
       { className: "organism_header_list_search_button" },
@@ -66,7 +64,7 @@ export function Organism_Header_List_Search_Button() {
       await createElement(
         "div",
         { class: "molecule_heading_list" },
-        ...(await listItems(await updatedState))
+        ...(await listItems(State.items))
         // await this.molecule(2, listItem)
       ),
       await createElement(
@@ -84,6 +82,7 @@ export function Organism_Header_List_Search_Button() {
   //render component
   this.render = async (data = null) => {
     await this.fn(1);
+    console.log(State, "State: ");
     return await component(data);
   };
 
