@@ -53,6 +53,7 @@ export function Organism_Header_List_Search_Button() {
 
   //build component
   const component = async () => {
+    await State.items;
     console.log("State.items", State.items);
     const comp = await createElement(
       "div",
