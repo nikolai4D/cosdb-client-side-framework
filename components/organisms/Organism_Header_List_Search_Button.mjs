@@ -62,6 +62,11 @@ export function Organism_Header_List_Search_Button() {
       console.log("input change");
       await updateListItems(e.target.value);
     });
+    headingInputButton.addEventListener("click", async (e) => {
+      if (e.target.tag === "button") {
+        await openModal("click on button");
+      }
+    });
 
     const headingList = await createElement(
       "div",
@@ -126,25 +131,10 @@ export function Organism_Header_List_Search_Button() {
     console.log(updatedListItems);
     existinglistItems.append(...updatedListItems);
   }
-}
 
-// const comp = await createElement(
-//     "div",
-//     { className: "organism_header_list_search_button" },
-//     await createElement(
-//       "div",
-//       { class: "molecule_heading_input_button" },
-//       await this.molecule(1, null)
-//     ),
-//     await createElement(
-//       "div",
-//       { class: "molecule_heading_list" },
-//       ...(await listItems((filter = "")))
-//       // await this.molecule(2, listItem)
-//     ),
-//     await createElement(
-//       "div",
-//       { class: "modal" },
-//       await this.childOrganism(1, null)
-//     )
-//   );
+  async function openModal(data) {
+    const modal = document.getElementById("organism_modal");
+    modal.innerHTML = "";
+    modal.append(await this.childOrganism(1, data));
+  }
+}
