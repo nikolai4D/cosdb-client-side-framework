@@ -21,14 +21,14 @@
     background-color: var(--custom-color-1);
   }
 
-  .atom_button-positive{
+  .atom_buttonpositive{
     padding: 1em;
     border: 1px solid var(--grey-color);
     border-radius: 6px;
     transition: 0.05s;
   }
 
-.atom_button-positive:hover{
+.atom_buttonpositive:hover{
     background-color: var(--custom-color-2);
     border: 1px solid var(--grey-color);
     border-radius: 6px;
