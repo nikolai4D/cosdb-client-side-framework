@@ -54,7 +54,7 @@ export function Organism_ModalConnections() {
       ),
       await createElement(
         "div",
-        { class: "organism_modalconnections__header" },
+        { class: "organism_modalconnections__content" },
         await this.molecule(3, compData)
       ),
       await createElement(
