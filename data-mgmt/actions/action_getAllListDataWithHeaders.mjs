@@ -5,6 +5,7 @@ export async function action_getAllListDataWithHeaders({
   type = "type",
   parentIds = [],
 }) {
+  console.log(type, parentIds);
   //for each parent id, get the list data
 
   const listData = [];
