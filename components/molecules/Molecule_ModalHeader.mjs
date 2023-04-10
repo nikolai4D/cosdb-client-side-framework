@@ -11,12 +11,12 @@ export function Molecule_ModalHeader() {
   this.atoms = [
     {
       id: 1,
-      atom: "Atom_Icon back",
+      atom: "Atom_Icon", // back
       component: new Atom_Icon(),
     },
     {
       id: 2,
-      atom: "Atom_Icon close",
+      atom: "Atom_Icon", // close
       component: new Atom_Icon(),
     },
   ];

@@ -11,11 +11,11 @@ export function Molecule_ModalCenterContent() {
 
   // sub components
   this.atoms = [
-    { id: 1, atom: "Atom_Icon edit", component: new Atom_Icon() },
-    { id: 2, atom: "Atom_Icon close", component: new Atom_Icon() },
-    { id: 3, atom: "Atom_Icon dependency arrow", component: new Atom_Icon() },
-    { id: 4, atom: "Atom_Heading4", component: new Atom_Heading4() },
-    { id: 5, atom: "Atom_ListItem", component: new Atom_ListItem() },
+    { id: 1, atom: "Atom_Icon", component: new Atom_Icon() }, //edit
+    { id: 2, atom: "Atom_Icon", component: new Atom_Icon() }, //close
+    { id: 3, atom: "Atom_Icon", component: new Atom_Icon() }, //dependency arrow
+    { id: 4, atom: "Atom_Heading4", component: new Atom_Heading4() }, //heading
+    { id: 5, atom: "Atom_ListItem", component: new Atom_ListItem() }, //list item
   ];
 
   this.functions = [];

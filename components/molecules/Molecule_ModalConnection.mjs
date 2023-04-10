@@ -14,27 +14,27 @@ export function Molecule_ModalConnection() {
   this.atoms = [
     {
       id: 1,
-      atom: "Atom_Heading4 connections type",
+      atom: "Atom_Heading4", // connections type
       component: new Atom_Heading4(),
     },
     {
       id: 2,
-      atom: "Atom_Icon add",
+      atom: "Atom_Icon", // add connection
       component: new Atom_Icon(),
     },
     {
       id: 3,
-      atom: "Atom_ListItemBold for node title",
+      atom: "Atom_ListItemBold", // node title
       component: new Atom_ListItemBold(),
     },
     {
       id: 4,
-      atom: "Atom_ListItem for rel title",
-      component: new Atom_Icon(),
+      atom: "Atom_ListItem", // rel title
+      component: new Atom_ListItem(),
     },
     {
       id: 5,
-      atom: "Atom_Icon for delete rel",
+      atom: "Atom_Icon", // delete rel
       component: new Atom_Icon(),
     },
   ];
