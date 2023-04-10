@@ -55,7 +55,7 @@ display: grid;
 grid-auto-flow: row;
 overflow: auto;
 border-radius: 6px;
-max-height: 85vh;
+max-height: 70vh;
 }
 
 .organism_header_list_search_button{
