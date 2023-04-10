@@ -145,7 +145,7 @@ export function Organism_Header_List_Search_Button() {
 
   const closeModal = (e) => {
     const modal = document.getElementById("organism_modal");
-    if (e.target === modal) {
+    if (e.target !== modal) {
       modal.style.display = "none"; // Hide the modal
     }
   };
