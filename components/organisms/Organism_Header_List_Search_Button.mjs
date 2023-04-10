@@ -148,7 +148,7 @@ export function Organism_Header_List_Search_Button() {
     );
     existingModalContent.innerHTML = "";
     const updatedModal = await this.childOrganism(1, data);
-    existingModalContent.append(updatedModal);
+    existingModalContent.appendChild(updatedModal);
     document.getElementById("organism_modal").style.display = "block"; // Show the modal
   };
 
