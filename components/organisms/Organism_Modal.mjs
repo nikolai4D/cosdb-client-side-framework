@@ -24,7 +24,7 @@ export function Organism_Modal() {
   const component = async (compData) => {
     const comp = await createElement(
       "div",
-      { class: "organism_modal", id: "organism_modal" },
+      { class: "organism_modalContent2", id: "organism_modalContent2" },
       await createElement("div", {}, compData)
     );
 
