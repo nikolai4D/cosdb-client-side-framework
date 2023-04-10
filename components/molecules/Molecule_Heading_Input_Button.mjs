@@ -34,7 +34,7 @@ export function Molecule_Heading_Input_Button() {
   const component = async (compData) => {
     const comp = await createElement(
       "div",
-      { class: "Molecule_Input_Button" },
+      { class: "molecule_heading_input_button" },
       await this.atom(3, null),
       await this.atom(1, null),
       await this.atom(2, null)

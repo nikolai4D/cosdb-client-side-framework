@@ -29,7 +29,7 @@ export function Molecule_Heading_List() {
     console.log("compData", compData);
     const comp = await createElement(
       "div",
-      { class: "molecule_template" },
+      { class: "molecule_heading_list" },
       await this.atom(1, compData.header),
       await createElement("ul", {}, ...(await listItems(compData.content)))
     );
