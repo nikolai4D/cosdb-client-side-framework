@@ -135,8 +135,8 @@ export function Organism_Header_List_Search_Button() {
 
   async function openModal(data) {
     const existingModal = document.getElementById("organism_modal");
-    modal.innerHTML = "";
+    existingModal.innerHTML = "";
     updatedModal = await this.childOrganism(1, data);
-    modal.append(updatedModal);
+    existingModal.append(updatedModal);
   }
 }
