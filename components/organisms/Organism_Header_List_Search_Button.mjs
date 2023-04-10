@@ -52,19 +52,20 @@ export function Organism_Header_List_Search_Button() {
   ];
 
   //build component
-  const component = async () => {
+  const component = async (compData) => {
     const headingInputButton = await createElement(
       "div",
       { class: "molecule_heading_input_button" },
       await this.molecule(1, null)
     );
-    headingInputButton.addEventListener("input", (e) =>
-      console.log(e.target.value)
+    headingInputButton.addEventListener(
+      "input",
+      async (e) => await this.render(e.target.value)
     );
     const headingList = await createElement(
       "div",
       { class: "molecule_heading_list" },
-      ...(await listItems())
+      ...(await listItems(compData))
       // await this.molecule(2, listItem)
     );
 
@@ -94,10 +95,25 @@ export function Organism_Header_List_Search_Button() {
   };
 
   //add functions for the component here
-  const listItems = async () => {
+  const listItems = async (filter) => {
     const arrayOfData = await State.items;
+    let filteredData = [];
+
+    if (filter === "") {
+      filteredData = arrayOfData;
+    } else {
+      filteredData = [...arrayOfData].map((group) => {
+        let filteredContent = group.content.filter((item) =>
+          item.title.toLowerCase().includes(filter.toLowerCase())
+        );
+
+        return { header: group.header, content: filteredContent };
+      });
+      filteredData = filteredData.filter((group) => group.content.length > 0);
+    }
+
     return await Promise.all(
-      arrayOfData.map(async (item) => {
+      filteredData.map(async (item) => {
         return await this.molecule(2, item);
       })
     );
