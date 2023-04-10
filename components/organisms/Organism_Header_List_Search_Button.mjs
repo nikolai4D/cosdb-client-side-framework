@@ -62,7 +62,7 @@ export function Organism_Header_List_Search_Button() {
     const headingList = await createElement(
       "div",
       { class: "molecule_heading_list" },
-      ...(await listItems((filter = "")))
+      ...(await listItems())
       // await this.molecule(2, listItem)
     );
 
@@ -92,7 +92,7 @@ export function Organism_Header_List_Search_Button() {
   };
 
   //add functions for the component here
-  const listItems = async (filter) => {
+  const listItems = async () => {
     const arrayOfData = await State.items;
     return await Promise.all(
       arrayOfData.map(async (item) => {
