@@ -1,5 +1,4 @@
 import { apiCallGet } from "./apiCalls.mjs";
-import { State } from "../State.mjs";
 import { transformer_trimAllElements } from "../etl/transfomer_trimAllElements.mjs";
 import { transformer_groupByFirstLetter } from "../etl/transformer_groupByFirstLetter.mjs";
 import { mutation_setAllListData } from "../mutations/mutation_setAllListData.mjs";
@@ -27,27 +26,31 @@ export async function action_getAllListDataWithHeaders({
     }
   }
 
-  //transform data with header and content with array of title
-
-  const structuredData = listData
-    .reduce((accumulator, currentValue) => {
-      const letter = currentValue.title[0].toUpperCase();
-      const group = accumulator.find((item) => item.header === letter);
-      if (group) {
-        group.content.push(currentValue);
-      } else {
-        accumulator.push({
-          header: letter,
-          content: [currentValue],
-        });
-      }
-      return accumulator;
-    }, [])
-    .sort((a, b) =>
-      a.header.localeCompare(b.header, "sv", { sensitivity: "base" })
-    );
+  //trim all elements
+  const listDataTrimmed = await transformer_trimAllElements(listData, "title");
+  //group by first letter
+  const listDataGroupedByFirstLetter = await transformer_groupByFirstLetter(
+    listDataTrimmed
+  );
 
   //set state
-  State.items = await structuredData;
-  console.log(State);
+  await mutation_setAllListData("items", listDataGroupedByFirstLetter);
 }
+
+//   const structuredData = listData
+//     .reduce((accumulator, currentValue) => {
+//       const letter = currentValue.title[0].toUpperCase();
+//       const group = accumulator.find((item) => item.header === letter);
+//       if (group) {
+//         group.content.push(currentValue);
+//       } else {
+//         accumulator.push({
+//           header: letter,
+//           content: [currentValue],
+//         });
+//       }
+//       return accumulator;
+//     }, [])
+//     .sort((a, b) =>
+//       a.header.localeCompare(b.header, "sv", { sensitivity: "base" })
+//     );
