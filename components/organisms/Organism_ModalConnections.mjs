@@ -44,28 +44,34 @@ export function Organism_ModalConnections() {
       ),
       await createElement(
         "div",
-        { class: "organism_modalconnections__connectiontopleft" },
-        await this.molecule(2, compData.internalRelsToNode)
-      ),
-      await createElement(
-        "div",
-        { class: "organism_modalconnections__connectionbottomleft" },
-        await this.molecule(2, compData.ExternalRelsToNode)
-      ),
-      await createElement(
-        "div",
         { class: "organism_modalconnections__content" },
-        await this.molecule(3, compData)
-      ),
-      await createElement(
-        "div",
-        { class: "organism_modalconnections__connectiontopright" },
-        await this.molecule(2, compData.internalRelsFromNode)
-      ),
-      await createElement(
-        "div",
-        { class: "organism_modalconnections__connectionbottomright" },
-        await this.molecule(2, compData.ExternalRelsFromNode)
+        await createElement(
+          "div",
+          { class: "organism_modalconnections__content__connectiontopleft" },
+          await this.molecule(2, compData.internalRelsToNode)
+        ),
+        await createElement(
+          "div",
+          { class: "organism_modalconnections__content__connectionbottomleft" },
+          await this.molecule(2, compData.ExternalRelsToNode)
+        ),
+        await createElement(
+          "div",
+          { class: "organism_modalconnections__content__content" },
+          await this.molecule(3, compData)
+        ),
+        await createElement(
+          "div",
+          { class: "organism_modalconnections__content__connectiontopright" },
+          await this.molecule(2, compData.internalRelsFromNode)
+        ),
+        await createElement(
+          "div",
+          {
+            class: "organism_modalconnections__content__connectionbottomright",
+          },
+          await this.molecule(2, compData.ExternalRelsFromNode)
+        )
       )
     );
 
