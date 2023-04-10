@@ -160,7 +160,7 @@ export function Organism_Header_List_Search_Button() {
       "organism_modal_content"
     );
     existingModalContent.innerHTML = "";
-    const updatedModal = await this.childOrganism(2, null);
+    const updatedModal = await this.childOrganism(2);
     console.log(updatedModal, "updatedModal");
     existingModalContent.appendChild(updatedModal);
     document.getElementById("organism_modal").style.display = "block"; // Show the modal
