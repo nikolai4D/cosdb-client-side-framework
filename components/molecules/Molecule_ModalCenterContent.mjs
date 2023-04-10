@@ -22,6 +22,7 @@ export function Molecule_ModalCenterContent() {
 
   //build component
   const component = async (compData) => {
+    console.log(compData);
     const comp = await createElement(
       "div",
       { class: "molecule_modalcentercontent" },
