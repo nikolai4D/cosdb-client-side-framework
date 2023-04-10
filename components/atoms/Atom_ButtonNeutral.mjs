@@ -13,9 +13,9 @@ export function Atom_ButtonNeutral() {
       await this.atom()
     );
 
-    comp.addEventListener("click", () => {
-      console.log("click");
-    });
+    // comp.addEventListener("click", () => {
+    //   console.log("click");
+    // });
     //add event listeners here
     return comp;
   };
