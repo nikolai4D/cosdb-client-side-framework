@@ -36,7 +36,10 @@ export async function action_getAllListDataWithHeaders({
       if (group) {
         group.content.push(currentValue.title);
       } else {
-        accumulator.push({ header: letter, content: [currentValue.title] });
+        accumulator.push({
+          header: letter,
+          content: [{ title: currentValue.title }],
+        });
       }
       return accumulator;
     }, [])
