@@ -74,6 +74,9 @@ export function Organism_Header_List_Search_Button() {
       { class: "molecule_heading_list", id: "listItems" },
       ...(await listItems(compData))
     );
+    headingList.addEventListener("click", async (e) => {
+      console.log(e.target);
+    });
 
     const modal = await createElement("div", {
       class: "organism_modal",
