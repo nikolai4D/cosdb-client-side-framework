@@ -51,11 +51,11 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
 }
 
 .organism_heading_list {
-display: grid;
-grid-auto-flow: row;
-overflow: auto;
-border-radius: 6px;
-max-height: 70vh;
+    display: grid;
+    grid-auto-flow: row;
+    overflow: auto;
+    border-radius: 6px;
+    max-height: 70vh;
 }
 
 .organism_header_list_search_button{
