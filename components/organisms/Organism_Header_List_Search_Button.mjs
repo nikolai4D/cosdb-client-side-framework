@@ -63,8 +63,10 @@ export function Organism_Header_List_Search_Button() {
       await updateListItems(e.target.value);
     });
     headingInputButton.addEventListener("click", async (e) => {
-      console.log(e.target);
-      await openModal("click on button");
+      if (e.target.tagName === "BUTTON") {
+        console.log("button clicked");
+        await openModal("click on button");
+      
     });
 
     const headingList = await createElement(
