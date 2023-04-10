@@ -36,8 +36,9 @@ export function Molecule_Heading_Input_Button() {
       "div",
       { class: "molecule_heading_input_button" },
       await this.atom(3, null),
-      await this.atom(1, null),
-      await this.atom(2, null)
+      await createElement("div", { class: "molecule_heading_input_button__input_button" },
+        await this.atom(1, null),
+        await this.atom(2, null))
     );
 
     //add event listener to the comp here
