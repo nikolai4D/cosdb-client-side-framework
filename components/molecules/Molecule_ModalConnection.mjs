@@ -43,7 +43,6 @@ export function Molecule_ModalConnection() {
 
   //build component
   const component = async (compData) => {
-    console.log("compData", compData);
     const comp = await createElement(
       "div",
       { class: "molecule_modalconnection" },
