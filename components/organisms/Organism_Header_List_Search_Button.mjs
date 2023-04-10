@@ -120,9 +120,11 @@ export function Organism_Header_List_Search_Button() {
   };
 
   async function updateListItems(filter) {
-    const listItems = document.getElementById("listItems");
-    listItems.innerHTML = "";
-    listItems.append(...(await listItems(filter)));
+    const existinglistItems = document.getElementById("listItems");
+    existinglistItems.innerHTML = "";
+    const updatedListItems = await listItems(filter);
+    console.log(updatedListItems);
+    existinglistItems.append(...updatedListItems);
   }
 }
 
