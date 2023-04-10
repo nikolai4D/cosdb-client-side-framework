@@ -1,7 +1,10 @@
 import { apiCallGet } from "./apiCalls.mjs";
 import { State } from "../State.mjs";
 
-export async function action_getAllListDataWithHeaders(type, parentIds = []) {
+export async function action_getAllListDataWithHeaders({
+  type = "type",
+  parentIds = [],
+}) {
   //for each parent id, get the list data
 
   const listData = [];
