@@ -83,8 +83,8 @@ export function Organism_Header_List_Search_Button() {
     headingList.addEventListener("click", async (e) => {
       if (e.target.tagName === "LI") {
         console.log(e.target);
-        const modalContent = e.target.textContent;
-        await openModal(modalContent);
+        // const modalContent = e.target.textContent;
+        await openModal();
       }
     });
 
@@ -155,7 +155,7 @@ export function Organism_Header_List_Search_Button() {
     existinglistItems.append(...updatedListItems);
   }
 
-  const openModal = async (data) => {
+  const openModal = async () => {
     const existingModalContent = document.getElementById(
       "organism_modal_content"
     );
