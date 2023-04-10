@@ -53,8 +53,8 @@ export function Organism_Header_List_Search_Button() {
 
   //build component
   const component = async () => {
-    await State.items;
-    console.log("State.items", State.items);
+    const updatedState = await State.items;
+
     const comp = await createElement(
       "div",
       { className: "organism_header_list_search_button" },
@@ -66,7 +66,7 @@ export function Organism_Header_List_Search_Button() {
       await createElement(
         "div",
         { class: "molecule_heading_list" },
-        ...(await listItems(await State.items))
+        ...(await listItems(await updatedState))
         // await this.molecule(2, listItem)
       ),
       await createElement(
