@@ -29,13 +29,26 @@
 
 .organism_buttonFilledcards {
     grid-area: 2 / 1 / 2 / 1;
-    overflow-y: scroll;
-    height: 430px;
     display: flex;
-    gap: 46px;
+    gap: 42px;
     flex-wrap: wrap;
-    width: 933px;
-    padding: 0 1em;
+    padding: 1em;
+    /* background: white; */
+    border-radius: 6px;
+    /* border:1px solid var(--grey-color); */
+
+}
+
+.organism_modal_background { 
+    position:absolute;
+    width:100vw;
+    height:100vh;
+    top :0px;
+    left :0px;
+    background-color :rgba(0,0,0,0.5);
+    display :flex;
+    justify-content :center;
+    align-items :center;
 }
 
 .organism_buttonFilledcards::-webkit-scrollbar-track {
@@ -51,25 +64,78 @@
     justify-self: center;
 }
 
-nav {
+.organism_navbar{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     width: 100vw;
-    height: 75px;
+    height: 5em;
+    align-content: center;
 }
 
 
-
-nav > ul > div > a {
+.organism_navbar > ul > div > a {
     color: black;
 }
 
-nav > ul {
+.organism_navbar > ul {
     display: flex;
-    padding: 1em;
     justify-content: center;
-    gap: 37px;
+    gap: 1.5em;
 }
+
+.organism_search_w_top_results{
+
+    justify-self: center;
+    justify-self: center;
+    align-self: center;
+    width: 600px;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    justify-items: center;
+    display: grid;
+  }
+
+.organism_search_w_top_results__lists{
+    align-items: center;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+}
+
+.organism_search_w_top_results__lists > div{
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    display: grid;
+}
+
+
+
+.organism_heading_lists_w_footer {
+    margin-top: 4em;
+}
+
+.organism_heading_lists_w_footer > h4 {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.organism_heading_lists_w_footer__lists {
+    display: flex;
+    margin: 2em;
+}
+
+.organism_heading_lists_w_footer__lists > div{
+    display: grid;
+    justify-items: center;
+}
+
 
 .organism_form_4_dropdowns {
     display: grid;
@@ -84,19 +150,18 @@ nav > ul {
     display: grid;
     grid-auto-flow: row;
     grid-gap: 4rem;
-    height: 70vh;
+    height: 85vh;
     width: 783px;
     margin: auto;
+      margin-top: auto;
     margin-top: 50px;
     align-content: start;
 }
 
 .organism_list-all-search__top {
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: 2rem;
+    display: flex;
     justify-content: space-between;
-    justify-items: center;
+    align-items: center;
 }
 
 .organism_list-all-search__top > h2{
@@ -106,10 +171,21 @@ nav > ul {
 .organism_list-all-search__lists {
     display: grid;
     grid-auto-flow: row;
-    grid-gap: 2rem;
     overflow: auto;
-    padding: 2em;
     border-radius: 6px;
+    /* background-color: white; */
+    /* border:1px solid var(--grey-color); */
+
+}
+
+.organism_list-all-search__lists > .molecule_list > ul {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 0;    
 }
 
 .organism_list-all-search__lists::-webkit-scrollbar {
@@ -119,6 +195,29 @@ nav > ul {
 
 .organism_list-all-search__lists::-webkit-scrollbar-thumb {
     background: var(--grey-color);
+}
+
+
+.organism_list-all-search-icons{
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 4rem;
+    height: 85vh;
+    width: 783px;
+    margin: auto;
+    margin-top: 50px;
+    align-content: start;
+}
+
+.organism_list-all-search-icons__lists{
+    overflow: auto;
+    border-radius: 6px;
+    /* background-color: white; */
+    /* border:1px solid var(--grey-color); */
+}
+
+.organism_list-all-search-icons__lists > .molecule_list > ul {
+
 }
 
 .organism_two-fields-one-dropdown-one-picture {
@@ -259,12 +358,9 @@ nav > ul {
     justify-content: end !important;
 }
 
-.organism_user-navbar {
+.organism_navbar-textButton {
     display: flex;
-    height: 40px;
     align-items: center;
-    gap: 40px;
-    padding-top: 20px;
     justify-content: right;
     padding-right: 1em;
 }
@@ -303,12 +399,6 @@ nav > ul {
 
 .organism_user-modal > .upper-section > .input-fields > .molecule_text_and_dropdown > .dropdown > .dropdown-content{
     min-width: 218px !important;
-}
-
-.organism_process-modal {
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    padding: 2em 4em 4em;
 }
 
 

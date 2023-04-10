@@ -1,5 +1,8 @@
 @import "colors.css";
 
+li  {
+  list-style-type: none
+}
 .atom_icon{
     font-size: 1.1rem;
 }
@@ -12,9 +15,9 @@
     padding: 0;
 }
 
-.atom_text1{
+/* .atom_text1{
     padding: 1em;
-}
+} */
 
 .atom_text2{
     padding: 0 0 0 0.5em;
@@ -37,7 +40,7 @@
 
 
 .atom_button-positive{
-    background-color: var(--grey-color);
+    /* background-color: var(--grey-color); */
     padding: 1em;
     border: 1px solid var(--grey-color);
     border-radius: 6px;
@@ -67,9 +70,10 @@
 
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, p {
     margin: 0;
 }
+
 
 .dropbtn {
     background-color: #FFFFFF;

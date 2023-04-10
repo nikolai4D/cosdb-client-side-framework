@@ -1,13 +1,15 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from "../../core/helpers.mjs";
-import { Molecule_ListWHeading } from "../molecules/Molecule_ListWHeading.mjs";
+import { Molecule_Card } from "../molecules/Molecule_Card.mjs";
 import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearchButton.mjs";
-import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
-import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
+import { Atom_Image } from "../atoms/Atom_Image.mjs";
+import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
+
+import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
 import { State } from "../../data-mgmt/state.mjs";
 import { Organism_ModalPrep } from "./Organism_ModalPrep.mjs";
 
-export function Organism_ListAll() {
+export function Organism_ListAllCards() {
   Component.call(this);
 
   this.molecules = [
@@ -18,8 +20,8 @@ export function Organism_ListAll() {
     },
     {
       id: 2,
-      molecule: "Molecule_ListWHeading",
-      component: new Molecule_ListWHeading(),
+      molecule: "Molecule_Card",
+      component: new Molecule_Card(),
     },
   ];
 
@@ -46,11 +48,12 @@ export function Organism_ListAll() {
     return `
       <div class="organism_list-all-search">
         ${slot(this.molecules[0].molecule)}
-        <div id="organism_all_lists" class="organism_list-all-search__lists">
+        <div  id="org-cards-container" class="organism_buttonFilledcards">
+        
           ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
         <div id="modal-slot">
-          ${slot(this.organisms[0].organism)}
+        ${slot(this.organisms[0].organism)}
         </div>
       </div>
     `;
@@ -102,6 +105,7 @@ export function Organism_ListAll() {
           }
         }
       }
+      
   }
 
   const createMolecule = (MoleculeClass, id) => {
@@ -128,14 +132,18 @@ export function Organism_ListAll() {
   const updateMolecules = (data) => {
   
     const newMolecules = data.map((molecule, index) => {
-      const newMolecule = createMolecule(Molecule_ListWHeading, index + 1);
+      const newMolecule = createMolecule(Molecule_Card, index + 1);
   
-      const headingAtom = createAtom(Atom_Heading4, molecule.letter, 1);
+      const headingAtom = createAtom(Atom_Image, `assets/images/${index+1}.jpg`, 1);
       newMolecule.component.atoms = [headingAtom];
   
       molecule.title.forEach((item, index2) => {
-        const listItemAtom = createAtom(Atom_ListItem, item.title, index2);
+        const listItemAtom = createAtom(Atom_Text1, item.title, index2);
+        const iconAtom = createAtom(Atom_Icon, "bi bi-calendar-week", index2);
+        const descAtom = createAtom(Atom_Text1, "Aug 2023 - Ongoing", index2);
         newMolecule.component.atoms.push(listItemAtom);
+        newMolecule.component.atoms.push(iconAtom);
+        newMolecule.component.atoms.push(descAtom);
       });
   
       return newMolecule;
@@ -146,7 +154,7 @@ export function Organism_ListAll() {
   const renderMolecules = async () => {
     // Replacing placeholder DOM elements (slots are rendered at this point) with new molecule DOM elements 
 
-   let content= document.getElementById("organism_all_lists")
+   let content= document.getElementById("org-cards-container")
    content.innerHTML = ""
    const moleculesSlots = content
 
@@ -156,20 +164,19 @@ export function Organism_ListAll() {
       await moleculesSlots.appendChild(mol.component.getElement());
     }
     for await (const child of moleculesSlots.children) {
-      for await (const li of child.children[1].children){
-        anArray.push(await li)
-      }
+      console.log(child, "child")
+      anArray.push(await child)
     }
-
+    
     // for (let org of this.organisms) {
       let newOrg = new Organism_ModalPrep()
-      newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
-      newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
-      newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value
+      // newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
+      // newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
+      // newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value
 
-      newOrg.moleculeLeft.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[1].component.value[0].value
-      newOrg.moleculeMiddle.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[1].component.value[0].value
-      newOrg.moleculeRight.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[1].component.value[0].value
+      // newOrg.moleculeLeft.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[1].component.value[0].value
+      // newOrg.moleculeMiddle.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[1].component.value[0].value
+      // newOrg.moleculeRight.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[1].component.value[0].value
 
       newOrg.parent = await anArray;
 

@@ -1,18 +1,54 @@
 @import "colors.css";
 
 .molecule_logo {
-    display: flex;
-    padding: 1em;
+    display: block ruby;
+    margin-left: 1em;
+    cursor: default;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                        supported by Chrome, Edge, Opera and Firefox */
+
 }
+
+.organism_navbar-logo > .molecule_logo {
+    transition: 0.05s;
+}
+
+.organism_navbar-logo > .molecule_logo:hover {
+    color: var(--custom-color-1);
+}
+
+.molecule_list__footer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.molecule_card-text__desc {
+    display: flex;
+    color: rgb(113, 113, 113);
+    font-size:smaller;
+}
+
+.molecule_card-text__desc > p {
+    margin: 0;
+    margin-left: 0.5em
+}
+
+
 
 .molecule_header-and-text {
     /* padding: 3em; */
-    margin: 0.5rem;
+    margin: 30px;
     display: grid;
     grid-template-columns: auto auto;
     width: max-content;
     align-items: center;
-    grid-gap: 0.5rem;
 }
 
 .molecule_login-or-signup {
@@ -34,14 +70,34 @@
 .molecule_image-and-text {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
-    /* gap: 20px; */
-    border: solid 1px black;
-    width: 8rem;
-    height: 8rem;
-    background-color: #CCCCCC;
+    width: 200px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px;
+    transition: 0.3s;
+    transition: 50ms;
+    background: #fbfbfb;
+}
+
+.molecule_image-and-text:hover {
+     /* box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); */
+    background: #ECECEC; 
+    cursor: pointer;
+  }
+
+
+
+.molecule_image-and-text > img {
+    max-width: 100%;
+    min-height: 200px;
+    min-width: 200px;
+    border-radius: 5px 5px 0 0;
+    max-height: 150px;
+    width: 40%;
+    
+}
+
+.molecule_image-and-text > .molecule_card-text {
+    padding: 0.5em;
 }
 
 .molecule_paginator {
@@ -64,17 +120,16 @@
     justify-items: center;
 }
 
-.molecule_list__list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2rem;
-    margin: 0;
+
+.molecule_list__list > li {
+    cursor: pointer;
+    padding: 0.5em;
+    border-radius: 5px;
 }
 
-.molecule_list__list li {
-    cursor: pointer;
+.molecule_list__list > li:hover {
+    /* background: rgb(247, 247, 246) */
+    background: #ECECEC;
 }
 
 .molecule_list > ul {
@@ -84,6 +139,9 @@
 
 .molecule_list {
     row-gap: 3rem;
+    border-bottom: 1px lightgray dashed;
+    padding: 1em;
+    border-radius: 6px;
 }
 
 
@@ -117,6 +175,12 @@
    
 }
 
+.molecule_icon_and_link {
+    display: inline-flex;
+    gap: 1em;
+}
+
+
 .molecule_icon_and_link:hover {
     color:#999;
 
@@ -125,6 +189,7 @@
 .molecule_textWButton {
     display: flex;
    gap: 0.8rem;
+   align-items: center;
 }
 
 .molecule_heading-icon {
@@ -300,8 +365,9 @@
 .molecule_modal_in-output {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    margin: 3em;
+    justify-content: space-around;
+    margin: 0px 30px 0px 30px;
 }
 
 .molecule_modal_in-output > .molecule_header-and-text {
@@ -313,8 +379,12 @@
 }
 
 .molecule_modal_in-output > div:nth-child(1n){
-    border: 1px solid black;
     padding: 2em;
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;  
+    /* background-color: aliceblue; */
+    width: 400px;
+    height: 266px;
 }
 
 .molecule_modal_in-output > div > ul {
@@ -324,10 +394,10 @@
 }
 
 .molecule_modal_in-output > div:nth-last-child(3){
-    background-color: #CCCCCC;
-    border: none !important;
-    width: 400px;
+    background-color: #ECECEC;
+    width: 700px;
     height: 266px;
+    
 }
 
 .molecule_modal_in-output > i:nth-child(1n) {
@@ -420,5 +490,34 @@
     padding: 26px;
 }
 
+.molecule_headingIconText {
+    padding:2em;
+    border-bottom: 1px lightgray dashed;
+}
 
+.molecule_headingIconText:hover {
+    /* background:rgb(247, 247, 246); */
+    background: #ECECEC;
+    border-radius:6px;
+    cursor: pointer;
+    /* border-bottom: 1px lightgray dashed; */
 
+}
+
+.molecule_headingIconText__iconText{
+    display:flex;
+    color:grey;
+    align-items: center;
+    margin-left: 1em;
+    gap: 0.5em;
+}
+
+.molecule_headingIconText__text{
+    padding:1em;
+
+}
+
+.molecule_headingIconText__iconText > i{
+    margin-right:1em;
+
+}

@@ -1,13 +1,14 @@
 import { Component } from "../../core/Component.mjs";
 import { slot } from "../../core/helpers.mjs";
-import { Molecule_ListWHeading } from "../molecules/Molecule_ListWHeading.mjs";
+import { Molecule_HeadingTextIconText } from "../molecules/Molecule_HeadingTextIconText.mjs";
 import { Molecule_HeadingSearchButton } from "../molecules/Molecule_HeadingSearchButton.mjs";
-import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
+import { Atom_Text1 } from "../atoms/Atom_Text1.mjs";
+import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { State } from "../../data-mgmt/state.mjs";
 import { Organism_ModalPrep } from "./Organism_ModalPrep.mjs";
 
-export function Organism_ListAll() {
+export function Organism_ListAllWIcons() {
   Component.call(this);
 
   this.molecules = [
@@ -18,8 +19,8 @@ export function Organism_ListAll() {
     },
     {
       id: 2,
-      molecule: "Molecule_ListWHeading",
-      component: new Molecule_ListWHeading(),
+      molecule: "Molecule_HeadingTextIconText",
+      component: new Molecule_HeadingTextIconText(),
     },
   ];
 
@@ -44,13 +45,13 @@ export function Organism_ListAll() {
 
   this.getHtml = function () {
     return `
-      <div class="organism_list-all-search">
+      <div class="organism_list-all-search-icons">
         ${slot(this.molecules[0].molecule)}
-        <div id="organism_all_lists" class="organism_list-all-search__lists">
+        <div id="organism_all_lists" class="organism_list-all-search-icons__lists">
           ${this.molecules.slice(1).map((mol) => slot(mol.molecule)).join("")}
         </div>
         <div id="modal-slot">
-          ${slot(this.organisms[0].organism)}
+        ${slot(this.organisms[0].organism)}
         </div>
       </div>
     `;
@@ -102,6 +103,7 @@ export function Organism_ListAll() {
           }
         }
       }
+      
   }
 
   const createMolecule = (MoleculeClass, id) => {
@@ -126,19 +128,45 @@ export function Organism_ListAll() {
   };
   
   const updateMolecules = (data) => {
-  
-    const newMolecules = data.map((molecule, index) => {
-      const newMolecule = createMolecule(Molecule_ListWHeading, index + 1);
-  
-      const headingAtom = createAtom(Atom_Heading4, molecule.letter, 1);
-      newMolecule.component.atoms = [headingAtom];
-  
+    const newMolecules = []
+    let description = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rutrum malesuada est, non varius elit tristique sit amet. Ut vel hendrerit nibh. In a pharetra magna. Praesent sit amet mauris lectus.`
+    let icon = `bi bi-book`
+    let iconText = `Information`
+
+    data.forEach((molecule, index) => {
+
       molecule.title.forEach((item, index2) => {
-        const listItemAtom = createAtom(Atom_ListItem, item.title, index2);
+
+        const newMolecule = createMolecule(Molecule_HeadingTextIconText, index + 1);
+        newMolecule.id = item.id;
+        newMolecule.parentId = item.parentId;
+
+        const project = {icon: "bi bi-list-check", id: "co_bad02214-dd2a-47dd-96b6-d62c15d6ba4d", title: "Project"}
+        const process = {icon: "bi bi-arrow-right-square", id: "co_140ca73c-1275-4fa5-8e74-fa71e845afe3", title: "Process"}
+        const information  = {icon: "bi bi-book", id: "co_616678d1-9b3d-4d65-ad00-8ddd24620d31", title: "Information"}
+        const organisation  = {icon: "bi bi-people", id: "co_e981293e-fcb3-40f0-90c3-315d652d6920", title: "Organisation"}
+
+        for (const anItem of [project, process, information, organisation]) {
+            if (anItem.id === item.parentId) {
+                iconText = anItem.title
+                icon = anItem.icon
+            }
+        }
+
+        const headingAtom = createAtom(Atom_Heading4,item.title, 1);
+        const listItemAtom = createAtom(Atom_Text1, description, index2);
+        const iconAtom = createAtom(Atom_Icon, icon, index2);
+        const iconTextAtom = createAtom(Atom_Text1, iconText, index2);
+
+        newMolecule.component.atoms = [];        
+        newMolecule.component.atoms.push(headingAtom);
         newMolecule.component.atoms.push(listItemAtom);
+        newMolecule.component.atoms.push(iconAtom);
+        newMolecule.component.atoms.push(iconTextAtom);
+
+        newMolecules.push(newMolecule)
       });
   
-      return newMolecule;
     });
     this.molecules= [...newMolecules]
   };
@@ -149,27 +177,24 @@ export function Organism_ListAll() {
    let content= document.getElementById("organism_all_lists")
    content.innerHTML = ""
    const moleculesSlots = content
-
    const anArray = []
-
     for (const  mol of this.molecules) {
       await moleculesSlots.appendChild(mol.component.getElement());
     }
     for await (const child of moleculesSlots.children) {
-      for await (const li of child.children[1].children){
-        anArray.push(await li)
+        console.log(child, "child")
+        anArray.push(await child)
       }
-    }
-
+    
     // for (let org of this.organisms) {
       let newOrg = new Organism_ModalPrep()
-      newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
-      newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
-      newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value
+    //   newOrg.moleculeLeft.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[0].component.value[0].value
+    //   newOrg.moleculeMiddle.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[0].component.value[0].value
+    //   newOrg.moleculeRight.header = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[0].component.value[0].value
 
-      newOrg.moleculeLeft.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[1].component.value[0].value
-      newOrg.moleculeMiddle.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[1].component.value[0].value
-      newOrg.moleculeRight.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[1].component.value[0].value
+    //   newOrg.moleculeLeft.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[0].component.atoms[1].component.value[0].value
+    //   newOrg.moleculeMiddle.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[1].component.atoms[1].component.value[0].value
+    //   newOrg.moleculeRight.body = this.organisms[0].component.organisms[0].component.organisms[0].component.organisms[0].component.molecules[2].component.atoms[1].component.value[0].value
 
       newOrg.parent = await anArray;
 

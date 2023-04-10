@@ -43,21 +43,19 @@ export function Organism_Navbar() {
     return `
 
 
-    <div>
-        <nav class="my-nav">
+        <div class="organism_navbar">
 
             <div class="organism_navbar-logo">
                 ${slot(this.molecules[0].molecule)}
             </div>
-
+            
             ${slot(this.molecules[1].molecule)}
 
-            <div class="organism_user-navbar">
+            <div class="organism_navbar-textButton">
                 ${slot(this.molecules[2].molecule)}
             </div>
-        </nav>
-        <div id="user-modal"></div>
-    </div>
+        </div>
+
 
         `;
       }

@@ -10,7 +10,7 @@ export function Atom_Heading2() {
   this.getHtml = function(){
 
     return `  
-      <h4 class="atom_heading4">${this.value[0].value}</h4>
+      <h2 class="atom_heading2">${this.value[0].value}</h2>
     `;
     }
 
