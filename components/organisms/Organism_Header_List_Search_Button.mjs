@@ -64,8 +64,8 @@ export function Organism_Header_List_Search_Button() {
     });
     headingInputButton.addEventListener("click", async (e) => {
       if (e.target.tagName === "BUTTON") {
-        console.log("button clicked");
-        await openModal("click on button");
+        const modalContent = "<h1>Modal Content</h1>";
+        await openModal(modalContent);
       }
     });
 
