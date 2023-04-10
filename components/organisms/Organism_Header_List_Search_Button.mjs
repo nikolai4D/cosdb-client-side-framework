@@ -92,7 +92,7 @@ export function Organism_Header_List_Search_Button() {
 
     //add event listener to the comp here
 
-    //comp.addEventListener("click", closeModal);
+    comp.addEventListener("click", closeModal);
 
     return comp;
   };
