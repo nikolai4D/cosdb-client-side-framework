@@ -20,3 +20,10 @@
 .atom_buttonneutral:hover{
     background-color: var(--custom-color-1);
   }
+
+.atom_input { 
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--grey-color);
+  border-radius: 6px;
+
+}
