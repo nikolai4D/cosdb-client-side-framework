@@ -1,8 +1,21 @@
 export function Organism() {
   this.title = "Organism";
 
-  this.fn = function (id) {
-    return this.functions.find((fn) => fn.id === id)?.function() || "";
+  this.fn = async function (id, data = null) {
+    const fn = this.functions.find((fn) => fn.id === id);
+    if (fn) {
+      console.log(fn);
+      if (data) {
+        return await fn.function(data);
+      } else if (fn.parameters !== "") {
+        return await fn.function(fn.parameters);
+      } else {
+        return await fn.function();
+      }
+    } else {
+      return null;
+    }
+    // return this.functions.find((fn) => fn.id === id)?.function() || "";
   };
 
   this.childOrganism = async (id, data) => {
@@ -20,7 +33,6 @@ export function Organism() {
 
   this.molecule = async (id, data) => {
     const component = this.molecules.find((mol) => mol.id === id)?.component;
-    console.log(component);
     const comp = component.comp;
     const compAtoms = component.atoms;
     const compFunctions = component.functions;

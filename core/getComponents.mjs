@@ -6,13 +6,20 @@ export async function getComponents(parentId) {
   const componentType = "component";
   //get slots
   const Slots = await apiCallGet(`/read/${slotType}s/${parentId}`);
-
   const componentsArray = [];
+  console.log("Slots", Slots);
 
-  for (const slot of Slots) {
-    try {
-      const comp = await apiCallGet(`/read/${componentType}s/${slot.id}`);
-      if (comp.length > 0) {
+  if (Slots.length > 0) {
+    for (const slot of Slots) {
+      let comp = null;
+      try {
+        comp = await apiCallGet(`/read/${componentType}s/${slot.id}`);
+      } catch (error) {
+        console.log("no component found for slot ", slot.value);
+      }
+
+      if (comp) {
+        console.log(comp);
         const componentFromModule = await getComponent(
           comp[0].value,
           comp[0].id
@@ -26,8 +33,6 @@ export async function getComponents(parentId) {
 
         componentsArray.push(compObj);
       }
-    } catch (error) {
-      console.log(error, "no component found for slot ", slot.value);
     }
   }
 

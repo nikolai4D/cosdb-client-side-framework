@@ -9,17 +9,20 @@ export function createElement(tag, attributes = {}, ...children) {
       }
     } else if (key === "id") {
       element.id = value;
+    } else if (key === "type") {
+      element.type = value;
     } else {
       element.setAttribute(key, value);
     }
   }
 
-  for (const child of children) {
-    console.log(child);
-    if (typeof child === "string") {
-      element.appendChild(document.createTextNode(child));
-    } else {
-      element.appendChild(child);
+  if (children[0] !== null) {
+    for (const child of children) {
+      if (typeof child === "string") {
+        element.appendChild(document.createTextNode(child));
+      } else {
+        element.appendChild(child);
+      }
     }
   }
 

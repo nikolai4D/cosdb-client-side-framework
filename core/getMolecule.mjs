@@ -40,12 +40,15 @@ export async function getMolecule(module, parentId, molId = null) {
     (func) => func.parentId === molecule[0].id
   );
   for (const func of funcs) {
+    console.log(func);
     const value = func.value;
+    const parameters = func.parameters;
     const funcObject = await getFunction(value, moleculeId);
     const funcId = parseInt(func.key.split(" ")[1]);
     functionsObject.push({
       id: funcId,
       value: value,
+      parameters: parameters,
       function: funcObject,
     });
   }

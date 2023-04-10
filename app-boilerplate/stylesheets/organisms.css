@@ -1,333 +1,52 @@
 @import "colors.css";
 
-.organism_start-info {
-    background-color: var(--black-color);
-    color: var(--white-color);
-
-    display: grid;
-    grid-template-rows: auto 1fr;
-}
-
-.organism_buttonFilledPicture_wrapper {
-    display: grid;
-    grid-template-columns: repeat(4, 206px);
-    grid-auto-rows: minmax(20px, auto);
-    gap: 50px;
-    justify-content: center;
-    padding: 2em;
-    margin-top: 5em;
-}
-
-#organism_buttonFilledPicture_btnParent {
-    grid-area: 1 / 4 / 1 / 4;
-}
-
-#organism_buttonFilledPicture_btnParent > button {
-    width: 107px;
-    margin-left: 2.5em;
-}
-
-.organism_buttonFilledcards {
-    grid-area: 2 / 1 / 2 / 1;
-    overflow-y: scroll;
-    height: 430px;
-    display: flex;
-    gap: 46px;
-    flex-wrap: wrap;
-    width: 933px;
-    padding: 0 1em;
-}
-
-.organism_buttonFilledcards::-webkit-scrollbar-track {
-    background: none;
-}
-
-.organism_buttonFilledPicture_wrapper > div {
-    cursor: pointer;
-}
-
-.organism_start-info > *:nth-child(2) {
-    max-width: 400px;
-    justify-self: center;
-}
-
-nav {
+.organism_navbar{
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    width: 100vw;
-    height: 75px;
-}
-
-
-
-nav > ul > div > a {
-    color: black;
-}
-
-nav > ul {
-    display: flex;
+    align-content: center;
     padding: 1em;
-    justify-content: center;
-    gap: 37px;
-}
-
-.organism_form_4_dropdowns {
-    display: grid;
-    grid-template-columns: min-content;
-    grid-template-rows: 1fr 1fr 1fr 1fr auto;
-    grid-gap: 2rem;
-    justify-content: center;
-    justify-items: center;
-}
-
-.organism_list-all-search {
-    display: grid;
-    grid-auto-flow: row;
-    grid-gap: 4rem;
-    height: 70vh;
-    width: 783px;
-    margin: auto;
-    margin-top: 50px;
-}
-
-.organism_list-all-search__top {
-    display: grid;
-    grid-auto-flow: column;
-    grid-gap: 2rem;
-    justify-content: space-between;
-    justify-items: center;
     align-items: center;
-    /* padding-left: 1rem; */
 }
 
-.organism_list-all-search__top > h2{
-    font-size: 16px;
+.organism_navbar__logo{
+    transition: 0.05s;
+    width: fit-content;
 }
 
-.organism_list-all-search__lists {
-    display: grid;
-    grid-auto-flow: row;
-    grid-gap: 2rem;
-    overflow: auto;
+.organism_navbar__logo:hover {
+    color: var(--custom-color-1);
 }
 
-.organism_list-all-search__lists::-webkit-scrollbar {
-    width: 8px;
-    height: 30px;
-}
 
-.organism_list-all-search__lists::-webkit-scrollbar-thumb {
-    background: #666666
-}
-
-.organism_two-fields-one-dropdown-one-picture {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 2rem;
-    justify-content: center;
-    justify-items: center;
-}
-
-.organism_two-fields-one-dropdown-one-picture__first-column {
-    display: grid;
-    grid-auto-flow: row;
-    grid-gap: 2rem;
-}
-
-.org_search_result_detail > div {
-    margin-bottom: 3em;
-}
-
-.org_search_res_det_top {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 3em 2em 1em 2em;
-}
-
-.org_search_res_det_top > div > .molecule_header-and-text {
-    width: fit-content !important;
-}
-
-.org_search_res_det_top > div {
+.organism_navbar__text_button{
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-}
-
-.org_search_res_det_top > div > .molecule_header-and-text > .atom_text1 {
-    padding: 0;
-    margin-top: 1em;
-    margin-bottom: 0;
-}
-
-.org_search_res_det_image > img{
-    height: 141px;
-    width: 141px;
-    align-self: end;
-}
-
-.org_search_res_det_lists {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 470px;
-    margin: auto;
-}
-
-.org_search_res_det_lists > .molecule_list > .molecule_list__list {
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2rem;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr;
-}
-
-.org_search_res_det_lists > .molecule_list > h4 {
-    margin: 1.5em;
-}
-
-.org_searh_res_det_btn {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2em;
-}
-
-
-.search-result-container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-}
-
-.search-result-content {
-    grid-area: 2 / 2 / 7 / 7;
-    margin-top: 5em;
-}
-
-.search-result-content input {
-    margin-left: 10px;
-    margin-bottom: 40px;
-}
-
-
-.overflow-container {
-    overflow-y: scroll;
-    height: 500px;
-    width: 80%;
-}
-
-.organism_project_info {
-    padding-top: 2em;
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-}
-
-.overflow-container > div {
-    cursor: pointer;
-}
-
-.organism_add-to-proj {
-    display: grid;
-}
-
-.organism_add-to-proj .molecule_text_and_dropdown {
-    margin: auto;
-    margin-top: 1em;
-}
-
-.mod-addToProj {
-    width: 328px !important;
-    margin: auto;
-}
-
-.organism_add-to-proj .molecule_text_and_dropdown > p {
-    padding: 0 !important;
-    text-align: center;
-}
-
-.org_add-to-proj-btn {
-    margin: 4em auto;
-}
-
-.org_add-to-proj-btn > button {
-    padding-left: 2em;
-    padding-right: 2em;
-}
-
-.mod-addToProj-cross {
-    justify-content: end !important;
-}
-
-.organism_user-navbar {
-    display: flex;
-    height: 40px;
-    align-items: center;
-    gap: 40px;
-    padding-top: 20px;
     justify-content: right;
-    padding-right: 1em;
 }
 
-.organism_lower-section {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 5em;
-}
-
-.organism_x-button {
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px;
-}
-
-.organism_user-navbar h4 {
-    cursor: pointer;
-}
-
-.organism_user-modal{
-    border-radius: 12px;
-}
-
-.organism_user-modal > .modal-title-section {
-    font-size: x-large;
-}
-
-.organism_user-modal > .upper-section > .input-fields > .molecule_text_and_btn > input {
-    width: 186px;
-}
-
-.organism_user-modal > .upper-section > .input-fields div:not(.molecule_text_and_dropdown) {
-    justify-content: space-between !important;
-}
-
-.organism_user-modal > .upper-section > .input-fields > .molecule_text_and_dropdown > .dropdown > .dropdown-content{
-    min-width: 218px !important;
-}
-
-.organism_process-modal {
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    padding: 2em 4em 4em;
-}
-
-
-.organism_organisation-modal {
-    padding: 2em;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 1045px;
-}
-
-.organism_organisation-modal > i {
-    font-size: xx-large;
-}
-
-.organism_navbar-logo {
-
-    display: flex;
-    align-items: center;
-
-}
+.organism_modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .organism_modal_content {
+    background-color: #fefefe;
+    margin: 0;
+    padding: 20px;
+    border: none;
+    border-radius: 6px;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Add this line to ensure the modal content is above the modal background */
+  }
+  
