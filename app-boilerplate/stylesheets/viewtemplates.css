@@ -5,6 +5,7 @@
 .viewtemplate_topnav_middlecontent__topnav {
     width: 100vw;
     height: 5em;
+    line-height: 0.9em;
 }
 
 .viewtemplate_topnav_middlecontent__middlecontent {
