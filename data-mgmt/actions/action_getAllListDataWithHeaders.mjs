@@ -11,8 +11,10 @@ export async function action_getAllListDataWithHeaders({
   const listData = [];
 
   for (const parentId of parentIds) {
+    console.log(parentId);
     try {
       const data = await apiCallGet({ url: `api/${type}/${parentId}` });
+      console.log(data);
 
       if (Array.isArray(data)) {
         listData.push(...data);
