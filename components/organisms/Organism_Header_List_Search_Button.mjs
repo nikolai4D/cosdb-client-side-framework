@@ -77,7 +77,7 @@ export function Organism_Header_List_Search_Button() {
 
     const modal = await createElement(
       "div",
-      { class: "organism_modal", id: "organism_modal" },
+      { class: "organism_modal organism_modal_content", id: "organism_modal" },
       await this.childOrganism(1, null)
     );
 
