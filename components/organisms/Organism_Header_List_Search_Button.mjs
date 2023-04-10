@@ -53,25 +53,31 @@ export function Organism_Header_List_Search_Button() {
 
   //build component
   const component = async () => {
+    const headingInputButton = await createElement(
+      "div",
+      { class: "molecule_heading_input_button" },
+      await this.molecule(1, null)
+    );
+    headingInputButton.addEventListener("input", (e) => console.log(e));
+    const headingList = await createElement(
+      "div",
+      { class: "molecule_heading_list" },
+      ...(await listItems((filter = "")))
+      // await this.molecule(2, listItem)
+    );
+
+    const modal = await createElement(
+      "div",
+      { class: "modal" },
+      await this.childOrganism(1, null)
+    );
+
     const comp = await createElement(
       "div",
       { className: "organism_header_list_search_button" },
-      await createElement(
-        "div",
-        { class: "molecule_heading_input_button" },
-        await this.molecule(1, null)
-      ),
-      await createElement(
-        "div",
-        { class: "molecule_heading_list" },
-        ...(await listItems(State.items))
-        // await this.molecule(2, listItem)
-      ),
-      await createElement(
-        "div",
-        { class: "modal" },
-        await this.childOrganism(1, null)
-      )
+      headingInputButton,
+      headingList,
+      modal
     );
 
     //add event listener to the comp here
@@ -82,11 +88,12 @@ export function Organism_Header_List_Search_Button() {
   //render component
   this.render = async (data = null) => {
     await this.fn(1);
-    console.log(State, "State: ");
     return await component(data);
   };
 
-  const listItems = async (arrayOfData) => {
+  //add functions for the component here
+  const listItems = async (filter) => {
+    const arrayOfData = await State.items;
     return await Promise.all(
       arrayOfData.map(async (item) => {
         return await this.molecule(2, item);
@@ -94,3 +101,24 @@ export function Organism_Header_List_Search_Button() {
     );
   };
 }
+
+// const comp = await createElement(
+//     "div",
+//     { className: "organism_header_list_search_button" },
+//     await createElement(
+//       "div",
+//       { class: "molecule_heading_input_button" },
+//       await this.molecule(1, null)
+//     ),
+//     await createElement(
+//       "div",
+//       { class: "molecule_heading_list" },
+//       ...(await listItems((filter = "")))
+//       // await this.molecule(2, listItem)
+//     ),
+//     await createElement(
+//       "div",
+//       { class: "modal" },
+//       await this.childOrganism(1, null)
+//     )
+//   );
