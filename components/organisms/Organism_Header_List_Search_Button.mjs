@@ -64,7 +64,7 @@ export function Organism_Header_List_Search_Button() {
     });
     headingInputButton.addEventListener("click", async (e) => {
       if (e.target.tagName === "BUTTON") {
-        const modalContent = "<h1>Modal Content</h1>";
+        const modalContent = "Add new item click";
         await openModal(modalContent);
       }
     });
@@ -75,7 +75,10 @@ export function Organism_Header_List_Search_Button() {
       ...(await listItems(compData))
     );
     headingList.addEventListener("click", async (e) => {
-      console.log(e.target);
+      if (e.target.tagName === "LI") {
+        const modalContent = e.target.textContent;
+        await openModal(modalContent);
+      }
     });
 
     const modal = await createElement("div", {
