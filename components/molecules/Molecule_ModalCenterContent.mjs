@@ -1,0 +1,90 @@
+//import core
+import { Molecule } from "../../core/Molecule.mjs";
+import { createElement } from "../../core/helpers/createElement.mjs";
+//import sub components
+import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
+import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
+import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
+
+export function Molecule_ModalCenterContent() {
+  Molecule.call(this);
+
+  // sub components
+  this.atoms = [
+    { id: 1, atom: "Atom_Icon edit", component: new Atom_Icon() },
+    { id: 2, atom: "Atom_Icon close", component: new Atom_Icon() },
+    { id: 3, atom: "Atom_Icon dependency arrow", component: new Atom_Icon() },
+    { id: 4, atom: "Atom_Heading4", component: new Atom_Heading4() },
+    { id: 5, atom: "Atom_ListItem", component: new Atom_ListItem() },
+  ];
+
+  this.functions = [];
+
+  //build component
+  const component = async (compData) => {
+    const comp = await createElement(
+      "div",
+      { class: "molecule_modalcentercontent" },
+      await createElement(
+        "div",
+        { class: "molecule_modalcentercontent__leftarrows" },
+        await createElement(
+          "div",
+          { class: "molecule_modalcentercontent__leftarrows__toparrow" },
+          this.atom(3, null)
+        ),
+        await createElement(
+          "div",
+          { class: "molecule_modalcentercontent__leftarrows__bottomarrow" },
+          this.atom(3, null)
+        )
+      ),
+      await createElement(
+        "div",
+        { class: "molecule_modalcentercontent__content" },
+        await createElement(
+          "div",
+          { class: "molecule_modalcentercontent__content__header" },
+          this.atom(4, compData.parentNode),
+          this.atom(1, null),
+          this.atom(2, null)
+        ),
+        await createElement(
+          "div",
+          { class: "molecule_modalcentercontent__content__content" },
+          await items(compData.node)
+        )
+      ),
+      await createElement(
+        "div",
+        { class: "molecule_modalcentercontent__rightarrows" },
+        await createElement(
+          "div",
+          { class: "molecule_modalcentercontent__rightarrows__toparrow" },
+          this.atom(3, null)
+        ),
+        await createElement(
+          "div",
+          { class: "molecule_modalcentercontent__rightarrows__bottomarrow" },
+          this.atom(3, null)
+        )
+      )
+    );
+
+    //add event listener to the comp here
+
+    return comp;
+  };
+
+  //render component
+  this.render = async (
+    data = {
+      parentNode: "parentNode placeholder",
+      node: "node placeholder",
+    }
+  ) => {
+    return await component(data);
+  };
+
+  //add component specific functions here
+}

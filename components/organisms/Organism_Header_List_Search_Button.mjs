@@ -5,6 +5,7 @@ import { Organism } from "../../core/Organism.mjs";
 import { Molecule_Heading_List } from "../molecules/Molecule_Heading_List.mjs";
 import { Molecule_Heading_Input_Button } from "../molecules/Molecule_Heading_Input_Button.mjs";
 import { Organism_Modal } from "./Organism_Modal.mjs";
+import { Organism_ModalConnections } from "./Organism_ModalConnections.mjs";
 //import state
 import { State } from "../../data-mgmt/State.mjs";
 
@@ -17,6 +18,11 @@ export function Organism_Header_List_Search_Button() {
       id: 1,
       organism: "Organism_Modal",
       component: new Organism_Modal(),
+    },
+    {
+      id: 2,
+      organism: "Organism_ModalConnections",
+      component: new Organism_ModalConnections(),
     },
   ];
 
@@ -154,7 +160,7 @@ export function Organism_Header_List_Search_Button() {
       "organism_modal_content"
     );
     existingModalContent.innerHTML = "";
-    const updatedModal = await this.childOrganism(1, data);
+    const updatedModal = await this.childOrganism(2, null);
     existingModalContent.appendChild(updatedModal);
     document.getElementById("organism_modal").style.display = "block"; // Show the modal
   };
