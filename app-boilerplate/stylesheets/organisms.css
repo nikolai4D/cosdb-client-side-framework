@@ -50,3 +50,9 @@
     z-index: 2; /* Add this line to ensure the modal content is above the modal background */
   }
   
+  .organism_heading_list {
+    display: grid;
+    grid-auto-flow: row;
+    overflow: auto;
+    border-radius: 6px;
+  }
