@@ -1,0 +1,19 @@
+.viewtemplate_topnav_middlecontent {
+
+}
+
+.viewtemplate_topnav_middlecontent__topnav {
+    width: 100vw;
+    height: 5em;
+}
+
+.viewtemplate_topnav_middlecontent__middlecontent {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 4rem;
+    height: 85vh;
+    width: 783px;
+    margin: auto;
+    margin-top: auto;
+    align-content: start;
+}

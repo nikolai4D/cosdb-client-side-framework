@@ -1,0 +1,44 @@
+export function Organism() {
+  this.title = "Organism";
+
+  this.fn = async function (id, data = null) {
+    const fn = this.functions.find((fn) => fn.id === id);
+    if (fn) {
+      console.log(fn);
+      if (data) {
+        return await fn.function(data);
+      } else if (fn.parameters !== "") {
+        return await fn.function(fn.parameters);
+      } else {
+        return await fn.function();
+      }
+    } else {
+      return null;
+    }
+    // return this.functions.find((fn) => fn.id === id)?.function() || "";
+  };
+
+  this.childOrganism = async (id, data) => {
+    const component = this.organisms.find((org) => org.id === id)?.component;
+    const comp = component.comp;
+    const compChildOrganisms = component.organisms;
+    const compMolecules = component.molecules;
+    const compFunctions = component.functions;
+    comp.organisms = compChildOrganisms;
+    comp.molecules = compMolecules;
+    comp.functions = compFunctions;
+    const renderComp = await comp.render(data);
+    return renderComp;
+  };
+
+  this.molecule = async (id, data) => {
+    const component = this.molecules.find((mol) => mol.id === id)?.component;
+    const comp = component.comp;
+    const compAtoms = component.atoms;
+    const compFunctions = component.functions;
+    comp.atoms = compAtoms;
+    comp.functions = compFunctions;
+    const renderComp = await comp.render(data);
+    return renderComp;
+  };
+}

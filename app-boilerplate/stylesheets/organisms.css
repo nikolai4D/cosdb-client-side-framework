@@ -1,0 +1,52 @@
+@import "colors.css";
+
+.organism_navbar{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-content: center;
+    padding: 1em;
+    align-items: center;
+}
+
+.organism_navbar__logo{
+    transition: 0.05s;
+    width: fit-content;
+}
+
+.organism_navbar__logo:hover {
+    color: var(--custom-color-1);
+}
+
+
+.organism_navbar__text_button{
+    display: flex;
+    justify-content: right;
+}
+
+.organism_modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .organism_modal_content {
+    background-color: #fefefe;
+    margin: 0;
+    padding: 20px;
+    border: none;
+    border-radius: 6px;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* Add this line to ensure the modal content is above the modal background */
+  }
+  

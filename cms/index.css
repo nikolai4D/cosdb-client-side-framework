@@ -1,0 +1,190 @@
+  :root {
+    --view-color: #f8fafc;
+    --viewTemplate-color: #f1f5f9;
+    --slot-color: #e2e8f0;
+    --component-color: #cbd5e1;
+    --organism-color: #d1d5db;
+    --molecule-color: #d4d4d8;
+    --atom-color: #d4d4d4;
+    --light-view-color: #ffadbf;
+    --light-viewTemplate-color: #d29bf1;
+    --light-slot-color: #77b9ff;
+    --light-component-color: #bfefff;
+    --light-organism-color: #87ffcc;
+    --light-molecule-color: #3fffb8;
+    --light-atom-color: #ffffff;
+    --blue: #0558b1;
+    --dark-blue: #004999;
+  }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    background-color: #f0f0f0;
+  }
+  
+  .accordion {
+    border: none;
+    margin: 10px;
+    border-radius: 0;
+  }
+  
+  .accordion > .accordion-header {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 3px;
+    border: 1px #eae5e5 solid;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);  
+    color: #3c3c3c;
+}
+    .accordion > .accordion-header:hover {
+    filter:brightness(97%);
+    transition: 0.1s;
+    } 
+  .accordion > .accordion-body {
+    display: none;
+    padding: 10px;
+    border-radius: 0;
+    border: 1px solid #fff;
+    background-color: #fff;
+  }
+  
+  .accordion > .open {
+    display: block;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px -1px rgba(0,0,0,0.1);
+  }
+  
+  .accordion-header-view {
+    background-color: var(--view-color);
+    color: #fff;
+    border-radius: 0;
+  }
+  
+  .accordion-header-viewTemplate {
+    background-color: var(--viewTemplate-color);
+    color: #fff;
+    border-radius: 0;
+  }
+  
+  .accordion-header-slot {
+    background-color: var(--slot-color);
+    color: #fff;
+    border-radius: 0;
+  }
+  
+  .accordion-header-component {
+    background-color: var(--component-color);
+    color: #fff;
+    border-radius: 0;
+  }
+  
+  .accordion-header-organism {
+    background-color: var(--organism-color);
+    color: #fff;
+    border-radius: 0;
+  }
+  
+  .accordion-header-molecule {
+    background-color: var(--molecule-color);
+    color: #fff;
+    border-radius: 0;
+  }
+  
+  .accordion-header-atom {
+    background-color: var(--atom-color);
+    color: #fff;
+    border-radius: 0;
+  }
+  
+  .accordion-body-view {
+    background-color: var(--light-view-color);
+    border-radius: 0;
+    border: 1px solid var(--view-color);
+  }
+  
+  .accordion-body-viewTemplate {
+    background-color: var(--light-viewTemplate-color);
+    border-radius: 0;
+    border: 1px solid var(--viewTemplate-color);
+  }
+  
+  .accordion-body-slot {
+    background-color: var(--light-slot-color);
+    border-radius: 0;
+    border: 1px solid var(--slot-color);
+  }
+  
+  .accordion-body-component {
+    background-color: var(--light-component-color);
+    border-radius: 0;
+    border: 1px solid var(--component-color);
+  }
+  
+  .accordion-body-organism {
+    background-color: var(--light-organism-color);
+    border-radius: 0;
+    border: 1px solid var(--organism-color);
+  }
+  
+  .accordion-body-molecule {
+    background-color: var(--light-molecule-color);
+    border-radius: 0;
+    border: 1px solid var(--molecule-color);
+  }
+  
+  .accordion-body-atom {
+    background-color: #fff;
+    border-radius: 0;
+    border: 1px solid var(--atom-color);
+  }
+  
+  .createViewButton {
+    padding: 10px;
+    margin: 10px;
+    background-color: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .createViewButton:hover {
+    background-color: var(--dark-blue);
+  }
+  
+  .createSaveButton {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .deleteButton {
+    margin-left: 10px;
+    border: none;
+    border-radius: 0;
+    color: #3c3c3c;
+    background-color: transparent;
+  }
+  
+  .function {
+    border: none;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 0;
+  }
+  
+  input:disabled,
+  select:disabled {
+    color: #000;
+  }
+  
+  input,
+  select {
+    border: 1px lightgray solid;
+    width: 33vw;
+    border-radius: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+  }
+  

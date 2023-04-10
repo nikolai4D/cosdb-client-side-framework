@@ -1,0 +1,32 @@
+.molecule_logo {
+    display: flex;
+    cursor: default;
+    justify-content: center;
+    gap: 0.5em;
+}
+
+.molecule_text_button {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.molecule_icon_navitem__navitems {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.molecule_icon_navitem__navitems__navitem:hover {
+    color: var(--grey-color);
+    cursor: pointer;
+}
+
+.molecule_icon_navitem__navitems__navitem {
+    display: flex;
+    gap: 0.5em;
+}
+
+
+
