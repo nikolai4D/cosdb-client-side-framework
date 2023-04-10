@@ -55,5 +55,5 @@
     grid-auto-flow: row;
     overflow: auto;
     border-radius: 6px;
-    height: 80vh;
+    max-height: 85vh;
   }
