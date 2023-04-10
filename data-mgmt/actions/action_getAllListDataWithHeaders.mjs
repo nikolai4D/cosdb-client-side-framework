@@ -34,11 +34,11 @@ export async function action_getAllListDataWithHeaders({
       const letter = currentValue.title[0].toUpperCase();
       const group = accumulator.find((item) => item.header === letter);
       if (group) {
-        group.content.push(currentValue.title);
+        group.content.push(currentValue.title.title);
       } else {
         accumulator.push({
           header: letter,
-          content: [{ title: currentValue.title }],
+          content: [currentValue.title.title],
         });
       }
       return accumulator;
