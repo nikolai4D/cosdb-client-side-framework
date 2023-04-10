@@ -80,6 +80,7 @@ export function Organism_Header_List_Search_Button() {
       { class: "organism_modal organism_modal_content", id: "organism_modal" },
       await this.childOrganism(1, null)
     );
+    modal.addEventListener("click", closeModal);
 
     const comp = await createElement(
       "div",
@@ -91,7 +92,7 @@ export function Organism_Header_List_Search_Button() {
 
     //add event listener to the comp here
 
-    comp.addEventListener("click", closeModal);
+    //comp.addEventListener("click", closeModal);
 
     return comp;
   };
@@ -136,7 +137,7 @@ export function Organism_Header_List_Search_Button() {
   }
 
   const openModal = async (data) => {
-    const existingModal = document.getElementById("organism_modal");
+    const existingModal = document.querySelector(".organism_modal");
     existingModal.innerHTML = "";
     const updatedModal = await this.childOrganism(1, data);
     existingModal.append(updatedModal);
@@ -144,8 +145,8 @@ export function Organism_Header_List_Search_Button() {
   };
 
   const closeModal = (e) => {
-    const modal = document.getElementById("organism_modal");
-    if (e.target !== modal) {
+    const modal = document.querySelector(".organism_modal");
+    if (e.target === modal) {
       modal.style.display = "none"; // Hide the modal
     }
   };
