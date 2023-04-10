@@ -31,7 +31,7 @@ export function Molecule_Heading_List() {
       "div",
       { class: "molecule_heading_list" },
       await this.atom(1, compData.header),
-      await createElement("ul", {}, ...(await listItems(compData.content)))
+      await createElement("ul", {class: "molecule_heading_list__list"}, ...(await listItems(compData.content)))
     );
 
     //add event listener to the comp here
