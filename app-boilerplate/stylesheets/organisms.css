@@ -63,3 +63,46 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
     flex-flow: column;
     gap: 50px;
 }
+
+.organism_modalconnections__content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.organism_modalconnections__content__connectiontopleft {
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.organism_modalconnections__content__connectionbottomleft{
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    grid-column: 1;
+    grid-row: 2;
+  
+}
+
+.organism_modalconnections__content__content{
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    background-color: rgb(236, 236, 236);
+    grid-column: 2;
+    grid-row: 1/span 2;
+}
+
+.organism_modalconnections__content__connectiontopright{
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.organism_modalconnections__content__connectionbottomright{
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    grid-column: 3;
+    grid-row: 2;
+}
