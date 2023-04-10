@@ -28,10 +28,12 @@ export async function action_getAllListDataWithHeaders({
 
   //trim all elements
   const listDataTrimmed = await transformer_trimAllElements(listData, "title");
+  console.log("listDataTrimmed: ", listDataTrimmed);
   //group by first letter
   const listDataGroupedByFirstLetter = await transformer_groupByFirstLetter(
     listDataTrimmed
   );
+  console.log("listDataGroupedByFirstLetter: ", listDataGroupedByFirstLetter);
 
   //set state
   await mutation_setAllListData("items", listDataGroupedByFirstLetter);
