@@ -36,6 +36,7 @@ export function Organism_Header_List_Search_Button() {
   this.functions = [
     {
       id: 1,
+      purpose: "set state to be used as list items",
       function: () =>
         (State.items = [
           {
@@ -86,22 +87,6 @@ export function Organism_Header_List_Search_Button() {
     return await component(data);
   };
 
-  //add component specific functions here
-
-  //   const listItemsData = async () => {
-  //     return (
-  //       (await this.fn(1)) || [
-  //         {
-  //           header: "header1",
-  //           content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
-  //         },
-  //         {
-  //           header: "header2",
-  //           content: [{ title: "placeholder 3" }, { title: "placeholder 4" }],
-  //         },
-  //       ]
-  //     );
-  //   };
   const listItems = async (arrayOfData) => {
     return await Promise.all(
       arrayOfData.map(async (item) => {
