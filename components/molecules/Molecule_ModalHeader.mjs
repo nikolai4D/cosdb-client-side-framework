@@ -14,11 +14,6 @@ export function Molecule_ModalHeader() {
       atom: "Atom_Icon", // back
       component: new Atom_Icon(),
     },
-    {
-      id: 2,
-      atom: "Atom_Icon", // close
-      component: new Atom_Icon(),
-    },
   ];
 
   this.functions = [];
@@ -37,7 +32,7 @@ export function Molecule_ModalHeader() {
       await createElement(
         "div",
         { class: "molecule_modalheader__close" },
-        this.atom(2, "bi bi-x")
+        this.atom(1, "bi bi-x")
       )
     );
 
