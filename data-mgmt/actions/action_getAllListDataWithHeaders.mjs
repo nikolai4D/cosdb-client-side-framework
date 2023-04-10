@@ -40,7 +40,9 @@ export async function action_getAllListDataWithHeaders({
       }
       return accumulator;
     }, [])
-    .sort((a, b) => a.header.localeCompare(b.header));
+    .sort((a, b) =>
+      a.header.localeCompare(b.header, "sv", { sensitivity: "base" })
+    );
 
   //set state
   State.items = await structuredData;
