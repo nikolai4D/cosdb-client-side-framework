@@ -58,7 +58,9 @@ export function Organism_Header_List_Search_Button() {
       { class: "molecule_heading_input_button" },
       await this.molecule(1, null)
     );
-    headingInputButton.addEventListener("input", (e) => console.log(e));
+    headingInputButton.addEventListener("input", (e) =>
+      console.log(e.target.value)
+    );
     const headingList = await createElement(
       "div",
       { class: "molecule_heading_list" },
