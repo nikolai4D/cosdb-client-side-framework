@@ -55,7 +55,7 @@ export function Molecule_ModalConnection() {
       await createElement(
         "div",
         { class: "molecule_modalconnection__list" },
-        await createElement("ul", {}, ...(await items(compData)))
+        await createElement("div", {}, ...(await items(compData)))
       )
     );
 
