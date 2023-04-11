@@ -77,8 +77,6 @@ export function Organism_Header_List_Search_Button() {
     );
     headingList.addEventListener("click", async (e) => {
       if (e.target.tagName === "LI") {
-        console.log(e.target);
-        // const modalContent = e.target.textContent;
         await openModal(e.target.id);
       }
     });
@@ -146,7 +144,6 @@ export function Organism_Header_List_Search_Button() {
     const existinglistItems = document.getElementById("listItems");
     existinglistItems.innerHTML = "";
     const updatedListItems = await listItems(filter);
-    console.log(updatedListItems);
     existinglistItems.append(...updatedListItems);
   }
 
@@ -157,7 +154,7 @@ export function Organism_Header_List_Search_Button() {
     );
     existingModalContent.innerHTML = "";
 
-    const updatedModal = await this.childOrganism(2);
+    const updatedModal = await this.childOrganism(2, id);
     console.log(updatedModal, "updatedModal");
     existingModalContent.appendChild(updatedModal);
     document.getElementById("organism_modal").style.display = "block"; // Show the modal
