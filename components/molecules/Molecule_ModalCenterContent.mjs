@@ -19,6 +19,8 @@ export function Molecule_ModalCenterContent() {
     { id: 5, atom: "Atom_ParagraphData", component: new Atom_ParagraphData() }, //list item
   ];
 
+  //
+
   this.functions = [];
 
   //build component
