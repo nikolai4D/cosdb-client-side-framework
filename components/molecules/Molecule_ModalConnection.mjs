@@ -50,7 +50,7 @@ export function Molecule_ModalConnection() {
         "div",
         { class: "molecule_modalconnection__header" },
         await this.atom(1, null),
-        await this.atom(2, null)
+        await this.atom(2, "bi bi-plus-circle-fill")
       ),
       await createElement(
         "div",
