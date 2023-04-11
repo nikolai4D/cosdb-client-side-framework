@@ -10,9 +10,11 @@ export function Organism() {
       } else if (fn.parameters !== "") {
         return await fn.function(fn.parameters);
       } else {
+        console.log("no parameters or data");
         return await fn.function();
       }
     } else {
+      console.log("no function found");
       return null;
     }
     // return this.functions.find((fn) => fn.id === id)?.function() || "";
