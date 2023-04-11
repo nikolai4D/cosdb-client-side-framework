@@ -145,3 +145,8 @@
 .molecule_modalconnection__items__item > .atom_paragraphdata {
     font-style: italic;
 }
+
+.molecule_modalconnection__header  {
+    display: flex;
+    justify-content: space-between;
+}
