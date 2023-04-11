@@ -134,6 +134,7 @@ export function Organism_ModalConnections() {
         ],
       };
     }
+    console.log("data", data);
 
     return await component(data);
   };
