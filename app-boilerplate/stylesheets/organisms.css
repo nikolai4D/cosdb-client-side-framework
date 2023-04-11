@@ -79,6 +79,7 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
     border-radius: 6px;
     grid-column: 1;
     grid-row: 1;
+    min-width: 100%;
 }
 
 .organism_modalconnections__content__connectionbottomleft{
@@ -86,13 +87,12 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
     border-radius: 6px;
     grid-column: 1;
     grid-row: 2;
+    min-width: 100%;
+
   
 }
 
 .organism_modalconnections__content__content{
-    border: 1px solid var(--grey-color);
-    border-radius: 6px;
-    background-color: rgb(236, 236, 236);
     grid-column: 2;
     grid-row: 1/span 2;
 }
@@ -102,6 +102,8 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
     border-radius: 6px;
     grid-column: 3;
     grid-row: 1;
+    min-width: 100%;
+
 }
 
 .organism_modalconnections__content__connectionbottomright{
@@ -109,4 +111,6 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
     border-radius: 6px;
     grid-column: 3;
     grid-row: 2;
+    min-width: 100%;
+
 }
