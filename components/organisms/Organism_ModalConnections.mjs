@@ -135,6 +135,7 @@ export function Organism_ModalConnections() {
     } else {
       dataInput = await this.fn(1);
     }
+    console.log(dataInput, "dataInput");
     return await component(dataInput);
   };
 
