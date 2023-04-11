@@ -20,7 +20,6 @@ export function Molecule_ModalHeader() {
 
   //build component
   const component = async (compData = null) => {
-    console.log(compData);
     const comp = await createElement(
       "div",
       { class: "molecule_modalheader" },
