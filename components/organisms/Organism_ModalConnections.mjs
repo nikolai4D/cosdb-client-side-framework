@@ -89,6 +89,7 @@ export function Organism_ModalConnections() {
 
   //render component
   this.render = async (indata) => {
+    console.log("indata: ", indata);
     const data = {
       node: { title: "node title placeholder" },
       parentNode: { title: "parent node title placeholder" },
