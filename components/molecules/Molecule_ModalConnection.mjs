@@ -78,8 +78,8 @@ export function Molecule_ModalConnection() {
         return await createElement(
           "div", // shall not be LI
           { class: "molecule_modalconnection__items__item" },
-          await this.atom(3, item.node.title),
-          await this.atom(4, item.rel.title),
+          await this.atom(3, item.node),
+          await this.atom(4, item.rel),
           await this.atom(5, "bi bi-trash-fill")
         );
       })

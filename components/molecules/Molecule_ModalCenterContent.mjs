@@ -52,7 +52,7 @@ export function Molecule_ModalCenterContent() {
         await createElement(
           "div",
           { class: "molecule_modalcentercontent__content__content" },
-          await this.atom(5, compData.node.title)
+          await this.atom(5, compData.node)
         )
       ),
       await createElement(

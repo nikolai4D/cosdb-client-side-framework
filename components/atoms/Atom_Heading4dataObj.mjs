@@ -2,14 +2,17 @@
 import { createElement } from "../../core/helpers/createElement.mjs";
 import { Atom } from "../../core/Atom.mjs";
 
-export function Atom_ParagraphData() {
+export function Atom_Heading4dataObj() {
   Atom.call(this);
 
   //build component
   const component = async (compData) => {
     const comp = await createElement(
-      "p",
-      { class: `${await this.atom()} atom_paragraphdata`, id: compData.id },
+      "h4",
+      {
+        class: `${await this.atom()} atom_heading4`,
+        id: compData.id,
+      },
       compData.title
     );
     //add event listeners here
@@ -17,9 +20,7 @@ export function Atom_ParagraphData() {
   };
 
   //render component
-  this.render = async (
-    data = { title: "data placeholder", id: "id placeholder" }
-  ) => {
+  this.render = async (data = "Atom_Heading4 placeholder") => {
     return await component(data);
   };
 
