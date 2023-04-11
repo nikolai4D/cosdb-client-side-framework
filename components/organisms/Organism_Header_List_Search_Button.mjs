@@ -4,7 +4,7 @@ import { Organism } from "../../core/Organism.mjs";
 //import sub components
 import { Molecule_Heading_List } from "../molecules/Molecule_Heading_List.mjs";
 import { Molecule_Heading_Input_Button } from "../molecules/Molecule_Heading_Input_Button.mjs";
-import { Organism_Modal } from "./Organism_Modal.mjs";
+
 import { Organism_ModalConnections } from "./Organism_ModalConnections.mjs";
 //import state
 import { State } from "../../data-mgmt/State.mjs";
@@ -14,11 +14,6 @@ export function Organism_Header_List_Search_Button() {
 
   // sub components
   this.organisms = [
-    {
-      id: 1,
-      organism: "Organism_Modal",
-      component: new Organism_Modal(),
-    },
     {
       id: 2,
       organism: "Organism_ModalConnections",
