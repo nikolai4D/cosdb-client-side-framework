@@ -9,8 +9,8 @@ export function Atom_ListItem() {
   const component = async (compData) => {
     const comp = await createElement(
       "li",
-      { class: `${await this.atom()} atom_listitem` },
-      compData
+      { class: `${await this.atom()} atom_listitem`, id: compData.id },
+      compData.title
     );
     //add event listeners here
     return comp;
