@@ -4,7 +4,7 @@ import { createElement } from "../../core/helpers/createElement.mjs";
 //import sub components
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
-import { Atom_ParagraphData } from "../atoms/Atom_ParagraphData.mjs";
+import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
 
 export function Molecule_ModalCenterContent() {
   Molecule.call(this);
@@ -15,7 +15,7 @@ export function Molecule_ModalCenterContent() {
     { id: 2, atom: "Atom_Icon", component: new Atom_Icon() }, //close
     { id: 3, atom: "Atom_Icon", component: new Atom_Icon() }, //dependency arrow
     { id: 4, atom: "Atom_Heading4", component: new Atom_Heading4() }, //heading
-    { id: 5, atom: "Atom_ParagraphData", component: new Atom_ParagraphData() }, //list item
+    { id: 5, atom: "Atom_ListItem", component: new Atom_ListItem() }, //list item
   ];
 
   this.functions = [];
@@ -45,16 +45,16 @@ export function Molecule_ModalCenterContent() {
         { class: "molecule_modalcentercontent__content" },
         await createElement(
           "div",
-          { class: "molecule_modalcentercontent__content__content" },
-          await this.atom(5, compData.node.title)
-        ),
-        await createElement(
-          "div",
           { class: "molecule_modalcentercontent__content__header" },
           await this.atom(4, compData.parentNode.title),
           await this.atom(1, "bi bi-pencil-fill"),
           await this.atom(2, "bi bi-x")
         ),
+        await createElement(
+          "div",
+          { class: "molecule_modalcentercontent__content__content" },
+          await this.atom(5, compData.node.title)
+        )
       ),
       await createElement(
         "div",
