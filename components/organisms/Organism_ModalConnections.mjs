@@ -89,8 +89,8 @@ export function Organism_ModalConnections() {
   };
 
   //render component
-  this.render = async (
-    data = {
+  this.render = async (indata) => {
+    const data = {
       node: { title: "node title placeholder" },
       parentNode: { title: "parent node title placeholder" },
       externalRelsToNode: [
@@ -129,8 +129,7 @@ export function Organism_ModalConnections() {
           },
         },
       ],
-    }
-  ) => {
+    };
     console.log(await this.fn(1));
 
     return await component(data);
