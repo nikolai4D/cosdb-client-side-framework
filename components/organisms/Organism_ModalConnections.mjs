@@ -30,10 +30,17 @@ export function Organism_ModalConnections() {
     },
   ];
 
-  this.functions = [];
+  this.functions = [
+    {
+      id: 1,
+      purpose: "set state to be used as list items",
+      function: () => console.log("placeholder function"),
+    },
+  ];
 
   //build component
   const component = async (compData) => {
+    await this.fn(1);
     const comp = await createElement(
       "div",
       { class: "organism_modalconnections" },
