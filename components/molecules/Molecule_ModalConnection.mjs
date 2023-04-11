@@ -48,15 +48,16 @@ export function Molecule_ModalConnection() {
       { class: "molecule_modalconnection" },
       await createElement(
         "div",
-        { class: "molecule_modalconnection__header" },
-        await this.atom(2, "bi bi-plus-circle-fill"),
-        await this.atom(1, null)
+        { class: "molecule_modalconnection__items" },
+        await createElement("div", {}, ...(await items(compData)))
       ),
       await createElement(
         "div",
-        { class: "molecule_modalconnection__items" },
-        await createElement("div", {}, ...(await items(compData)))
+        { class: "molecule_modalconnection__header" },
+        await this.atom(1, null),
+        await this.atom(2, "bi bi-plus-circle-fill")
       )
+
     );
 
     //add event listener to the comp here
