@@ -31,7 +31,7 @@ export function Molecule_ModalHeader() {
       await createElement(
         "div",
         { class: "molecule_modalheader__close" },
-        await this.atom(1, "bi bi-x")
+        await this.atom(1, "bi bi-trash")
       )
     );
 

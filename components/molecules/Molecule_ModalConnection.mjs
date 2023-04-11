@@ -80,7 +80,7 @@ export function Molecule_ModalConnection() {
           { class: "molecule_modalconnection__items__item" },
           await this.atom(3, item.node),
           await this.atom(4, item.rel),
-          await this.atom(5, "bi bi-trash-fill")
+          await this.atom(5, "bi bi-trash")
         );
       })
     );
