@@ -30,15 +30,7 @@ export function Organism_ModalConnections() {
     },
   ];
 
-  this.functions = [
-    {
-      id: 1,
-      purpose: "get data from id",
-      function: () => {
-        console.log("get data from id");
-      },
-    },
-  ];
+  this.functions = [];
 
   //build component
   const component = async (compData) => {
