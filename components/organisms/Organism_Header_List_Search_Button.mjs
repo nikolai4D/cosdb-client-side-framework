@@ -81,7 +81,7 @@ export function Organism_Header_List_Search_Button() {
       ...(await listItems(compData))
     );
     headingList.addEventListener("click", async (e) => {
-      if (e.target.tagName === "LI") {
+      if (e.target.tagName === "P") {
         console.log(e.target);
         // const modalContent = e.target.textContent;
         await openModal();
