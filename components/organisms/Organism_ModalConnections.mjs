@@ -90,7 +90,8 @@ export function Organism_ModalConnections() {
 
   //render component
   this.render = async (data) => {
-    return await component(data);
+    const setData = await this.fn(1);
+    return await component(setData);
   };
 
   //add component specific functions here
