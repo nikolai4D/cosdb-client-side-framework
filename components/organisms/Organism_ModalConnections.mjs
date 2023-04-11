@@ -53,7 +53,7 @@ export function Organism_ModalConnections() {
         await createElement(
           "div",
           { class: "organism_modalconnections__content__connectionbottomleft" },
-          await this.molecule(2, compData.ExternalRelsToNode)
+          await this.molecule(2, compData.externalRelsToNode)
         ),
         await createElement(
           "div",
@@ -70,7 +70,7 @@ export function Organism_ModalConnections() {
           {
             class: "organism_modalconnections__content__connectionbottomright",
           },
-          await this.molecule(2, compData.ExternalRelsFromNode)
+          await this.molecule(2, compData.externalRelsFromNode)
         )
       )
     );
