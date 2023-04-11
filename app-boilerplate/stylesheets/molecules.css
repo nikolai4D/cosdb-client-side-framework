@@ -132,3 +132,7 @@
     display: flex;
     padding:1em;
 }
+
+.molecule_modalcentercontent__content__header {
+    display: inline-flex;
+}
