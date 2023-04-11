@@ -89,48 +89,51 @@ export function Organism_ModalConnections() {
 
   //render component
   this.render = async (indata) => {
-    console.log("indata: ", indata);
-    console.log(await this.fn(1, indata));
-    const data = {
-      node: { title: "node title placeholder" },
-      parentNode: { title: "parent node title placeholder" },
-      externalRelsToNode: [
-        {
-          rel: { title: "externalRelsToNode rel title placeholder" },
-          node: { title: "externalRelsToNode node title placeholder" },
-          parentNode: {
-            title: "externalRelsToNode parentNode title placeholder",
+    let data;
+    if (indata) {
+      data = await this.fn(1, indata);
+    } else {
+      data = {
+        node: { title: "node title placeholder" },
+        parentNode: { title: "parent node title placeholder" },
+        externalRelsToNode: [
+          {
+            rel: { title: "externalRelsToNode rel title placeholder" },
+            node: { title: "externalRelsToNode node title placeholder" },
+            parentNode: {
+              title: "externalRelsToNode parentNode title placeholder",
+            },
           },
-        },
-      ],
-      externalRelsFromNode: [
-        {
-          rel: { title: "externalRelsFromNode rel title placeholder" },
-          node: { title: "externalRelsFromNode node title placeholder" },
-          parentNode: {
-            title: "externalRelsFromNode parentNode title placeholder",
+        ],
+        externalRelsFromNode: [
+          {
+            rel: { title: "externalRelsFromNode rel title placeholder" },
+            node: { title: "externalRelsFromNode node title placeholder" },
+            parentNode: {
+              title: "externalRelsFromNode parentNode title placeholder",
+            },
           },
-        },
-      ],
-      internalRelsToNode: [
-        {
-          rel: { title: "internalRelsToNode rel title placeholder" },
-          node: { title: "internalRelsToNode node title placeholder" },
-          parentNode: {
-            title: "internalRelsToNode parentNode title placeholder",
+        ],
+        internalRelsToNode: [
+          {
+            rel: { title: "internalRelsToNode rel title placeholder" },
+            node: { title: "internalRelsToNode node title placeholder" },
+            parentNode: {
+              title: "internalRelsToNode parentNode title placeholder",
+            },
           },
-        },
-      ],
-      internalRelsFromNode: [
-        {
-          rel: { title: "internalRelsFromNode rel title placeholder" },
-          node: { title: "internalRelsFromNode node title placeholder" },
-          parentNode: {
-            title: "internalRelsFromNode parentNode title placeholder",
+        ],
+        internalRelsFromNode: [
+          {
+            rel: { title: "internalRelsFromNode rel title placeholder" },
+            node: { title: "internalRelsFromNode node title placeholder" },
+            parentNode: {
+              title: "internalRelsFromNode parentNode title placeholder",
+            },
           },
-        },
-      ],
-    };
+        ],
+      };
+    }
 
     return await component(data);
   };
