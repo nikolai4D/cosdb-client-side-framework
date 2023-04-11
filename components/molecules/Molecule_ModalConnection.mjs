@@ -43,6 +43,7 @@ export function Molecule_ModalConnection() {
 
   //build component
   const component = async (compData) => {
+    console.log("compData", compData);
     const comp = await createElement(
       "div",
       { class: "molecule_modalconnection" },
@@ -57,7 +58,6 @@ export function Molecule_ModalConnection() {
         await this.atom(1, null),
         await this.atom(2, "bi bi-plus-circle-fill")
       )
-
     );
 
     //add event listener to the comp here
