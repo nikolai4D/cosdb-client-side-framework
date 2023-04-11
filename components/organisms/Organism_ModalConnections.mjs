@@ -35,6 +35,7 @@ export function Organism_ModalConnections() {
       id: 1,
       purpose: "get data from id",
       function: () => {
+        console.log(mockData);
         return mockData;
       },
     },
@@ -90,8 +91,7 @@ export function Organism_ModalConnections() {
 
   //render component
   this.render = async (data) => {
-    const setData = await this.fn(1);
-    return await component(setData);
+    return await component(await this.fn(1));
   };
 
   //add component specific functions here
