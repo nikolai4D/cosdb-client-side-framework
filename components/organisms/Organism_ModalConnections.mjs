@@ -40,7 +40,6 @@ export function Organism_ModalConnections() {
 
   //build component
   const component = async (compData) => {
-    await this.fn(1);
     const comp = await createElement(
       "div",
       { class: "organism_modalconnections" },
