@@ -131,6 +131,7 @@
 .molecule_modalconnection {
     display: flex;
     padding:1em;
+    flex-flow: column;
 }
 
 .molecule_modalcentercontent__content__header {
