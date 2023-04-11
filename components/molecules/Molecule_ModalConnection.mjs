@@ -4,8 +4,8 @@ import { createElement } from "../../core/helpers/createElement.mjs";
 //import sub components
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
-import { Atom_ListItemBold } from "../atoms/Atom_ListItemBold.mjs";
-import { Atom_ListItem } from "../atoms/Atom_ListItem.mjs";
+import { Atom_ParagraphDataBold } from "../atoms/Atom_ParagraphDataBold.mjs";
+import { Atom_ParagraphData } from "../atoms/Atom_ParagraphData.mjs";
 
 export function Molecule_ModalConnection() {
   Molecule.call(this);
@@ -24,13 +24,13 @@ export function Molecule_ModalConnection() {
     },
     {
       id: 3,
-      atom: "Atom_ListItemBold", // node title
-      component: new Atom_ListItemBold(),
+      atom: "Atom_ParagraphDataBold", // node title
+      component: new Atom_ParagraphDataBold(),
     },
     {
       id: 4,
-      atom: "Atom_ListItem", // rel title
-      component: new Atom_ListItem(),
+      atom: "Atom_ParagraphData", // rel title
+      component: new Atom_ParagraphData(),
     },
     {
       id: 5,
