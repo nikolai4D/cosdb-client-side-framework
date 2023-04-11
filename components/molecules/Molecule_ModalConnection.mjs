@@ -76,7 +76,7 @@ export function Molecule_ModalConnection() {
     return await Promise.all(
       arrayOfData.map(async (item) => {
         return await createElement(
-          "li",
+          "div",
           { class: "molecule_modalconnection__list__item" },
           await this.atom(3, item.node.title),
           await this.atom(4, item.rel.title),
