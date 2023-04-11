@@ -136,7 +136,8 @@
 }
 
 .molecule_modalcentercontent__content__header {
-    display: inline-flex;
+    display: flex;
+    gap: 0.5em;
 }
 
 .molecule_modalconnection__items__item {
