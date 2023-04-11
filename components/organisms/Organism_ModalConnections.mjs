@@ -129,7 +129,7 @@ export function Organism_ModalConnections() {
 
   //render component
   this.render = async (data) => {
-    let dataInput = await this.fn(1);
+    let dataInput = await this.fn(1, null);
     // if (data) {
     //   dataInput = data;
     // } else {
