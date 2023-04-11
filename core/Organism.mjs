@@ -3,6 +3,7 @@ export function Organism() {
 
   this.fn = async function (id, data = null) {
     const fn = this.functions.find((fn) => fn.id === id);
+    console.log("fn: ", fn);
     if (fn) {
       if (data) {
         return await fn.function(data);
