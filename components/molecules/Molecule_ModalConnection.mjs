@@ -9,6 +9,7 @@ import { Atom_ParagraphData } from "../atoms/Atom_ParagraphData.mjs";
 
 export function Molecule_ModalConnection() {
   Molecule.call(this);
+
   // sub components
   this.atoms = [
     {
@@ -74,7 +75,7 @@ export function Molecule_ModalConnection() {
     return await Promise.all(
       arrayOfData.map(async (item) => {
         return await createElement(
-          "div",
+          "div", // shall not be LI
           { class: "molecule_modalconnection__list__item" },
           await this.atom(3, item.node.title),
           await this.atom(4, item.rel.title),
