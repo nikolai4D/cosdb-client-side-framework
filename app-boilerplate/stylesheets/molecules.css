@@ -78,3 +78,52 @@
     display: flex;
     justify-content: space-between;
 }
+
+.molecule_modalcentercontent__leftarrows {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    margin-top: 6em;
+    margin-bottom: 6em;
+    margin-right: 1em;
+}
+
+.molecule_modalcentercontent__rightarrows {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    margin-top: 6em;
+    margin-bottom: 6em;
+    margin-left: 1em;
+
+}
+
+.molecule_modalcentercontent__leftarrows >  .molecule_modalcentercontent__leftarrows__toparrow > i {
+    font-size: 3rem;
+}
+
+.molecule_modalcentercontent__leftarrows >  .molecule_modalcentercontent__leftarrows__bottomarrow > i {
+    font-size: 3rem;
+}
+
+
+.molecule_modalcentercontent__rightarrows >  .molecule_modalcentercontent__rightarrows__toparrow > i {
+    font-size: 3rem;
+}
+
+
+.molecule_modalcentercontent__rightarrows >  .molecule_modalcentercontent__rightarrows__bottomarrow > i {
+    font-size: 3rem;
+}
+
+.molecule_modalcentercontent{
+    display: flex;
+    height: 100%;
+}
+
+.molecule_modalcentercontent__content{
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    background-color: rgb(236, 236, 236);
+    height: 100%;
+}
