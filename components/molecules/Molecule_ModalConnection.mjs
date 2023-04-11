@@ -4,8 +4,8 @@ import { createElement } from "../../core/helpers/createElement.mjs";
 //import sub components
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
-// import { Atom_ParagraphDataBold } from "../atoms/Atom_ParagraphDataBold.mjs";
-// import { Atom_ParagraphData } from "../atoms/Atom_ParagraphData.mjs";
+import { Atom_ParagraphDataBold } from "../atoms/Atom_ParagraphDataBold.mjs";
+import { Atom_ParagraphData } from "../atoms/Atom_ParagraphData.mjs";
 
 export function Molecule_ModalConnection() {
   Molecule.call(this);
