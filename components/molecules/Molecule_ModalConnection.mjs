@@ -54,7 +54,7 @@ export function Molecule_ModalConnection() {
       ),
       await createElement(
         "div",
-        { class: "molecule_modalconnection__list" },
+        { class: "molecule_modalconnection__items" },
         await createElement("div", {}, ...(await items(compData)))
       )
     );
@@ -76,7 +76,7 @@ export function Molecule_ModalConnection() {
       arrayOfData.map(async (item) => {
         return await createElement(
           "div", // shall not be LI
-          { class: "molecule_modalconnection__list__item" },
+          { class: "molecule_modalconnection__items__item" },
           await this.atom(3, item.node.title),
           await this.atom(4, item.rel.title),
           await this.atom(5, "bi bi-trash-fill")
