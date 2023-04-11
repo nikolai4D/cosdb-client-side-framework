@@ -41,6 +41,8 @@ export function Organism_ModalConnections() {
     },
   ];
 
+  this.fn(1);
+
   //build component
   const component = async (compData) => {
     const comp = await createElement(
@@ -91,7 +93,7 @@ export function Organism_ModalConnections() {
 
   //render component
   this.render = async (data) => {
-    return await component(await this.fn(1));
+    return await component(data);
   };
 
   //add component specific functions here
