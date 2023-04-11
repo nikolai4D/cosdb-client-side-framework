@@ -63,7 +63,6 @@ export async function getOrganism(module, parentId, orgId = null) {
   const funcs = modelFunctions.filter((func) => func.parentId === organismId);
   for (const func of funcs) {
     const value = func.value;
-    console.log(func);
     const parameters = func.parameters;
     const funcObject = await getFunction(value, organismId);
     const funcId = parseInt(func.key.split(" ")[1]);
