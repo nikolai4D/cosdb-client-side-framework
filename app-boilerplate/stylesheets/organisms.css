@@ -71,7 +71,7 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
     margin-top: 1em;
     margin-left: 1em;
     margin-right: 1em;
-    gap: 2em;
+    row-gap: 2em;
 }
 
 .organism_modalconnections__content__connectiontopleft {
