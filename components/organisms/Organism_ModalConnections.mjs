@@ -30,7 +30,15 @@ export function Organism_ModalConnections() {
     },
   ];
 
-  this.functions = [];
+  this.functions = [
+    {
+      id: 1,
+      purpose: "get data from id",
+      function: () => {
+        return mockData;
+      },
+    },
+  ];
 
   //build component
   const component = async (compData) => {
@@ -81,50 +89,49 @@ export function Organism_ModalConnections() {
   };
 
   //render component
-  this.render = async (
-    data = {
-      node: { title: "node title placeholder" },
-      parentNode: { title: "parent node title placeholder" },
-      externalRelsToNode: [
-        {
-          rel: { title: "externalRelsToNode rel title placeholder" },
-          node: { title: "externalRelsToNode node title placeholder" },
-          parentNode: {
-            title: "externalRelsToNode parentNode title placeholder",
-          },
-        },
-      ],
-      externalRelsFromNode: [
-        {
-          rel: { title: "externalRelsFromNode rel title placeholder" },
-          node: { title: "externalRelsFromNode node title placeholder" },
-          parentNode: {
-            title: "externalRelsFromNode parentNode title placeholder",
-          },
-        },
-      ],
-      internalRelsToNode: [
-        {
-          rel: { title: "internalRelsToNode rel title placeholder" },
-          node: { title: "internalRelsToNode node title placeholder" },
-          parentNode: {
-            title: "internalRelsToNode parentNode title placeholder",
-          },
-        },
-      ],
-      internalRelsFromNode: [
-        {
-          rel: { title: "internalRelsFromNode rel title placeholder" },
-          node: { title: "internalRelsFromNode node title placeholder" },
-          parentNode: {
-            title: "internalRelsFromNode parentNode title placeholder",
-          },
-        },
-      ],
-    }
-  ) => {
+  this.render = async (data) => {
     return await component(data);
   };
 
   //add component specific functions here
+  const mockData = {
+    node: { title: "node title placeholder" },
+    parentNode: { title: "parent node title placeholder" },
+    externalRelsToNode: [
+      {
+        rel: { title: "externalRelsToNode rel title placeholder" },
+        node: { title: "externalRelsToNode node title placeholder" },
+        parentNode: {
+          title: "externalRelsToNode parentNode title placeholder",
+        },
+      },
+    ],
+    externalRelsFromNode: [
+      {
+        rel: { title: "externalRelsFromNode rel title placeholder" },
+        node: { title: "externalRelsFromNode node title placeholder" },
+        parentNode: {
+          title: "externalRelsFromNode parentNode title placeholder",
+        },
+      },
+    ],
+    internalRelsToNode: [
+      {
+        rel: { title: "internalRelsToNode rel title placeholder" },
+        node: { title: "internalRelsToNode node title placeholder" },
+        parentNode: {
+          title: "internalRelsToNode parentNode title placeholder",
+        },
+      },
+    ],
+    internalRelsFromNode: [
+      {
+        rel: { title: "internalRelsFromNode rel title placeholder" },
+        node: { title: "internalRelsFromNode node title placeholder" },
+        parentNode: {
+          title: "internalRelsFromNode parentNode title placeholder",
+        },
+      },
+    ],
+  };
 }
