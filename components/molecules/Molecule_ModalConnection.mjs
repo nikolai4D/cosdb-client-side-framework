@@ -9,7 +9,6 @@ import { Atom_ParagraphData } from "../atoms/Atom_ParagraphData.mjs";
 
 export function Molecule_ModalConnection() {
   Molecule.call(this);
-
   // sub components
   this.atoms = [
     {
@@ -60,7 +59,6 @@ export function Molecule_ModalConnection() {
     );
 
     //add event listener to the comp here
-
     return comp;
   };
 
