@@ -2,20 +2,16 @@ export function Organism() {
   this.title = "Organism";
 
   this.fn = async function (id, data = null) {
-    console.log(this.functions, id);
     const fn = this.functions.find((fn) => fn.id === id);
     if (fn) {
-      console.log(fn);
       if (data) {
         return await fn.function(data);
       } else if (fn.parameters !== "") {
         return await fn.function(fn.parameters);
       } else {
-        console.log("no parameters or data");
         return await fn.function();
       }
     } else {
-      console.log("no function found");
       return null;
     }
     // return this.functions.find((fn) => fn.id === id)?.function() || "";
