@@ -117,11 +117,13 @@
 .molecule_modalcentercontent{
     display: flex;
     height: 100%;
+    justify-content:center;
 }
 
 .molecule_modalcentercontent__content{
     border: 1px solid var(--grey-color);
     border-radius: 6px;
     background-color: rgb(236, 236, 236);
-    height: 100%;
+    padding: 1em;
+
 }
