@@ -6,7 +6,6 @@ import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 import { Atom_ParagraphData } from "../atoms/Atom_ParagraphData.mjs";
 
-//
 export function Molecule_ModalCenterContent() {
   Molecule.call(this);
 
@@ -18,8 +17,6 @@ export function Molecule_ModalCenterContent() {
     { id: 4, atom: "Atom_Heading4", component: new Atom_Heading4() }, //heading
     { id: 5, atom: "Atom_ParagraphData", component: new Atom_ParagraphData() }, //list item
   ];
-
-  //
 
   this.functions = [];
 
