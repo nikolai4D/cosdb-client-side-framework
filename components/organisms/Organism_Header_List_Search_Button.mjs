@@ -92,7 +92,7 @@ export function Organism_Header_List_Search_Button() {
     const modalContent = await createElement(
       "div",
       { class: "organism_modal_content", id: "organism_modal_content" },
-      await this.childOrganism(1, null)
+      await this.childOrganism(2, null)
     );
     modal.appendChild(modalContent);
 
