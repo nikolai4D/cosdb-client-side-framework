@@ -6,7 +6,7 @@ export async function action_getRelatedNodes(nodeId) {
   const url = "api/relatedNodes";
   const body = { nodeId };
 
-  const relatedNodes = await apiCallPost({ url, body });
+  const relatedNodes = await apiCallPost({ url, body: { body } });
 
   return relatedNodes;
 }
