@@ -130,7 +130,6 @@ export function Organism_ModalConnections() {
         },
       ],
     };
-    console.log(await this.fn(1));
 
     return await component(data);
   };
