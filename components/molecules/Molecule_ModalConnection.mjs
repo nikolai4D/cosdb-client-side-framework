@@ -3,7 +3,7 @@ import { Molecule } from "../../core/Molecule.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
 //import sub components
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
-import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
+import { Atom_Heading4value } from "../atoms/Atom_Heading4value.mjs";
 import { Atom_ParagraphDataBold } from "../atoms/Atom_ParagraphDataBold.mjs";
 import { Atom_ParagraphData } from "../atoms/Atom_ParagraphData.mjs";
 
@@ -14,8 +14,8 @@ export function Molecule_ModalConnection() {
   this.atoms = [
     {
       id: 1,
-      atom: "Atom_Heading4", // connections type
-      component: new Atom_Heading4(),
+      atom: "Atom_Heading4value", // connections type
+      component: new Atom_Heading4value(),
     },
     {
       id: 2,
