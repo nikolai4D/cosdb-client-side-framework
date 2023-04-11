@@ -4,7 +4,6 @@ export function Molecule() {
   this.fn = async function (id, data = null) {
     const fn = this.functions.find((fn) => fn.id === id);
     if (fn) {
-      console.log(fn);
       if (data) {
         return await fn.function(data);
       } else if (fn.parameters !== "") {
