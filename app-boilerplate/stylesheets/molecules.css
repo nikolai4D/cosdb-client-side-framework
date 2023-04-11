@@ -137,3 +137,11 @@
 .molecule_modalcentercontent__content__header {
     display: inline-flex;
 }
+
+.molecule_modalconnection__items__item {
+    padding: 1em;
+}
+
+.molecule_modalconnection__items__item > .atom_paragraphdata {
+    font-style: italic;
+}
