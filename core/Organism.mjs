@@ -2,6 +2,7 @@ export function Organism() {
   this.title = "Organism";
 
   this.fn = async function (id, data = null) {
+    console.log(this.functions, id);
     const fn = this.functions.find((fn) => fn.id === id);
     if (fn) {
       console.log(fn);
