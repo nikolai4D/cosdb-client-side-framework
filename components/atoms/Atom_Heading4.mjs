@@ -7,7 +7,6 @@ export function Atom_Heading4() {
 
   //build component
   const component = async (compData) => {
-    console.log(compData);
     const comp = await createElement(
       "h4",
       {
