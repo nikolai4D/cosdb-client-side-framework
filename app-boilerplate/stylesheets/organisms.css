@@ -41,8 +41,8 @@ margin: 0;
 padding: 20px;
 border: none;
 border-radius: 6px;
-width: 800px;
-height: 500px;
+width: 1200px;
+height: 700px;
 position: absolute;
 top: 50%;
 left: 50%;
@@ -66,8 +66,8 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
 
 .organism_modalconnections__content{
     display: grid;
-    grid-template-columns:1fr 1.5fr 1fr;
-    grid-template-rows: 210px 210px;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows:  300px 300px;
     margin-top: 1em;
     margin-left: 1em;
     margin-right: 1em;
@@ -80,6 +80,7 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
     grid-column: 1;
     grid-row: 1;
     min-width: 100%;
+    overflow: scroll;
 }
 
 .organism_modalconnections__content__connectionbottomleft{
@@ -88,6 +89,7 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
     grid-column: 1;
     grid-row: 2;
     min-width: 100%;
+    overflow: scroll;
 
   
 }
@@ -103,6 +105,7 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
     grid-column: 3;
     grid-row: 1;
     min-width: 100%;
+    overflow: scroll;
 
 }
 
@@ -112,5 +115,6 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
     grid-column: 3;
     grid-row: 2;
     min-width: 100%;
+    overflow: scroll;
 
 }
