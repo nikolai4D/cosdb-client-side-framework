@@ -28,31 +28,12 @@ export async function action_getAllListDataWithHeaders({
 
   //trim all elements
   const listDataTrimmed = await transformer_trimAllElements(listData, "title");
-  console.log("listDataTrimmed: ", listDataTrimmed);
+
   //group by first letter
   const listDataGroupedByFirstLetter = await transformer_groupByFirstLetter(
     listDataTrimmed
   );
-  console.log("listDataGroupedByFirstLetter: ", listDataGroupedByFirstLetter);
 
   //set state
   await mutation_setAllListData("items", listDataGroupedByFirstLetter);
 }
-
-//   const structuredData = listData
-//     .reduce((accumulator, currentValue) => {
-//       const letter = currentValue.title[0].toUpperCase();
-//       const group = accumulator.find((item) => item.header === letter);
-//       if (group) {
-//         group.content.push(currentValue);
-//       } else {
-//         accumulator.push({
-//           header: letter,
-//           content: [currentValue],
-//         });
-//       }
-//       return accumulator;
-//     }, [])
-//     .sort((a, b) =>
-//       a.header.localeCompare(b.header, "sv", { sensitivity: "base" })
-//     );

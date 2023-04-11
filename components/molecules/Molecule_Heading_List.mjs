@@ -26,7 +26,6 @@ export function Molecule_Heading_List() {
 
   //build component
   const component = async (compData) => {
-    console.log("compData", compData);
     const comp = await createElement(
       "div",
       { class: "molecule_heading_list" },
