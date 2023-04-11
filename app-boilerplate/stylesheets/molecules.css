@@ -127,3 +127,8 @@
     padding: 1em;
 
 }
+
+.molecule_modalconnection {
+    display: flex;
+    padding:1em;
+}
