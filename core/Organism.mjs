@@ -8,14 +8,28 @@ export function Organism() {
       if (data) {
         return await fn.function(data);
       } else if (fn.parameters !== "") {
-        return await fn.function(fn.parameters);
+        // test if it is an object or array
+        if (typeof fn.parameters === "string") {
+          try {
+            fn.parameters = JSON.parse(fn.parameters);
+            return await fn.function(fn.parameters);
+          } catch (error) {
+            console.log(error);
+          }
+        } else if (
+          typeof fn.parameters === "object" &&
+          fn.parameters !== null
+        ) {
+          return await fn.function(fn.parameters);
+        } else if (Array.isArray(fn.parameters)) {
+          return await fn.function(fn.parameters);
+        }
       } else {
         return await fn.function();
       }
     } else {
       return null;
     }
-    // return this.functions.find((fn) => fn.id === id)?.function() || "";
   };
 
   this.childOrganism = async (id, data) => {
@@ -42,3 +56,20 @@ export function Organism() {
     return renderComp;
   };
 }
+
+// this.fn = async function (id, data = null) {
+//     const fn = this.functions.find((fn) => fn.id === id);
+//     console.log("fn: ", fn);
+//     if (fn) {
+//       if (data) {
+//         return await fn.function(data);
+//       } else if (fn.parameters !== "") {
+//         return await fn.function(fn.parameters);
+//       } else {
+//         return await fn.function();
+//       }
+//     } else {
+//       return null;
+//     }
+
+//   };

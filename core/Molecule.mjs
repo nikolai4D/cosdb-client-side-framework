@@ -7,15 +7,30 @@ export function Molecule() {
       if (data) {
         return await fn.function(data);
       } else if (fn.parameters !== "") {
-        return await fn.function(fn.parameters);
+        // test if it is an object or array
+        if (typeof fn.parameters === "string") {
+          try {
+            fn.parameters = JSON.parse(fn.parameters);
+            return await fn.function(fn.parameters);
+          } catch (error) {
+            console.log(error);
+          }
+        } else if (
+          typeof fn.parameters === "object" &&
+          fn.parameters !== null
+        ) {
+          return await fn.function(fn.parameters);
+        } else if (Array.isArray(fn.parameters)) {
+          return await fn.function(fn.parameters);
+        }
       } else {
         return await fn.function();
       }
     } else {
       return null;
     }
-    // return this.functions.find((fn) => fn.id === id)?.function() || "";
   };
+
   this.atom = async function (id, data) {
     const component = this.atoms.find((atom) => atom.id === id)?.component;
     const comp = component.comp;
