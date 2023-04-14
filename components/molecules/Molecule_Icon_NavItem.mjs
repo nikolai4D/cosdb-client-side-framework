@@ -65,7 +65,6 @@ export function Molecule_Icon_NavItem() {
 
   //loopa varje item och sätt in i Atom_ListItem
   const navItemsWithIcons = async (arrayOfData) => {
-    console.log(arrayOfData);
     return await Promise.all(
       arrayOfData.map(async (item) => {
         const navItem = await createElement(
@@ -78,13 +77,10 @@ export function Molecule_Icon_NavItem() {
 
         navItem.addEventListener("click", async () => {
           const newView = item.route.toLowerCase();
-          console.log("newView: ", newView);
 
           if (currentView !== newView) {
-            console.log("route to view: ", newView);
             await this.fn(2, newView);
           } else {
-            console.log("already in view: ", newView);
           }
         });
 

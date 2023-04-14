@@ -1,6 +1,5 @@
 export function action_getArray(parameters = null) {
-  console.log(parameters);
-
+  //add JSON.parse try catch here
   if (Array.isArray(parameters)) {
     return parameters;
   } else {
