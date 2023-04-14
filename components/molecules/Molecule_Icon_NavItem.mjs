@@ -65,6 +65,7 @@ export function Molecule_Icon_NavItem() {
 
   //loopa varje item och sätt in i Atom_ListItem
   const navItemsWithIcons = async (arrayOfData) => {
+    console.log(arrayOfData);
     return await Promise.all(
       arrayOfData.map(async (item) => {
         const navItem = await createElement(
