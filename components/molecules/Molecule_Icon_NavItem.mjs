@@ -58,7 +58,6 @@ export function Molecule_Icon_NavItem() {
 
   //get menu items from await this.fn(1)
   const navItems = async () => {
-    console.log(await this.fn(1));
     return (
       (await this.fn(1)) || [{ icon: "icon", title: "title", route: "route" }]
     );
