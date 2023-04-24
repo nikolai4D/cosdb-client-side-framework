@@ -15,7 +15,7 @@ export async function getAtom(module, parentId, atomId = null) {
     ? modelAtoms.filter((atom) => atom.id === atomId)
     : modelAtoms.filter((atom) => atom.parentId === parentId);
 
-  console.log(atomId);
+  console.log(atom);
 
   const atomValue = modelAtomValues.filter((at) => at.parentId === atom[0].id);
 
