@@ -3,6 +3,7 @@ import { createComponent } from "./helpers/createComponent.mjs";
 import { State } from "../data-mgmt/State.mjs";
 
 export async function getAtom(module, parentId, atomId = null) {
+  console.log(parentId, atomId);
   const type = "atom";
   //const modelAtoms = await apiCallGet(`/read/atoms`);
   const modelAtoms = State.components.atoms;
