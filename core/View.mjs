@@ -53,9 +53,55 @@ import { getViewTemplate } from "./getViewTemplate.mjs";
 import { createElement } from "./helpers/createElement.mjs";
 import { State } from "../data-mgmt/State.mjs";
 
-export async function View(viewPath) {
-  const type = "view";
+const type = "view";
 
+function compareClassLists(a, b) {
+  const classListA = new Set(a.classList);
+  const classListB = new Set(b.classList);
+  return (
+    a.length === b.length &&
+    [...classListA].every((value) => classListB.has(value))
+  );
+}
+
+function updateExistingElements(newChildren, existingChildren) {
+  existingChildren.forEach((existingChild) => {
+    const matchingChild = newChildren.find((c) =>
+      compareClassLists(c, existingChild)
+    );
+    if (matchingChild) {
+      updateElement(existingChild, matchingChild);
+    } else {
+      existingChild.remove();
+    }
+  });
+}
+
+function updateElement(existingChild, matchingChild) {
+  // update text content
+  if (existingChild.textContent !== matchingChild.textContent) {
+    existingChild.textContent = matchingChild.textContent;
+  }
+  // update attributes
+  for (const { name, value } of matchingChild.attributes) {
+    if (existingChild.getAttribute(name) !== value) {
+      existingChild.setAttribute(name, value);
+    }
+  }
+}
+
+function appendNewElements(newChildren, existingDiv) {
+  newChildren.forEach((newChild) => {
+    const matchingChild = existingChildren.find((c) =>
+      compareClassLists(c, newChild)
+    );
+    if (!matchingChild) {
+      existingDiv.appendChild(newChild);
+    }
+  });
+}
+
+export async function View(viewPath) {
   // validate and authenticate path
   const newView = await apiCallGet(`/auth/${viewPath}`);
   const id = newView.id;
@@ -95,40 +141,11 @@ export async function View(viewPath) {
 
   // iterate over existing view divs
   existingDivs.forEach((existingDiv) => {
-    // compare based on class name hierarchy
-    if (existingDiv.classList.toString() === newDiv.classList.toString()) {
-      // compare the two DOM structures
+    if (compareClassLists(existingDiv, newDiv)) {
       const newChildren = Array.from(newDiv.children);
       const existingChildren = Array.from(existingDiv.children);
-
-      // update existing elements with new text or attributes
-      existingChildren.forEach((existingChild) => {
-        const matchingChild = newChildren.find(
-          (c) => c.classList.toString() === existingChild.classList.toString()
-        );
-        if (matchingChild) {
-          // update text content
-          if (existingChild.textContent !== matchingChild.textContent) {
-            existingChild.textContent = matchingChild.textContent;
-          }
-          // update attributes
-          for (const { name, value } of matchingChild.attributes) {
-            if (existingChild.getAttribute(name) !== value) {
-              existingChild.setAttribute(name, value);
-            }
-          }
-        }
-      });
-
-      // append only new elements
-      newChildren.forEach((newChild) => {
-        const matchingChild = existingChildren.find(
-          (c) => c.classList.toString() === newChild.classList.toString()
-        );
-        if (!matchingChild) {
-          existingDiv.appendChild(newChild);
-        }
-      });
+      updateExistingElements(newChildren, existingChildren);
+      appendNewElements(newChildren, existingDiv);
     }
   });
 
