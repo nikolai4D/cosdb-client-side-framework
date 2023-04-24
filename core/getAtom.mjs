@@ -12,12 +12,14 @@ export async function getAtom(module, parentId, atomId = null) {
   console.log(modelAtomValues);
 
   const atom = atomId
-    ? modelAtoms.filter((atom) => atom.id === atomId)
-    : modelAtoms.filter((atom) => atom.parentId === parentId);
+    ? modelAtoms.filter((at) => at.id === atomId)
+    : modelAtoms.filter((at) => at.parentId === parentId);
 
   console.log(atom);
 
-  const atomValue = modelAtomValues.filter((at) => at.parentId === atom[0].id);
+  const atomValue = modelAtomValues.filter(
+    (atv) => atv.parentId === atom[0].id
+  );
 
   const atomObject = await createComponent(type, module);
 
