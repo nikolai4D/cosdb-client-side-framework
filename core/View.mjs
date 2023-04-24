@@ -90,26 +90,43 @@ export async function View(viewPath) {
     newViewTemplate
   );
 
-  // get existing view div
-  const existingDivs = document.querySelectorAll(".view");
+  // get existing view divs
+  const existingDivs = document.querySelectorAll(`.${type}`);
 
   // iterate over existing view divs
   existingDivs.forEach((existingDiv) => {
-    // compare based on class name
-    if (existingDiv.classList.contains(type) && existingDiv.id === id) {
+    // compare based on class name hierarchy
+    if (existingDiv.classList.toString() === newDiv.classList.toString()) {
       // compare the two DOM structures
       const newChildren = Array.from(newDiv.children);
       const existingChildren = Array.from(existingDiv.children);
 
-      // append only new or updated elements
+      // update existing elements with new text or attributes
+      existingChildren.forEach((existingChild) => {
+        const matchingChild = newChildren.find(
+          (c) => c.classList.toString() === existingChild.classList.toString()
+        );
+        if (matchingChild) {
+          // update text content
+          if (existingChild.textContent !== matchingChild.textContent) {
+            existingChild.textContent = matchingChild.textContent;
+          }
+          // update attributes
+          for (const { name, value } of matchingChild.attributes) {
+            if (existingChild.getAttribute(name) !== value) {
+              existingChild.setAttribute(name, value);
+            }
+          }
+        }
+      });
+
+      // append only new elements
       newChildren.forEach((newChild) => {
-        const matchingChild = existingChildren.find((c) =>
-          c.isEqualNode(newChild)
+        const matchingChild = existingChildren.find(
+          (c) => c.classList.toString() === newChild.classList.toString()
         );
         if (!matchingChild) {
           existingDiv.appendChild(newChild);
-        } else if (matchingChild.textContent !== newChild.textContent) {
-          matchingChild.textContent = newChild.textContent;
         }
       });
     }
@@ -122,7 +139,7 @@ export async function View(viewPath) {
 }
 
 function deletePreviousView() {
-  const previousDivs = document.querySelectorAll(".view");
+  const previousDivs = document.querySelectorAll(`.${type}`);
 
   previousDivs.forEach((previousDiv) => {
     previousDiv.remove();
