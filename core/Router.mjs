@@ -19,11 +19,10 @@ export async function Router(viewPath) {
 
 // Listen for back or forward navigation
 window.addEventListener("popstate", async (event) => {
-  console.log("popstate event triggered:", event);
-
   if (event.state && event.state.viewPath) {
     const viewPath = event.state.viewPath;
-    console.log("Calling View with viewPath:", viewPath);
+    // Replace the current history entry instead of pushing a new one
+    window.history.replaceState({ viewPath: viewPath }, "", viewPath);
     await View(viewPath);
   }
 });
