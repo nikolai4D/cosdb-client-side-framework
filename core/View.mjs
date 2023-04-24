@@ -64,6 +64,26 @@ function compareClassLists(a, b) {
   );
 }
 
+function isDomStructureEqual(a, b) {
+  if (!compareClassLists(a, b)) return false;
+  if (a.children.length !== b.children.length) return false;
+
+  for (let i = 0; i < a.children.length; i++) {
+    if (!isDomStructureEqual(a.children[i], b.children[i])) return false;
+  }
+
+  return true;
+}
+
+function updateDom(existingDiv, newDiv) {
+  if (isDomStructureEqual(existingDiv, newDiv)) return;
+
+  const newChildren = Array.from(newDiv.children);
+  const existingChildren = Array.from(existingDiv.children);
+  updateExistingElements(newChildren, existingChildren);
+  appendNewElements(newChildren, existingDiv);
+}
+
 function updateExistingElements(newChildren, existingChildren) {
   existingChildren.forEach((existingChild) => {
     const matchingChild = newChildren.find((c) =>
@@ -141,12 +161,7 @@ export async function View(viewPath) {
 
   // iterate over existing view divs
   existingDivs.forEach((existingDiv) => {
-    if (compareClassLists(existingDiv, newDiv)) {
-      const newChildren = Array.from(newDiv.children);
-      const existingChildren = Array.from(existingDiv.children);
-      updateExistingElements(newChildren, existingChildren);
-      appendNewElements(newChildren, existingDiv);
-    }
+    updateDom(existingDiv, newDiv);
   });
 
   // append the new view to the body if it doesn't exist
