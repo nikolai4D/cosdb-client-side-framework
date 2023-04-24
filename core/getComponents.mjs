@@ -16,7 +16,10 @@ export async function getComponents(parentId) {
       let comp = null;
       try {
         //comp = await apiCallGet(`/read/${componentType}s/${slot.id}`);
-        comp = State.components.components.filter((s) => s.id === slot.id);
+        console.log("State.components.components", State.components.components);
+        comp = State.components.components.filter(
+          (c) => c.parentId === slot.id
+        );
         console.log("comp", comp);
       } catch (error) {
         console.log("no component found for slot ", slot.value);
