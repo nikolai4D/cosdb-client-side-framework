@@ -21,8 +21,7 @@ export async function Router(viewPath) {
 window.addEventListener("popstate", async (event) => {
   if (event.state && event.state.viewPath) {
     const viewPath = event.state.viewPath;
-    // Replace the current history entry instead of pushing a new one
-    window.history.replaceState({ viewPath: viewPath }, "", viewPath);
-    await View(viewPath);
+    // Call View with updateHistory set to false
+    await View(viewPath, false);
   }
 });

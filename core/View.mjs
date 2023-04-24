@@ -3,7 +3,7 @@ import { getViewTemplate } from "./getViewTemplate.mjs";
 import { createElement } from "./helpers/createElement.mjs";
 import { State } from "../data-mgmt/State.mjs";
 
-export async function View(viewPath) {
+export async function View(viewPath, updateHistory = true) {
   const type = "view";
 
   //validate and authenticate path
@@ -24,9 +24,14 @@ export async function View(viewPath) {
     State.components.functions = await apiCallGet(`/read/functions`);
   }
 
-  //set browser history
-  window.history.pushState({ viewPath: value }, "", value);
-  console.log(window.history);
+  //   //set browser history
+  //   window.history.pushState({ viewPath: value }, "", value);
+  //   console.log(window.history);
+
+  // set browser history only if updateHistory is true
+  if (updateHistory) {
+    window.history.pushState({ viewPath: value }, "", value);
+  }
 
   //delete previous view
   await deletePreviousView();
