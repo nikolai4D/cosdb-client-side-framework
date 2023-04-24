@@ -23,7 +23,6 @@ export async function getComponents(parentId) {
       }
 
       if (comp) {
-        console.log(comp);
         const componentFromModule = await getComponent(
           comp[0].value,
           comp[0].id
