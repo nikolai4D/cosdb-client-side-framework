@@ -26,6 +26,7 @@ export async function View(viewPath) {
 
   //set browser history
   window.history.pushState({ viewPath: value }, "", value);
+  console.log(window.history);
 
   //delete previous view
   await deletePreviousView();
