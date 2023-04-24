@@ -80,10 +80,10 @@ export async function View(viewPath) {
   // delete previous view
   await deletePreviousView();
 
-  // Create a new viewTemplate
+  // create a new view template
   const newViewTemplate = await getViewTemplate(id);
 
-  // Create a new div from type
+  // create a new div from type
   const newDiv = await createElement(
     "div",
     { class: type, id: id },
@@ -91,31 +91,40 @@ export async function View(viewPath) {
   );
 
   // get existing view div
-  const existingDiv = document.querySelector(".view");
+  const existingDivs = document.querySelectorAll(".view");
 
-  // append only new or updated elements
-  if (!existingDiv) {
-    // no existing view, append the new div to the body
+  // iterate over existing view divs
+  existingDivs.forEach((existingDiv) => {
+    // compare based on class name
+    if (existingDiv.classList.contains(type) && existingDiv.id === id) {
+      // compare the two DOM structures
+      const newChildren = Array.from(newDiv.children);
+      const existingChildren = Array.from(existingDiv.children);
+
+      // append only new or updated elements
+      newChildren.forEach((newChild) => {
+        const matchingChild = existingChildren.find((c) =>
+          c.isEqualNode(newChild)
+        );
+        if (!matchingChild) {
+          existingDiv.appendChild(newChild);
+        } else if (matchingChild.textContent !== newChild.textContent) {
+          matchingChild.textContent = newChild.textContent;
+        }
+      });
+    }
+  });
+
+  // append the new view to the body if it doesn't exist
+  if (!existingDivs.length) {
     document.body.appendChild(newDiv);
-  } else {
-    // compare the two DOM structures
-    const newChildren = Array.from(newDiv.children);
-    const existingChildren = Array.from(existingDiv.children);
-
-    // append only new or updated elements
-    newChildren.forEach((child) => {
-      const matchingChild = existingChildren.find((c) => c.isEqualNode(child));
-      if (!matchingChild) {
-        existingDiv.appendChild(child);
-      }
-    });
   }
 }
 
 function deletePreviousView() {
-  const previousDiv = document.querySelector(".view");
+  const previousDivs = document.querySelectorAll(".view");
 
-  if (previousDiv) {
+  previousDivs.forEach((previousDiv) => {
     previousDiv.remove();
-  }
+  });
 }
