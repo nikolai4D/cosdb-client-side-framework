@@ -10,7 +10,11 @@ export function updateDOM(oldNode, newNode) {
 
   // Update attributes if the nodes are of the same type
   if (oldNode.nodeType === Node.ELEMENT_NODE) {
-    updateAttributes(oldNode, newNode);
+    const attributesChanged = updateAttributes(oldNode, newNode);
+    if (attributesChanged) {
+      oldNode.replaceWith(newNode);
+      return;
+    }
   }
 
   // Update text content if the nodes are text nodes
@@ -39,13 +43,21 @@ export function updateDOM(oldNode, newNode) {
 }
 
 function updateAttributes(oldNode, newNode) {
-  // Remove old attributes
-  for (const attr of oldNode.attributes) {
-    oldNode.removeAttribute(attr.name);
+  const oldAttrs = Array.from(oldNode.attributes);
+  const newAttrs = Array.from(newNode.attributes);
+
+  if (oldAttrs.length !== newAttrs.length) {
+    return true;
   }
 
-  // Add new attributes
-  for (const attr of newNode.attributes) {
-    oldNode.setAttribute(attr.name, attr.value);
+  for (const attr of oldAttrs) {
+    if (
+      !newNode.hasAttribute(attr.name) ||
+      newNode.getAttribute(attr.name) !== attr.value
+    ) {
+      return true;
+    }
   }
+
+  return false;
 }
