@@ -1,13 +1,11 @@
-import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { createComponent } from "./helpers/createComponent.mjs";
 import { State } from "../data-mgmt/State.mjs";
 
 export async function getAtom(module, parentId, atomId = null) {
   const type = "atom";
-  //const modelAtoms = await apiCallGet(`/read/atoms`);
+
   const modelAtoms = State.components.atoms;
 
-  //const modelAtomValues = await apiCallGet(`/read/atomValues`);
   const modelAtomValues = State.components.atomValues;
 
   const atom = atomId

@@ -1,4 +1,3 @@
-//import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { createComponent } from "./helpers/createComponent.mjs";
 import { getComponents } from "./getComponents.mjs";
 import { createElement } from "./helpers/createElement.mjs";
@@ -6,8 +5,7 @@ import { State } from "../data-mgmt/State.mjs";
 
 export async function getViewTemplate(parentId) {
   const type = "viewTemplate";
-  //validate and authenticate path
-  //const viewTemplate = await apiCallGet(`/read/${type}s/${parentId}`);
+
   const viewTemplate = State.components.viewTemplates.filter(
     (vt) => vt.parentId === parentId
   );

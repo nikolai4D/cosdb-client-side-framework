@@ -8,43 +8,35 @@ export async function View(viewPath, updateHistory = true) {
   const type = "view";
 
   //validate and authenticate path
-  const newView = await apiCallGet(`/auth/${viewPath}`);
+  const newView = await apiCallGet(`/api/auth/${viewPath}`);
   const id = newView.id;
   const value = newView.value;
 
   //set components to state
   if (!State.components) {
     State.components = {};
-    State.components.viewTemplates = await apiCallGet(`/read/viewTemplates`);
-    State.components.slots = await apiCallGet(`/read/slots`);
-    State.components.components = await apiCallGet(`/read/components`);
-    State.components.organisms = await apiCallGet(`/read/organisms`);
-    State.components.molecules = await apiCallGet(`/read/molecules`);
-    State.components.atoms = await apiCallGet(`/read/atoms`);
-    State.components.atomValues = await apiCallGet(`/read/atomValues`);
-    State.components.functions = await apiCallGet(`/read/functions`);
+    State.components.viewTemplates = await apiCallGet(
+      `/api/read/viewTemplates`
+    );
+    State.components.slots = await apiCallGet(`/api/read/slots`);
+    State.components.components = await apiCallGet(`/api/read/components`);
+    State.components.organisms = await apiCallGet(`/api/read/organisms`);
+    State.components.molecules = await apiCallGet(`/api/read/molecules`);
+    State.components.atoms = await apiCallGet(`/api/read/atoms`);
+    State.components.atomValues = await apiCallGet(`/api/read/atomValues`);
+    State.components.functions = await apiCallGet(`/api/read/functions`);
   }
-
-  //   //set browser history
-  //   window.history.pushState({ viewPath: value }, "", value);
-  //   console.log(window.history);
 
   // set browser history only if updateHistory is true
   if (updateHistory) {
     window.history.pushState({ viewPath: value }, "", value);
   }
 
-  //   //delete previous view
-  //   await deletePreviousView();
-
   // Create a new viewTemplate
   const divChild = await getViewTemplate(id);
 
   // Create a new div from type
   const div = await createElement("div", { class: type, id: id }, divChild);
-
-  //   // Append the view to the body
-  //   document.body.appendChild(div);
 
   // Find the previous view
   const previousView = document.querySelector(".view");
@@ -56,11 +48,3 @@ export async function View(viewPath, updateHistory = true) {
     document.body.appendChild(div);
   }
 }
-
-// function deletePreviousView() {
-//   const previousDiv = document.querySelector(".view");
-
-//   if (previousDiv) {
-//     previousDiv.remove();
-//   }
-// }
