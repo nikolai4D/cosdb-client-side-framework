@@ -64,7 +64,7 @@ export function Organism_Header_List_Search_Button() {
     });
     headingInputButton.addEventListener("click", async (e) => {
       if (e.target.tagName === "BUTTON") {
-        await newObject(e);
+        await openModel();
       }
     });
 
