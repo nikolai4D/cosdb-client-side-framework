@@ -282,6 +282,8 @@ export function Organism_Header_List_Search_Button() {
   }
 
   function createForm(existingModalContent) {
+    existingModalContent.style.width = "";
+    existingModalContent.style.height = "";
     const parents = State.parentIds;
 
     // const modalContent = document.getElementsByClassName(
