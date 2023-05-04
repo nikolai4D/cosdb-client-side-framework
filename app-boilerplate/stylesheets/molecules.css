@@ -134,7 +134,6 @@
     display: flex;
     padding:1em;
     flex-flow: column;
-    min-width: 500px;
 }
 
 .molecule_modalcentercontent__content__header {
