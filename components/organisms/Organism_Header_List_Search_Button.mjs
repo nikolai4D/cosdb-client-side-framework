@@ -159,7 +159,7 @@ export function Organism_Header_List_Search_Button() {
   };
 
   const closeModal = async (e) => {
-    console.log(e.target.className);
+    console.log(e.target.className, e.target.id);
 
     if (e.target.className === "relHeaderId") {
       await openModal(e.target.id);
