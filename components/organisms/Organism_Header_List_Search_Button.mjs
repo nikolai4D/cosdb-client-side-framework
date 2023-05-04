@@ -88,8 +88,11 @@ export function Organism_Header_List_Search_Button() {
 
     const modalContent = await createElement(
       "div",
-      { class: "organism_modal_content", id: "organism_modal_content" },
-      await this.childOrganism(2, null)
+      {
+        class: "organism_modal_content",
+        id: `organism_modal_content_${e.target.id}`,
+      },
+      await this.childOrganism(2, e.target.id)
     );
     modal.appendChild(modalContent);
 
@@ -158,21 +161,52 @@ export function Organism_Header_List_Search_Button() {
     document.getElementById("organism_modal").style.display = "block"; // Show the modal
   };
 
+  //   const closeModal = async (e) => {
+  //     const existingModal = document.querySelector(".organism_modal");
+  //     const modalContentBackButton = document.querySelector(
+  //       ".CloseModalBackButton"
+  //     );
+  //     if (e.target.className.includes("relHeaderId")) {
+  //       const newModalContent = await createElement(
+  //         "div",
+  //         { class: "organism_modal_content", id: "organism_modal_content" },
+  //         await this.childOrganism(2, e.target.id)
+  //       );
+  //       existingModal.appendChild(newModalContent);
+  //     }
+
+  //     if (e.target === existingModal || e.target === modalContentBackButton) {
+  //       modal.style.display = "none"; // Hide the modal
+  //     }
+  //   };
+
   const closeModal = async (e) => {
     const existingModal = document.querySelector(".organism_modal");
-    const modalContentBackButton = document.querySelector(
-      ".CloseModalBackButton"
-    );
+
     if (e.target.className.includes("relHeaderId")) {
       const newModalContent = await createElement(
         "div",
-        { class: "organism_modal_content", id: "organism_modal_content" },
+        {
+          class: "organism_modal_content",
+          id: `organism_modal_content_${e.target.id}`,
+        },
         await this.childOrganism(2, e.target.id)
       );
-      existingModal.appendChild(newModalContent);
+      existingModal.insertBefore(newModalContent, existingModal.firstChild); // Insert the new div above the old one
     }
 
-    if (e.target === existingModal || e.target === modalContentBackButton) {
+    if (e.target.classList.contains("CloseModalBackButton")) {
+      const currentModalContent = e.target.closest(".organism_modal_content");
+      currentModalContent.style.display = "none"; // Hide the current modal content
+      const previousModalContent = currentModalContent.nextElementSibling;
+      if (previousModalContent) {
+        previousModalContent.style.display = "block"; // Show the previous modal content
+      } else {
+        modal.style.display = "none"; // Hide the modal if there's no previous modal content
+      }
+    }
+
+    if (e.target === existingModal) {
       modal.style.display = "none"; // Hide the modal
     }
   };
