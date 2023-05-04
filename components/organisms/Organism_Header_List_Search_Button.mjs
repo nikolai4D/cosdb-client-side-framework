@@ -90,9 +90,9 @@ export function Organism_Header_List_Search_Button() {
       "div",
       {
         class: "organism_modal_content",
-        id: `organism_modal_content_${e.target.id}`,
+        id: `organism_modal_content_first`,
       },
-      await this.childOrganism(2, e.target.id)
+      await this.childOrganism(2, "first")
     );
     modal.appendChild(modalContent);
 
