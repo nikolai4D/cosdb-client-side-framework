@@ -239,6 +239,8 @@ export function Organism_Header_List_Search_Button() {
         ".organism_modal_content"
       );
 
+      console.log("modalContents", modalContents);
+
       if (!modalContents) {
         existingModal.style.display = "none";
       }
