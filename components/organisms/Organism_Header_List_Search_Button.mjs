@@ -205,7 +205,10 @@ export function Organism_Header_List_Search_Button() {
 
     if (e.target === existingModal || e.target === modalContentBackButton) {
       const currentModalContent = existingModal.lastChild;
-      existingModal.removeChild(currentModalContent); // Remove the current content
+      if (currentModalContent) {
+        // Check if there's a current modal content before removing it
+        existingModal.removeChild(currentModalContent); // Remove the current content
+      }
       if (existingModal.childElementCount > 0) {
         existingModal.lastChild.style.display = "block"; // Show the previous content
       } else {
