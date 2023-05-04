@@ -220,15 +220,76 @@ export function Organism_Header_List_Search_Button() {
     }
   };
   const newObject = async (existingModalContent) => {
-    const modalContentNewObject = document.getElementById(
-      `organism_modal_content_new`
-    );
-
     const buttons = existingModalContent.querySelectorAll(".bi");
     buttons.forEach((button) => {
       button.remove();
     });
 
     console.log("State ParentIds", State.parentIds);
+
+    await createForm();
   };
+
+  function createData(parentId, inputValue) {
+    console.log({ parentId, inputValue });
+
+    const newObjectModal = document.querySelector(".organism_modal");
+    newObjectModal.style.display = "none"; // Hide the modal
+    // Remove all divs with the class "organism_modal_content" and their children
+    const modalContents = newObjectModal.querySelectorAll(
+      ".organism_modal_content"
+    );
+    modalContents.forEach((modalContent) => {
+      modalContent.innerHTML = "";
+      modalContent.remove();
+    });
+  }
+
+  function handleCreate() {
+    const selectedParent = document.getElementById(
+      "parentSelectNewObject"
+    ).value;
+    const inputFieldValue = document.getElementById(
+      "inputFieldNewObject"
+    ).value;
+    createData(selectedParent, inputFieldValue);
+  }
+
+  function createForm() {
+    const parents = State.parentIds;
+
+    const modalContent = document.getElementsByClassName(
+      "molecule_modalcentercontent__content"
+    );
+    // Create the div
+
+    // Create and append the label
+    const label = document.createElement("label");
+    label.textContent = "Parent";
+    modalContent.appendChild(label);
+
+    // Create and append the select
+    const select = document.createElement("select");
+    select.id = "parentSelectNewObject";
+    parents.forEach((id) => {
+      const option = document.createElement("option");
+      option.value = id;
+      option.textContent = `Parent ${id}`;
+      select.appendChild(option);
+    });
+    modalContent.appendChild(select);
+
+    // Create and append the input field
+    const inputField = document.createElement("input");
+    inputField.type = "text";
+    inputField.placeholder = "";
+    inputField.id = "inputFieldNewObject";
+    modalContent.appendChild(inputField);
+
+    // Create and append the button
+    const button = document.createElement("button");
+    button.textContent = "Skapa";
+    button.addEventListener("click", handleCreate);
+    modalContent.appendChild(button);
+  }
 }
