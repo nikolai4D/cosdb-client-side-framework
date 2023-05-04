@@ -202,9 +202,11 @@ export function Organism_Header_List_Search_Button() {
     }
 
     if (e.target.className.includes("CloseModalBackButton")) {
+      console.log(e.target.parentElement.id);
       currentModalContent = document.getElementById(
         `organism_modal_content_${e.target.parentElement.id}`
       );
+
       currentModalContent.style.display = "none"; // Hide the modal
       currentModalContent.innerHTML = ""; // Remove the content
       currentModalContent.remove(); // Remove the content
