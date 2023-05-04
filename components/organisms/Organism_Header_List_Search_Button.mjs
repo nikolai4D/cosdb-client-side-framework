@@ -232,13 +232,20 @@ export function Organism_Header_List_Search_Button() {
         `organism_modal_content_${e.target.parentElement.id}`
       );
 
-      currentModalContent.style.display = "none"; // Hide the modal
       currentModalContent.innerHTML = ""; // Remove the content
       currentModalContent.remove(); // Remove the content
     }
 
     if (e.target === existingModal) {
       existingModal.style.display = "none"; // Hide the modal
+      // Remove all divs with the class "organism_modal_content" and their children
+      const modalContents = existingModal.querySelectorAll(
+        ".organism_modal_content"
+      );
+      modalContents.forEach((modalContent) => {
+        modalContent.innerHTML = "";
+        modalContent.remove();
+      });
     }
   };
 }
