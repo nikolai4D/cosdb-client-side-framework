@@ -26,7 +26,7 @@ export function Molecule_ModalHeader() {
       await createElement(
         "div",
         { class: "molecule_modalheader__back", id: compData },
-        await this.atom(1, "´bi bi-arrow-left")
+        await this.atom(1, "bi bi-arrow-left")
       ),
       await createElement(
         "div",
