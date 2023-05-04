@@ -222,7 +222,7 @@ export function Organism_Header_List_Search_Button() {
         },
         await this.childOrganism(2, e.target.id)
       );
-      existingModal.firstChild.style.display = "none"; // Hide the previous content
+      //   existingModal.firstChild.style.display = "none"; // Hide the previous content
       existingModal.appendChild(newModalContent); // Add the new content
     }
 
