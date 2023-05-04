@@ -252,8 +252,25 @@ export function Organism_Header_List_Search_Button() {
     createData(selectedParent, inputFieldValue);
   }
 
-  function createForm(existingModalContent) {
+  async function createForm(existingModalContent) {
     const parents = State.parentIds;
+
+    const parentsList = [];
+
+    for (const parent of parents) {
+      const url = `api/configObj?id=${parent}`;
+      try {
+        const data = await apiCallGet(url);
+
+        if (Array.isArray(data)) {
+          parentsList.push(...data);
+        } else {
+          parentsList.push(data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
 
     // Create the div
     const div = document.createElement("div");
@@ -264,10 +281,10 @@ export function Organism_Header_List_Search_Button() {
     const select = document.createElement("select");
     select.id = "parentSelectNewObject";
     select.classList.add("atom_input");
-    parents.forEach(async (id) => {
-      const parentTitle = await apiCallGet(`api/configObj?id=${id}`);
+    parentsList.forEach(async (parent) => {
+      const parentTitle = parent.title;
       const option = document.createElement("option");
-      option.value = id;
+      option.value = parent.id;
       option.textContent = parentTitle; //`Parent ${id}`;
       select.appendChild(option);
     });
