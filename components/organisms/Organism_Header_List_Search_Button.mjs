@@ -161,7 +161,7 @@ export function Organism_Header_List_Search_Button() {
   const closeModal = async (e) => {
     console.log(e.target);
 
-    if (e.target.className === "relHeaderId") {
+    if (e.target.className.contains("relHeaderId")) {
       await openModal(e.target.id);
     }
     const modal = document.querySelector(".organism_modal");
