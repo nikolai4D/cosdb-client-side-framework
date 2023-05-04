@@ -241,7 +241,7 @@ export function Organism_Header_List_Search_Button() {
 
       console.log("modalContents", modalContents);
 
-      if (!modalContents) {
+      if (modalContents.length === 0) {
         existingModal.style.display = "none";
       }
     }
