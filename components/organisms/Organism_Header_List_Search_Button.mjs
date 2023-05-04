@@ -229,12 +229,15 @@ export function Organism_Header_List_Search_Button() {
   };
 
   async function createData(parentId, inputValue) {
+    console.log("State", State);
     console.log({ parentId, inputValue });
 
     const url = `api/create/type`;
 
     const body = { title: inputValue, parentId, props: [] };
-    await apiCallPost({ url, body });
+    const newItem = await apiCallPost({ url, body });
+    State.items.push(newItem);
+    await updateListItems("");
 
     const newObjectModal = document.querySelector(".organism_modal");
     newObjectModal.style.display = "none"; // Hide the modal
@@ -246,7 +249,6 @@ export function Organism_Header_List_Search_Button() {
       modalContent.innerHTML = "";
       modalContent.remove();
     });
-    this.render(data);
   }
 
   async function handleCreate() {
