@@ -245,6 +245,7 @@ export function Organism_Header_List_Search_Button() {
 
     if (existingItem) {
       existingItem.content.push(newItem);
+      existingItem.content.sort((a, b) => a.title.localeCompare(b.title));
     } else {
       const newSection = {
         header: newItemHeaderFirst,
@@ -252,16 +253,6 @@ export function Organism_Header_List_Search_Button() {
       };
       State.items.push(newSection);
     }
-
-    State.items.sort((a, b) => {
-      if (a.header < b.header) {
-        return -1;
-      }
-      if (a.header > b.header) {
-        return 1;
-      }
-      return a.content[0].title.localeCompare(b.content[0].title);
-    });
 
     await updateListItems("");
 
