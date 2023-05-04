@@ -224,10 +224,8 @@ export function Organism_Header_List_Search_Button() {
       `organism_modal_content_new`
     );
 
-    const addbuttons = modalContentNewObject.querySelectorAll(
-      ".bi-plus-circle-fill"
-    );
-    addbuttons.remove();
+    const buttons = existingModalContent.querySelectorAll(".bi");
+    buttons.remove();
 
     console.log("State", State);
     console.log(e.target);
