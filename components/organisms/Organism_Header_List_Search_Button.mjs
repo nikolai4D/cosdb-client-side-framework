@@ -84,17 +84,17 @@ export function Organism_Header_List_Search_Button() {
       class: "organism_modal",
       id: "organism_modal",
     });
-    modal.addEventListener("click", closeModal);
+    // modal.addEventListener("click", closeModal);
 
-    const modalContent = await createElement(
-      "div",
-      {
-        class: "organism_modal_content",
-        id: `organism_modal_content`,
-      },
-      await this.childOrganism(2, null)
-    );
-    modal.appendChild(modalContent);
+    // const modalContent = await createElement(
+    //   "div",
+    //   {
+    //     class: "organism_modal_content",
+    //     id: `organism_modal_content`,
+    //   },
+    //   await this.childOrganism(2, null)
+    // );
+    // modal.appendChild(modalContent);
 
     const comp = await createElement(
       "div",
@@ -149,16 +149,41 @@ export function Organism_Header_List_Search_Button() {
     existinglistItems.append(...updatedListItems);
   }
 
+  //   const openModal = async (id) => {
+  //     const existingModalContent = document.getElementById(
+  //       "organism_modal_content"
+  //     );
+  //     existingModalContent.innerHTML = "";
+
+  //     const updatedModal = await this.childOrganism(2, id);
+
+  //     existingModalContent.appendChild(updatedModal);
+  //     document.getElementById("organism_modal").style.display = "block"; // Show the modal
+  //   };
+
   const openModal = async (id) => {
-    const existingModalContent = document.getElementById(
+    const existingModal = document.getElementById("organism_modal");
+    let existingModalContent = document.getElementById(
       "organism_modal_content"
     );
-    existingModalContent.innerHTML = "";
 
-    const updatedModal = await this.childOrganism(2, id);
+    if (!existingModalContent) {
+      existingModalContent = await createElement(
+        "div",
+        {
+          class: "organism_modal_content",
+          id: `organism_modal_content_${id}`,
+        },
+        await this.childOrganism(2, id)
+      );
+      existingModal.appendChild(existingModalContent);
+    } else {
+      existingModalContent.innerHTML = "";
+    }
 
-    existingModalContent.appendChild(updatedModal);
-    document.getElementById("organism_modal").style.display = "block"; // Show the modal
+    // const updatedModal = await this.childOrganism(2, id);
+    // existingModalContent.appendChild(updatedModal);
+    existingModal.style.display = "block"; // Show the modal
   };
 
   //   const closeModal = async (e) => {
