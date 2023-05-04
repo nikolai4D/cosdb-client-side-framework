@@ -246,6 +246,7 @@ export function Organism_Header_List_Search_Button() {
       modalContent.innerHTML = "";
       modalContent.remove();
     });
+    this.render(data);
   }
 
   async function handleCreate() {
