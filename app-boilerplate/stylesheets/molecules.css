@@ -151,6 +151,10 @@
     
 }
 
+.molecule_modalconnection__items__item > * + * {
+    margin-left: 5px;
+  }
+
   
 
 .molecule_modalconnection__items__item:hover {
