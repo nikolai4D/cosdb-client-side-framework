@@ -169,7 +169,7 @@ export function Organism_Header_List_Search_Button() {
   //     if (e.target.className.includes("relHeaderId")) {
   //       const newModalContent = await createElement(
   //         "div",
-  //         { class: "organism_modal_content", id: "organism_modal_content" },
+  //         { class: "organism_modal_content", id: `organism_modal_content_${e.target.id}` },
   //         await this.childOrganism(2, e.target.id)
   //       );
   //       existingModal.appendChild(newModalContent);
@@ -179,14 +179,13 @@ export function Organism_Header_List_Search_Button() {
   //       modal.style.display = "none"; // Hide the modal
   //     }
   //   };
-
   const closeModal = async (e) => {
     const existingModal = document.querySelector(".organism_modal");
+    const modalContentBackButton = document.querySelector(
+      ".CloseModalBackButton"
+    );
 
     if (e.target.className.includes("relHeaderId")) {
-      const existingModalContent = existingModal.querySelector(
-        ".organism_modal_content"
-      );
       const newModalContent = await createElement(
         "div",
         {
@@ -195,25 +194,10 @@ export function Organism_Header_List_Search_Button() {
         },
         await this.childOrganism(2, e.target.id)
       );
-      if (existingModalContent) {
-        existingModal.insertBefore(newModalContent, existingModalContent); // Insert the new div above the old one
-      } else {
-        existingModal.appendChild(newModalContent); // If no existing content, append the new div
-      }
+      existingModal.insertBefore(newModalContent, existingModal.firstChild);
     }
 
-    if (e.target.classList.contains("CloseModalBackButton")) {
-      const currentModalContent = e.target.closest(".organism_modal_content");
-      currentModalContent.style.display = "none"; // Hide the current modal content
-      const previousModalContent = currentModalContent.nextElementSibling;
-      if (previousModalContent) {
-        previousModalContent.style.display = "block"; // Show the previous modal content
-      } else {
-        modal.style.display = "none"; // Hide the modal if there's no previous modal content
-      }
-    }
-
-    if (e.target === existingModal) {
+    if (e.target === existingModal || e.target === modalContentBackButton) {
       modal.style.display = "none"; // Hide the modal
     }
   };
