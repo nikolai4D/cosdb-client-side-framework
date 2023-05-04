@@ -258,7 +258,7 @@ export function Organism_Header_List_Search_Button() {
     const parentsList = [];
 
     for (const parent of parents) {
-      const url = `api/object/${parent}`;
+      const url = `api/getById/object/${parent}`;
       try {
         const data = await apiCallGet(url);
 
