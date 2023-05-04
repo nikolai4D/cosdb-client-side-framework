@@ -273,7 +273,6 @@ export function Organism_Header_List_Search_Button() {
     }
 
     // Create the div
-    const div = document.createElement("div");
     const divInputAndButton = document.createElement("div");
     divInputAndButton.classList.add("molecule_createObjectInputAndButton");
 
@@ -288,7 +287,7 @@ export function Organism_Header_List_Search_Button() {
       option.textContent = parentTitle; //`Parent ${id}`;
       select.appendChild(option);
     });
-    div.appendChild(select);
+    divInputAndButton.appendChild(select);
 
     // Create and append the input field
     const inputField = document.createElement("input");
@@ -305,8 +304,8 @@ export function Organism_Header_List_Search_Button() {
     button.textContent = "Skapa";
     button.addEventListener("click", handleCreate);
     divInputAndButton.appendChild(button);
-    div.appendChild(divInputAndButton);
-    existingModalContent.appendChild(div);
+
+    existingModalContent.appendChild(divInputAndButton);
     existingModalContent.style.removeProperty("width");
     existingModalContent.style.removeProperty("height");
   }
