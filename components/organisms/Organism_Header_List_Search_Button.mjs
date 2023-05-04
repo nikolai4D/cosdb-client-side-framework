@@ -229,7 +229,6 @@ export function Organism_Header_List_Search_Button() {
       button.remove();
     });
 
-    console.log("State", State);
-    console.log(e.target);
+    console.log("State ParentIds", State.parentIds);
   };
 }
