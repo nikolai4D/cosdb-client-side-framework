@@ -263,6 +263,7 @@ export function Organism_Header_List_Search_Button() {
     )[0];
     // Create the div
     const div = document.createElement("div");
+    const divInputAndButton = document.createElement("div");
 
     // Create and append the select
     const select = document.createElement("select");
@@ -282,15 +283,15 @@ export function Organism_Header_List_Search_Button() {
     inputField.type = "text";
     inputField.placeholder = "";
     inputField.id = "inputFieldNewObject";
-    div.appendChild(inputField);
+    divInputAndButton.appendChild(inputField);
 
     // Create and append the button
     const button = document.createElement("button");
     button.classList.add("atom_buttonpositive");
     button.textContent = "Skapa";
     button.addEventListener("click", handleCreate);
-    div.appendChild(button);
-
+    divInputAndButton.appendChild(button);
+    div.appendChild(divInputAndButton);
     modalContent.appendChild(div);
   }
 }
