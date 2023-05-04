@@ -253,6 +253,16 @@ export function Organism_Header_List_Search_Button() {
       State.items.push(newSection);
     }
 
+    State.items.sort((a, b) => {
+      if (a.header < b.header) {
+        return -1;
+      }
+      if (a.header > b.header) {
+        return 1;
+      }
+      return a.content[0].title.localeCompare(b.content[0].title);
+    });
+
     await updateListItems("");
 
     const newObjectModal = document.querySelector(".organism_modal");
