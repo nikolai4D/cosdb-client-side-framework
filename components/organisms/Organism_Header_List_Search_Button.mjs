@@ -263,14 +263,10 @@ export function Organism_Header_List_Search_Button() {
     )[0];
     // Create the div
 
-    // Create and append the label
-    const label = document.createElement("label");
-    label.textContent = "Parent";
-    modalContent.appendChild(label);
-
     // Create and append the select
     const select = document.createElement("select");
     select.id = "parentSelectNewObject";
+    select.classList.add("atom_input");
     parents.forEach((id) => {
       const option = document.createElement("option");
       option.value = id;
@@ -281,6 +277,7 @@ export function Organism_Header_List_Search_Button() {
 
     // Create and append the input field
     const inputField = document.createElement("input");
+    inputField.classList.add("atom_input");
     inputField.type = "text";
     inputField.placeholder = "";
     inputField.id = "inputFieldNewObject";
@@ -288,6 +285,7 @@ export function Organism_Header_List_Search_Button() {
 
     // Create and append the button
     const button = document.createElement("button");
+    button.classList.add("atom_buttonpositive");
     button.textContent = "Skapa";
     button.addEventListener("click", handleCreate);
     modalContent.appendChild(button);
