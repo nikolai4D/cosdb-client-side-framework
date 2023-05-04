@@ -264,6 +264,11 @@ export function Organism_Header_List_Search_Button() {
     // Create the div
     const div = document.createElement("div");
     const divInputAndButton = document.createElement("div");
+    divInputAndButton.style.display = "flex";
+    divInputAndButton.style.flexDirection = "row";
+    divInputAndButton.style.alignItems = "center";
+    divInputAndButton.style.justifyContent = "space-between";
+    divInputAndButton.style.marginBottom = "10px";
 
     // Create and append the select
     const select = document.createElement("select");
@@ -288,6 +293,7 @@ export function Organism_Header_List_Search_Button() {
     // Create and append the button
     const button = document.createElement("button");
     button.classList.add("atom_buttonpositive");
+    button.style.alignSelf = "center"; // add st
     button.textContent = "Skapa";
     button.addEventListener("click", handleCreate);
     divInputAndButton.appendChild(button);
