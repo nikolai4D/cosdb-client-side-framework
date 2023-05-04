@@ -225,7 +225,9 @@ export function Organism_Header_List_Search_Button() {
     );
 
     const buttons = existingModalContent.querySelectorAll(".bi");
-    buttons.remove();
+    buttons.forEach((button) => {
+      button.remove();
+    });
 
     console.log("State", State);
     console.log(e.target);
