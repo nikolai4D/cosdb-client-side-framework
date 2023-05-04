@@ -225,30 +225,34 @@ export function Organism_Header_List_Search_Button() {
       button.remove();
     });
 
-    existingModalContent
+    const topleft = existingModalContent
       .querySelector(
         ".organism_modalconnections__content__connectiontopleft"
       )[0]
       .remove();
-    existingModalContent
+
+    const bottomleft = existingModalContent
       .querySelector(
         ".organism_modalconnections__content__connectionbottomleft"
       )[0]
       .remove();
-    existingModalContent
+
+    const topright = existingModalContent
       .querySelector(
         ".organism_modalconnections__content__connectiontopright"
       )[0]
       .remove();
-    existingModalContent
+
+    const bottomright = existingModalContent
       .querySelector(
-        ".organism_modalconnections__content__connectiontopright"
+        ".organism_modalconnections__content__connectionbottomright"
       )[0]
       .remove();
+
     // organism_modalconnections__content__connectiontopleft
     // organism_modalconnections__content__connectionbottomleft
     // organism_modalconnections__content__connectiontopright
-    // organism_modalconnections__content__connectiontopright
+    // organism_modalconnections__content__connectionbottomright
 
     console.log("State ParentIds", State.parentIds);
 
