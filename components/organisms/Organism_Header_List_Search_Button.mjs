@@ -186,9 +186,6 @@ export function Organism_Header_List_Search_Button() {
 
   const closeModal = async (e) => {
     const existingModal = document.querySelector(".organism_modal");
-    const modalContentBackButton = document.querySelector(
-      ".CloseModalBackButton"
-    );
 
     if (e.target.className.includes("relHeaderId")) {
       const newModalContent = await createElement(
@@ -203,17 +200,13 @@ export function Organism_Header_List_Search_Button() {
       existingModal.appendChild(newModalContent); // Add the new content
     }
 
-    if (e.target === existingModal || e.target === modalContentBackButton) {
-      const currentModalContent = existingModal.lastChild;
-      if (currentModalContent) {
-        // Check if there's a current modal content before removing it
-        existingModal.removeChild(currentModalContent); // Remove the current content
-      }
-      if (existingModal.childElementCount > 0) {
-        existingModal.lastChild.style.display = "block"; // Show the previous content
-      } else {
-        modal.style.display = "none"; // Hide the modal
-      }
+    if (e.target.className.includes("CloseModalBackButton")) {
+      currentModalContent = document.getElementById(e.target.id);
+      currentModalContent.style.display = "none"; // Hide the modal
+    }
+
+    if (e.target === existingModal) {
+      existingModal.style.display = "none"; // Hide the modal
     }
   };
 }
