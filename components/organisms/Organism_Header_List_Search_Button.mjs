@@ -160,6 +160,7 @@ export function Organism_Header_List_Search_Button() {
   };
 
   const closeModal = (e) => {
+    console.log(e.target);
     const modal = document.querySelector(".organism_modal");
     const modalContentBackButton = document.querySelector(
       ".molecule_modalheader__back"
