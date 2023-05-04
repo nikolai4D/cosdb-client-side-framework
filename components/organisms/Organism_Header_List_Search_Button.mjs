@@ -201,6 +201,7 @@ export function Organism_Header_List_Search_Button() {
     }
 
     if (e.target.className.includes("CloseModalBackButton")) {
+      console.log(e.target);
       currentModalContent = document.getElementById(
         `organism_modal_content_${e.target.id}`
       );
