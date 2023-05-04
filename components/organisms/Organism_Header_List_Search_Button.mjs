@@ -147,12 +147,10 @@ export function Organism_Header_List_Search_Button() {
   }
 
   const openModal = async (id) => {
-    // const existingModalContent = document.getElementById(
-    //   "organism_modal_content"
-    // );
-    // existingModalContent.innerHTML = "";
-
-    const existingModalContent = document.getElementById("organism_modal");
+    const existingModalContent = document.getElementById(
+      "organism_modal_content"
+    );
+    existingModalContent.innerHTML = "";
 
     const updatedModal = await this.childOrganism(2, id);
 
