@@ -79,6 +79,9 @@ export function Organism_Header_List_Search_Button() {
       if (e.target.tagName === "LI") {
         await openModal(e.target.id);
       }
+      if (e.target.className === "relHeaderId") {
+        await openModal(e.target.id);
+      }
     });
 
     const modal = await createElement("div", {
