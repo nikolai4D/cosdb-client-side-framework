@@ -233,7 +233,7 @@ export function Organism_Header_List_Search_Button() {
 
     const url = `api/create/type`;
 
-    const body = { tite: inputValue, parentId, props: [] };
+    const body = { title: inputValue, parentId, props: [] };
     await apiCallPost({ url, body });
 
     const newObjectModal = document.querySelector(".organism_modal");
