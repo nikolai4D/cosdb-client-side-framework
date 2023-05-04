@@ -282,8 +282,6 @@ export function Organism_Header_List_Search_Button() {
   }
 
   function createForm(existingModalContent) {
-    existingModalContent.style.width = "";
-    existingModalContent.style.height = "";
     const parents = State.parentIds;
 
     // const modalContent = document.getElementsByClassName(
@@ -323,5 +321,7 @@ export function Organism_Header_List_Search_Button() {
     divInputAndButton.appendChild(button);
     div.appendChild(divInputAndButton);
     existingModalContent.appendChild(div);
+    existingModalContent.style.removeProperty("width");
+    existingModalContent.style.removeProperty("height");
   }
 }
