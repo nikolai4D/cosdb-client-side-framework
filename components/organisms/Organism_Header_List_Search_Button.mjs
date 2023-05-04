@@ -84,17 +84,6 @@ export function Organism_Header_List_Search_Button() {
       class: "organism_modal",
       id: "organism_modal",
     });
-    // modal.addEventListener("click", closeModal);
-
-    // const modalContent = await createElement(
-    //   "div",
-    //   {
-    //     class: "organism_modal_content",
-    //     id: `organism_modal_content`,
-    //   },
-    //   await this.childOrganism(2, null)
-    // );
-    // modal.appendChild(modalContent);
 
     const comp = await createElement(
       "div",
@@ -120,6 +109,7 @@ export function Organism_Header_List_Search_Button() {
   //add functions for the component here
   const listItems = async (filter) => {
     const arrayOfData = await State.items;
+    console.log(arrayOfData);
     let filteredData = [];
 
     if (filter === "") {
@@ -149,18 +139,6 @@ export function Organism_Header_List_Search_Button() {
     existinglistItems.append(...updatedListItems);
   }
 
-  //   const openModal = async (id) => {
-  //     const existingModalContent = document.getElementById(
-  //       "organism_modal_content"
-  //     );
-  //     existingModalContent.innerHTML = "";
-
-  //     const updatedModal = await this.childOrganism(2, id);
-
-  //     existingModalContent.appendChild(updatedModal);
-  //     document.getElementById("organism_modal").style.display = "block"; // Show the modal
-  //   };
-
   const openModal = async (id) => {
     const existingModal = document.getElementById("organism_modal");
     let existingModalContent = document.getElementById(
@@ -181,36 +159,10 @@ export function Organism_Header_List_Search_Button() {
       existingModalContent.innerHTML = "";
     }
 
-    // const updatedModal = await this.childOrganism(2, id);
-    // existingModalContent.appendChild(updatedModal);
     existingModal.style.display = "block"; // Show the modal
   };
 
-  //   const closeModal = async (e) => {
-  //     const existingModal = document.querySelector(".organism_modal");
-  //     const modalContentBackButton = document.querySelector(
-  //       ".CloseModalBackButton"
-  //     );
-
-  //     if (e.target.className.includes("relHeaderId")) {
-  //       const newModalContent = await createElement(
-  //         "div",
-  //         {
-  //           class: "organism_modal_content",
-  //           id: `organism_modal_content_${e.target.id}`,
-  //         },
-  //         await this.childOrganism(2, e.target.id)
-  //       );
-  //       existingModal.appendChild(newModalContent);
-  //     }
-
-  //     if (e.target === existingModal || e.target === modalContentBackButton) {
-  //       modal.style.display = "none"; // Hide the modal
-  //     }
-  //   };
-
   const closeModal = async (e) => {
-    console.log("E TARGET", e.target);
     const existingModal = document.querySelector(".organism_modal");
 
     if (e.target.className.includes("relHeaderId")) {
@@ -239,17 +191,12 @@ export function Organism_Header_List_Search_Button() {
         ".organism_modal_content"
       );
 
-      console.log("modalContents", modalContents);
-
       if (modalContents.length === 0) {
         existingModal.style.display = "none";
       }
     }
 
-    if (
-      e.target === existingModal ||
-      e.target.className.includes("bi bi-x-lg")
-    ) {
+    if (e.target === existingModal) {
       existingModal.style.display = "none"; // Hide the modal
       // Remove all divs with the class "organism_modal_content" and their children
       const modalContents = existingModal.querySelectorAll(
