@@ -75,11 +75,7 @@ export function Organism_Header_List_Search_Button() {
       ...(await listItems(compData))
     );
     headingList.addEventListener("click", async (e) => {
-      console.log(e.target);
       if (e.target.tagName === "LI") {
-        await openModal(e.target.id);
-      }
-      if (e.target.className === "relHeaderId") {
         await openModal(e.target.id);
       }
     });
@@ -162,7 +158,12 @@ export function Organism_Header_List_Search_Button() {
     document.getElementById("organism_modal").style.display = "block"; // Show the modal
   };
 
-  const closeModal = (e) => {
+  const closeModal = async (e) => {
+    console.log(e.target);
+
+    if (e.target.className === "relHeaderId") {
+      await openModal(e.target.id);
+    }
     const modal = document.querySelector(".organism_modal");
     const modalContentBackButton = document.querySelector(
       ".CloseModalBackButton"
