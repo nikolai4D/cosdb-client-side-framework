@@ -158,38 +158,21 @@ export function Organism_Header_List_Search_Button() {
     document.getElementById("organism_modal").style.display = "block"; // Show the modal
   };
 
-  //   const closeModal = async (e) => {
-  //     if (e.target.className.includes("relHeaderId")) {
-  //       const existingModal = document.querySelector(".organism_modal");
-  //       const newModalContent = await createElement(
-  //         "div",
-  //         { class: "organism_modal_content", id: "organism_modal_content" },
-  //         await this.childOrganism(2, e.target.id)
-  //       );
-  //       existingModal.appendChild(newModalContent);
-  //     }
-  //     const modal = document.querySelector(".organism_modal");
-  //     const modalContentBackButton = document.querySelector(
-  //       ".CloseModalBackButton"
-  //     );
-  //     if (e.target === modal || e.target === modalContentBackButton) {
-  //       modal.style.display = "none"; // Hide the modal
-  //     }
-  //   };
-
   const closeModal = async (e) => {
-    if (e.target.className.includes("relHeaderId")) {
-      // do nothing
-    }
-    const modal = document.querySelector(".organism_modal");
+    const existingModal = document.querySelector(".organism_modal");
     const modalContentBackButton = document.querySelector(
       ".CloseModalBackButton"
     );
-    if (e.target === modal || e.target === modalContentBackButton) {
-      const existingModalContent = document.getElementById(
-        "organism_modal_content"
+    if (e.target.className.includes("relHeaderId")) {
+      const newModalContent = await createElement(
+        "div",
+        { class: "organism_modal_content", id: "organism_modal_content" },
+        await this.childOrganism(2, e.target.id)
       );
-      existingModalContent.innerHTML = "";
+      existingModal.appendChild(newModalContent);
+    }
+
+    if (e.target === existingModal || e.target === modalContentBackButton) {
       modal.style.display = "none"; // Hide the modal
     }
   };
