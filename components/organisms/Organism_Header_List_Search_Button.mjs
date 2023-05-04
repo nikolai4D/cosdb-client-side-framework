@@ -160,12 +160,13 @@ export function Organism_Header_List_Search_Button() {
 
   const closeModal = async (e) => {
     if (e.target.className.includes("relHeaderId")) {
-      const modalContent = await createElement(
+      const existingModal = document.querySelector(".organism_modal");
+      const newModalContent = await createElement(
         "div",
         { class: "organism_modal_content", id: "organism_modal_content" },
         await this.childOrganism(2, e.target.id)
       );
-      modal.appendChild(modalContent);
+      existingModal.appendChild(newModalContent);
     }
     const modal = document.querySelector(".organism_modal");
     const modalContentBackButton = document.querySelector(
