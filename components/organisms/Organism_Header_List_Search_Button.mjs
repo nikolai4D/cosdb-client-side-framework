@@ -91,8 +91,8 @@ export function Organism_Header_List_Search_Button() {
       {
         class: "organism_modal_content",
         id: `organism_modal_content`,
-      }
-      // await this.childOrganism(2, null)
+      },
+      await this.childOrganism(2, null)
     );
     modal.appendChild(modalContent);
 
@@ -149,25 +149,16 @@ export function Organism_Header_List_Search_Button() {
     existinglistItems.append(...updatedListItems);
   }
 
-  //   const openModal = async (id) => {
-  //     const existingModalContent = document.getElementById(
-  //       "organism_modal_content"
-  //     );
-  //     existingModalContent.innerHTML = "";
-
-  //     const updatedModal = await this.childOrganism(2, id);
-
-  //     existingModalContent.appendChild(updatedModal);
-  //     document.getElementById("organism_modal").style.display = "block"; // Show the modal
-  //   };
-
   const openModal = async (id) => {
-    const existingModal = document.querySelector(".organism_modal");
+    const existingModalContent = document.getElementById(
+      "organism_modal_content"
+    );
+    existingModalContent.innerHTML = "";
 
     const updatedModal = await this.childOrganism(2, id);
 
-    existingModal.appendChild(updatedModal);
-    existingModal.style.display = "block"; // Show the modal
+    existingModalContent.appendChild(updatedModal);
+    document.getElementById("organism_modal").style.display = "block"; // Show the modal
   };
 
   //   const closeModal = async (e) => {
