@@ -166,6 +166,10 @@ export function Organism_Header_List_Search_Button() {
       existingModalContent.innerHTML = "";
     }
 
+    if (id === "new") {
+      await newObject(existingModalContent);
+    }
+
     existingModal.style.display = "block"; // Show the modal
   };
 
@@ -215,7 +219,16 @@ export function Organism_Header_List_Search_Button() {
       });
     }
   };
-  const newObject = async (e) => {
+  const newObject = async (existingModalContent) => {
+    const modalContentNewObject = document.getElementById(
+      `organism_modal_content_new`
+    );
+
+    const addbuttons = modalContentNewObject.querySelectorAll(
+      ".bi-plus-circle-fill"
+    );
+    addbuttons.remove();
+
     console.log("State", State);
     console.log(e.target);
   };
