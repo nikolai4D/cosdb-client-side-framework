@@ -60,7 +60,6 @@ export function Organism_Header_List_Search_Button() {
       await this.molecule(1, null)
     );
     headingInputButton.addEventListener("input", async (e) => {
-      console.log("input change");
       await updateListItems(e.target.value);
     });
     headingInputButton.addEventListener("click", async (e) => {
@@ -76,6 +75,7 @@ export function Organism_Header_List_Search_Button() {
       ...(await listItems(compData))
     );
     headingList.addEventListener("click", async (e) => {
+      console.log(e.target);
       if (e.target.tagName === "LI") {
         await openModal(e.target.id);
       }
@@ -163,7 +163,6 @@ export function Organism_Header_List_Search_Button() {
   };
 
   const closeModal = (e) => {
-    console.log(e.target);
     const modal = document.querySelector(".organism_modal");
     const modalContentBackButton = document.querySelector(
       ".CloseModalBackButton"
