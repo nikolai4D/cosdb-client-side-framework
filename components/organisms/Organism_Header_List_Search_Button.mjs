@@ -260,7 +260,7 @@ export function Organism_Header_List_Search_Button() {
 
     const modalContent = document.getElementsByClassName(
       "molecule_modalcentercontent__content"
-    );
+    )[0];
     // Create the div
 
     // Create and append the label
