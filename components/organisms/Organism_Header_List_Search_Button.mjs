@@ -236,7 +236,23 @@ export function Organism_Header_List_Search_Button() {
 
     const body = { title: inputValue, parentId, props: [] };
     const newItem = await apiCallPost({ url, body });
-    State.items.push(newItem);
+
+    const newItemHeaderFirst = newItem.title.charAt(0).toLowerCase();
+
+    const existingItem = State.items.find(
+      (item) => item.header.toLowerCase() === newItemHeaderFirst
+    );
+
+    if (existingItem) {
+      existingItem.content.push(newItem);
+    } else {
+      const newSection = {
+        header: newItemHeaderFirst,
+        content: [newItem],
+      };
+      State.items.push(newSection);
+    }
+
     await updateListItems("");
 
     const newObjectModal = document.querySelector(".organism_modal");
