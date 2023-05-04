@@ -2,6 +2,7 @@ import { apiCallGet } from "./apiCalls.mjs";
 import { transformer_trimAllElements } from "../etl/transfomer_trimAllElements.mjs";
 import { transformer_groupByFirstLetter } from "../etl/transformer_groupByFirstLetter.mjs";
 import { mutation_setAllListData } from "../mutations/mutation_setAllListData.mjs";
+import { mutation_setParentIds } from "../mutations/mutation_setParentIds.mjs";
 
 export async function action_getAllListDataWithHeaders({
   type = "type",
@@ -36,4 +37,5 @@ export async function action_getAllListDataWithHeaders({
 
   //set state
   await mutation_setAllListData("items", listDataGroupedByFirstLetter);
+  await mutation_setParentIds("parentIds", parentIds);
 }
