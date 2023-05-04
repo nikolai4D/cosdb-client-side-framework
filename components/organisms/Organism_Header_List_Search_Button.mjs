@@ -8,6 +8,7 @@ import { Molecule_Heading_Input_Button } from "../molecules/Molecule_Heading_Inp
 import { Organism_ModalConnections } from "./Organism_ModalConnections.mjs";
 //import state
 import { State } from "../../data-mgmt/State.mjs";
+import { apiCallGet } from "../../data-mgmt/actions/apiCalls.mjs";
 
 export function Organism_Header_List_Search_Button() {
   Organism.call(this);
@@ -221,36 +222,6 @@ export function Organism_Header_List_Search_Button() {
   };
   const newObject = async (existingModalContent) => {
     existingModalContent.innerHTML = "";
-    // const buttons = existingModalContent.querySelectorAll(".bi");
-    // buttons.forEach((button) => {
-    //   button.remove();
-    // });
-
-    // const topleft = existingModalContent.querySelector(
-    //   ".organism_modalconnections__content__connectiontopleft"
-    // );
-    // topleft.remove();
-
-    // const bottomleft = existingModalContent.querySelector(
-    //   ".organism_modalconnections__content__connectionbottomleft"
-    // );
-    // bottomleft.remove();
-
-    // const topright = existingModalContent.querySelector(
-    //   ".organism_modalconnections__content__connectiontopright"
-    // );
-    // topright.remove();
-
-    // const bottomright = existingModalContent.querySelector(
-    //   ".organism_modalconnections__content__connectionbottomright"
-    // );
-    // bottomright.remove();
-
-    // // organism_modalconnections__content__connectiontopleft
-    // // organism_modalconnections__content__connectionbottomleft
-    // // organism_modalconnections__content__connectiontopright
-    // // organism_modalconnections__content__connectionbottomright
-
     console.log("State ParentIds", State.parentIds);
 
     await createForm(existingModalContent);
@@ -284,9 +255,6 @@ export function Organism_Header_List_Search_Button() {
   function createForm(existingModalContent) {
     const parents = State.parentIds;
 
-    // const modalContent = document.getElementsByClassName(
-    //   "organism_modal_content_new"
-    // )[0];
     // Create the div
     const div = document.createElement("div");
     const divInputAndButton = document.createElement("div");
@@ -296,10 +264,11 @@ export function Organism_Header_List_Search_Button() {
     const select = document.createElement("select");
     select.id = "parentSelectNewObject";
     select.classList.add("atom_input");
-    parents.forEach((id) => {
+    parents.forEach(async (id) => {
+      const parentTitle = await apiCallGet(`api/configObj?id=${id}`);
       const option = document.createElement("option");
       option.value = id;
-      option.textContent = `Parent ${id}`;
+      option.textContent = parentTitle; //`Parent ${id}`;
       select.appendChild(option);
     });
     div.appendChild(select);
