@@ -194,7 +194,7 @@ export function Organism_Header_List_Search_Button() {
         },
         await this.childOrganism(2, e.target.id)
       );
-      existingModal.insertBefore(newModalContent, existingModal.firstChild);
+      existingModal.appendChild(newModalContent);
     }
 
     if (e.target === existingModal || e.target === modalContentBackButton) {
