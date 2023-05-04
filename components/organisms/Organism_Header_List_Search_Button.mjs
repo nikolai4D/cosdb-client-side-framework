@@ -184,6 +184,9 @@ export function Organism_Header_List_Search_Button() {
     const existingModal = document.querySelector(".organism_modal");
 
     if (e.target.className.includes("relHeaderId")) {
+      const existingModalContent = existingModal.querySelector(
+        ".organism_modal_content"
+      );
       const newModalContent = await createElement(
         "div",
         {
@@ -192,7 +195,7 @@ export function Organism_Header_List_Search_Button() {
         },
         await this.childOrganism(2, e.target.id)
       );
-      existingModal.insertBefore(newModalContent, existingModal.firstChild); // Insert the new div above the old one
+      existingModal.insertBefore(newModalContent, existingModalContent); // Insert the new div above the old one
     }
 
     if (e.target.classList.contains("CloseModalBackButton")) {
