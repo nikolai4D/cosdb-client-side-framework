@@ -27,12 +27,12 @@ export function Molecule_ModalHeader() {
         "div",
         { class: "molecule_modalheader__back" },
         await this.atom(1, "bi bi-arrow-left")
-      ),
-      await createElement(
-        "div",
-        { class: "molecule_modalheader__close" },
-        await this.atom(1, "bi bi-trash")
       )
+      //   await createElement(
+      //     "div",
+      //     { class: "molecule_modalheader__close" },
+      //     await this.atom(1, "bi bi-trash")
+      //   )
     );
 
     //add event listener to the comp here
