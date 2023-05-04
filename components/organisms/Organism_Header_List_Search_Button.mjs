@@ -64,8 +64,7 @@ export function Organism_Header_List_Search_Button() {
     });
     headingInputButton.addEventListener("click", async (e) => {
       if (e.target.tagName === "BUTTON") {
-        const modalContent = "Add new item click";
-        await openModal(modalContent);
+        await newObject(e);
       }
     });
 
@@ -207,5 +206,9 @@ export function Organism_Header_List_Search_Button() {
         modalContent.remove();
       });
     }
+  };
+  const newObject = async (e) => {
+    console.log("State", State);
+    console.log(e.target);
   };
 }
