@@ -9,6 +9,7 @@ import { Organism_ModalConnections } from "./Organism_ModalConnections.mjs";
 //import state
 import { State } from "../../data-mgmt/State.mjs";
 import { apiCallGet } from "../../data-mgmt/actions/apiCalls.mjs";
+import { apiCallPost } from "../../data-mgmt/actions/apiCalls.mjs";
 
 export function Organism_Header_List_Search_Button() {
   Organism.call(this);
@@ -227,8 +228,13 @@ export function Organism_Header_List_Search_Button() {
     await createForm(existingModalContent);
   };
 
-  function createData(parentId, inputValue) {
+  async function createData(parentId, inputValue) {
     console.log({ parentId, inputValue });
+
+    const url = `api/create/type`;
+
+    const body = { tite: inputValue, parentId, props: [] };
+    await apiCallPost({ url, body });
 
     const newObjectModal = document.querySelector(".organism_modal");
     newObjectModal.style.display = "none"; // Hide the modal
@@ -242,14 +248,14 @@ export function Organism_Header_List_Search_Button() {
     });
   }
 
-  function handleCreate() {
+  async function handleCreate() {
     const selectedParent = document.getElementById(
       "parentSelectNewObject"
     ).value;
     const inputFieldValue = document.getElementById(
       "inputFieldNewObject"
     ).value;
-    createData(selectedParent, inputFieldValue);
+    await createData(selectedParent, inputFieldValue);
   }
 
   async function createForm(existingModalContent) {
