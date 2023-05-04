@@ -163,7 +163,7 @@ export function Organism_Header_List_Search_Button() {
     console.log(e.target);
     const modal = document.querySelector(".organism_modal");
     const modalContentBackButton = document.querySelector(
-      ".molecule_modalheader__back"
+      ".CloseModalBackButton"
     );
     if (e.target === modal || e.target === modalContentBackButton) {
       modal.style.display = "none"; // Hide the modal
