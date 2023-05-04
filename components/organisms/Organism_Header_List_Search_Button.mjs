@@ -246,7 +246,10 @@ export function Organism_Header_List_Search_Button() {
       }
     }
 
-    if (e.target === existingModal) {
+    if (
+      e.target === existingModal ||
+      e.target.className.includes("bi bi-x-lg")
+    ) {
       existingModal.style.display = "none"; // Hide the modal
       // Remove all divs with the class "organism_modal_content" and their children
       const modalContents = existingModal.querySelectorAll(
