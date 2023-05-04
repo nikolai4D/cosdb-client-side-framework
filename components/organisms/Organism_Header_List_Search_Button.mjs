@@ -234,6 +234,14 @@ export function Organism_Header_List_Search_Button() {
 
       currentModalContent.innerHTML = ""; // Remove the content
       currentModalContent.remove(); // Remove the content
+
+      const modalContents = existingModal.querySelectorAll(
+        ".organism_modal_content"
+      );
+
+      if (!modalContents) {
+        existingModal.style.display = "none";
+      }
     }
 
     if (e.target === existingModal) {
