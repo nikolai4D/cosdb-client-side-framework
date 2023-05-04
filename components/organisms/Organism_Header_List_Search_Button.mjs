@@ -143,6 +143,13 @@ export function Organism_Header_List_Search_Button() {
     let existingModalContent = document.getElementById(
       "organism_modal_content"
     );
+    let existingId = "";
+
+    if (id === "new") {
+      existingId = null;
+    } else {
+      existingId = id;
+    }
 
     if (!existingModalContent) {
       existingModalContent = await createElement(
@@ -151,7 +158,8 @@ export function Organism_Header_List_Search_Button() {
           class: "organism_modal_content",
           id: `organism_modal_content_${id}`,
         },
-        await this.childOrganism(2, id)
+
+        await this.childOrganism(2, existingId)
       );
       existingModal.appendChild(existingModalContent);
     } else {
