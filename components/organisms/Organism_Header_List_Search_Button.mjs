@@ -185,6 +185,7 @@ export function Organism_Header_List_Search_Button() {
   //   };
 
   const closeModal = async (e) => {
+    console.log(e.target);
     const existingModal = document.querySelector(".organism_modal");
 
     if (e.target.className.includes("relHeaderId")) {
@@ -201,7 +202,6 @@ export function Organism_Header_List_Search_Button() {
     }
 
     if (e.target.className.includes("CloseModalBackButton")) {
-      console.log(e.target);
       currentModalContent = document.getElementById(
         `organism_modal_content_${e.target.id}`
       );
