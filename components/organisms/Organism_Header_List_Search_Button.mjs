@@ -166,10 +166,14 @@ export function Organism_Header_List_Search_Button() {
   //     const modalContentBackButton = document.querySelector(
   //       ".CloseModalBackButton"
   //     );
+
   //     if (e.target.className.includes("relHeaderId")) {
   //       const newModalContent = await createElement(
   //         "div",
-  //         { class: "organism_modal_content", id: `organism_modal_content_${e.target.id}` },
+  //         {
+  //           class: "organism_modal_content",
+  //           id: `organism_modal_content_${e.target.id}`,
+  //         },
   //         await this.childOrganism(2, e.target.id)
   //       );
   //       existingModal.appendChild(newModalContent);
@@ -179,6 +183,7 @@ export function Organism_Header_List_Search_Button() {
   //       modal.style.display = "none"; // Hide the modal
   //     }
   //   };
+
   const closeModal = async (e) => {
     const existingModal = document.querySelector(".organism_modal");
     const modalContentBackButton = document.querySelector(
@@ -194,11 +199,18 @@ export function Organism_Header_List_Search_Button() {
         },
         await this.childOrganism(2, e.target.id)
       );
-      existingModal.appendChild(newModalContent);
+      existingModal.firstChild.style.display = "none"; // Hide the previous content
+      existingModal.appendChild(newModalContent); // Add the new content
     }
 
     if (e.target === existingModal || e.target === modalContentBackButton) {
-      modal.style.display = "none"; // Hide the modal
+      const currentModalContent = existingModal.lastChild;
+      existingModal.removeChild(currentModalContent); // Remove the current content
+      if (existingModal.childElementCount > 0) {
+        existingModal.lastChild.style.display = "block"; // Show the previous content
+      } else {
+        modal.style.display = "none"; // Hide the modal
+      }
     }
   };
 }
