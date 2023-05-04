@@ -195,7 +195,11 @@ export function Organism_Header_List_Search_Button() {
         },
         await this.childOrganism(2, e.target.id)
       );
-      existingModal.insertBefore(newModalContent, existingModalContent); // Insert the new div above the old one
+      if (existingModalContent) {
+        existingModal.insertBefore(newModalContent, existingModalContent); // Insert the new div above the old one
+      } else {
+        existingModal.appendChild(newModalContent); // If no existing content, append the new div
+      }
     }
 
     if (e.target.classList.contains("CloseModalBackButton")) {
