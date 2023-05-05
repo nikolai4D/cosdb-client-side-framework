@@ -565,11 +565,11 @@ export function Organism_Header_List_Search_Button() {
     );
 
     // Add event listener to handle dropdown change
-    parentDropdown.addEventListener("change", (e) => {
+    parentDropdown.addEventListener("change", async (e) => {
       // Handle the selection change here
       console.log("Selected node:", e.target.value);
 
-      const childrenObejcts = apiCallGet(`api/type/${e.target.value}`);
+      const childrenObejcts = await apiCallGet(`api/type/${e.target.value}`);
       console.log("childrenObejcts", childrenObejcts);
 
       // Create a select element (dropdown)
