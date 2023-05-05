@@ -507,30 +507,40 @@ export function Organism_Header_List_Search_Button() {
 
     let modalContent = "";
     let parentItems = "";
+    let urlRelKey = "";
+    let relDirection = "";
 
     if (eTarget.className.includes("addInternalRelTo")) {
       modalContent = existingModal.querySelector(
         ".organism_modalconnections__content__connectiontopleft"
       );
       parentItems = relatedParentNodes.internalRelsToNode;
+      urlRelKey = "typeDataInternalRel";
+      relDirection = "to";
     }
     if (eTarget.className.includes("addInternalRelFrom")) {
       modalContent = existingModal.querySelector(
         ".organism_modalconnections__content__connectiontopright"
       );
       parentItems = relatedParentNodes.internalRelsFromNode;
+      urlRelKey = "typeDataInternalRel";
+      relDirection = "from";
     }
     if (eTarget.className.includes("addExternalRelTo")) {
       modalContent = existingModal.querySelector(
         ".organism_modalconnections__content__connectionbottomleft"
       );
       parentItems = relatedParentNodes.externalRelsToNode;
+      urlRelKey = "typeDataExternalRel";
+      relDirection = "to";
     }
     if (eTarget.className.includes("addExternalRelFrom")) {
       modalContent = existingModal.querySelector(
         ".organism_modalconnections__content__connectionbottomright"
       );
       parentItems = relatedParentNodes.externalRelsFromNode;
+      urlRelKey = "typeDataExternalRel";
+      relDirection = "from";
     }
 
     const modalContentItems = modalContent.querySelector(
@@ -623,6 +633,30 @@ export function Organism_Header_List_Search_Button() {
             const currentNode = objId;
             // Use the selectedParent and selectedChild values to add the relationship here
             console.log(selectedChild, currentNode, relTitle, relParentId);
+
+            const url = `api/createRel/${urlRelKey}`;
+            let relSource = "";
+            let relTarget = "";
+            if (relDirection === "to") {
+              relSource = selectedChild;
+              relTarget = currentNode;
+            }
+
+            if (relDirection === "from") {
+              relSource = currentNode;
+              relTarget = selectedChild;
+            }
+
+            body = {
+              title: relTitle,
+              parentId: relParentId,
+              props: [],
+              target: relTarget,
+              source: relSource,
+            };
+
+            const newRel = await apiCallPost({ url, body });
+            console.log(newRel);
           });
           childrenDropdown.insertAdjacentElement("afterend", addButton);
         }
@@ -631,8 +665,6 @@ export function Organism_Header_List_Search_Button() {
       parentDropdown.insertAdjacentElement("afterend", childrenDropdown);
     });
 
-    //show dropdown with valid rels
-    //sho button to add rel
     //add rel to modal
     //update State
   }
