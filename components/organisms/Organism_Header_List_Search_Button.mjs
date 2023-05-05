@@ -177,7 +177,7 @@ export function Organism_Header_List_Search_Button() {
     existingModal.style.display = "block"; // Show the modal
   };
 
-  const handleModal = async (e) => {
+  const handleModal = async (e, existingModal) => {
     const existingModal = document.querySelector(".organism_modal");
 
     //Add related nodes
@@ -489,7 +489,7 @@ export function Organism_Header_List_Search_Button() {
     console.log(State.items);
   }
 
-  async function handleAddRel(eTarget) {
+  async function handleAddRel(eTarget, existingModal) {
     console.log(eTarget);
     const objectId = eTarget.offsetParent.id;
     const prefix = "organism_modal_content_";
@@ -506,7 +506,69 @@ export function Organism_Header_List_Search_Button() {
     console.log(relatedParentNodes);
 
     //show dropdown with valid parents
-    //show dropdown with valid children
+
+    let modalContent = "";
+    let parentItems = "";
+
+    if (e.target.className.includes("addInternalRelTo")) {
+      modalContent = existingModal.querySelector(
+        ".organism_modalconnections__content__connectiontopleft"
+      );
+      parentItems = relatedParentNodes.internalRelsToNode;
+    }
+    if (e.target.className.includes("addInternalRelFrom")) {
+      modalContent = existingModal.querySelector(
+        ".organism_modalconnections__content__connectiontopright"
+      );
+      parentItems = relatedParentNodes.internalRelsFromNode;
+    }
+    if (e.target.className.includes("addExternalRelTo")) {
+      modalContent = existingModal.querySelector(
+        ".organism_modalconnections__content__connectionbottomleft"
+      );
+      parentItems = relatedParentNodes.externalRelsToNode;
+    }
+    if (e.target.className.includes("addExternalRelFrom")) {
+      modalContent = existingModal.querySelector(
+        ".organism_modalconnections__content__connectionbottomright"
+      );
+      parentItems = relatedParentNodes.externalRelsFromNode;
+    }
+
+    const modalContentItems = modalContent.querySelector(
+      ".molecule_modalconnection__items"
+    );
+    //add a dropdown to modalContentItems with valid options from parentItems object.node.title
+
+    // Create a select element (dropdown)
+    const dropdown = document.createElement("select");
+    dropdown.classList.add("molecule_modalconnection__dropdown");
+
+    // Create a default option
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.text = "Select a related node";
+    defaultOption.selected = true;
+    defaultOption.disabled = true;
+    dropdown.appendChild(defaultOption);
+
+    // Iterate through parentItems to add options to the dropdown
+    parentItems.forEach((item) => {
+      const option = document.createElement("option");
+      option.value = item.node.id;
+      option.text = item.node.title;
+      dropdown.appendChild(option);
+    });
+
+    // Append the dropdown to modalContentItems
+    modalContentItems.appendChild(dropdown);
+
+    // Add event listener to handle dropdown change
+    dropdown.addEventListener("change", (e) => {
+      // Handle the selection change here
+      console.log("Selected node:", e.target.value);
+    });
+
     //show dropdown with valid rels
     //sho button to add rel
     //add rel to modal
