@@ -657,6 +657,22 @@ export function Organism_Header_List_Search_Button() {
 
             const newRel = await apiCallPost({ url, body });
             console.log(newRel);
+            if (newRel.error) {
+              alert("Det går inte att skapa relation till sig själv");
+              return;
+            }
+
+            existingModal.style.display = "none"; // Hide the modal
+            // Remove all divs with the class "organism_modal_content" and their children
+            const modalContents = existingModal.querySelectorAll(
+              ".organism_modal_content"
+            );
+            modalContents.forEach((modalContent) => {
+              modalContent.innerHTML = "";
+              modalContent.remove();
+            });
+
+            await openModal(objId);
           });
           childrenDropdown.insertAdjacentElement("afterend", addButton);
         }
