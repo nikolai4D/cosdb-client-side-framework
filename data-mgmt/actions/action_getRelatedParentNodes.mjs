@@ -1,6 +1,6 @@
 import { apiCallPost } from "./apiCalls.mjs";
 
-export async function action_getRelatedNodes(nodeId) {
+export async function action_getRelatedParentNodes(nodeId) {
   // get all related nodes
 
   const url = "api/relatedParentNodes";
