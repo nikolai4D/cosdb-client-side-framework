@@ -421,6 +421,7 @@ export function Organism_Header_List_Search_Button() {
       console.log("before", itemInState);
       itemInState = updatedItem;
       console.log("after", itemInState);
+      console.log(State.items, "new state");
     }
 
     console.log(State.items);
