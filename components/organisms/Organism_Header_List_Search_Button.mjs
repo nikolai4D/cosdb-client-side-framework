@@ -573,6 +573,10 @@ export function Organism_Header_List_Search_Button() {
       if (existingChildrenDropdown) {
         existingChildrenDropdown.remove();
       }
+      const existingAddButton = document.getElementById("addRelButton");
+      if (existingAddButton) {
+        existingAddButton.remove();
+      }
 
       //Get parent rel
       const parentObj = parentItems.find(
