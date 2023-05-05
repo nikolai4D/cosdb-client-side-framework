@@ -605,7 +605,24 @@ export function Organism_Header_List_Search_Button() {
         childrenDropdown.appendChild(option);
       });
 
-      childrenDropdown.addEventListener("change", async (e) => {});
+      childrenDropdown.addEventListener("change", async (e) => {
+        const existingAddButton = document.getElementById("addRelButton");
+        if (!existingAddButton) {
+          // Create a button to add the relationship
+          const addButton = document.createElement("button");
+          addButton.textContent = "Skapa rel";
+          addButton.id = "addRelButton";
+          addButton.addEventListener("click", async (e) => {
+            const selectedParent = parentDropdown.value;
+            const selectedChild = childrenDropdown.value;
+            const relTitle = parentRel.title;
+            const relParentId = parentRel.id;
+            // Use the selectedParent and selectedChild values to add the relationship here
+            console.log(selectedParent, selectedChild, relTitle, relParentId);
+          });
+          childrenDropdown.insertAdjacentElement("afterend", addButton);
+        }
+      });
 
       parentDropdown.insertAdjacentElement("afterend", childrenDropdown);
     });
