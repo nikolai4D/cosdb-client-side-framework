@@ -413,6 +413,13 @@ export function Organism_Header_List_Search_Button() {
     const updatedItem = await apiCallPost({ url, body });
     console.log(updatedItem);
 
+    const targetItem = State.items.find((item) => {
+      return item.content.find((contentItem) => {
+        return contentItem.id === updatedItem.id;
+      });
+    });
+    targetItem.title = updatedItem.title;
+
     await updateListItems("");
   }
 }
