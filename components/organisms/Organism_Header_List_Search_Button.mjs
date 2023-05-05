@@ -10,6 +10,7 @@ import { Organism_ModalConnections } from "./Organism_ModalConnections.mjs";
 import { State } from "../../data-mgmt/State.mjs";
 import { apiCallGet } from "../../data-mgmt/actions/apiCalls.mjs";
 import { apiCallPost } from "../../data-mgmt/actions/apiCalls.mjs";
+import { action_getRelatedNodes } from "../../data-mgmt/actions/action_getRelatedNodes.mjs";
 
 export function Organism_Header_List_Search_Button() {
   Organism.call(this);
@@ -188,8 +189,7 @@ export function Organism_Header_List_Search_Button() {
           "addExternalRelFrom"
       )
     ) {
-      console.log("add related nodes");
-      console.log(e.target);
+      await handleAddRel(e.target);
     }
 
     //Update modal content
@@ -487,5 +487,29 @@ export function Organism_Header_List_Search_Button() {
       section.content = section.content.filter((item) => item.id !== id);
     }
     console.log(State.items);
+  }
+
+  async function handleAddRel(eTarget) {
+    console.log(eTarget);
+    const objectId = eTarget.offsetParent.id;
+    const prefix = "organism_modal_content_";
+    const objId = objectId.substring(objectId.indexOf(prefix) + prefix.length);
+    console.log(objId);
+
+    //get ParentId
+    const getParentIdUrl = `api/getById/type/${objId}`;
+    const idObject = await apiCallGet(getParentIdUrl);
+    const parentId = idObject.parentId;
+
+    //get Nodes related to parent
+    const relatedNodes = await action_getRelatedNodes(parentId);
+    console.log(relatedNodes);
+
+    //show dropdown with valid parents
+    //show dropdown with valid children
+    //show dropdown with valid rels
+    //sho button to add rel
+    //add rel to modal
+    //update State
   }
 }
