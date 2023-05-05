@@ -177,7 +177,7 @@ export function Organism_Header_List_Search_Button() {
     existingModal.style.display = "block"; // Show the modal
   };
 
-  const handleModal = async (e, existingModal) => {
+  const handleModal = async (e) => {
     const existingModal = document.querySelector(".organism_modal");
 
     //Add related nodes
@@ -189,7 +189,7 @@ export function Organism_Header_List_Search_Button() {
           "addExternalRelFrom"
       )
     ) {
-      await handleAddRel(e.target);
+      await handleAddRel(e.target, existingModal);
     }
 
     //Update modal content
