@@ -182,12 +182,10 @@ export function Organism_Header_List_Search_Button() {
 
     //Add related nodes
     if (
-      e.target.className.includes(
-        "addInternalRelTo" ||
-          "addExternalRelTo" ||
-          "addInternalRelFrom" ||
-          "addExternalRelFrom"
-      )
+      e.target.className.includes("addInternalRelTo") ||
+      e.target.className.includes("addExternalRelTo") ||
+      e.target.className.includes("addInternalRelFrom") ||
+      e.target.className.includes("addExternalRelFrom")
     ) {
       await handleAddRel(e.target, existingModal);
     }
