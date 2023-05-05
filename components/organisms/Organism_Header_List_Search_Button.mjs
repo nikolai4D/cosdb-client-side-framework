@@ -352,33 +352,37 @@ export function Organism_Header_List_Search_Button() {
     const currentModalContent = existingModal.querySelector(
       ".organism_modal_content"
     );
-    console.log(currentModalContent);
 
-    // // Create an input element
-    // const input = document.createElement("input");
-    // input.classList.add("value", "atom_input");
-    // input.type = "text";
-    // input.value = paragraph.textContent;
+    const paragraphId = currentModalContent.id.split("_")[2];
 
-    // // Create a save button
-    // const saveButton = document.createElement("button");
-    // saveButton.classList.add("atom_buttonpositive");
-    // saveButton.textContent = "Save";
+    const paragraph = document.getElementById(paragraphId);
 
-    // // Replace the paragraph element with the input element and save button
-    // paragraph.replaceWith(input, saveButton);
+    // Create an input element
+    const input = document.createElement("input");
+    input.classList.add("value", "atom_input");
+    input.id = paragraphId;
+    input.type = "text";
+    input.value = paragraph.textContent;
 
-    // // Add event listener to the save button
-    // saveButton.addEventListener("click", () => {
-    //   // Create a new paragraph element
-    //   const newParagraph = document.createElement("p");
-    //   newParagraph.classList.add("value", "placeholder", "atom_paragraphdata");
-    //   newParagraph.id = paragraph.id;
-    //   newParagraph.textContent = input.value;
+    // Create a save button
+    const saveButton = document.createElement("button");
+    saveButton.classList.add("atom_buttonpositive");
+    saveButton.textContent = "Spara";
 
-    //   // Replace the input element and save button with the new paragraph element
-    //   input.replaceWith(newParagraph);
-    //   saveButton.remove();
-    // });
+    // Replace the paragraph element with the input element and save button
+    paragraph.replaceWith(input, saveButton);
+
+    // Add event listener to the save button
+    saveButton.addEventListener("click", () => {
+      // Create a new paragraph element
+      const newParagraph = document.createElement("p");
+      newParagraph.classList.add("atom_paragraphdata");
+      newParagraph.id = paragraphId;
+      newParagraph.textContent = input.value;
+
+      // Replace the input element and save button with the new paragraph element
+      input.replaceWith(newParagraph);
+      saveButton.remove();
+    });
   }
 }
