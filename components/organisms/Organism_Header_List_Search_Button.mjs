@@ -565,7 +565,7 @@ export function Organism_Header_List_Search_Button() {
     );
 
     // Add event listener to handle dropdown change
-    dropdown.addEventListener("change", (e) => {
+    parentDropdown.addEventListener("change", (e) => {
       // Handle the selection change here
       console.log("Selected node:", e.target.value);
 
