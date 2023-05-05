@@ -192,7 +192,7 @@ export function Organism_Header_List_Search_Button() {
 
     //delet related node
     if (e.target.className.includes("deleteRel")) {
-      console.log(e.target);
+      console.log(e.target.parentNode.childNodes[1].id);
     }
 
     //Update modal content
