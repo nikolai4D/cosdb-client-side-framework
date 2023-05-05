@@ -414,14 +414,16 @@ export function Organism_Header_List_Search_Button() {
     const updatedItem = await apiCallPost({ url, body });
     console.log(updatedItem);
 
-    const targetItem = State.items.find((item) => {
-      return item.content.find((contentItem) => {
-        return contentItem.id === updatedItem.id;
-      });
-    });
-    targetItem.title = updatedItem.title;
+    for (const section of State.items) {
+      const itemInState = section.content.find(
+        (item) => item.id === updatedItem.id
+      );
+      console.log("before", itemInState);
+      itemInState = updatedItem;
+      console.log("after", itemInState);
+    }
+
     console.log(State.items);
-    console.log(targetItem);
 
     //await updateListItems("");
   }
