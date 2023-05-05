@@ -179,8 +179,6 @@ export function Organism_Header_List_Search_Button() {
   const handleModal = async (e) => {
     const existingModal = document.querySelector(".organism_modal");
 
-    console.log(e.target);
-
     //Add related nodes
     if (
       e.target.className.includes(
@@ -191,7 +189,7 @@ export function Organism_Header_List_Search_Button() {
       )
     ) {
       console.log("add related nodes");
-      consolelog(e.target);
+      console.log(e.target);
     }
 
     //Update modal content
