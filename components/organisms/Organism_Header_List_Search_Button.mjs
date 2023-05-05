@@ -415,11 +415,11 @@ export function Organism_Header_List_Search_Button() {
     console.log(updatedItem);
 
     for (const section of State.items) {
-      let itemInState = section.content.find(
+      const itemInState = section.content.find(
         (item) => item.id === updatedItem.id
       );
       console.log("before", itemInState);
-      itemInState = updatedItem;
+      itemInState.title = updatedItem.title;
       console.log("after", itemInState);
       console.log(State.items, "new state");
     }
