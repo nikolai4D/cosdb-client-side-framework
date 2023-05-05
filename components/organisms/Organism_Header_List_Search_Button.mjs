@@ -574,6 +574,13 @@ export function Organism_Header_List_Search_Button() {
         existingChildrenDropdown.remove();
       }
 
+      //Get parent rel
+      const parentObj = parentItems.find(
+        (item) => item.node.id === e.target.value
+      );
+      const parentRel = parentObj.rel;
+      console.log("parentRel", parentRel);
+
       const childrenObejcts = await apiCallGet(`api/type/${e.target.value}`);
       console.log("childrenObejcts", childrenObejcts);
 
@@ -597,6 +604,8 @@ export function Organism_Header_List_Search_Button() {
         option.text = item.title;
         childrenDropdown.appendChild(option);
       });
+
+      childrenDropdown.addEventListener("change", async (e) => {});
 
       parentDropdown.insertAdjacentElement("afterend", childrenDropdown);
     });
