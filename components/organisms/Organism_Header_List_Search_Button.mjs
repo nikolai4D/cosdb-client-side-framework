@@ -361,12 +361,15 @@ export function Organism_Header_List_Search_Button() {
     );
     console.log(pId);
 
-    const paragraph = document.getElementById(pId);
+    const paragraph = existingModal.querySelector(
+      `#${pId}[class*="atom_paragraphdata"]`
+    );
+
     console.log(paragraph);
 
     // Create an input element
     const input = document.createElement("input");
-    input.classList.add("value", "atom_input");
+    input.classList.add("atom_input");
     input.id = pId;
     input.type = "text";
     input.value = paragraph.textContent;
