@@ -592,7 +592,7 @@ export function Organism_Header_List_Search_Button() {
         childrenDropdown.appendChild(option);
       });
 
-      parentDropdown.insertAdjacentElement("afterend", childDropdown);
+      parentDropdown.insertAdjacentElement("afterend", childrenDropdown);
     });
 
     //show dropdown with valid rels
