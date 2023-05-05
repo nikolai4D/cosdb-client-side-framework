@@ -96,7 +96,7 @@ export function Organism_Header_List_Search_Button() {
 
     //add event listener to the comp here
 
-    comp.addEventListener("click", closeModal);
+    comp.addEventListener("click", handleModal);
 
     return comp;
   };
@@ -175,9 +175,12 @@ export function Organism_Header_List_Search_Button() {
     existingModal.style.display = "block"; // Show the modal
   };
 
-  const closeModal = async (e) => {
+  const handleModal = async (e) => {
     const existingModal = document.querySelector(".organism_modal");
 
+    console.log(e.target);
+
+    //Navigate forward
     if (e.target.className.includes("relHeaderId")) {
       const newModalContent = await createElement(
         "div",
@@ -187,10 +190,11 @@ export function Organism_Header_List_Search_Button() {
         },
         await this.childOrganism(2, e.target.id)
       );
-      //   existingModal.firstChild.style.display = "none"; // Hide the previous content
+
       existingModal.appendChild(newModalContent); // Add the new content
     }
 
+    //Navigate back
     if (e.target.className.includes("CloseModalBackButton")) {
       console.log(e.target.parentElement.id);
       const currentModalContent = document.getElementById(
@@ -209,6 +213,7 @@ export function Organism_Header_List_Search_Button() {
       }
     }
 
+    //Close modal
     if (e.target === existingModal) {
       existingModal.style.display = "none"; // Hide the modal
       // Remove all divs with the class "organism_modal_content" and their children
