@@ -570,7 +570,9 @@ export function Organism_Header_List_Search_Button() {
       console.log("Selected node:", e.target.value);
       const existingChildrenDropdown =
         document.getElementById("childrenDropdown");
-      existingChildrenDropdown.remove();
+      if (existingChildrenDropdown) {
+        existingChildrenDropdown.remove();
+      }
 
       const childrenObejcts = await apiCallGet(`api/type/${e.target.value}`);
       console.log("childrenObejcts", childrenObejcts);
