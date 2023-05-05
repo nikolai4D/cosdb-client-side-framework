@@ -181,6 +181,19 @@ export function Organism_Header_List_Search_Button() {
 
     console.log(e.target);
 
+    //Add related nodes
+    if (
+      e.target.className.includes(
+        "addInternalRelTo" ||
+          "addExternalRelTo" ||
+          "addInternalRelFrom" ||
+          "addExternalRelFrom"
+      )
+    ) {
+      console.log("add related nodes");
+      consolelog(e.target);
+    }
+
     //Update modal content
     if (e.target.className.includes("modalEdit")) {
       await handleUpdate(existingModal);
