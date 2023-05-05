@@ -353,18 +353,21 @@ export function Organism_Header_List_Search_Button() {
       ".organism_modal_content"
     );
 
-    const paragraphId = currentModalContent.id.substring(
-      str.indexOf("organism_modal_content_") + prefix.length
-    );
-    console.log(paragraphId);
+    const paragraphId = currentModalContent.id;
 
-    const paragraph = document.getElementById(paragraphId);
+    const prefix = "organism_modal_content_";
+    const pId = paragraphId.substring(
+      paragraphId.indexOf(prefix) + prefix.length
+    );
+    console.log(pId);
+
+    const paragraph = document.getElementById(pId);
     console.log(paragraph);
 
     // Create an input element
     const input = document.createElement("input");
     input.classList.add("value", "atom_input");
-    input.id = paragraphId;
+    input.id = pId;
     input.type = "text";
     input.value = paragraph.textContent;
 
@@ -381,7 +384,7 @@ export function Organism_Header_List_Search_Button() {
       // Create a new paragraph element
       const newParagraph = document.createElement("p");
       newParagraph.classList.add("atom_paragraphdata");
-      newParagraph.id = paragraphId;
+      newParagraph.id = pId;
       newParagraph.textContent = input.value;
 
       // Replace the input element and save button with the new paragraph element
