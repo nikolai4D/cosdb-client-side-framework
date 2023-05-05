@@ -568,7 +568,9 @@ export function Organism_Header_List_Search_Button() {
     parentDropdown.addEventListener("change", async (e) => {
       // Handle the selection change here
       console.log("Selected node:", e.target.value);
-      document.getElementById("childrenDropdown").remove();
+      const existingChildrenDropdown =
+        document.getElementById("childrenDropdown");
+      existingChildrenDropdown.remove();
 
       const childrenObejcts = await apiCallGet(`api/type/${e.target.value}`);
       console.log("childrenObejcts", childrenObejcts);
