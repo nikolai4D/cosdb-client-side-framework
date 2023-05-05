@@ -292,6 +292,11 @@ export function Organism_Header_List_Search_Button() {
     const inputFieldValue = document.getElementById(
       "inputFieldNewObject"
     ).value;
+
+    if (inputFieldValue === "") {
+      alert("Input cannot be empty!");
+      return;
+    }
     await createData(selectedParent, inputFieldValue);
   }
 
@@ -390,6 +395,10 @@ export function Organism_Header_List_Search_Button() {
 
     // Add event listener to the save button
     saveButton.addEventListener("click", async () => {
+      if (input.value === "") {
+        alert("Input cannot be empty!");
+        return;
+      }
       // Create a new paragraph element
       const newParagraph = document.createElement("p");
       newParagraph.classList.add("atom_paragraphdata");
