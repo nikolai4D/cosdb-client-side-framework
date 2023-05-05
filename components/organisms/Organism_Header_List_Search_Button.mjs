@@ -415,7 +415,7 @@ export function Organism_Header_List_Search_Button() {
     console.log(updatedItem);
 
     for (const section of State.items) {
-      const itemInState = section.content.find(
+      let itemInState = section.content.find(
         (item) => item.id === updatedItem.id
       );
       console.log("before", itemInState);
