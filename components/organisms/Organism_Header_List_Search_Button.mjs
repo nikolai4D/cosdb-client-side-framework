@@ -510,25 +510,25 @@ export function Organism_Header_List_Search_Button() {
     let modalContent = "";
     let parentItems = "";
 
-    if (e.target.className.includes("addInternalRelTo")) {
+    if (eTarget.className.includes("addInternalRelTo")) {
       modalContent = existingModal.querySelector(
         ".organism_modalconnections__content__connectiontopleft"
       );
       parentItems = relatedParentNodes.internalRelsToNode;
     }
-    if (e.target.className.includes("addInternalRelFrom")) {
+    if (eTarget.className.includes("addInternalRelFrom")) {
       modalContent = existingModal.querySelector(
         ".organism_modalconnections__content__connectiontopright"
       );
       parentItems = relatedParentNodes.internalRelsFromNode;
     }
-    if (e.target.className.includes("addExternalRelTo")) {
+    if (eTarget.className.includes("addExternalRelTo")) {
       modalContent = existingModal.querySelector(
         ".organism_modalconnections__content__connectionbottomleft"
       );
       parentItems = relatedParentNodes.externalRelsToNode;
     }
-    if (e.target.className.includes("addExternalRelFrom")) {
+    if (eTarget.className.includes("addExternalRelFrom")) {
       modalContent = existingModal.querySelector(
         ".organism_modalconnections__content__connectionbottomright"
       );
