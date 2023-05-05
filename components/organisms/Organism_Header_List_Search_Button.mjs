@@ -502,8 +502,8 @@ export function Organism_Header_List_Search_Button() {
     const parentId = idObject.parentId;
 
     //get Nodes related to parent
-    const relatedNodes = await action_getRelatedNodes(parentId);
-    console.log(relatedNodes);
+    const relatedParentNodes = await action_getRelatedParentNodes(parentId);
+    console.log(relatedParentNodes);
 
     //show dropdown with valid parents
     //show dropdown with valid children
