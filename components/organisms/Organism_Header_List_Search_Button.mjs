@@ -190,6 +190,11 @@ export function Organism_Header_List_Search_Button() {
       await handleAddRel(e.target, existingModal);
     }
 
+    //delet related node
+    if (e.target.className.includes("deleteRel")) {
+      console.log(e.target);
+    }
+
     //Update modal content
     if (e.target.className.includes("modalEdit")) {
       await handleUpdate(existingModal);
