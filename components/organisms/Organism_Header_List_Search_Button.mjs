@@ -545,7 +545,7 @@ export function Organism_Header_List_Search_Button() {
     // Create a default option
     const defaultOption = document.createElement("option");
     defaultOption.value = "";
-    defaultOption.text = "Select a related node";
+    defaultOption.text = "Välj Parent";
     defaultOption.selected = true;
     defaultOption.disabled = true;
     dropdown.appendChild(defaultOption);
@@ -559,7 +559,7 @@ export function Organism_Header_List_Search_Button() {
     });
 
     // Append the dropdown to modalContentItems
-    modalContentItems.appendChild(dropdown);
+    modalContentItems.insertBefore(dropdown, modalContentItems.firstChild);
 
     // Add event listener to handle dropdown change
     dropdown.addEventListener("change", (e) => {
