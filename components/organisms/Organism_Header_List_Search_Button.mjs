@@ -353,7 +353,9 @@ export function Organism_Header_List_Search_Button() {
       ".organism_modal_content"
     );
 
-    const paragraphId = currentModalContent.id.split("_")[2];
+    const paragraphId = currentModalContent.id.substring(
+      str.indexOf("organism_modal_content_") + prefix.length
+    );
     console.log(paragraphId);
 
     const paragraph = document.getElementById(paragraphId);
