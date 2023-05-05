@@ -230,6 +230,7 @@ export function Organism_Header_List_Search_Button() {
         modalContent.innerHTML = "";
         modalContent.remove();
       });
+      await updateListItems("");
     }
   };
   const newObject = async (existingModalContent) => {
@@ -420,6 +421,6 @@ export function Organism_Header_List_Search_Button() {
     });
     targetItem.title = updatedItem.title;
 
-    await updateListItems("");
+    //await updateListItems("");
   }
 }
