@@ -420,6 +420,8 @@ export function Organism_Header_List_Search_Button() {
       });
     });
     targetItem.title = updatedItem.title;
+    console.log(State.items);
+    console.log(targetItem);
 
     //await updateListItems("");
   }
