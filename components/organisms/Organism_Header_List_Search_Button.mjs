@@ -464,12 +464,9 @@ export function Organism_Header_List_Search_Button() {
     console.log(deletedItem);
 
     for (const section of State.items) {
-      const index = section.content.findIndex(
-        (item) => item.id === deletedItem.id
+      section.content = section.content.filter(
+        (item) => item.id !== deletedItem.id
       );
-      if (index !== -1) {
-        section.content.splice(index, 1);
-      }
     }
   }
 }
