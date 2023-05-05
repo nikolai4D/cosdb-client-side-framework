@@ -464,9 +464,7 @@ export function Organism_Header_List_Search_Button() {
     console.log(deletedItem);
 
     for (const section of State.items) {
-      section.content = section.content.filter(
-        (item) => item.id !== deletedItem
-      );
+      section.content = section.content.filter((item) => item.id !== id);
     }
     console.log(State.items);
   }
