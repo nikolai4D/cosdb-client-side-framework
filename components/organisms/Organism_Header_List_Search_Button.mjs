@@ -354,8 +354,10 @@ export function Organism_Header_List_Search_Button() {
     );
 
     const paragraphId = currentModalContent.id.split("_")[2];
+    console.log(paragraphId);
 
     const paragraph = document.getElementById(paragraphId);
+    console.log(paragraph);
 
     // Create an input element
     const input = document.createElement("input");
