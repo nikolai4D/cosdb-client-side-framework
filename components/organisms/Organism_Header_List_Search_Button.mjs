@@ -217,7 +217,14 @@ export function Organism_Header_List_Search_Button() {
           modalContent.remove();
         });
 
-        await openModal(objId);
+        const currentModalId = existingModal.firstChild.id;
+        const prefix = "organism_modal_content_";
+        const currentId = currentModalId.substring(
+          currentModalId.indexOf(prefix) + prefix.length
+        );
+        console.log(currentId);
+
+        await openModal(currentId);
       }
     }
 
