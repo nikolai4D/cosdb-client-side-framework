@@ -383,7 +383,7 @@ export function Organism_Header_List_Search_Button() {
     paragraph.replaceWith(input, saveButton);
 
     // Add event listener to the save button
-    saveButton.addEventListener("click", () => {
+    saveButton.addEventListener("click", async () => {
       // Create a new paragraph element
       const newParagraph = document.createElement("p");
       newParagraph.classList.add("atom_paragraphdata");
@@ -393,6 +393,26 @@ export function Organism_Header_List_Search_Button() {
       // Replace the input element and save button with the new paragraph element
       input.replaceWith(newParagraph);
       saveButton.remove();
+
+      // Update the data
+      await updateData(pId, input.value);
     });
+  }
+
+  async function updateData(id, inputValue) {
+    const getParentIdUrl = `api/getById/type/${id}`;
+    const idObject = await apiCallGet(getParentIdUrl);
+    const parentId = idObject.parentId;
+
+    console.log("State", State);
+    console.log({ parentId, inputValue });
+
+    const url = `api/update/type`;
+
+    const body = { title: inputValue, id, parentId, props: [] };
+    const updatedItem = await apiCallPost({ url, body });
+    console.log(updatedItem);
+
+    await updateListItems("");
   }
 }
