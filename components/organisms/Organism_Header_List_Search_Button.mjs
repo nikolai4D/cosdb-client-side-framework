@@ -617,12 +617,12 @@ export function Organism_Header_List_Search_Button() {
           addButton.textContent = "Skapa rel";
           addButton.id = "addRelButton";
           addButton.addEventListener("click", async (e) => {
-            const selectedParent = parentDropdown.value;
             const selectedChild = childrenDropdown.value;
             const relTitle = parentRel.title;
             const relParentId = parentRel.id;
+            const currentNode = objId;
             // Use the selectedParent and selectedChild values to add the relationship here
-            console.log(selectedParent, selectedChild, relTitle, relParentId);
+            console.log(selectedChild, currentNode, relTitle, relParentId);
           });
           childrenDropdown.insertAdjacentElement("afterend", addButton);
         }
