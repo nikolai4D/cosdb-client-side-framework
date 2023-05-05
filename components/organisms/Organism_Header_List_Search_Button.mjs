@@ -185,6 +185,11 @@ export function Organism_Header_List_Search_Button() {
     if (e.target.className.includes("modalEdit")) {
       await handleUpdate(existingModal);
     }
+    if (e.target.className.includes("modalDelete")) {
+      if (window.confirm("Ta bort?")) {
+        await handleDelete(existingModal);
+      }
+    }
 
     //Navigate forward
     if (e.target.className.includes("relHeaderId")) {
@@ -420,6 +425,50 @@ export function Organism_Header_List_Search_Button() {
       );
       if (itemInState) {
         itemInState.title = updatedItem.title;
+      }
+    }
+  }
+  async function handleDelete(existingModal) {
+    // Get the paragraph element
+    const currentModalContent = existingModal.querySelector(
+      ".organism_modal_content"
+    );
+
+    const paragraphId = currentModalContent.id;
+
+    const prefix = "organism_modal_content_";
+    const pId = paragraphId.substring(
+      paragraphId.indexOf(prefix) + prefix.length
+    );
+    console.log(pId);
+
+    // Update the data
+    await deleteData(pId);
+
+    existingModal.style.display = "none"; // Hide the modal
+    // Remove all divs with the class "organism_modal_content" and their children
+    const modalContents = existingModal.querySelectorAll(
+      ".organism_modal_content"
+    );
+    modalContents.forEach((modalContent) => {
+      modalContent.innerHTML = "";
+      modalContent.remove();
+    });
+    await updateListItems("");
+  }
+
+  async function deleteData(id) {
+    const url = `api/deleteById/type/${id}`;
+
+    const deletedItem = await apiCallGet(url);
+    console.log(deletedItem);
+
+    for (const section of State.items) {
+      const index = section.content.findIndex(
+        (item) => item.id === deletedItem.id
+      );
+      if (index !== -1) {
+        section.content.splice(index, 1);
       }
     }
   }
