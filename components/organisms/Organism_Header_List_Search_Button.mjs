@@ -539,8 +539,8 @@ export function Organism_Header_List_Search_Button() {
     //add a dropdown to modalContentItems with valid options from parentItems object.node.title
 
     // Create a select element (dropdown)
-    const dropdown = document.createElement("select");
-    dropdown.classList.add("molecule_modalconnection__dropdown");
+    const parentDropdown = document.createElement("select");
+    parentDropdown.classList.add("molecule_modalconnection__dropdown");
 
     // Create a default option
     const defaultOption = document.createElement("option");
@@ -548,23 +548,50 @@ export function Organism_Header_List_Search_Button() {
     defaultOption.text = "Välj Parent";
     defaultOption.selected = true;
     defaultOption.disabled = true;
-    dropdown.appendChild(defaultOption);
+    parentDropdown.appendChild(defaultOption);
 
     // Iterate through parentItems to add options to the dropdown
     parentItems.forEach((item) => {
       const option = document.createElement("option");
       option.value = item.node.id;
       option.text = item.node.title;
-      dropdown.appendChild(option);
+      parentDropdown.appendChild(option);
     });
 
     // Append the dropdown to modalContentItems
-    modalContentItems.insertBefore(dropdown, modalContentItems.firstChild);
+    modalContentItems.insertBefore(
+      parentDropdown,
+      modalContentItems.firstChild
+    );
 
     // Add event listener to handle dropdown change
     dropdown.addEventListener("change", (e) => {
       // Handle the selection change here
       console.log("Selected node:", e.target.value);
+
+      const childrenObejcts = apiCallGet(`api/type/${e.target.value}`);
+
+      // Create a select element (dropdown)
+      const childrenDropdown = document.createElement("select");
+      childrenDropdown.classList.add("molecule_modalconnection__dropdown");
+
+      // Create a default option
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.text = "Välj Parent";
+      defaultOption.selected = true;
+      defaultOption.disabled = true;
+      childrenDropdown.appendChild(defaultOption);
+
+      // Iterate through parentItems to add options to the dropdown
+      childrenObejcts.forEach((item) => {
+        const option = document.createElement("option");
+        option.value = item.id;
+        option.text = item.title;
+        childrenDropdown.appendChild(option);
+      });
+
+      parentDropdown.insertAdjacentElement("afterend", childDropdown);
     });
 
     //show dropdown with valid rels
