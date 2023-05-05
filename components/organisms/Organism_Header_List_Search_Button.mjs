@@ -568,6 +568,7 @@ export function Organism_Header_List_Search_Button() {
     parentDropdown.addEventListener("change", async (e) => {
       // Handle the selection change here
       console.log("Selected node:", e.target.value);
+      getElementById("childrenDropdown").remove();
 
       const childrenObejcts = await apiCallGet(`api/type/${e.target.value}`);
       console.log("childrenObejcts", childrenObejcts);
@@ -575,6 +576,7 @@ export function Organism_Header_List_Search_Button() {
       // Create a select element (dropdown)
       const childrenDropdown = document.createElement("select");
       childrenDropdown.classList.add("molecule_modalconnection__dropdown");
+      childrenDropdown.id = "childrenDropdown";
 
       // Create a default option
       const defaultOption = document.createElement("option");
