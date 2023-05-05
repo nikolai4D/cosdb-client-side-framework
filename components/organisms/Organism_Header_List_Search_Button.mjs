@@ -418,14 +418,9 @@ export function Organism_Header_List_Search_Button() {
       const itemInState = section.content.find(
         (item) => item.id === updatedItem.id
       );
-      console.log("before", itemInState);
-      itemInState.title = updatedItem.title;
-      console.log("after", itemInState);
-      console.log(State.items, "new state");
+      if (itemInState) {
+        itemInState.title = updatedItem.title;
+      }
     }
-
-    console.log(State.items);
-
-    //await updateListItems("");
   }
 }
