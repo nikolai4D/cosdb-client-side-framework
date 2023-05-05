@@ -207,6 +207,13 @@ export function Organism_Header_List_Search_Button() {
         const deletedRel = await apiCallGet(url);
         console.log(deletedRel);
 
+        const currentModalId = existingModal.firstChild.id;
+        const prefix = "organism_modal_content_";
+        const currentId = currentModalId.substring(
+          currentModalId.indexOf(prefix) + prefix.length
+        );
+        console.log(currentId);
+
         existingModal.style.display = "none"; // Hide the modal
         // Remove all divs with the class "organism_modal_content" and their children
         const modalContents = existingModal.querySelectorAll(
@@ -216,13 +223,6 @@ export function Organism_Header_List_Search_Button() {
           modalContent.innerHTML = "";
           modalContent.remove();
         });
-
-        const currentModalId = existingModal.firstChild.id;
-        const prefix = "organism_modal_content_";
-        const currentId = currentModalId.substring(
-          currentModalId.indexOf(prefix) + prefix.length
-        );
-        console.log(currentId);
 
         await openModal(currentId);
       }
