@@ -141,6 +141,7 @@ export function Organism_Header_List_Search_Button() {
   }
 
   const openModal = async (id) => {
+    //create modal content
     const existingModal = document.getElementById("organism_modal");
     let existingModalContent = document.getElementById(
       "organism_modal_content"
@@ -179,6 +180,11 @@ export function Organism_Header_List_Search_Button() {
     const existingModal = document.querySelector(".organism_modal");
 
     console.log(e.target);
+
+    //Update modal content
+    if (e.target.className.includes("modalEdit")) {
+      await handleUpdate(existingModal);
+    }
 
     //Navigate forward
     if (e.target.className.includes("relHeaderId")) {
@@ -339,5 +345,40 @@ export function Organism_Header_List_Search_Button() {
     existingModalContent.appendChild(divInputAndButton);
     existingModalContent.style.removeProperty("width");
     existingModalContent.style.removeProperty("height");
+  }
+
+  async function handleUpdate(existingModal) {
+    // Get the paragraph element
+    const currentModalContent = existingModal.querySelector(
+      ".organism_modal_content"
+    );
+    console.log(currentModalContent);
+
+    // // Create an input element
+    // const input = document.createElement("input");
+    // input.classList.add("value", "atom_input");
+    // input.type = "text";
+    // input.value = paragraph.textContent;
+
+    // // Create a save button
+    // const saveButton = document.createElement("button");
+    // saveButton.classList.add("atom_buttonpositive");
+    // saveButton.textContent = "Save";
+
+    // // Replace the paragraph element with the input element and save button
+    // paragraph.replaceWith(input, saveButton);
+
+    // // Add event listener to the save button
+    // saveButton.addEventListener("click", () => {
+    //   // Create a new paragraph element
+    //   const newParagraph = document.createElement("p");
+    //   newParagraph.classList.add("value", "placeholder", "atom_paragraphdata");
+    //   newParagraph.id = paragraph.id;
+    //   newParagraph.textContent = input.value;
+
+    //   // Replace the input element and save button with the new paragraph element
+    //   input.replaceWith(newParagraph);
+    //   saveButton.remove();
+    // });
   }
 }
