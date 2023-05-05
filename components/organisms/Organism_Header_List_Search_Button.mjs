@@ -10,7 +10,7 @@ import { Organism_ModalConnections } from "./Organism_ModalConnections.mjs";
 import { State } from "../../data-mgmt/State.mjs";
 import { apiCallGet } from "../../data-mgmt/actions/apiCalls.mjs";
 import { apiCallPost } from "../../data-mgmt/actions/apiCalls.mjs";
-import { action_getRelatedNodes } from "../../data-mgmt/actions/action_getRelatedNodes.mjs";
+import { action_getRelatedParentNodes } from "../../data-mgmt/actions/action_getRelatedParentNodes.mjs";
 
 export function Organism_Header_List_Search_Button() {
   Organism.call(this);
