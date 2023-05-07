@@ -526,6 +526,7 @@ export function Organism_Header_List_Search_Button() {
   }
 
   async function handleAddRel(eTarget, existingModal) {
+    console.log(existingModal);
     console.log(eTarget);
     const objectId = eTarget.offsetParent.id;
     const prefix = "organism_modal_content_";
