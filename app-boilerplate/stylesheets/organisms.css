@@ -41,8 +41,8 @@ margin: 0;
 padding: 20px;
 border: none;
 border-radius: 6px;
-width: 50%;
-height: 50%;
+/* width: 1200px;
+height: 700px; */
 position: absolute;
 top: 50%;
 left: 50%;
@@ -62,4 +62,59 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
     display: flex;
     flex-flow: column;
     gap: 50px;
+}
+
+.organism_modalconnections__content{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    grid-template-rows:  300px 300px;
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    row-gap: 2em;
+}
+
+.organism_modalconnections__content__connectiontopleft {
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    grid-column: 1;
+    grid-row: 1;
+    min-width: min-content;
+    overflow: scroll;
+}
+
+.organism_modalconnections__content__connectionbottomleft{
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    grid-column: 1;
+    grid-row: 2;
+    min-width: min-content;
+    overflow: scroll;
+
+  
+}
+
+.organism_modalconnections__content__content{
+    grid-column: 2;
+    grid-row: 1/span 2;
+}
+
+.organism_modalconnections__content__connectiontopright{
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    grid-column: 3;
+    grid-row: 1;
+    min-width: min-content;
+    overflow: scroll;
+
+}
+
+.organism_modalconnections__content__connectionbottomright{
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    grid-column: 3;
+    grid-row: 2;
+    min-width: min-content;
+    overflow: scroll;
+
 }

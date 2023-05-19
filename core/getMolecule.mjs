@@ -1,14 +1,14 @@
-import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { getAtom } from "./getAtom.mjs";
 import { getFunction } from "./getFunction.mjs";
-// import { createComponent } from "./helpers.mjs";
 import { createComponent } from "./helpers/createComponent.mjs";
+import { State } from "../data-mgmt/State.mjs";
 
 export async function getMolecule(module, parentId, molId = null) {
-  const modelMolecules = await apiCallGet(`/read/molecules`);
-  const modelAtoms = await apiCallGet(`/read/atoms`);
+  const modelMolecules = State.components.molecules;
 
-  const modelFunctions = await apiCallGet(`/read/functions`);
+  const modelAtoms = State.components.atoms;
+
+  const modelFunctions = State.components.functions;
 
   const type = "molecule";
 

@@ -36,7 +36,7 @@ export function Organism_X_TemplateParent() {
   const component = async () => {
     const comp = await createElement(
       "div",
-      { className: "Organism_TemplateParent" },
+      { class: "Organism_TemplateParent" },
       await createElement("div", {}, await this.molecule(1, compData)),
       await createElement("div", {}, await this.childOrganism(1, compData))
     );

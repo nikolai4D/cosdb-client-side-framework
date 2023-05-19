@@ -1,14 +1,16 @@
-import { apiCallGet } from "../data-mgmt/actions/apiCalls.mjs";
 import { getMolecule } from "./getMolecule.mjs";
 import { getFunction } from "./getFunction.mjs";
-// import { createComponent } from "./helpers.mjs";
 import { createComponent } from "./helpers/createComponent.mjs";
+import { State } from "../data-mgmt/State.mjs";
 
 export async function getOrganism(module, parentId, orgId = null) {
-  const modelOrganisms = await apiCallGet(`/read/organisms`);
-  const modelChildOrganisms = await apiCallGet(`/read/organisms`);
-  const modelMolecules = await apiCallGet(`/read/molecules`);
-  const modelFunctions = await apiCallGet(`/read/functions`);
+  const modelOrganisms = State.components.organisms;
+
+  const modelChildOrganisms = State.components.organisms;
+
+  const modelMolecules = State.components.molecules;
+
+  const modelFunctions = State.components.functions;
 
   const type = "organism";
 
@@ -63,7 +65,6 @@ export async function getOrganism(module, parentId, orgId = null) {
   const funcs = modelFunctions.filter((func) => func.parentId === organismId);
   for (const func of funcs) {
     const value = func.value;
-    console.log(func);
     const parameters = func.parameters;
     const funcObject = await getFunction(value, organismId);
     const funcId = parseInt(func.key.split(" ")[1]);

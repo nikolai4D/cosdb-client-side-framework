@@ -72,3 +72,113 @@
 .molecule_heading_list__list > li:hover {
     background: rgb(236, 236, 236);
   }
+
+
+.molecule_modalheader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.molecule_modalcentercontent__leftarrows {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    margin-top: 6em;
+    margin-bottom: 6em;
+}
+
+.molecule_modalcentercontent__rightarrows {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    margin-top: 6em;
+    margin-bottom: 6em;
+
+}
+
+.molecule_modalcentercontent__leftarrows >  .molecule_modalcentercontent__leftarrows__toparrow > i {
+    font-size: 1rem;
+    
+}
+
+.molecule_modalcentercontent__leftarrows >  .molecule_modalcentercontent__leftarrows__bottomarrow > i {
+    font-size: 1rem;
+}
+
+
+.molecule_modalcentercontent__rightarrows >  .molecule_modalcentercontent__rightarrows__toparrow > i {
+    font-size: 1rem;
+}
+
+
+.molecule_modalcentercontent__rightarrows >  .molecule_modalcentercontent__rightarrows__bottomarrow > i {
+    font-size: 1rem;
+}
+
+.molecule_modalcentercontent{
+    display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.molecule_modalcentercontent__content{
+    border: 1px solid var(--grey-color);
+    border-radius: 6px;
+    background-color: rgb(236, 236, 236);
+    padding: 1em;
+    min-width: 300px;
+
+}
+
+.molecule_modalconnection {
+    display: flex;
+    padding:1em;
+    flex-flow: column;
+    width: 500px;
+}
+
+.molecule_modalcentercontent__content__header {
+    display: flex;
+    gap: 0.5em;
+}
+
+.molecule_modalconnection__items__item {
+    padding: 1em;
+    transition: 0.05s;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.molecule_modalconnection__items__item > * + * {
+    margin-left: 10px;
+  }
+
+  
+
+.molecule_modalconnection__items__item:hover {
+    background: rgb(236, 236, 236);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+.molecule_modalconnection__items__item > .atom_paragraphdata {
+    font-style: italic;
+}
+
+.molecule_modalconnection__header  {
+    display: flex;
+    justify-content: space-between;
+}
+
+.molecule_createObjectInputAndButton{
+display: flex;
+flex-direction: column;
+margin: 1em;
+grid-gap: 1em;
+}
+
+.molecule_createObjectInputAndButton > .atom_buttonPositive {
+    align-self: center;
+}

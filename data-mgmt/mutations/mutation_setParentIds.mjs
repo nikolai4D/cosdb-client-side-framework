@@ -1,5 +1,5 @@
 import { State } from "../State.mjs";
 
-export async function mutation_setAllListData(type, sortedData) {
+export async function mutation_setParentIds(type, sortedData) {
   State[type] = await sortedData;
 }

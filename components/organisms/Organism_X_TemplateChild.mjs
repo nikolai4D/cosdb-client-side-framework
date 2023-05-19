@@ -31,7 +31,7 @@ export function Organism_X_TemplateChild() {
   ) => {
     const comp = await createElement(
       "div",
-      { className: "Organism_TemplateChild" },
+      { class: "Organism_TemplateChild" },
       await createElement("div", {}, await this.molecule(1, compData))
     );
 

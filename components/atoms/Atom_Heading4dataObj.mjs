@@ -2,7 +2,7 @@
 import { createElement } from "../../core/helpers/createElement.mjs";
 import { Atom } from "../../core/Atom.mjs";
 
-export function Atom_Heading4() {
+export function Atom_Heading4dataObj() {
   Atom.call(this);
 
   //build component
@@ -11,8 +11,9 @@ export function Atom_Heading4() {
       "h4",
       {
         class: `${await this.atom()} atom_heading4`,
+        id: compData.id,
       },
-      compData
+      compData.title
     );
     //add event listeners here
     return comp;

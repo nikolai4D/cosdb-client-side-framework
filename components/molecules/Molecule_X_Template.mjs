@@ -29,7 +29,7 @@ export function Molecule_X_Template() {
   ) => {
     const comp = await createElement(
       "div",
-      { class: "Molecule_Template" },
+      { class: "molecule_template" },
       await createElement("ul", {}, ...(await items(compData)))
     );
 
