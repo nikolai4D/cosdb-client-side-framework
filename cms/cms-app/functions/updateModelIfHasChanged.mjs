@@ -2,8 +2,8 @@ import { action_readModel } from "../data-mgmt/actions/action_readModel.mjs";
 
 export async function updateModelIfHasChanged() {
 
-    const readModel = action_readModel();
-    console.log( readModel)
+    const readModel = await action_readModel();
+    console.log(State)
 
     console.log("Hello!")
 
