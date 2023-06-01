@@ -3,7 +3,7 @@ import { State } from "../data-mgmt/State.mjs";
 import { readComponents } from "../requests/readComponents.mjs";
 import { viewTemplateValues } from "../_2_viewTemplate/viewTemplateValues.mjs";
 import { slotValues } from "../_3_slot/slotValues.mjs";
-// import { componentValues } from "./componentValues.mjs";
+import { componentValues } from "../_4_component/componentValues.mjs";
 
 function sameMembers(arr1, arr2) {
     const set1 = new Set(arr1);
@@ -51,21 +51,19 @@ export async function updateModelIfHasChanged() {
         }
 
         for (const slot of slotsInState) {
-            const existingComponent = State.components.find(
+            const componentInState = State.components.find(
                 (component) => component.parentId === slot.id
             );
 
-                   // get slots from state with the viewTemplate as the parent
-            const slotsInState = State.slots.filter(slot => slot.parentId === viewTemplateInState.id)
-        
-
-            if (!viewTemplateSlots.includes(existingComponent.value)){
-                console.log("Component has changed! : ", existingComponent)
+            if (componentInState == undefined) {
+                console.log("No component! : ", componentInState)
                 continue
             }
 
-            const componentSlots = await slotValues(existingComponent.value);
-            console.log(componentSlots, "componentSlots")
+
+            const componentFiles = await componentValues();
+            console.log(componentFiles, "componentFiles")
+
 
             // const slotsInState = State.slots.filter(slot => slot.parentId === existingComponent.id)
 
