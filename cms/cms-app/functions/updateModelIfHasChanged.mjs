@@ -28,6 +28,11 @@ export async function updateModelIfHasChanged() {
             continue
         }
 
+        const slotsInState = State.slots.filter(slot => slot.parentId === existingViewTemplate.id)
+        
+        console.log(slotsInState, "slotsInState")
+
+
         const viewTemplateSlots = await slotValues(existingViewTemplate.value);
         console.log(viewTemplateSlots, "viewTemplateSlots")
 
@@ -39,9 +44,6 @@ export async function updateModelIfHasChanged() {
 
     let components = await readComponents(componentsDir)
     console.log(components, "components")
-
-
-    const viewTemplateSlots = await slotValues(viewTemplate);
 
 
     // get the code structure
