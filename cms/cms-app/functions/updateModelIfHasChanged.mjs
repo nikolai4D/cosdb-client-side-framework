@@ -59,6 +59,41 @@ export async function updateModelIfHasChanged() {
                 console.log("No component! : ", componentInState)
                 continue
             }
+            // check if components id is a parentId for an organism, molecule or an atom
+            // if it is, check if the organism, molecule or atom still exists as a file
+                // "!viewTemplateFiles.includes(viewTemplateInState.value))"
+            // if it doesn't, alert
+
+
+            // check if there is a function in the State that has the organism/molecule/atom as a parent
+            // if there is, check if the function still exists as a file
+                // if they don't, alert
+
+
+            // if matching component is an organism, check if there is an organism, molecule or atom in the state that has the matching component as a parent
+            // if there is:
+                // check if the organisms, molecules and atoms still exist as a file
+                // if they don't, alert
+
+                // check if there is a function in the State that has the organism/molecule/atom as a parent
+                // if there is, check if the function still exists as a file
+                    // if they don't, alert
+
+                // then go through each sub-component one-by-one with this function again with the organism as the componentInState
+                // also run if matching component is a molecule
+                // also run if matchcing compontent is an atom
+
+
+            // if matching component is an molecule, check if there is a molecule or atom in the state that has the matching component as a parent
+            // if there is:
+                // check if the molecules and atoms still exist as a file
+                // if they don't, alert
+
+                // then go through each sub-component one-by-one with this function again with the molecule as the componentInState
+
+            // if matching component is an atom, check if the atom still exist as a file
+                // if it don't, alert
+
 
             console.log(componentInState, "componentInState")
 
