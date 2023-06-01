@@ -40,9 +40,9 @@ export async function updateModelIfHasChanged() {
         const slotsInState = State.slots.filter(slot => slot.parentId === viewTemplateInState.id)
         
         // get slots from the viewTemplate file
-        const viewTemplateSlots = await slotValues(viewTemplateInState.value);
+        const slotsInFile = await slotValues(viewTemplateInState.value);
 
-        let isSlotSame = sameMembers(slotsInState.map(slot=> slot.value), viewTemplateSlots.map(slot=> slot.slot))
+        let isSlotSame = sameMembers(slotsInState.map(slot=> slot.value), slotsInFile.map(slot=> slot.slot))
 
         // if the slots don't match, alert
         if (!isSlotSame){
@@ -60,9 +60,10 @@ export async function updateModelIfHasChanged() {
                 continue
             }
 
+            console.log(componentInState, "componentInState")
 
-            const componentFiles = await componentValues();
-            console.log(componentFiles, "componentFiles")
+            const componentInFiles = await componentValues();
+            console.log(componentInFiles, "componentInFiles")
 
 
             // const slotsInState = State.slots.filter(slot => slot.parentId === existingComponent.id)
