@@ -4,6 +4,13 @@ import { readComponents } from "../requests/readComponents.mjs";
 import { viewTemplateValues } from "../_2_viewTemplate/viewTemplateValues.mjs";
 import { slotValues } from "../_3_slot/slotValues.mjs";
 
+function sameMembers(arr1, arr2) {
+    const set1 = new Set(arr1);
+    const set2 = new Set(arr2);
+    return arr1.every(item => set2.has(item)) &&
+        arr2.every(item => set1.has(item))
+}
+
 
 export async function updateModelIfHasChanged() {
 
@@ -18,28 +25,35 @@ export async function updateModelIfHasChanged() {
 
     for (const view of State.views) {
         // add viewTemplates from state
-    
+
+        // get viewTemplate from state
         const existingViewTemplate = State.viewTemplates.find(
           (viewTemplate) => viewTemplate.parentId === view.id
         );
 
+        // if the viewTemplate doesn't exist, alert
         if (!values.includes(existingViewTemplate.value)){
             console.log("ViewTemplate has changed! : ", existingViewTemplate)
             continue
         }
 
+        // get slots from state with the viewTemplate as the parent
         const slotsInState = State.slots.filter(slot => slot.parentId === existingViewTemplate.id)
         
-        console.log(slotsInState, "slotsInState")
-
-
+        // get slots from the viewTemplate file
         const viewTemplateSlots = await slotValues(existingViewTemplate.value);
-        console.log(viewTemplateSlots, "viewTemplateSlots")
 
+        let isSlotSame = sameMembers(slotsInState.map(slot=> slot.value), viewTemplateSlots.map(slot=> slot.slot))
+        
+        console.log(isSlotSame, "isSlotSame")
+        
+        // if the slots don't match, alert
         if (slotsInState.length !== viewTemplateSlots.length){
             console.log("Slots have changed! : ", existingViewTemplate)
             continue
         }
+
+
 
         for (const slot of slotsInState) {
             const existingComponent = State.components.find(
