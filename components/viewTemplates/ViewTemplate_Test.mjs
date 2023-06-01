@@ -11,6 +11,10 @@ export function ViewTemplate_Test() {
       slot: "slot1",
       content: "slot1 content from template",
     },
+    {
+      slot: "slot2",
+      content: "slot1 content from template",
+    },
   ];
 
   //build component
