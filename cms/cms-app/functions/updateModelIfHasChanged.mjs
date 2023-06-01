@@ -3,6 +3,7 @@ import { State } from "../data-mgmt/State.mjs";
 import { readComponents } from "../requests/readComponents.mjs";
 import { viewTemplateValues } from "../_2_viewTemplate/viewTemplateValues.mjs";
 import { slotValues } from "../_3_slot/slotValues.mjs";
+import { componentValues } from "./componentValues.mjs";
 
 function sameMembers(arr1, arr2) {
     const set1 = new Set(arr1);
@@ -16,50 +17,48 @@ export async function updateModelIfHasChanged() {
 
     const readModel = await action_readModel();
     console.log(State)
+    
+    const viewTemplateFiles = await viewTemplateValues();
 
-    console.log("Hello!")
-
-    const values = await viewTemplateValues();
-    console.log(values, "values")
-
+    console.log(viewTemplateFiles, "values")
 
     for (const view of State.views) {
         // add viewTemplates from state
 
         // get viewTemplate from state
-        const existingViewTemplate = State.viewTemplates.find(
+        const viewTemplateInState = State.viewTemplates.find(
           (viewTemplate) => viewTemplate.parentId === view.id
         );
 
         // if the viewTemplate doesn't exist, alert
-        if (!values.includes(existingViewTemplate.value)){
-            console.log("ViewTemplate has changed! : ", existingViewTemplate)
+        if (!viewTemplateFiles.includes(viewTemplateInState.value)){
+            console.log("ViewTemplate has changed! : ", viewTemplateInState)
             continue
         }
 
         // get slots from state with the viewTemplate as the parent
-        const slotsInState = State.slots.filter(slot => slot.parentId === existingViewTemplate.id)
+        const slotsInState = State.slots.filter(slot => slot.parentId === viewTemplateInState.id)
         
         // get slots from the viewTemplate file
-        const viewTemplateSlots = await slotValues(existingViewTemplate.value);
+        const viewTemplateSlots = await slotValues(viewTemplateInState.value);
 
         let isSlotSame = sameMembers(slotsInState.map(slot=> slot.value), viewTemplateSlots.map(slot=> slot.slot))
-        
-        console.log(isSlotSame, "isSlotSame")
-        
+
         // if the slots don't match, alert
-        if (slotsInState.length !== viewTemplateSlots.length){
-            console.log("Slots have changed! : ", existingViewTemplate)
+        if (!isSlotSame){
+            console.log("Slots have changed! : ", viewTemplateInState)
             continue
         }
-
-
 
         for (const slot of slotsInState) {
             const existingComponent = State.components.find(
                 (component) => component.parentId === slot.id
             );
-                
+
+                   // get slots from state with the viewTemplate as the parent
+            const slotsInState = State.slots.filter(slot => slot.parentId === viewTemplateInState.id)
+        
+
             if (!viewTemplateSlots.includes(existingComponent.value)){
                 console.log("Component has changed! : ", existingComponent)
                 continue
@@ -68,10 +67,10 @@ export async function updateModelIfHasChanged() {
             const componentSlots = await slotValues(existingComponent.value);
             console.log(componentSlots, "componentSlots")
 
-            const slotsInState = State.slots.filter(slot => slot.parentId === existingComponent.id)
+            // const slotsInState = State.slots.filter(slot => slot.parentId === existingComponent.id)
 
 
-        // const viewTemplateBody = await getAccordionBody(existingViewTemplate.id);
+        // const viewTemplateBody = await getAccordionBody(viewTemplateInState.id);
     }
 
     const componentsDir = "viewTemplates";
