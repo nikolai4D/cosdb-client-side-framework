@@ -1,5 +1,8 @@
 import { action_readModel } from "../data-mgmt/actions/action_readModel.mjs";
 import { State } from "../data-mgmt/State.mjs";
+import { readComponents } from "../requests/readComponents.mjs";
+import { viewTemplateValues } from "../requests/viewTemplateValues.mjs";
+
 
 export async function updateModelIfHasChanged() {
 
@@ -16,6 +19,9 @@ export async function updateModelIfHasChanged() {
         );
         console.log(existingViewTemplate, "hello")
     }    
+
+    const values = await viewTemplateValues();
+    console.log(values, "values")
 
     // get the code structure
         // does the viewtemplate still exist?**
