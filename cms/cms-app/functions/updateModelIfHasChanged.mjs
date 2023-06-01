@@ -2,6 +2,7 @@ import { action_readModel } from "../data-mgmt/actions/action_readModel.mjs";
 import { State } from "../data-mgmt/State.mjs";
 import { readComponents } from "../requests/readComponents.mjs";
 import { viewTemplateValues } from "../_2_viewTemplate/viewTemplateValues.mjs";
+import { slotValues } from "./slotValues.mjs";
 
 
 export async function updateModelIfHasChanged() {
@@ -27,6 +28,10 @@ export async function updateModelIfHasChanged() {
             continue
         }
 
+        const viewTemplateSlots = await slotValues(existingViewTemplate.value);
+        console.log(viewTemplateSlots, "viewTemplateSlots")
+
+
         // const viewTemplateBody = await getAccordionBody(existingViewTemplate.id);
     }
 
@@ -34,6 +39,9 @@ export async function updateModelIfHasChanged() {
 
     let components = await readComponents(componentsDir)
     console.log(components, "components")
+
+
+    const viewTemplateSlots = await slotValues(viewTemplate);
 
 
     // get the code structure
