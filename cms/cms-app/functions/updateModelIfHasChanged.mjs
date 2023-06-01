@@ -36,6 +36,26 @@ export async function updateModelIfHasChanged() {
         const viewTemplateSlots = await slotValues(existingViewTemplate.value);
         console.log(viewTemplateSlots, "viewTemplateSlots")
 
+        if (slotsInState.length !== viewTemplateSlots.length){
+            console.log("Slots have changed! : ", existingViewTemplate)
+            continue
+        }
+
+        for (const slot of slotsInState) {
+            const existingComponent = State.components.find(
+                (component) => component.parentId === slot.id
+            );
+                
+            if (!viewTemplateSlots.includes(existingComponent.value)){
+                console.log("Component has changed! : ", existingComponent)
+                continue
+            }
+
+            const componentSlots = await slotValues(existingComponent.value);
+            console.log(componentSlots, "componentSlots")
+
+            const slotsInState = State.slots.filter(slot => slot.parentId === existingComponent.id)
+
 
         // const viewTemplateBody = await getAccordionBody(existingViewTemplate.id);
     }
