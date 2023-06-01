@@ -1,7 +1,7 @@
 import { action_readModel } from "../data-mgmt/actions/action_readModel.mjs";
 import { State } from "../data-mgmt/State.mjs";
 import { readComponents } from "../requests/readComponents.mjs";
-import { viewTemplateValues } from "../requests/viewTemplateValues.mjs";
+import { viewTemplateValues } from "../_2_viewTemplate/viewTemplateValues.mjs";
 
 
 export async function updateModelIfHasChanged() {
