@@ -8,8 +8,17 @@ export async function updateModelIfHasChanged() {
 
     console.log("Hello!")
 
+    for (const view of State.views) {
+        // add viewTemplates from state
+    
+        const existingViewTemplate = State.viewTemplates.find(
+          (viewTemplate, index) => viewTemplate.parentId === view.id
+        );
+        console.log(existingViewTemplate, "hello", index)
+    }    
+
     // get the code structure
-        // does the viewtemplate still exist?*
+        // does the viewtemplate still exist?**
             // are the slots still the same?*
 
             // the component in the slot, 
@@ -25,8 +34,9 @@ export async function updateModelIfHasChanged() {
 
                 // are the functions still the same?*
 
- // * if not, then remove and replace with new component
- 
+ // ** if not, then remove
+  // * if not, then remove and replace with new component
+
                 // Read Model 
     // Change model
 
