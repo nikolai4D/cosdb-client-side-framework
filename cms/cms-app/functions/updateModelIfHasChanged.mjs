@@ -11,17 +11,30 @@ export async function updateModelIfHasChanged() {
 
     console.log("Hello!")
 
+    const values = await viewTemplateValues();
+    console.log(values, "values")
+
+
     for (const view of State.views) {
         // add viewTemplates from state
     
         const existingViewTemplate = State.viewTemplates.find(
           (viewTemplate) => viewTemplate.parentId === view.id
         );
-        console.log(existingViewTemplate, "hello")
-    }    
 
-    const values = await viewTemplateValues();
-    console.log(values, "values")
+        if (!values.includes(existingViewTemplate.value)){
+            console.log("ViewTemplate has changed! : ", existingViewTemplate)
+            continue
+        }
+
+        // const viewTemplateBody = await getAccordionBody(existingViewTemplate.id);
+    }
+
+    const componentsDir = "viewTemplates";
+
+    let components = await readComponents(componentsDir)
+    console.log(components, "components")
+
 
     // get the code structure
         // does the viewtemplate still exist?**
