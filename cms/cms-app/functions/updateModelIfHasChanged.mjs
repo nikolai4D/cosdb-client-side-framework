@@ -3,7 +3,7 @@ import { State } from "../data-mgmt/State.mjs";
 import { readComponents } from "../requests/readComponents.mjs";
 import { viewTemplateValues } from "../_2_viewTemplate/viewTemplateValues.mjs";
 import { slotValues } from "../_3_slot/slotValues.mjs";
-import { componentValues } from "./componentValues.mjs";
+// import { componentValues } from "./componentValues.mjs";
 
 function sameMembers(arr1, arr2) {
     const set1 = new Set(arr1);
@@ -17,7 +17,7 @@ export async function updateModelIfHasChanged() {
 
     const readModel = await action_readModel();
     console.log(State)
-    
+
     const viewTemplateFiles = await viewTemplateValues();
 
     console.log(viewTemplateFiles, "values")
