@@ -12,9 +12,9 @@ export async function updateModelIfHasChanged() {
         // add viewTemplates from state
     
         const existingViewTemplate = State.viewTemplates.find(
-          (viewTemplate, index) => viewTemplate.parentId === view.id
+          (viewTemplate) => viewTemplate.parentId === view.id
         );
-        console.log(existingViewTemplate, "hello", index)
+        console.log(existingViewTemplate, "hello")
     }    
 
     // get the code structure
