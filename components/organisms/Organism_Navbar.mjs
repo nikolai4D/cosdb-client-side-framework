@@ -25,8 +25,8 @@ export function Organism_Navbar() {
     },
     {
       id: 3,
-      molecule: "Molecule_Text_Button",
-      component: new Molecule_Text_Button(),
+      molecule: "Molecule_Icon_NavItem",
+      component: new Molecule_Icon_NavItem(),
     },
   ];
 
@@ -49,7 +49,7 @@ export function Organism_Navbar() {
       ),
       await createElement(
         "div",
-        { class: "organism_navbar__text_button" },
+        { class: "organism_navbar__icon_navitem" },
         await this.molecule(3, null)
       )
     );
