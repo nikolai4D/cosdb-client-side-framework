@@ -226,9 +226,29 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
             type
         );
 
-        console.log(subOrganisms, "subOrganisms")
+        console.log(subOrganisms, "subOrganisms1")
 
-        
+
+        type = "molecules";
+        constructorType = "molecules";
+        const subMolecules = await getConstructors(
+            filename,
+            constructorType,
+            type
+        );
+        console.log(subMolecules, "subMolecules1")
+
+
+        type = "atoms";
+        constructorType = "atoms";
+        const subAtoms = await getConstructors(
+            filename,
+            constructorType,
+            type
+        );
+
+        console.log(subAtoms, "subAtom1")
+
 
     }
 
@@ -243,7 +263,19 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
             constructorType,
             type
         );
-        console.log(subMolecules, "subMolecules")
+        console.log(subMolecules, "subMolecules2")
+
+
+        type = "atoms";
+        constructorType = "atoms";
+        const subAtoms = await getConstructors(
+            filename,
+            constructorType,
+            type
+        );
+
+        console.log(subAtoms, "subAtoms2")
+
     }
     
     for (let atom of s_atomsInState) {
