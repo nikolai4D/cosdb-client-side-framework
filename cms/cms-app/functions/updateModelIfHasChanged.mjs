@@ -210,6 +210,7 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
 
     // get organisms from file with the matching component as a parent
     
+    const organismsDir = "Organisms";
 
     let organisms = (await readComponents(organismsDir)).map(
         (component) => component.name
