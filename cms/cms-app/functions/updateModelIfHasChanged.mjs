@@ -279,7 +279,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     }
 
     let filename = moleculeInState.value;
-    let type = "molecules";
+    let type = "organisms";
     let constructorType = "molecules";
     const molecules = await getConstructors(
         filename,
