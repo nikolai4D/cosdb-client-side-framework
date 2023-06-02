@@ -219,6 +219,7 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     for (let organism of s_organismsInState) {
 
         const filename = organism.value;
+        console.log(filename, "filename")
 
         const subOrganisms = await getConstructors(
             filename,
@@ -226,9 +227,29 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
             type
         );
 
-        console.log(subOrganisms, "subOrganisms")
+        console.log(subOrganisms, "subOrganisms1")
 
-        
+
+        type = "organisms";
+        constructorType = "molecules";
+        const subMolecules = await getConstructors(
+            filename,
+            constructorType,
+            type
+        );
+        console.log(subMolecules, "subMolecules1")
+
+
+        type = "organisms";
+        constructorType = "atoms";
+        const subAtoms = await getConstructors(
+            filename,
+            constructorType,
+            type
+        );
+
+        console.log(subAtoms, "subAtom1")
+
 
     }
 
@@ -243,7 +264,19 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
             constructorType,
             type
         );
-        console.log(subMolecules, "subMolecules")
+        console.log(subMolecules, "subMolecules2")
+
+
+        type = "molecules";
+        constructorType = "atoms";
+        const subAtoms = await getConstructors(
+            filename,
+            constructorType,
+            type
+        );
+
+        console.log(subAtoms, "subAtoms2")
+
     }
     
     for (let atom of s_atomsInState) {
@@ -287,9 +320,21 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         for (let organism of s_organismsInState){
             await checkOrganismSubComponents(organism, componentFiles)
         }
-
-        // s_organismsInState.map(organism => await checkOrganismSubComponents(organism, componentFiles))
     }
+
+    if (s_moleculesInState.length > 0){
+        for (let molecule of s_moleculesInState){
+            await checkMoleculeSubComponents(molecule, componentFiles)
+        }
+    }
+
+    if (s_atomInState.length > 0){
+        for (let atom of s_atomInState){
+            await checkAtom(atom, componentFiles)
+        }
+    }
+
+    
 }
 
 function checkMoleculeSubComponents(moleculeInState, componentFiles){
