@@ -24,9 +24,10 @@ export async function updateModelIfHasChanged() {
 
     const viewTemplateFiles = await viewTemplateValues();
 
-    console.log(viewTemplateFiles, "values")
+    // console.log(viewTemplateFiles, "values")
 
     for (const view of State.views) {
+        console.log(view, "view")
         // add viewTemplates from state
 
         // get viewTemplate from state
