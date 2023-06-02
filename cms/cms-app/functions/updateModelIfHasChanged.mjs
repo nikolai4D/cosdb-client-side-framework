@@ -253,13 +253,14 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
 
         const filename = molecule.value;
 
-        type = "organisms";
+        type = "molecules";
         constructorType = "molecules";
         const subMolecules = await getConstructors(
             filename,
             constructorType,
             type
         );
+        console.log(molecule, "molecule")
         console.log(subMolecules, "subMolecules2")
 
 
