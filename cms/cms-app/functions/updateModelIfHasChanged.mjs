@@ -228,6 +228,8 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
 
         console.log(subOrganisms, "subOrganisms")
 
+        
+
     }
 
     for (let molecule of s_moleculesInState) {
@@ -260,7 +262,6 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
 
     }
 
-    console.log(filename, "filename")
 
 
 
