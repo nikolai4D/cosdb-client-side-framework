@@ -279,7 +279,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     }
 
     let filename = moleculeInState.value;
-    let type = "";
+    let type = "molecules";
     let constructorType = "";
     const molecules = await getConstructors(
         filename,
@@ -287,7 +287,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
         type
     );
 
-    console.log(molecules, "molecules1")
+    console.log(molecules, filename, constructorType, type, "molecules1")
 
     for (let molecule of s_moleculesInState) {
         await checkMoleculeSubComponents(molecule, componentFiles)
