@@ -198,6 +198,23 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     // what if there are the same but the state has more of them?
 
 
+    // get organisms from State with the matching component as a parent
+    const s_organismsInState = State.organisms.filter(
+        (organism) => organism.parentId === organismInState.id
+    );
+
+    const s_moleculesInState = State.molecules.filter(
+        (molecule) => molecule.parentId === organismInState.id
+    );
+
+    const s_atomsInState = State.atoms.filter(
+        (atom) => atom.parentId === organismInState.id
+    );
+
+    console.log(organismInState, "organismInState")
+    // get organisms from file with the matching component as a parent
+
+    
     let areOrganismsFiles = isElementsAlsoInArray(componentFiles, s_organismsInState.map(organism => organism.value))
     let areMoleculesFiles = isElementsAlsoInArray(componentFiles, s_moleculesInState.map(organism => organism.value))
     let areAtomsFiles = isElementsAlsoInArray(componentFiles, s_atomsInState.map(organism => organism.value))
@@ -215,21 +232,6 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     }
 
 
-    // get organisms from State with the matching component as a parent
-    const s_organismsInState = State.organisms.filter(
-        (organism) => organism.parentId === organismInState.id
-    );
-
-    const s_moleculesInState = State.molecules.filter(
-        (molecule) => molecule.parentId === organismInState.id
-    );
-
-    const s_atomsInState = State.atoms.filter(
-        (atom) => atom.parentId === organismInState.id
-    );
-
-    console.log(organismInState, "organismInState")
-    // get organisms from file with the matching component as a parent
 
     type = "organisms";
     constructorType = "organisms";
