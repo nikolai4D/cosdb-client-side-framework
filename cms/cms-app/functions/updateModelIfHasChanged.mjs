@@ -248,16 +248,16 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     // 
 
 
-    if ((organismFile.organisms == undefined && s_organismsInState.length != 0) || (!s_organismsInState.length == organismFile.organisms)) {
+    if ((organismFile.organisms == undefined && s_organismsInState.length != 0) || (organisms.organisms != undefined && (!s_organismsInState.length == organismFile.organisms))) {
         console.log("Organisms has changed! : ", s_organismsInState);
     }
-    if ((organismFile.molecules == undefined && s_moleculesInState.length != 0) || (!s_moleculesInState.length == organismFile.molecules.length)) {
+    if ((organismFile.molecules == undefined && s_moleculesInState.length != 0) || (organisms.molecules != undefined && (!s_moleculesInState.length == organismFile.molecules.length))) {
         console.log("Molecules has changed! : ", s_moleculesInState);
     }
     console.log(s_atomsInState, "s_atomsInState")
     console.log(organismFile.atoms, "organismFile.atoms")
 
-    if ((organismFile.atoms == undefined && s_atomsInState.length != 0) || (!s_atomsInState.length == organismFile.atoms.length)) {
+    if ((organismFile.atoms == undefined && s_atomsInState.length != 0) || (organisms.atoms != undefined && !s_atomsInState.length == organismFile.atoms.length)) {
         console.log("Atoms has changed! : ", s_atomsInState);
     }
 
