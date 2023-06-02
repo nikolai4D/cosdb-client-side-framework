@@ -185,6 +185,13 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
 
     checkSubFunction(organismInState)
 
+    const organisms = await getConstructors(
+        filename,
+        constructorType,
+        type
+    );
+
+    console.log(organisms, "organisms1")
 
     // what if components in the file are different from the components in the state?
     // what if there are the same but the file has more of them?
@@ -232,13 +239,6 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     const filename = organismInState.value;
     console.log(filename, "filename")
 
-    const organisms = await getConstructors(
-        filename,
-        constructorType,
-        type
-    );
-
-    console.log(organisms, "organisms1")
 
 
     for (let organism of s_organismsInState) {
