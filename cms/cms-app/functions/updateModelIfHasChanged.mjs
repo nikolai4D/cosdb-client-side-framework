@@ -55,6 +55,7 @@ export async function updateModelIfHasChanged() {
 
             // if there is a new slot in the file (and not in the state)
                 // do something
+
             // if there is a new slot in the state (and not in the file)
                 // remove the slot and its children from the state and model.json
             // continue;
@@ -99,11 +100,6 @@ export async function updateModelIfHasChanged() {
             );
 
             const componentFiles = await componentValues();
-            
-
-
-
-
 
 
             // if matching component is an organism, check if there is an organism, molecule or atom in the state that has the matching component as a parent
@@ -140,7 +136,7 @@ export async function updateModelIfHasChanged() {
                     console.log("Molecule has changed! : ", moleculeInState);
                     // continue;
                 }
-    
+
                 checkMoleculeSubComponents(moleculeInState, componentFiles);
             }
 
@@ -154,7 +150,7 @@ export async function updateModelIfHasChanged() {
                     }
                     checkAtom(atomInState, componentFiles);
                 }
-    
+
 
             // const slotsInState = State.slots.filter(slot => slot.parentId === existingComponent.id)
     }
@@ -257,7 +253,7 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
 
         const filename = molecule.value;
 
-        type = "molecules";
+        type = "organisms";
         constructorType = "molecules";
         const subMolecules = await getConstructors(
             filename,
