@@ -209,6 +209,7 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         (atom) => atom.parentId === organismInState.id
     );
 
+    console.log(organismInState, "organismInState")
     // get organisms from file with the matching component as a parent
 
     for (let organism of s_organismsInState) {
