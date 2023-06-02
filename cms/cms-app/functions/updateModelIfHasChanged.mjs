@@ -308,7 +308,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
         console.log("Atom has changed! : ", s_atomsInState);
     }
 
-
+    let filename = moleculeInState.value;
     let type = "molecules";
     let constructorType = "molecules";
     const molecules = await getConstructors(
@@ -345,6 +345,7 @@ async function checkAtom(atomInState, componentFiles){
         console.log("Atom has changed! : ", atomInState);
     }
 
+    let filename = atomInState.value;
     let type = "atoms";
     let constructorType = "atoms";
     const atoms = await getConstructors(
