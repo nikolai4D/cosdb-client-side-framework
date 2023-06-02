@@ -196,6 +196,10 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     const filename = organismInState.value;
     console.log(filename, "filename")
 
+
+    let type = "organisms";
+    let constructorType = "organisms";
+
     const organisms = await getConstructors(
         filename,
         constructorType,
@@ -242,8 +246,8 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     console.log(organismInState, "organismInState")
     // get organisms from file with the matching component as a parent
 
-    let type = "organisms";
-    let constructorType = "organisms";
+    type = "organisms";
+    constructorType = "organisms";
 
     for (let organism of s_organismsInState) {
 
