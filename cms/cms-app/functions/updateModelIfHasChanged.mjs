@@ -184,22 +184,6 @@ export async function updateModelIfHasChanged() {
 
 async function checkOrganismSubComponents(organismInState, componentFiles){
 
-
-    const filename = organismInState.value;
-    const file = filename + ".mjs";
-
-    console.log(filename, "filename");
-    let type = "organisms";
-    let constructorType = "organisms";
-
-    const organisms = await importModuleFromFile(
-        file,
-        filename,
-        type
-    );
-
-    console.log(organisms, "organisms1")
-
     // what if components in the file are different from the components in the state?
     // what if there are the same but the file has more of them?
     // what if there are the same but the state has more of them?
@@ -241,24 +225,67 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     }
 
 
+    const filename = organismInState.value;
+    const file = filename + ".mjs";
+    const type = "organisms";
+
+    console.log(filename, "filename");
+
+    const organismFile = await importModuleFromFile(
+        file,
+        filename,
+        type
+    );
+
+    console.log(organismFile, "organismFile1")
+
+    // check if the organism in file has same parts as in state
+    // the last character indicated what id it has, split it by space and take the number, compare with id in file
+    // i.e. the name and id has to be the same 
+    // if there are the same but more values in file, ADD 
+    // if there are the same but more values in state, REMOVE
+    // if there are different values in the ID, REMOVE all and ADD new
+    // 
 
 
+    if (!s_organismsInState.length == organismFile.organisms.length) {
+        console.log("Organisms has changed! : ", s_organismsInState);
+    }
+    if (!s_moleculesInState.length == organismFile.molecules.length) {
+        console.log("Molecules has changed! : ", s_moleculesInState);
+    }
 
-
-
+    if (!s_atomsInState.length == organismFile.atoms.length) {
+        console.log("Atoms has changed! : ", s_atomsInState);
+    }
 
     for (let organism of s_organismsInState) {
+        checkIfSubcompentsInFileAndStateMatch(organism, organismFile, "organism");
         await checkOrganismSubComponents(organism, componentFiles)
     }
 
     for (let molecule of s_moleculesInState) {
+        checkIfSubcompentsInFileAndStateMatch(molecule, organismFile, "molecule");
         await checkMoleculeSubComponents(molecule, componentFiles)
     }
-    
+
     for (let atom of s_atomsInState) {
+        checkIfSubcompentsInFileAndStateMatch(atom, organismFile, "atom");
         await checkAtom(atom, componentFiles)
     }
 
+}
+
+function checkIfSubcompentsInFileAndStateMatch(organism, organismFile, type) {
+    const id = getIdFromKey(organism.key);
+    for (let organismFile of organismFile.organisms) {
+        if (!organism.value == organismFile.component[type]) {
+            console.log(`${type} has changed! : ` , organism);
+        }
+    }
+    if (id != organismFile.component.id) {
+        console.log(`${type} has changed! : `, organism);
+    }
 }
 
 async function checkMoleculeSubComponents(moleculeInState, componentFiles){
@@ -344,3 +371,12 @@ async function checkSubFunction(parentInState) {
         console.log("Function has changed! : ", s_functionsInState);
     }
 }
+
+  function getIdFromKey(key){
+    const lastIndex = key.lastIndexOf(" ");
+    const id = key.slice(lastIndex + 1);
+    if (!isNaN(id)){
+        id = "1"
+    }
+    return id;
+  }
