@@ -317,7 +317,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     }
 }
 
- function checkAtom(atomInState, componentFiles){
+async function checkAtom(atomInState, componentFiles){
     let areAtomsFiles = isElementsAlsoInArray(componentFiles, [atomInState.value])
 
     if (!areAtomsFiles){
@@ -328,7 +328,9 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     let type = "atoms";
     let constructorType = "atoms";
     
-    const atoms = getConstructors(
+    console.log(filename, "filename")
+    console.log(atomInState, "atomInState")
+    const atoms = await getConstructors(
         filename,
         constructorType,
         type
