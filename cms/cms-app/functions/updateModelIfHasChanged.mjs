@@ -320,9 +320,21 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         for (let organism of s_organismsInState){
             await checkOrganismSubComponents(organism, componentFiles)
         }
-
-        // s_organismsInState.map(organism => await checkOrganismSubComponents(organism, componentFiles))
     }
+
+    if (s_moleculesInState.length > 0){
+        for (let molecule of s_moleculesInState){
+            await checkMoleculeSubComponents(molecule, componentFiles)
+        }
+    }
+
+    if (s_atomInState.length > 0){
+        for (let atom of s_atomInState){
+            await checkAtom(atom, componentFiles)
+        }
+    }
+
+    
 }
 
 function checkMoleculeSubComponents(moleculeInState, componentFiles){
