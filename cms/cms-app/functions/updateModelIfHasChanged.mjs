@@ -69,8 +69,6 @@ export async function updateModelIfHasChanged() {
         // what if there are the same but the state has more of them?
 
 
-
-
         for (const slot of slotsInState) {
             const componentInState = State.components.find(
                 (component) => component.parentId === slot.id
@@ -124,7 +122,7 @@ export async function updateModelIfHasChanged() {
                     console.log("Organism has changed! : ", organismInState);
                     continue;
                 }
-                checkOrganismSubComponents(organismInState, componentFiles);
+                await checkOrganismSubComponents(organismInState, componentFiles);
             }
 
             // if matching component is an molecule, check if there is a molecule or atom in the state that has the matching component as a parent
@@ -192,12 +190,12 @@ export async function updateModelIfHasChanged() {
 }
 
 
-function checkOrganismSubComponents(organismInState, componentFiles){
+async function checkOrganismSubComponents(organismInState, componentFiles){
     // what if components in the file are different from the components in the state?
     // what if there are the same but the file has more of them?
     // what if there are the same but the state has more of them?
 
-
+    // get organisms from State with the matching component as a parent
     const s_organismsInState = State.organisms.filter(
         (organism) => organism.parentId === organismInState.id
     );
@@ -209,6 +207,13 @@ function checkOrganismSubComponents(organismInState, componentFiles){
     const s_atomsInState = State.atoms.filter(
         (atom) => atom.parentId === organismInState.id
     );
+
+    // get organisms from file with the matching component as a parent
+    
+
+    let organisms = (await readComponents(organismsDir)).map(
+        (component) => component.name
+      );
 
     let areOrganismsFiles = isElementsAlsoInArray(componentFiles, s_organismsInState.map(organism => organism.value))
     let areMoleculesFiles = isElementsAlsoInArray(componentFiles, s_moleculesInState.map(organism => organism.value))
@@ -229,7 +234,11 @@ function checkOrganismSubComponents(organismInState, componentFiles){
     checkSubFunction(organismInState)
     
     if (s_organismsInState.length > 0){
-        s_organismsInState.map(organism => checkOrganismSubComponents(organism, componentFiles))
+        for (let organism of s_organismsInState){
+            await checkOrganismSubComponents(organism, componentFiles)
+        }
+
+        // s_organismsInState.map(organism => await checkOrganismSubComponents(organism, componentFiles))
     }
 }
 
