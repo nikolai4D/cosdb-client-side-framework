@@ -151,14 +151,7 @@ export async function updateModelIfHasChanged() {
                     checkAtom(atomInState, componentFiles);
                 }
 
-
-            // const slotsInState = State.slots.filter(slot => slot.parentId === existingComponent.id)
     }
-
-    // const componentsDir = "viewTemplates";
-
-    // let components = await readComponents(componentsDir)
-    // console.log(components, "components")
 
 
     // get the code structure
@@ -276,6 +269,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     const s_atomsInState = State.atoms.filter(
         (atom) => atom.parentId === moleculeInState.id
     );
+    
     let areMoleculesFiles = isElementsAlsoInArray(componentFiles, s_moleculesInState.map(organism => organism.value))
     let areAtomsFiles = isElementsAlsoInArray(componentFiles, s_atomsInState.map(organism => organism.value))
 
@@ -290,23 +284,19 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     let filename = moleculeInState.value;
     let type = "molecules";
     let constructorType = "molecules";
-    const molecules = await getConstructors(
-        filename,
-        constructorType,
-        type
-    );
-
-    console.log(molecules, "molecules1")
-
-    // type = "atoms";
-    // constructorType = "atoms";
-    // const atoms = await getConstructors(
+    // const molecules = await getConstructors(
     //     filename,
     //     constructorType,
     //     type
     // );
-
-    // console.log(atoms, "atoms")
+    try {
+        const molecules = await getConstructors(filename, constructorType, type);
+        console.log(molecules, "molecules1");
+    } catch (error) {
+        console.error('Error in fetching molecules:', error);
+    }
+    
+    console.log(molecules, "molecules1")
 
     for (let molecule of s_moleculesInState) {
         await checkMoleculeSubComponents(molecule, componentFiles)
