@@ -159,10 +159,10 @@ export async function updateModelIfHasChanged() {
             // const slotsInState = State.slots.filter(slot => slot.parentId === existingComponent.id)
     }
 
-    const componentsDir = "viewTemplates";
+    // const componentsDir = "viewTemplates";
 
-    let components = await readComponents(componentsDir)
-    console.log(components, "components")
+    // let components = await readComponents(componentsDir)
+    // console.log(components, "components")
 
 
     // get the code structure
