@@ -232,7 +232,6 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     }
 
 
-
     let type = "organisms";
     let constructorType = "organisms";
 
@@ -248,6 +247,8 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         constructorType,
         type
     );
+
+    console.log(organisms, "organisms1")
 
 
     for (let organism of s_organismsInState) {
@@ -295,6 +296,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
         type
     );
 
+    console.log(molecules, "molecules1")
 
     // type = "atoms";
     // constructorType = "atoms";
@@ -331,7 +333,8 @@ async function checkAtom(atomInState, componentFiles){
         constructorType,
         type
     );
-    
+    console.log(atoms, "atoms1")
+
     checkSubFunction(atomInState)
 
 }
