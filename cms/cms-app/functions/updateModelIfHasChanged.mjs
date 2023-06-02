@@ -328,8 +328,8 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         }
     }
 
-    if (s_atomInState.length > 0){
-        for (let atom of s_atomInState){
+    if (s_atomsInState.length > 0){
+        for (let atom of s_atomsInState){
             await checkAtom(atom, componentFiles)
         }
     }
