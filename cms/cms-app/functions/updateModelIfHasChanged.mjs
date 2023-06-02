@@ -254,7 +254,8 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     if (!s_moleculesInState.length == organismFile.molecules.length) {
         console.log("Molecules has changed! : ", s_moleculesInState);
     }
-
+    console.log(s_atomsInState, "s_atomsInState")
+    console.log(organismFile.atoms, "organismFile.atoms")
     if (!s_atomsInState.length == organismFile.atoms.length) {
         console.log("Atoms has changed! : ", s_atomsInState);
     }
