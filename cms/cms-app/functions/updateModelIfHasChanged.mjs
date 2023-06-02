@@ -37,7 +37,7 @@ export async function updateModelIfHasChanged() {
         // if the viewTemplate doesn't exist, alert
         if (!viewTemplateFiles.includes(viewTemplateInState.value)){
             console.log("ViewTemplate has changed! : ", viewTemplateInState)
-            continue
+            // continue
         }
 
         // get slots from state with the viewTemplate as the parent
@@ -121,7 +121,7 @@ export async function updateModelIfHasChanged() {
             if (organismInState) {
                 if (!componentFiles.includes(organismInState.value)){
                     console.log("Organism has changed! : ", organismInState);
-                    continue;
+                    // continue;
                 }
                 await checkOrganismSubComponents(organismInState, componentFiles);
             }
@@ -137,7 +137,7 @@ export async function updateModelIfHasChanged() {
             if (moleculeInState) {
                 if (!componentFiles.includes(moleculeInState.value)){
                     console.log("Molecule has changed! : ", moleculeInState);
-                    continue;
+                    // continue;
                 }
     
                 checkMoleculeSubComponents(moleculeInState, componentFiles);
@@ -149,7 +149,7 @@ export async function updateModelIfHasChanged() {
                 if (atomInState) {
                     if (!componentFiles.includes(atomInState.value)){
                         console.log("Atom has changed! : ", atomInState);
-                        continue;
+                        // continue;
                     }
                     checkAtom(atomInState, componentFiles);
                 }
