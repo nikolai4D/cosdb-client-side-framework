@@ -99,21 +99,12 @@ export async function updateModelIfHasChanged() {
             );
 
             const componentFiles = await componentValues();
+            
 
-            if (!componentFiles.includes(organismInState.value)){
-                console.log("Organism has changed! : ", organismInState);
-                continue;
-            }
 
-            if (!componentFiles.includes(moleculeInState.value)){
-                console.log("Molecule has changed! : ", moleculeInState);
-                continue;
-            }
 
-            if (!componentFiles.includes(atomInState.value)){
-                console.log("Atom has changed! : ", atosInState);
-                continue;
-            }
+
+
 
             // if matching component is an organism, check if there is an organism, molecule or atom in the state that has the matching component as a parent
             // if there is:
@@ -129,6 +120,10 @@ export async function updateModelIfHasChanged() {
                 // also run if matching compontent is an atom
 
             if (organismInState) {
+                if (!componentFiles.includes(organismInState.value)){
+                    console.log("Organism has changed! : ", organismInState);
+                    continue;
+                }
                 checkOrganismSubComponents(organismInState, componentFiles);
             }
 
@@ -141,6 +136,11 @@ export async function updateModelIfHasChanged() {
                 // then go through each sub-component one-by-one with this function again with the molecule as the componentInState
 
             if (moleculeInState) {
+                if (!componentFiles.includes(moleculeInState.value)){
+                    console.log("Molecule has changed! : ", moleculeInState);
+                    continue;
+                }
+    
                 checkMoleculeSubComponents(moleculeInState, componentFiles);
             }
 
@@ -148,6 +148,10 @@ export async function updateModelIfHasChanged() {
                 // if it don't, alert
 
                 if (atomInState) {
+                    if (!componentFiles.includes(atomInState.value)){
+                        console.log("Atom has changed! : ", atomInState);
+                        continue;
+                    }
                     checkAtom(atomInState, componentFiles);
                 }
     
