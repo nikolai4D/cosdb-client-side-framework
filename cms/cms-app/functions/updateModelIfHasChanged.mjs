@@ -56,13 +56,13 @@ export async function updateModelIfHasChanged() {
                 // do something
             // if there is a new slot in the state (and not in the file)
                 // remove the slot and its children from the state and model.json
-            continue;
+            // continue;
         }
 
         if (slotsInState.length !== slotsInFile.length){
             console.log("Slots have changed! : ", viewTemplateInState);
             // can not handle same slots atm in the actual file
-            continue;
+            // continue;
         }
 
         // what if slots in the file are different from the slots in the state?
