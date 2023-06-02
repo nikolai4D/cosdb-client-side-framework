@@ -284,18 +284,12 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     let filename = moleculeInState.value;
     let type = "molecules";
     let constructorType = "molecules";
-    // const molecules = await getConstructors(
-    //     filename,
-    //     constructorType,
-    //     type
-    // );
-    try {
-        const molecules = await getConstructors(filename, constructorType, type);
-        console.log(molecules, "molecules1");
-    } catch (error) {
-        console.error('Error in fetching molecules:', error);
-    }
-    
+    const molecules = await getConstructors(
+        filename,
+        constructorType,
+        type
+    );
+
     console.log(molecules, "molecules1")
 
     for (let molecule of s_moleculesInState) {
