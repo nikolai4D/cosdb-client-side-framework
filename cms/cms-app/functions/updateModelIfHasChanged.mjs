@@ -248,10 +248,10 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     // 
 
 
-    if (!s_organismsInState.length == organismFile.organisms.length) {
+    if ((organismFile.organisms == undefined && s_organismsInState.length != 0) || (!s_organismsInState.length == organismFile.organisms)) {
         console.log("Organisms has changed! : ", s_organismsInState);
     }
-    if (!s_moleculesInState.length == organismFile.molecules.length) {
+    if ((organismFile.molecules == undefined && s_moleculesInState.length != 0) || (!s_moleculesInState.length == organismFile.molecules.length)) {
         console.log("Molecules has changed! : ", s_moleculesInState);
     }
     console.log(s_atomsInState, "s_atomsInState")
