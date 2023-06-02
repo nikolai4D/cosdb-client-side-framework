@@ -143,13 +143,13 @@ export async function updateModelIfHasChanged() {
             // if matching component is an atom, check if the atom still exist as a file
                 // if it don't, alert
 
-                if (atomInState) {
-                    if (!componentFiles.includes(atomInState.value)){
-                        console.log("Atom has changed! : ", atomInState);
-                        // continue;
-                    }
-                    checkAtom(atomInState, componentFiles);
+            if (atomInState) {
+                if (!componentFiles.includes(atomInState.value)){
+                    console.log("Atom has changed! : ", atomInState);
+                    // continue;
                 }
+                checkAtom(atomInState, componentFiles);
+            }
 
     }
 
@@ -183,12 +183,12 @@ export async function updateModelIfHasChanged() {
 
 async function checkOrganismSubComponents(organismInState, componentFiles){
 
-    checkSubFunction(organismInState)
 
     const filename = organismInState.value;
     console.log(filename, "filename")
     let type = "organisms";
     let constructorType = "organisms";
+
     const organisms = await getConstructors(
         filename,
         constructorType,
@@ -222,6 +222,8 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     let areOrganismsFiles = isElementsAlsoInArray(componentFiles, s_organismsInState.map(organism => organism.value))
     let areMoleculesFiles = isElementsAlsoInArray(componentFiles, s_moleculesInState.map(organism => organism.value))
     let areAtomsFiles = isElementsAlsoInArray(componentFiles, s_atomsInState.map(organism => organism.value))
+
+    checkSubFunction(organismInState)
 
     if (!areOrganismsFiles){
         console.log("Organisms has changed! : ", s_organismsInState);
