@@ -313,7 +313,7 @@ async function checkAtom(atomInState, componentFiles){
     let constructorType = "atoms";
     
     console.log(filename, "filename")
-    console.log(atomInState, "atomInState")
+    // console.log(atomInState, "atomInState")
     const atoms = await getConstructors(
         filename,
         constructorType,
