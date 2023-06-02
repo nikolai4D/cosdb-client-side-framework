@@ -211,10 +211,13 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     // get organisms from file with the matching component as a parent
     
     const organismsDir = "Organisms";
+    console.log(organismInState, "organismInState")
+    let organisms = (await readComponents(organismsDir))
+    let molecules = (await readComponents("Molecules"))
+    let atoms = (await readComponents("Atoms"))
+    console.log(organisms, "organisms")
+    
 
-    let organisms = (await readComponents(organismsDir)).map(
-        (component) => component.name
-      );
 
     let areOrganismsFiles = isElementsAlsoInArray(componentFiles, s_organismsInState.map(organism => organism.value))
     let areMoleculesFiles = isElementsAlsoInArray(componentFiles, s_moleculesInState.map(organism => organism.value))
