@@ -193,6 +193,39 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     // what if there are the same but the file has more of them?
     // what if there are the same but the state has more of them?
 
+    const filename = organismInState.value;
+    console.log(filename, "filename")
+
+    const organisms = await getConstructors(
+        filename,
+        constructorType,
+        type
+    );
+
+    console.log(organisms, "organisms1")
+
+
+    type = "organisms";
+    constructorType = "molecules";
+    const molecules = await getConstructors(
+        filename,
+        constructorType,
+        type
+    );
+    console.log(molecules, "molecules1")
+
+
+    type = "organisms";
+    constructorType = "atoms";
+    const atoms = await getConstructors(
+        filename,
+        constructorType,
+        type
+    );
+
+    console.log(atoms, "atom1")
+
+
     // get organisms from State with the matching component as a parent
     const s_organismsInState = State.organisms.filter(
         (organism) => organism.parentId === organismInState.id
