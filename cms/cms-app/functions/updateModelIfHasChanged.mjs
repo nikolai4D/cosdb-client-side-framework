@@ -214,18 +214,54 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     // get organisms from file with the matching component as a parent
 
     for (let organism of s_organismsInState) {
-        const filename = organism.value;
-        const type = "organisms";
-        const constructorTypeOrganisms = "organisms";
 
+        const filename = organism.value;
+
+        let type = "organisms";
+        let constructorType = "organisms";
         const subOrganisms = await getConstructors(
             filename,
-            constructorTypeOrganisms,
+            constructorType,
             type
         );
+
         console.log(subOrganisms, "subOrganisms")
-        console.log(filename, "filename")
+
     }
+
+    for (let molecule of s_moleculesInState) {
+
+        const filename = molecule.value;
+
+        type = "molecules";
+        constructorType = "molecules";
+        const subMolecules = await getConstructors(
+            filename,
+            constructorType,
+            type
+        );
+        console.log(subMolecules, "subMolecules")
+    }
+    
+    for (let atom of s_atomsInState) {
+
+        const filename = atom.value;
+
+        type = "atoms";
+        constructorType = "atoms";
+        const subAtoms = await getConstructors(
+            filename,
+            constructorType,
+            type
+        );
+
+        console.log(subAtoms, "subAtoms")
+
+    }
+
+    console.log(filename, "filename")
+
+
 
     let areOrganismsFiles = isElementsAlsoInArray(componentFiles, s_organismsInState.map(organism => organism.value))
     let areMoleculesFiles = isElementsAlsoInArray(componentFiles, s_moleculesInState.map(organism => organism.value))
