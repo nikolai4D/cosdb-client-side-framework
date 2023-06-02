@@ -286,7 +286,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
         constructorType,
         type
     );
-    console.log(moleculesInState, "moleculesInState")
+    console.log(moleculeInState, "moleculesInState")
     console.log(molecules, filename, constructorType, type, "molecules1")
 
     for (let molecule of s_moleculesInState) {
