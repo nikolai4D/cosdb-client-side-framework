@@ -6,6 +6,7 @@ import { slotValues } from "../_3_slot/slotValues.mjs";
 import { componentValues } from "../_4_component/componentValues.mjs";
 import { functionValues } from "../_8_function/functionValues.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
+import { importModuleFromFile } from "./importModuleFromFile.mjs";
 
 function sameMembers(arr1, arr2) {
     const set1 = new Set(arr1);
@@ -184,12 +185,12 @@ export async function updateModelIfHasChanged() {
 async function checkOrganismSubComponents(organismInState, componentFiles){
 
 
-    const filename = organismInState.value;
+    const filename = organismInState.value+".mjs";
     console.log(filename, "filename")
     let type = "organisms";
     let constructorType = "organisms";
 
-    const organisms = await getConstructors(
+    const organisms = await importModuleFromFile(
         filename,
         constructorType,
         type
@@ -281,10 +282,10 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
         console.log("Atom has changed! : ", s_atomsInState);
     }
 
-    let filename = moleculeInState.value;
+    let filename = moleculeInState.value+".mjs";;
     let type = "molecules";
     let constructorType = "molecules";
-    const molecules = await getConstructors(
+    const molecules = await importModuleFromFile(
         filename,
         constructorType,
         type
@@ -308,13 +309,13 @@ async function checkAtom(atomInState, componentFiles){
         console.log("Atom has changed! : ", atomInState);
     }
 
-    let filename = atomInState.value;
+    let filename = atomInState.value+".mjs";;
     let type = "atoms";
     let constructorType = "atoms";
     
     console.log(filename, "filename")
     // console.log(atomInState, "atomInState")
-    const atoms = await getConstructors(
+    const atoms = await importModuleFromFile(
         filename,
         constructorType,
         type
