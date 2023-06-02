@@ -185,14 +185,16 @@ export async function updateModelIfHasChanged() {
 async function checkOrganismSubComponents(organismInState, componentFiles){
 
 
-    const filename = organismInState.value+".mjs";
-    console.log(filename, "filename")
+    const filename = organismInState.value;
+    const file = filename + ".mjs";
+
+    console.log(filename, "filename");
     let type = "organisms";
     let constructorType = "organisms";
 
     const organisms = await importModuleFromFile(
+        file,
         filename,
-        constructorType,
         type
     );
 
@@ -281,13 +283,14 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     if (!areAtomsFiles){
         console.log("Atom has changed! : ", s_atomsInState);
     }
+    let filename = moleculeInState.value
+    let file = filename +".mjs";;
 
-    let filename = moleculeInState.value+".mjs";;
     let type = "molecules";
     let constructorType = "molecules";
     const molecules = await importModuleFromFile(
+        file,
         filename,
-        constructorType,
         type
     );
     console.log(moleculeInState, "moleculesInState")
@@ -309,15 +312,17 @@ async function checkAtom(atomInState, componentFiles){
         console.log("Atom has changed! : ", atomInState);
     }
 
-    let filename = atomInState.value+".mjs";;
+    let filename = atomInState.value;
+    let file = filename +".mjs";
+
     let type = "atoms";
     let constructorType = "atoms";
     
     console.log(filename, "filename")
     // console.log(atomInState, "atomInState")
     const atoms = await importModuleFromFile(
+        file,
         filename,
-        constructorType,
         type
     );  
     console.log(atoms, "atoms1")
