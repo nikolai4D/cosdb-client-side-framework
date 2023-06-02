@@ -5,6 +5,7 @@ import { viewTemplateValues } from "../_2_viewTemplate/viewTemplateValues.mjs";
 import { slotValues } from "../_3_slot/slotValues.mjs";
 import { componentValues } from "../_4_component/componentValues.mjs";
 import { functionValues } from "../_8_function/functionValues.mjs";
+import { getConstructors } from "../functions/getConstructors.mjs";
 
 function sameMembers(arr1, arr2) {
     const set1 = new Set(arr1);
@@ -209,15 +210,20 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     );
 
     // get organisms from file with the matching component as a parent
-    
-    const organismsDir = "Organisms";
-    console.log(organismInState, "organismInState")
-    let organisms = (await readComponents(organismsDir))
-    let molecules = (await readComponents("Molecules"))
-    let atoms = (await readComponents("Atoms"))
-    console.log(organisms, "organisms")
-    
 
+    for (let organism of s_organismsInState) {
+        const filename = organism.value;
+        const type = "organisms";
+        const constructorTypeOrganisms = "organisms";
+
+        const subOrganisms = await getConstructors(
+            filename,
+            constructorTypeOrganisms,
+            type
+        );
+        console.log(subOrganisms, "subOrganisms")
+        console.log(filename, "filename")
+    }
 
     let areOrganismsFiles = isElementsAlsoInArray(componentFiles, s_organismsInState.map(organism => organism.value))
     let areMoleculesFiles = isElementsAlsoInArray(componentFiles, s_moleculesInState.map(organism => organism.value))
