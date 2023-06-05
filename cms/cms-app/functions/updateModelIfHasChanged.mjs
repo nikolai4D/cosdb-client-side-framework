@@ -257,7 +257,7 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     }
 
     for (let organism of organismFile.organisms) {
-        checkIfSubcomponentFileMatchState();
+        checkIfSubcomponentFileMatchState(organism, s_organismsInState, "organism");
     }
 
     for (let organism of s_organismsInState) {
