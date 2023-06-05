@@ -295,13 +295,13 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
 
     let type = "molecules";
     let constructorType = "molecules";
-    const molecules = await importModuleFromFile(
+    const moleculeFile = await importModuleFromFile(
         file,
         filename,
         type
     );
 
-    checkSubComponents(s_moleculesInState, organismFile, componentFiles, "molecule");
+    checkSubComponents(s_moleculesInState, moleculeFile, componentFiles, "molecule");
 
     
     for (let atom of s_atomsInState) {
