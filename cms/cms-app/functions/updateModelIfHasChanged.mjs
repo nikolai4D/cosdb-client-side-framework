@@ -273,13 +273,13 @@ async function removeFromState(obj){
 }
 
 async function addToState(obj, parentId, isSlot = false){
-    console.warn("Adding to State: ", obj)
     // State[obj.type+"s"].push(obj)
     // console.log(obj)
     const type = obj.component.title.toLowerCase()
     const key = type+" "+obj.id
     const value = obj[type]
     const objToSave = newComponentFromType(key, value, parentId, type)
+    console.warn("Adding to State: ", objToSave)
 
     if (!isSlot){
         const compTypes = ["organism", "molecule","atom"]
