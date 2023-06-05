@@ -8,6 +8,7 @@ import { importModuleFromFile } from "./importModuleFromFile.mjs";
 import {deleteChildren} from "./deleteChildren.mjs";
 import {deleteItem} from "./deleteItem.mjs";
 import { writeModel } from "./writeModel.mjs";
+import { createSlot } from "../_3_slot/createSlot.mjs";
 
 export async function updateModelIfHasChanged() {
     /*
@@ -58,6 +59,7 @@ export async function updateModelIfHasChanged() {
             const slotsToRemove = slotsInState.filter(slot => !slotsInFileValues.includes(slot.value));
             const slotsToAdd = slotsInFile.filter(slot => !slotsInStateValues.includes(slot.slot));
 
+            slotsToRemove = slotsToRemove.map(slot => {...slot, parentId: viewTemplateInState.id, key});
             removeFromState(slotsToRemove);
             addToState(slotsToAdd);
         }
@@ -218,11 +220,10 @@ function compareComponents(subComponentState, subComponentFile, type) {
 
 
 function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
+    // checks if subComponentFile is in subComponentsState
     const isMatch = subComponentsState.some(subComponentState => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
-        // add subComponentFile to state
-        const subComponentToAdd = subComponentFile;
-        addToState(subComponentToAdd);
+        addToState(subComponentFile);
     }
 }
 
@@ -273,5 +274,16 @@ async function removeFromState(obj){
 function addToState(obj){
     console.warn("Adding to State: ", obj)
     // State[obj.type+"s"].push(obj)
+    console.log(obj)
+
+    const compTypes = ["organisms", "molecules","atoms",]
+    for (const type in compTypes){
+        if (obj[type].length > 0){
+            for (const comp of obj[type]){
+                // State[type].push(comp)
+                addToState(comp)
+            }
+        }
+    }
 
 }
