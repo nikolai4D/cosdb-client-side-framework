@@ -84,8 +84,7 @@ export async function updateModelIfHasChanged() {
                 }
 
                 if (!componentFiles.includes(componentInState.value)){
-                    const componentToRemove = componentInState;
-                    removeFromState(componentToRemove);
+                    removeFromState(componentInState);
                 }
 
                 if (comp === "organisms") {
@@ -202,8 +201,7 @@ async function checkAtom(atomInState, componentFiles){
     let areAtomsFiles = componentFiles.includes(atomInState.value)
 
     if (!areAtomsFiles){
-        const atomsToRemove = atomInState
-        removeFromState(atomsToRemove);
+        removeFromState(atomInState);
     }
 
     checkSubFunction(atomInState)
