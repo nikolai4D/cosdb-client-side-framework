@@ -280,19 +280,19 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         await checkMoleculeSubComponents(molecule, componentFiles)
     }
 
-    // atom
+    // // atom
 
-    for (let atom of s_atomsInState) {
-        checkIfSubcompentStateMatchInFile(atom, organismFile, "atom");
-    }
+    // for (let atom of s_atomsInState) {
+    //     checkIfSubcompentStateMatchInFile(atom, organismFile, "atom");
+    // }
 
-    for (let atom of organismFile.atoms) {
-        checkIfSubcomponentFileMatchState(atom, s_atomsInState, "atom");
-    }
+    // for (let atom of organismFile.atoms) {
+    //     checkIfSubcomponentFileMatchState(atom, s_atomsInState, "atom");
+    // }
 
-    for (let atom of s_atomsInState) {
-        await checkAtom(atom, componentFiles)
-    }
+    // for (let atom of s_atomsInState) {
+    //     await checkAtom(atom, componentFiles)
+    // }
 }
 
 function checkIfSubcompentStateMatchInFile(subComponentState, componentFile, type) {
