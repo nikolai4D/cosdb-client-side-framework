@@ -192,61 +192,6 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
             }
         }
     }
-
-    // const s_moleculesInState = State.molecules.filter(
-    //     (molecule) => molecule.parentId === moleculeInState.id
-    // );
-
-    // const s_atomsInState = State.atoms.filter(
-    //     (atom) => atom.parentId === moleculeInState.id
-    // );
-    
-    // let areMoleculesFiles = isElementsAlsoInArray(componentFiles, s_moleculesInState.map(organism => organism.value))
-    // let areAtomsFiles = isElementsAlsoInArray(componentFiles, s_atomsInState.map(organism => organism.value))
-
-    // if (!areMoleculesFiles){
-    //     console.log("Molecules has changed! : ", s_moleculesInState);
-    // }
-
-    // if (!areAtomsFiles){
-    //     console.log("Atom has changed! : ", s_atomsInState);
-    // }
-
-
-    // if (moleculeFile.molecules == undefined){
-    //     moleculeFile.molecules = []
-    // }
-
-    // for (let molecule of s_moleculesInState) {
-    //     checkIfSubcomponentStateMatchInFile(molecule, moleculeFile, "molecule");
-    // }
-
-
-    // for (let molecule of moleculeFile.molecules) {
-    //     checkIfSubcomponentFileMatchState(molecule, s_moleculesInState, "molecule")
-    // }
-
-    // for (let molecule of s_moleculesInState) {
-    //     await checkMoleculeSubComponents(molecule, componentFiles)
-    // }
-
-    
-    // if (moleculeFile.atoms == undefined){
-    //     moleculeFile.atoms = []
-    // }
-
-    // for (let atom of s_atomsInState) {
-    //     checkIfSubcomponentStateMatchInFile(atom, moleculeFile, "atom");
-    // }
-
-
-    // for (let atom of moleculeFile.atoms) {
-    //     checkIfSubcomponentFileMatchState(atom, s_atomsInState, "atom")
-    // }
-
-    // for (let atom of s_atomsInState) {
-    //     await checkAtom(atom, componentFiles)
-    // }
 }
 
 async function checkAtom(atomInState, componentFiles){
@@ -283,9 +228,6 @@ function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, t
     }
 }
 
-
-
-
 async function checkSubFunction(parentInState) {
     const s_functionsInState = State.functions.filter(
         (func) => func.parentId === parentInState.id
@@ -307,5 +249,5 @@ function sameMembers(arr1, arr2) {
         arr2.every(item => set1.has(item))
 }
 
-let isElementsAlsoInArray = (arr, target) => target.every(v => arr.includes(v));
+const isElementsAlsoInArray = (arr, target) => target.every(v => arr.includes(v));
 
