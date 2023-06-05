@@ -99,17 +99,10 @@ export async function updateModelIfHasChanged() {
 
 
 async function checkOrganismSubComponents(organismInState, componentFiles){
-    const filename = organismInState.value;
-    const file = filename + ".mjs";
-    const type = "organisms";
-
-    const organismFile = await importModuleFromFile(
-        file,
-        filename,
-        type
-    );
-
     checkSubFunction(organismInState)
+
+    const organismFile = await getComponentFile(organismInState, "organisms")
+
     for (const comp of ["organism", "molecule"]) {
 
         const s_componentInState = State[comp+"s"].filter(
@@ -149,17 +142,9 @@ function checkAndUpdateStateAndFile(s_componentInState, organismFile, comp) {
 }
 
 async function checkMoleculeSubComponents(moleculeInState, componentFiles){
-    let filename = moleculeInState.value
-    let file = filename +".mjs";;
-    let type = "molecules";
-
-    const moleculeFile = await importModuleFromFile(
-        file,
-        filename,
-        type
-    );
-
     checkSubFunction(moleculeInState)
+
+    const moleculeFile = await getComponentFile(moleculeInState, "molecules");
 
     for (const comp of ["molecule", "atom"]) {
 
@@ -193,6 +178,18 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     }
 }
 
+async function getComponentFile(moleculeInState, type) {
+    let filename = moleculeInState.value;
+    let file = filename + ".mjs";;
+
+    const moleculeFile = await importModuleFromFile(
+        file,
+        filename,
+        type
+    );
+    return moleculeFile;
+}
+
 async function checkAtom(atomInState, componentFiles){
     let areAtomsFiles = isElementsAlsoInArray(componentFiles, [atomInState.value])
 
@@ -204,24 +201,14 @@ async function checkAtom(atomInState, componentFiles){
 }
 
 function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
-    let isMatch = false;
-    for (let subComponentState of subComponentsState) {
-        if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
-            isMatch = true;
-        }
-    }
+    const isMatch = subComponentsState.some(subComponentState => `${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`);
     if (!isMatch) {
         console.log("Component has changed! ADD to state: ", subComponentFile);
     }
 }
 
 function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, type) {
-    let isMatch = false;
-    for (let subComponentFile of componentFile[type+"s"]) {
-        if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
-            isMatch = true;
-        }
-    }
+    const isMatch = componentFile[type+"s"].some(subComponentFile => `${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`);
     if (!isMatch) {
         console.log("Component has changed! REMOVE from State: ", subComponentState);
     }
