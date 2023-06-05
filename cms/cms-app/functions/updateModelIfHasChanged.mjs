@@ -323,9 +323,25 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     }
 
     
+    if (moleculeFile.atoms == undefined){
+        moleculeFile.atoms = []
+    }
+
+    for (let atom of s_atomsInState) {
+        checkIfSubcomponentStateMatchInFile(atom, moleculeFile, "atom");
+    }
+
+
+    for (let atom of moleculeFile.atoms) {
+        checkIfSubcomponentFileMatchState(atom, s_atomsInState, "atom")
+    }
+
     for (let atom of s_atomsInState) {
         await checkAtom(atom, componentFiles)
     }
+
+    
+
     
 }
 
