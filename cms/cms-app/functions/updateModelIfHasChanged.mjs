@@ -252,6 +252,8 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         console.log("Atoms has changed! : ", s_atomsInState);
     }
 
+    // organism
+
     for (let organism of s_organismsInState) {
         checkIfSubcompentStateMatchInFile(organism, organismFile, "organism");
     }
@@ -264,14 +266,31 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         await checkOrganismSubComponents(organism, componentFiles)
     }
 
+    // molecule
 
     for (let molecule of s_moleculesInState) {
         checkIfSubcompentStateMatchInFile(molecule, organismFile, "molecule");
+    }
+
+    for (let molecule of organismFile.molecules) {
+        checkIfSubcomponentFileMatchState(molecule, s_moleculesInState, "molecule")
+    }
+
+    for (let molecule of s_moleculesInState) {
         await checkMoleculeSubComponents(molecule, componentFiles)
     }
 
+    // atom
+
     for (let atom of s_atomsInState) {
         checkIfSubcompentStateMatchInFile(atom, organismFile, "atom");
+    }
+
+    for (let atom of organismFile.atoms) {
+        checkIfSubcomponentFileMatchState(atom, s_atomsInState, "atom");
+    }
+
+    for (let atom of s_atomsInState) {
         await checkAtom(atom, componentFiles)
     }
 }
