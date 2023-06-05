@@ -61,8 +61,8 @@ export async function updateModelIfHasChanged() {
             const slotsToAdd = slotsInFile.filter(slot => !slotsInStateValues.includes(slot.slot));
 
             // slotsToRemove = slotsToRemove.map(slot => {...slot, parentId: viewTemplateInState.id, key});
-            removeFromState(slotsToRemove);
-            addToState(slotsToAdd, viewTemplateInState.id, true);
+            await removeFromState(slotsToRemove);
+            await addToState(slotsToAdd, viewTemplateInState.id, true);
         }
 
 
