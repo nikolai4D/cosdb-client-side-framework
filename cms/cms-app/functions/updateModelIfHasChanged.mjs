@@ -292,16 +292,22 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     }
     let filename = moleculeInState.value
     let file = filename +".mjs";;
+
     let type = "molecules";
-    const moleculeFile = await importModuleFromFile(
+    let constructorType = "molecules";
+    const molecules = await importModuleFromFile(
         file,
         filename,
         type
     );
 
-
-    checkSubComponents(s_moleculesInState, moleculeFile, componentFiles, "molecule");
-    checkSubComponents(s_atomsInState, moleculeFile, componentFiles, "atom");
+    for (let molecule of s_moleculesInState) {
+        await checkMoleculeSubComponents(molecule, componentFiles)
+    }
+    
+    for (let atom of s_atomsInState) {
+        await checkAtom(atom, componentFiles)
+    }
 }
 
 async function checkAtom(atomInState, componentFiles){
