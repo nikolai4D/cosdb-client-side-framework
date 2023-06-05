@@ -230,6 +230,9 @@ async function checkSubComponents(subComponentsInState, subComponentFile, compon
     console.log(subComponentsInState)
 
     console.log(subComponentFile)
+    if (subComponentFile[type + "s"] === undefined) {
+        subComponentFile[type + "s"] = [];
+    }
     for (let subComponent of subComponentFile[type + "s"]) {
         checkIfSubcomponentFileMatchState(subComponent, subComponentsInState, type);
     }
