@@ -67,8 +67,6 @@ export async function updateModelIfHasChanged() {
                 continue;
             }
 
-            let atomicComponents = ["organisms", "molecules", "atoms"];
-
             // check if components id is a parentId for an organism, molecule or an atom
             // if it is, check if the organism, molecule or atom still exists as a file
                 // "!viewTemplateFiles.includes(viewTemplateInState.value))"
@@ -76,7 +74,7 @@ export async function updateModelIfHasChanged() {
 
             const componentFiles = await componentValues();
 
-            for (const comp of atomicComponents) {
+            for (const comp of ["organisms", "molecules", "atoms"]) {
 
                 const componentInState = State[comp].find(
                     (component) => component.parentId === componentPlaceInState.id
