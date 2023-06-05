@@ -2,6 +2,10 @@ import { State } from "../data-mgmt/State.mjs";
 import { importModuleFromFile } from "./importModuleFromFile.mjs";
 // import { checkSubcomponentFileMatchState, checkSubcomponentStateMatchInFile } from "./SubcomponentCheck.mjs"; 
 // import { checkSubComponents, checkSubFunction, isElementsAlsoInArray, sameMembers } from "./ComponentHelper.mjs"; 
+import { viewTemplateValues } from "../_2_viewTemplate/viewTemplateValues.mjs";
+import { slotValues } from "../_3_slot/slotValues.mjs";
+import { componentValues } from "../_4_component/componentValues.mjs";
+import { functionValues } from "../_8_function/functionValues.mjs";
 
 export async function updateModelIfHasChanged() {
     const viewTemplateFiles = await viewTemplateValues();
