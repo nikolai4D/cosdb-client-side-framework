@@ -262,7 +262,8 @@ function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, t
 
 function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
     let isMatch = false;
-    let subComponentsState= subComponentsState
+
+    
     for (let subComponentState of subComponentsState) {
         if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
             isMatch = true;
