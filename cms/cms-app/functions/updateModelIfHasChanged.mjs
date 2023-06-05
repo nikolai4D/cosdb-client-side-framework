@@ -107,6 +107,8 @@ export async function updateModelIfHasChanged() {
 
     // await writeModel(State);
 
+    console.log(State)
+
 }
 
 
@@ -273,39 +275,43 @@ async function removeFromState(obj){
 }
 
 async function addToState(obj, parentId, isSlot = false){
-    // State[obj.type+"s"].push(obj)
+
     if (isSlot) {
         for (const aSlot of obj){
-            // State[type].push(comp)
 
-        console.log(aSlot)
         const type = "slot"
         const key = type
         const value = aSlot.slot
         const objToSave = await newComponentFromType(key, value, parentId, type)
         console.warn("Adding to State: ", objToSave)
     
-        // write
+         // add to state 
+        State.slots.push(objToSave) 
         }
+
         return
 
     }
-    console.log(obj)
-    const type = obj.component.title.toLowerCase()
-    const key = type+" "+obj.id
-    const value = obj[type]
-    const objToSave = await newComponentFromType(key, value, parentId, type)
-    console.warn("Adding to State: ", objToSave)
+    else {
+    
+        const type = obj.component.title.toLowerCase()
+        const key = type+" "+obj.id
+        const value = obj[type]
+        const objToSave = await newComponentFromType(key, value, parentId, type)
 
+        // add to state 
+        console.warn("Adding to State: ", objToSave)
+        State[type+"s"].push(objToSave)
 
         const compTypes = ["organism", "molecule","atom"]
         for (const type of compTypes){
 
             if (obj.component[type+"s"]){
                 for (const comp of obj.component[type+"s"]){
-                    // State[type].push(comp)
                     addToState(comp, objToSave.id)
             }
         }
     }
+    }
+
 }
