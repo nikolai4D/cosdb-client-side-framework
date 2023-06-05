@@ -300,7 +300,7 @@ async function addToState(obj, parentId, isSlot = false){
         console.warn("Adding to State: ", objToSave)
     
          // add to state 
-        State.slots.push(objToSave) 
+        State.slots.push(await objToSave) 
         console.log("State.slots: ", State)
 
         }
