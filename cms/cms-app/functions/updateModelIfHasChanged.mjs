@@ -99,10 +99,17 @@ export async function updateModelIfHasChanged() {
 
 
 async function checkOrganismSubComponents(organismInState, componentFiles){
+    const filename = organismInState.value;
+    const file = filename + ".mjs";
+    const type = "organisms";
+
+    const organismFile = await importModuleFromFile(
+        file,
+        filename,
+        type
+    );
+
     checkSubFunction(organismInState)
-
-    const organismFile = await getComponentFile(organismInState)
-
     for (const comp of ["organism", "molecule"]) {
 
         const s_componentInState = State[comp+"s"].filter(
@@ -142,9 +149,17 @@ function checkAndUpdateStateAndFile(s_componentInState, organismFile, comp) {
 }
 
 async function checkMoleculeSubComponents(moleculeInState, componentFiles){
-    checkSubFunction(moleculeInState)
+    let filename = moleculeInState.value
+    let file = filename +".mjs";;
+    let type = "molecules";
 
-    const moleculeFile = await getComponentFile(moleculeInState);
+    const moleculeFile = await importModuleFromFile(
+        file,
+        filename,
+        type
+    );
+
+    checkSubFunction(moleculeInState)
 
     for (const comp of ["molecule", "atom"]) {
 
@@ -176,19 +191,6 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
             }
         }
     }
-}
-
-async function getComponentFile(moleculeInState) {
-    let filename = moleculeInState.value;
-    let file = filename + ".mjs";;
-    let type = "molecules";
-
-    const moleculeFile = await importModuleFromFile(
-        file,
-        filename,
-        type
-    );
-    return moleculeFile;
 }
 
 async function checkAtom(atomInState, componentFiles){
