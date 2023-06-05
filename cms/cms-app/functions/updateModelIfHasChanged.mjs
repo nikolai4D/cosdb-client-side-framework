@@ -194,8 +194,6 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         (atom) => atom.parentId === organismInState.id
     ); // No atom can have an organism as a parent
 
-    console.log(organismInState, "organismInState")
-
 
     let areOrganismsFiles = isElementsAlsoInArray(componentFiles, s_organismsInState.map(organism => organism.value))
     let areMoleculesFiles = isElementsAlsoInArray(componentFiles, s_moleculesInState.map(organism => organism.value))
@@ -232,18 +230,6 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     // if there are the same but more values in state, REMOVE
     // if there are different values in the ID, REMOVE all and ADD new
     //
-
-
-    if ((organismFile.organisms == undefined && s_organismsInState.length != 0) || (organismFile.organisms != undefined && (!s_organismsInState.length == organismFile.organisms.length))) {
-        console.log("Organisms has changed! : ", s_organismsInState);
-    }
-    if ((organismFile.molecules == undefined && s_moleculesInState.length != 0) || (organismFile.molecules != undefined && (!s_moleculesInState.length == organismFile.molecules.length))) {
-        console.log("Molecules has changed! : ", s_moleculesInState);
-    }
-
-    if ((organismFile.atoms == undefined && s_atomsInState.length != 0) || (organismFile.atoms != undefined && !s_atomsInState.length == organismFile.atoms.length)) {
-        console.log("Atoms has changed! : ", s_atomsInState);
-    }
 
     // organism
 
