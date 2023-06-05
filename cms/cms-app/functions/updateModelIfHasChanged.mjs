@@ -262,16 +262,15 @@ function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, t
 
 function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
     let isMatch = false;
-    let subComponentState= ""
+    let subComponentsState= subComponentsState
     for (let subComponentState of subComponentsState) {
         if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
             isMatch = true;
-            subComponentState = subComponentState;
         }
     }
     if (!isMatch) {
         console.log("Component has changed! ADD to state: ", subComponentFile);
-        console.log(`${subComponentState.value} ${subComponentState.key}`);
+        console.log(subComponentsState);
         console.log(`${subComponentFile[type]} ${type} ${subComponentFile.id}`);
 
 
