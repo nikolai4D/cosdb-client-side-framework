@@ -175,11 +175,6 @@ export async function updateModelIfHasChanged() {
 
 async function checkOrganismSubComponents(organismInState, componentFiles){
 
-    // what if components in the file are different from the components in the state?
-    // what if there are the same but the file has more of them?
-    // what if there are the same but the state has more of them?
-        // check the IDs!
-
 
     // get organisms from State with the matching component as a parent
     const s_organismsInState = State.organisms.filter(
@@ -222,17 +217,6 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         filename,
         type
     );
-
-    // check if the organism in file has same parts as in state
-    // the last character indicates what id it has, split it by space and take the number, compare with id in file
-    // i.e. the name and id has to be the same 
-    // if there are the same but more values in file, ADD 
-    // if there are the same but more values in state, REMOVE
-    // if there are different values in the ID, REMOVE all and ADD new
-    //
-
-    // organism
-
 
     checkSubComponents(s_organismsInState, organismFile, componentFiles, "organism");
     checkSubComponents(s_moleculesInState, organismFile, componentFiles, "molecule");
@@ -308,24 +292,15 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     }
     let filename = moleculeInState.value
     let file = filename +".mjs";;
-
     let type = "molecules";
-    let constructorType = "molecules";
-    const molecules = await importModuleFromFile(
+    const moleculeFile = await importModuleFromFile(
         file,
         filename,
         type
     );
-    // console.log(moleculeInState, "moleculesInState")
-    // console.log(molecules, filename, constructorType, type, "molecules1")
 
-    for (let molecule of s_moleculesInState) {
-        await checkMoleculeSubComponents(molecule, componentFiles)
-    }
-    
-    for (let atom of s_atomsInState) {
-        await checkAtom(atom, componentFiles)
-    }
+    checkSubComponents(s_moleculesInState, moleculeFile, componentFiles, "molecule");
+    checkSubComponents(s_atomsInState, moleculeFile, componentFiles, "atom");
 }
 
 async function checkAtom(atomInState, componentFiles){
@@ -335,20 +310,19 @@ async function checkAtom(atomInState, componentFiles){
         console.log("Atom has changed! : ", atomInState);
     }
 
-    let filename = atomInState.value;
-    let file = filename +".mjs";
-
-    let type = "atoms";
-    let constructorType = "atoms";
-    
-    // console.log(atomInState, "atomInState")
-    const atoms = await importModuleFromFile(
-        file,
-        filename,
-        type
-    );  
-
     checkSubFunction(atomInState)
+
+    // let filename = atomInState.value;
+    // let file = filename +".mjs";
+    // let type = "atoms";
+
+    // const atomFile = await importModuleFromFile(
+    //     file,
+    //     filename,
+    //     type
+    // );
+
+    // checkSubComponents(s_atomsInState, atomFile, componentFiles, "atom");
 
 }
 
@@ -366,8 +340,7 @@ async function checkSubFunction(parentInState) {
     }
 }
 
-
-  function sameMembers(arr1, arr2) {
+function sameMembers(arr1, arr2) {
     const set1 = new Set(arr1);
     const set2 = new Set(arr2);
     return arr1.every(item => set2.has(item)) &&
