@@ -301,9 +301,8 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
         type
     );
 
-    for (let molecule of s_moleculesInState) {
-        await checkMoleculeSubComponents(molecule, componentFiles)
-    }
+    checkSubComponents(s_moleculesInState, organismFile, componentFiles, "molecule");
+
     
     for (let atom of s_atomsInState) {
         await checkAtom(atom, componentFiles)
