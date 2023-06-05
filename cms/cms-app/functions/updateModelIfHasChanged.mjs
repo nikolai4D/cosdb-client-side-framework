@@ -269,6 +269,10 @@ function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState,
     }
     if (!isMatch) {
         console.log("Component has changed! ADD to state: ", subComponentFile);
+        console.log(`${subComponentState.value} ${subComponentState.key}`);
+        console.log(`${subComponentFile[type]} ${type} ${subComponentFile.id}`);
+
+
     }
 }
 
