@@ -178,16 +178,16 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     }
 }
 
-async function getComponentFile(moleculeInState, type) {
-    let filename = moleculeInState.value;
-    let file = filename + ".mjs";;
+async function getComponentFile(componentInState, type) {
+    let filename = componentInState.value;
+    let file = filename + ".mjs";
 
-    const moleculeFile = await importModuleFromFile(
+    const componentFile = await importModuleFromFile(
         file,
         filename,
         type
     );
-    return moleculeFile;
+    return componentFile;
 }
 
 async function checkAtom(atomInState, componentFiles){
@@ -200,19 +200,24 @@ async function checkAtom(atomInState, componentFiles){
     checkSubFunction(atomInState)
 }
 
+function compareComponents(subComponentState, subComponentFile, type) {
+    return `${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`;
+}
+
 function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
-    const isMatch = subComponentsState.some(subComponentState => `${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`);
+    const isMatch = subComponentsState.some(subComponentState => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
         console.log("Component has changed! ADD to state: ", subComponentFile);
     }
 }
 
 function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, type) {
-    const isMatch = componentFile[type+"s"].some(subComponentFile => `${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`);
+    const isMatch = componentFile[type+"s"].some(subComponentFile => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
         console.log("Component has changed! REMOVE from State: ", subComponentState);
     }
 }
+
 
 async function checkSubFunction(parentInState) {
     const s_functionsInState = State.functions.filter(
