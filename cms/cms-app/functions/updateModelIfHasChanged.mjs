@@ -315,7 +315,7 @@ function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState,
         }
     }
     if (!isMatch) {
-        console.log("Component has changed! ADD to state: ", subComponentState);
+        console.log("Component has changed! ADD to state: ", subComponentFile);
     }
 }
 
