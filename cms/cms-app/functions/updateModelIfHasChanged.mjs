@@ -277,7 +277,7 @@ function addToState(obj){
     console.log(obj)
 
     const compTypes = ["organisms", "molecules","atoms"]
-    for (const type in compTypes){
+    for (const type of compTypes){
         console.log(obj.component)
         console.log(type)
         console.log(obj.component[type])
