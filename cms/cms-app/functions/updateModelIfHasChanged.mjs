@@ -9,6 +9,7 @@ import { importModuleFromFile } from "./importModuleFromFile.mjs";
 // import {deleteItem} from "./deleteItem.mjs";
 // import { writeModel } from "./writeModel.mjs";
 // import { createSlot } from "../_3_slot/createSlot.mjs";
+import { newComponentFromType } from "../_4_component/newComponentFromType.mjs";
 
 export async function updateModelIfHasChanged() {
     /*
@@ -61,7 +62,7 @@ export async function updateModelIfHasChanged() {
 
             // slotsToRemove = slotsToRemove.map(slot => {...slot, parentId: viewTemplateInState.id, key});
             removeFromState(slotsToRemove);
-            addToState(slotsToAdd);
+            addToState(slotsToAdd, viewTemplateInState.id, true);
         }
 
 
@@ -223,7 +224,7 @@ function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState,
     // checks if subComponentFile is in subComponentsState
     const isMatch = subComponentsState.some(subComponentState => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
-        addToState(subComponentFile);
+        addToState(subComponentFile, subComponentsState[0].parentId);
     }
 }
 
@@ -271,18 +272,21 @@ async function removeFromState(obj){
 
 }
 
-function addToState(obj){
+function addToState(obj, parentId, isSlot = false){
     console.warn("Adding to State: ", obj)
     // State[obj.type+"s"].push(obj)
     // console.log(obj)
+    console.log(newComponentFromType(obj.component.title.toLowerCase()+" "+obj.id, obj[obj.component.title.toLowerCase()], parentId, obj.component.title.toLowerCase() ))
 
-    const compTypes = ["organisms", "molecules","atoms"]
-    for (const type of compTypes){
+    if (!isSlot){
+        const compTypes = ["organism", "molecule","atom"]
+        for (const type of compTypes){
 
-        if (obj.component[type]){
-            for (const comp of obj.component[type]){
-                // State[type].push(comp)
-                addToState(comp)
+            if (obj.component[type+"s"]){
+                for (const comp of obj.component[type+"s"]){
+                    // State[type].push(comp)
+                    addToState(comp, "1")
+                }
             }
         }
     }
