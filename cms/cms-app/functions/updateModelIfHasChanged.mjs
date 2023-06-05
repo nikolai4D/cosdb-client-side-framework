@@ -278,7 +278,7 @@ async function addToState(obj, parentId, isSlot = false){
     const type = obj.component.title.toLowerCase()
     const key = type+" "+obj.id
     const value = obj[type]
-    const objToSave = newComponentFromType(key, value, parentId, type)
+    const objToSave = await newComponentFromType(key, value, parentId, type)
     console.warn("Adding to State: ", objToSave)
 
     if (!isSlot){
