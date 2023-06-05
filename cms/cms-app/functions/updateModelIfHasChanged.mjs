@@ -38,23 +38,26 @@ export async function updateModelIfHasChanged() {
         const slotsInFile = await slotValues(viewTemplateInState.value);
 
         let isSlotSame = sameMembers(slotsInState.map(slot=> slot.value), slotsInFile.map(slot=> slot.slot))
-        
+
         // if the slots don't match, alert
-        if (!isSlotSame){
+        if (!isSlotSame)
             console.log("Slots have changed! : ", viewTemplateInState);
 
             // if there is a new slot in the file (and not in the state)
                 // do something
 
-            // if there is a new slot in the state (and not in the file)
+            const slotsToRemove = slotsInState.filter(slotState => !(slotsInFile.map(slotFile=> slotFile.slot)).includes(slotState.value))
                 // remove the slot and its children from the state and model.json
-            // continue;
+
+            const slotsToAdd = slotsInFile.filter(slotFile => !(slotsInState.map(slotState=> slotState.value)).includes(slotFile.slot))
+                // add slots to model.json
+
         }
 
         if (slotsInState.length !== slotsInFile.length){
             console.log("Slots have changed! : ", viewTemplateInState);
-            // cannot handle same slots atm in the actual file
-            // continue;
+
+            Throw new Error("Not possible to have slots with the same title")
         }
 
         for (const slot of slotsInState) {
@@ -204,6 +207,7 @@ function compareComponents(subComponentState, subComponentFile, type) {
     return `${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`;
 }
 
+
 function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
     const isMatch = subComponentsState.some(subComponentState => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
@@ -217,7 +221,6 @@ function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, t
         console.log("Component has changed! REMOVE from State: ", subComponentState);
     }
 }
-
 
 async function checkSubFunction(parentInState) {
     const s_functionsInState = State.functions.filter(
