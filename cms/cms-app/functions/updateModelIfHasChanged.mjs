@@ -125,6 +125,9 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         for (let s_comp of s_componentInState) {
             checkIfSubcomponentStateMatchInFile(s_comp, organismFile, comp);
         }
+
+        console.log(comp+"s", "comp")
+
         console.log(organismFile, "organismFile")
         for (let s_comp of organismFile[comp+"s"]) {
             checkIfSubcomponentFileMatchState(s_comp, s_componentInState, comp);
