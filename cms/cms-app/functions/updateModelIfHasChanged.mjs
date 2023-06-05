@@ -272,11 +272,11 @@ async function removeFromState(obj){
 
 }
 
-function addToState(obj, parentId, isSlot = false){
+async function addToState(obj, parentId, isSlot = false){
     console.warn("Adding to State: ", obj)
     // State[obj.type+"s"].push(obj)
     // console.log(obj)
-    console.log(newComponentFromType(obj.component.title.toLowerCase()+" "+obj.id, obj[obj.component.title.toLowerCase()], parentId, obj.component.title.toLowerCase() ))
+    console.log(await newComponentFromType(obj.component.title.toLowerCase()+" "+obj.id, obj[obj.component.title.toLowerCase()], parentId, obj.component.title.toLowerCase() ))
 
     if (!isSlot){
         const compTypes = ["organism", "molecule","atom"]
