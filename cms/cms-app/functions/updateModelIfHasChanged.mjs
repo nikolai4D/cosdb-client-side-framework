@@ -131,7 +131,7 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
             removeFromState(subComponentsToRemove);
         }
 
-        checkAndUpdateStateAndFile(s_componentInState, organismFile, comp);
+        checkAndUpdateStateAndFile(s_componentInState, organismFile, comp, organismInState.id);
 
         if (comp === "organism"){
             for (let organism of s_componentInState) {
@@ -147,7 +147,7 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     }
 }
 
-function checkAndUpdateStateAndFile(s_componentInState, organismFile, comp) {
+function checkAndUpdateStateAndFile(s_componentInState, organismFile, comp, parentId) {
     for (let s_comp of s_componentInState) {
         checkIfSubcomponentStateMatchInFile(s_comp, organismFile, comp);
     }
@@ -179,7 +179,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
             moleculeFile[comp+"s"] = []
         }
     
-        checkAndUpdateStateAndFile(s_componentInState, moleculeFile, comp);
+        checkAndUpdateStateAndFile(s_componentInState, moleculeFile, comp, parentId);
 
         if (comp === "molecule"){
             for (let molecule of s_componentInState) {
@@ -222,13 +222,17 @@ function compareComponents(subComponentState, subComponentFile, type) {
 }
 
 
-function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
+function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type,parentId){
     // checks if subComponentFile is in subComponentsState
     const isMatch = subComponentsState.some(subComponentState => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
         console.log(subComponentFile)
         console.log(subComponentsState)
-        addToState(subComponentFile, subComponentsState[0].parentId);
+        let parentIdToComp = parentId
+        if (subComponentsState[0] !== undefined){
+            parentIdToComp = subComponentsState[0].parentId
+        }
+        addToState(subComponentFile, parentIdToComp);
     }
 }
 
