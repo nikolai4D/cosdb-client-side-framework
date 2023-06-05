@@ -253,22 +253,31 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     }
 
     for (let organism of s_organismsInState) {
-        checkIfSubcompentsInFileAndStateMatch(organism, organismFile, "organism");
+        checkIfSubcompentStateMatchInFile(organism, organismFile, "organism");
+    }
+
+    for (let organism of organismFile.organisms) {
+        checkIfSubcomponentFileMatchState();
+    }
+
+    for (let organism of s_organismsInState) {
         await checkOrganismSubComponents(organism, componentFiles)
     }
 
+
+
     for (let molecule of s_moleculesInState) {
-        checkIfSubcompentsInFileAndStateMatch(molecule, organismFile, "molecule");
+        checkIfSubcompentStateMatchInFile(molecule, organismFile, "molecule");
         await checkMoleculeSubComponents(molecule, componentFiles)
     }
 
     for (let atom of s_atomsInState) {
-        checkIfSubcompentsInFileAndStateMatch(atom, organismFile, "atom");
+        checkIfSubcompentStateMatchInFile(atom, organismFile, "atom");
         await checkAtom(atom, componentFiles)
     }
 }
 
-function checkIfSubcompentsInFileAndStateMatch(subComponentState, componentFile, type) {
+function checkIfSubcompentStateMatchInFile(subComponentState, componentFile, type) {
     let isMatch = false;
     for (let subComponentFile of componentFile[type+"s"]) {
         if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
@@ -276,7 +285,19 @@ function checkIfSubcompentsInFileAndStateMatch(subComponentState, componentFile,
         }
     }
     if (!isMatch) {
-        console.log("Component has changed! : ", subComponentState);
+        console.log("Component has changed! REMOVE from State: ", subComponentState);
+    }
+}
+
+function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
+    let isMatch = false;
+    for (let subComponentState of subComponentsState) {
+        if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
+            isMatch = true;
+        }
+    }
+    if (!isMatch) {
+        console.log("Component has changed! ADD to state: ", subComponentState);
     }
 }
 
