@@ -215,20 +215,15 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         console.log("Atom has changed! : ", s_atomsInState);
     }
 
-
     const filename = organismInState.value;
     const file = filename + ".mjs";
     const type = "organisms";
-
-    console.log(filename, "filename");
 
     const organismFile = await importModuleFromFile(
         file,
         filename,
         type
     );
-
-    console.log(organismFile, "organismFile1")
 
     // check if the organism in file has same parts as in state
     // the last character indicates what id it has, split it by space and take the number, compare with id in file
@@ -245,8 +240,6 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     if ((organismFile.molecules == undefined && s_moleculesInState.length != 0) || (organismFile.molecules != undefined && (!s_moleculesInState.length == organismFile.molecules.length))) {
         console.log("Molecules has changed! : ", s_moleculesInState);
     }
-    console.log(s_atomsInState, "s_atomsInState")
-    console.log(organismFile.atoms, "organismFile.atoms")
 
     if ((organismFile.atoms == undefined && s_atomsInState.length != 0) || (organismFile.atoms != undefined && !s_atomsInState.length == organismFile.atoms.length)) {
         console.log("Atoms has changed! : ", s_atomsInState);
@@ -351,8 +344,8 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
         filename,
         type
     );
-    console.log(moleculeInState, "moleculesInState")
-    console.log(molecules, filename, constructorType, type, "molecules1")
+    // console.log(moleculeInState, "moleculesInState")
+    // console.log(molecules, filename, constructorType, type, "molecules1")
 
     for (let molecule of s_moleculesInState) {
         await checkMoleculeSubComponents(molecule, componentFiles)
@@ -376,14 +369,12 @@ async function checkAtom(atomInState, componentFiles){
     let type = "atoms";
     let constructorType = "atoms";
     
-    console.log(filename, "filename")
     // console.log(atomInState, "atomInState")
     const atoms = await importModuleFromFile(
         file,
         filename,
         type
     );  
-    console.log(atoms, "atoms1")
 
     checkSubFunction(atomInState)
 
