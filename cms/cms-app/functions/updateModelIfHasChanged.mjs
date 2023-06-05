@@ -265,7 +265,11 @@ function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState,
 
     
     for (let subComponentState of subComponentsState) {
+        if (type === 'atom') {
+            console.log(`${subComponentState.value} ${subComponentState.key}`);
+        }
         if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
+
             isMatch = true;
         }
     }
