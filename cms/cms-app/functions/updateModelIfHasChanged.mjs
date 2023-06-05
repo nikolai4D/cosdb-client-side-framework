@@ -21,22 +21,20 @@ export async function updateModelIfHasChanged() {
 
     const readModel = await action_readModel();
 
+    // get all viewTemplate files
     const viewTemplateFiles = await viewTemplateValues();
 
-    // console.info(viewTemplateFiles, "values")
 
     for (const view of State.views) {
-        // add viewTemplates from state
 
-        // get viewTemplate from state
+        // get the viewTemplate from state with the view as the parent
         const viewTemplateInState = State.viewTemplates.find(
           (viewTemplate) => viewTemplate.parentId === view.id
         );
 
         // if the viewTemplate doesn't exist, alert
         if (!viewTemplateFiles.includes(viewTemplateInState.value)){
-            console.info("ViewTemplate has changed! : ", viewTemplateInState)
-            // continue
+            removeFromState(viewTemplateInState);
         }
 
         // get slots from state with the viewTemplate as the parent
@@ -46,8 +44,6 @@ export async function updateModelIfHasChanged() {
         const slotsInFile = await slotValues(viewTemplateInState.value);
 
         if (slotsInState.length !== slotsInFile.length){
-            console.info("Slots have changed! : ", viewTemplateInState);
-
             throw new Error("Length of slots in state and file are not the same!", slotsInState, slotsInFile)
         }
 
@@ -57,8 +53,6 @@ export async function updateModelIfHasChanged() {
 
         // if the slots don't match, alert
         if (!sameMembers(slotsInStateValues, slotsInFileValues)) {
-            console.info("Slots have changed! : ", viewTemplateInState);
-
             const slotsToRemove = slotsInState.filter(slot => !slotsInFileValues.includes(slot.value));
             const slotsToAdd = slotsInFile.filter(slot => !slotsInStateValues.includes(slot.slot));
 
@@ -90,9 +84,6 @@ export async function updateModelIfHasChanged() {
                 }
 
                 if (!componentFiles.includes(componentInState.value)){
-                    console.info("Component has changed! : ", componentInState);
-                    
-                    // remove componentInState from state
                     const componentToRemove = componentInState;
                     removeFromState(componentToRemove);
                 }
@@ -126,8 +117,6 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         let areSubcompFiles = isElementsAlsoInArray(componentFiles, s_componentInState.map(s_comp => s_comp.value))
 
         if (!areSubcompFiles){
-            console.info("Component has changed! : ", s_componentInState);
-
             // filter out the subcomponents that are not in the array
             const subComponentsToRemove = s_componentInState.filter(s_comp => !componentFiles.includes(s_comp.value))
             removeFromState(subComponentsToRemove);
@@ -173,8 +162,6 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
         let areSubcompFiles = isElementsAlsoInArray(componentFiles, s_componentInState.map(s_comp => s_comp.value))
 
         if (!areSubcompFiles){
-            console.info("Component has changed! : ", s_componentInState);
-
             const subComponentsToRemove = s_componentInState.filter(s_comp => !componentFiles.includes(s_comp.value))
             removeFromState(subComponentsToRemove);
         }
@@ -215,8 +202,6 @@ async function checkAtom(atomInState, componentFiles){
     let areAtomsFiles = componentFiles.includes(atomInState.value)
 
     if (!areAtomsFiles){
-        console.info("Atom has changed! : ", atomInState);
-
         const atomsToRemove = atomInState
         removeFromState(atomsToRemove);
     }
@@ -232,8 +217,6 @@ function compareComponents(subComponentState, subComponentFile, type) {
 function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
     const isMatch = subComponentsState.some(subComponentState => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
-        console.info("Component has changed! ADDED to state: ", subComponentFile);
-        
         // add subComponentFile to state
         const subComponentToAdd = subComponentFile;
         addToState(subComponentToAdd);
@@ -243,8 +226,6 @@ function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState,
 function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, type) {
     const isMatch = componentFile[type+"s"].some(subComponentFile => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
-        console.info("Component has changed! REMOVED from State: ", subComponentState);
-
         // remove subComponentState from state
         const subComponentToRemove = subComponentState;
         removeFromState(subComponentToRemove);
@@ -261,7 +242,6 @@ async function checkSubFunction(parentInState) {
     let areFunctionsFiles = isElementsAlsoInArray(functionFiles, s_functionsInState.map(func => func.value));
 
     if (!areFunctionsFiles) {
-        console.info("Function has changed! : ", s_functionsInState);
         const functionsToRemove = s_functionsInState.filter(func => !functionFiles.includes(func.value))
         removeFromState(functionsToRemove);
     }
@@ -279,7 +259,11 @@ function sameMembers(arr1, arr2) {
 const isElementsAlsoInArray = (arr, target) => target.every(v => arr.includes(v));
 
 function removeFromState(obj){
+    console.warn("Removing from State: ", obj)
+
 }
 
 function addToState(obj){
+    console.warn("Adding to State: ", obj)
+
 }
