@@ -278,12 +278,11 @@ function addToState(obj){
 
     const compTypes = ["organisms", "molecules","atoms",]
     for (const type in compTypes){
-        if (obj[type].length > 0){
-            for (const comp of obj[type]){
+        if (!obj.component[type] == undefined){
+            for (const comp of obj.component[type]){
                 // State[type].push(comp)
                 addToState(comp)
             }
         }
     }
-
 }
