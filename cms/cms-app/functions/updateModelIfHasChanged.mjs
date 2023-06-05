@@ -289,7 +289,6 @@ async function addToState(obj, parentId, isSlot = false){
         State.slots.push(objToSave) 
         }
 
-        return
 
     }
     else {
