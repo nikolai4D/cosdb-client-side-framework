@@ -227,7 +227,9 @@ async function checkSubComponents(subComponentsInState, subComponentFile, compon
     for (let subComponent of subComponentsInState) {
         checkIfSubcomponentStateMatchInFile(subComponent, subComponentFile, type);
     }
+    console.log(subComponentsInState)
 
+    console.log(subComponentFile)
     for (let subComponent of subComponentFile[type + "s"]) {
         checkIfSubcomponentFileMatchState(subComponent, subComponentsInState, type);
     }
