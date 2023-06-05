@@ -265,7 +265,6 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     }
 
 
-
     for (let molecule of s_moleculesInState) {
         checkIfSubcompentStateMatchInFile(molecule, organismFile, "molecule");
         await checkMoleculeSubComponents(molecule, componentFiles)
