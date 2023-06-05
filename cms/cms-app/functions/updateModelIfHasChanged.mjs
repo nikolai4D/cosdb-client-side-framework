@@ -218,35 +218,45 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         type
     );
 
-    checkSubComponents(s_organismsInState, organismFile, componentFiles, "organism");
-    checkSubComponents(s_moleculesInState, organismFile, componentFiles, "molecule");
+    for (let organism of s_organismsInState) {
+        checkIfSubcompentStateMatchInFile(organism, organismFile, "organism");
+    }
 
+    for (let organism of organismFile.organisms) {
+        checkIfSubcomponentFileMatchState(organism, s_organismsInState, "organism");
+    }
+
+    for (let organism of s_organismsInState) {
+        await checkOrganismSubComponents(organism, componentFiles)
+    }
+
+    // molecule
+
+    for (let molecule of s_moleculesInState) {
+        checkIfSubcompentStateMatchInFile(molecule, organismFile, "molecule");
+    }
+
+    for (let molecule of organismFile.molecules) {
+        checkIfSubcomponentFileMatchState(molecule, s_moleculesInState, "molecule")
+    }
+
+    for (let molecule of s_moleculesInState) {
+        await checkMoleculeSubComponents(molecule, componentFiles)
+    }
 }
 
-async function checkSubComponents(subComponentsInState, subComponentFile, componentFiles, type) {
-    for (let subComponent of subComponentsInState) {
-        checkIfSubcomponentStateMatchInFile(subComponent, subComponentFile, type);
-    }
 
-    if (subComponentFile[type + "s"] === undefined) {
-        subComponentFile[type + "s"] = [];
-    }
-
-    for (let subComponent of subComponentFile[type + "s"]) {
-        checkIfSubcomponentFileMatchState(subComponent, subComponentsInState, type);
-    }
-
-    for (let subComponent of subComponentsInState) {
-        if (type === 'organism') {
-            await checkOrganismSubComponents(subComponent, componentFiles);
-        } else if (type === 'molecule') {
-            await checkMoleculeSubComponents(subComponent, componentFiles);
-        } else if (type === 'atom') {
-        await checkAtom(atom, componentFiles)
+function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
+    let isMatch = false;
+    for (let subComponentState of subComponentsState) {
+        if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
+            isMatch = true;
         }
     }
+    if (!isMatch) {
+        console.log("Component has changed! ADD to state: ", subComponentFile);
+    }
 }
-
 
 function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, type) {
     let isMatch = false;
@@ -260,27 +270,7 @@ function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, t
     }
 }
 
-function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
-    let isMatch = false;
 
-    
-    for (let subComponentState of subComponentsState) {
-        if (type === 'atom') {
-            console.log(`${subComponentState.value} ${subComponentState.key}`);
-        }
-        if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
-
-            isMatch = true;
-        }
-    }
-    if (!isMatch) {
-        console.log("Component has changed! ADD to state: ", subComponentFile);
-        console.log(subComponentsState);
-        console.log(`${subComponentFile[type]} ${type} ${subComponentFile.id}`);
-
-
-    }
-}
 
 async function checkMoleculeSubComponents(moleculeInState, componentFiles){
 
@@ -315,13 +305,23 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
         type
     );
 
-    checkSubComponents(s_moleculesInState, moleculeFile, componentFiles, "molecule");
-    checkSubComponents(s_moleculesInState, moleculeFile, componentFiles, "atom");
+
+    for (let molecule of s_moleculesInState) {
+        checkIfSubcompentStateMatchInFile(molecule, moleculeFile, "molecule");
+    }
+
+    for (let molecule of moleculeFile.molecules) {
+        checkIfSubcomponentFileMatchState(molecule, s_moleculesInState, "molecule")
+    }
+
+    for (let molecule of s_moleculesInState) {
+        await checkMoleculeSubComponents(molecule, componentFiles)
+    }
 
     
-    // for (let atom of s_atomsInState) {
-    //     await checkAtom(atom, componentFiles)
-    // }
+    for (let atom of s_atomsInState) {
+        await checkAtom(atom, componentFiles)
+    }
     
 }
 
