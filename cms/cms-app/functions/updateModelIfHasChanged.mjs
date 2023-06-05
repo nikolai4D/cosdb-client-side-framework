@@ -64,6 +64,7 @@ export async function updateModelIfHasChanged() {
                 console.log("No component! : ", componentInState);
                 continue;
             }
+            const componentFiles = await componentValues();
 
             const componentTypes = ['organisms', 'molecules', 'atoms'];
             for (const componentType of componentTypes) {
