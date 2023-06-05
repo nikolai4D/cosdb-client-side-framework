@@ -93,7 +93,7 @@ export async function updateModelIfHasChanged() {
                 }
 
                 if (comp === "organisms") {
-                    await checkOrganismSubComponents(componentInState, componentFiles);
+                    await checkOrganismSubComponents(componentInState, componentFile);
                 }
                 else if (comp === "molecules") {
                     await checkMoleculeSubComponents(componentInState, componentFiles);
@@ -226,6 +226,7 @@ function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState,
     // checks if subComponentFile is in subComponentsState
     const isMatch = subComponentsState.some(subComponentState => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
+        console.log(subComponentFile)
         console.log(subComponentsState)
         addToState(subComponentFile, subComponentsState[0].parentId);
     }
