@@ -274,7 +274,7 @@ async function removeFromState(obj){
 
 async function addToState(obj, parentId, isSlot = false){
     // State[obj.type+"s"].push(obj)
-    // console.log(obj)
+    console.log(obj)
     const type = obj.component.title.toLowerCase()
     const key = type+" "+obj.id
     const value = obj[type]
