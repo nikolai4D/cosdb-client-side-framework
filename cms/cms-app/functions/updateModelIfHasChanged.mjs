@@ -153,7 +153,7 @@ function checkAndUpdateStateAndFile(s_componentInState, organismFile, comp, pare
     }
 
     for (let s_comp of organismFile[comp + "s"]) {
-        checkIfSubcomponentFileMatchState(s_comp, s_componentInState, comp);
+        checkIfSubcomponentFileMatchState(s_comp, s_componentInState, comp, parentId);
     }
 }
 
@@ -179,7 +179,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
             moleculeFile[comp+"s"] = []
         }
     
-        checkAndUpdateStateAndFile(s_componentInState, moleculeFile, comp, parentId);
+        checkAndUpdateStateAndFile(s_componentInState, moleculeFile, comp, moleculeInState.id);
 
         if (comp === "molecule"){
             for (let molecule of s_componentInState) {
