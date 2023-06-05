@@ -219,7 +219,7 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     );
 
     for (let organism of s_organismsInState) {
-        checkIfSubcompentStateMatchInFile(organism, organismFile, "organism");
+        checkIfSubcomponentStateMatchInFile(organism, organismFile, "organism");
     }
 
     for (let organism of organismFile.organisms) {
@@ -233,7 +233,7 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     // molecule
 
     for (let molecule of s_moleculesInState) {
-        checkIfSubcompentStateMatchInFile(molecule, organismFile, "molecule");
+        checkIfSubcomponentStateMatchInFile(molecule, organismFile, "molecule");
     }
 
     for (let molecule of organismFile.molecules) {
@@ -307,7 +307,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
 
 
     for (let molecule of s_moleculesInState) {
-        checkIfSubcompentStateMatchInFile(molecule, moleculeFile, "molecule");
+        checkIfSubcomponentStateMatchInFile(molecule, moleculeFile, "molecule");
     }
 
     for (let molecule of moleculeFile.molecules) {
