@@ -47,9 +47,9 @@ export async function updateModelIfHasChanged() {
         // get slots from the viewTemplate file
         const slotsInFile = await slotValues(viewTemplateInState.value);
 
-        if (slotsInState.length !== slotsInFile.length){
-            throw new Error("Length of slots in state and file are not the same!", slotsInState, slotsInFile)
-        }
+        // if (slotsInState.length !== slotsInFile.length){
+        //     throw new Error("Length of slots in state and file are not the same!", slotsInState, slotsInFile)
+        // }
 
         // get the slot values from the state and the file
         let slotsInStateValues = slotsInState.map(slot => slot.value);
