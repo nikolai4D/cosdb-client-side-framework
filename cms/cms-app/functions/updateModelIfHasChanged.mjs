@@ -159,7 +159,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     for (const comp of ["molecule", "atom"]) {
 
         const s_componentInState = State[comp+"s"].filter(
-            (s_comp) => s_comp.parentId === organismInState.id
+            (s_comp) => s_comp.parentId === moleculeInState.id
         );
 
         let areSubcompFiles = isElementsAlsoInArray(componentFiles, s_componentInState.map(s_comp => s_comp.value))
