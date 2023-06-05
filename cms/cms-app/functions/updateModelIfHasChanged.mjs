@@ -226,6 +226,7 @@ function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState,
     // checks if subComponentFile is in subComponentsState
     const isMatch = subComponentsState.some(subComponentState => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
+        console.log(subComponentsState)
         addToState(subComponentFile, subComponentsState[0].parentId);
     }
 }
