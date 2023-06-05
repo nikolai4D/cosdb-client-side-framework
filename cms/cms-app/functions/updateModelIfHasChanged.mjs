@@ -266,32 +266,20 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         checkIfSubcompentsInFileAndStateMatch(atom, organismFile, "atom");
         await checkAtom(atom, componentFiles)
     }
-
 }
 
-function checkIfSubcompentsInFileAndStateMatch(organism, organismFile, type) {
-    const id = getIdFromKey(organism.key);
-    for (let file of organismFile.organisms) {
-        // if (!organism.value == organismFile.component[type]) {
-        //     console.log(`${type} has changed! : ` , organism);
-        // }
-
-        // check if the ID is the same, then check if the value is the same
+function checkIfSubcompentsInFileAndStateMatch(subComponentState, componentFile, type) {
+    let isMatch = false;
+    for (let subComponentFile of componentFile[type+"s"]) {
+        if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
+            isMatch = true;
+        }
     }
-    // if (id != organismFile.component.id) {
-    //     console.log(`${type} has changed! : `, organism);
-    // }
+    if (!isMatch) {
+        console.log("Component has changed! : ", subComponentState);
+    }
 }
 
-  function getIdFromKey(key){
-    const lastIndex = key.trim().lastIndexOf(" ");
-    const id = key.slice(lastIndex + 1)
-    if (isNaN(id)){
-        console.log("ID is not a number! : ", id);
-    }
-    return id;
-  }
-  
 async function checkMoleculeSubComponents(moleculeInState, componentFiles){
 
     checkSubFunction(moleculeInState)
