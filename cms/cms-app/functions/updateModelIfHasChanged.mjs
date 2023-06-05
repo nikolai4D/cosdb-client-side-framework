@@ -5,9 +5,9 @@ import { slotValues } from "../_3_slot/slotValues.mjs";
 import { componentValues } from "../_4_component/componentValues.mjs";
 import { functionValues } from "../_8_function/functionValues.mjs";
 import { importModuleFromFile } from "./importModuleFromFile.mjs";
-// import {deleteChildren} from "./deleteChildren.mjs";
-// import {deleteItem} from "./deleteItem.mjs";
-// import { writeModel } from "./writeModel.mjs";
+import {deleteChildren} from "./deleteChildren.mjs";
+import {deleteItem} from "./deleteItem.mjs";
+import { writeModel } from "../requests/writeModel.mjs";
 // import { createSlot } from "../_3_slot/createSlot.mjs";
 import { newComponentFromType } from "../_4_component/newComponentFromType.mjs";
 
@@ -269,17 +269,17 @@ const isElementsAlsoInArray = (arr, target) => target.every(v => arr.includes(v)
 async function removeFromState(obj){
     console.warn("Removing from State: ", obj)
 
-    // if (Array.isArray(obj)){
-    //     for (const aObj of obj){
-    //         await deleteChildren(aObj.id)
-    //         await deleteItem(aObj.id)
-    //     }
-    // }
+    if (Array.isArray(obj)){
+        for (const aObj of obj){
+            await deleteChildren(aObj.id)
+            await deleteItem(aObj.id)
+        }
+    }
 
-    // else {
-    // await deleteChildren(obj.id)
-    // await deleteItem(obj.id)
-    // }
+    else {
+    await deleteChildren(obj.id)
+    await deleteItem(obj.id)
+    }
 }
 
 async function addToState(obj, parentId, isSlot = false){
