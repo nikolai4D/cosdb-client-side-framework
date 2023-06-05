@@ -105,7 +105,7 @@ export async function updateModelIfHasChanged() {
         }
     }
 
-    await writeModel(await State);
+    // await writeModel(State);
 
     console.log(await State)
 
@@ -269,17 +269,17 @@ const isElementsAlsoInArray = (arr, target) => target.every(v => arr.includes(v)
 async function removeFromState(obj){
     console.warn("Removing from State: ", obj)
 
-    if (Array.isArray(obj)){
-        for (const aObj of obj){
-            await deleteChildren(aObj.id)
-            await deleteItem(aObj.id)
-        }
-    }
+    // if (Array.isArray(obj)){
+    //     for (const aObj of obj){
+    //         await deleteChildren(aObj.id)
+    //         await deleteItem(aObj.id)
+    //     }
+    // }
 
-    else {
-    await deleteChildren(obj.id)
-    await deleteItem(obj.id)
-    }
+    // else {
+    // await deleteChildren(obj.id)
+    // await deleteItem(obj.id)
+    // }
 }
 
 async function addToState(obj, parentId, isSlot = false){
