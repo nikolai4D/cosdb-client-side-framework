@@ -57,7 +57,7 @@ export async function updateModelIfHasChanged() {
         if (slotsInState.length !== slotsInFile.length){
             console.log("Slots have changed! : ", viewTemplateInState);
 
-            Throw new Error("Not possible to have slots with the same title")
+            throw new Error("Not possible to have slots with the same title")
         }
 
         for (const slot of slotsInState) {
