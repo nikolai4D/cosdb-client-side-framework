@@ -276,7 +276,10 @@ async function addToState(obj, parentId, isSlot = false){
     console.warn("Adding to State: ", obj)
     // State[obj.type+"s"].push(obj)
     // console.log(obj)
-    console.log(await newComponentFromType(obj.component.title.toLowerCase()+" "+obj.id, obj[obj.component.title.toLowerCase()], parentId, obj.component.title.toLowerCase() ))
+    const type = obj.component.title.toLowerCase()
+    const key = type+" "+obj.id
+    const value = obj[type]
+    const objToSave = newComponentFromType(key, value, parentId, type)
 
     if (!isSlot){
         const compTypes = ["organism", "molecule","atom"]
@@ -285,7 +288,7 @@ async function addToState(obj, parentId, isSlot = false){
             if (obj.component[type+"s"]){
                 for (const comp of obj.component[type+"s"]){
                     // State[type].push(comp)
-                    addToState(comp, "1")
+                    addToState(comp, objToSave.id)
                 }
             }
         }
