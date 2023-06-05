@@ -79,11 +79,18 @@ export async function updateModelIfHasChanged() {
                 console.log(State)
                 console.log(componentPlaceInState)
 
+                console.log(componentPlaceInState)
+
 
                 const componentInState = State[comp].find(
                     (component) => component.parentId === componentPlaceInState.id
                 );
 
+                if (componentInState == undefined) {
+                    console.log("No component! : ", componentInState);
+                    continue;
+                }
+                
                 if (!componentFiles.includes(componentInState.value)){
                     console.log("Component has changed! : ", componentInState);
                 }
