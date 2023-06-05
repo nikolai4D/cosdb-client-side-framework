@@ -73,7 +73,7 @@ export async function updateModelIfHasChanged() {
             );
 
             if (!componentPlaceInState) {
-                console.info("No component! : ", componentPlaceInState);
+                console.info("Slot has no component: ", slot.value);
                 continue;
             }
 
@@ -232,7 +232,7 @@ function compareComponents(subComponentState, subComponentFile, type) {
 function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
     const isMatch = subComponentsState.some(subComponentState => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
-        console.info("Component has changed! ADD to state: ", subComponentFile);
+        console.info("Component has changed! ADDED to state: ", subComponentFile);
         
         // add subComponentFile to state
         const subComponentToAdd = subComponentFile;
@@ -243,7 +243,7 @@ function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState,
 function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, type) {
     const isMatch = componentFile[type+"s"].some(subComponentFile => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
-        console.info("Component has changed! REMOVE from State: ", subComponentState);
+        console.info("Component has changed! REMOVED from State: ", subComponentState);
 
         // remove subComponentState from state
         const subComponentToRemove = subComponentState;
