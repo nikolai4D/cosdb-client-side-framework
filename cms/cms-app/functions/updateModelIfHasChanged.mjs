@@ -8,15 +8,6 @@ import { functionValues } from "../_8_function/functionValues.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 import { importModuleFromFile } from "./importModuleFromFile.mjs";
 
-function sameMembers(arr1, arr2) {
-    const set1 = new Set(arr1);
-    const set2 = new Set(arr2);
-    return arr1.every(item => set2.has(item)) &&
-        arr2.every(item => set1.has(item))
-}
-
-let isElementsAlsoInArray = (arr, target) => target.every(v => arr.includes(v));
-
 
 export async function updateModelIfHasChanged() {
 
@@ -64,7 +55,7 @@ export async function updateModelIfHasChanged() {
 
         if (slotsInState.length !== slotsInFile.length){
             console.log("Slots have changed! : ", viewTemplateInState);
-            // can not handle same slots atm in the actual file
+            // cannot handle same slots atm in the actual file
             // continue;
         }
 
@@ -187,6 +178,7 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     // what if components in the file are different from the components in the state?
     // what if there are the same but the file has more of them?
     // what if there are the same but the state has more of them?
+        // check the IDs!
 
 
     // get organisms from State with the matching component as a parent
@@ -200,10 +192,9 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
 
     const s_atomsInState = State.atoms.filter(
         (atom) => atom.parentId === organismInState.id
-    );
+    ); // No atom can have an organism as a parent
 
     console.log(organismInState, "organismInState")
-    // get organisms from file with the matching component as a parent
 
 
     let areOrganismsFiles = isElementsAlsoInArray(componentFiles, s_organismsInState.map(organism => organism.value))
@@ -240,15 +231,15 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     console.log(organismFile, "organismFile1")
 
     // check if the organism in file has same parts as in state
-    // the last character indicated what id it has, split it by space and take the number, compare with id in file
+    // the last character indicates what id it has, split it by space and take the number, compare with id in file
     // i.e. the name and id has to be the same 
     // if there are the same but more values in file, ADD 
     // if there are the same but more values in state, REMOVE
     // if there are different values in the ID, REMOVE all and ADD new
-    // 
+    //
 
 
-    if ((organismFile.organisms == undefined && s_organismsInState.length != 0) || (organisms.organisms != undefined && (!s_organismsInState.length == organismFile.organisms))) {
+    if ((organismFile.organisms == undefined && s_organismsInState.length != 0) || (organisms.organisms != undefined && (!s_organismsInState.length == organismFile.organisms.length))) {
         console.log("Organisms has changed! : ", s_organismsInState);
     }
     if ((organismFile.molecules == undefined && s_moleculesInState.length != 0) || (organisms.molecules != undefined && (!s_moleculesInState.length == organismFile.molecules.length))) {
@@ -281,15 +272,26 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
 function checkIfSubcompentsInFileAndStateMatch(organism, organismFile, type) {
     const id = getIdFromKey(organism.key);
     for (let organismFile of organismFile.organisms) {
-        if (!organism.value == organismFile.component[type]) {
-            console.log(`${type} has changed! : ` , organism);
-        }
+        // if (!organism.value == organismFile.component[type]) {
+        //     console.log(`${type} has changed! : ` , organism);
+        // }
+
+        // check if the ID is the same, then check if the value is the same
     }
-    if (id != organismFile.component.id) {
-        console.log(`${type} has changed! : `, organism);
-    }
+    // if (id != organismFile.component.id) {
+    //     console.log(`${type} has changed! : `, organism);
+    // }
 }
 
+  function getIdFromKey(key){
+    const lastIndex = key.lastIndexOf(" ");
+    const id = key.slice(lastIndex + 1);
+    if (!isNaN(id)){
+        console.log("ID is not a number! : ", id);
+    }
+    return id;
+  }
+  
 async function checkMoleculeSubComponents(moleculeInState, componentFiles){
 
     checkSubFunction(moleculeInState)
@@ -374,11 +376,13 @@ async function checkSubFunction(parentInState) {
     }
 }
 
-  function getIdFromKey(key){
-    const lastIndex = key.lastIndexOf(" ");
-    const id = key.slice(lastIndex + 1);
-    if (!isNaN(id)){
-        id = "1"
-    }
-    return id;
-  }
+
+  function sameMembers(arr1, arr2) {
+    const set1 = new Set(arr1);
+    const set2 = new Set(arr2);
+    return arr1.every(item => set2.has(item)) &&
+        arr2.every(item => set1.has(item))
+}
+
+let isElementsAlsoInArray = (arr, target) => target.every(v => arr.includes(v));
+
