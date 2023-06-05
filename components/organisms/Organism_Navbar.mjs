@@ -25,8 +25,8 @@ export function Organism_Navbar() {
     },
     {
       id: 3,
-      molecule: "Molecule_Text_Button",
-      component: new Molecule_Text_Button(),
+      molecule: "Molecule_Logo",
+      component: new Molecule_Logo(),
     },
   ];
 
