@@ -312,6 +312,15 @@ async function addToState(obj, parentId, isSlot = false){
         const value = obj[type]
         const objToSave = await newComponentFromType(key, value, parentId, type)
 
+        if (type === "atom"){
+            const type = "atomValue"
+            const key = "value"
+            const value = "value placeholder"
+            const atomValueToSave = await newComponentFromType(key, value, objToSave.id, type)
+            State[type+"s"].push(atomValueToSave)
+
+        }
+
         // add to state 
         console.warn("Adding to State: ", objToSave)
         State[type+"s"].push(objToSave)
