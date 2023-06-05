@@ -271,7 +271,7 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
 
 function checkIfSubcompentsInFileAndStateMatch(organism, organismFile, type) {
     const id = getIdFromKey(organism.key);
-    for (let organismFile of organismFile.organisms) {
+    for (let file of organismFile.organisms) {
         // if (!organism.value == organismFile.component[type]) {
         //     console.log(`${type} has changed! : ` , organism);
         // }
