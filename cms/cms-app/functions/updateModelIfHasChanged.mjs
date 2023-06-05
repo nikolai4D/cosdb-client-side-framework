@@ -5,10 +5,10 @@ import { slotValues } from "../_3_slot/slotValues.mjs";
 import { componentValues } from "../_4_component/componentValues.mjs";
 import { functionValues } from "../_8_function/functionValues.mjs";
 import { importModuleFromFile } from "./importModuleFromFile.mjs";
-import {deleteChildren} from "./deleteChildren.mjs";
-import {deleteItem} from "./deleteItem.mjs";
-import { writeModel } from "./writeModel.mjs";
-import { createSlot } from "../_3_slot/createSlot.mjs";
+// import {deleteChildren} from "./deleteChildren.mjs";
+// import {deleteItem} from "./deleteItem.mjs";
+// import { writeModel } from "./writeModel.mjs";
+// import { createSlot } from "../_3_slot/createSlot.mjs";
 
 export async function updateModelIfHasChanged() {
     /*
