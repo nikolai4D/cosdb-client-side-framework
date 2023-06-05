@@ -224,14 +224,12 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
 }
 
 async function checkSubComponents(subComponentsInState, subComponentFile, componentFiles, type) {
-    if (type !== 'atom') {
-        for (let subComponent of subComponentsInState) {
-            checkIfSubcomponentStateMatchInFile(subComponent, subComponentFile, type);
-        }
+    for (let subComponent of subComponentsInState) {
+        checkIfSubcomponentStateMatchInFile(subComponent, subComponentFile, type);
+    }
 
-        for (let subComponent of subComponentFile[type + "s"]) {
-            checkIfSubcomponentFileMatchState(subComponent, subComponentsInState, type);
-        }
+    for (let subComponent of subComponentFile[type + "s"]) {
+        checkIfSubcomponentFileMatchState(subComponent, subComponentsInState, type);
     }
 
     for (let subComponent of subComponentsInState) {
@@ -294,15 +292,25 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     }
     let filename = moleculeInState.value
     let file = filename +".mjs";;
+
     let type = "molecules";
-    const moleculeFile = await importModuleFromFile(
+    let constructorType = "molecules";
+    const molecules = await importModuleFromFile(
         file,
         filename,
         type
     );
 
-    checkSubComponents(s_moleculesInState, moleculeFile, componentFiles, "molecule");
-    checkSubComponents(s_atomsInState, moleculeFile, componentFiles, "atom");
+    for (let molecule of s_moleculesInState) {
+        await checkMoleculeSubComponents(molecule, componentFiles)
+    }
+    
+    for (let atom of s_atomsInState) {
+        await checkAtom(atom, componentFiles)
+    }
+
+    checkSubComponents(s_moleculesInState, organismFile, componentFiles, "molecule");
+    checkSubComponents(s_atomsInState, organismFile, componentFiles, "atom");
 }
 
 async function checkAtom(atomInState, componentFiles){
@@ -312,20 +320,20 @@ async function checkAtom(atomInState, componentFiles){
         console.log("Atom has changed! : ", atomInState);
     }
 
+    let filename = atomInState.value;
+    let file = filename +".mjs";
+
+    let type = "atoms";
+    let constructorType = "atoms";
+    
+    // console.log(atomInState, "atomInState")
+    const atoms = await importModuleFromFile(
+        file,
+        filename,
+        type
+    );  
+
     checkSubFunction(atomInState)
-
-    // let filename = atomInState.value;
-    // let file = filename +".mjs";
-    // let type = "atoms";
-
-    // const atomFile = await importModuleFromFile(
-    //     file,
-    //     filename,
-    //     type
-    // );
-
-    // checkSubComponents(s_atomsInState, atomFile, componentFiles, "atom");
-
 }
 
 async function checkSubFunction(parentInState) {
