@@ -284,10 +284,11 @@ async function addToState(obj, parentId, isSlot = false){
         const value = aSlot.slot
         const objToSave = await newComponentFromType(key, value, parentId, type)
         console.warn("Adding to State: ", objToSave)
-        return
     
         // write
         }
+        return
+
     }
     console.log(obj)
     const type = obj.component.title.toLowerCase()
