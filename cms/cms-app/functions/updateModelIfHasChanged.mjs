@@ -202,14 +202,24 @@ async function checkAtom(atomInState, componentFiles){
 }
 
 function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
-    const isMatch = subComponentsState.some(subComponentState => `${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`);
+    let isMatch = false;
+    for (let subComponentState of subComponentsState) {
+        if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
+            isMatch = true;
+        }
+    }
     if (!isMatch) {
         console.log("Component has changed! ADD to state: ", subComponentFile);
     }
 }
 
 function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, type) {
-    const isMatch = componentFile[type+"s"].some(subComponentFile => `${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`);
+    let isMatch = false;
+    for (let subComponentFile of componentFile[type+"s"]) {
+        if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
+            isMatch = true;
+        }
+    }
     if (!isMatch) {
         console.log("Component has changed! REMOVE from State: ", subComponentState);
     }
