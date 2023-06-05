@@ -301,8 +301,9 @@ async function addToState(obj, parentId, isSlot = false){
     
          // add to state 
         State.slots.push(objToSave) 
-        }
         console.log("State.slots: ", State)
+
+        }
 
     }
     else {
