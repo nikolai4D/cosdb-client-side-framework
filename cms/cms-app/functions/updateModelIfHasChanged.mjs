@@ -142,33 +142,7 @@ export async function updateModelIfHasChanged() {
                 }
                 checkAtom(atomInState, componentFiles);
             }
-
-    }
-
-
-    // get the code structure
-        // does the viewtemplate still exist?**
-            // are the slots still the same?*
-
-            // the component in the slot, 
-                // does the component still exist?*
-
-                    // if it's an organism,*
-                        // are the organisms still the same?*
-                        // are the molecules still the same?*
-                        // are the atoms still the same?*
-
-                    // if it's a molecule,*
-                        // are the atoms still the same?*
-
-                // are the functions still the same?*
-
- // ** if not, then remove
-  // * if not, then remove and replace with new component
-
-                // Read Model 
-    // Change model
-
+        }
     }
 }
 
@@ -296,9 +270,8 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     }
     let filename = moleculeInState.value
     let file = filename +".mjs";;
-
     let type = "molecules";
-    let constructorType = "molecules";
+
     const moleculeFile = await importModuleFromFile(
         file,
         filename,
@@ -339,10 +312,6 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     for (let atom of s_atomsInState) {
         await checkAtom(atom, componentFiles)
     }
-
-    
-
-    
 }
 
 async function checkAtom(atomInState, componentFiles){
@@ -351,19 +320,6 @@ async function checkAtom(atomInState, componentFiles){
     if (!areAtomsFiles){
         console.log("Atom has changed! : ", atomInState);
     }
-
-    let filename = atomInState.value;
-    let file = filename +".mjs";
-
-    let type = "atoms";
-    let constructorType = "atoms";
-    
-    // console.log(atomInState, "atomInState")
-    const atoms = await importModuleFromFile(
-        file,
-        filename,
-        type
-    );  
 
     checkSubFunction(atomInState)
 }
