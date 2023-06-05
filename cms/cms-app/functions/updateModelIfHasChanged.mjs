@@ -62,32 +62,20 @@ export async function updateModelIfHasChanged() {
                 (component) => component.parentId === slot.id
             );
 
-            if (componentPlaceInState == undefined) {
+            if (!componentPlaceInState) {
                 console.log("No component! : ", componentPlaceInState);
                 continue;
             }
 
-            // check if components id is a parentId for an organism, molecule or an atom
-            // if it is, check if the organism, molecule or atom still exists as a file
-                // "!viewTemplateFiles.includes(viewTemplateInState.value))"
-            // if it doesn't, alert
-
             const componentFiles = await componentValues();
 
             for (const comp of ["organisms", "molecules", "atoms"]) {
-                
-                console.log(State)
-                console.log(componentPlaceInState)
-
-                console.log(componentPlaceInState)
-
 
                 const componentInState = State[comp].find(
                     (component) => component.parentId === componentPlaceInState.id
                 );
 
-                if (componentInState == undefined) {
-                    // console.log("No component! : ", componentInState);
+                if (!componentInState) {
                     continue;
                 }
 
@@ -105,110 +93,12 @@ export async function updateModelIfHasChanged() {
                     await checkAtom(componentInState, componentFiles);
                 }
             }
-
-
-            // const organismInState = State.organisms.find(
-            //     (organism) => organism.parentId === componentPlaceInState.id
-            // );
-
-            // const moleculeInState = State.molecules.find(
-            //     (molecule) => molecule.parentId === componentPlaceInState.id
-            // );
-
-            // const atomInState = State.atoms.find(
-            //     (atom) => atom.parentId === componentPlaceInState.id
-            // );
-
-
-
-            // if matching component is an organism, check if there is an organism, molecule or atom in the state that has the matching component as a parent
-            // if there is:
-                // check if the organisms, molecules and atoms still exist as a file
-                // if they don't, alert
-
-                // check if there is a function in the State that has the organism/molecule/atom as a parent
-                // if there is, check if the function still exists as a file
-                    // if they don't, alert
-
-                // then go through each sub-component one-by-one with this function again with the organism as the parent
-                // also run if matching component is a molecule
-                // also run if matching compontent is an atom
-
-            // if (organismInState) {
-            //     if (!componentFiles.includes(organismInState.value)){
-            //         console.log("Organism has changed! : ", organismInState);
-            //         // continue;
-            //     }
-            //     await checkOrganismSubComponents(organismInState, componentFiles);
-            // }
-
-            // if matching component is an molecule, check if there is a molecule or atom in the state that has the matching component as a parent
-            // if there is:
-                // check if the molecules and atoms still exist as a file
-                // if they don't, alert
-                // also run if matching compontent is an atom
-
-                // then go through each sub-component one-by-one with this function again with the molecule as the componentPlaceInState
-
-            // if (moleculeInState) {
-            //     if (!componentFiles.includes(moleculeInState.value)){
-            //         console.log("Molecule has changed! : ", moleculeInState);
-            //         // continue;
-            //     }
-
-            //     checkMoleculeSubComponents(moleculeInState, componentFiles);
-            // }
-
-            // if matching component is an atom, check if the atom still exist as a file
-                // if it don't, alert
-
-            // if (atomInState) {
-            //     if (!componentFiles.includes(atomInState.value)){
-            //         console.log("Atom has changed! : ", atomInState);
-            //         // continue;
-            //     }
-            //     checkAtom(atomInState, componentFiles);
-            // }
         }
     }
 }
 
 
 async function checkOrganismSubComponents(organismInState, componentFiles){
-
-
-    // get organisms from State with the matching component as a parent
-    const s_organismsInState = State.organisms.filter(
-        (organism) => organism.parentId === organismInState.id
-    );
-
-    const s_moleculesInState = State.molecules.filter(
-        (molecule) => molecule.parentId === organismInState.id
-    );
-
-    const s_atomsInState = State.atoms.filter(
-        (atom) => atom.parentId === organismInState.id
-    ); // No atom can have an organism as a parent
-
-
-    let areOrganismsFiles = isElementsAlsoInArray(componentFiles, s_organismsInState.map(organism => organism.value))
-    let areMoleculesFiles = isElementsAlsoInArray(componentFiles, s_moleculesInState.map(organism => organism.value))
-    let areAtomsFiles = isElementsAlsoInArray(componentFiles, s_atomsInState.map(organism => organism.value))
-
-    checkSubFunction(organismInState)
-
-    if (!areOrganismsFiles){
-        console.log("Organisms has changed! : ", s_organismsInState);
-    }
-    
-    if (!areMoleculesFiles){
-        console.log("Molecules has changed! : ", s_moleculesInState);
-    }
-    
-    if (!areAtomsFiles){
-        console.log("Atom has changed! : ", s_atomsInState);
-    }
-
     const filename = organismInState.value;
     const file = filename + ".mjs";
     const type = "organisms";
@@ -219,59 +109,99 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
         type
     );
 
-    for (let organism of s_organismsInState) {
-        checkIfSubcomponentStateMatchInFile(organism, organismFile, "organism");
-    }
+    checkSubFunction(organismInState)
+    for (const comp of ["organism", "molecule", "atom"]) {
 
-    for (let organism of organismFile.organisms) {
-        checkIfSubcomponentFileMatchState(organism, s_organismsInState, "organism");
-    }
+        const s_componentInState = State[comp+"s"].filter(
+            (s_comp) => s_comp.parentId === organismInState.id
+        );
 
-    for (let organism of s_organismsInState) {
-        await checkOrganismSubComponents(organism, componentFiles)
-    }
+        let areSubcompFiles = isElementsAlsoInArray(componentFiles, s_componentInState.map(s_comp => s_comp.value))
 
-    // molecule
+        if (!areSubcompFiles){
+            console.log("Component has changed! : ", s_componentInState);
+        }
 
-    for (let molecule of s_moleculesInState) {
-        checkIfSubcomponentStateMatchInFile(molecule, organismFile, "molecule");
-    }
+        for (let s_comp of s_componentInState) {
+            checkIfSubcomponentStateMatchInFile(s_comp, organismFile, comp);
+        }
 
-    for (let molecule of organismFile.molecules) {
-        checkIfSubcomponentFileMatchState(molecule, s_moleculesInState, "molecule")
-    }
+        for (let s_comp of organismFile[comp+"s"]) {
+            checkIfSubcomponentFileMatchState(s_comp, s_componentInState, comp);
+        }
 
-    for (let molecule of s_moleculesInState) {
-        await checkMoleculeSubComponents(molecule, componentFiles)
-    }
-}
+        if (comp === "organism"){
+            for (let organism of s_componentInState) {
+                await checkOrganismSubComponents(organism, componentFiles)
+            }
+        }
 
-
-function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
-    let isMatch = false;
-    for (let subComponentState of subComponentsState) {
-        if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
-            isMatch = true;
+        else if (comp === "molecule"){
+            for (let molecule of s_componentInState) {
+                await checkMoleculeSubComponents(molecule, componentFiles)
+            }
         }
     }
-    if (!isMatch) {
-        console.log("Component has changed! ADD to state: ", subComponentFile);
-    }
+
+    // // get organisms from State with the matching component as a parent
+    // const s_organismsInState = State.organisms.filter(
+    //     (organism) => organism.parentId === organismInState.id
+    // );
+
+    // const s_moleculesInState = State.molecules.filter(
+    //     (molecule) => molecule.parentId === organismInState.id
+    // );
+
+    // const s_atomsInState = State.atoms.filter(
+    //     (atom) => atom.parentId === organismInState.id
+    // ); // No atom can have an organism as a parent
+
+
+    // let areOrganismsFiles = isElementsAlsoInArray(componentFiles, s_organismsInState.map(organism => organism.value))
+    // let areMoleculesFiles = isElementsAlsoInArray(componentFiles, s_moleculesInState.map(organism => organism.value))
+    // let areAtomsFiles = isElementsAlsoInArray(componentFiles, s_atomsInState.map(organism => organism.value))
+
+
+    // if (!areOrganismsFiles){
+    //     console.log("Organisms has changed! : ", s_organismsInState);
+    // }
+    
+    // if (!areMoleculesFiles){
+    //     console.log("Molecules has changed! : ", s_moleculesInState);
+    // }
+    
+    // if (!areAtomsFiles){
+    //     console.log("Atom has changed! : ", s_atomsInState);
+    // }
+
+ 
+
+    // for (let organism of s_organismsInState) {
+    //     checkIfSubcomponentStateMatchInFile(organism, organismFile, "organism");
+    // }
+
+    // for (let organism of organismFile.organisms) {
+    //     checkIfSubcomponentFileMatchState(organism, s_organismsInState, "organism");
+    // }
+
+    // for (let organism of s_organismsInState) {
+    //     await checkOrganismSubComponents(organism, componentFiles)
+    // }
+
+    // // molecule
+
+    // for (let molecule of s_moleculesInState) {
+    //     checkIfSubcomponentStateMatchInFile(molecule, organismFile, "molecule");
+    // }
+
+    // for (let molecule of organismFile.molecules) {
+    //     checkIfSubcomponentFileMatchState(molecule, s_moleculesInState, "molecule")
+    // }
+
+    // for (let molecule of s_moleculesInState) {
+    //     await checkMoleculeSubComponents(molecule, componentFiles)
+    // }
 }
-
-function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, type) {
-    let isMatch = false;
-    for (let subComponentFile of componentFile[type+"s"]) {
-        if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
-            isMatch = true;
-        }
-    }
-    if (!isMatch) {
-        console.log("Component has changed! REMOVE from State: ", subComponentState);
-    }
-}
-
-
 
 async function checkMoleculeSubComponents(moleculeInState, componentFiles){
 
@@ -350,6 +280,33 @@ async function checkAtom(atomInState, componentFiles){
 
     checkSubFunction(atomInState)
 }
+
+function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type){
+    let isMatch = false;
+    for (let subComponentState of subComponentsState) {
+        if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
+            isMatch = true;
+        }
+    }
+    if (!isMatch) {
+        console.log("Component has changed! ADD to state: ", subComponentFile);
+    }
+}
+
+function checkIfSubcomponentStateMatchInFile(subComponentState, componentFile, type) {
+    let isMatch = false;
+    for (let subComponentFile of componentFile[type+"s"]) {
+        if (`${subComponentState.value} ${subComponentState.key}` === `${subComponentFile[type]} ${type} ${subComponentFile.id}`) {
+            isMatch = true;
+        }
+    }
+    if (!isMatch) {
+        console.log("Component has changed! REMOVE from State: ", subComponentState);
+    }
+}
+
+
+
 
 async function checkSubFunction(parentInState) {
     const s_functionsInState = State.functions.filter(
