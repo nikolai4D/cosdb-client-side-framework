@@ -75,6 +75,10 @@ export async function updateModelIfHasChanged() {
             const componentFiles = await componentValues();
 
             for (const comp of ["organisms", "molecules", "atoms"]) {
+                
+                console.log(State)
+                console.log(componentPlaceInState)
+
 
                 const componentInState = State[comp].find(
                     (component) => component.parentId === componentPlaceInState.id
