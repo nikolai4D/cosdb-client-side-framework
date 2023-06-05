@@ -308,6 +308,7 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     for (let atom of s_atomsInState) {
         await checkAtom(atom, componentFiles)
     }
+    
 }
 
 async function checkAtom(atomInState, componentFiles){
