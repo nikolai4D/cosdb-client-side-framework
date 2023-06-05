@@ -110,7 +110,7 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
     );
 
     checkSubFunction(organismInState)
-    for (const comp of ["organism", "molecule", "atom"]) {
+    for (const comp of ["organism", "molecule"]) {
 
         const s_componentInState = State[comp+"s"].filter(
             (s_comp) => s_comp.parentId === organismInState.id
