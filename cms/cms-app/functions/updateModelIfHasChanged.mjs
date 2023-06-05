@@ -224,14 +224,16 @@ async function checkOrganismSubComponents(organismInState, componentFiles){
 }
 
 async function checkSubComponents(subComponentsInState, subComponentFile, componentFiles, type) {
-    for (let subComponent of subComponentsInState) {
-        checkIfSubcomponentStateMatchInFile(subComponent, subComponentFile, type);
-    }
+    if (type !== 'atom') {
 
-    for (let subComponent of subComponentFile[type + "s"]) {
-        checkIfSubcomponentFileMatchState(subComponent, subComponentsInState, type);
-    }
+        for (let subComponent of subComponentsInState) {
+            checkIfSubcomponentStateMatchInFile(subComponent, subComponentFile, type);
+        }
 
+        for (let subComponent of subComponentFile[type + "s"]) {
+            checkIfSubcomponentFileMatchState(subComponent, subComponentsInState, type);
+        }
+    }
     for (let subComponent of subComponentsInState) {
         if (type === 'organism') {
             await checkOrganismSubComponents(subComponent, componentFiles);
