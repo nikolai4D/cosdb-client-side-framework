@@ -227,12 +227,11 @@ async function checkSubComponents(subComponentsInState, subComponentFile, compon
     for (let subComponent of subComponentsInState) {
         checkIfSubcomponentStateMatchInFile(subComponent, subComponentFile, type);
     }
-    console.log(subComponentsInState)
 
-    console.log(subComponentFile)
     if (subComponentFile[type + "s"] === undefined) {
         subComponentFile[type + "s"] = [];
     }
+
     for (let subComponent of subComponentFile[type + "s"]) {
         checkIfSubcomponentFileMatchState(subComponent, subComponentsInState, type);
     }
@@ -307,11 +306,8 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
     );
 
     checkSubComponents(s_moleculesInState, moleculeFile, componentFiles, "molecule");
+    checkSubComponents(s_moleculesInState, moleculeFile, componentFiles, "atom");
 
-    
-    for (let atom of s_atomsInState) {
-        await checkAtom(atom, componentFiles)
-    }
     
 }
 
