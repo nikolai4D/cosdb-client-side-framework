@@ -5,7 +5,9 @@ import { slotValues } from "../_3_slot/slotValues.mjs";
 import { componentValues } from "../_4_component/componentValues.mjs";
 import { functionValues } from "../_8_function/functionValues.mjs";
 import { importModuleFromFile } from "./importModuleFromFile.mjs";
-
+import {deleteChildren} from "./deleteChildren.mjs";
+import {deleteItem} from "./deleteItem.mjs";
+import { writeModel } from "./writeModel.mjs";
 
 export async function updateModelIfHasChanged() {
     /*
@@ -19,7 +21,7 @@ export async function updateModelIfHasChanged() {
 
     */
 
-    const readModel = await action_readModel();
+    await action_readModel();
 
     // get all viewTemplate files
     const viewTemplateFiles = await viewTemplateValues();
@@ -99,6 +101,9 @@ export async function updateModelIfHasChanged() {
             }
         }
     }
+
+    // await writeModel(State);
+
 }
 
 
@@ -256,12 +261,17 @@ function sameMembers(arr1, arr2) {
 // This function checks if all target elements are also in the array
 const isElementsAlsoInArray = (arr, target) => target.every(v => arr.includes(v));
 
-function removeFromState(obj){
+
+async function removeFromState(obj){
     console.warn("Removing from State: ", obj)
+
+    // await deleteChildren(obj.id)
+    // await deleteItem(obj.id)
 
 }
 
 function addToState(obj){
     console.warn("Adding to State: ", obj)
+    // State[obj.type+"s"].push(obj)
 
 }
