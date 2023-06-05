@@ -286,7 +286,7 @@ function checkIfSubcompentsInFileAndStateMatch(organism, organismFile, type) {
   function getIdFromKey(key){
     const lastIndex = key.lastIndexOf(" ");
     const id = key.slice(lastIndex + 1).trim();
-    if (!isNaN(id)){
+    if (isNaN(id)){
         console.log("ID is not a number! : ", id);
     }
     return id;
