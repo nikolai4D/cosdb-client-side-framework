@@ -269,9 +269,17 @@ const isElementsAlsoInArray = (arr, target) => target.every(v => arr.includes(v)
 async function removeFromState(obj){
     console.warn("Removing from State: ", obj)
 
-    // await deleteChildren(obj.id)
-    // await deleteItem(obj.id)
+    if (Array.isArray(obj)){
+        for (const aObj of obj){
+            await deleteChildren(aObj.id)
+            await deleteItem(aObj.id)
+        }
+    }
 
+    else {
+    await deleteChildren(obj.id)
+    await deleteItem(obj.id)
+    }
 }
 
 async function addToState(obj, parentId, isSlot = false){
