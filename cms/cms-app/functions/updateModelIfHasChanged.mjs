@@ -73,7 +73,7 @@ export async function updateModelIfHasChanged() {
             );
 
             if (!componentPlaceInState) {
-                console.info(`No component in view "${view.value}" -> viewtemplate "${viewTemplateInState.value}" -> slot "${slot.value}"`);
+                console.info(`No component in slot "${slot.value}" <-- viewtemplate "${viewTemplateInState.value}" <-- view "${view.value}"`);
                 continue;
             }
 
