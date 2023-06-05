@@ -274,17 +274,21 @@ async function removeFromState(obj){
 
 async function addToState(obj, parentId, isSlot = false){
     // State[obj.type+"s"].push(obj)
-
     if (isSlot) {
-        console.log(obj)
+        for (const aSlot of obj){
+            // State[type].push(comp)
+
+        console.log(aSlot)
         const type = "slot"
         const key = type
-        const value = obj.slot
+        const value = aSlot.slot
         const objToSave = await newComponentFromType(key, value, parentId, type)
         console.warn("Adding to State: ", objToSave)
         return
+    
+        // write
+        }
     }
-
     console.log(obj)
     const type = obj.component.title.toLowerCase()
     const key = type+" "+obj.id
