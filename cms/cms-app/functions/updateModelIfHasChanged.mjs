@@ -47,9 +47,6 @@ export async function updateModelIfHasChanged() {
         // get slots from the viewTemplate file
         const slotsInFile = await slotValues(viewTemplateInState.value);
 
-        // if (slotsInState.length !== slotsInFile.length){
-        //     throw new Error("Length of slots in state and file are not the same!", slotsInState, slotsInFile)
-        // }
 
         // get the slot values from the state and the file
         let slotsInStateValues = slotsInState.map(slot => slot.value);
@@ -60,7 +57,6 @@ export async function updateModelIfHasChanged() {
             const slotsToRemove = slotsInState.filter(slot => !slotsInFileValues.includes(slot.value));
             const slotsToAdd = slotsInFile.filter(slot => !slotsInStateValues.includes(slot.slot));
 
-            // slotsToRemove = slotsToRemove.map(slot => {...slot, parentId: viewTemplateInState.id, key});
             await removeFromState(slotsToRemove);
             await addToState(slotsToAdd, viewTemplateInState.id, true);
         }
@@ -106,9 +102,6 @@ export async function updateModelIfHasChanged() {
     }
 
     await writeModel(await State);
-
-    console.log(await State)
-
 }
 
 
@@ -224,10 +217,9 @@ function compareComponents(subComponentState, subComponentFile, type) {
 
 function checkIfSubcomponentFileMatchState(subComponentFile, subComponentsState, type,parentId){
     // checks if subComponentFile is in subComponentsState
+    
     const isMatch = subComponentsState.some(subComponentState => compareComponents(subComponentState, subComponentFile, type));
     if (!isMatch) {
-        console.log(subComponentFile)
-        console.log(subComponentsState)
         let parentIdToComp = parentId
         if (subComponentsState[0] !== undefined){
             parentIdToComp = subComponentsState[0].parentId
