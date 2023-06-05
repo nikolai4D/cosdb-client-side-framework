@@ -93,7 +93,7 @@ export async function updateModelIfHasChanged() {
                 }
 
                 if (comp === "organisms") {
-                    await checkOrganismSubComponents(componentInState, componentFile);
+                    await checkOrganismSubComponents(componentInState, componentFiles);
                 }
                 else if (comp === "molecules") {
                     await checkMoleculeSubComponents(componentInState, componentFiles);
