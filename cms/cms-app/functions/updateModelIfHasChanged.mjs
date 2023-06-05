@@ -310,9 +310,12 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
         checkIfSubcomponentStateMatchInFile(molecule, moleculeFile, "molecule");
     }
 
-    for (let molecule of moleculeFile.molecules) {
-        checkIfSubcomponentFileMatchState(molecule, s_moleculesInState, "molecule")
+    if (moleculeFile.molecules) {
+        for (let molecule of moleculeFile.molecules) {
+            checkIfSubcomponentFileMatchState(molecule, s_moleculesInState, "molecule")
+        }
     }
+
 
     for (let molecule of s_moleculesInState) {
         await checkMoleculeSubComponents(molecule, componentFiles)
