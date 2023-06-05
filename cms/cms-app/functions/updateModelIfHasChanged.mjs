@@ -58,33 +58,58 @@ export async function updateModelIfHasChanged() {
         }
 
         for (const slot of slotsInState) {
-            const componentInState = State.components.find(
+            const componentPlaceInState = State.components.find(
                 (component) => component.parentId === slot.id
             );
 
-            if (componentInState == undefined) {
-                console.log("No component! : ", componentInState);
+            if (componentPlaceInState == undefined) {
+                console.log("No component! : ", componentPlaceInState);
                 continue;
             }
+
+            let atomicComponents = ["organisms", "molecules", "atoms"];
 
             // check if components id is a parentId for an organism, molecule or an atom
             // if it is, check if the organism, molecule or atom still exists as a file
                 // "!viewTemplateFiles.includes(viewTemplateInState.value))"
             // if it doesn't, alert
 
-            const organismInState = State.organisms.find(
-                (organism) => organism.parentId === componentInState.id
-            );
-
-            const moleculeInState = State.molecules.find(
-                (molecule) => molecule.parentId === componentInState.id
-            );
-
-            const atomInState = State.atoms.find(
-                (atom) => atom.parentId === componentInState.id
-            );
-
             const componentFiles = await componentValues();
+
+            for (const comp of atomicComponents) {
+
+                const componentInState = State[comp].find(
+                    (component) => component.parentId === componentPlaceInState.id
+                );
+
+                if (!componentFiles.includes(componentInState.value)){
+                    console.log("Component has changed! : ", componentInState);
+                }
+
+                if (comp === "organisms") {
+                    await checkOrganismSubComponents(componentInState, componentFiles);
+                }
+                else if (comp === "molecules") {
+                    await checkMoleculeSubComponents(componentInState, componentFiles);
+                }
+                else if (comp === "atoms") {
+                    await checkAtom(componentInState, componentFiles);
+                }
+            }
+
+
+            // const organismInState = State.organisms.find(
+            //     (organism) => organism.parentId === componentPlaceInState.id
+            // );
+
+            // const moleculeInState = State.molecules.find(
+            //     (molecule) => molecule.parentId === componentPlaceInState.id
+            // );
+
+            // const atomInState = State.atoms.find(
+            //     (atom) => atom.parentId === componentPlaceInState.id
+            // );
+
 
 
             // if matching component is an organism, check if there is an organism, molecule or atom in the state that has the matching component as a parent
@@ -100,13 +125,13 @@ export async function updateModelIfHasChanged() {
                 // also run if matching component is a molecule
                 // also run if matching compontent is an atom
 
-            if (organismInState) {
-                if (!componentFiles.includes(organismInState.value)){
-                    console.log("Organism has changed! : ", organismInState);
-                    // continue;
-                }
-                await checkOrganismSubComponents(organismInState, componentFiles);
-            }
+            // if (organismInState) {
+            //     if (!componentFiles.includes(organismInState.value)){
+            //         console.log("Organism has changed! : ", organismInState);
+            //         // continue;
+            //     }
+            //     await checkOrganismSubComponents(organismInState, componentFiles);
+            // }
 
             // if matching component is an molecule, check if there is a molecule or atom in the state that has the matching component as a parent
             // if there is:
@@ -114,27 +139,27 @@ export async function updateModelIfHasChanged() {
                 // if they don't, alert
                 // also run if matching compontent is an atom
 
-                // then go through each sub-component one-by-one with this function again with the molecule as the componentInState
+                // then go through each sub-component one-by-one with this function again with the molecule as the componentPlaceInState
 
-            if (moleculeInState) {
-                if (!componentFiles.includes(moleculeInState.value)){
-                    console.log("Molecule has changed! : ", moleculeInState);
-                    // continue;
-                }
+            // if (moleculeInState) {
+            //     if (!componentFiles.includes(moleculeInState.value)){
+            //         console.log("Molecule has changed! : ", moleculeInState);
+            //         // continue;
+            //     }
 
-                checkMoleculeSubComponents(moleculeInState, componentFiles);
-            }
+            //     checkMoleculeSubComponents(moleculeInState, componentFiles);
+            // }
 
             // if matching component is an atom, check if the atom still exist as a file
                 // if it don't, alert
 
-            if (atomInState) {
-                if (!componentFiles.includes(atomInState.value)){
-                    console.log("Atom has changed! : ", atomInState);
-                    // continue;
-                }
-                checkAtom(atomInState, componentFiles);
-            }
+            // if (atomInState) {
+            //     if (!componentFiles.includes(atomInState.value)){
+            //         console.log("Atom has changed! : ", atomInState);
+            //         // continue;
+            //     }
+            //     checkAtom(atomInState, componentFiles);
+            // }
         }
     }
 }
