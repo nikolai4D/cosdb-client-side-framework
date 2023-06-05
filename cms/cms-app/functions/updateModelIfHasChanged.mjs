@@ -274,7 +274,6 @@ async function removeFromState(obj){
 function addToState(obj){
     console.warn("Adding to State: ", obj)
     // State[obj.type+"s"].push(obj)
-    console.log(obj)
 
     const compTypes = ["organisms", "molecules","atoms"]
     for (const type of compTypes){
