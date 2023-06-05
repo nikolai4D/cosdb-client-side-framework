@@ -305,14 +305,14 @@ async function checkMoleculeSubComponents(moleculeInState, componentFiles){
         type
     );
 
+    if (moleculeFile.molecules == undefined){
+        moleculeFile.molecules = []
+    }
 
     for (let molecule of s_moleculesInState) {
         checkIfSubcomponentStateMatchInFile(molecule, moleculeFile, "molecule");
     }
 
-    if (moleculeFile.molecules == undefined){
-        moleculeFile.molecules = []
-    }
 
     for (let molecule of moleculeFile.molecules) {
         checkIfSubcomponentFileMatchState(molecule, s_moleculesInState, "molecule")
