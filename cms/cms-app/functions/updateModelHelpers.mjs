@@ -6,7 +6,6 @@ import {deleteItem} from "./deleteItem.mjs";
 import { newComponentFromType } from "../_4_component/newComponentFromType.mjs";
 
 
-
 export async function checkOrganismSubComponents(organismInState, componentFiles){
     checkSubFunction(organismInState)
 
