@@ -20,6 +20,8 @@ export async function readExistingModel() {
 
   // add views from state
 
+  console.log(State)
+
   for (const view of State.views) {
     // add viewTemplates from state
 
