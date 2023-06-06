@@ -34,6 +34,7 @@ export async function updateModelIfHasChanged() {
         // if the viewTemplate doesn't exist, alert
         if (!viewTemplateFiles.includes(viewTemplateInState.value)){
             removeFromState(viewTemplateInState);
+            continue
         }
 
         // get slots from state with the viewTemplate as the parent
