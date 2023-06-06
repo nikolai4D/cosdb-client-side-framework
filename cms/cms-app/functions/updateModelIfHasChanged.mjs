@@ -86,6 +86,7 @@ export async function updateModelIfHasChanged() {
 
                 if (!componentFiles.includes(componentInState.value)){
                     removeFromState(componentInState);
+                    continue;
                 }
 
                 if (comp === "organisms") {

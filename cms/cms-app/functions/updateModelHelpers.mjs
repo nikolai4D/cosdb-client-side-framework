@@ -23,6 +23,7 @@ export async function checkOrganismSubComponents(organismInState, componentFiles
             // filter out the subcomponents that are not in the array
             const subComponentsToRemove = s_componentInState.filter(s_comp => !componentFiles.includes(s_comp.value))
             removeFromState(subComponentsToRemove);
+            continue
         }
 
         checkAndUpdateStateAndFile(s_componentInState, organismFile, comp, organismInState.id);
@@ -67,6 +68,7 @@ export async function checkMoleculeSubComponents(moleculeInState, componentFiles
         if (!areSubcompFiles){
             const subComponentsToRemove = s_componentInState.filter(s_comp => !componentFiles.includes(s_comp.value))
             removeFromState(subComponentsToRemove);
+            continue
         }
 
         if (moleculeFile[comp+"s"] == undefined){
