@@ -11,6 +11,11 @@ export function Organism_X_TemplateChild() {
   this.organisms = [];
 
   this.molecules = [
+    {
+      id: 1,
+      molecule: "Molecule_X_Template",
+      component: new Molecule_X_Template(),
+    },
   ];
 
   this.functions = [
