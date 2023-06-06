@@ -37,7 +37,7 @@ export async function updateModelIfHasChanged() {
 
         // if the viewTemplate doesn't exist, alert
         if (!viewTemplateFiles.includes(viewTemplateInState.value)){
-            removeFromState(viewTemplateInState);
+            await removeFromState(viewTemplateInState);
             continue
         }
 
