@@ -2,7 +2,7 @@
 import { Molecule } from "../../core/Molecule.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
 //import sub components
-import { Atom_Test } from "../atoms/Atom_Test.mjs";
+import { Atom_Test2 } from "../atoms/Atom_Test2.mjs";
 
 export function Molecule_Test() {
   Molecule.call(this);
@@ -11,8 +11,8 @@ export function Molecule_Test() {
   this.atoms = [
     {
       id: 1,
-      atom: "Atom_Test",
-      component: new Atom_Test(),
+      atom: "Atom_Test2",
+      component: new Atom_Test2(),
     },
   ];
 
