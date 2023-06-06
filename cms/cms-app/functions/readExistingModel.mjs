@@ -12,6 +12,7 @@ import { Atom } from "../_7_atom/Atom.mjs";
 import { Function } from "../_8_function/Function.mjs";
 import { newFunction } from "../_8_function/newFunction.mjs";
 import { input } from "../types/input.mjs";
+import { newViewTemplate } from "../_2_viewTemplate/newViewTemplate.mjs";
 
 import { getConstructors } from "../functions/getConstructors.mjs";
 
@@ -29,17 +30,23 @@ export async function readExistingModel() {
       (viewTemplate) => viewTemplate.parentId === view.id
     );
 
-    const ViewTemplateExistingDiv = await ViewTemplate(existingViewTemplate);
+    let viewTemplateToAdd = existingViewTemplate
+
+    if (viewTemplateToAdd === undefined) {
+        viewTemplateToAdd = await newViewTemplate(view.id);
+    }
+
+    const ViewTemplateExistingDiv = await ViewTemplate(viewTemplateToAdd);
 
     const viewDiv = await View(view, ViewTemplateExistingDiv);
     document.body.appendChild(viewDiv);
 
     // add slots form state
 
-    const viewTemplateBody = await getAccordionBody(existingViewTemplate.id);
+    const viewTemplateBody = await getAccordionBody(viewTemplateToAdd.id);
 
     const slots = State.slots.filter(
-      (slot) => slot.parentId === existingViewTemplate.id
+      (slot) => slot.parentId === viewTemplateToAdd.id
     );
 
     for (const slot of slots) {
