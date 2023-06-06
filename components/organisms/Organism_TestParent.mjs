@@ -2,7 +2,7 @@
 import { createElement } from "../../core/helpers/createElement.mjs";
 import { Organism } from "../../core/Organism.mjs";
 //import sub components
-import { Organism_TestChild } from "./Organism_TestChild.mjs";
+import { Organism_TestChild2 } from "./Organism_TestChild2.mjs";
 
 export function Organism_TestParent() {
   Organism.call(this);
@@ -11,8 +11,8 @@ export function Organism_TestParent() {
   this.organisms = [
     {
       id: 1,
-      organism: "Organism_TestChild",
-      component: new Organism_TestChild(),
+      organism: "Organism_TestChild2",
+      component: new Organism_TestChild2(),
     },
   ];
 

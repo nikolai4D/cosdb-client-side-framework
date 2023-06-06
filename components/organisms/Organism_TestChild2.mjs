@@ -3,7 +3,7 @@ import { createElement } from "../../core/helpers/createElement.mjs";
 import { Organism } from "../../core/Organism.mjs";
 //import sub components
 
-export function Organism_TestChild() {
+export function Organism_TestChild2() {
   Organism.call(this);
 
   // sub components
