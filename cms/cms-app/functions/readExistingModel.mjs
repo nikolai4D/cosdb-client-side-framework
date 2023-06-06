@@ -16,7 +16,7 @@ import { input } from "../types/input.mjs";
 import { getConstructors } from "../functions/getConstructors.mjs";
 
 export async function readExistingModel() {
-  const readModel = await action_readModel();
+  // const readModel = await action_readModel();
 
   // add views from state
 
