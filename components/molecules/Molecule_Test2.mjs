@@ -3,7 +3,7 @@ import { Molecule } from "../../core/Molecule.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
 //import sub components
 
-export function Molecule_Test() {
+export function Molecule_Test2() {
   Molecule.call(this);
 
   // sub components
