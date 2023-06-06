@@ -49,7 +49,7 @@ export function Organism_Navbar() {
       ),
       await createElement(
         "div",
-        { class: "organism_navbar__icon_navitem" },
+        { class: "organism_navbar__text_button" },
         await this.molecule(3, null)
       )
     );
