@@ -31,6 +31,10 @@ export async function updateModelIfHasChanged() {
           (viewTemplate) => viewTemplate.parentId === view.id
         );
 
+        if (viewTemplateInState === undefined) {
+            continue
+        }
+
         // if the viewTemplate doesn't exist, alert
         if (!viewTemplateFiles.includes(viewTemplateInState.value)){
             removeFromState(viewTemplateInState);
