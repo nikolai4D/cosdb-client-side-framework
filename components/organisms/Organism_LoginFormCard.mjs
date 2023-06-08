@@ -25,10 +25,10 @@ export function Organism_LoginFormCard() {
   const component = async () => {
     const comp = await createElement(
       "div",
-      { class: "organism_card" },
+      { class: "organism_loginformcard" },
       await createElement(
         "div",
-        { class: "organism_card__loginform" },
+        { class: "organism_loginformcard__card" },
         await this.molecule(1, null)
       )
     );

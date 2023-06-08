@@ -38,16 +38,13 @@ export function Molecule_LoginForm() {
 
   //build component
   const component = async (compData = null) => {
-    const comp = await createElement(
-      "div",
-      { class: "molecule_loginform" },
-
-      await createElement("div", { class: "molecule_heading_input_button__input_button" },
+    const comp =
+      await createElement("div", { class: "molecule_loginform" },
       
       await this.atom(1, null),
       await this.atom(2, null),
       await this.atom(3, null),
-      await this.atom(4, null))
+      await this.atom(4, null)
   )
 
     //add event listener to the comp here
