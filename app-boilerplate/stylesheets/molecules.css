@@ -182,3 +182,9 @@ grid-gap: 1em;
 .molecule_createObjectInputAndButton > .atom_buttonPositive {
     align-self: center;
 }
+
+.molecule_loginform {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 1.5em;
+}
