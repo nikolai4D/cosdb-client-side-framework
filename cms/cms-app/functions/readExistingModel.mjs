@@ -63,6 +63,9 @@ export async function readExistingModel() {
         componentId = existingComponent.id;
       }
 
+      componentDiv.classList.add("my-class");
+
+
       const slotDiv = await Slot(slot, componentDiv);
       viewTemplateBody.appendChild(slotDiv);
 
@@ -88,7 +91,6 @@ async function createOrganism(componentId, componentBody) {
   if (existingOrganism) {
     for (const organism of existingOrganism) {
       const organismBody = document.createElement("div");
-      organismBody.classList.add("my-class");
       const organismDiv = await Organism(organism, organismBody);
       componentBody.appendChild(organismDiv);
       await createOrganism(organism.id, organismBody);
