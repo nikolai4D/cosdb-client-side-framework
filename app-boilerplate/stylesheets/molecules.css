@@ -192,4 +192,5 @@ grid-gap: 1em;
 
 .molecule_loginform > h4 {
     align-self: center;
+    user-select: none; 
 }
