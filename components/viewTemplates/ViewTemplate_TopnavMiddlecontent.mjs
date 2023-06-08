@@ -24,7 +24,7 @@ export function ViewTemplate_TopnavMiddlecontent() {
       { class: "viewtemplate_topnav_middlecontent" },
       await createElement(
         "div",
-        { class: "viewtemplate_topnav" },
+        { class: "viewtemplate_topnav_middlecontent__topnav" },
         await this.slot("topNav")
       ),
       await createElement(
