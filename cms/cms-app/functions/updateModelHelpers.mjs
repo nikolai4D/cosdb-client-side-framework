@@ -218,8 +218,10 @@ export async function addToState(obj, parentId, isSlot = false){
         }
 
         // add to state 
+ 
         console.warn("Adding to State: ", objToSave)
         State[type+"s"].push(objToSave)
+        State[type+"s"].sort((a, b) => a.id.localeCompare(b.id));
 
         const compTypes = ["organism", "molecule","atom"]
         for (const type of compTypes){
