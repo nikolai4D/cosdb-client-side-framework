@@ -37,6 +37,8 @@ export async function readExistingModel() {
     const ViewTemplateExistingDiv = await ViewTemplate(viewTemplateToAdd);
 
     const viewDiv = await View(view, ViewTemplateExistingDiv);
+    componentDiv.classList.add("my-class");
+
     document.body.appendChild(viewDiv);
 
     // add slots form state
@@ -62,9 +64,6 @@ export async function readExistingModel() {
         componentDiv = await Component(existingComponent);
         componentId = existingComponent.id;
       }
-
-      componentDiv.classList.add("my-class");
-
 
       const slotDiv = await Slot(slot, componentDiv);
       viewTemplateBody.appendChild(slotDiv);
