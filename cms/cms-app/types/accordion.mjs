@@ -33,8 +33,9 @@ export async function accordion(
         headerAccordion.parentElement.remove();
       }
     });
-    headerAccordion.appendChild(createProtectedCheckbox())
+    headerAccordion.appendChild(createProtectedCheckbox(id))
     headerAccordion.appendChild(deleteButton);
+    headerAccordion.classList.add("accordion-div-content")
   }
 
   headerAccordion.addEventListener("click", (event) => {
@@ -58,7 +59,7 @@ export async function accordion(
   return accordion;
 }
 
-function createProtectedCheckbox(){
+function createProtectedCheckbox(id){
   const protectedDiv = document.createElement("div");  
   const protectedDivCheckbox = document.createElement("input");
   protectedDivCheckbox.type = "checkbox"
