@@ -127,5 +127,6 @@ z-index: 2; /* Add this line to ensure the modal content is above the modal back
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 2em;
     border-radius: 6px;
+    background-color: white;
 }
 
