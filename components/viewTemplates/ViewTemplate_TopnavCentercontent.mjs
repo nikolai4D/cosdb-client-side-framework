@@ -21,15 +21,15 @@ export function ViewTemplate_TopnavCentercontent() {
   const component = async () => {
     const comp = await createElement(
       "div",
-      { class: "viewtemplate_topnav_middlecontent" },
+      { class: "viewtemplate_topnav_centercontent" },
       await createElement(
         "div",
-        { class: "viewtemplate_topnav_middlecontent__topnav" },
+        { class: "viewtemplate_topnav" },
         await this.slot("topNav")
       ),
       await createElement(
         "div",
-        { class: "viewtemplate_topnav_middlecontent__middlecontent" },
+        { class: "viewtemplate_topnav_centercontent__centercontent" },
         await this.slot("centerContent")
       )
     );

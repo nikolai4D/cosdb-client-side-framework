@@ -187,4 +187,9 @@ grid-gap: 1em;
     display: flex;
     flex-direction: column;
     grid-gap: 1.5em;
+    align-items: center;
+}
+
+.molecule_loginform > h4 {
+    align-self: center;
 }
