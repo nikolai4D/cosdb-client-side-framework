@@ -33,8 +33,8 @@ export async function accordion(
         headerAccordion.parentElement.remove();
       }
     });
-    headerAccordion.appendChild(deleteButton);
     headerAccordion.appendChild(createProtectedCheckbox())
+    headerAccordion.appendChild(deleteButton);
   }
 
   headerAccordion.addEventListener("click", (event) => {

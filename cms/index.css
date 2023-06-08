@@ -43,6 +43,12 @@
     filter:brightness(97%);
     transition: 0.1s;
     } 
+
+  .accordion-div-content{
+    display:flex;
+    align-items: center;
+    grid-gap: 0.5em;
+  }
   .accordion > .accordion-body {
     display: none;
     padding: 10px;
