@@ -7,6 +7,7 @@ export async function newComponentFromType(key, value, parentId, type) {
   comp.value = value;
   comp.id = await getUuid();
   comp.parentId = parentId;
+  comp.valueDisabled = true;
 
   return comp;
 }

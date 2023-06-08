@@ -5,7 +5,7 @@ import { createElement } from "../../core/helpers/createElement.mjs";
 import { Atom_ButtonPositive } from "../atoms/Atom_ButtonPositive.mjs";
 
 import { Atom_Input } from "../atoms/Atom_Input.mjs";
-import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
+import { Atom_Heading4value } from "../atoms/Atom_Heading4value.mjs";
 
 export function Molecule_LoginForm() {
   Molecule.call(this);
@@ -14,8 +14,8 @@ export function Molecule_LoginForm() {
   this.atoms = [
     {
         id: 1,
-        atom: "Atom_Heading4",
-        component: new Atom_Heading4()
+        atom: "Atom_Heading4value",
+        component: new Atom_Heading4value()
     },
     {
         id: 2,
