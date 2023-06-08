@@ -2,14 +2,21 @@
 import { Molecule } from "../../core/Molecule.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
 //import sub components
-import { Atom_Input } from "../atoms/Atom_Input.mjs";
 import { Atom_ButtonPositive } from "../atoms/Atom_ButtonPositive.mjs";
+
+import { Atom_Input } from "../atoms/Atom_Input.mjs";
+import { Atom_Heading4 } from "../atoms/Atom_Heading4.mjs";
 
 export function Molecule_LoginForm() {
   Molecule.call(this);
 
   // sub components
   this.atoms = [
+    {
+        id: 1,
+        atom: "Atom_Heading4",
+        component: new Atom_Heading4()
+    },
     {
         id: 1,
         atom: "Atom_Input", // back
@@ -36,9 +43,11 @@ export function Molecule_LoginForm() {
       { class: "molecule_loginform" },
 
       await createElement("div", { class: "molecule_heading_input_button__input_button" },
+      
       await this.atom(1, null),
       await this.atom(2, null),
-      await this.atom(3, null))
+      await this.atom(3, null),
+      await this.atom(4, null))
   )
 
     //add event listener to the comp here
