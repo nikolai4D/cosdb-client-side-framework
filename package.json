@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "cdev": "sass app-boilerplate/stylesheets/style.scss app-boilerplate/stylesheets/style.css && npm install && git add . && git commit -m \"auto commit\" && git push origin HEAD"
+        "cdev": "npm install && git add . && git commit -m \"auto commit\" && git push origin HEAD"
     },
     "repository": {
         "type": "git",
@@ -16,7 +16,5 @@
     "bugs": {
         "url": "https://github.com/nikolai4D/cosdb-client-side-framework/issues"
     },
-    "homepage": "https://github.com/nikolai4D/cosdb-client-side-framework#readme",
-    "dependencies": {
-    }
+    "homepage": "https://github.com/nikolai4D/cosdb-client-side-framework#readme"
 }

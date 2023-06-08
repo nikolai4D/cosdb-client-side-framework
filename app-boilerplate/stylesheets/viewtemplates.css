@@ -22,18 +22,20 @@
     justify-content: center;
 }
 
-.viewtemplate_topnav {
+.viewtemplate_topnav, 
+.viewtemplate_topnav__middlecontent__topnav, 
+.viewtemplate_topnav_centercontent__topnav {
     width: 100vw;
     height: 5em;
     line-height: 0.9em;
 }
 
-.viewtemplate_topnav__middlecontent__topnav {
-    @extend .viewtemplate_topnav
-}
+// .viewtemplate_topnav__middlecontent__topnav {
+//     @extend .viewtemplate_topnav
+// }
 
-.viewtemplate_topnav_centercontent__topnav {
-    @extend .viewtemplate_topnav
-}
+// .viewtemplate_topnav_centercontent__topnav {
+//     @extend .viewtemplate_topnav
+// }
 
 
