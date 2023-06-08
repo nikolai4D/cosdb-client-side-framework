@@ -18,17 +18,17 @@ export function Molecule_LoginForm() {
         component: new Atom_Heading4()
     },
     {
-        id: 1,
-        atom: "Atom_Input", // back
-        component: new Atom_Input(),
-      },    
-      {
         id: 2,
         atom: "Atom_Input", // back
         component: new Atom_Input(),
       },    
       {
         id: 3,
+        atom: "Atom_Input", // back
+        component: new Atom_Input(),
+      },    
+      {
+        id: 4,
         atom: "Atom_ButtonNeutral",
         component: new Atom_ButtonPositive(),
       },
