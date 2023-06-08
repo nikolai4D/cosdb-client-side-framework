@@ -22,6 +22,8 @@ export async function accordion(
 
   // Append delete button to inner accordion header
   if (customType === "view") {
+
+
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "X";
     deleteButton.classList.add("deleteButton");
@@ -32,6 +34,7 @@ export async function accordion(
       }
     });
     headerAccordion.appendChild(deleteButton);
+    headerAccordion.appendChild(createProtectedCheckbox())
   }
 
   headerAccordion.addEventListener("click", (event) => {
@@ -53,4 +56,19 @@ export async function accordion(
   accordion.appendChild(bodyEl);
 
   return accordion;
+}
+
+function createProtectedCheckbox(){
+  const protectedDiv = document.createElement("div");  
+  const protectedDivCheckbox = document.createElement("input");
+  protectedDivCheckbox.type = "checkbox"
+  protectedDivCheckbox.id = "protected-checkbox-"+id
+
+  const protectedDivLabel = document.createElement("label");
+  protectedDivCheckbox.value = "Protected"
+  protectedDivCheckbox.for = protectedDivCheckbox.id
+
+  protectedDiv.appendChild(protectedDivCheckbox)
+  protectedDiv.appendChild(protectedDivCheckbox)
+  return protectedDiv
 }
