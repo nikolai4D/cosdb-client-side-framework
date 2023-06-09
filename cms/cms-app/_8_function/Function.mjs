@@ -8,7 +8,7 @@ export async function Function(func, functionBody) {
 
   const customType = func.customType;
   const key = func.key;
-  const values = await functionValues();
+  //const values = await functionValues();
   const value = func.value;
   const id = func.id;
   const parentId = func.parentId;
@@ -62,6 +62,8 @@ export async function Function(func, functionBody) {
   );
 
   functionDiv.appendChild(functionParameters);
+
+  await mutation_updateState("functions", func);
 
   return functionDiv;
 }
