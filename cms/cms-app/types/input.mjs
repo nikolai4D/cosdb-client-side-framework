@@ -98,9 +98,9 @@ function createProtectedCheckbox(id, viewObj) {
 // });
 
   // Append elements to the parent div
-  protectedDivLabel.appendChild(protectedDivIcon);
-  protectedDiv.appendChild(protectedDivCheckbox);
-  protectedDiv.appendChild(protectedDivLabel);
+  protectedDiv.appendChild(protectedDivIcon);
+  // protectedDiv.appendChild(protectedDivCheckbox);
+  // protectedDiv.appendChild(protectedDivLabel);
 
   return protectedDiv;
 }
