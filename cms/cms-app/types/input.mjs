@@ -60,8 +60,10 @@ function createProtectedCheckbox(id, protectedView){
       protectedDivIcon.classList.toggle("bi-cloud-plus-fill")
     }
   })
+  protectedDivLabel.appendChild(protectedDivIcon)
 
   protectedDiv.appendChild(protectedDivCheckbox)
   protectedDiv.appendChild(protectedDivLabel)
+
   return protectedDiv
 }
