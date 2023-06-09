@@ -32,7 +32,7 @@ export async function input(
   return container;
 }
 
-function createProtectedCheckbox(id){
+function createProtectedCheckbox(id, protectedView){
   const protectedDiv = document.createElement("div");  
   protectedDiv.classList.add("view-container-checkbox-div")
   const protectedDivCheckbox = document.createElement("input");
