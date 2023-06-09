@@ -1,4 +1,6 @@
 import { eventChangeInput } from "../functions/eventChangeInput.mjs";
+import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
+import { action_writeModel } from "../data-mgmt/actions/action_writeModel.mjs";
 
 export async function input(
   customType,
@@ -25,14 +27,23 @@ export async function input(
   container.appendChild(inputEl);
 
   if (customType === "view"){
-    container.appendChild(createProtectedCheckbox(id, protectedView))
+    let viewObj = {
+      customType,
+      key,
+      value,
+      id,
+      parentId,
+      valueDisabled,
+      protected: protectedView
+    }
+    container.appendChild(createProtectedCheckbox(id, viewObj))
     container.classList.add("view-container-input-div")
   }
 
   return container;
 }
 
-function createProtectedCheckbox(id, protectedView) {
+function createProtectedCheckbox(id, viewObj) {
   // Create base elements
   const protectedDiv = document.createElement("div");
   const protectedDivCheckbox = document.createElement("input");
@@ -54,20 +65,19 @@ function createProtectedCheckbox(id, protectedView) {
   protectedDivLabel.setAttribute("for", protectedDivCheckbox.id);
 
   // Setup icon
-  protectedDivIcon.classList.add("bi", protectedView ? iconLocked : iconUnlocked);
-  protectedDivCheckbox.checked = protectedView;
+  protectedDivIcon.classList.add("bi", viewObj.protected ? iconLocked : iconUnlocked);
+  protectedDivCheckbox.checked = viewObj.protected;
 
-// Add event listener to checkbox
-protectedDivCheckbox.addEventListener("click", function(e) {
-  // If the checkbox is checked and the user tries to uncheck
+  // Add event listener to checkbox
+  protectedDivCheckbox.addEventListener("click", async function(e, viewObj) {
+    // If the checkbox is checked and the user tries to uncheck
 
-  if (!this.checked && !confirm('Are you sure you want to uncheck this?')) {
-    // Prevent the checkbox from being unchecked
-    e.preventDefault();
-  } 
-  myFunction(this.checked);
-
-});
+    if (!this.checked && !confirm('Are you sure you want to uncheck this?')) {
+      // Prevent the checkbox from being unchecked
+      e.preventDefault();
+    }
+    await myFunction(this.checked, viewObj);
+  });
 
 protectedDivCheckbox.addEventListener("change", () => {
   // Update the icon class
@@ -83,10 +93,14 @@ protectedDivCheckbox.addEventListener("change", () => {
   return protectedDiv;
 }
 
-function myFunction(checked) {
+async function myFunction(checked,viewObj) {
   if (checked) {
     console.log("Checkbox is checked");
   } else {
     console.log("Checkbox is unchecked");
   }
+  // const state = await mutation_updateState(customTypeArray, data);
+  // const state = await mutation_updateState("views", );
+  console.log(viewObj)
+  // await action_writeModel(state);
 }
