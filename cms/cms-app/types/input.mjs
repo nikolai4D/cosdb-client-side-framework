@@ -25,6 +25,7 @@ export async function input(
 
   if (customType === "view"){
     container.appendChild(createProtectedCheckbox(id))
+    container.classList.add("view-container-input-checkbox-div")
   }
 
   return container;
