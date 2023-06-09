@@ -43,6 +43,7 @@ export async function eventChangeDropdown(id) {
 
   if (customType === "component") {
     const componentBody = await getAccordionBody(id);
+    console.log("state before", state)
 
     console.log("data", data)
 
@@ -60,7 +61,7 @@ export async function eventChangeDropdown(id) {
       }
     }
 
-    console.log("state", state)
+    console.log("state after", state)
 
     await action_writeModel(state);
   }
