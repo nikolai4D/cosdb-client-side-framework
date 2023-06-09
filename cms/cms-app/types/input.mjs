@@ -69,7 +69,7 @@ function createProtectedCheckbox(id, viewObj) {
   protectedDivCheckbox.checked = viewObj.protected;
 
   // Add event listener to checkbox
-  protectedDivCheckbox.addEventListener("click", async function(e, viewObj) {
+  protectedDivCheckbox.addEventListener("click", async function(e) {
     // If the checkbox is checked and the user tries to uncheck
 
     if (!this.checked && !confirm('Are you sure you want to uncheck this?')) {
