@@ -51,13 +51,13 @@ function createProtectedCheckbox(id, protectedView){
     protectedDivIcon.classList.toggle("bi-cloud-plus-fill")
     // icon = "Protected";
   }
-  protectedDivLabel.textContent = textContent;
+  // protectedDivLabel.textContent = textContent;
 
   protectedDivCheckbox.addEventListener("change", () => {
     if (protectedDivCheckbox.checked) {
-      protectedDivLabel.textContent = "Protected";
+      protectedDivIcon.classList.toggle("bi-cloud-plus")
     } else {
-      protectedDivLabel.textContent = "Unprotected";
+      protectedDivIcon.classList.toggle("bi-cloud-plus-fill")
     }
   })
 
