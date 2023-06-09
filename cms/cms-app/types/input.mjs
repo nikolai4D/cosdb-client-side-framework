@@ -39,6 +39,7 @@ function createProtectedCheckbox(id){
   const protectedDivLabel = document.createElement("label");
   protectedDivCheckbox.value = "Protected"
   protectedDivCheckbox.for = protectedDivCheckbox.id
+  protectedDivLabel.textContent = "Protected"
 
   protectedDiv.appendChild(protectedDivCheckbox)
   protectedDiv.appendChild(protectedDivCheckbox)
