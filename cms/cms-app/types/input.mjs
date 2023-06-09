@@ -44,10 +44,10 @@ function createProtectedCheckbox(id, protectedView){
   const protectedDivIcon = document.createElement("i");
 
   // let icon = "Unprotected";
-  element.classList.toggle("bi bi-cloud-plus")
+  protectedDivIcon.classList.toggle("bi bi-cloud-plus")
   if (protectedView) {
     protectedDivCheckbox.checked = true;
-    element.classList.toggle("bi bi-cloud-plus-fill")
+    protectedDivIcon.classList.toggle("bi bi-cloud-plus-fill")
     // icon = "Protected";
   }
   protectedDivLabel.textContent = textContent;
