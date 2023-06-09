@@ -4,6 +4,7 @@ import { Organism } from "../../core/Organism.mjs";
 //import sub components
 import { Molecule_X_Template } from "../molecules/Molecule_X_Template.mjs";
 import { action_dummy1 } from "../../data-mgmt/actions/action_dummy1.mjs";
+import { action_dummy2 } from "../../data-mgmt/actions/action_dummy2.mjs";
 
 export function Organism_X_TemplateChild() {
   Organism.call(this);
@@ -24,6 +25,11 @@ export function Organism_X_TemplateChild() {
       id: 1,
       function: "action_dummy1",
       component: new action_dummy1(),
+    },
+    {
+      id: 2,
+      function: "action_dummy2",
+      component: new action_dummy2(),
     },
   ];
 
