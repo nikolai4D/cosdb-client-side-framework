@@ -96,8 +96,10 @@ protectedDivCheckbox.addEventListener("change", () => {
 async function myFunction(checked,viewObj) {
   if (checked) {
     console.log("Checkbox is checked");
+    viewObj.protected = true;
   } else {
     console.log("Checkbox is unchecked");
+    viewObj.protected = false;
   }
   // const state = await mutation_updateState(customTypeArray, data);
   // const state = await mutation_updateState("views", );
