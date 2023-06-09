@@ -43,11 +43,13 @@ export async function eventChangeDropdown(id) {
 
   if (customType === "component") {
     const componentBody = await getAccordionBody(id);
-    console.log("state before", state)
+
 
     console.log("data", data)
 
     const state = await mutation_updateState("components", data, true);
+
+    console.log("state before", state)
 
     if (value !== "") {
       if (value.startsWith("Organism")) {
