@@ -95,12 +95,7 @@ protectedDivCheckbox.addEventListener("change", () => {
 
 async function changeProtectedValue(checked,viewObj) {
   viewObj.updated = Date();
-
-  if (checked) {
-    viewObj.protected = true;
-  } else {
-    viewObj.protected = false;
-  }
+  viewObj.protected = checked;
   const state = await mutation_updateState("views", viewObj);
   await action_writeModel(state);
 }
