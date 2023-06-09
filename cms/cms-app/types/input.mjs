@@ -57,18 +57,35 @@ function createProtectedCheckbox(id, protectedView) {
   protectedDivIcon.classList.add("bi", protectedView ? iconLocked : iconUnlocked);
   protectedDivCheckbox.checked = protectedView;
 
-// Add event listener to checkbox
-protectedDivCheckbox.addEventListener("change", (e) => {
-  // If the checkbox is already checked and the user tries to uncheck
-  if (!protectedDivCheckbox.checked && !confirm('Are you sure you want to unprotect this view?')) {
+  // Add event listener to checkbox
+protectedDivCheckbox.addEventListener("click", (e) => {
+  // If the checkbox is checked and the user tries to uncheck
+  if (protectedDivCheckbox.checked && !confirm('Are you sure you want to uncheck this?')) {
     // Prevent the checkbox from being unchecked
     e.preventDefault();
-  } else {
-    // Update the icon class
-    protectedDivIcon.classList.toggle(iconLocked, protectedDivCheckbox.checked);
-    protectedDivIcon.classList.toggle(iconUnlocked, !protectedDivCheckbox.checked);
-  }
+  } 
 });
+
+protectedDivCheckbox.addEventListener("change", () => {
+  // Update the icon class
+  protectedDivIcon.classList.toggle(iconLocked, protectedDivCheckbox.checked);
+  protectedDivIcon.classList.toggle(iconUnlocked, !protectedDivCheckbox.checked);
+});
+
+
+
+// // Add event listener to checkbox
+// protectedDivCheckbox.addEventListener("change", (e) => {
+//   // If the checkbox is already checked and the user tries to uncheck
+//   if (!protectedDivCheckbox.checked && !confirm('Are you sure you want to unprotect this view?')) {
+//     // Prevent the checkbox from being unchecked
+//     e.preventDefault();
+//   } else {
+//     // Update the icon class
+//     protectedDivIcon.classList.toggle(iconLocked, protectedDivCheckbox.checked);
+//     protectedDivIcon.classList.toggle(iconUnlocked, !protectedDivCheckbox.checked);
+//   }
+// });
   // Append elements to the parent div
   protectedDivLabel.appendChild(protectedDivIcon);
   protectedDiv.appendChild(protectedDivCheckbox);
