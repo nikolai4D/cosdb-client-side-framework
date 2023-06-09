@@ -216,10 +216,5 @@
     padding: 5px;
     background: white;
     border-radius: 6px;
-  }
-
-  .view-container-checkbox-div:hover > input {
-    padding: 5px;
-    background: white;
-    border-radius: 6px;
+    cursor: pointer;
   }
