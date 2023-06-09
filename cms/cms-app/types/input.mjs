@@ -46,8 +46,6 @@ export async function input(
 function createProtectedCheckbox(id, viewObj) {
   // Create base elements
   const protectedDiv = document.createElement("div");
-  // const protectedDivCheckbox = document.createElement("input");
-  // const protectedDivLabel = document.createElement("label");
   const protectedDivIcon = document.createElement("i");
 
   // Define class names
@@ -57,16 +55,8 @@ function createProtectedCheckbox(id, viewObj) {
   // Setup div
   protectedDiv.classList.add("view-container-checkbox-div");
 
-  // Setup checkbox
-  // protectedDivCheckbox.type = "checkbox";
-  // protectedDivCheckbox.id = `protected-checkbox-${id}`;
-  
-  // Setup label
-  // protectedDivLabel.setAttribute("for", protectedDivCheckbox.id);
-
   // Setup icon
   protectedDivIcon.classList.add("bi", viewObj.protected ? iconLocked : iconUnlocked);
-  // protectedDivCheckbox.checked = viewObj.protected;
 
   // Add event listener to checkbox
   protectedDivIcon.addEventListener("click", async function(e) {
@@ -91,23 +81,13 @@ function createProtectedCheckbox(id, viewObj) {
     await changeProtectedValue(viewObj);
   });
 
-// protectedDivCheckbox.addEventListener("change", () => {
-//   // Update the icon class
-//   protectedDivIcon.classList.toggle(iconLocked, protectedDivCheckbox.checked);
-//   protectedDivIcon.classList.toggle(iconUnlocked, !protectedDivCheckbox.checked);
-// });
-
   // Append elements to the parent div
   protectedDiv.appendChild(protectedDivIcon);
-  // protectedDiv.appendChild(protectedDivCheckbox);
-  // protectedDiv.appendChild(protectedDivLabel);
 
   return protectedDiv;
 }
 
 async function changeProtectedValue(viewObj) {
-  // viewObj.updated = Date();
-  // viewObj.protected = checked;
   const state = await mutation_updateState("views", viewObj);
   await action_writeModel(state);
 }
