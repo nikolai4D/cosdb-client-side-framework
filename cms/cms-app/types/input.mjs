@@ -76,7 +76,7 @@ function createProtectedCheckbox(id, viewObj) {
       // Prevent the checkbox from being unchecked
       e.preventDefault();
     }
-    await myFunction(this.checked, viewObj);
+    await changeProtectedValue(this.checked, viewObj);
   });
 
 protectedDivCheckbox.addEventListener("change", () => {
@@ -93,7 +93,7 @@ protectedDivCheckbox.addEventListener("change", () => {
   return protectedDiv;
 }
 
-async function myFunction(checked,viewObj) {
+async function changeProtectedValue(checked,viewObj) {
   viewObj.updated = Date();
 
   if (checked) {
