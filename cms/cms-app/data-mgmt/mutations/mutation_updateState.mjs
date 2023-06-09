@@ -42,7 +42,7 @@ export async function mutation_updateState(
         }
         customTypeData.splice(index, 1, data);
       // }
-    }
+    
     }
     if (customType === "views") {
       data.valueDisabled = customTypeData[index].valueDisabled;
