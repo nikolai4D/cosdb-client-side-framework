@@ -46,8 +46,8 @@ export async function input(
 function createProtectedCheckbox(id, viewObj) {
   // Create base elements
   const protectedDiv = document.createElement("div");
-  const protectedDivCheckbox = document.createElement("input");
-  const protectedDivLabel = document.createElement("label");
+  // const protectedDivCheckbox = document.createElement("input");
+  // const protectedDivLabel = document.createElement("label");
   const protectedDivIcon = document.createElement("i");
 
   // Define class names
@@ -58,32 +58,44 @@ function createProtectedCheckbox(id, viewObj) {
   protectedDiv.classList.add("view-container-checkbox-div");
 
   // Setup checkbox
-  protectedDivCheckbox.type = "checkbox";
-  protectedDivCheckbox.id = `protected-checkbox-${id}`;
+  // protectedDivCheckbox.type = "checkbox";
+  // protectedDivCheckbox.id = `protected-checkbox-${id}`;
   
   // Setup label
-  protectedDivLabel.setAttribute("for", protectedDivCheckbox.id);
+  // protectedDivLabel.setAttribute("for", protectedDivCheckbox.id);
 
   // Setup icon
   protectedDivIcon.classList.add("bi", viewObj.protected ? iconLocked : iconUnlocked);
-  protectedDivCheckbox.checked = viewObj.protected;
+  // protectedDivCheckbox.checked = viewObj.protected;
 
   // Add event listener to checkbox
-  protectedDivCheckbox.addEventListener("click", async function(e) {
+  protectedDivIcon.addEventListener("click", async function(e) {
     // If the checkbox is checked and the user tries to uncheck
 
-    if (!this.checked && !confirm(`Are you sure you want to unprotect the view "${viewObj.value}"?`)) {
+    if (viewObj.protected && !confirm(`Are you sure you want to unprotect the view "${viewObj.value}"?`)) {
       // Prevent the checkbox from being unchecked
       e.preventDefault();
     }
-    await changeProtectedValue(this.checked, viewObj);
+    if (protectedDivIcon.classList.contains(iconLocked)) {
+      protectedDivIcon.classList.remove(iconLocked);
+      protectedDivIcon.classList.add(iconUnlocked);
+      viewObj.protected = false;
+    }
+    else {
+      protectedDivIcon.classList.remove(iconUnlocked);
+      protectedDivIcon.classList.add(iconLocked);
+      viewObj.protected = true;
+    }
+    viewObj.updated = Date();
+
+    await changeProtectedValue(viewObj);
   });
 
-protectedDivCheckbox.addEventListener("change", () => {
-  // Update the icon class
-  protectedDivIcon.classList.toggle(iconLocked, protectedDivCheckbox.checked);
-  protectedDivIcon.classList.toggle(iconUnlocked, !protectedDivCheckbox.checked);
-});
+// protectedDivCheckbox.addEventListener("change", () => {
+//   // Update the icon class
+//   protectedDivIcon.classList.toggle(iconLocked, protectedDivCheckbox.checked);
+//   protectedDivIcon.classList.toggle(iconUnlocked, !protectedDivCheckbox.checked);
+// });
 
   // Append elements to the parent div
   protectedDivLabel.appendChild(protectedDivIcon);
@@ -94,8 +106,8 @@ protectedDivCheckbox.addEventListener("change", () => {
 }
 
 async function changeProtectedValue(checked,viewObj) {
-  viewObj.updated = Date();
-  viewObj.protected = checked;
-  const state = await mutation_updateState("views", viewObj);
-  await action_writeModel(state);
+  // viewObj.updated = Date();
+  // viewObj.protected = checked;
+  // const state = await mutation_updateState("views", viewObj);
+  // await action_writeModel(state);
 }
