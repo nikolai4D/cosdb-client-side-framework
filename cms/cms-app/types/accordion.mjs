@@ -32,7 +32,6 @@ export async function accordion(
       }
     });
     headerAccordion.appendChild(deleteButton);
-    headerAccordion.classList.add("accordion-div-content")
   }
 
   headerAccordion.addEventListener("click", (event) => {
