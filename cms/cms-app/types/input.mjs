@@ -101,8 +101,8 @@ async function myFunction(checked,viewObj) {
     console.log("Checkbox is unchecked");
     viewObj.protected = false;
   }
-  // const state = await mutation_updateState(customTypeArray, data);
+  const state = await mutation_updateState(customTypeArray, data);
   // const state = await mutation_updateState("views", );
-  console.log(viewObj)
+  console.log(state)
   // await action_writeModel(state);
 }
