@@ -21,6 +21,11 @@ export async function mutation_updateState(
         `[parentId="${data.id}"]`
       );
 
+      if(functionParamsInput.value){
+
+      
+
+
       // if (data.value === "") {
       //   functionParamsInput.value = "";
       //   functionParamsInput.disabled = true;
@@ -38,6 +43,7 @@ export async function mutation_updateState(
         }
         customTypeData.splice(index, 1, data);
       // }
+    }
     }
     if (customType === "views") {
       data.valueDisabled = customTypeData[index].valueDisabled;
