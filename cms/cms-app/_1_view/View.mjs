@@ -12,7 +12,6 @@ export async function View(view, viewTemplate) {
   const parentId = view.parentId;
   const valueDisabled = view.valueDisabled;
   const protectedView = view.protected;
-  console.log(view, "view")
 
   const bodyDiv = document.createElement("div");
   const viewTemplateDiv = await viewTemplate;
