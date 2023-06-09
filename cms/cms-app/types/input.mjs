@@ -46,22 +46,28 @@ function createProtectedCheckbox(id, protectedView){
   // let icon = "Unprotected";
   protectedDivIcon.classList.add("bi")
   protectedDivIcon.classList.toggle("bi-cloud-plus")
+  let iconLocked = "bi-lock"
+  let iconUnlocked = "bi-unlock"
   if (protectedView) {
     protectedDivCheckbox.checked = true;
-    protectedDivIcon.classList.toggle("bi-cloud-plus-fill")
-    // icon = "Protected";
+    protectedDivIcon.classList.add(iconLocked)
+  }
+  else {
+    protectedDivIcon.classList.add(iconUnlocked)
   }
   // protectedDivLabel.textContent = textContent;
 
   protectedDivCheckbox.addEventListener("change", () => {
     if (protectedDivCheckbox.checked) {
-      protectedDivIcon.classList.toggle("bi-cloud-plus")
+      protectedDivIcon.classList.remove(iconUnlocked)
+      protectedDivIcon.classList.add(iconLocked)
+
     } else {
-      protectedDivIcon.classList.toggle("bi-cloud-plus-fill")
-    }
+      protectedDivIcon.classList.remove(iconLocked)
+      protectedDivIcon.classList.add(iconUnlocked)
+        }
   })
   protectedDivLabel.appendChild(protectedDivIcon)
-
   protectedDiv.appendChild(protectedDivCheckbox)
   protectedDiv.appendChild(protectedDivLabel)
 
