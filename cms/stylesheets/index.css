@@ -204,9 +204,7 @@
     overflow: auto;
   }
 
-  .view-container-checkbox-div > input {
-    width:fit-content;
-  }
+
   .view-container-checkbox-div {
     padding: 5px;
     /* background: white; */
