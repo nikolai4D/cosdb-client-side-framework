@@ -57,10 +57,10 @@ function createProtectedCheckbox(id, protectedView) {
   protectedDivIcon.classList.add("bi", protectedView ? iconLocked : iconUnlocked);
   protectedDivCheckbox.checked = protectedView;
 
-  // Add event listener to checkbox
-protectedDivCheckbox.addEventListener("click", (e) => {
+// Add event listener to checkbox
+protectedDivCheckbox.addEventListener("click", function(e) {
   // If the checkbox is checked and the user tries to uncheck
-  if (protectedDivCheckbox.checked && !confirm('Are you sure you want to uncheck this?')) {
+  if (this.checked && !confirm('Are you sure you want to uncheck this?')) {
     // Prevent the checkbox from being unchecked
     e.preventDefault();
   } 
@@ -68,10 +68,9 @@ protectedDivCheckbox.addEventListener("click", (e) => {
 
 protectedDivCheckbox.addEventListener("change", () => {
   // Update the icon class
-  protectedDivIcon.classList.toggle(iconLocked, !protectedDivCheckbox.checked);
-  protectedDivIcon.classList.toggle(iconUnlocked, protectedDivCheckbox.checked);
+  protectedDivIcon.classList.toggle(iconLocked, protectedDivCheckbox.checked);
+  protectedDivIcon.classList.toggle(iconUnlocked, !protectedDivCheckbox.checked);
 });
-
 
 
 // // Add event listener to checkbox
