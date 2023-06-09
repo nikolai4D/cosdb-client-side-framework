@@ -21,12 +21,12 @@ export async function mutation_updateState(
         `[parentId="${data.id}"]`
       );
 
-      if (data.value === "") {
-        functionParamsInput.value = "";
-        functionParamsInput.disabled = true;
-        customTypeData.splice(index, 1);
-      } else {
-        functionParamsInput.disabled = false;
+      // if (data.value === "") {
+      //   functionParamsInput.value = "";
+      //   functionParamsInput.disabled = true;
+      //   customTypeData.splice(index, 1);
+      // } else {
+      //   functionParamsInput.disabled = false;
         functionParamsInput.value = data.parameters;
 
         if (
@@ -36,7 +36,7 @@ export async function mutation_updateState(
           data.parameters = JSON.parse(data.parameters);
         }
         customTypeData.splice(index, 1, data);
-      }
+      // }
     }
     if (customType === "views") {
       data.valueDisabled = customTypeData[index].valueDisabled;
