@@ -17,11 +17,11 @@ export async function mutation_updateState(
       customTypeData.splice(index, 1, data);
     }
     if (customType === "functions") {
-      const functionParamsInput = document.querySelector(
-        `[parentId="${data.id}"]`
-      );
+      // const functionParamsInput = document.querySelector(
+      //   `[parentId="${data.id}"]`
+      // );
 
-      if(functionParamsInput.getAttribute("value") !== null){
+      // if(functionParamsInput.getAttribute("value") !== null){
 
 
 
@@ -32,7 +32,7 @@ export async function mutation_updateState(
       // } else {
       //   functionParamsInput.disabled = false;
         // functionParamsInput.value = data.parameters;
-        data.parameters = functionParamsInput.value;
+   
 
         if (
           data.parameters.startsWith("{") ||
