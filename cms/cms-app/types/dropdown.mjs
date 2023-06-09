@@ -31,7 +31,7 @@ export function dropdown(
   const container = document.createElement("div");
   container.appendChild(labelEl);
   container.appendChild(selectEl);
-  if (customType == "view"){
+  if (customType === "view"){
     container.appendChild(createProtectedCheckbox(id))
   }
   return container;
