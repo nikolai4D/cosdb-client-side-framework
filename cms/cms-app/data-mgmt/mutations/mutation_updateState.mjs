@@ -59,11 +59,11 @@ export async function mutation_updateState(
       const functionParamsInput = document.querySelector(
         `[parentId="${data.id}"]`
       );
-      if (data.value !== "") {
-        functionParamsInput.disabled = false;
-      } else {
-        functionParamsInput.disabled = true;
-      }
+      // if (data.value !== "") {
+      //   functionParamsInput.disabled = false;
+      // } else {
+      //   functionParamsInput.disabled = true;
+      // }
     }
 
     customTypeData.push(data);
