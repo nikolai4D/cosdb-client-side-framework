@@ -104,7 +104,5 @@ async function myFunction(checked,viewObj) {
     viewObj.protected = false;
   }
   const state = await mutation_updateState("views", viewObj);
-  // const state = await mutation_updateState("views", );
-  console.log(state)
-  // await action_writeModel(state);
+  await action_writeModel(state);
 }
