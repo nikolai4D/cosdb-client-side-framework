@@ -194,3 +194,14 @@
     font-size: 14px;
   }
   
+
+  .view-container-input-div {
+    display: flex;
+    align-items: center;
+    grid-gap: 0.5em;
+  overflow: auto;
+  }
+
+  .view-container-checkbox-div > input {
+    width:fit-content;
+  }
