@@ -51,7 +51,7 @@ function createProtectedCheckbox(id, viewObj) {
   const protectedDivIcon = document.createElement("i");
 
   // Define class names
-  const iconLocked = "bi-lock";
+  const iconLocked = "bi-lock-fill";
   const iconUnlocked = "bi-unlock";
 
   // Setup div
