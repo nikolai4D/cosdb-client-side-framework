@@ -40,7 +40,7 @@ export async function mutation_updateState(
     }
     if (customType === "views") {
       data.valueDisabled = customTypeData[index].valueDisabled;
-      data.protected = customTypeData[index].protected;
+      data.protected ?? customTypeData[index].protected;
       data.startView = customTypeData[index].startView;
 
       customTypeData.splice(index, 1, data);

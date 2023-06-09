@@ -11,6 +11,7 @@ export async function View(view, viewTemplate) {
   const id = view.id;
   const parentId = view.parentId;
   const valueDisabled = view.valueDisabled;
+  const protectedView = view.protected;
 
   const bodyDiv = document.createElement("div");
   const viewTemplateDiv = await viewTemplate;
@@ -23,7 +24,8 @@ export async function View(view, viewTemplate) {
     value,
     id,
     parentId,
-    valueDisabled
+    valueDisabled,
+    protectedView
   );
   viewDiv.appendChild(viewAccordionInput);
 
