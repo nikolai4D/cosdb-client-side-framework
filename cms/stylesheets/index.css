@@ -207,7 +207,11 @@
   .view-container-checkbox-div > input {
     width:fit-content;
   }
-
+  .view-container-checkbox-div {
+    padding: 5px;
+    /* background: white; */
+    /* border-radius: 6px; */
+  }
   .view-container-checkbox-div:hover {
     padding: 5px;
     background: white;
