@@ -32,44 +32,41 @@ export async function input(
   return container;
 }
 
-function createProtectedCheckbox(id, protectedView){
-  const protectedDiv = document.createElement("div");  
-  protectedDiv.classList.add("view-container-checkbox-div")
+function createProtectedCheckbox(id, protectedView) {
+  // Create base elements
+  const protectedDiv = document.createElement("div");
   const protectedDivCheckbox = document.createElement("input");
-  protectedDivCheckbox.type = "checkbox"
-  protectedDivCheckbox.id = "protected-checkbox-"+id
-
   const protectedDivLabel = document.createElement("label");
-  protectedDivLabel.setAttribute("for", protectedDivCheckbox.id)
   const protectedDivIcon = document.createElement("i");
 
-  // let icon = "Unprotected";
-  protectedDivIcon.classList.add("bi")
-  protectedDivIcon.classList.toggle("bi-cloud-plus")
-  let iconLocked = "bi-lock"
-  let iconUnlocked = "bi-unlock"
-  if (protectedView) {
-    protectedDivCheckbox.checked = true;
-    protectedDivIcon.classList.add(iconLocked)
-  }
-  else {
-    protectedDivIcon.classList.add(iconUnlocked)
-  }
-  // protectedDivLabel.textContent = textContent;
+  // Define class names
+  const iconLocked = "bi-lock";
+  const iconUnlocked = "bi-unlock";
 
+  // Setup div
+  protectedDiv.classList.add("view-container-checkbox-div");
+
+  // Setup checkbox
+  protectedDivCheckbox.type = "checkbox";
+  protectedDivCheckbox.id = `protected-checkbox-${id}`;
+  
+  // Setup label
+  protectedDivLabel.setAttribute("for", protectedDivCheckbox.id);
+
+  // Setup icon
+  protectedDivIcon.classList.add("bi", protectedView ? iconLocked : iconUnlocked);
+  protectedDivCheckbox.checked = protectedView;
+
+  // Add event listener to checkbox
   protectedDivCheckbox.addEventListener("change", () => {
-    if (protectedDivCheckbox.checked) {
-      protectedDivIcon.classList.remove(iconUnlocked)
-      protectedDivIcon.classList.add(iconLocked)
+    protectedDivIcon.classList.toggle(iconLocked, protectedDivCheckbox.checked);
+    protectedDivIcon.classList.toggle(iconUnlocked, !protectedDivCheckbox.checked);
+  });
 
-    } else {
-      protectedDivIcon.classList.remove(iconLocked)
-      protectedDivIcon.classList.add(iconUnlocked)
-        }
-  })
-  protectedDivLabel.appendChild(protectedDivIcon)
-  protectedDiv.appendChild(protectedDivCheckbox)
-  protectedDiv.appendChild(protectedDivLabel)
+  // Append elements to the parent div
+  protectedDivLabel.appendChild(protectedDivIcon);
+  protectedDiv.appendChild(protectedDivCheckbox);
+  protectedDiv.appendChild(protectedDivLabel);
 
-  return protectedDiv
+  return protectedDiv;
 }
