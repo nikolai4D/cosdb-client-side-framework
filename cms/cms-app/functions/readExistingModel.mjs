@@ -37,7 +37,6 @@ export async function readExistingModel() {
     const ViewTemplateExistingDiv = await ViewTemplate(viewTemplateToAdd);
 
     const viewDiv = await View(view, ViewTemplateExistingDiv);
-    viewDiv.classList.add("my-class");
 
     document.body.appendChild(viewDiv);
 
