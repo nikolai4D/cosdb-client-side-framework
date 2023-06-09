@@ -68,8 +68,8 @@ protectedDivCheckbox.addEventListener("click", (e) => {
 
 protectedDivCheckbox.addEventListener("change", () => {
   // Update the icon class
-  protectedDivIcon.classList.toggle(iconLocked, protectedDivCheckbox.checked);
-  protectedDivIcon.classList.toggle(iconUnlocked, !protectedDivCheckbox.checked);
+  protectedDivIcon.classList.toggle(iconLocked, !protectedDivCheckbox.checked);
+  protectedDivIcon.classList.toggle(iconUnlocked, protectedDivCheckbox.checked);
 });
 
 
