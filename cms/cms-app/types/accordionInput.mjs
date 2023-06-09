@@ -8,7 +8,8 @@ export async function accordionInput(
   value,
   id,
   parentId,
-  valueDisabled
+  valueDisabled,
+  protectedView = false
 ) {
   const headerContent = await input(
     customType,
@@ -16,8 +17,10 @@ export async function accordionInput(
     value,
     id,
     parentId,
-    valueDisabled
+    valueDisabled,
+    protectedView
   );
+  
   const bodyContent = await bodyDiv;
 
   const accordionInput = await accordion(
