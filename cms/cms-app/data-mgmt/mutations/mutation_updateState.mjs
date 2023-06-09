@@ -21,9 +21,8 @@ export async function mutation_updateState(
         `[parentId="${data.id}"]`
       );
 
-      if(functionParamsInput.value !== null){
+      if(functionParamsInput.getAttribute("value") !== null){
 
-      
 
 
       // if (data.value === "") {
