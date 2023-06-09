@@ -213,13 +213,18 @@ export async function addToState(obj, parentId, isSlot = false){
             const key = "value"
             const value = "value placeholder"
             const atomValueToSave = await newComponentFromType(key, value, objToSave.id, type)
+            atomValueToSave.valueDisabled = false;
             State[type+"s"].push(atomValueToSave)
+            State[type+"s"].sort((a, b) => a.key.localeCompare(b.key));
+
 
         }
 
         // add to state 
+ 
         console.warn("Adding to State: ", objToSave)
         State[type+"s"].push(objToSave)
+        State[type+"s"].sort((a, b) => a.key.localeCompare(b.key));
 
         const compTypes = ["organism", "molecule","atom"]
         for (const type of compTypes){

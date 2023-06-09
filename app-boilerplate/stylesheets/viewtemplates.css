@@ -2,11 +2,7 @@
 
 }
 
-.viewtemplate_topnav_middlecontent__topnav {
-    width: 100vw;
-    height: 5em;
-    line-height: 0.9em;
-}
+
 
 .viewtemplate_topnav_middlecontent__middlecontent {
     display: grid;
@@ -17,4 +13,19 @@
     margin: 50px auto auto;
     align-content: start;
 
+}
+
+.viewtemplate_topnav_centercontent__centercontent {
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Top nav */
+.viewtemplate_topnav__middlecontent__topnav, 
+.viewtemplate_topnav_centercontent__topnav {
+    width: 100vw;
+    height: 5em;
+    line-height: 0.9em;
 }
