@@ -25,7 +25,7 @@ export async function input(
 
   if (customType === "view"){
     container.appendChild(createProtectedCheckbox(id))
-    container.classList.add("view-container-input-checkbox-div")
+    container.classList.add("view-container-input-div")
   }
 
   return container;
@@ -33,6 +33,7 @@ export async function input(
 
 function createProtectedCheckbox(id){
   const protectedDiv = document.createElement("div");  
+  protectedDiv.classList.add("view-container-checkbox-div")
   const protectedDivCheckbox = document.createElement("input");
   protectedDivCheckbox.type = "checkbox"
   protectedDivCheckbox.id = "protected-checkbox-"+id
