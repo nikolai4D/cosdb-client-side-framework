@@ -31,6 +31,24 @@ export function dropdown(
   const container = document.createElement("div");
   container.appendChild(labelEl);
   container.appendChild(selectEl);
-
+  if (customType == "view"){
+    container.appendChild(createProtectedCheckbox(id))
+  }
   return container;
+}
+
+
+function createProtectedCheckbox(id){
+  const protectedDiv = document.createElement("div");  
+  const protectedDivCheckbox = document.createElement("input");
+  protectedDivCheckbox.type = "checkbox"
+  protectedDivCheckbox.id = "protected-checkbox-"+id
+
+  const protectedDivLabel = document.createElement("label");
+  protectedDivCheckbox.value = "Protected"
+  protectedDivCheckbox.for = protectedDivCheckbox.id
+
+  protectedDiv.appendChild(protectedDivCheckbox)
+  protectedDiv.appendChild(protectedDivCheckbox)
+  return protectedDiv
 }

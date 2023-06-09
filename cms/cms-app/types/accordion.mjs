@@ -33,7 +33,6 @@ export async function accordion(
         headerAccordion.parentElement.remove();
       }
     });
-    headerAccordion.appendChild(createProtectedCheckbox(id))
     headerAccordion.appendChild(deleteButton);
     headerAccordion.classList.add("accordion-div-content")
   }
@@ -59,17 +58,3 @@ export async function accordion(
   return accordion;
 }
 
-function createProtectedCheckbox(id){
-  const protectedDiv = document.createElement("div");  
-  const protectedDivCheckbox = document.createElement("input");
-  protectedDivCheckbox.type = "checkbox"
-  protectedDivCheckbox.id = "protected-checkbox-"+id
-
-  const protectedDivLabel = document.createElement("label");
-  protectedDivCheckbox.value = "Protected"
-  protectedDivCheckbox.for = protectedDivCheckbox.id
-
-  protectedDiv.appendChild(protectedDivCheckbox)
-  protectedDiv.appendChild(protectedDivCheckbox)
-  return protectedDiv
-}
