@@ -97,10 +97,8 @@ async function changeProtectedValue(checked,viewObj) {
   viewObj.updated = Date();
 
   if (checked) {
-    console.log("Checkbox is checked");
     viewObj.protected = true;
   } else {
-    console.log("Checkbox is unchecked");
     viewObj.protected = false;
   }
   const state = await mutation_updateState("views", viewObj);
