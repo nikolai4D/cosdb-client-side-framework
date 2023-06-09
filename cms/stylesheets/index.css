@@ -204,10 +204,10 @@
     overflow: auto;
   }
 
-
   .view-container-checkbox-div {
     padding: 5px;
   }
+
   .view-container-checkbox-div:hover {
     background: white;
     border-radius: 6px;

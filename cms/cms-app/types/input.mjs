@@ -105,9 +105,9 @@ function createProtectedCheckbox(id, viewObj) {
   return protectedDiv;
 }
 
-async function changeProtectedValue(checked,viewObj) {
+async function changeProtectedValue(viewObj) {
   // viewObj.updated = Date();
   // viewObj.protected = checked;
-  // const state = await mutation_updateState("views", viewObj);
-  // await action_writeModel(state);
+  const state = await mutation_updateState("views", viewObj);
+  await action_writeModel(state);
 }
