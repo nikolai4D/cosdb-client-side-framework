@@ -22,8 +22,6 @@ export async function accordion(
 
   // Append delete button to inner accordion header
   if (customType === "view") {
-
-
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "X";
     deleteButton.classList.add("deleteButton");
@@ -57,4 +55,3 @@ export async function accordion(
 
   return accordion;
 }
-
