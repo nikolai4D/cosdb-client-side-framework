@@ -94,6 +94,8 @@ protectedDivCheckbox.addEventListener("change", () => {
 }
 
 async function myFunction(checked,viewObj) {
+  viewObj.updated = Date();
+
   if (checked) {
     console.log("Checkbox is checked");
     viewObj.protected = true;
