@@ -41,12 +41,20 @@ function createProtectedCheckbox(id, protectedView){
 
   const protectedDivLabel = document.createElement("label");
   protectedDivLabel.setAttribute("for", protectedDivCheckbox.id)
-  let textContent = "Unprotected"
+  let textContent = "Unprotected";
   if (protectedView) {
     protectedDivCheckbox.checked = true;
     textContent = "Protected";
   }
   protectedDivLabel.textContent = textContent;
+
+  protectedDivCheckbox.addEventListener("change", () => {
+    if (protectedDivCheckbox.checked) {
+      protectedDivLabel.textContent = "Protected";
+    } else {
+      protectedDivLabel.textContent = "Unprotected";
+    }
+  })
 
   protectedDiv.appendChild(protectedDivCheckbox)
   protectedDiv.appendChild(protectedDivLabel)
