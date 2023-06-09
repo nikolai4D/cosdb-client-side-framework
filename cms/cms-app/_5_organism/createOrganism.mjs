@@ -144,6 +144,6 @@ async function createFunctionsEl(subComps, id, compBody, parentBody) {
 
     let childSlot = await Function(await newFunction(parentId, key, value), compBody);
 
-    parentBody.insertBefore(childSlot, parentBody.firstChild);
+    parentBody.insertAfter(childSlot, parentBody.firstChild);
   }
 }
