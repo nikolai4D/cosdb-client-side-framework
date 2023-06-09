@@ -60,7 +60,7 @@ function createProtectedCheckbox(id, protectedView) {
 // Add event listener to checkbox
 protectedDivCheckbox.addEventListener("change", (e) => {
   // If the checkbox is already checked and the user tries to uncheck
-  if (!protectedDivCheckbox.checked && !confirm('Are you sure you want to uncheck this?')) {
+  if (!protectedDivCheckbox.checked && !confirm('Are you sure you want to unprotect this view?')) {
     // Prevent the checkbox from being unchecked
     e.preventDefault();
   } else {
