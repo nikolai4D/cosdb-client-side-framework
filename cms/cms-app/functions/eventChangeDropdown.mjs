@@ -60,6 +60,8 @@ export async function eventChangeDropdown(id) {
       }
     }
 
+    console.log("state", state)
+
     await action_writeModel(state);
   }
 }
