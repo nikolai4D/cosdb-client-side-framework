@@ -6,7 +6,8 @@ export async function input(
   value,
   id,
   parentId,
-  valueDisabled = false
+  valueDisabled = false,
+  protectedView = false
 ) {
   const labelEl = document.createElement("label");
   labelEl.textContent = key + ": ";
@@ -24,7 +25,7 @@ export async function input(
   container.appendChild(inputEl);
 
   if (customType === "view"){
-    container.appendChild(createProtectedCheckbox(id))
+    container.appendChild(createProtectedCheckbox(id, protectedView))
     container.classList.add("view-container-input-div")
   }
 
@@ -40,7 +41,9 @@ function createProtectedCheckbox(id){
 
   const protectedDivLabel = document.createElement("label");
   protectedDivLabel.setAttribute("for", protectedDivCheckbox.id)
+  if (protectedView) protectedDivCheckbox.checked = true
   protectedDivLabel.textContent = "Protected"
+
 
   protectedDiv.appendChild(protectedDivCheckbox)
   protectedDiv.appendChild(protectedDivLabel)
