@@ -34,5 +34,3 @@ export function dropdown(
 
   return container;
 }
-
-
