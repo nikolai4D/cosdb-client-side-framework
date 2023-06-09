@@ -55,16 +55,16 @@ export async function mutation_updateState(
       customTypeData.splice(index, 1, data);
     }
   } else {
-    if (customType === "functions") {
-      const functionParamsInput = document.querySelector(
-        `[parentId="${data.id}"]`
-      );
-      // if (data.value !== "") {
-      //   functionParamsInput.disabled = false;
-      // } else {
-      //   functionParamsInput.disabled = true;
-      // }
-    }
+    // if (customType === "functions") {
+    //   const functionParamsInput = document.querySelector(
+    //     `[parentId="${data.id}"]`
+    //   );
+    //   if (data.value !== "") {
+    //     functionParamsInput.disabled = false;
+    //   } else {
+    //     functionParamsInput.disabled = true;
+    //   }
+    // }
 
     customTypeData.push(data);
   }
