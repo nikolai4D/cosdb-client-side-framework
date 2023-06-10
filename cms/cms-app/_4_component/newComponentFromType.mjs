@@ -8,6 +8,9 @@ export async function newComponentFromType(key, value, parentId, type) {
   comp.id = await getUuid();
   comp.parentId = parentId;
   comp.valueDisabled = true;
+  if(type === "function"){
+    comp.parameters = "";
+  }
 
   return comp;
 }

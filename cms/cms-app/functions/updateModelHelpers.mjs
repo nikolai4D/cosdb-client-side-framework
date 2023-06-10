@@ -7,9 +7,10 @@ import { newComponentFromType } from "../_4_component/newComponentFromType.mjs";
 
 
 export async function checkOrganismSubComponents(organismInState, componentFiles){
-    checkSubFunction(organismInState)
+    //checkSubFunction(organismInState )
 
     const organismFile = await getComponentFile(organismInState, "organisms")
+    checkSubFunction(organismInState, organismFile )
 
     for (const comp of ["organism", "molecule"]) {
 
@@ -53,9 +54,10 @@ export function checkAndUpdateStateAndFile(s_componentInState, organismFile, com
 }
 
 export async function checkMoleculeSubComponents(moleculeInState, componentFiles){
-    checkSubFunction(moleculeInState)
+    // checkSubFunction(moleculeInState)
 
     const moleculeFile = await getComponentFile(moleculeInState, "molecules");
+    checkSubFunction(moleculeInState, moleculeFile)
 
     for (const comp of ["molecule", "atom"]) {
 
@@ -110,7 +112,7 @@ export async function checkAtom(atomInState, componentFiles){
         removeFromState(atomInState);
     }
 
-    checkSubFunction(atomInState)
+    //checkSubFunction(atomInState)
 }
 
 export function compareComponents(subComponentState, subComponentFile, type) {
@@ -140,7 +142,7 @@ export function checkIfSubcomponentStateMatchInFile(subComponentState, component
     }
 }
 
-export async function checkSubFunction(parentInState) {
+export async function checkSubFunction(parentInState, parentFile) {
     const s_functionsInState = State.functions.filter(
         (func) => func.parentId === parentInState.id
     );
@@ -153,6 +155,12 @@ export async function checkSubFunction(parentInState) {
         const functionsToRemove = s_functionsInState.filter(func => !functionFiles.includes(func.value))
         removeFromState(functionsToRemove);
     }
+
+    const s_functionsInFile = parentFile.functions;
+
+    let areFunctionsState = isElementsAlsoInArray(s_functionsInFile.map(func => func.value), s_functionsInState);
+    console.log("areFunctionsState: ", areFunctionsState)
+
 }
 
 // This function checks if an array has the same elements regardless of order
