@@ -27,6 +27,8 @@ export async function eventChangeInput(id) {
     const parentParentId = parentInput.getAttribute("parentId");
     const parentKey = parentInput.getAttribute("key");
 
+    console.log(parentInput,"parentInput")
+
     data.id = parentId;
     data.parentId = parentParentId;
     data.value = parentValue;
