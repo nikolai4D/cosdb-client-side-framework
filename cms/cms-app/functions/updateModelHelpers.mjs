@@ -129,7 +129,13 @@ export function checkIfSubcomponentFileMatchState(subComponentFile, subComponent
         if (subComponentsState[0] !== undefined){
             parentIdToComp = subComponentsState[0].parentId
         }
-        addToState(subComponentFile, parentIdToComp);
+
+        if(type === "function"){
+            addToState(subComponentFile, parentIdToComp, false, true);
+        }else{
+            addToState(subComponentFile, parentIdToComp);
+        }
+       
     }
 }
 
