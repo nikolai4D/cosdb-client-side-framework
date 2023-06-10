@@ -204,6 +204,8 @@ export async function removeFromState(obj){
 
 export async function addToState(obj, parentId, isSlot = false){
 
+    console.log("Adding to State OBJ: ", obj)
+
     if (isSlot) {
         for (const aSlot of obj){
 
