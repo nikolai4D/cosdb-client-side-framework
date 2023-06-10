@@ -163,6 +163,14 @@ export async function checkSubFunction(parentInState, parentFile) {
     console.log("s_functionsInFile: ", s_functionsInFile)
     console.log("s_functionsInState: ", s_functionsInState)
 
+    if (!areFunctionsState) {
+        for (let func of s_functionsInFile) {
+            const isMatch = s_functionsInState.some(s_func => compareComponents(s_func, func, "function"));
+            if (!isMatch) {
+                addToState(func, parentInState.id);
+            }
+        }
+    }
 }
 
 // This function checks if an array has the same elements regardless of order
