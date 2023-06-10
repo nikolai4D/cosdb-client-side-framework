@@ -21,7 +21,7 @@ export function Molecule_X_Template() {
     {
       id: 1,
       function: "action_dummy1",
-      component: action_dummy1(),
+      component: action_dummy1,
     },
   ];
 

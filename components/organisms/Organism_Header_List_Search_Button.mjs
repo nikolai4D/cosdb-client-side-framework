@@ -59,7 +59,7 @@ export function Organism_Header_List_Search_Button() {
     {
       id: 1,
       function: "action_getAllListDataWithHeaders",
-      component: action_getAllListDataWithHeaders(),
+      component: action_getAllListDataWithHeaders,
     }
   ]
 

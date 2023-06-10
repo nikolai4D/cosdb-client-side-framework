@@ -58,7 +58,7 @@ export function Organism_ModalConnections() {
   { 
     id: 1,
     function: "action_getRelatedNodes",
-    component: action_getRelatedNodes()
+    component: action_getRelatedNodes
   }
   ]
 

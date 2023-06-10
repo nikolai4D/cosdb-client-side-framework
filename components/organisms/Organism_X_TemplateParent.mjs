@@ -26,10 +26,6 @@ export function Organism_X_TemplateParent() {
   ];
 
   this.functions = [
-    {
-      id: 1,
-      function: "placeholder",
-    },
   ];
 
   //build component
