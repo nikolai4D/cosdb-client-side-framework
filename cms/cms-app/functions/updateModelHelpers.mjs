@@ -230,8 +230,8 @@ export async function addToState(obj, parentId, isSlot = false, isFunction = fal
         console.warn("Adding to State: ", objToSave)
     
          // add to state 
-        await State.slots.push(objToSave) 
-        console.log("State.slots: ", State)
+        await State.functions.push(objToSave) 
+        console.log("State.functions: ", State.functions)
     }
 
     else {
