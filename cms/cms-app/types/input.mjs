@@ -18,6 +18,7 @@ export async function input(
   inputEl.value = value;
   inputEl.disabled = valueDisabled;
   inputEl.id = id;
+  inputEl.setAttribute("key", key);
   inputEl.setAttribute("parentId", parentId);
   inputEl.setAttribute("customType", customType);
   inputEl.addEventListener("change", () => eventChangeInput(id));
