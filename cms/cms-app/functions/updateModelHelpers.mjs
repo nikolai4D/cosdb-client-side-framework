@@ -168,7 +168,7 @@ export async function checkSubFunction(parentInState, parentFile) {
             const isMatch = s_functionsInState.some(s_func => compareComponents(s_func, func, "function"));
             if (!isMatch) {
                 console.log("Adding to state: ", func)
-                //addToState(func, parentInState.id);
+                addToState(func, parentInState.id, false, true);
             }
         }
     }
@@ -202,9 +202,8 @@ export async function removeFromState(obj){
     }
 }
 
-export async function addToState(obj, parentId, isSlot = false){
+export async function addToState(obj, parentId, isSlot = false, isFunction = false){
 
-    console.log("Adding to State OBJ: ", obj)
 
     if (isSlot) {
         for (const aSlot of obj){
@@ -222,6 +221,19 @@ export async function addToState(obj, parentId, isSlot = false){
         }
 
     }
+
+    if (isFunction) {
+        const type = "function"
+        const key = type+" "+obj.id
+        const value = obj.function
+        const objToSave = await newComponentFromType(key, value, parentId, type)
+        console.warn("Adding to State: ", objToSave)
+    
+         // add to state 
+        await State.slots.push(objToSave) 
+        console.log("State.slots: ", State)
+    }
+
     else {
     
         const type = obj.component.title.toLowerCase()
