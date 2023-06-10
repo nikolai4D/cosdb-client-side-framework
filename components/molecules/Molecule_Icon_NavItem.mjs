@@ -4,6 +4,8 @@ import { createElement } from "../../core/helpers/createElement.mjs";
 //import sub components
 import { Atom_Icon } from "../atoms/Atom_Icon.mjs";
 import { Atom_NavItem } from "../atoms/Atom_NavItem.mjs";
+import { action_getArray } from "../../data-mgmt/actions/action_getArray.mjs";
+import { action_routeToView } from "../../data-mgmt/actions/action_routeToView.mjs";
 
 export function Molecule_Icon_NavItem() {
   Molecule.call(this);
@@ -25,11 +27,13 @@ export function Molecule_Icon_NavItem() {
   this.functions = [
     {
       id: 1,
-      function: "getNavItems",
+      function: "action_getArray",
+      component: new action_getArray(),
     },
     {
       id: 2,
-      function: "routeToView",
+      function: "action_routeToView",
+      component: new action_routeToView(),
     },
   ];
 
