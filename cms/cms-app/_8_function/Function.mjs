@@ -4,6 +4,7 @@ import { input } from "../types/input.mjs";
 import { mutation_updateState } from "../data-mgmt/mutations/mutation_updateState.mjs";
 
 export async function Function(func, functionBody) {
+  console.log("func",func)
   const functionDiv = document.createElement("div");
   functionDiv.classList.add(func.customType);
 
