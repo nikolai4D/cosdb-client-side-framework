@@ -173,6 +173,8 @@ async function getComponentFunctions(
     (fn) => fn.parentId === id
   );
 
+  console.log(componentFunctions, "componentFunctions")
+
   // const constructorTypeFunctions = "functions";
 
   // const componentFunctions = await getConstructors(
@@ -191,6 +193,8 @@ async function createFunctionsEl(componentFunctions, id, body, parentBody) {
     // const key = "function " + compFn.id;
     // const value = compFn.function;
     // const parentId = id;
+
+
 
     let functionSlot;
     functionSlot = await Function(compFn, body);
