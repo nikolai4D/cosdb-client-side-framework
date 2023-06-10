@@ -22,7 +22,7 @@ export async function eventChangeInput(id) {
   if (customType === "functionParameters") {
     await validateObjectOrArray(value);
     const parentInput = document.getElementById(parentId);
-    let parentValue = parentInput.value;
+    const parentValue = parentInput.value;
     const parentCustomType = parentInput.getAttribute("customType");
     const parentParentId = parentInput.getAttribute("parentId");
     const parentKey = parentInput.getAttribute("key");
@@ -33,6 +33,8 @@ export async function eventChangeInput(id) {
     data.key = parentKey;
     data.customType = parentCustomType;
     data.parameters = value;
+    
+    console.log("data", data)
 
     customTypeArray = parentCustomType + "s";
   } else {
