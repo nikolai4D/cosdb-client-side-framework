@@ -205,7 +205,7 @@ async function createFunctionsEl(componentFunctions, id, body, parentBody) {
         typeof compFn.parameters === "object" ||
         Array.isArray(compFn.parameters)
       ) {
-        compFn.parameters = JSON.stringify(existingFn.parameters);
+        compFn.parameters = JSON.stringify(compFn.parameters);
         functionSlot = await Function(compFn, body);
       }
      else {
