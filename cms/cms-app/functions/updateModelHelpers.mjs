@@ -181,7 +181,12 @@ export async function checkSubFunction(parentInState, parentFile) {
     //     }
     // }
 
-    await checkIfSubcomponentStateMatchInFile(s_functionsInState, parentFile, "function")
+    for (let func of s_functionsInState) {
+        await checkIfSubcomponentStateMatchInFile(func, parentFile, "function")
+    }
+
+
+    
 
 }
 
