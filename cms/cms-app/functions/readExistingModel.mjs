@@ -189,7 +189,9 @@ async function getComponentFunctions(
 }
 
 async function createFunctionsEl(componentFunctions, id, body, parentBody) {
-  for (const compFn of componentFunctions) {
+  //for (const compFn of componentFunctions) {
+    for (let i = componentFunctions.length - 1; i >= 0; i--) {
+      const compFn = componentFunctions[i];
     // const key = "function " + compFn.id;
     // const value = compFn.function;
     // const parentId = id;
