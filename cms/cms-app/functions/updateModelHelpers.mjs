@@ -159,9 +159,6 @@ export async function checkSubFunction(parentInState, parentFile) {
     const s_functionsInFile = parentFile.functions;
 
     let areFunctionsState = isElementsAlsoInArray(s_functionsInFile.map(func => func.value), s_functionsInState);
-    console.log("areFunctionsState: ", areFunctionsState)
-    console.log("s_functionsInFile: ", s_functionsInFile)
-    console.log("s_functionsInState: ", s_functionsInState)
 
     if (!areFunctionsState) {
         for (let func of s_functionsInFile) {
@@ -172,6 +169,20 @@ export async function checkSubFunction(parentInState, parentFile) {
             }
         }
     }
+
+    // let areFilefunctionsInState = isElementsAlsoInArray(s_functionsInState.map(func => func.value), s_functionsInFile);
+    // if (!areFilefunctionsInState) {
+    //     for (let func of s_functionsInState) {
+    //         const isMatch = s_functionsInFile.some(s_func => compareComponents(s_func, func, "function"));
+    //         if (!isMatch) {
+    //             console.log("Removing from state: ", func)
+    //             removeFromState(func);
+    //         }
+    //     }
+    // }
+
+    await checkIfSubcomponentStateMatchInFile(s_functionsInState, parentFile, "function")
+
 }
 
 // This function checks if an array has the same elements regardless of order
