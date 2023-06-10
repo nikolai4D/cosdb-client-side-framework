@@ -28,12 +28,12 @@ export function Molecule_Icon_NavItem() {
     {
       id: 1,
       function: "action_getArray",
-      component: new action_getArray(),
+      component: action_getArray(),
     },
     {
       id: 2,
       function: "action_routeToView",
-      component: new action_routeToView(),
+      component: action_routeToView(),
     },
   ];
 
