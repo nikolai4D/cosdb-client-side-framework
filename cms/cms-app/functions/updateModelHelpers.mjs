@@ -167,7 +167,8 @@ export async function checkSubFunction(parentInState, parentFile) {
         for (let func of s_functionsInFile) {
             const isMatch = s_functionsInState.some(s_func => compareComponents(s_func, func, "function"));
             if (!isMatch) {
-                addToState(func, parentInState.id);
+                console.log("Adding to state: ", func)
+                //addToState(func, parentInState.id);
             }
         }
     }
