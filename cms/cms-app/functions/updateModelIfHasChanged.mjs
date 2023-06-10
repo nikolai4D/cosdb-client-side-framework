@@ -102,5 +102,7 @@ export async function updateModelIfHasChanged() {
         }
     }
 
+    console.log("State after update:", State) 
+
     await writeModel(await State);
 }

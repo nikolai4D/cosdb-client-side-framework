@@ -216,7 +216,7 @@ export async function addToState(obj, parentId, isSlot = false, isFunction = fal
     
          // add to state 
         await State.slots.push(objToSave) 
-        console.log("State.slots: ", State)
+
 
         }
 
@@ -234,7 +234,7 @@ export async function addToState(obj, parentId, isSlot = false, isFunction = fal
         console.log("State.functions: ", State.functions)            
         State[type+"s"].sort((a, b) => a.key.localeCompare(b.key));
 
-        console.log("!!!!! State: ", State)
+       
 
     }
 
