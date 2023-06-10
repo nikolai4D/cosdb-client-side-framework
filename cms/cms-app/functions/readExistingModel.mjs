@@ -199,7 +199,22 @@ async function createFunctionsEl(componentFunctions, id, body, parentBody) {
 
 
     let functionSlot;
-    functionSlot = await Function(compFn, body);
+
+
+      if (
+        typeof compFn.parameters === "object" ||
+        Array.isArray(compFn.parameters)
+      ) {
+        compFn.parameters = JSON.stringify(existingFn.parameters);
+        functionSlot = await Function(compFn, body);
+      }
+     else {
+      functionSlot = await Function(compFn, body);
+    }
+
+
+
+    //functionSlot = await Function(compFn, body);
 
     // const existingFn = State.functions.find(
     //   (fn) => fn.parentId === parentId && fn.key === key
