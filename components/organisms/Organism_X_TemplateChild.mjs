@@ -24,12 +24,12 @@ export function Organism_X_TemplateChild() {
     {
       id: 1,
       function: "action_dummy1",
-      component: new action_dummy1(),
+      component: action_dummy1(),
     },
     {
       id: 2,
       function: "action_dummy2",
-      component: new action_dummy2(),
+      component: action_dummy2(),
     },
   ];
 
