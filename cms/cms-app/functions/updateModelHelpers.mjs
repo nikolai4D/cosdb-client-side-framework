@@ -231,7 +231,9 @@ export async function addToState(obj, parentId, isSlot = false, isFunction = fal
     
          // add to state 
         await State.functions.push(objToSave) 
-        console.log("State.functions: ", State.functions)
+        console.log("State.functions: ", State.functions)            
+        State[type+"s"].sort((a, b) => a.key.localeCompare(b.key));
+
     }
 
     else {
@@ -248,7 +250,6 @@ export async function addToState(obj, parentId, isSlot = false, isFunction = fal
             const atomValueToSave = await newComponentFromType(key, value, objToSave.id, type)
             atomValueToSave.valueDisabled = false;
             State[type+"s"].push(atomValueToSave)
-            State[type+"s"].sort((a, b) => a.key.localeCompare(b.key));
 
 
         }
