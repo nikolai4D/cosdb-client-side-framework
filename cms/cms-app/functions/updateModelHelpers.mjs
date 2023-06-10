@@ -160,6 +160,8 @@ export async function checkSubFunction(parentInState, parentFile) {
 
     let areFunctionsState = isElementsAlsoInArray(s_functionsInFile.map(func => func.value), s_functionsInState);
     console.log("areFunctionsState: ", areFunctionsState)
+    console.log("s_functionsInFile: ", s_functionsInFile)
+    console.log("s_functionsInState: ", s_functionsInState)
 
 }
 
