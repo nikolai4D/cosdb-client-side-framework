@@ -82,14 +82,20 @@ async function createSubAtomsEl(subComps, id, compBody, parentBody) {
   }
 }
 
+
 async function createFunctionsEl(subComps, id, compBody, parentBody) {
-  for (const comp of subComps) {
+  for (let i = subComps.length - 1; i >= 0; i--) {
+    const comp = subComps[i];
     const key = "function " + comp.id;
+    console.log(key);
     const value = comp.function;
     const parentId = id;
 
-    let childSlot = await Function(await newFunction(parentId, key), compBody);
+    const newFn = await newFunction(parentId, key, value);
+    
+    const childSlot = await Function(newFn, compBody);
 
     parentBody.insertBefore(childSlot, parentBody.firstChild);
   }
 }
+
