@@ -10,7 +10,7 @@ export async function checkOrganismSubComponents(organismInState, componentFiles
     //checkSubFunction(organismInState )
 
     const organismFile = await getComponentFile(organismInState, "organisms")
-    checkSubFunction(organismInState, organismFile )
+    await checkSubFunction(organismInState, organismFile )
 
     for (const comp of ["organism", "molecule"]) {
 
@@ -57,7 +57,7 @@ export async function checkMoleculeSubComponents(moleculeInState, componentFiles
     // checkSubFunction(moleculeInState)
 
     const moleculeFile = await getComponentFile(moleculeInState, "molecules");
-    checkSubFunction(moleculeInState, moleculeFile)
+    await checkSubFunction(moleculeInState, moleculeFile)
 
     for (const comp of ["molecule", "atom"]) {
 
