@@ -11,6 +11,7 @@ import { State } from "../../data-mgmt/State.mjs";
 import { apiCallGet } from "../../data-mgmt/actions/apiCalls.mjs";
 import { apiCallPost } from "../../data-mgmt/actions/apiCalls.mjs";
 import { action_getRelatedParentNodes } from "../../data-mgmt/actions/action_getRelatedParentNodes.mjs";
+import { action_getAllListDataWithHeaders } from "../../data-mgmt/actions/action_getAllListDataWithHeaders.mjs";
 
 export function Organism_Header_List_Search_Button() {
   Organism.call(this);
@@ -37,23 +38,30 @@ export function Organism_Header_List_Search_Button() {
     },
   ];
 
+  // this.functions = [
+  //   {
+  //     id: 1,
+  //     purpose: "set state to be used as list items",
+  //     function: () =>
+  //       (State.items = [
+  //         {
+  //           header: "header1",
+  //           content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
+  //         },
+  //         {
+  //           header: "header2",
+  //           content: [{ title: "placeholder 3" }, { title: "placeholder 4" }],
+  //         },
+  //       ]),
+  //   },
+  // ];
   this.functions = [
     {
       id: 1,
-      purpose: "set state to be used as list items",
-      function: () =>
-        (State.items = [
-          {
-            header: "header1",
-            content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
-          },
-          {
-            header: "header2",
-            content: [{ title: "placeholder 3" }, { title: "placeholder 4" }],
-          },
-        ]),
-    },
-  ];
+      function: "action_getAllListDataWithHeaders",
+      component: action_getAllListDataWithHeaders(),
+    }
+  ]
 
   //build component
   const component = async (compData) => {
