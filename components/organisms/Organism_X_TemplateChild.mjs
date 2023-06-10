@@ -13,23 +13,35 @@ export function Organism_X_TemplateChild() {
   this.organisms = [];
 
   this.molecules = [
+    // {
+    //   id: 1,
+    //   molecule: "Molecule_X_Template",
+    //   component: new Molecule_X_Template(),
+    // },
     {
       id: 1,
-      molecule: "Molecule_X_Template",
-      component: new Molecule_X_Template(),
+      molecule: Molecule_X_Template
     },
   ];
 
   this.functions = [
+    // {
+    //   id: 1,
+    //   function: "action_dummy1",
+    //   component: action_dummy1,
+    // },
+    // {
+    //   id: 2,
+    //   function: "action_dummy2",
+    //   component: action_dummy2,
+    // },
     {
       id: 1,
-      function: "action_dummy1",
-      component: action_dummy1,
+      function: action_dummy1
     },
     {
       id: 2,
-      function: "action_dummy2",
-      component: action_dummy2,
+      function: action_dummy2
     },
   ];
 
