@@ -31,6 +31,16 @@ export function Organism_X_TemplateChild() {
       function: "action_dummy2",
       component: new action_dummy2(),
     },
+    {
+      id: 3,
+      function: "action_dummy1",
+      component: new action_dummy1(),
+    },
+    {
+      id: 4,
+      function: "action_dummy2",
+      component: new action_dummy2(),
+    },
   ];
 
   //build component
