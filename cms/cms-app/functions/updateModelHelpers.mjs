@@ -27,7 +27,7 @@ export async function checkOrganismSubComponents(organismInState, componentFiles
             continue
         }
 
-        checkAndUpdateStateAndFile(s_componentInState, organismFile, comp, organismInState.id);
+        await checkAndUpdateStateAndFile(s_componentInState, organismFile, comp, organismInState.id);
 
         if (comp === "organism"){
             for (let organism of s_componentInState) {
@@ -43,13 +43,13 @@ export async function checkOrganismSubComponents(organismInState, componentFiles
     }
 }
 
-export function checkAndUpdateStateAndFile(s_componentInState, organismFile, comp, parentId) {
+export function checkAndUpdateStateAndFile(s_componentInState, organismFile, type, parentId) {
     for (let s_comp of s_componentInState) {
-        checkIfSubcomponentStateMatchInFile(s_comp, organismFile, comp);
+        checkIfSubcomponentStateMatchInFile(s_comp, organismFile, type);
     }
 
-    for (let s_comp of organismFile[comp + "s"]) {
-        checkIfSubcomponentFileMatchState(s_comp, s_componentInState, comp, parentId);
+    for (let s_comp of organismFile[type + "s"]) {
+        checkIfSubcomponentFileMatchState(s_comp, s_componentInState, type, parentId);
     }
 }
 
@@ -77,7 +77,7 @@ export async function checkMoleculeSubComponents(moleculeInState, componentFiles
             moleculeFile[comp+"s"] = []
         }
     
-        checkAndUpdateStateAndFile(s_componentInState, moleculeFile, comp, moleculeInState.id);
+        await checkAndUpdateStateAndFile(s_componentInState, moleculeFile, comp, moleculeInState.id);
 
         if (comp === "molecule"){
             for (let molecule of s_componentInState) {
@@ -156,19 +156,23 @@ export async function checkSubFunction(parentInState, parentFile) {
         removeFromState(functionsToRemove);
     }
 
-    const s_functionsInFile = parentFile.functions;
+    await checkAndUpdateStateAndFile(s_functionsInState, parentFile, "function", parentInState.id);
 
-    let areFunctionsState = isElementsAlsoInArray(s_functionsInFile.map(func => func.value), s_functionsInState);
 
-    if (!areFunctionsState) {
-        for (let func of s_functionsInFile) {
-            const isMatch = s_functionsInState.some(s_func => compareComponents(s_func, func, "function"));
-            if (!isMatch) {
-                console.log("Adding to state: ", func)
-                addToState(func, parentInState.id, false, true);
-            }
-        }
-    }
+
+    // const s_functionsInFile = parentFile.functions;
+
+    // let areFunctionsState = isElementsAlsoInArray(s_functionsInFile.map(func => func.value), s_functionsInState);
+
+    // if (!areFunctionsState) {
+    //     for (let func of s_functionsInFile) {
+    //         const isMatch = s_functionsInState.some(s_func => compareComponents(s_func, func, "function"));
+    //         if (!isMatch) {
+    //             console.log("Adding to state: ", func)
+    //             addToState(func, parentInState.id, false, true);
+    //         }
+    //     }
+    // }
 
     // let areFilefunctionsInState = isElementsAlsoInArray(s_functionsInState.map(func => func.value), s_functionsInFile);
     // if (!areFilefunctionsInState) {
@@ -181,9 +185,9 @@ export async function checkSubFunction(parentInState, parentFile) {
     //     }
     // }
 
-    for (let func of s_functionsInState) {
-        await checkIfSubcomponentStateMatchInFile(func, parentFile, "function")
-    }
+    // for (let func of s_functionsInState) {
+    //     await checkIfSubcomponentStateMatchInFile(func, parentFile, "function")
+    // }
 
 
     
