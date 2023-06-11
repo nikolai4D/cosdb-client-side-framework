@@ -179,7 +179,6 @@ async function closeModal (e, existingModal){ //OK
   // next step
   const handleModal = async (e) => {
     const existingModal = document.getElementById("organism_modal");
-    console.log(existingModal);
 
     //Add related nodes
     if (
@@ -194,7 +193,7 @@ async function closeModal (e, existingModal){ //OK
     //delete related node
     if (e.target.className.includes("deleteRel")) {
       if (window.confirm("Ta bort?")) {
-        console.log(e.target.parentNode.childNodes[1].id);
+
         const relId = e.target.parentNode.childNodes[1].id;
         let urlKey = "";
         if (relId.startsWith("tdir")) {
@@ -205,14 +204,14 @@ async function closeModal (e, existingModal){ //OK
         }
         const url = `api/deleteById/${urlKey}/${relId}`;
         const deletedRel = await apiCallGet(url);
-        console.log(deletedRel);
+
 
         const currentModalId = existingModal.firstChild.id;
         const prefix = "organism_modal_content_";
         const currentId = currentModalId.substring(
           currentModalId.indexOf(prefix) + prefix.length
         );
-        console.log(currentId);
+
 
         existingModal.style.display = "none"; // Hide the modal
         // Remove all divs with the class "organism_modal_content" and their children
@@ -254,7 +253,6 @@ async function closeModal (e, existingModal){ //OK
 
     //Navigate back
     if (e.target.className.includes("CloseModalBackButton")) {
-      console.log(e.target.parentElement.id);
       const currentModalContent = document.getElementById(
         `organism_modal_content_${e.target.parentElement.id}`
       );
@@ -285,13 +283,10 @@ async function closeModal (e, existingModal){ //OK
     const pId = paragraphId.substring(
       paragraphId.indexOf(prefix) + prefix.length
     );
-    console.log(pId);
 
     const paragraph = existingModal.querySelector(
       `#${pId}[class*="atom_paragraphdata"]`
     );
-
-    console.log(paragraph);
 
     // Create an input element
     const input = document.createElement("input");
@@ -334,14 +329,11 @@ async function closeModal (e, existingModal){ //OK
     const idObject = await apiCallGet(getParentIdUrl);
     const parentId = idObject.parentId;
 
-    console.log("State", State);
-    console.log({ parentId, inputValue });
-
     const url = `api/update/type`;
 
     const body = { title: inputValue, id, parentId, props: [] };
     const updatedItem = await apiCallPost({ url, body });
-    console.log(updatedItem);
+
 
     for (const section of State.items) {
       const itemInState = section.content.find(
@@ -364,7 +356,6 @@ async function closeModal (e, existingModal){ //OK
     const pId = paragraphId.substring(
       paragraphId.indexOf(prefix) + prefix.length
     );
-    console.log(pId);
 
     // Update the data
     await deleteData(pId);
@@ -390,17 +381,13 @@ async function closeModal (e, existingModal){ //OK
     for (const section of State.items) {
       section.content = section.content.filter((item) => item.id !== id);
     }
-    console.log(State.items);
+
   }
 
   async function handleAddRel(eTarget, existingModal) {
-    console.log(existingModal);
-    console.log(eTarget);
     const objectId = eTarget.offsetParent.id;
     const prefix = "organism_modal_content_";
     const objId = objectId.substring(objectId.indexOf(prefix) + prefix.length);
-    console.log(objId);
-
     //get ParentId
     const getParentIdUrl = `api/getById/type/${objId}`;
     const idObject = await apiCallGet(getParentIdUrl);
@@ -408,8 +395,6 @@ async function closeModal (e, existingModal){ //OK
 
     //get Nodes related to parent
     const relatedParentNodes = await action_getRelatedParentNodes(parentId);
-    console.log(relatedParentNodes);
-
     //show dropdown with valid parents
 
     let modalContent = "";
@@ -484,7 +469,6 @@ async function closeModal (e, existingModal){ //OK
     // Add event listener to handle dropdown change
     parentDropdown.addEventListener("change", async (e) => {
       // Handle the selection change here
-      console.log("Selected node:", e.target.value);
       const existingChildrenDropdown =
         document.getElementById("childrenDropdown");
       if (existingChildrenDropdown) {
@@ -500,10 +484,9 @@ async function closeModal (e, existingModal){ //OK
         (item) => item.node.id === e.target.value
       );
       const parentRel = parentObj.rel;
-      console.log("parentRel", parentRel);
 
       const childrenObejcts = await apiCallGet(`api/type/${e.target.value}`);
-      console.log("childrenObejcts", childrenObejcts);
+
 
       // Create a select element (dropdown)
       const childrenDropdown = document.createElement("select");
@@ -539,8 +522,6 @@ async function closeModal (e, existingModal){ //OK
             const relParentId = parentRel.id;
             const currentNode = objId;
             // Use the selectedParent and selectedChild values to add the relationship here
-            console.log(selectedChild, currentNode, relTitle, relParentId);
-
             const url = `api/createRel/${urlRelKey}`;
             let relSource = "";
             let relTarget = "";
@@ -563,7 +544,6 @@ async function closeModal (e, existingModal){ //OK
             };
 
             const newRel = await apiCallPost({ url, body });
-            console.log(newRel);
             if (newRel.error) {
               alert("Det går inte att skapa relation till sig själv");
               return;

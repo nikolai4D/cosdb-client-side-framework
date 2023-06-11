@@ -139,7 +139,6 @@ async function createFunctionsEl(subComps, id, compBody, parentBody) {
   for (let i = subComps.length - 1; i >= 0; i--) {
     const comp = subComps[i];
     const key = "function " + comp.id;
-    console.log(key);
     const value = comp.function;
     const parentId = id;
 

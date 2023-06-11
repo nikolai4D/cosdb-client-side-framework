@@ -13,7 +13,6 @@ export function Atom_Dropdown() {
       null
     );
     // Create an option element for each value in compData
-    console.log(compData);
 
         // Create an empty, unselectable option
         const emptyOption = await createElement(

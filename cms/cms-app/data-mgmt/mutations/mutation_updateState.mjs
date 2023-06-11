@@ -24,7 +24,6 @@ export async function mutation_updateState(
         ) {
           data.parameters = JSON.parse(data.parameters);
         }
-        console.log("data befor splice", data)
         customTypeData.splice(index, 1, data);
       // }
     
