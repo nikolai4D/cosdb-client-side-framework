@@ -48,6 +48,7 @@ export function Organism_Navbar() {
     const logOutButton = await this.molecule(3, null)
 
     logOutButton.addEventListener("click", async () => {
+      // Change way of using function later, i.e. await this.fn(1)
       action_logoutRequest()
     })
 
