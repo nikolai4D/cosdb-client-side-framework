@@ -14,6 +14,8 @@ export async function View(viewPath, updateHistory = true) {
   console.log(newView)
 
   if (protectedView) {
+    console.log(        sessionStorage.getItem("accessToken")
+    )
       let handledToken = await action_handleToken(
         sessionStorage.getItem("accessToken")
       );
