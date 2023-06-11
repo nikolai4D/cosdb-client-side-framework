@@ -14,7 +14,5 @@ export async function action_refreshToken() {
                     ( await responseRefreshToken.json()).accessToken
                 }`;
 
-                console.log("TokenNew: " + tokenNew)
-
                 window.sessionStorage.setItem("accessToken", tokenNew);
             }
