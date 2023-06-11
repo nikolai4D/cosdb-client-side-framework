@@ -14,6 +14,11 @@ export function Organism() {
             return await fn.function(fn.parameters);
           } catch (error) {
             console.log(error);
+            try {
+              return await fn.function(fn.parameters);
+            } catch (error) {
+              console.log(error);
+            }
           }
         } else if (
           typeof fn.parameters === "object" &&
