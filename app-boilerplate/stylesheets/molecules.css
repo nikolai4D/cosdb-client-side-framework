@@ -201,3 +201,7 @@ grid-gap: 1em;
     grid-gap: 1em;
     margin: 1em;
 }
+
+.molecule_dropdown_input_button > .atom_buttonPositive {
+    align-self: center;
+}
