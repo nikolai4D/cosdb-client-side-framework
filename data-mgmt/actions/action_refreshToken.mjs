@@ -1,5 +1,4 @@
-
-export default async function action_refreshToken() {
+export async function action_refreshToken() {
 
             //AccessToken is TRUE, use RefreshToken to get new accessToken
 
