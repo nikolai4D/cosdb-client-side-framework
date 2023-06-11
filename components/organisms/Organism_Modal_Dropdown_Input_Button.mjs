@@ -60,12 +60,14 @@ export function Organism_Modal_Dropdown_Input_Button() {
       "inputFieldNewObject"
     );
 
+    console.log("inputFieldValue befor",inputFieldValue)
+
     if (inputFieldValue.value === "") {
       console.log("inputFieldValue",inputFieldValue)
       alert("Input cannot be empty!");
       return;
     }
-    await createData(selectedParent, inputFieldValue);
+    await createData(selectedParent, inputFieldValue.value);
   }
 
   async function createData(parentId, inputValue) {
