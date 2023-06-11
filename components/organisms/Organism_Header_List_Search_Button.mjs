@@ -105,72 +105,170 @@ export function Organism_Header_List_Search_Button() {
     return await component(data);
   };
 
-  //add functions for the component here
-// const listItems = async (filter = "") => {
-//   const arrayOfData = await State.items;
-  
-//   let filteredData = filter === "" 
-//     ? arrayOfData 
-//     : arrayOfData
-//         .map((group) => ({
-//           header: group.header, 
-//           content: group.content.filter((item) => item.title.toLowerCase().includes(filter.toLowerCase()))
-//         }))
-//         .filter((group) => group.content.length > 0);
-  
-//   return Promise.all(filteredData.map(item => this.molecule(2, item)));
-// };
+  //add component specific functions here
 
-const filterData = async (filter = "") => {
+const filterData = async (filter = "") => { //OK
   const filteredData = await this.fn(2, filter)
   return Promise.all(filteredData.map(item => this.molecule(2, item)));
 }
 
-
-
-  async function updateListItems(filter) {
+  async function updateListItems(filter) { //OK
     const existinglistItems = document.getElementById("listItems");
     existinglistItems.innerHTML = "";
     const updatedListItems = await filterData(filter);
     existinglistItems.append(...updatedListItems);
   }
 
+  // current
+
   const openModal = async (id) => {
     //create modal content
     const existingModal = document.getElementById("organism_modal");
-    let existingModalContent = document.getElementById(
-      "organism_modal_content"
+
+    //create modal content
+
+    if(id === "new") {
+      await createForm(existingModal);
+    } else {
+      const modalConnetionsContent = await createElement("div",
+      {
+        class: "organism_modal_content",
+        id: `organism_modal_content_${id}`,
+      },
+      await this.childOrganism(2, id)
     );
-    let existingId = "";
-
-    if (id === "new") {
-      existingId = null;
-    } else {
-      existingId = id;
+      existingModal.appendChild(modalConnetionsContent);
     }
 
-    if (!existingModalContent) {
-      existingModalContent = await createElement(
-        "div",
-        {
-          class: "organism_modal_content",
-          id: `organism_modal_content_${id}`,
-        },
-
-        await this.childOrganism(2, existingId)
-      );
-      existingModal.appendChild(existingModalContent);
-    } else {
-      existingModalContent.innerHTML = "";
-    }
-
-    if (id === "new") {
-      await newObject(existingModalContent);
-    }
-
+    //modal content created and next step to display modal
     existingModal.style.display = "block"; // Show the modal
   };
 
+
+  // const newObject = async (existingModalContent) => {
+  //   existingModalContent.innerHTML = "";
+  //   console.log("State ParentIds", State.parentIds);
+
+  //   await createForm(existingModalContent);
+  // };
+
+  async function createForm(existingModal) {
+    const parents = State.parentIds;
+
+    const parentsList = [];
+
+    for (const parent of parents) {
+      const url = `api/getById/object/${parent}`;
+      try {
+        const data = await apiCallGet(url);
+
+        if (Array.isArray(data)) {
+          parentsList.push(...data);
+        } else {
+          parentsList.push(data);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    // Create the div
+    const divInputAndButton = document.createElement("div");
+    divInputAndButton.classList.add("molecule_createObjectInputAndButton");
+
+    // Create and append the select
+    const select = document.createElement("select");
+    select.id = "parentSelectNewObject";
+    select.classList.add("atom_input");
+    parentsList.forEach(async (parent) => {
+      const parentTitle = parent.title;
+      const option = document.createElement("option");
+      option.value = parent.id;
+      option.textContent = parentTitle; //`Parent ${id}`;
+      select.appendChild(option);
+    });
+    divInputAndButton.appendChild(select);
+
+    // Create and append the input field
+    const inputField = document.createElement("input");
+    inputField.classList.add("atom_input");
+    inputField.type = "text";
+    inputField.placeholder = "";
+    inputField.id = "inputFieldNewObject";
+    divInputAndButton.appendChild(inputField);
+
+    // Create and append the button
+    const button = document.createElement("button");
+    button.classList.add("atom_buttonpositive");
+
+    button.textContent = "Skapa";
+    button.addEventListener("click", handleCreate);
+    divInputAndButton.appendChild(button);
+
+    const existingModalContent = document.createElement("div");
+    existingModalContent.appendChild(divInputAndButton);
+    //existingModalContent.style.removeProperty("width");
+    //existingModalContent.style.removeProperty("height");
+    existingModal.appendChild(existingModalContent)
+
+  }
+
+  async function handleCreate() {
+    const selectedParent = document.getElementById(
+      "parentSelectNewObject"
+    ).value;
+    const inputFieldValue = document.getElementById(
+      "inputFieldNewObject"
+    ).value;
+
+    if (inputFieldValue === "") {
+      alert("Input cannot be empty!");
+      return;
+    }
+    await createData(selectedParent, inputFieldValue);
+  }
+
+  async function createData(parentId, inputValue) {
+    console.log("State", State);
+    console.log({ parentId, inputValue });
+
+    const url = `api/create/type`;
+
+    const body = { title: inputValue, parentId, props: [] };
+    const newItem = await apiCallPost({ url, body });
+
+    const newItemHeaderFirst = newItem.title.charAt(0).toLowerCase();
+
+    const existingItem = State.items.find(
+      (item) => item.header.toLowerCase() === newItemHeaderFirst
+    );
+
+    if (existingItem) {
+      existingItem.content.push(newItem);
+      existingItem.content.sort((a, b) => a.title.localeCompare(b.title));
+    } else {
+      const newSection = {
+        header: newItemHeaderFirst,
+        content: [newItem],
+      };
+      State.items.push(newSection);
+    }
+
+    await updateListItems("");
+
+    const newObjectModal = document.querySelector(".organism_modal");
+    newObjectModal.style.display = "none"; // Hide the modal
+    // Remove all divs with the class "organism_modal_content" and their children
+    const modalContents = newObjectModal.querySelectorAll(
+      ".organism_modal_content"
+    );
+    modalContents.forEach((modalContent) => {
+      modalContent.innerHTML = "";
+      modalContent.remove();
+    });
+  }
+
+  // next step
   const handleModal = async (e) => {
     const existingModal = document.querySelector(".organism_modal");
     console.log(existingModal);
@@ -279,125 +377,6 @@ const filterData = async (filter = "") => {
       await updateListItems("");
     }
   };
-  const newObject = async (existingModalContent) => {
-    existingModalContent.innerHTML = "";
-    console.log("State ParentIds", State.parentIds);
-
-    await createForm(existingModalContent);
-  };
-
-  async function createData(parentId, inputValue) {
-    console.log("State", State);
-    console.log({ parentId, inputValue });
-
-    const url = `api/create/type`;
-
-    const body = { title: inputValue, parentId, props: [] };
-    const newItem = await apiCallPost({ url, body });
-
-    const newItemHeaderFirst = newItem.title.charAt(0).toLowerCase();
-
-    const existingItem = State.items.find(
-      (item) => item.header.toLowerCase() === newItemHeaderFirst
-    );
-
-    if (existingItem) {
-      existingItem.content.push(newItem);
-      existingItem.content.sort((a, b) => a.title.localeCompare(b.title));
-    } else {
-      const newSection = {
-        header: newItemHeaderFirst,
-        content: [newItem],
-      };
-      State.items.push(newSection);
-    }
-
-    await updateListItems("");
-
-    const newObjectModal = document.querySelector(".organism_modal");
-    newObjectModal.style.display = "none"; // Hide the modal
-    // Remove all divs with the class "organism_modal_content" and their children
-    const modalContents = newObjectModal.querySelectorAll(
-      ".organism_modal_content"
-    );
-    modalContents.forEach((modalContent) => {
-      modalContent.innerHTML = "";
-      modalContent.remove();
-    });
-  }
-
-  async function handleCreate() {
-    const selectedParent = document.getElementById(
-      "parentSelectNewObject"
-    ).value;
-    const inputFieldValue = document.getElementById(
-      "inputFieldNewObject"
-    ).value;
-
-    if (inputFieldValue === "") {
-      alert("Input cannot be empty!");
-      return;
-    }
-    await createData(selectedParent, inputFieldValue);
-  }
-
-  async function createForm(existingModalContent) {
-    const parents = State.parentIds;
-
-    const parentsList = [];
-
-    for (const parent of parents) {
-      const url = `api/getById/object/${parent}`;
-      try {
-        const data = await apiCallGet(url);
-
-        if (Array.isArray(data)) {
-          parentsList.push(...data);
-        } else {
-          parentsList.push(data);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    // Create the div
-    const divInputAndButton = document.createElement("div");
-    divInputAndButton.classList.add("molecule_createObjectInputAndButton");
-
-    // Create and append the select
-    const select = document.createElement("select");
-    select.id = "parentSelectNewObject";
-    select.classList.add("atom_input");
-    parentsList.forEach(async (parent) => {
-      const parentTitle = parent.title;
-      const option = document.createElement("option");
-      option.value = parent.id;
-      option.textContent = parentTitle; //`Parent ${id}`;
-      select.appendChild(option);
-    });
-    divInputAndButton.appendChild(select);
-
-    // Create and append the input field
-    const inputField = document.createElement("input");
-    inputField.classList.add("atom_input");
-    inputField.type = "text";
-    inputField.placeholder = "";
-    inputField.id = "inputFieldNewObject";
-    divInputAndButton.appendChild(inputField);
-
-    // Create and append the button
-    const button = document.createElement("button");
-    button.classList.add("atom_buttonpositive");
-
-    button.textContent = "Skapa";
-    button.addEventListener("click", handleCreate);
-    divInputAndButton.appendChild(button);
-
-    existingModalContent.appendChild(divInputAndButton);
-    existingModalContent.style.removeProperty("width");
-    existingModalContent.style.removeProperty("height");
-  }
 
   async function handleUpdate(existingModal) {
     // Get the paragraph element
