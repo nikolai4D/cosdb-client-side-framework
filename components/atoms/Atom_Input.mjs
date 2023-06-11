@@ -9,7 +9,7 @@ export function Atom_Input() {
   const component = async (compData) => {
     const comp = await createElement(
       "input",
-      { class: `atom_input`, placeholder: await this.atom(), type: "text" , id: "inputFieldNewObject", value: ""},
+      { class: `atom_input`, placeholder: await this.atom(), type: "text" , id: "inputFieldNewObject"},
       compData
     );
     //add event listeners here
