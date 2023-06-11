@@ -1,6 +1,6 @@
 import { action_routeToView } from "./action_routeToView.mjs";
 
-export async function action_loginRequest() {
+export async function action_logoutRequest() {
     //Clear sessionStorage (accessToken) and set jwt cookie (refreshToken) to expire in the past
     sessionStorage.clear();
     await fetch("/logout");
