@@ -3,14 +3,29 @@ import { getViewTemplate } from "./getViewTemplate.mjs";
 import { createElement } from "./helpers/createElement.mjs";
 import { State } from "../data-mgmt/State.mjs";
 import { updateDOM } from "./helpers/updateDOM.mjs";
+import { action_handleToken } from  "../data-mgmt/actions/action_handleToken.mjs";
 
 export async function View(viewPath, updateHistory = true) {
   const type = "view";
 
   //validate and authenticate path
-  const newView = await apiCallGet(`/api/auth/${viewPath}`);
+  let newView = await apiCallGet(`/api/auth/${viewPath}`);
+  const protectedView = newView.protected;
+
+  if (protectedView) {
+
+      let handledToken = await action_handleToken(
+        sessionStorage.getItem("accessToken")
+      );
+
+      if (!(await handledToken)) {
+        newView = await apiCallGet(`/api/auth/401`);
+    }
+  }
+
   const id = newView.id;
   const value = newView.value;
+
 
   //set components to state
   if (!State.components) {
