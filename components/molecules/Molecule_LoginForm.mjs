@@ -38,16 +38,53 @@ export function Molecule_LoginForm() {
 
   //build component
   const component = async (compData = null) => {
-    const button =       await this.atom(4, null)
-    console.log(button)
+  
+    const email = await this.atom(2, null)
+    const password = await this.atom(3, null)
+    const button = await this.atom(4, null)
+
+    button.addEventListener("click", async () => {
+
+        console.log(email.value)
+
+        // const response = await fetch("http://localhost:3000/api/login", {
+
+
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     credentials: "include",
+        //     body: JSON.stringify({ email: email.value, password: password.value }),
+        // }); 
+
+        // if (!response.ok) {
+
+        //     if (response.status === 401) {
+        //         alert("Unauthorized");
+        //         return false;
+        //     }
+        //     throw new Error(
+        //         `status: ${response.status}, status text: ${response.statusText}`
+        //     );
+        // }
+
+        // const token = `Bearer ${(await response.json()).accessToken}`;
+        // sessionStorage.setItem("accessToken", token);
+        // // navigateTo("/admindashboard");
+        // // action_routeToView("process");
+    })
+
+
+
+
 
     const comp =
       await createElement("div", { class: "molecule_loginform" },
-      
       await this.atom(1, null),
-      await this.atom(2, null),
-      await this.atom(3, null),
-      button
+      await email,
+      await password,
+      await button
   )
   console.log(comp)
 
