@@ -68,8 +68,6 @@ export function Organism_Modal_Dropdown_Input_Button() {
       return;
     }
     await createData(selectedParent, inputFieldValue);
-    selectedParent = "";
-    inputFieldValue = "";
   }
 
   async function createData(parentId, inputValue) {
@@ -97,6 +95,9 @@ export function Organism_Modal_Dropdown_Input_Button() {
       };
       State.items.push(newSection);
     }
+
+    const getBackgroundModal = document.getElementById("organism_modal");
+    getBackgroundModal.click();
    
   }
 
