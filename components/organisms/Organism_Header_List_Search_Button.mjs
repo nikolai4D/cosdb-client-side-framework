@@ -14,6 +14,7 @@ import { apiCallPost } from "../../data-mgmt/actions/apiCalls.mjs";
 import { action_getRelatedParentNodes } from "../../data-mgmt/actions/action_getRelatedParentNodes.mjs";
 import { action_getAllListDataWithHeaders } from "../../data-mgmt/actions/action_getAllListDataWithHeaders.mjs";
 import { action_filterListItems } from "../../data-mgmt/actions/action_filterListItems.mjs";
+import { action_getParentsList } from "../../data-mgmt/actions/action_getParentsList.mjs";
 
 export function Organism_Header_List_Search_Button() {
   Organism.call(this);
@@ -56,6 +57,11 @@ export function Organism_Header_List_Search_Button() {
       function: "action_filterListItems",
       component: action_filterListItems,
     },
+    {
+      id: 3,
+      function: "action_getParentsList",
+      component: action_getParentsList,
+    }
   ]
 
   //build component
@@ -134,9 +140,11 @@ const filterData = async (filter = "") => { //OK
     if (existingModalContent) {
       existingModalContent.innerHTML = "";
     } 
-    
+
       const contentId = `organism_modal_content_${id}`;
       const organismType = id === "new" ? 1 : 2; //1 = Organism_Modal_Dropdown_Input_Button, 2 = Organism_ModalConnections
+      const parentsList = await this.fn(3, null);
+      const organismTypeIndata = id === "new" ? parentsList : id;
 
       existingModalContent = await createElement(
         "div",
@@ -144,7 +152,7 @@ const filterData = async (filter = "") => { //OK
           class: "organism_modal_content",
           id: contentId,
         },
-        await this.childOrganism(organismType, id)
+        await this.childOrganism(organismType, organismTypeIndata)
       );
       
       existingModal.appendChild(existingModalContent);
