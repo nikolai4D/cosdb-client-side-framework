@@ -8,6 +8,7 @@ import { Molecule_Text_Button } from "../molecules/Molecule_Text_Button.mjs";
 
 //import functions
 import { action_logoutRequest } from "../../data-mgmt/actions/action_logoutRequest.mjs";
+import { action_routeToView } from "../../data-mgmt/actions/action_routeToView.mjs";
 
 
 export function Organism_Navbar() {
@@ -40,6 +41,11 @@ export function Organism_Navbar() {
       function: "action_logoutRequest",
       component: action_logoutRequest,
     },
+    {
+      id: 2,
+      function: "action_routeToView",
+      component: action_routeToView,
+    },
   ];
 
   //build component
@@ -49,7 +55,8 @@ export function Organism_Navbar() {
 
     logOutButton.addEventListener("click", async () => {
       // Change way of using function later, i.e. await this.fn(1)
-      action_logoutRequest()
+      await action_logoutRequest()
+      await action_routeToView("login")
     })
 
     const comp = await createElement(
