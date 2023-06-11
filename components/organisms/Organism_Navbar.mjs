@@ -61,7 +61,7 @@ export function Organism_Navbar() {
 
     const userName = await action_getUserName()
     const userDOM = userAndlogOutButton.firstChild
-    userDOM.textContent(userName)
+    userDOM.textContent = userName
 
     const logOutButton = userAndlogOutButton.lastChild
     logOutButton.addEventListener("click", async () => {
