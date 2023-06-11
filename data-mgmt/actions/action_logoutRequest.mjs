@@ -13,5 +13,5 @@ export async function action_logoutRequest() {
     State.accessToken = undefined;
 
     //Redirection Part
-    await action_routeToView("/login")
+    await action_routeToView("login")
 }
