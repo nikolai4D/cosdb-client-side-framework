@@ -38,6 +38,23 @@ export function Organism_Header_List_Search_Button() {
     },
   ];
 
+  // this.functions = [
+  //   {
+  //     id: 1,
+  //     purpose: "set state to be used as list items",
+  //     function: () =>
+  //       (State.items = [
+  //         {
+  //           header: "header1",
+  //           content: [{ title: "placeholder 1" }, { title: "placeholder 2" }],
+  //         },
+  //         {
+  //           header: "header2",
+  //           content: [{ title: "placeholder 3" }, { title: "placeholder 4" }],
+  //         },
+  //       ]),
+  //   },
+  // ];
   this.functions = [
     {
       id: 1,
@@ -100,21 +117,30 @@ export function Organism_Header_List_Search_Button() {
   };
 
   //add functions for the component here
-const listItems = async (filter = "") => {
-  const arrayOfData = await State.items;
-  
-  let filteredData = filter === "" 
-    ? arrayOfData 
-    : arrayOfData
-        .map((group) => ({
-          header: group.header, 
-          content: group.content.filter((item) => item.title.toLowerCase().includes(filter.toLowerCase()))
-        }))
-        .filter((group) => group.content.length > 0);
-  
-  return Promise.all(filteredData.map(item => this.molecule(2, item)));
-};
+  const listItems = async (filter) => {
+    const arrayOfData = await State.items;
+    console.log(arrayOfData);
+    let filteredData = [];
 
+    if (filter === "") {
+      filteredData = arrayOfData;
+    } else {
+      filteredData = [...arrayOfData].map((group) => {
+        let filteredContent = group.content.filter((item) =>
+          item.title.toLowerCase().includes(filter.toLowerCase())
+        );
+
+        return { header: group.header, content: filteredContent };
+      });
+      filteredData = filteredData.filter((group) => group.content.length > 0);
+    }
+
+    return await Promise.all(
+      filteredData.map(async (item) => {
+        return await this.molecule(2, item);
+      })
+    );
+  };
 
   async function updateListItems(filter) {
     const existinglistItems = document.getElementById("listItems");
