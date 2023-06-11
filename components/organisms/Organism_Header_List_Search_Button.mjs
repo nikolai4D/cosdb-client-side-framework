@@ -153,14 +153,6 @@ const filterData = async (filter = "") => { //OK
         await this.childOrganism(organismType, organismTypeIndata)
       );
 
-      existingModal.addEventListener("click", async (e) => {
-        
-        if (e.target.tagName === "BUTTON" && e.target.id === "buttonNewObject") {
-          console.log(e, "CLICKED BUTTON IN MODAL")
-          await closeModal(e, existingModal)
-        }})
-
-
       
       existingModal.appendChild(existingModalContent);
     existingModal.style.display = "block"; // Show the modal

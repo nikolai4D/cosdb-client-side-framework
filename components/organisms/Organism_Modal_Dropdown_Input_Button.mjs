@@ -71,6 +71,8 @@ export function Organism_Modal_Dropdown_Input_Button() {
       return;
     }
     await createData(selectedParent, inputFieldValue);
+    selectedParent = "";
+    inputFieldValue = "";
   }
 
   async function createData(parentId, inputValue) {
