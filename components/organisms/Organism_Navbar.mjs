@@ -87,7 +87,7 @@ export function Organism_Navbar() {
       await createElement(
         "div",
         { class: "organism_navbar__text_button" },
-        logOutButton
+        userAndlogOutButton
       )
     );
 
