@@ -35,9 +35,9 @@ export function Organism_Modal_Dropdown_Input_Button() {
     );
 
     //add event listener to the comp here
-    comp.addEventListener("click", (e) => {
+    comp.addEventListener("click", async (e) => {
       if(e.target.tagName === "BUTTON"){
-        handleCreate();
+        await handleCreate();
       }
     })
 
