@@ -68,7 +68,7 @@ export function Organism_Header_List_Search_Button() {
   const component = async (compData) => {
     const headingInputButton = await createElement(
       "div",
-      { class: "organism_heading_input_button" },
+      { class: "molecule_heading_input_button" },
       await this.molecule(1, null)
     );
     headingInputButton.addEventListener("input", async (e) => {
@@ -161,6 +161,24 @@ const filterData = async (filter = "") => { //OK
     
 
     existingModal.style.display = "block"; // Show the modal
+    existingModal.addEventListener("click", async (e, existingModal ) => {
+  //Close modal
+  if (e.target === existingModal) {
+    existingModal.style.display = "none"; // Hide the modal
+    // Remove all divs with the class "organism_modal_content" and their children
+    const modalContents = existingModal.querySelectorAll(
+      ".organism_modal_content"
+    );
+    modalContents.forEach((modalContent) => {
+      modalContent.innerHTML = "";
+      modalContent.remove();
+    });
+    await updateListItems("");
+  }
+
+    })
+
+
 };
 
   async function handleCreate() {
@@ -313,19 +331,19 @@ const filterData = async (filter = "") => { //OK
       }
     }
 
-    //Close modal
-    if (e.target === existingModal) {
-      existingModal.style.display = "none"; // Hide the modal
-      // Remove all divs with the class "organism_modal_content" and their children
-      const modalContents = existingModal.querySelectorAll(
-        ".organism_modal_content"
-      );
-      modalContents.forEach((modalContent) => {
-        modalContent.innerHTML = "";
-        modalContent.remove();
-      });
-      await updateListItems("");
-    }
+    // //Close modal
+    // if (e.target === existingModal) {
+    //   existingModal.style.display = "none"; // Hide the modal
+    //   // Remove all divs with the class "organism_modal_content" and their children
+    //   const modalContents = existingModal.querySelectorAll(
+    //     ".organism_modal_content"
+    //   );
+    //   modalContents.forEach((modalContent) => {
+    //     modalContent.innerHTML = "";
+    //     modalContent.remove();
+    //   });
+    //   await updateListItems("");
+    // }
   };
 
   async function handleUpdate(existingModal) {
