@@ -1,6 +1,7 @@
  //import core
 import { createElement } from "../../core/helpers/createElement.mjs";
 import { Organism } from "../../core/Organism.mjs";
+import { State } from "../../data-mgmt/State.mjs";
 //import sub components
 import { Molecule_Dropdown_Input_Button } from "../molecules/Molecule_Dropdown_Input_Button.mjs";
 
@@ -29,8 +30,8 @@ export function Organism_Modal_Dropdown_Input_Button() {
   const component = async (compData) => {
     const comp = await createElement(
       "div",
-      { class: "Organism_Modal_Dropdown_Input_Button" },
-      await createElement("div", {}, await this.molecule(1, compData))
+      { class: "organism_modal_dropdown_input_button" },
+      await this.molecule(1, compData)
     );
 
     //add event listener to the comp here

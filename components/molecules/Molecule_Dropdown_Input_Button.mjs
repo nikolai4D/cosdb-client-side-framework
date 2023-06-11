@@ -37,9 +37,9 @@ export function Molecule_Dropdown_Input_Button() {
     const comp = await createElement(
       "div",
       { class: "molecule_dropdown_input_button" },
-      await createElement("div", {class:"molecule_dropdown_input_button__dropdown"}, await this.atom(1, compData)),
-      await createElement("div", {class:"molecule_dropdown_input_button__input"}, await this.atom(2, null)),
-      await createElement("div", {class:"molecule_dropdown_input_button__button"}, await this.atom(3, null))
+     await this.atom(1, compData),
+      await this.atom(2, null),
+     await this.atom(3, null)
     );
 
     //add event listener to the comp here
