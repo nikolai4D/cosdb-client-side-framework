@@ -17,17 +17,6 @@ export async function mutation_updateState(
       customTypeData.splice(index, 1, data);
     }
     if (customType === "functions") {
-      const functionParamsInput = document.querySelector(
-        `[parentId="${data.id}"]`
-      );
-
-      if (data.value === "") {
-        functionParamsInput.value = "";
-        functionParamsInput.disabled = true;
-        customTypeData.splice(index, 1);
-      } else {
-        functionParamsInput.disabled = false;
-        functionParamsInput.value = data.parameters;
 
         if (
           data.parameters.startsWith("{") ||
@@ -36,7 +25,8 @@ export async function mutation_updateState(
           data.parameters = JSON.parse(data.parameters);
         }
         customTypeData.splice(index, 1, data);
-      }
+      // }
+    
     }
     if (customType === "views") {
       data.valueDisabled = customTypeData[index].valueDisabled;
@@ -55,16 +45,7 @@ export async function mutation_updateState(
       customTypeData.splice(index, 1, data);
     }
   } else {
-    if (customType === "functions") {
-      const functionParamsInput = document.querySelector(
-        `[parentId="${data.id}"]`
-      );
-      if (data.value !== "") {
-        functionParamsInput.disabled = false;
-      } else {
-        functionParamsInput.disabled = true;
-      }
-    }
+
 
     customTypeData.push(data);
   }

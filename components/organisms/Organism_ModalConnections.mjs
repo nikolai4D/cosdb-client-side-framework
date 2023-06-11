@@ -5,6 +5,7 @@ import { Organism } from "../../core/Organism.mjs";
 import { Molecule_ModalHeader } from "../molecules/Molecule_ModalHeader.mjs";
 import { Molecule_ModalConnection } from "../molecules/Molecule_ModalConnection.mjs";
 import { Molecule_ModalCenterContent } from "../molecules/Molecule_ModalCenterContent.mjs";
+import { action_getRelatedNodes } from "../../data-mgmt/actions/action_getRelatedNodes.mjs";
 
 export function Organism_ModalConnections() {
   Organism.call(this);
@@ -46,50 +47,50 @@ export function Organism_ModalConnections() {
   ];
 
   this.functions = [
-    {
-      id: 1,
-      purpose: "set state to be used as list items",
-      function: () => console.log("placeholder function"),
-    },
-  ];
+  { 
+    id: 1,
+    function: "action_getRelatedNodes",
+    component: action_getRelatedNodes
+  }
+  ]
 
   //build component
   const component = async (compData) => {
     const comp = await createElement(
       "div",
-      { class: "organism_modalconnections" },
+      { class: "organism_modalconnections", id: compData.node.id},
       await createElement(
         "div",
-        { class: "organism_modalconnections__header" },
+        { class: "organism_modalconnections__header" , id: compData.node.id },
         await this.molecule(1, compData.node.id)
       ),
       await createElement(
         "div",
-        { class: "organism_modalconnections__content" },
+        { class: "organism_modalconnections__content", id: compData.node.id },
         await createElement(
           "div",
-          { class: "organism_modalconnections__content__connectiontopleft" },
+          { class: "organism_modalconnections__content__connectiontopleft", id: compData.node.id},
           await this.molecule(3, compData.internalRelsToNode)
         ),
         await createElement(
           "div",
-          { class: "organism_modalconnections__content__connectionbottomleft" },
+          { class: "organism_modalconnections__content__connectionbottomleft" , id: compData.node.id},
           await this.molecule(4, compData.externalRelsToNode)
         ),
         await createElement(
           "div",
-          { class: "organism_modalconnections__content__content" },
+          { class: "organism_modalconnections__content__content", id: compData.node.id },
           await this.molecule(2, compData)
         ),
         await createElement(
           "div",
-          { class: "organism_modalconnections__content__connectiontopright" },
+          { class: "organism_modalconnections__content__connectiontopright", id: compData.node.id },
           await this.molecule(5, compData.internalRelsFromNode)
         ),
         await createElement(
           "div",
           {
-            class: "organism_modalconnections__content__connectionbottomright",
+            class: "organism_modalconnections__content__connectionbottomright" , id: compData.node.id
           },
           await this.molecule(6, compData.externalRelsFromNode)
         )
@@ -121,80 +122,9 @@ export function Organism_ModalConnections() {
     }
     console.log("data", data);
 
-    return await component(data);
+    return await component(data, indata);
   };
 
   //add component specific functions here
 }
 
-// data = {
-//     node: { title: "node title placeholder", id: "node id placeholder" },
-//     parentNode: {
-//       title: "parent node title placeholder",
-//       id: "parent node id placeholder",
-//     },
-//     externalRelsToNode: [
-//       {
-//         rel: {
-//           title: "externalRelsToNode rel title placeholder",
-//           id: "externalRelsToNode rel id placeholder",
-//         },
-//         node: {
-//           title: "externalRelsToNode node title placeholder",
-//           id: "externalRelsToNode node id placeholder",
-//         },
-//         parentNode: {
-//           title: "externalRelsToNode parentNode title placeholder",
-//           id: "externalRelsToNode parentNode id placeholder",
-//         },
-//       },
-//     ],
-//     externalRelsFromNode: [
-//       {
-//         rel: {
-//           title: "externalRelsFromNode rel title placeholder",
-//           id: "externalRelsFromNode rel id placeholder",
-//         },
-//         node: {
-//           title: "externalRelsFromNode node title placeholder",
-//           id: "externalRelsFromNode node id placeholder",
-//         },
-//         parentNode: {
-//           title: "externalRelsFromNode parentNode title placeholder",
-//           id: "externalRelsFromNode parentNode id placeholder",
-//         },
-//       },
-//     ],
-//     internalRelsToNode: [
-//       {
-//         rel: {
-//           title: "internalRelsToNode rel title placeholder",
-//           id: "internalRelsToNode rel id placeholder",
-//         },
-//         node: {
-//           title: "internalRelsToNode node title placeholder",
-//           id: "internalRelsToNode node id placeholder",
-//         },
-//         parentNode: {
-//           title: "internalRelsToNode parentNode title placeholder",
-//           id: "internalRelsToNode parentNode id placeholder",
-//         },
-//       },
-//     ],
-//     internalRelsFromNode: [
-//       {
-//         rel: {
-//           title: "internalRelsFromNode rel title placeholder",
-//           id: "internalRelsFromNode rel id placeholder",
-//         },
-//         node: {
-//           title: "internalRelsFromNode node title placeholder",
-//           id: "internalRelsFromNode node id placeholder",
-//         },
-//         parentNode: {
-//           title: "internalRelsFromNode parentNode title placeholder",
-//           id: "internalRelsFromNode parentNode id placeholder",
-//         },
-//       },
-//     ],
-//   };

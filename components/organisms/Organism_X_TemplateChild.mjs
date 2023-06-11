@@ -3,6 +3,8 @@ import { createElement } from "../../core/helpers/createElement.mjs";
 import { Organism } from "../../core/Organism.mjs";
 //import sub components
 import { Molecule_X_Template } from "../molecules/Molecule_X_Template.mjs";
+import { action_dummy1 } from "../../data-mgmt/actions/action_dummy1.mjs";
+import { action_dummy2 } from "../../data-mgmt/actions/action_dummy2.mjs";
 
 export function Organism_X_TemplateChild() {
   Organism.call(this);
@@ -16,13 +18,21 @@ export function Organism_X_TemplateChild() {
       molecule: "Molecule_X_Template",
       component: new Molecule_X_Template(),
     },
+
   ];
 
   this.functions = [
     {
       id: 1,
-      function: "placeholder",
+      function: "action_dummy1",
+      component: action_dummy1,
     },
+    {
+      id: 2,
+      function: "action_dummy2",
+      component: action_dummy2,
+    },
+
   ];
 
   //build component

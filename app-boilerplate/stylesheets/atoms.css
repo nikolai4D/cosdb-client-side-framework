@@ -40,3 +40,10 @@
   border-radius: 6px;
 
 }
+
+.atom_dropdown { 
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--grey-color);
+  border-radius: 6px;
+
+}

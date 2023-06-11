@@ -169,13 +169,11 @@ async function getComponentFunctions(
 ) {
   // get Functions
 
-  const constructorTypeFunctions = "functions";
-
-  const componentFunctions = await getConstructors(
-    component,
-    constructorTypeFunctions,
-    componentType
+  const componentFunctions = State.functions.filter(
+    (fn) => fn.parentId === id
   );
+
+
 
   if (componentFunctions) {
     await createFunctionsEl(componentFunctions, id, body, parentBody);
@@ -183,27 +181,23 @@ async function getComponentFunctions(
 }
 
 async function createFunctionsEl(componentFunctions, id, body, parentBody) {
-  for (const compFn of componentFunctions) {
-    const key = "function " + compFn.id;
-    const value = compFn.function;
-    const parentId = id;
+    for (let i = componentFunctions.length - 1; i >= 0; i--) {
+      const compFn = componentFunctions[i];
+
+
 
     let functionSlot;
 
-    const existingFn = State.functions.find(
-      (fn) => fn.parentId === parentId && fn.key === key
-    );
 
-    if (existingFn) {
       if (
-        typeof existingFn.parameters === "object" ||
-        Array.isArray(existingFn.parameters)
+        typeof compFn.parameters === "object" ||
+        Array.isArray(compFn.parameters)
       ) {
-        existingFn.parameters = JSON.stringify(existingFn.parameters);
+        compFn.parameters = JSON.stringify(compFn.parameters);
+        functionSlot = await Function(compFn, body);
       }
-      functionSlot = await Function(existingFn, body);
-    } else {
-      functionSlot = await Function(await newFunction(parentId, key), body);
+     else {
+      functionSlot = await Function(compFn, body);
     }
 
     parentBody.insertBefore(functionSlot, parentBody.firstChild);

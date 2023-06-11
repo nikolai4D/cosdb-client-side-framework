@@ -1,8 +1,9 @@
 // import {navigateTo} from "../viewRouter.js";
 import { action_routeToView } from "./action_routeToView.mjs";
 
-export async function action_loginRequest (email, pwd) {
-  console.log("login req entered");
+export async function action_loginRequest (emailAndPwd) {
+
+  const { email, pwd} = emailAndPwd
   try {
     const responseAuth = await fetch("/api/auth", {
       method: "POST",

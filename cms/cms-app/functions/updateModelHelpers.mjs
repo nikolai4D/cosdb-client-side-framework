@@ -7,9 +7,10 @@ import { newComponentFromType } from "../_4_component/newComponentFromType.mjs";
 
 
 export async function checkOrganismSubComponents(organismInState, componentFiles){
-    checkSubFunction(organismInState)
+    //checkSubFunction(organismInState )
 
     const organismFile = await getComponentFile(organismInState, "organisms")
+    await checkSubFunction(organismInState, organismFile )
 
     for (const comp of ["organism", "molecule"]) {
 
@@ -26,7 +27,7 @@ export async function checkOrganismSubComponents(organismInState, componentFiles
             continue
         }
 
-        checkAndUpdateStateAndFile(s_componentInState, organismFile, comp, organismInState.id);
+        await checkAndUpdateStateAndFile(s_componentInState, organismFile, comp, organismInState.id);
 
         if (comp === "organism"){
             for (let organism of s_componentInState) {
@@ -42,20 +43,21 @@ export async function checkOrganismSubComponents(organismInState, componentFiles
     }
 }
 
-export function checkAndUpdateStateAndFile(s_componentInState, organismFile, comp, parentId) {
+export function checkAndUpdateStateAndFile(s_componentInState, organismFile, type, parentId) {
     for (let s_comp of s_componentInState) {
-        checkIfSubcomponentStateMatchInFile(s_comp, organismFile, comp);
+        checkIfSubcomponentStateMatchInFile(s_comp, organismFile, type);
     }
 
-    for (let s_comp of organismFile[comp + "s"]) {
-        checkIfSubcomponentFileMatchState(s_comp, s_componentInState, comp, parentId);
+    for (let s_comp of organismFile[type + "s"]) {
+        checkIfSubcomponentFileMatchState(s_comp, s_componentInState, type, parentId);
     }
 }
 
 export async function checkMoleculeSubComponents(moleculeInState, componentFiles){
-    checkSubFunction(moleculeInState)
+    // checkSubFunction(moleculeInState)
 
     const moleculeFile = await getComponentFile(moleculeInState, "molecules");
+    await checkSubFunction(moleculeInState, moleculeFile)
 
     for (const comp of ["molecule", "atom"]) {
 
@@ -75,7 +77,7 @@ export async function checkMoleculeSubComponents(moleculeInState, componentFiles
             moleculeFile[comp+"s"] = []
         }
     
-        checkAndUpdateStateAndFile(s_componentInState, moleculeFile, comp, moleculeInState.id);
+        await checkAndUpdateStateAndFile(s_componentInState, moleculeFile, comp, moleculeInState.id);
 
         if (comp === "molecule"){
             for (let molecule of s_componentInState) {
@@ -110,7 +112,7 @@ export async function checkAtom(atomInState, componentFiles){
         removeFromState(atomInState);
     }
 
-    checkSubFunction(atomInState)
+    //checkSubFunction(atomInState)
 }
 
 export function compareComponents(subComponentState, subComponentFile, type) {
@@ -127,7 +129,13 @@ export function checkIfSubcomponentFileMatchState(subComponentFile, subComponent
         if (subComponentsState[0] !== undefined){
             parentIdToComp = subComponentsState[0].parentId
         }
-        addToState(subComponentFile, parentIdToComp);
+
+        if(type === "function"){
+            addToState(subComponentFile, parentIdToComp, false, true);
+        }else{
+            addToState(subComponentFile, parentIdToComp);
+        }
+       
     }
 }
 
@@ -140,7 +148,7 @@ export function checkIfSubcomponentStateMatchInFile(subComponentState, component
     }
 }
 
-export async function checkSubFunction(parentInState) {
+export async function checkSubFunction(parentInState, parentFile) {
     const s_functionsInState = State.functions.filter(
         (func) => func.parentId === parentInState.id
     );
@@ -153,6 +161,10 @@ export async function checkSubFunction(parentInState) {
         const functionsToRemove = s_functionsInState.filter(func => !functionFiles.includes(func.value))
         removeFromState(functionsToRemove);
     }
+
+    await checkAndUpdateStateAndFile(s_functionsInState, parentFile, "function", parentInState.id);
+
+
 }
 
 // This function checks if an array has the same elements regardless of order
@@ -183,7 +195,8 @@ export async function removeFromState(obj){
     }
 }
 
-export async function addToState(obj, parentId, isSlot = false){
+export async function addToState(obj, parentId, isSlot = false, isFunction = false){
+
 
     if (isSlot) {
         for (const aSlot of obj){
@@ -196,11 +209,27 @@ export async function addToState(obj, parentId, isSlot = false){
     
          // add to state 
         await State.slots.push(objToSave) 
-        console.log("State.slots: ", State)
+
 
         }
 
     }
+
+    if (isFunction) {
+        const type = "function"
+        const key = type+" "+obj.id
+        const value = obj.function
+        const objToSave = await newComponentFromType(key, value, parentId, type)
+        console.warn("Adding to State: ", objToSave)
+    
+         // add to state 
+        await State.functions.push(objToSave) 
+        State[type+"s"].sort((a, b) => a.key.localeCompare(b.key));
+
+       
+
+    }
+
     else {
     
         const type = obj.component.title.toLowerCase()
@@ -215,7 +244,6 @@ export async function addToState(obj, parentId, isSlot = false){
             const atomValueToSave = await newComponentFromType(key, value, objToSave.id, type)
             atomValueToSave.valueDisabled = false;
             State[type+"s"].push(atomValueToSave)
-            State[type+"s"].sort((a, b) => a.key.localeCompare(b.key));
 
 
         }

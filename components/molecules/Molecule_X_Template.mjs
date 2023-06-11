@@ -3,6 +3,7 @@ import { Molecule } from "../../core/Molecule.mjs";
 import { createElement } from "../../core/helpers/createElement.mjs";
 //import sub components
 import { Atom_X_Template } from "../atoms/Atom_X_Template.mjs";
+import { action_dummy1 } from "../../data-mgmt/actions/action_dummy1.mjs";
 
 export function Molecule_X_Template() {
   Molecule.call(this);
@@ -19,7 +20,8 @@ export function Molecule_X_Template() {
   this.functions = [
     {
       id: 1,
-      function: "placeholder",
+      function: "action_dummy1",
+      component: action_dummy1,
     },
   ];
 

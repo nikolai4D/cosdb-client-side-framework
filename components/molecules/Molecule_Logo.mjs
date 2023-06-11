@@ -23,10 +23,6 @@ export function Molecule_Logo() {
   ];
 
   this.functions = [
-    {
-      id: 1,
-      function: "placeholder",
-    },
   ];
 
   //build component

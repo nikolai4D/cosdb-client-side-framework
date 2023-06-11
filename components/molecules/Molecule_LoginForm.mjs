@@ -57,7 +57,9 @@ export function Molecule_LoginForm() {
     button.addEventListener("click", async () => {
 
       // change to new way of using function later, i.e. await this.fn(1)
-      action_loginRequest(email.value, password.value)
+      const emailAndPwd = { email: email.value, pwd: password.value}
+      //action_loginRequest(email.value, password.value)
+      await this.fn(1, emailAndPwd)
       
     })
 

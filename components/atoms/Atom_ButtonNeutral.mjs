@@ -9,7 +9,7 @@ export function Atom_ButtonNeutral() {
   const component = async (compData) => {
     const comp = await createElement(
       "button",
-      { class: "atom_buttonneutral" },
+      { class: "atom_buttonneutral", id: compData },
       await this.atom()
     );
 
