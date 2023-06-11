@@ -67,8 +67,6 @@ export function Organism_Navbar() {
     logoutButton.addEventListener("click", async () => {
       await this.fn(1)
       await this.fn(2)
-      // await action_logoutRequest()
-      // await action_routeToView("login")
     })
 
     const comp = await createElement(

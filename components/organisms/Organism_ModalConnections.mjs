@@ -46,14 +46,6 @@ export function Organism_ModalConnections() {
     },
   ];
 
-  // this.functions = [
-  //   {
-  //     id: 1,
-  //     purpose: "set state to be used as list items",
-  //     function: () => console.log("placeholder function"),
-  //   },
-  // ];
-
   this.functions = [
   { 
     id: 1,
@@ -136,74 +128,3 @@ export function Organism_ModalConnections() {
   //add component specific functions here
 }
 
-// data = {
-//     node: { title: "node title placeholder", id: "node id placeholder" },
-//     parentNode: {
-//       title: "parent node title placeholder",
-//       id: "parent node id placeholder",
-//     },
-//     externalRelsToNode: [
-//       {
-//         rel: {
-//           title: "externalRelsToNode rel title placeholder",
-//           id: "externalRelsToNode rel id placeholder",
-//         },
-//         node: {
-//           title: "externalRelsToNode node title placeholder",
-//           id: "externalRelsToNode node id placeholder",
-//         },
-//         parentNode: {
-//           title: "externalRelsToNode parentNode title placeholder",
-//           id: "externalRelsToNode parentNode id placeholder",
-//         },
-//       },
-//     ],
-//     externalRelsFromNode: [
-//       {
-//         rel: {
-//           title: "externalRelsFromNode rel title placeholder",
-//           id: "externalRelsFromNode rel id placeholder",
-//         },
-//         node: {
-//           title: "externalRelsFromNode node title placeholder",
-//           id: "externalRelsFromNode node id placeholder",
-//         },
-//         parentNode: {
-//           title: "externalRelsFromNode parentNode title placeholder",
-//           id: "externalRelsFromNode parentNode id placeholder",
-//         },
-//       },
-//     ],
-//     internalRelsToNode: [
-//       {
-//         rel: {
-//           title: "internalRelsToNode rel title placeholder",
-//           id: "internalRelsToNode rel id placeholder",
-//         },
-//         node: {
-//           title: "internalRelsToNode node title placeholder",
-//           id: "internalRelsToNode node id placeholder",
-//         },
-//         parentNode: {
-//           title: "internalRelsToNode parentNode title placeholder",
-//           id: "internalRelsToNode parentNode id placeholder",
-//         },
-//       },
-//     ],
-//     internalRelsFromNode: [
-//       {
-//         rel: {
-//           title: "internalRelsFromNode rel title placeholder",
-//           id: "internalRelsFromNode rel id placeholder",
-//         },
-//         node: {
-//           title: "internalRelsFromNode node title placeholder",
-//           id: "internalRelsFromNode node id placeholder",
-//         },
-//         parentNode: {
-//           title: "internalRelsFromNode parentNode title placeholder",
-//           id: "internalRelsFromNode parentNode id placeholder",
-//         },
-//       },
-//     ],
-//   };

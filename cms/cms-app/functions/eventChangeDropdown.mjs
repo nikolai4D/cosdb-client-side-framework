@@ -34,13 +34,7 @@ export async function eventChangeDropdown(id) {
     await action_writeModel(state);
   }
 
-  // if (customType === "function") {
-  //   data.parameters = "";
-  //   const state = await mutation_updateState("functions", data, true);
-
-  //   await action_writeModel(state);
-  // }
-
+  
   if (customType === "component") {
     const componentBody = await getAccordionBody(id);
 

@@ -135,19 +135,6 @@ async function createSubMoleculesEl(subComps, id, compBody, parentBody) {
   }
 }
 
-// async function createFunctionsEl(subComps, id, compBody, parentBody) {
-//   for (const comp of subComps) {
-//     const key = "function " + comp.id;
-
-//     const value = comp.function;
-//     const parentId = id;
-
-//     let childSlot = await Function(await newFunction(parentId, key, value), compBody);
-
-//     parentBody.insertBefore(childSlot, parentBody.firstChild);
-//   }
-// }
-
 async function createFunctionsEl(subComps, id, compBody, parentBody) {
   for (let i = subComps.length - 1; i >= 0; i--) {
     const comp = subComps[i];

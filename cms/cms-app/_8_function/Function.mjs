@@ -17,18 +17,6 @@ export async function Function(func, functionBody) {
   const valueDisabled = func.valueDisabled;
   const parameters = func.parameters;
 
-  // const functionDropdown = dropdown(
-  //   customType,
-  //   key,
-  //   values,
-  //   value,
-  //   id,
-  //   parentId,
-  //   valueDisabled
-  // );
-
-  // functionDiv.appendChild(functionDropdown);
-
   const functionInput = await input(
     customType,
     key,
