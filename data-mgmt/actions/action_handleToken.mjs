@@ -1,4 +1,5 @@
 // import {navigateTo} from "../viewRouter.js";
+import { action_logoutRequest } from "./action_logoutRequest.mjs";
 
 export default async function handleToken(tkn) {
     let getHeaders = {
@@ -13,37 +14,21 @@ export default async function handleToken(tkn) {
         });
         //AccessToken is FALSE
         if ((await responseVerifyToken.ok) !== true) {
+            await action_logoutRequest();
             //Clear sessionStorage (accessToken) and set jwt cookie (refreshToken) to expire in the past
-            sessionStorage.removeItem("accessToken");
-            localStorage.clear();
-            await fetch("/api/logout");
-            // navigateTo("/login");
+            // sessionStorage.removeItem("accessToken");
+            // localStorage.clear();
+            // await fetch("/api/logout");
+            // // navigateTo("/login");
             return false;
         } else {
-            //AccessToken is TRUE, use RefreshToken to get new accessToken
             try {
-                let responseRefreshToken = await fetch("/api/refresh", {
-                    method: "GET",
-                    credentials: "include",
-                    headers: {
-                        "Content-Type": "application/json",
-                    }
-                });
-                //Set new accessToken
-                let tokenNew = `Bearer ${
-                    ( await responseRefreshToken.json()).accessToken
-                }`;
-
-                console.log("TokenNew: " + tokenNew)
-
-                window.sessionStorage.setItem("accessToken", tokenNew);
+                action_refreshToken();
                 return true;
             } catch (err) {
                 console.log(err);
-                console.log("error");
-            }
-        }
+            }        }
     } catch (err) {
-        console.log("error");
+        console.log(err);
     }
 }
