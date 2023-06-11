@@ -14,12 +14,21 @@ export function Atom_Dropdown() {
     );
     // Create an option element for each value in compData
     console.log(compData);
+
+        // Create an empty, unselectable option
+        const emptyOption = await createElement(
+          "option",
+          { value: "", disabled: true, selected: true },
+          document.createTextNode("")
+        );
+        comp.appendChild(emptyOption);
+        
     for (const value of compData) {
 
       const option = await createElement(
         "option",
-        { value: value },
-        document.createTextNode(value)
+        { value: value.title, id: value.id },
+        document.createTextNode(value.title)
       );
       comp.appendChild(option);
     }
