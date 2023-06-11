@@ -58,7 +58,9 @@ export function Organism_Modal_Dropdown_Input_Button() {
     ).value;
     const inputFieldValue = document.getElementById(
       "inputFieldNewObject"
-    );
+    ).value;
+
+    console.log("selectedParent befor",selectedParent)
 
     console.log("inputFieldValue befor",inputFieldValue)
 
