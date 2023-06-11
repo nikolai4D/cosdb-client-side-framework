@@ -9,7 +9,7 @@ import { Molecule_Text_Button } from "../molecules/Molecule_Text_Button.mjs";
 //import functions
 import { action_logoutRequest } from "../../data-mgmt/actions/action_logoutRequest.mjs";
 import { action_routeToView } from "../../data-mgmt/actions/action_routeToView.mjs";
-import { action_getUserName } from "../../data-mgmt/actions/action_getUserName.mjs"
+import { action_getUsername } from "../../data-mgmt/actions/action_getUsername.mjs";
 
 
 export function Organism_Navbar() {
@@ -49,26 +49,24 @@ export function Organism_Navbar() {
     },
     {
       id: 3,
-      function: "action_routeToView",
-      component: action_routeToView,
+      function: "action_getUsername",
+      component: action_getUsername,
     },
   ];
 
   //build component
   const component = async () => {
 
-    const userAndlogOutButton = await this.molecule(3, null)
+    const userAndLogoutButton = await this.molecule(3, null)
 
-    const userName = await action_getUserName()
-    const userDOM = userAndlogOutButton.firstChild
-    userDOM.textContent = userName
+    const username = await this.fn(3, null)
+    const userDOM = userAndLogoutButton.firstChild;
+    userDOM.textContent = username;
 
-    const logOutButton = userAndlogOutButton.lastChild
-    logOutButton.addEventListener("click", async () => {
-      // Change way of using function later, i.e. await this.fn(1)
-      await action_logoutRequest()
-      await action_routeToView("login")
-
+    const logoutButton = userAndLogoutButton.lastChild;
+    logoutButton.addEventListener("click", async () => {
+      await this.fn(1, null)
+      await this.fn(2, "login")
     })
 
     const comp = await createElement(
@@ -87,7 +85,7 @@ export function Organism_Navbar() {
       await createElement(
         "div",
         { class: "organism_navbar__text_button" },
-        userAndlogOutButton
+        userAndLogoutButton
       )
     );
 
