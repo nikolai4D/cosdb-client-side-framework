@@ -13,7 +13,9 @@ export function Atom_Dropdown() {
       null
     );
     // Create an option element for each value in compData
+    console.log(compData);
     for (const value of compData) {
+
       const option = await createElement(
         "option",
         { value: value },
