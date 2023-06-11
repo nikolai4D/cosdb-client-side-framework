@@ -131,7 +131,7 @@ const filterData = async (filter = "") => {
   async function updateListItems(filter) {
     const existinglistItems = document.getElementById("listItems");
     existinglistItems.innerHTML = "";
-    const updatedListItems = await listItems(filter);
+    const updatedListItems = await filterData(filter);
     existinglistItems.append(...updatedListItems);
   }
 
