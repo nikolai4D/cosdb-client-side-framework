@@ -9,7 +9,7 @@ export function Atom_Dropdown() {
   const component = async (compData) => {
     const comp = await createElement(
       "select",
-      { class: "atom_dropdown"},
+      { class: "atom_dropdown", id: "parentSelectNewObject"},
       null
     );
     // Create an option element for each value in compData

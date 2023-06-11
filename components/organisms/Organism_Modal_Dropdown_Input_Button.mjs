@@ -36,7 +36,9 @@ export function Organism_Modal_Dropdown_Input_Button() {
 
     //add event listener to the comp here
     comp.addEventListener("click", (e) => {
-      console.log("modal new clicked",e)
+      if(e.target.tagName === "BUTTON"){
+        handleCreate();
+      }
     })
 
     return comp;
@@ -48,4 +50,50 @@ export function Organism_Modal_Dropdown_Input_Button() {
   };
 
   //add component specific functions here
+
+  async function handleCreate() {
+ 
+    const selectedParent = document.getElementById(
+      "parentSelectNewObject"
+    ).value;
+    const inputFieldValue = document.getElementById(
+      "inputFieldNewObject"
+    ).value;
+
+    if (inputFieldValue === "") {
+      alert("Input cannot be empty!");
+      return;
+    }
+    await createData(selectedParent, inputFieldValue);
+  }
+
+  async function createData(parentId, inputValue) {
+    console.log("State", State);
+    console.log({ parentId, inputValue });
+
+    const url = `api/create/type`;
+
+    const body = { title: inputValue, parentId, props: [] };
+    const newItem = await apiCallPost({ url, body });
+
+    const newItemHeaderFirst = newItem.title.charAt(0).toLowerCase();
+
+    const existingItem = State.items.find(
+      (item) => item.header.toLowerCase() === newItemHeaderFirst
+    );
+
+    if (existingItem) {
+      existingItem.content.push(newItem);
+      existingItem.content.sort((a, b) => a.title.localeCompare(b.title));
+    } else {
+      const newSection = {
+        header: newItemHeaderFirst,
+        content: [newItem],
+      };
+      State.items.push(newSection);
+    }
+   
+  }
+
+
 }
