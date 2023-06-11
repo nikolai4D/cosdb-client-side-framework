@@ -18,11 +18,11 @@ export function Atom_Dropdown() {
         // Create an empty, unselectable option
         const emptyOption = await createElement(
           "option",
-          { value: "", disabled: true, selected: true },
-          document.createTextNode("")
+          { disabled: true, selected: true },
+          await this.atom()
         );
         comp.appendChild(emptyOption);
-        
+
     for (const value of compData) {
 
       const option = await createElement(
