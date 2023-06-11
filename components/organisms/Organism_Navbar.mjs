@@ -58,15 +58,15 @@ export function Organism_Navbar() {
 
     const userAndLogoutButton = await this.molecule(3, null)
 
-    const username = await this.fn(3, null)
+    const username = await this.fn(3)
     // const username = await action_getUsername()
     const userDOM = userAndLogoutButton.firstChild;
     userDOM.textContent = username;
 
     const logoutButton = userAndLogoutButton.lastChild;
     logoutButton.addEventListener("click", async () => {
-      await this.fn(1, null)
-      await this.fn(2, null)
+      await this.fn(1)
+      await this.fn(2)
       // await action_logoutRequest()
       // await action_routeToView("login")
     })

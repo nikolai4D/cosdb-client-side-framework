@@ -59,7 +59,7 @@ export function Molecule_LoginForm() {
       // change to new way of using function later, i.e. await this.fn(1)
       const emailAndPwd = { email: email.value, pwd: password.value}
       //action_loginRequest(email.value, password.value)
-      await this.atom(1, emailAndPwd)
+      await this.fn(1, emailAndPwd)
       
     })
 
