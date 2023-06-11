@@ -163,7 +163,7 @@ const filterData = async (filter = "") => { //OK
     existingModal.style.display = "block"; // Show the modal
 
 //Close modal
-    existingModal.addEventListener("click", async (e,existingModal) =>  closeModal(e, existingModal))
+    existingModal.addEventListener("click", async (e) =>  await closeModal(e, existingModal))
 };
 
 async function closeModal (e, existingModal){
