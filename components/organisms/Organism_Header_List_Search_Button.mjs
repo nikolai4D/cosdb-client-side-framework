@@ -6,6 +6,7 @@ import { Molecule_Heading_List } from "../molecules/Molecule_Heading_List.mjs";
 import { Molecule_Heading_Input_Button } from "../molecules/Molecule_Heading_Input_Button.mjs";
 
 import { Organism_ModalConnections } from "./Organism_ModalConnections.mjs";
+import { Organism_Modal_Dropdown_Input_Button } from "./Organism_Modal_Dropdown_Input_Button.mjs";
 //import state
 import { State } from "../../data-mgmt/State.mjs";
 import { apiCallGet } from "../../data-mgmt/actions/apiCalls.mjs";
@@ -19,6 +20,11 @@ export function Organism_Header_List_Search_Button() {
 
   // sub components
   this.organisms = [
+    {
+      id: 1,
+      organism: "Organism_Modal_Dropdown_Input_Button",
+      component: new Organism_Modal_Dropdown_Input_Button(),
+    },
     {
       id: 2,
       organism: "Organism_ModalConnections",
@@ -122,40 +128,33 @@ const filterData = async (filter = "") => { //OK
   // current
 
   const openModal = async (id) => {
-    //create modal content
     const existingModal = document.getElementById("organism_modal");
-    let existingModalContent = document.getElementById(
-      "organism_modal_content"
-    );
-    let existingId = "";
+    let existingModalContent = document.querySelector(".organism_modal_content");
 
-    if (id === "new") {
-      existingId = null;
-    } else {
-      existingId = id;
-    }
+    if (existingModalContent) {
+      existingModalContent.innerHTML = "";
+    } 
+    
+      const contentId = `organism_modal_content_${id}`;
+      const organismType = id === "new" ? 1 : 2; //1 = Organism_Modal_Dropdown_Input_Button, 2 = Organism_ModalConnections
 
-    if (!existingModalContent) {
       existingModalContent = await createElement(
         "div",
         {
           class: "organism_modal_content",
-          id: `organism_modal_content_${id}`,
+          id: contentId,
         },
-
-        await this.childOrganism(2, existingId)
+        await this.childOrganism(organismType, id)
       );
+      
       existingModal.appendChild(existingModalContent);
-    } else {
-      existingModalContent.innerHTML = "";
-    }
-
-    if (id === "new") {
-      await newObject(existingModalContent);
-    }
+    
 
     existingModal.style.display = "block"; // Show the modal
-  };
+};
+
+
+
 
   const newObject = async (existingModalContent) => {
     existingModalContent.innerHTML = "";
