@@ -161,10 +161,10 @@ const filterData = async (filter = "") => { //OK
     
 
     existingModal.style.display = "block"; // Show the modal
-    existingModal.addEventListener("click", async (e, existingModal ) => {
+    existingModal.addEventListener("click", async (e ) => {
       console.log("e.target", e.target);
   //Close modal
-  if (e.target === existingModal) {
+  if (e.target.id === "organism_modal") {
 
     existingModal.style.display = "none"; // Hide the modal
     // Remove all divs with the class "organism_modal_content" and their children
