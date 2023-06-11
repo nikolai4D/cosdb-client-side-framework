@@ -56,7 +56,7 @@ export function Organism_Modal_Dropdown_Input_Button() {
  
     const selectedParent = document.getElementById(
       "parentSelectNewObject"
-    ).value;
+    ).id;
     const inputFieldValue = document.getElementById(
       "inputFieldNewObject"
     ).value;
