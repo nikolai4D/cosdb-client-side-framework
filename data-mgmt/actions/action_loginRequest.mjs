@@ -1,7 +1,7 @@
 // import {navigateTo} from "../viewRouter.js";
 import { action_routeToView } from "./action_routeToView.mjs";
 
-export default async function (email, pwd) {
+export async function action_loginRequest (email, pwd) {
   console.log("login req entered");
 //   const loginForm = document.getElementById("login-form");
 //   const email = loginForm.email.value;
