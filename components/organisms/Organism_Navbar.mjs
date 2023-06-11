@@ -64,12 +64,10 @@ export function Organism_Navbar() {
     userDOM.textContent(userName)
 
     const logOutButton = userAndlogOutButton.lastChild
-
     logOutButton.addEventListener("click", async () => {
       // Change way of using function later, i.e. await this.fn(1)
       await action_logoutRequest()
       await action_routeToView("login")
-    
 
     })
 
