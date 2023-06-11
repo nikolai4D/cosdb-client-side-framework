@@ -14,12 +14,13 @@ export async function View(viewPath, updateHistory = true) {
   console.log(newView)
 
   if (protectedView) {
-    let handledToken = await handleToken(
-      sessionStorage.getItem("accessToken")
-    );
+      let handledToken = await handleToken(
+        sessionStorage.getItem("accessToken")
+      );
 
-    if (!(await handledToken)) {
-      newView = await apiCallGet(`/api/auth/401`);
+      if (!(await handledToken)) {
+        newView = await apiCallGet(`/api/auth/401`);
+    }
   }
 
   const id = newView.id;
