@@ -58,14 +58,18 @@ export function Organism_Navbar() {
   const component = async () => {
 
     const userAndlogOutButton = await this.molecule(3, null)
-    console.log(userAndlogOutButton)
 
-    userAndlogOutButton.addEventListener("click", async () => {
+    const userName = await action_getUserName()
+    const userDOM = userAndlogOutButton.firstChild
+    userDOM.textContent(userName)
+
+    const logOutButton = userAndlogOutButton.lastChild
+
+    logOutButton.addEventListener("click", async () => {
       // Change way of using function later, i.e. await this.fn(1)
-    //   await action_logoutRequest()
-    //   await action_routeToView("login")
+      await action_logoutRequest()
+      await action_routeToView("login")
     
-    console.log(userAndlogOutButton)
 
     })
 
