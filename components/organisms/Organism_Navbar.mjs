@@ -11,7 +11,6 @@ import { action_logoutRequest } from "../../data-mgmt/actions/action_logoutReque
 import { action_routeToView } from "../../data-mgmt/actions/action_routeToView.mjs";
 import { action_getUsername } from "../../data-mgmt/actions/action_getUsername.mjs";
 
-
 export function Organism_Navbar() {
   Organism.call(this);
 
