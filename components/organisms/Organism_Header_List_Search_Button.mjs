@@ -106,7 +106,7 @@ export function Organism_Header_List_Search_Button() {
 
     //add event listener to the comp here
 
-    comp.addEventListener("click", handleModal);
+    //comp.addEventListener("click", handleModal);
 
     return comp;
   };
@@ -133,7 +133,7 @@ const filterData = async (filter = "") => { //OK
 
   // current
 
-  const openModal = async (id) => {
+  const openModal = async (id) => { //OK
     const existingModal = document.getElementById("organism_modal");
     let existingModalContent = document.querySelector(".organism_modal_content");
 
@@ -156,78 +156,12 @@ const filterData = async (filter = "") => { //OK
       );
       
       existingModal.appendChild(existingModalContent);
+
+
     
 
     existingModal.style.display = "block"; // Show the modal
 };
-
-
-
-
-  const newObject = async (existingModalContent) => {
-    existingModalContent.innerHTML = "";
-    console.log("State ParentIds", State.parentIds);
-
-    await createForm(existingModalContent);
-  };
-
-  async function createForm(existingModalContent) {
-    const parents = State.parentIds;
-
-    const parentsList = [];
-
-    for (const parent of parents) {
-      const url = `api/getById/object/${parent}`;
-      try {
-        const data = await apiCallGet(url);
-
-        if (Array.isArray(data)) {
-          parentsList.push(...data);
-        } else {
-          parentsList.push(data);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    // Create the div
-    const divInputAndButton = document.createElement("div");
-    divInputAndButton.classList.add("molecule_createObjectInputAndButton");
-
-    // Create and append the select
-    const select = document.createElement("select");
-    select.id = "parentSelectNewObject";
-    select.classList.add("atom_input");
-    parentsList.forEach(async (parent) => {
-      const parentTitle = parent.title;
-      const option = document.createElement("option");
-      option.value = parent.id;
-      option.textContent = parentTitle; //`Parent ${id}`;
-      select.appendChild(option);
-    });
-    divInputAndButton.appendChild(select);
-
-    // Create and append the input field
-    const inputField = document.createElement("input");
-    inputField.classList.add("atom_input");
-    inputField.type = "text";
-    inputField.placeholder = "";
-    inputField.id = "inputFieldNewObject";
-    divInputAndButton.appendChild(inputField);
-
-    // Create and append the button
-    const button = document.createElement("button");
-    button.classList.add("atom_buttonpositive");
-
-    button.textContent = "Skapa";
-    button.addEventListener("click", handleCreate);
-    divInputAndButton.appendChild(button);
-
-    existingModalContent.appendChild(divInputAndButton);
-    existingModalContent.style.removeProperty("width");
-    existingModalContent.style.removeProperty("height");
-  }
 
   async function handleCreate() {
     const selectedParent = document.getElementById(
