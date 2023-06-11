@@ -9,7 +9,7 @@ import { Molecule_Text_Button } from "../molecules/Molecule_Text_Button.mjs";
 //import functions
 import { action_logoutRequest } from "../../data-mgmt/actions/action_logoutRequest.mjs";
 import { action_routeToView } from "../../data-mgmt/actions/action_routeToView.mjs";
-import { action_getUsername } from "../../data-mgmt/actions/action_getUsername.mjs";
+import { action_getLoggedInUser } from "../../data-mgmt/actions/action_getLoggedInUser.mjs";
 
 export function Organism_Navbar() {
   Organism.call(this);
@@ -48,8 +48,8 @@ export function Organism_Navbar() {
     },
     {
       id: 3,
-      function: "action_getUsername",
-      component: action_getUsername,
+      function: "action_getLoggedInUser",
+      component: action_getLoggedInUser,
     },
   ];
 
