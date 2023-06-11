@@ -27,7 +27,7 @@ export function Atom_Dropdown() {
 
       const option = await createElement(
         "option",
-        { value: value.title, id: value.id },
+        { value: value.id, textContent: value.title },
         document.createTextNode(value.title)
       );
       comp.appendChild(option);
