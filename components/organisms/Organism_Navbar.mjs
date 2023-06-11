@@ -9,7 +9,7 @@ import { Molecule_Text_Button } from "../molecules/Molecule_Text_Button.mjs";
 //import functions
 import { action_logoutRequest } from "../../data-mgmt/actions/action_logoutRequest.mjs";
 import { action_routeToView } from "../../data-mgmt/actions/action_routeToView.mjs";
-// import { action_getUserName } from "../../data-mgmt/actions/action_getUserName.mjs"
+import { action_getUserName } from "../../data-mgmt/actions/action_getUserName.mjs"
 
 
 export function Organism_Navbar() {
