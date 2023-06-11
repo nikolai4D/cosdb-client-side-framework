@@ -29,7 +29,7 @@ export function Molecule_LoginForm() {
       },    
       {
         id: 4,
-        atom: "Atom_ButtonNeutral",
+        atom: "Atom_ButtonPositive",
         component: new Atom_ButtonPositive(),
       },
   ];
@@ -46,6 +46,7 @@ export function Molecule_LoginForm() {
       await this.atom(3, null),
       await this.atom(4, null)
   )
+  console.log(comp  )
 
     //add event listener to the comp here
 
