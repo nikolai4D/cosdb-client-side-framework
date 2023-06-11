@@ -12,13 +12,9 @@ export async function action_handleToken(tkn) {
             method: "GET",
             headers: getHeaders,
         });
-        //AccessToken is FALSE
+
         if ((await responseVerifyToken.ok) !== true) {
             await action_logoutRequest();
-            //Clear sessionStorage (accessToken) and set jwt cookie (refreshToken) to expire in the past
-            // sessionStorage.removeItem("accessToken");
-            // localStorage.clear();
-            // await fetch("/api/logout");
             // // navigateTo("/login");
             return false;
         } else {

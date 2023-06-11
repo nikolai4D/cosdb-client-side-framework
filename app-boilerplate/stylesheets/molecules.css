@@ -179,9 +179,9 @@ margin: 1em;
 grid-gap: 1em;
 }
 
-/* .molecule_createObjectInputAndButton > .atom_buttonPositive {
+.molecule_createObjectInputAndButton > .atom_buttonPositive {
     align-self: center;
-} */
+}
 
 .molecule_loginform {
     display: flex;

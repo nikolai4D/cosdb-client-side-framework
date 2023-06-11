@@ -11,11 +11,9 @@ export async function View(viewPath, updateHistory = true) {
   //validate and authenticate path
   let newView = await apiCallGet(`/api/auth/${viewPath}`);
   const protectedView = newView.protected;
-  console.log(newView)
 
   if (protectedView) {
-    console.log(        sessionStorage.getItem("accessToken")
-    )
+
       let handledToken = await action_handleToken(
         sessionStorage.getItem("accessToken")
       );

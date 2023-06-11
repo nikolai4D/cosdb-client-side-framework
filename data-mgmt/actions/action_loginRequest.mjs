@@ -3,10 +3,6 @@ import { action_routeToView } from "./action_routeToView.mjs";
 
 export async function action_loginRequest (email, pwd) {
   console.log("login req entered");
-//   const loginForm = document.getElementById("login-form");
-//   const email = loginForm.email.value;
-//   const pwd = loginForm.pwd.value;
-
   try {
     const responseAuth = await fetch("/api/auth", {
       method: "POST",
@@ -29,7 +25,7 @@ export async function action_loginRequest (email, pwd) {
 
     const token = `Bearer ${(await responseAuth.json()).accessToken}`;
     sessionStorage.setItem("accessToken", token);
-    // navigateTo("/admindashboard");
+    
     action_routeToView("process");
   } catch (err) {
     console.log("error: " + err.message);

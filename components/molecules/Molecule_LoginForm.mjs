@@ -58,35 +58,7 @@ export function Molecule_LoginForm() {
 
       // change to new way of using function later, i.e. await this.fn(1)
       action_loginRequest(email.value, password.value)
-
-        console.log(email.value)
-
-        // const response = await fetch("http://localhost:3000/api/login", {
-
-
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     credentials: "include",
-        //     body: JSON.stringify({ email: email.value, password: password.value }),
-        // }); 
-
-        // if (!response.ok) {
-
-        //     if (response.status === 401) {
-        //         alert("Unauthorized");
-        //         return false;
-        //     }
-        //     throw new Error(
-        //         `status: ${response.status}, status text: ${response.statusText}`
-        //     );
-        // }
-
-        // const token = `Bearer ${(await response.json()).accessToken}`;
-        // sessionStorage.setItem("accessToken", token);
-        // // navigateTo("/admindashboard");
-        // // action_routeToView("process");
+      
     })
 
     const comp =
