@@ -161,27 +161,25 @@ const filterData = async (filter = "") => { //OK
     
 
     existingModal.style.display = "block"; // Show the modal
-    existingModal.addEventListener("click", async (e ) => {
-      console.log("e.target", e.target);
-  //Close modal
-  if (e.target.id === "organism_modal") {
 
-    existingModal.style.display = "none"; // Hide the modal
-    // Remove all divs with the class "organism_modal_content" and their children
-    const modalContents = existingModal.querySelectorAll(
-      ".organism_modal_content"
-    );
-    modalContents.forEach((modalContent) => {
-      modalContent.innerHTML = "";
-      modalContent.remove();
-    });
-    await updateListItems("");
-  }
-
-    })
-
-
+//Close modal
+    existingModal.addEventListener("click", closeModal(e, existingModal))
 };
+
+async function closeModal (e, existingModal){
+if (e.target.id === "organism_modal") {
+existingModal.style.display = "none"; // Hide the modal
+// Remove all divs with the class "organism_modal_content" and their children
+const modalContents = existingModal.querySelectorAll(
+  ".organism_modal_content"
+);
+modalContents.forEach((modalContent) => {
+  modalContent.innerHTML = "";
+  modalContent.remove();
+});
+await updateListItems("");
+}
+}
 
   async function handleCreate() {
     const selectedParent = document.getElementById(
