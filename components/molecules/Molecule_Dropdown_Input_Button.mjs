@@ -39,7 +39,7 @@ export function Molecule_Dropdown_Input_Button() {
       { class: "molecule_dropdown_input_button" },
      await this.atom(1, compData),
       await this.atom(2, null),
-     await this.atom(3, null)
+     await this.atom(3, "inputFieldNewObject")
     );
 
     //add event listener to the comp here
@@ -53,4 +53,6 @@ export function Molecule_Dropdown_Input_Button() {
   };
 
   //add component specific functions here
+
+  
 }
