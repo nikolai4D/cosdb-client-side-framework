@@ -95,11 +95,7 @@ export function Organism_Modal_Dropdown_Input_Button() {
       };
       State.items.push(newSection);
     }
-
-    const getBackgroundModal = document.getElementById("organism_modal");
-    getBackgroundModal.click();
-   
+    const closeModal = document.getElementById("organism_modal");
+    closeModal.click();
   }
-
-
 }

@@ -66,39 +66,39 @@ export function Organism_ModalConnections() {
   const component = async (compData) => {
     const comp = await createElement(
       "div",
-      { class: "organism_modalconnections" },
+      { class: "organism_modalconnections", id: compData.node.id},
       await createElement(
         "div",
-        { class: "organism_modalconnections__header" },
+        { class: "organism_modalconnections__header" , id: compData.node.id },
         await this.molecule(1, compData.node.id)
       ),
       await createElement(
         "div",
-        { class: "organism_modalconnections__content" },
+        { class: "organism_modalconnections__content", id: compData.node.id },
         await createElement(
           "div",
-          { class: "organism_modalconnections__content__connectiontopleft" },
+          { class: "organism_modalconnections__content__connectiontopleft", id: compData.node.id},
           await this.molecule(3, compData.internalRelsToNode)
         ),
         await createElement(
           "div",
-          { class: "organism_modalconnections__content__connectionbottomleft" },
+          { class: "organism_modalconnections__content__connectionbottomleft" , id: compData.node.id},
           await this.molecule(4, compData.externalRelsToNode)
         ),
         await createElement(
           "div",
-          { class: "organism_modalconnections__content__content" },
+          { class: "organism_modalconnections__content__content", id: compData.node.id },
           await this.molecule(2, compData)
         ),
         await createElement(
           "div",
-          { class: "organism_modalconnections__content__connectiontopright" },
+          { class: "organism_modalconnections__content__connectiontopright", id: compData.node.id },
           await this.molecule(5, compData.internalRelsFromNode)
         ),
         await createElement(
           "div",
           {
-            class: "organism_modalconnections__content__connectionbottomright",
+            class: "organism_modalconnections__content__connectionbottomright" , id: compData.node.id
           },
           await this.molecule(6, compData.externalRelsFromNode)
         )
@@ -130,7 +130,7 @@ export function Organism_ModalConnections() {
     }
     console.log("data", data);
 
-    return await component(data);
+    return await component(data, indata);
   };
 
   //add component specific functions here
