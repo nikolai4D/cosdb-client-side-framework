@@ -124,35 +124,47 @@ const filterData = async (filter = "") => { //OK
   const openModal = async (id) => {
     //create modal content
     const existingModal = document.getElementById("organism_modal");
-
-    //create modal content
-
-    if(id === "new") {
-      await createForm(existingModal);
-    } else {
-      const modalConnetionsContent = await createElement("div",
-      {
-        class: "organism_modal_content",
-        id: `organism_modal_content_${id}`,
-      },
-      await this.childOrganism(2, id)
+    let existingModalContent = document.getElementById(
+      "organism_modal_content"
     );
-      existingModal.appendChild(modalConnetionsContent);
+    let existingId = "";
+
+    if (id === "new") {
+      existingId = null;
+    } else {
+      existingId = id;
     }
 
-    //modal content created and next step to display modal
+    if (!existingModalContent) {
+      existingModalContent = await createElement(
+        "div",
+        {
+          class: "organism_modal_content",
+          id: `organism_modal_content_${id}`,
+        },
+
+        await this.childOrganism(2, existingId)
+      );
+      existingModal.appendChild(existingModalContent);
+    } else {
+      existingModalContent.innerHTML = "";
+    }
+
+    if (id === "new") {
+      await newObject(existingModalContent);
+    }
+
     existingModal.style.display = "block"; // Show the modal
   };
 
+  const newObject = async (existingModalContent) => {
+    existingModalContent.innerHTML = "";
+    console.log("State ParentIds", State.parentIds);
 
-  // const newObject = async (existingModalContent) => {
-  //   existingModalContent.innerHTML = "";
-  //   console.log("State ParentIds", State.parentIds);
+    await createForm(existingModalContent);
+  };
 
-  //   await createForm(existingModalContent);
-  // };
-
-  async function createForm(existingModal) {
+  async function createForm(existingModalContent) {
     const parents = State.parentIds;
 
     const parentsList = [];
@@ -205,12 +217,9 @@ const filterData = async (filter = "") => { //OK
     button.addEventListener("click", handleCreate);
     divInputAndButton.appendChild(button);
 
-    const existingModalContent = document.createElement("div");
     existingModalContent.appendChild(divInputAndButton);
-    //existingModalContent.style.removeProperty("width");
-    //existingModalContent.style.removeProperty("height");
-    existingModal.appendChild(existingModalContent)
-
+    existingModalContent.style.removeProperty("width");
+    existingModalContent.style.removeProperty("height");
   }
 
   async function handleCreate() {
