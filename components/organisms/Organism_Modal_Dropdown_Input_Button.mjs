@@ -58,9 +58,9 @@ export function Organism_Modal_Dropdown_Input_Button() {
     ).value;
     const inputFieldValue = document.getElementById(
       "inputFieldNewObject"
-    ).value;
+    );
 
-    if (inputFieldValue === "") {
+    if (inputFieldValue.value === "") {
       console.log("inputFieldValue",inputFieldValue)
       alert("Input cannot be empty!");
       return;
