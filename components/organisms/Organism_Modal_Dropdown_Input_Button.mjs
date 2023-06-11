@@ -35,6 +35,9 @@ export function Organism_Modal_Dropdown_Input_Button() {
     );
 
     //add event listener to the comp here
+    comp.addEventListener("click", (e) => {
+      console.log("modal new clicked",e)
+    })
 
     return comp;
   };
