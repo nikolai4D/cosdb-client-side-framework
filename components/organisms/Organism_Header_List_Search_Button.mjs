@@ -46,9 +46,9 @@ export function Organism_Header_List_Search_Button() {
       component: action_getAllListDataWithHeaders,
     },
     {
-    id: 2,
-    function: "action_filterListItems",
-    component: action_filterListItems,
+      id: 2,
+      function: "action_filterListItems",
+      component: action_filterListItems,
     },
   ]
 
@@ -121,7 +121,7 @@ export function Organism_Header_List_Search_Button() {
 //   return Promise.all(filteredData.map(item => this.molecule(2, item)));
 // };
 
-async function filterData (filter = "") {
+const filterData = async (filter = "") => {
   const filteredData = await this.fn(2, filter)
   return Promise.all(filteredData.map(item => this.molecule(2, item)));
 }
