@@ -106,7 +106,7 @@ export function Organism_Header_List_Search_Button() {
 
     //add event listener to the comp here
 
-    //comp.addEventListener("click", handleModal);
+    comp.addEventListener("click", handleModal);
 
     return comp;
   };
@@ -161,7 +161,7 @@ const filterData = async (filter = "") => { //OK
     existingModal.addEventListener("click", async (e) =>  await closeModal(e, existingModal))
 };
 
-async function closeModal (e, existingModal){
+async function closeModal (e, existingModal){ //OK
   if (e.target.id === "organism_modal") {
     existingModal.style.display = "none"; // Hide the modal
     // Remove all divs with the class "organism_modal_content" and their children
@@ -178,7 +178,7 @@ async function closeModal (e, existingModal){
 
   // next step
   const handleModal = async (e) => {
-    const existingModal = document.querySelector(".organism_modal");
+    const existingModal = document.getElementById("organism_modal");
     console.log(existingModal);
 
     //Add related nodes
@@ -191,7 +191,7 @@ async function closeModal (e, existingModal){
       await handleAddRel(e.target, existingModal);
     }
 
-    //delet related node
+    //delete related node
     if (e.target.className.includes("deleteRel")) {
       if (window.confirm("Ta bort?")) {
         console.log(e.target.parentNode.childNodes[1].id);
@@ -271,19 +271,6 @@ async function closeModal (e, existingModal){
       }
     }
 
-    // //Close modal
-    // if (e.target === existingModal) {
-    //   existingModal.style.display = "none"; // Hide the modal
-    //   // Remove all divs with the class "organism_modal_content" and their children
-    //   const modalContents = existingModal.querySelectorAll(
-    //     ".organism_modal_content"
-    //   );
-    //   modalContents.forEach((modalContent) => {
-    //     modalContent.innerHTML = "";
-    //     modalContent.remove();
-    //   });
-    //   await updateListItems("");
-    // }
   };
 
   async function handleUpdate(existingModal) {
@@ -432,7 +419,7 @@ async function closeModal (e, existingModal){
 
     if (eTarget.className.includes("addInternalRelTo")) {
       modalContent = existingModal.querySelector(
-        ".organism_modalconnections__content__connectiontopleft"
+        `#${objId}.organism_modalconnections__content__connectiontopleft` //".organism_modalconnections__content__connectiontopleft"
       );
       parentItems = relatedParentNodes.internalRelsToNode;
       urlRelKey = "typeDataInternalRel";
@@ -440,7 +427,7 @@ async function closeModal (e, existingModal){
     }
     if (eTarget.className.includes("addInternalRelFrom")) {
       modalContent = existingModal.querySelector(
-        ".organism_modalconnections__content__connectiontopright"
+        `#${objId}.organism_modalconnections__content__connectiontopright` //".organism_modalconnections__content__connectiontopright"
       );
       parentItems = relatedParentNodes.internalRelsFromNode;
       urlRelKey = "typeDataInternalRel";
@@ -448,7 +435,7 @@ async function closeModal (e, existingModal){
     }
     if (eTarget.className.includes("addExternalRelTo")) {
       modalContent = existingModal.querySelector(
-        ".organism_modalconnections__content__connectionbottomleft"
+        `#${objId}.organism_modalconnections__content__connectionbottomleft` //".organism_modalconnections__content__connectionbottomleft"
       );
       parentItems = relatedParentNodes.externalRelsToNode;
       urlRelKey = "typeDataExternalRel";
@@ -456,7 +443,7 @@ async function closeModal (e, existingModal){
     }
     if (eTarget.className.includes("addExternalRelFrom")) {
       modalContent = existingModal.querySelector(
-        ".organism_modalconnections__content__connectionbottomright"
+        `#${objId}.organism_modalconnections__content__connectionbottomright` //".organism_modalconnections__content__connectionbottomright"
       );
       parentItems = relatedParentNodes.externalRelsFromNode;
       urlRelKey = "typeDataExternalRel";
