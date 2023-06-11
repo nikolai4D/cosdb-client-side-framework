@@ -194,3 +194,10 @@ grid-gap: 1em;
     align-self: center;
     user-select: none; 
 }
+
+.molecule_dropdown_input_button {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 1em;
+    margin: 1em;
+}
