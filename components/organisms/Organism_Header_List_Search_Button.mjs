@@ -12,6 +12,7 @@ import { apiCallGet } from "../../data-mgmt/actions/apiCalls.mjs";
 import { apiCallPost } from "../../data-mgmt/actions/apiCalls.mjs";
 import { action_getRelatedParentNodes } from "../../data-mgmt/actions/action_getRelatedParentNodes.mjs";
 import { action_getAllListDataWithHeaders } from "../../data-mgmt/actions/action_getAllListDataWithHeaders.mjs";
+import { action_filterListItems } from "../../data-mgmt/actions/action_filterListItems.mjs";
 
 export function Organism_Header_List_Search_Button() {
   Organism.call(this);
@@ -43,7 +44,12 @@ export function Organism_Header_List_Search_Button() {
       id: 1,
       function: "action_getAllListDataWithHeaders",
       component: action_getAllListDataWithHeaders,
-    }
+    },
+    {
+    id: 2,
+    function: "action_filterListItems",
+    component: action_filterListItems,
+    },
   ]
 
   //build component
@@ -65,7 +71,7 @@ export function Organism_Header_List_Search_Button() {
     const headingList = await createElement(
       "div",
       { class: "organism_heading_list", id: "listItems" },
-      ...(await listItems(compData))
+      ...(await filterData(compData))
     );
     headingList.addEventListener("click", async (e) => {
       if (e.target.tagName === "LI") {
@@ -100,20 +106,26 @@ export function Organism_Header_List_Search_Button() {
   };
 
   //add functions for the component here
-const listItems = async (filter = "") => {
-  const arrayOfData = await State.items;
+// const listItems = async (filter = "") => {
+//   const arrayOfData = await State.items;
   
-  let filteredData = filter === "" 
-    ? arrayOfData 
-    : arrayOfData
-        .map((group) => ({
-          header: group.header, 
-          content: group.content.filter((item) => item.title.toLowerCase().includes(filter.toLowerCase()))
-        }))
-        .filter((group) => group.content.length > 0);
+//   let filteredData = filter === "" 
+//     ? arrayOfData 
+//     : arrayOfData
+//         .map((group) => ({
+//           header: group.header, 
+//           content: group.content.filter((item) => item.title.toLowerCase().includes(filter.toLowerCase()))
+//         }))
+//         .filter((group) => group.content.length > 0);
   
+//   return Promise.all(filteredData.map(item => this.molecule(2, item)));
+// };
+
+async function filterData (filter = "") {
+  const filteredData = await this.fn(2, filter)
   return Promise.all(filteredData.map(item => this.molecule(2, item)));
-};
+}
+
 
 
   async function updateListItems(filter) {
