@@ -1,7 +1,7 @@
-// import {navigateTo} from "../viewRouter.js";
 import { action_logoutRequest } from "./action_logoutRequest.mjs";
+import { action_refreshToken } from "./action_refreshToken.mjs";
 
-export default async function handleToken(tkn) {
+export default async function action_handleToken(tkn) {
     let getHeaders = {
         "Content-Type": "application/json",
         authorization: tkn,
