@@ -154,7 +154,7 @@ const filterData = async (filter = "") => { //OK
       );
 
       existingModalContent.addEventListener("click", async (e) => {
-        if (e.target.tagName === "BUTTON" && e.target.id === "inputFieldNewObject") {
+        if (e.target.tagName === "BUTTON" && e.target.id === "buttonNewObject") {
           await closeModal(e, existingModal)
         }})
 
