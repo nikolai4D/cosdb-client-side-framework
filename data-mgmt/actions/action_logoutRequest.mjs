@@ -12,5 +12,5 @@ export async function action_loginRequest() {
     State.accessToken = undefined;
 
     //Redirection Part
-    await navigateTo("/login")
+    await action_routeToView("/login")
 }

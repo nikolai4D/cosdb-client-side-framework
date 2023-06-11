@@ -6,6 +6,10 @@ import { Molecule_Logo } from "../molecules/Molecule_Logo.mjs";
 import { Molecule_Icon_NavItem } from "../molecules/Molecule_Icon_NavItem.mjs";
 import { Molecule_Text_Button } from "../molecules/Molecule_Text_Button.mjs";
 
+//import functions
+import { action_logoutRequest } from "../../data-mgmt/actions/action_logoutRequest.mjs";
+
+
 export function Organism_Navbar() {
   Organism.call(this);
 
@@ -30,10 +34,23 @@ export function Organism_Navbar() {
     },
   ];
 
-  this.functions = [];
+  this.functions = [
+    {
+      id: 1,
+      function: "action_logoutRequest",
+      component: action_logoutRequest,
+    },
+  ];
 
   //build component
   const component = async () => {
+
+    const logOutButton = await this.molecule(3, null)
+
+    logOutButton.addEventListener("click", async () => {
+      action_logoutRequest()
+    })
+
     const comp = await createElement(
       "div",
       { class: "organism_navbar" },
@@ -50,7 +67,7 @@ export function Organism_Navbar() {
       await createElement(
         "div",
         { class: "organism_navbar__text_button" },
-        await this.molecule(3, null)
+        logOutButton
       )
     );
 
