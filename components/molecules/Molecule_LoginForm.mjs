@@ -7,6 +7,9 @@ import { Atom_ButtonPositive } from "../atoms/Atom_ButtonPositive.mjs";
 import { Atom_Input } from "../atoms/Atom_Input.mjs";
 import { Atom_Heading4value } from "../atoms/Atom_Heading4value.mjs";
 
+//import functions
+import { action_loginRequest } from "../../data-mgmt/actions/action_loginRequest.mjs";
+
 export function Molecule_LoginForm() {
   Molecule.call(this);
 
@@ -34,7 +37,13 @@ export function Molecule_LoginForm() {
       },
   ];
 
-  this.functions = [];
+  this.functions = [
+    {
+      id: 1,
+      function: "action_loginRequest",
+      component: action_loginRequest,
+    },
+  ];
 
   //build component
   const component = async (compData = null) => {
@@ -43,7 +52,12 @@ export function Molecule_LoginForm() {
     const password = await this.atom(3, null)
     const button = await this.atom(4, null)
 
+    password.type = "password"
+
     button.addEventListener("click", async () => {
+
+      // change to new way of using function later, i.e. await this.fn(1)
+      action_loginRequest(email.value, password.value)
 
         console.log(email.value)
 
@@ -75,10 +89,6 @@ export function Molecule_LoginForm() {
         // // action_routeToView("process");
     })
 
-
-
-
-
     const comp =
       await createElement("div", { class: "molecule_loginform" },
       await this.atom(1, null),
@@ -86,10 +96,8 @@ export function Molecule_LoginForm() {
       await password,
       await button
   )
-  console.log(comp)
 
     //add event listener to the comp here
-
     return comp;
   };
 
